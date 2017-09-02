@@ -2,7 +2,7 @@ var buttonNames = ['Add Nodes', 'Insert At End', 'Insert At Position', 'Delete A
 var buttonName, printfCount, outPutCount, iVal, lastNodeCount, lineCount = nodeCount = 1;
 var lineFlag = false;
 var lang;
-
+// file edited by VEERA MANIKANTA
 function dcllReadyFunction() {
 	lang = getURLParameter("lang");
 	preStructTypeList();
