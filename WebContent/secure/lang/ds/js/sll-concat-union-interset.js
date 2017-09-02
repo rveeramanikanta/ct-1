@@ -42,8 +42,7 @@ function preStructTypeList() {
 								+ '\t\t<span id="cppFstInit">first = NULL;</span>\n'
 								+ '\t}</span>\n'
 								+ '\t<span id="membrFunctions">void create();\n'
-								+ '\tvoid print();<span id="methodsInClass"></span></span>\n'
-								+ '};');	
+								+ '\tvoid print();<span id="methodsInClass"></span></span>\n};');	
 	}
 }
 
@@ -175,8 +174,7 @@ function preConcatOperation() {
 								+ '\t\t<span id="t1StoredToT3">first = l1.first;</span>\n'
 								+ '\t\t<span id="whileT1NxtNotEqNull">while(l1.first -> next != NULL) {</span>\n'
 								+ '\t\t\t<span id="t1nxtToT1">l1.first = l1.first -> next;</span>\n'
-								+ '\t\t}\n\t\t<span id="t2StoreT1Nxt">l1.first -> next = l2.first;</span>\n'
-								+ '\t}\n}</div>');
+								+ '\t\t}\n\t\t<span id="t2StoreT1Nxt">l1.first -> next = l2.first;</span>\n\t}\n}</div>');
 	}
 }
 
@@ -193,11 +191,8 @@ function preUnionOperation() {
 								+ '\t\t\t\tfree(q);\n'
 								+ '\t\t\t} else {\n'
 								+ '\t\t\t\t t2 = t2 -> next;\n'
-								+ '\t\t\t}\n'
-							    + '\t\t}\n'
-								+ '\t}</span>\n'
-						      	+ '\t<span id="returnT4">return l3;</span>\n'
-								+ '}');
+								+ '\t\t\t}\n\t\t}\n\t}</span>\n'
+						      	+ '\t<span id="returnT4">return l3;</span>\n}');
 	} else if (lang == 'cpp') {
 		$("#sllOperations").append('nodeptr unions(<span id="unionTwoNodes">Sll l1, Sll l2</span>) {\n'
 						        + '\t<span id="decForNodes">nodeptr t1, t2, q = NULL;</span>\n'
@@ -208,10 +203,7 @@ function preUnionOperation() {
 								+ '\t\t\t\tq = t2 -> next;\n'
 								+ '\t\t\t\tt2 -> next = q -> next;\n'
 								+ '\t\t\t\tdelete q;\n'
-								+ '\t\t\t}\n'
-							    + '\t\t}\n'
-								+ '\t}</span>\n'
-								+ '}');
+								+ '\t\t\t}\n\t\t}\n\t}</span>\n}');
 	}
 }
 
@@ -309,8 +301,7 @@ function preSortMethod() {
 								+ '\t\t\t\tx = t1 -> data;\n'
 								+ '\t\t\t\tt1 -> data = t2 -> data;\n'
 								+ '\t\t\t\tt2 -> data = x;\n'
-								+ '\t\t\t}\n\t\t}\n\t}</span>\n'
-								+ '}</div>');
+								+ '\t\t\t}\n\t\t}\n\t}</span>\n}</div>');
 	}
 }
 
@@ -393,8 +384,7 @@ function preAddMethod() {
 									+ '\t} else {\n'
 									+ '\t\t<div id="addWhileCond" class="position"><span id="elseWhileCond">while(q -> next != NULL) {</span>\n'
 									+ '\t<div id="elseWhileQValue" class="position">q = q -> next;</div>\n'
-									+ '}</div>\n\t\t<span id="elseQNextVal">q -> next = t;</span>\n'
-									+ '\t}\n}</div>');
+									+ '}</div>\n\t\t<span id="elseQNextVal">q -> next = t;</span>\n\t}\n}</div>');
 	}
 }
 
