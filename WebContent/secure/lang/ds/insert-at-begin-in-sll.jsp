@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html                                                                                                                        >
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>AddNodes Method in SLL</title>
+<title>Insert At Begin</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -19,9 +19,9 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/add-nodes-in-sll.js"></script>
-
+<script src="/secure/lang/ds/js/insert-at-begin-in-sll.js"></script>
 <style type="text/css">
+
 .margin-top25 {
 	margin-top: 25px;
 }
@@ -68,7 +68,7 @@ y {
 	border: 1px solid green;
 }
 
-.animation-div, .algorithm-div {
+.animation-div {
 	min-height: 120px;
 }
 
@@ -77,6 +77,7 @@ y {
 	color: black;
 	font-family: monospace;
 	padding: 8px;
+	min-height: 102px;
 }
 
 .div-border {
@@ -124,35 +125,6 @@ y {
 	margin: 0 !important;
 }
 
-.step-arrow {
-	background-color: #a1126c;
-	height: 26px;
-	line-height: 26px;
-	display: table-row-group;
-	border-bottom-left-radius: 8px;
-	border-top-left-radius: 8px;
-}
-
-.step-arrow::after {
-	color: #a1126c;
-	border-left: 14px solid;
-	border-top: 13px solid transparent;
-	border-bottom: 14px solid transparent;
-	content: ' ';
-	position: absolute;
-}
-
-.step-arrow-text {
-	color: white;
-	padding-left: 5px;
-	font-family: monospace;
-	font-size: 12px;
-}
-
-.padding3 {
-	padding: 0 3px;
-}
-
 .z-index10000 {
 	z-index: 9999999;
 	position: relative; 
@@ -179,36 +151,33 @@ y {
 	}
 }
 
-.margin-left {
-    margin-left: 30px;
-    padding: 0!important
-}
-
-.padding10 {
-	padding: 0 10px;
-}
-
 .ui-effects-transfer {
 	border: 1px solid blue;
 	z-index: 99999999 !important;
 }
+
 </style>
 </head>
 <body>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		AddNodesInSLLReady();
-	});
-	</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	insertAtBeginInSllReady();
+});
+</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">AddNodes() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">InsertAtBegin() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25 padding0">
 			<div class="col-xs-10 col-xs-offset-1 padding0" id="explanationDiv">
 				<div class="col-xs-12 padding0">
 					<div class="col-xs-5 padding0">
-						<div class="col-xs-12 box-border algorithm-div padding0 opacity00" id="algorithmDiv"></div>
+						<div class="col-xs-12 box-border algorithm-div padding0 opacity00" id="algorithmDiv">
+							<bl id="stepNme" class="opacity00">Steps : </bl><br><span id="algorithmSteps"></span>
+						</div>
+						<div class="col-xs-12 padding0 margin-top25">
+							<pre class="creamPreTab opacity00 col-xs-10 col-xs-offset-1" id="insertBeginMthd"></pre>
+						</div>
 					</div>
 					<div class="col-xs-6 col-xs-offset-1 padding0">
 						<div class="col-xs-12 box-border animation-div opacity00" id="animationDiv">
@@ -222,27 +191,21 @@ y {
 								<div class="col-xs-10" id="dynamicNodes"></div>
 							</div>
 							<div class="col-xs-12 margin-top25 padding0" style="margin-bottom: 8px;" id="extraNodesParent">
-								<div class="col-xs-9 col-xs-offset-2 padding0">
-									<div class="col-xs-12 padding0" id="extraNodes">
-										<div class="col-xs-2 col-xs-offset-1 padding0 opacity00" id="lastNodeParent">
-											<div class="col-xs-12 box padding0">
-												<span id="lastNode" class="ct-brown-color ct-fonts position-css temp-node-val opacity00">NULL</span>
-											</div>
-											<div class="text-center col-xs-12 padding0 ct-green-color ct-fonts">lastNode</div>
-										</div>
+								<div class="col-xs-4 padding0"><div class="col-xs-12 padding0" id="dupNode"></div></div>
+								<div class="col-xs-2 col-xs-offset-1 padding0 opacity00" id="tempNodeParent">
+									<div class="col-xs-12 box padding0" id="tempNodeDiv">
+										<span id="tempNode" class="ct-brown-color ct-fonts position-css"></span>
 									</div>
+									<div class="text-center col-xs-12 padding0 ct-green-color ct-fonts">temp</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 padding0 margin-top25">
-							<pre class="creamPreTab opacity00 col-xs-10 col-xs-offset-1" id="addMthd"></pre>
+						<div class="col-xs-12 text-center margin-top25">
+							<span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 text-center margin-top25">
-			<span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span>
 		</div>
 	</div>
 </body>

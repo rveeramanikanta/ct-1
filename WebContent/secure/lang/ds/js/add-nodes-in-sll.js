@@ -3,8 +3,6 @@ var lang, introjs, nodeCount = stepCount = 1;
 function AddNodesInSLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes(1);
-	//structDiv();
-	
 	lang = getURLParameter("lang");
 	svgAppend("#animationDiv", "svgId");
 	svgMarkerAppend("#svgId", "arrow");
@@ -126,20 +124,6 @@ function svgAnimatingLineTopToBottom(parentSelector, selector1, selector2, svgId
 	}});
 }
 
-function createNodeMthd() {
-	$('#createMthd').append('<span id="createMthdNme" class="opacity00 position-css">node <g>createNode()</g> {'
-							+ '<span id="createMthdParent" class="opacity00 position-css">Allocate dynamic memory'
-							/*+ '<span id="createMthd"></span>'
-							+ 'temp -> next = NULL;'
-							+ 'return temp;</span>'*/
-							+ '}</span>');
-	if (lang == 'c') {
-		$('#createMthd').html('temp = (node)<brn>malloc(sizeof(struct list));</brn>');
-	} else if (lang == 'cpp') {
-		$('#createMthd').html('temp = <brn>new list;</brn>');
-	}
-}
-
 function initIntroJS() {
 	introjs = introJs();
 	introjs.setOptions({
@@ -169,23 +153,34 @@ function initIntroJS() {
 						case 'explainDataNext':
 							zoomInEffect('#animationDiv', function() {
 								$('#data1, #next1').addClass('opacity00');
-								$('#node' + nodeCount).removeClass('opacity00');
+								/*$('#node' + nodeCount).removeClass('opacity00');
 								TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
 									$('.introjs-tooltip').removeClass('hide');
-									text = 'This is the <y>node</y>. It contains two fields. They are: ';
+									text = 'This is the <y>node</y>. It contains <y>two fields</y>. They are: ';
 									typing('.introjs-tooltiptext', text, function() {
-										$('.introjs-tooltiptext').append('<ul><li><y>data</y> filed - Which is entered by the user</li></ul>'
-													+ ' <span id="appendText"></span>');
+										$('.introjs-tooltiptext').append('<ul><li><y>data</y> filed - Which is <y>entered</y> by the'
+														+ ' <y>user</y></li></ul>');
 										$('#dataDiv1').addClass('blinking');
 										nextBtnWithoutCalling(true, '', function() {
 											$('#dataDiv1').removeClass('blinking');
-											$('.introjs-tooltiptext > ul').append('<li><y>next</y> filed - Which stores the next node address'
-														+ ' or NULL</li>');
+											$('.introjs-tooltiptext > ul').append('<li><y>next</y> filed - Which stores the <y>next node address</y>'
+														+ ' or <y>NULL</y></li>');
 											$('#nextDiv1').addClass('blinking');;
 												appendNextButton('firstCreation');
 										});
-									});
-								}});
+									});*/
+								$('.introjs-tooltip').removeClass('hide');
+								text = '<ul><li><y>Linked list</y> contains single or multiple nodes. </li>'
+										+ ' <li>Each <y>node</y> contains <y>two</y> fields <y>data</y>(<y>info</y>) and <y>next</y>.</li>'
+										+ '<li><y>data</y> field is used to store the value. Which is of type <y>int</y>.</li>'
+										+ '<li><y>next</y> field contains the <y>address</y> of the <y>next node</y> or <y>NULL</y>.'
+										+ ' Which is of type pointer.</li></ul>';
+								typing('.introjs-tooltiptext', text, function() {
+									$('#node' + nodeCount).removeClass('opacity00');
+									TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
+										appendNextButton('firstCreation');
+									}});
+								});
 							});
 						break
 						case 'ifFstIsTmp':
@@ -223,23 +218,23 @@ function initIntroJS() {
 							$('#algorithmDiv').addClass('z-index10000');
 							text = 'Repeat the condition 2';
 							typing('.introjs-tooltiptext', text, function() {
-								$('#secondLi li:first').css({'background-color':'yellow'});
+								$('#l11').css({'background-color':'yellow'});
 								creatingNode(function() {
 									nextBtnWithoutCalling(true, '', function() {
-										$('#secondLi li:first').css({'background-color':''});
-										$('#secondLi li').eq(1).css({'background-color':'yellow'});
+										$('#l11').css({'background-color':''});
+										$('#l5').css({'background-color':'yellow'});
 										lastNodeCreation(function() {
 											nextBtnWithoutCalling(true, '', function() {
-												$('#secondLi li').eq(1).css({'background-color':''});
+												$('#l5').css({'background-color':''});
 												$('.introjs-tooltiptext').append('<ul></ul>')
-												text = '<li><y>lastNode -> next</y> is <y>not NULL</y>. So store the <y>lastNode</y> value '
-														+ '<y>lastNode -> next</y>.</li>';
+												text = '<li><y>lastNode -> next</y> (i.e., <y> ' + $("#next1").text() + '</y>) is <y>not equal</y>'
+														+ ' to <y>NULL</y>. So store the <y>lastNode -> next</y> value in <y>lastNode</y>.</li>';
 												typing('.introjs-tooltiptext > ul', text, function() {
 													nextBtnWithoutCalling(true, '', function() {
 														$('#tempNode2').effect('highlight', {color: 'yellow'}, 800, function() {
 															svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent2', '#nextDiv1',
 																	 '#svgId', 'line222', 'arrow', function() {
-																fadeInBounceEffectWithTimelineMax('#next1', '#tempNode3', function() {
+																fadeInBounceEffectWithTimelineMax('#next1', '#tempNode2', function() {
 																	$('#line23, #line222').remove();
 																	svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent2', '#nextDiv2',
 																			 '#svgId', 'line23', 'arrow', function() {
@@ -261,10 +256,10 @@ function initIntroJS() {
 							});
 						break;
 						case 'WleLstNxtToTmp':
-							$('#secondLi li').eq(2).css({'background-color':'yellow'});
+							$('#l7').css({'background-color':'yellow'});
 							lstNxtToTmpAnim(function() {
-								$('#secondLi li').eq(2).css({'background-color':''});
-								introNextSteps('#createMthd', '', 'show', 'left');
+								createNodeMthd();
+								introNextSteps('#addMthd', '', 'hide', 'top');
 								$('.introjs-nextbutton').show();
 							});
 						break;
@@ -275,19 +270,17 @@ function initIntroJS() {
 					switch(animateStep) {
 						case 'nodeCreation':
 							zoomInEffect('#algorithmDiv', function() {
-								text = '<ul class="padding10"><li style="list-style-type:none"><span id="l2">If <bl>first</bl> is <g>NULL</g></span>'
-										+ '<ul id="fstLi" class="margin-left"><li><span id="l1">Allocate <brn>dynamic memory</brn>.</span>'
+								text = '<ul class="padding10"><li style="list-style-type:none"><span id="l2">If <bl>first</bl> is <g>NULL</g>'
+										+ '</span><ul id="fstLi" class="margin-left"><li><span id="l1">Allocate <brn>dynamic memory</brn>.</span>'
 										+ '</li></ul></li></ul>';
 								appendSteps(text, 'ifFstIsTmp');
 							});
 						break;
 						case 'tempInFst':
 							$('#fstLi').append('<li></li>');
-							text = '<bl>first</bl> is <g>equal</g> to <g>NULL</g>.'
-									+ '<ul class="margin-left"><li style="list-style-type:none"><span id="l3">Store the '
-									+ '<bl>temp</bl> value in <bl>first</bl>.</span></li></ul>';
-							typing('#fstLi li:last-child', text, function() {
-								$('#stepTyping1 ul:last li:last-child').append('&emsp;<a class="introjs-button user-btn">Next &#8594;</a>');
+							text = '<span id="l3">Store the <bl>temp</bl> value in <bl>first</bl>.</span>';
+							typing('#fstLi li:last', text, function() {
+								$('#fstLi li:last').append('&emsp;<a class="introjs-button user-btn">Next &#8594;</a>');
 								introjs.refresh();
 								$('.user-btn').click(function() {
 									$(this).remove();
@@ -299,9 +292,9 @@ function initIntroJS() {
 							});
 						break;
 						case 'secondNodeStep':
-							text = '<ul class="padding10"><li style="list-style-type:none"><span id="l4">If <bl>first</bl> is <brn>not NULL</brn>'
-									+ '</span> <ul id="secondLi"'
-									+ ' class="margin-left"><li>Allocate <brn>dynamic memory</brn>.</li></ul></li></ul>';
+							text = '<ul class="padding10"><li style="list-style-type:none"><span id="l4">If <bl>first</bl> is <brn>not NULL'
+									+ '</brn></span> <ul id="secondLi"'
+									+ ' class="margin-left"><li><span id="l11">Allocate <brn>dynamic memory</brn>.</span></li></ul></li></ul>';
 							appendSteps(text, 'lastNodeDec');
 						break;
 						case 'lastNodeDec':
@@ -322,7 +315,8 @@ function initIntroJS() {
 							text = 'If <bl>lastNode -> next</bl> is <g>NULL</g>';
 							typing('#secondLi li:last', text, function() {
 								$('#secondLi li:last').append('<ul class="margin-left"></ul>');
-								text = '<li><span id="l7">Store the <bl>temp</bl> value in <bl>lastNode -> next</bl>.</span></li>';
+								text = '<li style="list-style-type:circle"><span id="l7">Store the <bl>temp</bl> value in <bl>lastNode ->'
+										+ ' next</bl>.</span></li>';
 								typing('#secondLi ul:last', text, function() {
 									$('#secondLi ul:last li').append('&emsp;<a class="introjs-button user-btn">Next &#8594;</a>');
 									introjs.refresh();
@@ -337,11 +331,11 @@ function initIntroJS() {
 						break;
 						case 'lstToLstNxt':
 							$('#secondLi').append('<li style="list-style-type:none"></li>');
-							text = '<span id="l6">If <bl>lastNode -> next</bl> <brn>not NULL</brn></span>';
+							text = '<span id="l6">If <bl>lastNode -> next</bl> is <brn>not NULL</brn></span>';
 							typing('#secondLi li:last', text, function() {
 								$('#secondLi li:last').append('<ul class="margin-left"></ul>');
-								text = '<li><span id="l8"><bl>lastNode</bl> stores the <bl>lastNode -> next</bl> value up to <bl>'
-										+ 'lastNode -> next</bl> is <g>NULL</g></span></li>';
+								text = '<li style="list-style-type:circle"><span id="l8"><bl>lastNode</bl> stores the <bl>lastNode -> next</bl>'
+										+ ' value up to <bl>lastNode -> next</bl> is <g>NULL</g></span></li>';
 								typing('#secondLi ul:last', text, function() {
 									$('#secondLi li:last').append('&emsp;<a class="introjs-button user-btn">Next &#8594;</a>');
 									introjs.refresh();
@@ -355,14 +349,21 @@ function initIntroJS() {
 						break;
 					}
 				break;
-				case 'createMthd':
+				case 'addMthd':
+					$('#l7').css({'background-color':''});
 					$('#line23, #line13, #extraNodesParent').remove();
-					introjs.refresh();
-					zoomInEffect('#createMthd', function() {
-						createNodeMthd();
-						text = 'Now convert the above <y>algorithm</y> to <y>' + lang + ' </y> program.'
-						typing(".introjs-tooltiptext", text, function() {
-							convertinCreateNode();
+					introjs.refresh();	
+					zoomInEffect('#addMthd', function() {
+						convertingCreateNode();
+					});
+				break;
+				case 'restartBtn':
+					$('.z-index10000').removeClass('z-index10000');
+					$('.introjs-tooltip').css({'min-width': '125px'});
+					$('#restartBtn').removeClass('opacity00');
+					typing('.introjs-tooltiptext', 'Click to restart.', function() {
+						$('#restartBtn').click(function() {
+							location.reload();
 						});
 					});
 				break;
@@ -387,7 +388,6 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 		$('.introjs-tooltip').show();
 	});
 }
-
 
 function introNextSteps(stepName, animatedStep, tooltip, position) {
 	$('.introjs-disabled').removeClass('introjs-disabled');
@@ -497,7 +497,6 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 }
 
 function alogorithmSteps(animateStep) {
-	//$('#algorithmDiv').addClass('z-index10000');
 	introNextSteps('#algorithmDiv', animateStep, 'hide');
 	 $('.introjs-nextbutton').show();
 }
@@ -514,8 +513,9 @@ function firstCreation() {
 			zoomInEffect('#firstNode', function() {
 				zoomInEffect('#firstVal', function() {
 					nextBtnWithoutCalling(true, '', function() {
-						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which is stored in <y>temp</y>.</li>'
-								+ ' <li id="li3" class="opacity00">Which contains <y>two</y> fields <y>data</y> and <y>next</y>.</li>';
+						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
+								+ ' <y>data</y> and <y>next</y> and the return value will be stored in <y>temp</y>.</li>'
+								+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
 						$('#appendText ul').append(text);
 						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
 							TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
@@ -526,7 +526,7 @@ function firstCreation() {
 											fromEffectWithTweenMax("#dataAddress" + nodeCount, "#tempNode" + nodeCount, function() {
 												 svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent' + nodeCount, '#nextDiv' + nodeCount,
 														 '#svgId', 'line1' + nodeCount, 'arrow', function() {
-														 alogorithmSteps('nodeCreation');
+													 alogorithmSteps('nodeCreation');
 												 });
 											});
 										});
@@ -546,8 +546,8 @@ function creatingNode(callBackFunction) {
 	nodeCount++;
 	createDynamicNodes(nodeCount);
 	$('.introjs-tooltiptext').append('<ul></ul>');
-	text = '<li>Let us assume another <y>dynamic memory</y> with some <y>address</y>. Which is stored in'
-		+ ' <y>temp</y>.</li> ';
+	text = '<li>Let us assume another <y>dynamic memory</y>. Which contains <y>two</y> fields'
+			+ ' <y>data</y> and <y>next</y>. Which returns a value and that value should be stored in <y>temp</y>.</li>';
 	typing('.introjs-tooltiptext > ul', text, function() {
 		nextBtnWithoutCalling(true, '', function() {
 			$('#node' + nodeCount).removeClass('opacity00');
@@ -558,14 +558,9 @@ function creatingNode(callBackFunction) {
 						svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent' + nodeCount, '#nextDiv' + nodeCount,
 									'#svgId', 'line1' + nodeCount, 'arrow', function() {
 							$('.introjs-tooltiptext > ul').append('<li></li>');
-							text = 'Which contains <y>data</y> and <y>next</y> values like (<y>' + nodeCount
-									+ '</y> and <y>NULL</y>).';
+							text = 'Now <y>first</y> value (i.e., <y>' + $('#firstVal').text() + '</y>) is <y>not equal</y> to <y>NULL</y>.';
 							typing('.introjs-tooltiptext > ul li:last-child', text, function() {
-								$('.introjs-tooltiptext > ul').append('<li></li>');
-								text = '<y>first</y> is <y>not equal</y> to <y>NULL</y>.';
-								typing('.introjs-tooltiptext > ul li:last-child', text, function() {
-									callBackFunction();
-								});
+								callBackFunction();
 							});
 						});
 					});
@@ -577,7 +572,7 @@ function creatingNode(callBackFunction) {
 
 function lastNodeCreation(callBackFunction) {
 	var val = nodeCount - 1;
-	text = 'Let us declare a <y>lastNode</y>, which is pointing to the <y>first</y> node.';
+	text = 'Let us declare a node pointer variable <y>lastNode</y>, which is pointing to the <y>first</y> node.';
 	typing('.introjs-tooltiptext', text, function() {
 		nextBtnWithoutCalling(true, '', function() {
 			$('#tempame' + val).text('lastNode')
@@ -594,7 +589,8 @@ function lastNodeCreation(callBackFunction) {
 
 function lstNxtToTmpAnim(callBackFunction) {
 	$('#nextDiv' + (nodeCount - 1)).effect('highlight', {color: 'yellow'}, 800, function() {
-		text = '<y>lastNode -> next</y> value is <y> NULL</y>. Now <y>lastNode -> next</y> stores <y>temp</y> value.';
+		text = '<y>lastNode -> next</y> value is <y>equal</y> to <y> NULL</y>. So, <y>lastNode -> next</y> stores the <y>temp</y> value (i.e., <y>' 
+				+ $('#tempNode' + nodeCount).text() + '</y>).';
 		typing('.introjs-tooltiptext', text, function() {
 			nextBtnWithoutCalling(true, '', function() {
 				fadeInBounceEffectWithTimelineMax('#tempNode' + nodeCount, '#next' + (nodeCount - 1), function() {
@@ -608,10 +604,124 @@ function lstNxtToTmpAnim(callBackFunction) {
 	});
 }
 
-function convertinCreateNode() {
-	zoomInEffect('#createMthdNme', function() {
-		transferEffect('#createMthdParent')
+function convertingCreateNode() {
+	$('.introjs-tooltip').removeClass('hide');
+	text = 'Now convert the <y>algorithm</y> to <y>' + lang.toUpperCase() + ' </y> program.'
+	typing(".introjs-tooltiptext", text, function() {
+		nextBtnWithoutCalling(true, '', function() {
+			zoomInEffect('#addNdeMthdNme', function() {
+			$('#addMthdClose').removeClass('opacity00');
+			mthdText = 'if (first == NULL) {';
+				transWitFlipAnim('#l2', '#ifFstZNL', mthdText, function() {	
+					$('#ifClose').removeClass('opacity00').html('}');
+					transferEffect('#l1', '#tmpCreateMthd', function() {
+						text = '<y>Node creation</y> is same in two conditions. So we create a function called <y>createNode()</y>.';
+						typing('.introjs-tooltiptext', text, function() {
+							$('#l1, #l11').css({'background-color': 'yellow'});
+							nextBtnWithoutCalling(true, '', function() {
+								mthdText = 'temp = <bl>createNode()</bl>;'
+								flipEffectWithTweenMax('#tmpCreateMthd', mthdText, function() {
+									zoomInEffect('#createMthdNme', function() {
+										$('#createClose').removeClass('opacity00');
+										createNodeCalling(function() {
+											$('#l1, #l11').css({'background-color': ''});
+											mthdText = 'first = temp;'
+											transWitFlipAnim('#l3', '#tmpToFst', mthdText, function() {		
+												mthdText = 'else {'
+												transWitFlipAnim('#l4', '#ifFstZNTNL', mthdText, function() {
+													$('#elseClose').removeClass('opacity00');
+													mthdText = 'node temp, lastNode = first;';
+													transWitFlipAnim('#l5', '#tmpLstDec', mthdText, function() {
+														mthdText = 'lastNode -> next = temp;';
+														transWitFlipAnim('#l7', '#tmpLstNxt', mthdText, function() {
+															mthdText = 'while (lastNode -> next != NULL) {';
+															transWitFlipAnim('#l6', '#whileLstNxtNl', mthdText, function() {
+																$('#whileClose').removeClass('opacity00');
+																mthdText = 'lastNode = lastNode -> next;';
+																transWitFlipAnim('#l8', '#lstToLstNxt', mthdText, function() {
+																	zoomInEffect('#tmpDataZX', function() {
+																		if (lang == 'c') {
+																			$('#elseClose').after('\n\t<span id="retnFst" class="position-css opacity00">'
+																						+ 'return first;</span>');
+																			zoomInEffect('#retnFst', function() {
+																				introNextSteps('#restartBtn', '', '', 'left');
+																				$('.introjs-nextbutton').show();
+																			});
+																		} else if (lang == 'cpp') {
+																			introNextSteps('#restartBtn', '', '', 'left');
+																			$('.introjs-nextbutton').show();
+																		}
+																	});
+																});
+															});
+														});
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
 	});
 }
 
-			
+function transWitFlipAnim(id1, id2, text, callBackFunction) {
+	transferEffect(id1, id2, function() {
+		flipEffectWithTweenMax(id2, text, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function createNodeCalling(callBackFunction) {
+	 var arr = ['tmpDec', 'createMthdCall', 'tmpNxtNl', 'rtnTmp'];
+	 createMthdAnim(arr, 0, callBackFunction);
+}
+
+function createMthdAnim(arr, i, callBackFunction) {
+	if (i < arr.length) {
+		zoomInEffect('#' + arr[i], function() {
+			i++;
+			createMthdAnim(arr, i, callBackFunction);
+		});
+	} else {
+		callBackFunction();
+	}
+}
+
+function createNodeMthd() {
+	$('#addMthd').append('<span id="createMthdNme"></span>\n'
+						+ '\t<span id="tmpDec">node temp;</span>\n' 
+						+ '\t<span id="createMthdCall"></span>\n'
+						+ '\t<span id="tmpNxtNl">temp -> next = NULL;</span>\n'
+						+ '\t<span id="rtnTmp">return temp;</span>\n'
+						+ '<span id="createClose">}</span>\n\n'
+						+ '<span id="addNdeMthdNme"></span>\n'
+						+ '\t<span id="tmpLstDec">' + $("#l5").html() + '</span>\n'
+						+ '\t<span id="tmpCreateMthd">' + $("#l1").html() + '</span>\n'
+						+ '\t<span id="tmpDataZX">temp -> data = x;</span>\n'
+						+ '\t<span id="ifFstZNL">' + $("#l2").html() + '</span>\n'
+						+ '\t\t<span id="tmpToFst">' + $("#l3").html() + '</span>\n'
+						+ '\t<span id="ifClose"></span> <span id="ifFstZNTNL">' + $("#l4").html() + '</span>\n'
+						+ '\t\t<span id="whileLstNxtNl"> ' + $("#l6").html() + '</span>\n'
+						+ '\t\t\t<span id="lstToLstNxt">' + $("#l8").html() + '</span>\n'
+						+ '\t\t<span id="whileClose">}</span>\n'
+						+ '\t\t<span id="tmpLstNxt">' + $("#l7").html() + '</span>\n'
+						+ '\t<span id="elseClose">}</span>'
+						+ '\n<span id="addMthdClose">}</span>\n\n')
+	$('#addMthd span').addClass('position-css opacity00');
+	if (lang == 'c') {
+		$('#addNdeMthdNme').html('node <g>addNodes(node first, int x)</g> {');
+		$('#createMthdNme').html('node <g>createNode()</g> {');
+		$('#createMthdCall').html('temp = (node)<brn>malloc(sizeof(struct list));</brn>');
+	} else if (lang == 'cpp') {
+		$('#addNdeMthdNme').html('void Sll::<g>addNodes(int x)</g> {');
+		$('#createMthdNme').html('node Sll::<g>createNode()</g> {');
+		$('#createMthdCall').html('temp = <brn>new list;</brn>');
+	}
+}
