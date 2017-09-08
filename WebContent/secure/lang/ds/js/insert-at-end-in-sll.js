@@ -1,6 +1,6 @@
 var lang, introjs, nodeCount = stepCount = 1;
 
-function addNodesInSLLReady() {
+function insertAtEndInSLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes(1);
 	lang = getURLParameter("lang");
@@ -152,33 +152,38 @@ function initIntroJS() {
 					switch(animateStep) {
 						case 'explainDataNext':
 							zoomInEffect('#animationDiv', function() {
-								$('#data1, #next1').addClass('opacity00');
-								/*$('#node' + nodeCount).removeClass('opacity00');
-								TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
-									$('.introjs-tooltip').removeClass('hide');
-									text = 'This is the <y>node</y>. It contains <y>two fields</y>. They are: ';
-									typing('.introjs-tooltiptext', text, function() {
-										$('.introjs-tooltiptext').append('<ul><li><y>data</y> filed - Which is <y>entered</y> by the'
-														+ ' <y>user</y></li></ul>');
-										$('#dataDiv1').addClass('blinking');
-										nextBtnWithoutCalling(true, '', function() {
-											$('#dataDiv1').removeClass('blinking');
-											$('.introjs-tooltiptext > ul').append('<li><y>next</y> filed - Which stores the <y>next node address</y>'
-														+ ' or <y>NULL</y></li>');
-											$('#nextDiv1').addClass('blinking');;
-												appendNextButton('firstCreation');
-										});
-									});*/
 								$('.introjs-tooltip').removeClass('hide');
-								text = '<ul><li><y>Linked list</y> contains single or multiple nodes. </li>'
-										+ ' <li>Each <y>node</y> contains <y>two</y> fields <y>data</y>(<y>info</y>) and <y>next</y>.</li>'
-										+ '<li><y>data</y> field is used to store the value. Which is of type <y>int</y>.</li>'
-										+ '<li><y>next</y> field contains the <y>address</y> of the <y>next node</y> or <y>NULL</y>.'
-										+ ' Which is of type pointer.</li></ul>';
+								text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
 								typing('.introjs-tooltiptext', text, function() {
-									$('#node' + nodeCount).removeClass('opacity00');
-									TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
-										appendNextButton('firstCreation');
+									$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
+									TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
+										zoomInEffect('#firstNode', function() {
+											zoomInEffect('#firstVal', function() {
+												nextBtnWithoutCalling(true, '', function() {
+													text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
+															+ ' <y>data</y> and <y>next</y>.</li>'
+															+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
+													$('#appendText ul').append(text);
+													TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
+														TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
+															nextBtnWithoutCalling(true, '', function() {
+																$('#node' + nodeCount).removeClass('opacity00');
+																TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
+																	zoomInEffect('#tempNodeParent' + nodeCount, function() {
+																		fromEffectWithTweenMax("#dataAddress" + nodeCount, "#tempNode" + nodeCount, function() {
+																			 svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent' + nodeCount, '#nextDiv' + nodeCount,
+																					 '#svgId', 'line1' + nodeCount, 'arrow', function() {
+																				 alogorithmSteps('nodeCreation');
+																			 });
+																		});
+																	});
+																}});
+															});
+														}});
+													}});
+												});
+											});
+										});
 									}});
 								});
 							});
@@ -371,7 +376,7 @@ function initIntroJS() {
 		});
 	});
 	introjs.start();
-	text = 'Here we will learn about <y>addNodes()</y> method in <y>Single Linked List</y>.';
+	text = 'Here we will learn about <y>insertAtEnd()</y> method in <y>Single Linked List</y>.';
 	typing('.introjs-tooltiptext', text, function() {
 		$('.introjs-nextbutton').show();
 	});
@@ -499,46 +504,6 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 function alogorithmSteps(animateStep) {
 	introNextSteps('#algorithmDiv', animateStep, 'hide');
 	 $('.introjs-nextbutton').show();
-}
-
-function firstCreation() {
-	$('.user-btn').remove();
-	$('#nextDiv1').removeClass('blinking');
-	createDynamicNodes(1);
-	$('.nodes:first').remove();
-	text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
-	typing('.introjs-tooltiptext', text, function() {
-		$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
-		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
-			zoomInEffect('#firstNode', function() {
-				zoomInEffect('#firstVal', function() {
-					nextBtnWithoutCalling(true, '', function() {
-						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
-								+ ' <y>data</y> and <y>next</y>.</li>'
-								+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
-						$('#appendText ul').append(text);
-						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
-							TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
-								nextBtnWithoutCalling(true, '', function() {
-									$('#node' + nodeCount).removeClass('opacity00');
-									TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
-										zoomInEffect('#tempNodeParent' + nodeCount, function() {
-											fromEffectWithTweenMax("#dataAddress" + nodeCount, "#tempNode" + nodeCount, function() {
-												 svgAnimatingLineTopToBottom('#animationDiv', '#tempNodeParent' + nodeCount, '#nextDiv' + nodeCount,
-														 '#svgId', 'line1' + nodeCount, 'arrow', function() {
-													 alogorithmSteps('nodeCreation');
-												 });
-											});
-										});
-									}});
-								});
-							}});
-						}});
-					});
-				});
-			});
-		}});
-	});
 }
 
 function creatingNode(callBackFunction) {
@@ -716,11 +681,11 @@ function createNodeMthd() {
 						+ '\n<span id="addMthdClose">}</span>\n\n')
 	$('#addMthd span').addClass('position-css opacity00');
 	if (lang == 'c') {
-		$('#addNdeMthdNme').html('node <g>addNodes(node first, int x)</g> {');
+		$('#addNdeMthdNme').html('node <g>insertAtEnd(node first, int x)</g> {');
 		$('#createMthdNme').html('node <g>createNode()</g> {');
 		$('#createMthdCall').html('temp = (node)<brn>malloc(sizeof(struct list));</brn>');
 	} else if (lang == 'cpp') {
-		$('#addNdeMthdNme').html('void Sll::<g>addNodes(int x)</g> {');
+		$('#addNdeMthdNme').html('void Sll::<g>insertAtEnd(int x)</g> {');
 		$('#createMthdNme').html('node Sll::<g>createNode()</g> {');
 		$('#createMthdCall').html('temp = <brn>new list;</brn>');
 	}

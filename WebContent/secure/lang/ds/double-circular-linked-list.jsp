@@ -18,8 +18,7 @@
 <script src="/js/intro.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/ds/js-min/dcll.min.js"></script> -->
-<script src="/secure/lang/ds/js/double-circular-linked-list.js"></script>
+<script src="/secure/lang/ds/js-min/dcll.min.js"></script>
 
 <style type="text/css">
 

@@ -121,7 +121,7 @@ function initIntroJS() {
 							zoomInEffect('#algorithmDiv', function() {
 								zoomInEffect('#stepNme', function() {
 									$('#algorithmSteps').append('<ul style="list-style-type:circle"></ul>');
-									text = '<li><span id="l1">Allocate <brn>dynamic memory</brn>.</span></li>';
+									text = '<li><span id="l1">Allocate <brn>dynamic memory</brn>. </span></li>';
 									typing('#algorithmSteps > ul', text, function() {
 										animationDivStep('#algorithmSteps li', 'tmpNxtToFst');
 									});
@@ -130,14 +130,14 @@ function initIntroJS() {
 						break;
 						case 'fstInTmpNxt':
 							$('#algorithmSteps > ul').append('<li></li>');
-							text = '<span id="l2">Store the <bl>first</bl> value in <g>temp -> next</g>.</span>';
+							text = '<span id="l2">Store the <bl>first</bl> value in <g>temp -> next</g>. </span>';
 							algorithmStepsAnim(text, 'tmpToFst');
 						break;
 						case 'fstInTmp':
 							$('#line11').remove();
 							$('#tempNode, #tempNodeParent').addClass('opacity00');
 							$('#algorithmSteps > ul').append('<li></li>');
-							text = '<span id="l3">Store the <bl>temp</bl> value in <g>first</g>.</span>';
+							text = '<span id="l3">Store the <bl>temp</bl> value in <g>first</g>. </span>';
 							algorithmStepsAnim(text, 'secndNodeCreation');
 						break;
 					}
@@ -185,7 +185,7 @@ function fstNodeAnim() {
 				zoomInEffect('#firstVal', function() {
 					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
-								+ ' <y>data</y> and <y>next</y> and the return value will be stored in <y>temp</y>.</li>'
+								+ ' <y>data</y> and <y>next</y>.</li>'
 								+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
 						$('#appendText ul').append(text);
 						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
@@ -319,7 +319,7 @@ function regenerateArrows() {
 			svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2', 'arrow');
 			svgAnimatingLineTopToBottom('#tempNodeDiv', '#nextDiv2', 'line3', 'arrow');
 			insertAtBgnMthd();
-			introNextSteps('#insertBeginMthd', 'right');
+			introNextSteps('#insertBeginMthd', '', 'right');
 			$('.introjs-nextbutton').show();
 		}});
 	}});

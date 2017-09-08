@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html                                                                                                                        >
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,7 +19,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/anis.min.js"></script>
+<script src="/secure/lang/ds/js-min/iaeis.min.js"></script>
 
 <style type="text/css">
 .margin-top25 {
@@ -197,12 +197,12 @@ y {
 <body>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		addNodesInSLLReady();
+		insertAtEndInSLLReady();
 	});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">AddNodes() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">InsertAtEnd() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25 padding0">
 			<div class="col-xs-10 col-xs-offset-1 padding0" id="explanationDiv">
