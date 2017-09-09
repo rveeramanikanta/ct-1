@@ -53,9 +53,9 @@
 
 .creamPreTab {
 	tab-size: 2;
+	-moz-tab-size: 2;
 	margin: 2px;
 	padding: 5px;
-	-moz-tab-size: 2;
 	border-radius: 8px;
 	font-family: monospace;
 	background-color: #fffae6;
@@ -326,8 +326,8 @@ $(document).ready(function() {
 						<div class="margin-top15 col-xs-12 opacity00 padding00" id="animationParent">
 							<div class="col-xs-12 margin-7 padding00" id="animatinDiv">
 								<div class="col-xs-12 animationDiv box-border">
-									<div class="col-xs-12 padding00 margin-top15 box-border1" id="NoOfLists"></div> <!-- poorna changed -->
-									<div class="col-xs-12 padding00 margin-top15 box-border1" id="NoOfListsInUnion"></div> <!-- poorna changed -->
+									<div class="col-xs-12 padding00 margin-top15 box-border1" id="NoOfLists"></div>
+									<div class="col-xs-12 padding00 margin-top15 box-border1" id="NoOfListsInUnion"></div>
 									<div class="col-xs-12 padding00 list1" id="firstList"></div>
 									<div class="col-xs-12 padding00" id="nodeAddress1"></div>
 									<div class="col-xs-12 padding00 list2" id="secondList"></div>

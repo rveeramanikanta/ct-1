@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/custom-styles.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
@@ -66,6 +67,18 @@ var lang = 	getURLParameter('lang');
 	margin: 0;
 }
 
+.blink {
+	font-weight: bold;
+	animation-name: blinking;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+ }
+
+@keyframes blinking {
+	50% {color:  red;}
+	100% {color:  #e69900;}
+}
+
 </style>
 </head>
 <body>
@@ -85,22 +98,39 @@ var lang = 	getURLParameter('lang');
 					<li><b>Linked Lists :</b>
 						<ul>
 							<li>
-								<a href="javascript:opendialog('Node Creation in Single Linked List', 'creating-a-node-in-sll.jsp', 1, 1)">Node Creation in Single Linked List</a>
+								<a href="javascript:opendialog('Node Creation in Single Linked List', 'creating-a-node-in-sll.jsp', 1, 1)">Node Creation in Single Linked List</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Single Linked List', 'sll-concat-union-interset.jsp', 1, 1)">Single Linked List</a>
+								<a href="javascript:opendialog('Single Linked List - All operations', 'sll-demo.jsp', 1, 1)">Single Linked List - All operations</a> - <span class="blink">New</span>
+								<ul style="list-style-type: circle">
+									<li>
+										<a href="javascript:opendialog('Add Nodes in SLL', 'add-nodes-in-sll.jsp', 1, 1)">Add Nodes in SLL</a> - <span class="blink">New</span>
+									</li>
+									<li>
+										<a href="javascript:opendialog('Insert At Begin in SLL', 'insert-at-begin-in-sll.jsp', 1, 1)">Insert At Begin in SLL</a> - <span class="blink">New</span>
+									</li>
+									<li>
+										<a href="javascript:opendialog('Insert At End in SLL', 'insert-at-end-in-sll.jsp', 1, 1)">Insert At End in SLL</a> - <span class="blink">New</span>
+									</li>
+									<li>
+										<a href="javascript:opendialog('Delete At Begin in SLL', 'delete-at-begin-in-sll.jsp', 1, 1)">Delete At Begin in SLL</a> - <span class="blink">New</span>
+									</li>
+									<li>
+										<a href="javascript:opendialog('Delete At End in SLL', 'delete-at-end-in-sll.jsp', 1, 1)">Delete At End in SLL</a> - <span class="blink">New</span>
+									</li>
+								</ul>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Concat, Union and Intersection in SLL', 'sll-demo.jsp', 1, 1)">Concat, Union and Intersection in SLL</a>
+								<a href="javascript:opendialog('Concat, Union and Intersection in SLL', 'sll-concat-union-interset.jsp', 1, 1)">Concat, Union and Intersection in SLL</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Single Circular Linked List', 'single-circular-linked-list.jsp', 1, 1)">Single Circular Linked List</a>
+								<a href="javascript:opendialog('Single Circular Linked List - All operations', 'single-circular-linked-list.jsp', 1, 1)">Single Circular Linked List - All operations</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Double Linked List', 'double-linked-lists.jsp', 1, 1)">Double Linked List</a>
+								<a href="javascript:opendialog('Double Linked List - All operations', 'double-linked-lists.jsp', 1, 1)">Double Linked List - All operations</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Double Circular Linked List', 'double-circular-linked-list.jsp', 1, 1)">Double Circular Linked List</a>
+								<a href="javascript:opendialog('Double Circular Linked List - All operations', 'double-circular-linked-list.jsp', 1, 1)">Double Circular Linked List - All operations</a> - <span class="blink">New</span>
 							</li>
 						</ul>
 					</li>					
@@ -126,10 +156,10 @@ var lang = 	getURLParameter('lang');
 					<li><b>Stacks :</b>
 						<ul>
 							<li>
-								<a href="javascript:opendialog('Stack implementation using Array', 'stack-array.html', 1, 1)">Stack implementation using Array</a>
+								<a href="javascript:opendialog('Stack implementation using Array', 'stack-array.html', 1, 1)">Stack implementation using Array</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Stack implementation using Linked List', 'stack-linked-list.jsp', 1, 1)">Stack implementation using Linked List</a>
+								<a href="javascript:opendialog('Stack implementation using Linked List', 'stack-linked-list.jsp', 1, 1)">Stack implementation using Linked List</a> - <span class="blink">New</span>
 							</li>
 							<li>
 								<a href="javascript:opendialog('Infix to Postfix Conversion', 'infix-to-postfix.jsp', 1, 1)">Infix to Postfix Conversion</a>
@@ -143,10 +173,10 @@ var lang = 	getURLParameter('lang');
 					<li><b>Queues :</b>
 						<ul>
 							<li>
-								<a href="javascript:opendialog('Queue implementation using Array', 'queue-using-array.jsp', 1, 1)">Queue implementation using Array</a>
+								<a href="javascript:opendialog('Queue implementation using Array', 'queue-array.html', 1, 1)">Queue implementation using Array</a> - <span class="blink">New</span>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Queue implementation using Linked List', 'queue-using-linked-list.jsp', 1, 1)">Queue implementation using Linked List</a>
+								<a href="javascript:opendialog('Queue implementation using Linked List', 'queue-using-linked-list.jsp', 1, 1)">Queue implementation using Linked List</a> - <span class="blink">New</span>
 							</li>
 							<li>
 								<a href="javascript:opendialog('Circular-Queue implementation using Array', 'circular-queue-using-array.jsp', 1, 1)">Circular-Queue implementation using Array</a>
@@ -169,7 +199,7 @@ var lang = 	getURLParameter('lang');
 								<a href="javascript:opendialog('Red-Black Tree', 'RedBlack.html', 1, 1)">Red-Black Tree</a>
 							</li>
 							<li>
-								<a href="javascript:opendialog('Splay Trees', 'SplayTree.html', 1, 1)">Splay Trees</a>
+								<a href="javascript:opendialog('Splay Trees', 'SplayTree.html', 1, 1)">Splay Trees</a> - <span class="blink">New</span>
 							</li>
 						</ul>
 					</li>
@@ -199,7 +229,9 @@ var lang = 	getURLParameter('lang');
 							<li>
 								<a href="javascript:opendialog('Selection Sort - smallest element method', '/secure/lang/ds/selection-sort-smallest-element.jsp', 1, 1)">Selection Sort - smallest element method</a>
 							</li>		
-							<li>Merge Sort</li>
+							<li>
+								<a href="javascript:opendialog('Merge Sort', '/secure/lang/ds/merge-sort.jsp', 1, 1)">Merge Sort</a> - <span class="blink">New</span>
+							</li>
 							<li>Quick Sort</li>
 							<li>Heap Sort</li>
 						</ul>

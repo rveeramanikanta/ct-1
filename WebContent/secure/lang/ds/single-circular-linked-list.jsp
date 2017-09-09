@@ -1,10 +1,7 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Doubly Circular Linked List</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet" >
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/jquery-ui.css" rel="stylesheet" >
@@ -15,10 +12,12 @@
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/jquery-ui-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/intro.js"></script>
-<script src="/js/typewriting.min.js"></script>
+<script src="/js/intro.js" type="text/javascript"></script>
+<script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/ds/js-min/dcll.min.js"></script>
+<script src="/secure/lang/ds/js-min/scll.min.js"></script>
+
+<title>Circular Singly Linked List</title>
 
 <style type="text/css">
 
@@ -36,8 +35,10 @@
 	border: 2px solid gray;
 }
 
-div, span {
-	position: relative;
+.buttons-div {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	text-align: center;
 }
 
 .padding00 {
@@ -51,7 +52,7 @@ div, span {
 .creamPreTab {
 	tab-size: 2;
 	margin: 2px;
-	padding: 12px;
+	padding: 10px;
 	-moz-tab-size: 2;
 	border-radius: 8px;
 	font-family: monospace;
@@ -59,8 +60,9 @@ div, span {
 }
 
 .ui-effects-transfer {
-	border: 1px solid blue;
-	z-index: 99999999 !important;
+	z-index: 9999999;
+	border: 1px solid #003399;
+	border-radius: 5px;
 }
 
 .z-index1000000 {
@@ -72,6 +74,10 @@ div, span {
 .position {
 	position: relative;
 	display: inline-block;
+}
+
+#animatinDiv span {
+
 }
 
 .margin-top-15 {
@@ -114,22 +120,17 @@ div, span {
 
 .left-radius {
 	border-right: none;
-	border-color: green;
-	border-radius: 6px 0 0 6px;
-}
-
-.no-radius {
 	border-color: blue;
+	border-radius: 6px 0 0 6px;
 }
 
 .right-radius {
 	border-color: green;
 	border-radius: 0 6px 6px 0;
-	border-left: none;
 }
 
 .inline-css {
-	margin: 0 7px;
+	margin: 0 10px;
 	position: relative;
 	display: inline-block;
 }
@@ -187,7 +188,7 @@ div, span {
 	marker-end: url("#arrowEnd"); 
 }
 
-.ct-fonts {
+.ct-fonts, .ct-css {
 	font-weight: bold;
 	font-family: monospace;
 }
@@ -226,12 +227,17 @@ polyline {
 <body>
 <script type="text/javascript">
 $(document).ready(function() {
-	dcllReadyFunction();
+	sCLLReadyFunction();
 });
 </script>
 	<div class="col-xs-12 padding00">
 		<div class="ct-box-main">
-			 <div class="text-center"><h1 class="label ct-demo-heading text-center" id="headingSection">Doubly Circular Linked List</h1></div> 
+			 <div class="text-center">
+				<h1 class="label ct-demo-heading text-center" id="headdingSection">Circular Singly Linked List</h1>
+			</div> 
+		</div>
+		<div class='buttons-div'>
+			<button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button>
 		</div>
 		<div class="col-xs-12" id="explanationDiv">
 			<div class="col-xs-4 padding00">
@@ -241,10 +247,10 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-8"> 
 				<div class="col-xs-12 padding00">
-					<div class="col-xs-12 margin-top-15 padding00">
+					<div class="col-xs-12 margin-top-15">
 						<div class="col-xs-12 box-border opacity00" id="buttonDiv"></div>
 						<div class="margin-top-15 col-xs-12 opacity00 padding00" id="animationParent">
-							<div class="col-xs-12 margin-7 padding00 box-border" id="animationDiv">
+							<div class="col-xs-12 margin-7 padding00 box-border" id="animatinDiv">
 								<div class="col-xs-12">
 									<div class="col-xs-2 text-center padding00 opacity00 intVariables" id="xValeDecInMain">
 										<div class="margin-top-15" id="decXValInMain"><b>x<sub>(main)</sub> = 
@@ -272,17 +278,19 @@ $(document).ready(function() {
 											<span class="opacity00 intValues position" id="countVal">0</span></span></b>
 										</div>
 									</div>
-								</div>
-								<div class="col-xs-12 margin-top-25" id="csllNodes">
-									<div class="col-xs-1 padding00 opacity00 opacity00" id="firstNodeInMain">
-										<div class="text-center col-xs-12 padding00 ct-green-color ct-fonts">first<sub>main</sub></div>
-										<div class="col-xs-12 box padding00" id="firstDiv">
-											<span  id="firstVal" class="ct-green-color ct-fonts inline-style">NULL</span>
+									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+										<div class="col-xs-1 padding00 opacity00 opacity00" id="firstNodeInMain">
+											<div class="text-center col-xs-12 padding00 ct-green-color">first<sub>main</sub></div>
+											<div class="col-xs-12 box padding00" id="firstDiv">
+												<span  id="firstVal" class="position ct-green-color">NULL</span>
+											</div>
+										</div>
+										<div class="col-xs-11" id="dynamicNodes" style='padding-right: 0;'>
+											<div id='row1' style='display: inline-block'></div><div id='row2'></div>
 										</div>
 									</div>
-									<div class="col-xs-11" id="dynamicNodes" style='padding-right: 0;'></div>
+									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
 								</div>
-								<div class="col-xs-12 margin-top-25" id="declareNodes"></div>
 							</div>
 						</div>
 					</div>

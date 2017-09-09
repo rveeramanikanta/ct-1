@@ -613,38 +613,22 @@ function initIntroJS() {
 				  	  	});
 					});
 				} else if (intro._currentStep == 4) {
-				scrollTop();
+					scrollTopWithTweenMax("#tableBox", "#tableBox");
+				/* scrollTop();
 				TweenLite.to($("#tableBox"), 1, {css:{borderColor: "rgba(192,192,192,3);"}, onComplete:function() {
 					$("#tableBox").effect('highlight',  {color: "#ff9900"}, 2000);
 					 setTimeout(function(){
 						intro.nextStep();
 						}, 500); 
-				}});
-			} else if (intro._currentStep == 9) {
-				scrollTop();
-				TweenLite.to($(".tablehead"), 1, {css:{borderColor: "rgba(192,192,192,3);"}, onComplete:function() {
-					$("#row1").effect('highlight',  {color: "#ff9900"}, 2000);
-					 setTimeout(function(){
-						intro.nextStep();
-						}, 500); 
-				}});
-			} else if (intro._currentStep == 26) {
-				scrollTop();
-				TweenLite.to($(".tableData"), 1, {css:{borderColor: "rgba(192,192,192,3);"}, onComplete:function() {
-					$("#row2").effect('highlight',  {color: "#ff9900"}, 2000);
-					 setTimeout(function(){
-						intro.nextStep();
-						}, 500); 
-				}});
-			} else if (intro._currentStep == 41) {
-				TweenLite.to($(".tableData1"), 1, {css:{borderColor: "rgba(192,192,192,3);"}, onComplete:function() {
-					$("#row3").effect('highlight',  {color: "#ff9900"}, 2000);
-					 setTimeout(function(){
-						intro.nextStep();
-						}, 500); 
-				}});
+				}}); */
+				} else if (intro._currentStep == 9) {
+					scrollTopWithTweenMax(".tablehead", "#row1");
+				} else if (intro._currentStep == 26) {
+					scrollTopWithTweenMax(".tableData", "#row2");
+				} else if (intro._currentStep == 41) {
+					scrollTopWithTweenMax(".tableData1", "#row3");
 		  		} else	if (intro._currentStep == 58) {
-						intro.refresh();
+		  			intro.refresh();
 						typing('.introjs-tooltiptext',"sdf" ,function() {
 							$('#widthAttr').addClass('circle-css');
 							$("#widthAttr").addClass("blink").effect("transfer", {to: $("#tableBox"), className: "ui-effects-transfer"}, 1500, function() {
@@ -989,7 +973,7 @@ function tdAnimation(id1, id2) {
 		TweenMax.to(id1, 1, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
 			intro.refresh();
 			setTimeout(function() {
-			//	intro.nextStep();
+				intro.nextStep();
 			}, 500);		
 		}});
 	});
@@ -1009,7 +993,8 @@ function textenter(selector, value) {
 		if (e.keyCode == 17) {
 			$(selector).val(value);
 		}
-		if ($(selector).val() == value.toLowerCase() || $(selector).val() == value.toUpperCase() || $(selector).val() == value.trim()) {
+		if ($(selector).val().trim() == value.toLowerCase() || $(selector).val().trim() == value.toUpperCase() ||
+				$(selector).val().trim() == value.trim()) {
 			$('.errorText').remove();
 		  	$('.introjs-nextbutton').show();
 		  	if (e.keyCode == 13) {
@@ -1050,5 +1035,14 @@ function scrollTop() {
     window.scrollTo(0, 0);
 }
 	
+function scrollTopWithTweenMax(selector1, selector2) {
+	scrollTop();
+	TweenLite.to($(selector1), 1, {css:{borderColor: "rgba(192,192,192,3);"}, onComplete:function() {
+		$(selector2).effect('highlight',  {color: "#ff9900"}, 2000);
+		setTimeout(function(){
+			intro.nextStep();
+		}, 500); 
+	}});
+}
 </script>
 </html>
