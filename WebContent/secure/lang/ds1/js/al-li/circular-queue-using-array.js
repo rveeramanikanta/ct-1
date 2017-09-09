@@ -66,20 +66,23 @@ CircularQueueArray.prototype.disableUI = function(event) {
 
 CircularQueueArray.prototype.setup = function() {
 	//this.nextIndex = 0;
-	this.arrayId = new Array(SIZE);
-	this.indexArrayId = new Array(SIZE);
-	this.lineId1 = this.nextIndex++;
-	this.lineId2 = this.nextIndex++;
-	this.frontLabelId = this.nextIndex++;
-	this.frontValId = this.nextIndex++;
-	this.dummyFrontId = this.nextIndex++;
-	this.rearLabelId = this.nextIndex++;
-	this.rearValId = this.nextIndex++;
-	this.dummyRearId = this.nextIndex++;
+	this.arrayID = new Array(SIZE);
+	this.indexArrayID = new Array(SIZE);
+	this.dummyIndexArrayID = new Array(SIZE);
+	this.enqueueData = new Array(SIZE);
+	this.lineID1 = this.nextIndex++;
+	this.lineID2 = this.nextIndex++;
+	this.frontLabelID = this.nextIndex++;
+	this.frontValID = this.nextIndex++;
+	this.dummyFrontID = this.nextIndex++;
+	this.rearLabelID = this.nextIndex++;
+	this.rearValID = this.nextIndex++;
+	this.dummyRearID = this.nextIndex++;
 	
 	for (var i = 0; i < SIZE; i++) {
-		this.arrayId[i] = this.nextIndex++;
-		this.indexArrayId[i] = this.nextIndex++;
+		this.arrayID[i] = this.nextIndex++;
+		this.indexArrayID[i] = this.nextIndex++;
+		this.dummyIndexArrayID[i] = this.nextIndex++;
 		/* End of id's creation*/
 		
 		var xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
@@ -89,24 +92,28 @@ CircularQueueArray.prototype.setup = function() {
 		var y1 = y2 - 40;
 		/*End of variables */
 		
-		this.cmd("createRectangle", this.arrayId[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
-		this.cmd("createLabel", this.indexArrayId[i], i, xPos, yPos - ARRAY_ELEM_HEIGHT);
+		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
+		this.cmd("CreateLabel", this.indexArrayID[i], i, xPos, yPos - ARRAY_ELEM_HEIGHT);
+		//this.cmd("SetTextColor", this.indexArrayID[i], "#0645aa");
+		this.cmd("CreateLabel", this.dummyIndexArrayID[i], "", xPos, yPos - ARRAY_ELEM_HEIGHT - 8);
 	}
 
-	this.cmd("drawLine", this.lineId1, x1, y1, x1, y2);
+	this.cmd("drawLine", this.lineID1, x1, y1, x1, y2);
 	
 	x1 = (SIZE - 1) * ARRAY_ELEM_WIDTH + ARRAY_START_X + ARRAY_ELEM_WIDTH / 2;	//line2
 	
-	this.cmd("drawLine", this.lineId2, x1, y1, x1, y2);
-	this.cmd("createLabel", this.frontLabelId, "front : ", 280, FRONT_VAL_Y);
-	this.cmd("createLabel", this.frontValId, "-1", FRONT_VAL_X, FRONT_VAL_Y);
-	this.cmd("createLabel", this.dummyFrontId, "", FRONT_VAL_X, 60);
-	this.cmd("connect", this.dummyFrontId, this.lineId1);
+	this.cmd("DrawLine", this.lineID2, x1, y1, x1, y2);
+	this.cmd("CreateLabel", this.frontLabelID, "front : ", 280, FRONT_VAL_Y);
+	this.cmd("CreateLabel", this.frontValID, "-1", FRONT_VAL_X, FRONT_VAL_Y);
+	//this.cmd("SetTextColor", this.frontValID, "#0645aa");
+	this.cmd("CreateLabel", this.dummyFrontID, "", FRONT_VAL_X, 60);
+	this.cmd("Connect", this.dummyFrontID, this.lineID1);
 	
-	this.cmd("createLabel", this.rearLabelId, "rear : ", 380, FRONT_VAL_Y);
-	this.cmd("createLabel", this.rearValId, "-1", REAR_VAL_X, FRONT_VAL_Y);
-	this.cmd("createLabel", this.dummyRearId, "", REAR_VAL_X, 60);
-	this.cmd("connect", this.dummyRearId, this.lineId1);
+	this.cmd("CreateLabel", this.rearLabelID, "rear : ", 380, FRONT_VAL_Y);
+	this.cmd("CreateLabel", this.rearValID, "-1", REAR_VAL_X, FRONT_VAL_Y);
+	//this.cmd("SetTextColor", this.rearValID, "#0645aa");
+	this.cmd("CreateLabel", this.dummyRearID, "", REAR_VAL_X, 60);
+	this.cmd("Connect", this.dummyRearID, this.lineID1);
 	
 	this.animationManager.StartNewAnimation(this.commands);
 	this.animationManager.skipForward();
@@ -140,88 +147,151 @@ CircularQueueArray.prototype.displayData = function(ignored) {
 }
 
 CircularQueueArray.prototype.enqueue = function(elemToPush) {
-	console.log("enqueue methodsdf43")
 	this.commands = new Array();
 	if (!((this.rear == SIZE - 1 && this.front == 0) || (this.rear + 1 == this.front))) {
-		this.highlightID1 = this.nextIndex++;
-		this.highlightID2 = this.nextIndex++;
+		this.highlightID = this.nextIndex++;
 		this.displayText = this.nextIndex++;
 		this.displayVal = this.nextIndex++;
+		this.dummyDisplayVal = this.nextIndex++;
 		
-		this.cmd("CreateLabel", this.displayText, "Enqueue Value :", 50, 30);
-		this.cmd("CreateLabel", this.displayVal, elemToPush, 100, 30);
+		this.cmd("CreateLabel", this.displayText, "Enqueue Value :", 50, 50);
+		this.cmd("CreateLabel", this.displayVal, elemToPush, 100, 50);
+		this.cmd("CreateLabel", this.dummyDisplayVal, "", 100, 50);
 		
 		if (this.rear == SIZE - 1) {
-			this.rear = -1;
-			this.cmd("SetText", this.rearValId, this.rear);
-		} else if (this.front == -1) {
-			this.front = 0;
-			this.cmd("CreateHighlightCircle", this.highlightID1, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
-			this.cmd("SetText", this.frontValId, this.front);
+			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
 			this.cmd("Step");
-			//this.cmd("DisConnect", this.dummyfrontId, this.lineId1);//write cmd for front to disconnect
-			this.cmd("Delete", this.highlightID1);
-			//this.cmd("Connect", this.dummyfrontId, this.indexArrayId[this.front]);
+			this.cmd("SetText", this.rearValID, "-1");
+			this.cmd("Step");
+			this.cmd("DisConnect", this.dummyRearID, this.dummyIndexArrayID[this.rear]);
+			
+			this.rear = -1;
+			
+			this.cmd("Connect", this.dummyRearID, this.lineID1);
+			this.cmd("Delete", this.highlightID);
+		} else if (this.front == -1) {
+		
+			this.front = 0;
+			
+			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
+			this.cmd("Step");
+			this.cmd("SetText", this.frontValID, this.front);
+			this.cmd("Step");
+			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);//write cmd for front to disconnect
+			this.cmd("Connect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+			this.cmd("Delete", this.highlightID);
 		}
 		
 		this.cmd("Step");
+	
 		this.rear = this.rear + 1;
-		this.cmd("CreateHighlightCircle", this.highlightID2, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
+		
+		this.enqueueData[this.rear] = elemToPush;
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
 		this.cmd("Step");
-		this.cmd("SetText", this.rearValId, this.rear);
+		this.cmd("SetText", this.rearValID, this.rear);
 		this.cmd("Step");
 		
 		if (this.rear == 0) {
-			this.cmd("DisConnect", this.dummyRearId, this.lineId1);
+			this.cmd("DisConnect", this.dummyRearID, this.lineID1);
 		} else {
-			this.cmd("DisConnect", this.dummyRearId, this.indexArrayId[this.rear - 1]);
+			this.cmd("DisConnect", this.dummyRearID, this.dummyIndexArrayID[this.rear - 1]);
 		}
 		
-		this.cmd("Connect", this.dummyRearId, this.indexArrayId[this.rear]);
+		this.cmd("Connect", this.dummyRearID, this.dummyIndexArrayID[this.rear]);
 		
 		var xPos = (this.rear) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(this.rear / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;
 		
-		this.cmd("Move", this.highlightID2, xPos, yPos - ARRAY_ELEM_HEIGHT);
+		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("Step");
-		this.cmd("Move", this.displayVal, xPos, yPos);
+		this.cmd("SetText", this.dummyDisplayVal, elemToPush);
+		this.cmd("Move", this.dummyDisplayVal, xPos, yPos);
 		this.cmd("Step");
-		this.cmd("Delete", this.highlightID2);
-		this.cmd("SetText", this.arrayId[this.rear], elemToPush);
-		this.cmd("Delete", this.displayVal, "");
-		this.cmd("Delete", this.displayText, "");
+		this.cmd("Delete", this.highlightID);
+		this.cmd("SetText", this.arrayID[this.rear], elemToPush);
+		this.cmd("SetTextColor", this.arrayID[this.rear], "#0645aa");
+		this.cmd("Delete", this.displayVal);
+		this.cmd("Delete", this.displayText);
+		this.cmd("Delete", this.dummyDisplayVal);
+		
 		//this.enqueueValue = "";
 		this.cmd("Step");
 	}
 	
-	//this.cmd("Delete", this.displayText);
-	//this.cmd("Delete", this.displayVal);
 	return this.commands;
 }
 
 CircularQueueArray.prototype.dequeue = function(ignored) {
 	this.commands = new Array();
-	this.highlightID1 = this.nextIndex++;
-	this.highlightID2 = this.nextIndex++;
+	this.highlightID = this.nextIndex++;
+	this.displayText = this.nextIndex++;
+	this.displayVal = this.nextIndex++;
 	
-	var xPos = (this.rear) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
-	var yPos = Math.floor(this.rear / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;
-	
-	if (!(this.front == -1)) {
+	var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+	var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;
+
+	if (this.front != -1) {
+		
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
+		this.cmd("CreateLabel", this.displayText, "Dequeue Value : ", 50, 50);
+		this.cmd("CreateLabel", this.displayVal, this.enqueueData[this.front], xPos, yPos);
+		this.cmd("Step");
+		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
+		this.cmd("Step");
+		this.cmd("Move", this.displayVal, 100, 50);
+		this.cmd("SetText", this.arrayID[this.front], "");
+		this.cmd("Step");
+		this.cmd("Step");
+		this.cmd("Delete", this.highlightID);
+		this.cmd("Delete", this.displayText);
+		this.cmd("Delete", this.displayVal);
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
+		this.cmd("Step");
+		
 		if (this.rear == this.front) {
+			this.cmd("SetText", this.frontValID, "-1");
+			this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+			this.cmd("Connect", this.dummyFrontID, this.lineID1);
+			this.cmd("Step");
+			this.cmd("Delete", this.highlightID);
+			
+			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
+			this.cmd("Step");this.cmd("Step");
+			this.cmd("SetText", this.rearValID, "-1");
+			this.cmd("DisConnect", this.dummyRearID, this.dummyIndexArrayID[this.rear]);
+			this.cmd("Connect", this.dummyRearID, this.lineID1);
+			this.cmd("Step");
+			
 			this.rear = this.front = -1;
+			
+			this.cmd("Delete", this.highlightID);
 		} else if (this.front == SIZE - 1) {
+			this.cmd("SetText", this.frontValID, "-1");
+			this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+			this.cmd("Connect", this.dummyFrontID, this.lineID1);
+			this.cmd("Step");
+			
 			this.front = 0;
+			
+			this.cmd("SetText", this.frontValID, this.front);
+			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);
+			this.cmd("Connect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+			this.cmd("Step");
+			this.cmd("Delete", this.highlightID);
 		} else {
+			
 			this.front = this.front + 1;
-			this.cmd("CreateHighlightCircle", this.highlightID1, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
+		
+			this.cmd("SetText", this.frontValID, this.front);
 			this.cmd("Step");
-			this.cmd("SetText", this.frontValId, this.front);
+			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);
+			this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front - 1]);
+			this.cmd("Connect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
 			this.cmd("Step");
-			//this.cmd("Move", this.highlightID1, xPos, yPos - ARRAY_ELEM_HEIGHT);
+			this.cmd("Delete", this.highlightID);
 		}
 	}
-	
 	
 	return this.commands;
 }
@@ -234,6 +304,53 @@ CircularQueueArray.prototype.clearAll = function() {
 
 CircularQueueArray.prototype.displayAll = function() {
 	this.commands = new Array();
+	var iVal;
+	this.highlightID = this.nextIndex++;
+
+	if (this.front != -1 && this.rear != -1) {
+		if (this.front <= this.rear) {
+			for (iVal = this.front; iVal < this.rear; iVal++) {
+				var xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+				var yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
+				this.cmd("CreateHighlightCircle", this.highlightID,"#0000FF", xPos, yPos - ARRAY_ELEM_HEIGHT);
+				this.cmd("Step");
+				//if (iVal != this.rear) {
+					this.cmd("Step");
+					xPos = xPos + ARRAY_ELEM_WIDTH;
+					this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
+					this.cmd("Step");
+				//}
+				this.cmd("Delete", this.highlightID);
+			}
+		} else if (this.rear < this.front) {
+			for (iVal = this.front; iVal < SIZE - 1; iVal++) {
+				var xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+				var yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
+				this.cmd("CreateHighlightCircle", this.highlightID,"#0000FF", xPos, yPos - ARRAY_ELEM_HEIGHT);
+				this.cmd("Step");
+				//if (iVal != this.rear) {
+					this.cmd("Step");
+					xPos = xPos + ARRAY_ELEM_WIDTH;
+					this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
+					this.cmd("Step");
+				//}
+				this.cmd("Delete", this.highlightID);
+			}
+			for (iVal = 0; iVal < this.rear; iVal++) {
+				var xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+				var yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
+				this.cmd("CreateHighlightCircle", this.highlightID,"#0000FF", xPos, yPos - ARRAY_ELEM_HEIGHT);
+				this.cmd("Step");
+				//if (iVal != this.rear) {
+					this.cmd("Step");
+					xPos = xPos + ARRAY_ELEM_WIDTH;
+					this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
+					this.cmd("Step");
+				this.cmd("Delete", this.highlightID);
+			}
+		}
+	}
+	
 	return this.commands;
 }
 
