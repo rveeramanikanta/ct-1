@@ -112,7 +112,7 @@ function enqueueIfCondition() {
 								let cond4 = (rear + 1) == front;
 								conditionMessage('#enqIfCond2', cond4, true, function() {
 									let cond = cond3 || cond4;
-									if (cond) {
+									if (cond) {  
 										text = 'Condition evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
 									} else {
 										text = 'Condition evaluates to <y>false</y>. Hence control enters into the <y>else-block</y>.';
