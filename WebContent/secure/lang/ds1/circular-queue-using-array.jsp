@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
 <script type="text/javascript" src="/js/intro.js"></script>
@@ -19,6 +20,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
 <script type="text/javascript" src="js/circular-queue-using-array.js"></script>
 
 
@@ -53,6 +55,7 @@
 .box-border {
 	border: 2px solid gray;
 	border-radius: 8px;
+	padding: 0 10px;
 }
 
 .creampretab4 {
@@ -120,7 +123,7 @@
 	padding: 0;
 }
 
-y, r, .ct-red, .ct-green {
+y, r {
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -129,12 +132,8 @@ y {
 	color: yellow;
 }
 
-r, .ct-red {
+r {
 	color: red;
-}
-
-.ct-green {
-	color: #40f940;
 }
 
 .user-btn {	
@@ -177,22 +176,60 @@ int front = -1, rear = -1;</pre>
 					<pre class='creampretab4 hide' id="queueMain">void main() {
 	<div class="position-css" id="mainCallMethod"></div>		
 }</pre>
-					<pre class='creampretab4 hide' id="queueMethods">
-<div class="position-css" id="enqueMethod">void enqueue(<span id="enqueueXDec">int x</span>) {
+					<pre class='creampretab4 hide' id="enqueuMethod">
+<div class="position-css">void enqueue(<span id="enqueueXDec">int x</span>) {
 	<div class="position-css" id="enqueIfCond">if (((<span id="rearIsMaxMinusOne">rear == MAX - 1</span>) && (<span id="frontIsZero">front == 0</span>))
 				|| (<span id="rearPlusOneIsFront">rear + 1 == front</span>)) {</div>
-		printf("Circular Queue is overflow\n");
+		<span id="enqueIfPrintf">printf("Circular Queue is overflow\n");</span>
 	} else {
-		if (rear == MAX - 1) {
-			rear = -1;
-		} else if (front == -1) {
-			front = 0;
+		<span id="ifRearIsMaxMinusOne">if (rear == MAX - 1) {</span>
+			<span id="asnRearIsMinusOne">rear = -1;</span>
+		<span id="ifFrontIsMinusOne">} else if (front == -1) {</span>
+			<span id="asnFrontIsZero">front = 0;</span>
 		}
-		rear++;
-		queue[rear] = x;
-		printf(" Successfully inserted.\n");
+		<span id="rearInc">rear++;</span>
+		<span id="asnArrayVal">queue[rear] = x;</span>
+		<span id="enqueElsePrintf">printf(" Successfully inserted.\n");</span>
 	}
 }</div></pre>
+					<pre class='creampretab4 hide' id="dequeuMethod">
+<div class="position-css" id="dequeDiv">void dequeue() {
+	<span id="frontIsMinusOne">if (front == -1) {</span>
+		<span id="dequeIfPrintf">printf("Circular Queue is underflow.\n");</span>
+	} else {
+		<span id="dequeElsePrintf">printf("Deleted element = %d\n", queue[front]);</span>
+		<span id="ifRearIsFront">if (rear == front) {</span>
+			<span id="rearNFrontMinusOne">rear = front = -1;</span>
+		<span id="frontIsMaxMinusOne">} else if (front == MAX - 1) {</span>
+			<span id="asignFrontIsZero">front = 0;</span>
+		} else {
+			<span id="frontInc">front++;</span>
+		}
+	}
+}</div></pre>
+					<pre class='creampretab4 hide' id="displayMethod">
+<div class="position-css" id="displayDiv">void display() {
+	int i;
+	<span id="ifFrontNRearIsMinusOne">if (front == -1 && rear == -1) {</span>
+		<span id="displayIfPrintf">printf("Circular Queue is empty.\n");</span>
+	} else {
+		<span id="displayElsePrintf">printf("Elements in the queue : ");</span>
+		<span id="ifFrontLesThanRear">if (front &lt;= rear) {</span>
+			<div id="frontLesRearForLoop" class="position-css">for (i = front; i &lt;= rear; i++) {
+	printf("%d", queue[i]);
+}</div>
+		} else {
+			<div id="elseFrLoop1" class="position-css">for (i = front; i <= MAX - 1; i++) {
+	printf("%d", queue[i]);
+}</div>
+			<div id="elseFrLoop2" class="position-css">for (i = 0; i <= rear; i++) {
+	printf("%d", queue[i]);
+}</div>
+		}
+		<span id="displayNewLinePrintf">printf("\n");</span>
+	}
+}</div></pre>
+
 				</div>
 				<div id="outputDiv" class='opacity00 col-xs-12 padding0 margin-top-20'>
 					<div class="output-console-title-bar">
