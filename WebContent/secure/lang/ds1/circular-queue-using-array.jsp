@@ -149,6 +149,10 @@ r {
 	position: relative;
 }
 
+.introjs-tooltip {
+	min-width: 270px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -167,14 +171,14 @@ r {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3'>
 				<div class='col-xs-12 box-border'>
-					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;">&lt;includestdio.h&gt;
+					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;">#include&lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 #define MAX 10
 int queue[MAX];
 int front = -1, rear = -1;</pre>
-					<pre class='creampretab4 hide' id="queueMain">void main() {
-	<div class="position-css" id="mainCallMethod"></div>		
+					<pre class='creampretab4 hide' id="queueMain" style="height: 135px;">void main() {
+	<div id="mainCallMethod" class="position-css"></div>		
 }</pre>
 					<pre class='creampretab4 hide' id="enqueuMethod">
 <div class="position-css">void enqueue(<span id="enqueueXDec">int x</span>) {
@@ -213,7 +217,7 @@ int front = -1, rear = -1;</pre>
 	<span id="ifFrontNRearIsMinusOne">if (front == -1 && rear == -1) {</span>
 		<span id="displayIfPrintf">printf("Circular Queue is empty.\n");</span>
 	} else {
-		<span id="displayElsePrintf">printf("Elements in the queue : ");</span>
+		<span id="displayElsePrintf">printf("Elements in the queue : \n");</span>
 		<span id="ifFrontLesThanRear">if (front &lt;= rear) {</span>
 			<div id="frontLesRearForLoop" class="position-css">for (i = front; i &lt;= rear; i++) {
 	printf("%d", queue[i]);

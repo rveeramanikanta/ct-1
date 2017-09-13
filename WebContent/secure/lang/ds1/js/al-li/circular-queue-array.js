@@ -149,7 +149,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	
 	$('#queueMain').removeClass('hide');
 	
-	$('#mainCallMethod').append('<span id="lastCall">enqueue(' + elemToPush + ');</span>\n');
+	/*$('#mainCallMethod').append('<span id="lastCall">enqueue(' + elemToPush + ');</span>\n');
 	this.cmd("SetNextIntroStep", "#lastCall", '', '', 'hide');
 	this.cmd("RunNextIntroStep");
 	this.cmd("Step");
@@ -158,7 +158,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	this.cmd("SetNextIntroStep", "#queueMethods", '', 'right', '');
 	this.cmd("RunNextIntroStep");
 	this.cmd("Step");
-	this.cmd("Step");
+	this.cmd("Step");*/
 	
 	if (!((this.rear == SIZE - 1 && this.front == 0) || (this.rear + 1 == this.front))) {
 		this.highlightID = this.nextIndex++;
