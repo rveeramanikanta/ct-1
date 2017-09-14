@@ -96,6 +96,7 @@ CircularQueueArray.prototype.setup = function() {
 		
 		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
 		this.cmd("CreateLabel", this.indexArrayID[i], i, xPos, yPos - ARRAY_ELEM_HEIGHT);
+		this.cmd("SetTextColor", this.indexArrayID[i], "#006600");
 		this.cmd("CreateLabel", this.dummyIndexArrayID[i], "", xPos, yPos - ARRAY_ELEM_HEIGHT - 8);
 	}
 
@@ -104,13 +105,17 @@ CircularQueueArray.prototype.setup = function() {
 	x1 = (SIZE - 1) * ARRAY_ELEM_WIDTH + ARRAY_START_X + ARRAY_ELEM_WIDTH / 2;	//line2
 	
 	this.cmd("DrawLine", this.lineID2, x1, y1, x1, y2);
-	this.cmd("CreateLabel", this.frontLabelID, "front : ", 280, FRONT_VAL_Y);
+	this.cmd("CreateLabel", this.frontLabelID, "front : ", 275, FRONT_VAL_Y);
+	//this.cmd("SetTextColor", this.frontLabelID, "#660099");
 	this.cmd("CreateLabel", this.frontValID, "-1", FRONT_VAL_X, FRONT_VAL_Y);
+	this.cmd("SetTextColor", this.frontValID, "#006600");
 	this.cmd("CreateLabel", this.dummyFrontID, "", FRONT_VAL_X, 60);
 	this.cmd("Connect", this.dummyFrontID, this.lineID1);
 	
-	this.cmd("CreateLabel", this.rearLabelID, "rear : ", 380, FRONT_VAL_Y);
+	this.cmd("CreateLabel", this.rearLabelID, "rear : ", 375, FRONT_VAL_Y);
+	//this.cmd("SetTextColor", this.rearLabelID, "#660099");
 	this.cmd("CreateLabel", this.rearValID, "-1", REAR_VAL_X, FRONT_VAL_Y);
+	this.cmd("SetTextColor", this.rearValID, "#006600");//a1126c
 	this.cmd("CreateLabel", this.dummyRearID, "", REAR_VAL_X, 60);
 	this.cmd("Connect", this.dummyRearID, this.lineID1);
 	
@@ -172,19 +177,14 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	this.commands = new Array();
 	
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">enqueue(' + elemToPush + ');</div>');
+	$('#lastCall').text('enqueue(' + elemToPush + ');');
+	/*$("#mainCallMethod *").removeAttr("id");
+	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">enqueue(' + elemToPush + ');</div>');*/
 	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	//this.cmd("Step");
 	
-	this.cmd("SetNextIntroStep", "#lastCall", '', '', 'hide');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#enqueuMethod", '', 'right', '');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#enqueuMethod", 'right', 'show');
 	
 	if (!((this.rear == SIZE - 1 && this.front == 0) || (this.rear + 1 == this.front))) {
 		displayArr.push(elemToPush);
@@ -195,6 +195,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		
 		this.cmd("CreateLabel", this.displayText, "Enqueue Value :", 50, 50);
 		this.cmd("CreateLabel", this.displayVal, elemToPush, 100, 50);
+		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("CreateLabel", this.dummyDisplayVal, "", 100, 50);
 		
 		if (this.rear == SIZE - 1) {
@@ -211,10 +212,8 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 			
 			this.cmd("Step");
 			this.cmd("Step");
-			this.cmd("SetNextIntroStep", "#enqueuMethod", '', 'right', '');
-			this.cmd("RunNextIntroStep");
-			this.cmd("Step");
-			this.cmd("Step");
+			this.introSteps("#enqueuMethod", 'right', 'show');
+			
 		} else if (this.front == -1) {
 		
 			this.front = 0;
@@ -232,9 +231,10 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	
 		this.rear = this.rear + 1;
 		
-		queueArr.pop();
-		queueArr.splice(this.rear, 0, elemToPush);
-		this.enqueueData.splice(this.rear, 0, elemToPush);
+		//queueArr.pop();
+		//queueArr.splice(this.rear, 0, elemToPush);
+		//this.enqueueData.splice(this.rear, 0, elemToPush);
+		this.enqueueData.push(elemToPush);
 		
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
 		this.cmd("Step");
@@ -255,6 +255,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("Step");
 		this.cmd("SetText", this.dummyDisplayVal, elemToPush);
+		this.cmd("SetTextColor", this.dummyDisplayVal, "#0645aa");
 		this.cmd("Move", this.dummyDisplayVal, xPos, yPos);
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
@@ -265,28 +266,16 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		this.cmd("Delete", this.dummyDisplayVal);
 		
 		this.cmd("Step");
-		this.enqueueSteps();
+		
+		this.introSteps("#outputDiv", '', 'hide');
+		this.introSteps("#btnsDiv", 'left', 'show');
 	} else {
 		this.cmd("Step");
-		this.cmd("SetNextIntroStep", "#btnsDiv", "", "left");
-		this.cmd("RunNextIntroStep");
-		this.cmd("Step");
+		this.introSteps("#btnsDiv", 'left', 'show');
 	}
 	
 	
 	return this.commands;
-}
-
-CircularQueueArray.prototype.enqueueSteps = function() {
-	console.log("enqueueSteps");
-	this.cmd("SetNextIntroStep", "#outputDiv", "", "", "hide");
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#btnsDiv", "", "left");
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
 }
 
 CircularQueueArray.prototype.dequeue = function(ignored) {
@@ -296,34 +285,29 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 	this.displayVal = this.nextIndex++;
 	var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 	var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;
+	this.dummyDelVal = displayArr[0];
 	
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">dequeue();</div>');
+	$('#lastCall').text('dequeue();');
+	/*$("#mainCallMethod *").removeAttr("id");
+	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">dequeue();</div>');*/
 	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	//this.cmd("Step");
 	
-	this.cmd("SetNextIntroStep", "#lastCall", '', '', 'hide');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#dequeuMethod", '', 'right', '');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#dequeuMethod", 'right', 'show');
+	this.enqueueData.splice(0, 1);
+	
 	if (this.front != -1) {
 
 		this.cmd("Step");
 		this.cmd("Step");
-		this.cmd("SetNextIntroStep", "#animationDiv", "", "", "hide");
-		this.cmd("RunNextIntroStep");
-		this.cmd("Step");
-		this.cmd("Step");
+		this.introSteps("#animationDiv", '', 'hide');
 
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
 		this.cmd("CreateLabel", this.displayText, "Dequeue Value : ", 50, 50);
-		this.cmd("CreateLabel", this.displayVal, this.enqueueData[this.front], xPos, yPos);
+		//this.cmd("CreateLabel", this.displayVal, this.enqueueData[this.front], xPos, yPos);
+		this.cmd("CreateLabel", this.displayVal, this.dummyDelVal, xPos, yPos);
 		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("Step");
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
@@ -340,12 +324,9 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 		this.cmd("Step");
 		this.cmd("Step");
 		
-		this.cmd("SetNextIntroStep", "#dequeDiv", "", "right");
-		this.cmd("RunNextIntroStep");
+		this.introSteps("#dequeDiv", 'right', 'show');
+
 		this.cmd("Step");
-		this.cmd("Step");
-		this.cmd("Step");
-		
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
 		this.cmd("Step");
 		
@@ -368,16 +349,16 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 			
 			this.cmd("Delete", this.highlightID);
 		} else if (this.front == SIZE - 1) {
-			this.cmd("SetText", this.frontValID, "-1");
+			/*this.cmd("SetText", this.frontValID, "-1");
 			this.cmd("Step");
 			this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
 			this.cmd("Connect", this.dummyFrontID, this.lineID1);
-			this.cmd("Step");
+			this.cmd("Step");*/
 			
+			this.cmd("SetText", this.frontValID, "0");
+			this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
 			this.front = 0;
-			
-			this.cmd("SetText", this.frontValID, this.front);
-			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);
+			//this.cmd("DisConnect", this.dummyFrontID, this.lineID1);
 			this.cmd("Connect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
 			this.cmd("Step");
 			
@@ -395,28 +376,20 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 
 			this.cmd("Delete", this.highlightID);
 		}
-		
+		/*console.log(this.enqueueData + " 373");
 		if (flag) {
 			this.enqueueData.splice(0, 1);
-			displayArr.splice(0, 1);
+			//this.enqueueData.splice(this.front, 1);
 		}
-		
+		*/
 	}	
+
 	this.cmd("Step");
 	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#btnsDiv", "", "left");
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
+	this.introSteps("#btnsDiv", 'left', 'show');
 
 	return this.commands;
 }
-/*
-CircularQueueArray.prototype.clearAll = function() {
-	this.commands = new Array();
-	return this.commands;
-}
-*/
 
 CircularQueueArray.prototype.displayAll = function() {
 	this.commands = new Array();
@@ -424,19 +397,14 @@ CircularQueueArray.prototype.displayAll = function() {
 	this.highlightID = this.nextIndex++;
 
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">display();</div>');
+	$('#lastCall').text('display();');
+	/*$("#mainCallMethod *").removeAttr("id");
+	$('#mainCallMethod').append('<div id="lastCall" class="opacity00">display();</div>');*/
 	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	//this.cmd("Step");
 	
-	this.cmd("SetNextIntroStep", "#lastCall", '', '', 'hide');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#displayMethod", '', 'right', '');
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#displayMethod", 'right', 'show');
 	
 	if (this.front != -1 && this.rear != -1) {
 		var xPos = this.front * ARRAY_ELEM_WIDTH + ARRAY_START_X;
@@ -444,10 +412,8 @@ CircularQueueArray.prototype.displayAll = function() {
 		
 		this.cmd("Step");
 		this.cmd("Step");
-		this.cmd("SetNextIntroStep", "#displayDiv", "", "right");
-		this.cmd("RunNextIntroStep");
-		this.cmd("Step");
-		this.cmd("Step");
+		
+		this.introSteps("#displayDiv", 'right', 'show');
 
 		if (this.front <= this.rear) {
 			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
@@ -488,49 +454,45 @@ CircularQueueArray.prototype.displayAll = function() {
 				this.cmd("Delete", this.highlightID);
 			}
 			
+			//this.cmd("Step");
 			this.cmd("Step");
+			this.introSteps("#outputDiv", '', 'hide');
+			//this.cmd("Step");
 			this.cmd("Step");
-			this.cmd("SetNextIntroStep", "#outputDiv", "", "", "hide");
-			this.cmd("RunNextIntroStep");
-			this.cmd("Step");
-			this.cmd("Step");
+			this.introSteps("#displayDiv", 'right', 'show');
 			
-			this.cmd("Step");
-			this.cmd("Step");
-			this.cmd("SetNextIntroStep", "#displayDiv", "", "right", "");
-			this.cmd("RunNextIntroStep");
-			this.cmd("Step");
-			this.cmd("Step");
-			
-			for (iVal = 0; iVal < this.rear; iVal++) {
+			for (iVal = 0; iVal <= this.rear; iVal++) {
 				xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 				yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
 				this.cmd("CreateHighlightCircle", this.highlightID,"#0000FF", xPos, yPos - ARRAY_ELEM_HEIGHT);
 				this.cmd("Step");
-				xPos = xPos + ARRAY_ELEM_WIDTH;
-				this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
-				this.cmd("Step");
+				if (iVal < this.rear) {
+					xPos = xPos + ARRAY_ELEM_WIDTH;
+					this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
+					this.cmd("Step");
+				}
 				this.cmd("Step");
 				this.cmd("Delete", this.highlightID);
 			}
 		}
 		
 		this.cmd("Step");
-		this.cmd("Step");
-		this.cmd("SetNextIntroStep", "#outputDiv", "", "", "hide");
-		this.cmd("RunNextIntroStep");
-		this.cmd("Step");
-		this.cmd("Step");
+		//this.cmd("Step");
+		this.introSteps("#outputDiv", '', 'hide');
 	}
 	
 	this.cmd("Step");
-	this.cmd("Step");
-	this.cmd("SetNextIntroStep", "#btnsDiv", "", "left");
+	//this.cmd("Step");
+	this.introSteps("#btnsDiv", 'left', 'show');
+
+	return this.commands;
+}
+
+CircularQueueArray.prototype.introSteps = function(id, position, tooltip) {
+	this.cmd("SetNextIntroStep", id, "", position, tooltip);
 	this.cmd("RunNextIntroStep");
 	this.cmd("Step");
 	this.cmd("Step");
-
-	return this.commands;
 }
 
 

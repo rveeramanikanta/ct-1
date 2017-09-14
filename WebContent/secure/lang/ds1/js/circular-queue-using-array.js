@@ -1,4 +1,4 @@
-var flag = false;
+var flag = false, iVal = 0;
 function circularQueueArrayReady() {
 	lang = getURLParameter("lang");
 	$("#enqueueText").on("keydown", function(e) {
@@ -12,6 +12,20 @@ function circularQueueArrayReady() {
 	
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
+	
+	if (lang == 'cpp') {
+		$('#headerFiles').html('#include &lt;iostream&gt;\nusing namespace std;');
+		$('#enqueIfPrintf').html('cout << "Circular Queue is overflow\\n";');
+		$('#enqueElsePrintf').html('cout << "Successfully inserted.\\n";');
+		$('#dequeIfPrintf').html('cout << "Circular Queue is underflow\\n";');
+		$('#dequeElsePrintf').html('cout << "Deleted element = "\n \t\t\t\t << queue[front] << "\\n";');
+		$('#displayIfPrintf').html('cout << "Circular Queue is empty.\\n";');
+		$('#displayElsePrintf').html('cout << "Elements in the queue : \\n";');
+		$('#printf1').html('cout << queue[i] << " ";');
+		$('#printf2').html('cout << queue[i] << " ";');
+		$('#printf3').html('cout << queue[i] << " ";');
+		$('#displayNewLinePrintf').html('cout << "\\n";');
+	}
 	initIntroJS();
 }
 
@@ -52,15 +66,20 @@ function initIntroJS() {
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch(elementId) {
 				case 'btnsDiv':
+					/*if ($('#mainCallMethod div').not('hide').length > 7) {
+						$('#mainCallMethod div:nth-child(-n + 3)').addClass('hide');
+					}*/
+					$("#mainCallMethod *").removeAttr("id");
+					$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
+					$("#mainCallMethod").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 					flag = false;
 					$('.background-color-yellow').removeClass('background-color-yellow');
 					$('.fa').remove();
 					$('#enqueueText').val('');
-					typing('.introjs-tooltiptext', 'Choose any operation');
+					typing('.introjs-tooltiptext', 'Choose any operation.');
 					if ($("#enqueueText").is(":disabled")) {
 						doPlayPause();
 					}
-					/*doPlayPause();*/
 					setTimeout(function() {
 						$("#btnsDiv [disabled]").removeAttr("disabled");
 						$('#enqueueText').effect('highlight', {color: 'yellow'}, 500).focus();
@@ -74,12 +93,12 @@ function initIntroJS() {
 				break;
 				case 'enqueuMethod':
 					if (!flag) {
-						text = 'In this method we are inserting the value into the <y>circular queue</y>.';
+						text = 'In this method we are inserting a value into the <y>circular queue</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span>int x</span></li></ul>');
 							travel('#enqueueXDec', '.introjs-tooltiptext li:last span', function() {
 								let enqueueValue = $('#enqueueText').val();
-								$(".introjs-tooltiptext ul li span").append(" = <span>" + enqueueValue + "</span>");
+								$(".introjs-tooltiptext ul li span").append(" = <span>" + enqueueValue + "</span>.");
 								$("#enqueueXDec").removeClass('background-color-yellow');
 								arrow('#enqueIfCond', '#enqueIfCond', function() {
 									$('.introjs-tooltiptext ul').append('<li><span id="enqTotlIfCond"><span id="enqIfCond1">(<span id="enqIf1">'
@@ -101,7 +120,7 @@ function initIntroJS() {
 					}
 				break;
 				case 'dequeuMethod':
-					text = 'In this method we are deleting the element from the <y>circular queue</y>.';
+					text = 'In this method we are deleting an element from the <y>circular queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#frontIsMinusOne', '#frontIsMinusOne', function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
@@ -114,20 +133,17 @@ function initIntroJS() {
 									if (cond) {
 										arrowMoving("#frontIsMinusOne", '#dequeIfPrintf', function() {
 											$('#dequeIfPrintf').addClass('background-color-yellow');
-											$('#output').append('<div class="opacity00">Circular Queue is underflow.</div>');
+											$('#output').append('<div class="opacity00">Circular Queue is underflow</div>');
 											$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 										});
 									} else {
 										arrowMoving("#frontIsMinusOne", '#dequeElsePrintf', function() {
 											$('#dequeElsePrintf').addClass('background-color-yellow');
-											/*let t;
-											if (frontVal < queueArr.length) {
-												t = queueArr[frontVal];
-											} else {
-												t = queueArr[0]
-											}*/
-											$('#output').append('<div class="opacity00">Deleted element = ' + queueArr[0] + '</div>');
+											$('#output').append('<div class="opacity00">Deleted element = ' + displayArr[0] + '</div>');
+											//queueArr.splice(frontVal, 1);
 											queueArr.splice(0, 1);
+											displayArr.splice(0, 1);
+											console.log(queueArr + " 142")
 											$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 										});
 									}
@@ -145,47 +161,13 @@ function initIntroJS() {
 							ifElseCondText(cond1);
 							$('.introjs-tooltiptext li:last').append('<div></div>');
 							typing('.introjs-tooltiptext li:last div', text, function() {
-								if (cond1) {
-									arrowMoving("#ifRearIsFront", '#rearNFrontMinusOne', function() {
-										$('.introjs-tooltiptext ul').append('<li><span>rear = front = -1</span></li>');
-										travel('#rearNFrontMinusOne', '.introjs-tooltiptext li:last span', function() {
-											getIntrojsStep("#animationDiv", "", "", "hide");
-											$(".introjs-nextbutton").removeClass("introjs-disabled").show();
-										});
-									});
-								} else {
-									arrowMoving("#ifRearIsFront", '#frontIsMaxMinusOne', function() {
-										ifCondAnim('front', ' MAX ', ' -1', ' == ', '#frontIsMaxMinusOne', frontVal, 9, true, function() {
-											let cond2 = frontVal == -1;
-											ifElseCondText(cond2);
-											$('.introjs-tooltiptext li:last').append('<div></div>');
-											typing('.introjs-tooltiptext li:last div', text, function() {
-												if (cond2) {
-													arrowMoving("#frontIsMaxMinusOne", '#asignFrontIsZero', function() {
-														$('.introjs-tooltiptext ul').append('<li><span>front = 0</span></li>');
-														travel('#asignFrontIsZero', '.introjs-tooltiptext li:last span', function() {
-															getIntrojsStep("#animationDiv", "", "", "hide");
-															$(".introjs-nextbutton").removeClass("introjs-disabled").show();
-														});
-													});
-												} else {
-													arrowMoving("#frontIsMaxMinusOne", '#frontInc', function() {
-														$('.introjs-tooltiptext ul').append('<li><span>front = 0</span></li>');
-														travel('#frontInc', '.introjs-tooltiptext li:last span', function() {
-															getIntrojsStep("#animationDiv", "", "", "hide");
-															$(".introjs-nextbutton").removeClass("introjs-disabled").show();
-														});
-													});
-												}
-											});
-										});
-									});
-								}
+								$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onClick="dequeAnim1()">Next &#8594;</a>');
 							});
 						});
 					});
 				break;
 				case 'displayMethod':
+					iVal = 0;
 					text = 'In this method we are printing all the elements from the <y>circular queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#ifFrontNRearIsMinusOne', '#ifFrontNRearIsMinusOne', function() {
@@ -221,51 +203,63 @@ function initIntroJS() {
 					});
 				break;
 				case 'displayDiv':
-					arrow('#ifFrontLesThanRear', '#ifFrontLesThanRear', function() {
-						$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
-						ifCondAnim('front', 'rear', '', ' <= ', '#ifFrontLesThanRear', frontVal, rearVal, true, function() {
-							let cond1 = frontVal <= rearVal;
-							ifElseCondText(cond1);
-							$('.introjs-tooltiptext li').append('<div></div>');
-							typing('.introjs-tooltiptext li div', text, function() {
-								if (cond1) {
-									var displayText = "";
-									for (var i = 0; i < queueArr.length; i++) {
-										displayText = displayText + queueArr[i] + " "; 
-									}
-									displayAnim('#frontLesRearForLoop', 'rear', rearVal, 'front', frontVal, displayText)
-								} else {
-									if ($('#displayDiv').hasClass('Checking')) {
+					let cond1 = frontVal <= rearVal;
+					if (cond1) {
+						arrow('#ifFrontLesThanRear', '#ifFrontLesThanRear', function() {
+							$('.introjs-tooltip').removeClass('hide');
+							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
+							ifCondAnim('front', 'rear', '', ' <= ', '#ifFrontLesThanRear', frontVal, rearVal, true, function() {
+								ifElseCondText(cond1);
+								$('.introjs-tooltiptext li').append('<div></div>');
+								typing('.introjs-tooltiptext li div', text, function() {
+									$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn">Next &#8594;</a>');
+									$('.user-btn').click(function() {
+										$(this).remove();
 										var displayText = "";
-										let t;
-										if (rearVal == 0) {
-											t = 1;
-										} else {
-											t = rearVal + 1;
-										}
-										for (let i = 0; i <= displayArr.length + (t + 1); i++) {
-										    displayText = displayText + displayArr[i] + " "; 
-										}
-										/*for (let i = 0; i < queueArr.length - frontVal; i++) {
-										    displayText = displayText + displayArr[i] + " "; 
-										}*/
-										$('#displayDiv').removeClass('Checking');
-										displayAnim('#elseFrLoop1', 'MAX - 1', 9, 'front', frontVal, displayText);
-									} else {
-										let displayText1 = "", t = (displayText13.split(" ").length - 1);
-										let textLength = displayArr.length - t;
-										/*for (let i = 0; i <= rearVal; i++) {
+										for (var i = 0; i < queueArr.length; i++) {
 											displayText = displayText + queueArr[i] + " "; 
-										}*/
-										for (let i = 0; i < textLength; i++) {
-										    displayText1 = displayText1 + displayArr[t + i] + " "; 
 										}
-										displayAnim('#elseFrLoop2', 'rear', rearVal, '0', 0, displayText1);
-									}
-								}
+										displayAnim("#ifFrontLesThanRear", '#frontLesRearForLoop', 'rear', rearVal, 'front', frontVal, displayText);
+									});
+								});
 							});
 						});
-					});
+					} else {
+						if ($('#displayDiv').hasClass('Checking')) {
+							arrow('#ifFrontLesThanRear', '#ifFrontLesThanRear', function() {
+								$('.introjs-tooltip').removeClass('hide');
+								$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
+								ifCondAnim('front', 'rear', '', ' <= ', '#ifFrontLesThanRear', frontVal, rearVal, true, function() {
+									ifElseCondText(cond1);
+									$('.introjs-tooltiptext li').append('<div></div>');
+									typing('.introjs-tooltiptext li div', text, function() {
+										$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn">Next &#8594;</a>');
+										$('.user-btn').click(function() {
+											$(this).remove();
+											let displayText = "";
+											for (let i = frontVal; i <= 9; i++) {
+												displayText = displayText + displayArr[iVal] + " ";
+												iVal++;
+											}
+											$('#displayDiv').removeClass('Checking');
+											displayAnim("#ifFrontLesThanRear", '#elseFrLoop1', 'MAX - 1', 9, 'front', frontVal, displayText);
+										});
+									});
+								});
+							});
+						} else {
+							//arrow('#ifFrontLesThanRear', '#ifFrontLesThanRear', function() {
+								$('.introjs-tooltip').removeClass('hide');
+								$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
+								let displayText1 = "";
+								for (let i = 0; i <= rearVal; i++) {
+									displayText1 = displayText1 + displayArr[iVal] + " ";
+									iVal++;
+								}
+								displayAnim("#elseFrLoop1", '#elseFrLoop2', 'rear', rearVal, '0', 0, displayText1);
+							//});
+						}
+					}
 				break;
 				case "animationDiv":
 					$("#btnsDiv .btn").attr("disabled", "disabled");
@@ -308,7 +302,6 @@ function initIntroJS() {
 }
 
 function enqueueIfCondition() {
-	//let cond1 = frontVal == 9;
 	let cond1 = rearVal == 9;
 	flip('#enqIf1', cond1, function() {
 		flip('#frontVal', frontVal, function() {
@@ -324,11 +317,10 @@ function enqueueIfCondition() {
 							$('.introjs-tooltiptext li:last').append('<div></div>');
 							typing('.introjs-tooltiptext li:last div', text, function() {
 								if (cond) {
-									queueArr.pop();
+									//queueArr.pop();
 									arrowMoving("#enqueIfCond", '#enqueIfPrintf', function() {
 										$('#enqueIfPrintf').addClass('background-color-yellow');
 										getIntrojsStep('#outputDiv', '', '', 'hide');
-										/*getIntrojsStep('#btnsDiv', '', 'left', '');*/
 										$('#output').append('<div class="opacity00">Circular Queue is overflow</div>');
 										$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 									});
@@ -378,7 +370,6 @@ function assingRearValMinus1() {
 			flag = true;
 			getIntrojsStep("#animationDiv", "", "", "hide");
 			$(".introjs-nextbutton").removeClass("introjs-disabled").show();
-			//rearIncrementation();
 		});
 	});
 }
@@ -415,7 +406,8 @@ function rearIncrementation() {
 					$('.introjs-tooltiptext ul').append('<li><span>queue[<span id="rearVal">rear</span>] = <span id="xVal">x</span></span></li>');
 					travel('#asnArrayVal', '.introjs-tooltiptext li:last span', function() {
 						flip('#rearVal', (rVal + 1), function() {
-							flip('#xVal', queueArr[rVal + 1], function() {
+							//flip('#xVal', queueArr[rVal + 1], function() {
+							flip('#xVal', $('#enqueueText').val(), function() {
 								arrowMoving("#asnArrayVal", '#enqueElsePrintf', function() {
 									$('#enqueElsePrintf').addClass('background-color-yellow');
 									getIntrojsStep("#animationDiv", "", "", "hide");
@@ -431,8 +423,62 @@ function rearIncrementation() {
 	});
 }
 
-function displayAnim(selector1, frCond, frCondVal, frInit, frInitVal, displayText) {
-	arrowMoving("#ifFrontLesThanRear", selector1, function() {
+function dequeAnim1() {
+	$('.user-btn').remove();
+	let cond1 = rearVal == frontVal;
+	if (cond1) {
+		arrowMoving("#ifRearIsFront", '#rearNFrontMinusOne', function() {
+			$('.introjs-tooltiptext ul').append('<li><span>rear = front = -1</span></li>');
+			travel('#rearNFrontMinusOne', '.introjs-tooltiptext li:last span', function() {
+				getIntrojsStep("#animationDiv", "", "", "hide");
+				$(".introjs-nextbutton").removeClass("introjs-disabled").show();
+			});
+		});
+	} else {
+		arrowMoving("#ifRearIsFront", '#frontIsMaxMinusOne', function() {
+			ifCondAnim('front', ' MAX ', ' - 1', ' == ', '#frontIsMaxMinusOne', frontVal, 10, true, function() {
+				flip('#secndVal', 9, function() {
+					//let cond2 = frontVal == -1;//this cond (
+					let cond2 = frontVal == 9;
+					console.log(frontVal);
+					ifElseCondText(cond2);
+					$('.introjs-tooltiptext li:last').append('<div></div>');
+					typing('.introjs-tooltiptext li:last div', text, function() {
+						$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onClick="dequeAnim2()">Next &#8594;</a>');
+					});
+				});
+			});
+		});
+	}
+}
+
+function dequeAnim2() {
+	$('.user-btn').remove();
+	let cond2 = frontVal == 9;	//this cond (let cond2 = frontVal == 9;)
+	if (cond2) {
+		arrowMoving("#frontIsMaxMinusOne", '#asignFrontIsZero', function() {
+			$('.introjs-tooltiptext ul').append('<li><span>front = 0</span></li>');
+			travel('#asignFrontIsZero', '.introjs-tooltiptext li:last span', function() {
+				getIntrojsStep("#animationDiv", "", "", "hide");
+				$(".introjs-nextbutton").removeClass("introjs-disabled").show();
+			});
+		});
+	} else {
+		arrowMoving("#frontIsMaxMinusOne", '#frontInc', function() {
+			$('.introjs-tooltiptext ul').append('<li><span id="frntValInc">front++</span></li>');
+			travel('#frontInc', '.introjs-tooltiptext li:last span', function() {
+				flip('#frntValInc', "front = " + (frontVal + 1), function() {
+					getIntrojsStep("#animationDiv", "", "", "hide");
+					$(".introjs-nextbutton").removeClass("introjs-disabled").show();
+				});
+			});
+		});
+	}
+}
+
+function displayAnim(selector1, selector2, frCond, frCondVal, frInit, frInitVal, displayText) {
+	arrowMoving(selector1, selector2, function() {
+		$(selector2).addClass('background-color-yellow');
 		$('.introjs-tooltiptext ul').append('<li></li>')
 		var text = "This <y>for-loop</y> is repeated untill the <y>i</y> value is less than or equal to"
 				+ " <y>" + frCond + " </y> value(i.e., <y>" + frCondVal + "</y>);";

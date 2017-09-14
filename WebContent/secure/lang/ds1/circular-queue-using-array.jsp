@@ -98,6 +98,7 @@
 .output-console-title-bar {
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
+	font-weight: bold;
 }
 
 #outputDiv {
@@ -171,13 +172,13 @@ r {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3'>
 				<div class='col-xs-12 box-border'>
-					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;">#include&lt;stdio.h&gt;
+					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
 
 #define MAX 10
 int queue[MAX];
 int front = -1, rear = -1;</pre>
-					<pre class='creampretab4 hide' id="queueMain" style="height: 135px;">void main() {
+					<pre class='creampretab4 hide' id="queueMain">void main() {
 	<div id="mainCallMethod" class="position-css"></div>		
 }</pre>
 					<pre class='creampretab4 hide' id="enqueuMethod">
@@ -193,15 +194,16 @@ int front = -1, rear = -1;</pre>
 		}
 		<span id="rearInc">rear++;</span>
 		<span id="asnArrayVal">queue[rear] = x;</span>
-		<span id="enqueElsePrintf">printf(" Successfully inserted.\n");</span>
+		<span id="enqueElsePrintf">printf("Successfully inserted.\n");</span>
 	}
 }</div></pre>
 					<pre class='creampretab4 hide' id="dequeuMethod">
 <div class="position-css" id="dequeDiv">void dequeue() {
 	<span id="frontIsMinusOne">if (front == -1) {</span>
-		<span id="dequeIfPrintf">printf("Circular Queue is underflow.\n");</span>
+		<span id="dequeIfPrintf">printf("Circular Queue is underflow\n");</span>
 	} else {
-		<span id="dequeElsePrintf">printf("Deleted element = %d\n", queue[front]);</span>
+		<div id="dequeElsePrintf" class="position-css">printf("Deleted element = %d\n",
+				queue[front]);</div>
 		<span id="ifRearIsFront">if (rear == front) {</span>
 			<span id="rearNFrontMinusOne">rear = front = -1;</span>
 		<span id="frontIsMaxMinusOne">} else if (front == MAX - 1) {</span>
@@ -219,15 +221,15 @@ int front = -1, rear = -1;</pre>
 	} else {
 		<span id="displayElsePrintf">printf("Elements in the queue : \n");</span>
 		<span id="ifFrontLesThanRear">if (front &lt;= rear) {</span>
-			<div id="frontLesRearForLoop" class="position-css">for (i = front; i &lt;= rear; i++) {
-	printf("%d", queue[i]);
+			<div id="frontLesRearForLoop" class="position-css">for (i = front; i <= rear; i++) {
+	<span id="printf1">printf("%d", queue[i]);</span>
 }</div>
 		} else {
 			<div id="elseFrLoop1" class="position-css">for (i = front; i <= MAX - 1; i++) {
-	printf("%d", queue[i]);
+	<span id="printf2">printf("%d", queue[i]);</span>
 }</div>
 			<div id="elseFrLoop2" class="position-css">for (i = 0; i <= rear; i++) {
-	printf("%d", queue[i]);
+	<span id="printf3">printf("%d", queue[i]);</span>
 }</div>
 		}
 		<span id="displayNewLinePrintf">printf("\n");</span>
@@ -244,7 +246,7 @@ int front = -1, rear = -1;</pre>
 
 			</div>
 			<div class='col-xs-9'>
-				<div class='col-xs-12 padding0 box-border text-center ' id='animationDiv'>
+				<div class='col-xs-12 padding0 box-border text-center opacity00' id='animationDiv'>
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
 						<div class='col-xs-offset-3 col-xs-6 padding0' id='btnsDiv'>
 							<div class='col-sm-4'>
@@ -252,7 +254,7 @@ int front = -1, rear = -1;</pre>
 									<div class="input-group">
 										<input class="form-control input-sm" id="enqueueText" name="enqueue" type="text" /> 
 										<span class="input-group-addon">
-											<span id="enqueueBtn" class="btn btn-sm btn-success">enqueue</span>
+											<span id="enqueueBtn" class="btn btn-sm btn-success">Enqueue</span>
 										</span>
 									</div>
 								</div>
@@ -262,7 +264,7 @@ int front = -1, rear = -1;</pre>
 								<div class='col-sm-12' id='dequeueDiv'>
 									<div class="input-group">
 										<span class="input-group-addon input-group-addon-border">
-											<span id="dequeueBtn" class="btn btn-sm btn-success">dequeue</span>
+											<span id="dequeueBtn" class="btn btn-sm btn-success">Dequeue</span>
 										</span>
 									</div>
 								</div>
@@ -272,7 +274,7 @@ int front = -1, rear = -1;</pre>
 								<div class='col-sm-12' id='displayDiv'>
 									<div class="input-group">
 										<span class="input-group-addon input-group-addon-border">
-											<span id="displayBtn" class="btn btn-sm btn-success">display</span>
+											<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
 										</span>
 									</div>
 								</div>
