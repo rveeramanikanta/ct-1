@@ -25,23 +25,21 @@
 
 
 <!-- Javascript for the actual visualization code -->
-<script type="text/javascript" src="js/an-li/custom-events.js"></script>
-<script type="text/javascript" src="js/an-li/undo-functions.js"></script>
-<script type="text/javascript" src="js/an-li/animated-object.js"></script>
-<script type="text/javascript" src="js/an-li/animated-label.js"></script>
-<script type="text/javascript" src="js/an-li/animated-circle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-rectangle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-linked-list.js"></script>
-<script type="text/javascript" src="js/an-li/highlight-circle.js"></script>
-<script type="text/javascript" src="js/an-li/line.js"></script>
-<script type="text/javascript" src="js/an-li/draw-line.js"></script>
-<script type="text/javascript" src="js/an-li/object-manager.js"></script>
-<script type="text/javascript" src="js/an-li/animation-main.js"></script>
-
-<script type="text/javascript" src="js/al-li/algorithm.js"></script>
+<script type="text/javascript" src="js-min/an-li/custom-events.js"></script>
+<script type="text/javascript" src="js-min/an-li/undo-functions.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-object.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-label.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-circle.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-rectangle.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-linked-list.js"></script>
+<script type="text/javascript" src="js-min/an-li/highlight-circle.js"></script>
+<script type="text/javascript" src="js-min/an-li/line.js"></script>
+<script type="text/javascript" src="js-min/an-li/draw-line.js"></script>
+<script type="text/javascript" src="js-min/an-li/object-manager.js"></script>
+<script type="text/javascript" src="js-min/an-li/animation-main.js"></script>
+<script type="text/javascript" src="js-min/al-li/algorithm.js"></script>
 
 <script type="text/javascript" src="js/al-li/circular-queue-using-array.js"></script>
-<!-- <script type="text/javascript" src="js/al-li/circular-queue-linked-list.js"></script> -->
 
 <style type="text/css">
 .padding0 {
@@ -248,39 +246,51 @@ int front = -1, rear = -1;</pre>
 			<div class='col-xs-9'>
 				<div class='col-xs-12 padding0 box-border text-center opacity00' id='animationDiv'>
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
-						<div class='col-xs-offset-3 col-xs-6 padding0' id='btnsDiv'>
-							<div class='col-sm-4'>
-								<div class='col-sm-12 padding-col0' id='enqueueDiv'>
-									<div class="input-group">
-										<input class="form-control input-sm" id="enqueueText" name="enqueue" type="text" /> 
-										<span class="input-group-addon">
-											<span id="enqueueBtn" class="btn btn-sm btn-success">Enqueue</span>
-										</span>
+						<div class='col-xs-12 padding0 margin-top-20 text-center'>
+							<div class='col-xs-offset-2 col-xs-8 padding0' id='btnsDiv'>
+								<div class='col-sm-3'>
+									<div class='col-sm-12 padding-col0' id='enqueueDiv'>
+										<div class="input-group">
+											<input class="form-control input-sm" id="enqueueText"
+												name="enqueue" type="text" /> <span
+												class="input-group-addon"> <span id="enqueueBtn"
+												class="btn btn-sm btn-success">EnQueue</span>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="col-sm-offset-1 col-sm-2" style='padding: 0;'>
-								<div class='col-sm-12' id='dequeueDiv'>
-									<div class="input-group">
-										<span class="input-group-addon input-group-addon-border">
-											<span id="dequeueBtn" class="btn btn-sm btn-success">Dequeue</span>
-										</span>
+	
+								<div class="col-sm-offset-1 col-sm-2 padding0">
+									<div class='col-sm-12' id='popDiv'>
+										<div class="input-group">
+											<span class="input-group-addon input-group-addon-border">
+												<span id="dequeueBtn" class="btn btn-sm btn-success">DeQueue</span>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="col-sm-offset-1 col-sm-2" style='padding: 0;'>
-								<div class='col-sm-12' id='displayDiv'>
-									<div class="input-group">
-										<span class="input-group-addon input-group-addon-border">
-											<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
-										</span>
+								
+								<div class="col-sm-offset-1 col-sm-2 padding0">
+									<div class='col-sm-12' id='displayQueueDiv'>
+										<div class="input-group">
+											<span class="input-group-addon input-group-addon-border">
+												<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
+											</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-sm-offset-1 col-sm-2 padding0">
+									<div class='col-sm-12 padding0' id='clearQueueDiv'>
+										<div class="input-group">
+											<span class="input-group-addon input-group-addon-border">
+												<span id="clearBtn" class="btn btn-sm btn-success">Clear Queue</span>
+											</span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
 					<canvas id="canvas" width="700" height="500"></canvas>
 				</div>

@@ -52,6 +52,10 @@ CircularQueueArray.prototype.addControls = function() {
 	this.displayButton = document.getElementById("displayBtn");
 	this.displayButton.onclick = this.displayCallback.bind(this);
 	this.controls.push(this.displayButton);
+	
+	this.clearButton = document.getElementById("clearBtn");
+	this.clearButton.onclick = this.clearCallback.bind(this);
+	this.controls.push(this.clearButton);
 }
 
 CircularQueueArray.prototype.enableUI = function(event) {
@@ -136,7 +140,7 @@ CircularQueueArray.prototype.enqueueCallBack = function(event) {
 		$('#enqueuMethod').removeClass('hide');
 		frontVal = this.front;
 		rearVal = this.rear;
-		queueArr.push(enqueueVal);
+		queueArr.push(parseInt(enqueueVal));
 		
 		this.implementAction(this.enqueue.bind(this), enqueueVal);
 	}
@@ -170,27 +174,37 @@ CircularQueueArray.prototype.displayData = function(ignored) {
 	return this.commands;
 }
 
+CircularQueueArray.prototype.clearCallback = function(event) {
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	this.implementAction(this.clearData.bind(this), "");
+}
+
+CircularQueueArray.prototype.clearData = function(ignored) {
+	this.commands = new Array();
+	this.clearAll();
+	return this.commands;
+}
+
 CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	this.commands = new Array();
-	
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
-	$('#lastCall').text('enqueue(' + elemToPush + ');');
+	$('#lastCall').text('enqueue(' + parseInt(elemToPush) + ');');
 	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	
-	/*this.introSteps("#lastCall", '', 'hide');
-	this.introSteps("#enqueuMethod", 'right', 'show');*/
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#enqueuMethod", 'right', 'show');
 	
 	if (!((this.rear == SIZE - 1 && this.front == 0) || (this.rear + 1 == this.front))) {
-		displayArr.push(elemToPush);
+		displayArr.push(parseInt(elemToPush));
 		this.highlightID = this.nextIndex++;
 		this.displayText = this.nextIndex++;
 		this.displayVal = this.nextIndex++;
 		this.dummyDisplayVal = this.nextIndex++;
 		
 		this.cmd("CreateLabel", this.displayText, "Enqueue Value :", 50, 50);
-		this.cmd("CreateLabel", this.displayVal, elemToPush, 100, 50);
+		this.cmd("CreateLabel", this.displayVal, parseInt(elemToPush), 100, 50);
 		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("CreateLabel", this.dummyDisplayVal, "", 100, 50);
 		
@@ -208,7 +222,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 			
 			this.cmd("Step");
 			this.cmd("Step");
-			/*this.introSteps("#enqueuMethod", 'right', 'show');*/
+			this.introSteps("#enqueuMethod", 'right', 'show');
 			
 		} else if (this.front == -1) {
 		
@@ -227,7 +241,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	
 		this.rear = this.rear + 1;
 		
-		this.enqueueData.push(elemToPush);
+		this.enqueueData.push(parseInt(elemToPush));
 		
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, FRONT_VAL_Y);
 		this.cmd("Step");
@@ -247,12 +261,12 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("Step");
-		this.cmd("SetText", this.dummyDisplayVal, elemToPush);
+		this.cmd("SetText", this.dummyDisplayVal, parseInt(elemToPush));
 		this.cmd("SetTextColor", this.dummyDisplayVal, "#0645aa");
 		this.cmd("Move", this.dummyDisplayVal, xPos, yPos);
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
-		this.cmd("SetText", this.arrayID[this.rear], elemToPush);
+		this.cmd("SetText", this.arrayID[this.rear], parseInt(elemToPush));
 		this.cmd("SetTextColor", this.arrayID[this.rear], "#0645aa");
 		this.cmd("Delete", this.displayVal);
 		this.cmd("Delete", this.displayText);
@@ -260,11 +274,11 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		
 		this.cmd("Step");
 		
-		/*this.introSteps("#outputDiv", '', 'hide');
-		this.introSteps("#btnsDiv", 'left', 'show');*/
+		this.introSteps("#outputDiv", '', 'hide');
+		this.introSteps("#btnsDiv", 'left', 'show');
 	} else {
 		this.cmd("Step");
-		//this.introSteps("#btnsDiv", 'left', 'show');
+		this.introSteps("#btnsDiv", 'left', 'show');
 	}
 	
 	
@@ -281,22 +295,18 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 	this.dummyDelVal = displayArr[0];
 	
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
 	$('#lastCall').text('dequeue();');
 	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	
-	/*this.introSteps("#lastCall", '', 'hide');
-	this.introSteps("#dequeuMethod", 'right', 'show');*/
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#dequeuMethod", 'right', 'show');
 	this.enqueueData.splice(0, 1);
-	queueArr.splice(0, 1);
-	displayArr.splice(0, 1);
 	
 	if (this.front != -1) {
 
-		/*this.cmd("Step");
 		this.cmd("Step");
-		this.introSteps("#animationDiv", '', 'hide');*/
+		this.cmd("Step");
+		this.introSteps("#animationDiv", '', 'hide');
 
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
 		this.cmd("CreateLabel", this.displayText, "Dequeue Value : ", 50, 50);
@@ -316,9 +326,9 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 		this.cmd("Delete", this.displayVal);
 
 		this.cmd("Step");
-		//this.cmd("Step");
+		this.cmd("Step");
 		
-		//this.introSteps("#dequeDiv", 'right', 'show');
+		this.introSteps("#dequeDiv", 'right', 'show');
 
 		this.cmd("Step");
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
@@ -365,7 +375,7 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 	}	
 
 	this.cmd("Step");
-	//this.introSteps("#btnsDiv", 'left', 'show');
+	this.introSteps("#btnsDiv", 'left', 'show');
 
 	return this.commands;
 }
@@ -376,22 +386,19 @@ CircularQueueArray.prototype.displayAll = function() {
 	this.highlightID = this.nextIndex++;
 
 	$('#queueMain').removeClass('hide');
-	$("#mainCallMethod *").removeAttr("id");
-	$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
 	$('#lastCall').text('display();');
-	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	
-	//this.introSteps("#lastCall", '', 'hide');
-	//this.introSteps("#displayMethod", 'right', 'show');
+	this.introSteps("#lastCall", '', 'hide');
+	this.introSteps("#displayMethod", 'right', 'show');
 	
 	if (this.front != -1 && this.rear != -1) {
 		var xPos = this.front * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y - ARRAY_ELEM_HEIGHT;	//indexes
 		
-		//this.cmd("Step");
-		//this.cmd("Step");
+		this.cmd("Step");
+		this.cmd("Step");
 		
-		//this.introSteps("#displayDiv", 'right', 'show');
+		this.introSteps("#displayDiv", 'right', 'show');
 
 		if (this.front <= this.rear) {
 			this.displayAnim(xPos, yPos, this.highlightID);
@@ -424,11 +431,9 @@ CircularQueueArray.prototype.displayAll = function() {
 			}
 			
 			this.cmd("Step");
-		//	this.introSteps("#outputDiv", '', 'hide');
-			//this.cmd("Step");
-			//this.introSteps("#displayDiv", 'right', 'show');
-			
-			this.displayAnim(xPos, yPos, this.highlightID);
+			this.introSteps("#outputDiv", '', 'hide');
+			this.cmd("Step");
+			this.introSteps("#displayDiv", 'right', 'show');
 			
 			for (iVal = 0; iVal <= this.rear; iVal++) {
 				xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
@@ -446,12 +451,59 @@ CircularQueueArray.prototype.displayAll = function() {
 		}
 		
 		this.cmd("Step");
-		//this.introSteps("#outputDiv", '', 'hide');
+		this.introSteps("#outputDiv", '', 'hide');
 	}
 	
 	this.cmd("Step");
-	//this.introSteps("#btnsDiv", 'left', 'show');
+	this.introSteps("#btnsDiv", 'left', 'show');
 
+	return this.commands;
+}
+
+CircularQueueArray.prototype.clearAll = function() {
+	this.commands = new Array();
+	
+	this.introSteps('#animationDiv', 'left', 'show');
+	
+	this.enqueueData = [];
+	displayArr = [];
+	queueArr = [];
+	rearVal = -1;
+	frontVal = -1;
+	
+	if (this.front != -1 && this.rear != -1) {
+		if (this.front <= this.rear) {
+			for (let i = this.front; i <= this.rear; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+		} else {
+			for (let i = this.front; i <= SIZE - 1; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+			for (let i = 0; i <= this.rear; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+		}
+		
+		this.cmd("SetText", this.rearValID, "-1");
+		this.cmd("DisConnect", this.dummyRearID, this.dummyIndexArrayID[this.rear]);
+		this.cmd("Step");
+		this.cmd("Connect", this.dummyRearID, this.lineID1);
+		this.cmd("Step");
+		
+		this.cmd("SetText", this.frontValID, "-1");
+		this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+		this.cmd("Step");
+		this.cmd("Connect", this.dummyFrontID, this.lineID1);
+		this.cmd("Step");
+		
+		this.front = this.rear = -1;
+	}
+	
+	this.cmd("Step");
+	this.cmd("Step");
+	this.introSteps("#btnsDiv", 'left', 'show');
+	
 	return this.commands;
 }
 

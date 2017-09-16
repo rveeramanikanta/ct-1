@@ -1,7 +1,6 @@
 var flag = false, iVal = 0;
 function circularQueueArrayReady() {
-	$('.opacity00').removeClass('opacity00');
-	
+//	$('.opacity00').removeClass('opacity00');
 	lang = getURLParameter("lang");
 	$("#enqueueText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -68,6 +67,7 @@ function initIntroJS() {
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch(elementId) {
 				case 'btnsDiv':
+					introjs.refresh();
 					$("#mainCallMethod *").removeAttr("id");
 					$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
 					//$("#mainCallMethod").scrollTo($("#mainCallMethod > div:last-child()"), 100);
@@ -96,7 +96,7 @@ function initIntroJS() {
 						typing('.introjs-tooltiptext', text, function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span>int x</span></li></ul>');
 							travel('#enqueueXDec', '.introjs-tooltiptext li:last span', function() {
-								let enqueueValue = $('#enqueueText').val();
+								let enqueueValue = parseInt($('#enqueueText').val());
 								$(".introjs-tooltiptext ul li span").append(" = <span>" + enqueueValue + "</span>.");
 								$("#enqueueXDec").removeClass('background-color-yellow');
 								arrow('#enqueIfCond', '#enqueIfCond', function() {
@@ -240,14 +240,8 @@ function initIntroJS() {
 					} else {
 						doPlayPause();
 						setTimeout(function() {
-							var text = "Successfully clear the <y>queue</y>.";
-							typing(".introjs-tooltiptext", text, function() {
-								getIntrojsStep("#btnsDiv", "", "left");
-								setTimeout(function() {
-									introjs.nextStep();
-								}, 500);
-							});
-						}, 1000);
+							typing(".introjs-tooltiptext", "Successfully clear the <y>queue</y>.");
+						}, 1500);
 					}
 					break;
 				case 'outputDiv':
@@ -336,7 +330,7 @@ function enqueElseFrontIsMinus1() {
 
 function assingRearValMinus1() {
 	arrowMoving("#ifRearIsMaxMinusOne", '#asnRearIsMinusOne', function() {
-		$('.introjs-tooltiptext ul').append('<li><span>rear = -1.</span></li>');
+		$('.introjs-tooltiptext ul').append('<li><span>rear = -1</span></li>');
 		travel('#asnRearIsMinusOne', '.introjs-tooltiptext li:last span', function() {
 			flag = true;
 			getIntrojsStep("#animationDiv", "", "", "hide");
@@ -347,7 +341,7 @@ function assingRearValMinus1() {
 
 function assignFrontVal0() {
 	arrowMoving("#ifFrontIsMinusOne", '#asnFrontIsZero', function() {
-		$('.introjs-tooltiptext ul').append('<li><span>front = 0.</span></li>');
+		$('.introjs-tooltiptext ul').append('<li><span>front = 0</span></li>');
 		travel('#asnFrontIsZero', '.introjs-tooltiptext li:last span', function() {
 			rearIncrementation();
 		});
@@ -377,7 +371,7 @@ function rearIncrementation() {
 					$('.introjs-tooltiptext ul').append('<li><span>queue[<span id="rearVal">rear</span>] = <span id="xVal">x</span></span></li>');
 					travel('#asnArrayVal', '.introjs-tooltiptext li:last span', function() {
 						flip('#rearVal', (rVal + 1), function() {
-							flip('#xVal', $('#enqueueText').val(), function() {
+							flip('#xVal', parseInt($('#enqueueText').val()), function() {
 								arrowMoving("#asnArrayVal", '#enqueElsePrintf', function() {
 									$('#enqueElsePrintf').addClass('background-color-yellow');
 									getIntrojsStep("#animationDiv", "", "", "hide");
@@ -449,11 +443,11 @@ function displayAnim(selector1, selector2, frCond, frCondVal, frInit, frInitVal,
 		$(selector2).addClass('background-color-yellow');
 		$('.introjs-tooltiptext ul').append('<li></li>')
 		var text = "This <y>for-loop</y> is repeated untill the <y>i</y> value is less than or equal to"
-				+ " <y>" + frCond + " </y> value(i.e., <y>" + frCondVal + "</y>);";
+				+ " <y>" + frCond + " </y> value (i.e., <y>" + frCondVal + "</y>).";
 		typing(".introjs-tooltiptext li:last", text, function() {
 			$('.introjs-tooltiptext ul').append('<li></li>')
-			var text = "Initially the <y>i</y> value is initialize with <y>" + frInit + "</y> value. " 
-				+ "<br/>i.e. <b style='font-family: monospace;'>i = " + frInitVal + "</b>";
+			var text = "Initially the <y>i</y> value is initialize with <y>" + frInit + "</y> value" 
+				+ " (i.e., <b style='font-family: monospace;'>i = " + frInitVal + "</b>).";
 			typing($(".introjs-tooltiptext ul li:last"), text, function() {
 				$(".introjs-tooltiptext ul").append("<li></li>");
 				var text = "It prints the value of <y>queue[i]</y>.";

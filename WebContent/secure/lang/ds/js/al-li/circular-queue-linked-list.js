@@ -52,6 +52,10 @@ CircularQueueArray.prototype.addControls = function() {
 	this.displayButton = document.getElementById("displayBtn");
 	this.displayButton.onclick = this.displayCallback.bind(this);
 	this.controls.push(this.displayButton);
+	
+	this.clearButton = document.getElementById("clearBtn");
+	this.clearButton.onclick = this.clearCallback.bind(this);
+	this.controls.push(this.clearButton);
 }
 
 CircularQueueArray.prototype.enableUI = function(event) {
@@ -170,6 +174,21 @@ CircularQueueArray.prototype.displayData = function(ignored) {
 	return this.commands;
 }
 
+CircularQueueArray.prototype.clearCallback = function(event) {
+	frontVal = this.front;
+	rearVal = this.rear;
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	this.implementAction(this.clearData.bind(this), "");
+}
+
+CircularQueueArray.prototype.clearData = function(ignored) {
+	this.commands = new Array();
+	this.clearAll();
+	return this.commands;
+}
+
 CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	this.commands = new Array();
 	
@@ -266,7 +285,6 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		this.cmd("Step");
 		//this.introSteps("#btnsDiv", 'left', 'show');
 	}
-	
 	
 	return this.commands;
 }
@@ -394,7 +412,7 @@ CircularQueueArray.prototype.displayAll = function() {
 		//this.introSteps("#displayDiv", 'right', 'show');
 
 		if (this.front <= this.rear) {
-			this.displayAnim(xPos, yPos, this.highlightID);
+			this.displayAnim(xPos, yPos, this.highlightID, FRONT_VAL_X);
 			
 			for (iVal = this.front; iVal < this.rear; iVal++) {
 				xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
@@ -409,7 +427,7 @@ CircularQueueArray.prototype.displayAll = function() {
 				this.cmd("Delete", this.highlightID);
 			}
 		} else if (this.rear < this.front) {
-			this.displayAnim(xPos, yPos, this.highlightID);
+			this.displayAnim(xPos, yPos, this.highlightID, FRONT_VAL_X);
 			for (iVal = this.front; iVal < SIZE - 1; iVal++) {
 				xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 				yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
@@ -427,8 +445,6 @@ CircularQueueArray.prototype.displayAll = function() {
 		//	this.introSteps("#outputDiv", '', 'hide');
 			//this.cmd("Step");
 			//this.introSteps("#displayDiv", 'right', 'show');
-			
-			this.displayAnim(xPos, yPos, this.highlightID);
 			
 			for (iVal = 0; iVal <= this.rear; iVal++) {
 				xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
@@ -455,8 +471,63 @@ CircularQueueArray.prototype.displayAll = function() {
 	return this.commands;
 }
 
-CircularQueueArray.prototype.displayAnim = function(xPos, yPos, highlightID) {
-	this.cmd("CreateHighlightCircle", highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
+
+CircularQueueArray.prototype.clearAll = function() {
+	displayArr =  queueArr = this.enqueueData = [];
+	rearVal = -1;
+	frontVal = -1;
+	this.commands = new Array();
+	
+	this.introSteps('#animationDiv', 'left', 'show');
+	
+	if (this.front != -1) {
+		if (this.front <= this.rear) {
+			for (let i = this.front; i <= this.rear; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+		} else {
+			for (let i = this.front; i <= SIZE - 1; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+			for (let i = 0; i <= this.rear; i++) {
+				this.cmd("SetText", this.arrayID[i], "");
+			}
+		}
+		this.cmd("DisConnect", this.dummyRearID, this.dummyIndexArrayID[this.rear]);
+		this.cmd("DisConnect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
+		this.cmd("SetText", this.frontValID, "-1");
+		this.cmd("SetText", this.rearValID, "-1");
+		this.cmd("Connect", this.dummyFrontID, this.lineID1);
+		this.cmd("Connect", this.dummyRearID, this.lineID1);
+		this.front = this.rear = -1;
+	}
+	
+	
+	/*this.cmd("SetNextIntroStep", "#animationDiv", "", "left");
+	this.cmd("RunNextIntroStep");
+	this.cmd("Step");
+	this.cmd("Step");*/
+	
+	
+	
+	/*for (var i = 0; i <= this.rear; i++) {
+		this.cmd("SetText", this.arrayID[i], "");
+		this.cmd("disconnect", this.dummyID[11], this.dummyID[i]);
+		this.cmd("disconnect", this.dummyID[12], this.dummyID[i]);
+	}
+	this.rear = -1;
+	this.front = -1;
+	this.cmd("disconnect", this.dummyID[11], this.lineID[0]);
+	this.cmd("disconnect", this.dummyID[12], this.lineID[0]);
+	this.cmd("Connect", this.dummyID[11], this.lineID[0]);
+	this.cmd("Connect", this.dummyID[12], this.lineID[0]);
+	this.cmd("SetText", this.rearID, "-1");
+	this.cmd("SetText", this.frontID, "-1");*/
+	return this.commands;
+}
+
+CircularQueueArray.prototype.displayAnim = function(xPos, yPos, highlightID, value) {
+	this.cmd("CreateHighlightCircle", highlightID, "#0000FF", value, FRONT_VAL_Y);
 	this.cmd("Step");
 	this.cmd("Move", highlightID, xPos, yPos);
 	this.cmd("Step");
