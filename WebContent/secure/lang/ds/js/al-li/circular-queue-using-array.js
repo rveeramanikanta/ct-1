@@ -92,9 +92,6 @@ CircularQueueArray.prototype.setup = function() {
 		
 		var xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * ARRAY_LINE_SPACING + ARRAY_START_Y;	//indexes
-		var x1 = ARRAY_START_X - ARRAY_ELEM_WIDTH / 2;
-		var y2 = ARRAY_START_Y - ARRAY_ELEM_WIDTH / 2;
-		var y1 = y2 - 40;
 		/*End of variables */
 		
 		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
@@ -102,6 +99,9 @@ CircularQueueArray.prototype.setup = function() {
 		this.cmd("SetTextColor", this.indexArrayID[i], "#006600");
 		this.cmd("CreateLabel", this.dummyIndexArrayID[i], "", xPos, yPos - ARRAY_ELEM_HEIGHT - 8);
 	}
+	var x1 = ARRAY_START_X - ARRAY_ELEM_WIDTH / 2;
+	var y2 = ARRAY_START_Y - ARRAY_ELEM_WIDTH / 2;
+	var y1 = y2 - 40;
 
 	this.cmd("DrawLine", this.lineID1, x1, y1, x1, y2);
 	
@@ -191,7 +191,6 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 	this.commands = new Array();
 	$('#queueMain').removeClass('hide');
 	$('#lastCall').text('enqueue(' + parseInt(elemToPush) + ');');
-	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	
 	this.introSteps("#lastCall", '', 'hide');
 	this.introSteps("#enqueuMethod", 'right', 'show');
@@ -296,7 +295,6 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 	
 	$('#queueMain').removeClass('hide');
 	$('#lastCall').text('dequeue();');
-	//$("#queueMain").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 	
 	this.introSteps("#lastCall", '', 'hide');
 	this.introSteps("#dequeuMethod", 'right', 'show');
@@ -310,7 +308,6 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
 		this.cmd("CreateLabel", this.displayText, "Dequeue Value : ", 50, 50);
-		//this.cmd("CreateLabel", this.displayVal, this.enqueueData[this.front], xPos, yPos);
 		this.cmd("CreateLabel", this.displayVal, this.dummyDelVal, xPos, yPos);
 		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("Step");
