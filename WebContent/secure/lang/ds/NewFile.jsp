@@ -148,6 +148,10 @@ r {
 	min-width: 270px;
 }
 
+
+.margin-left30 {
+	margin-left: 30px;
+}
 </style>
 
 <script type="text/javascript">
@@ -191,64 +195,42 @@ int front = -1, rear = -1;</pre>
 						<div class='col-xs-12 padding0 margin-top-20 text-center'>
 							<div class='col-xs-offset-1 col-xs-10 padding0' id='btnsDiv'>
 								
-								<div class='col-sm-2 padding0'>
-									<div class='col-sm-12' id='injectDiv' style="padding: 0 5px">
-										<div class="input-group">
-											<input class="form-control input-sm text-center" id="injectText" name="inject" type="text" />
-												<span class="input-group-addon"> <span id="injectBtn" class="btn btn-sm btn-success">Inject</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<input class="form-control input-sm" id="injectText" name="inject" type="text" size="4"/>
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="injectBtn" class="btn btn-sm btn-success">Inject</span></span>
+									</span>
 								</div>
 								
-								<div class="col-sm-2">
-									<div class='col-sm-9' id='popDiv'>
-										<div class="input-group">
-											<span class="input-group-addon input-group-addon-border">
-												<span id="popBtn" class="btn btn-sm btn-success">Pop</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="popBtn" class="btn btn-sm btn-success">Pop</span>
+									</span>
 								</div>
 								
-								<div class='col-sm-2 padding0'>
-									<div class='col-sm-12' id='pushDiv'>
-										<div class="input-group">
-											<input class="form-control input-sm" id="pushText" name="push" type="text" />
-												<span class="input-group-addon"> <span id="pushBtn" class="btn btn-sm btn-success">Push</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<input class="form-control input-sm" id="pushText" name="push" type="text" size="4"/>
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="pushBtn" class="btn btn-sm btn-success">Push</span></span>
+									</span>
 								</div>
 								
-								<div class="col-sm-2">
-									<div class='col-sm-10' id='ejectDiv'>
-										<div class="input-group">
-											<span class="input-group-addon input-group-addon-border">
-												<span id="ejectBtn" class="btn btn-sm btn-success">Eject</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="ejectBtn" class="btn btn-sm btn-success">Eject</span>
+									</span>
 								</div>
 								
-								<div class="col-sm-2">
-									<div class='col-sm-12' id='displayQueueDiv'>
-										<div class="input-group">
-											<span class="input-group-addon input-group-addon-border">
-												<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
+									</span>
 								</div>
 								
-								<div class="col-sm-2">
-									<div class='col-sm-12 padding0' id='clearQueueDiv'>
-										<div class="input-group">
-											<span class="input-group-addon input-group-addon-border">
-												<span id="clearBtn" class="btn btn-sm btn-success">Clear Queue</span>
-											</span>
-										</div>
-									</div>
+								<div class="position-css margin-left30">
+									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
+										<span id="clearBtn" class="btn btn-sm btn-success">Clear Queue</span>
+									</span>
 								</div>
 							</div>
 						</div>

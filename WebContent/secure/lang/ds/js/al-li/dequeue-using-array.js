@@ -5,13 +5,16 @@ var ARRAY_ELEM_HEIGHT = 40;
 
 var ARRRAY_ELEMS_PER_LINE = 10;
 
-var Y_VALUE = 50;
+var Y_VALUE = 70;
 var FRONT_LABEL_X = 370;
 var FRONT_VAL_X = 420;
 var REAR_LABEL_X = 470;
 var REAR_VAL_X = 520;
+var DISPLAY_VAL_Y = 30;
 
 var SIZE = 20;
+
+var rearVal, frontVal, deQArr = [];
 
 function DeQueueArray(am, w, h) {
 	this.init(am, w, h);
@@ -29,22 +32,12 @@ DeQueueArray.prototype.init = function(am, w, h) {
 	this.commands = [];
 	this.setup();
 	this.initialIndex = this.nextIndex;
+	this.front = -1;
+	this.rear = -1;
 }
 
 DeQueueArray.prototype.addControls = function() {
 	this.controls = [];
-	
-	this.pushValue = document.getElementById("pushText");
-	this.pushValue.onkeydown = this.returnSubmit(this.pushValue, this.pushCallBack.bind(this), 4);
-
-	this.pushButton = document.getElementById("pushBtn");
-	this.pushButton.onclick = this.pushCallBack.bind(this);
-	this.controls.push(this.pushValue);
-	this.controls.push(this.pushButton);
-
-	this.popButton = document.getElementById("popBtn");
-	this.popButton.onclick = this.popCallBack.bind(this);
-	this.controls.push(this.popButton);
 	
 	this.injectValue = document.getElementById("injectText");
 	this.injectValue.onkeydown = this.returnSubmit(this.injectValue, this.injectCallBack.bind(this), 4);
@@ -54,6 +47,18 @@ DeQueueArray.prototype.addControls = function() {
 	this.controls.push(this.injectValue);
 	this.controls.push(this.injectButton);
 
+	this.popButton = document.getElementById("popBtn");
+	this.popButton.onclick = this.popCallBack.bind(this);
+	this.controls.push(this.popButton);
+	
+	this.pushValue = document.getElementById("pushText");
+	this.pushValue.onkeydown = this.returnSubmit(this.pushValue, this.pushCallBack.bind(this), 4);
+
+	this.pushButton = document.getElementById("pushBtn");
+	this.pushButton.onclick = this.pushCallBack.bind(this);
+	this.controls.push(this.pushValue);
+	this.controls.push(this.pushButton);
+	
 	this.ejectButton = document.getElementById("ejectBtn");
 	this.ejectButton.onclick = this.ejectCallBack.bind(this);
 	this.controls.push(this.ejectButton);
@@ -89,9 +94,16 @@ DeQueueArray.prototype.setup = function() {
 	this.rearLabelID = this.nextIndex++;
 	this.rearValID = this.nextIndex++;
 	this.dummyRearValID = this.nextIndex++;
-	this.highlightID = this.nextIndex++;
 	this.lineID1 = this.nextIndex++;
 	this.lineID2 = this.nextIndex++;
+	this.highlightID = this.nextIndex++;
+	
+	this.injectLabelID = this.nextIndex++;
+	this.injectValID = this.nextIndex++;
+	this.dummyInjectValID = this.nextIndex++;
+	
+	this.popLabelID = this.nextIndex++;
+	this.popValID = this.nextIndex++;
 	
 	for (var i = 0; i < SIZE; i++) {
 		this.arrayID[i] = this.nextIndex++;
@@ -99,7 +111,7 @@ DeQueueArray.prototype.setup = function() {
 		this.dummyIndexArrayID[i] = this.nextIndex++;
 		
 		var xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
-		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;	//indexes
+		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;	// indexes
 		
 		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
 		this.cmd("SetBackGroundColor", this.arrayID[i], "#c4e4ed");
@@ -108,19 +120,18 @@ DeQueueArray.prototype.setup = function() {
 		this.cmd("CreateLabel", this.dummyIndexArrayID[i], "", xPos, yPos - ARRAY_ELEM_WIDTH - 8);
 		
 		this.cmd("SetTextColor", this.arrayID[i], "#000000");
-		this.cmd("SetText", this.arrayID[i], i);
+		this.cmd("SetText", this.arrayID[i], "");
 	}
 	
 	this.cmd("CreateLabel", this.frontLabelID, "front : ", FRONT_LABEL_X, Y_VALUE);
 	this.cmd("CreateLabel", this.frontValID, "-1", FRONT_VAL_X, Y_VALUE);
 	this.cmd("SetTextColor", this.frontValID, "#800080");
-	this.cmd("CreateLabel", this.dummyFrontValID, "", FRONT_VAL_X, Y_VALUE + 10);
-	//this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
+	this.cmd("CreateLabel", this.dummyFrontValID, "", FRONT_VAL_X, Y_VALUE + 8);
 	
 	this.cmd("CreateLabel", this.rearLabelID, "rear : ", REAR_LABEL_X, Y_VALUE);
 	this.cmd("CreateLabel", this.rearValID, "-1", REAR_VAL_X, Y_VALUE);
 	this.cmd("SetTextColor", this.rearValID, "#800080");
-	this.cmd("CreateLabel", this.dummyRearValID, "", REAR_VAL_X, Y_VALUE + 10);
+	this.cmd("CreateLabel", this.dummyRearValID, "", REAR_VAL_X, Y_VALUE + 8);
 	
 	var x1 = ARRAY_START_X - ARRAY_ELEM_WIDTH / 2;
 	var y1 = ARRAY_START_Y - ARRAY_ELEM_WIDTH / 2;
@@ -145,44 +156,36 @@ DeQueueArray.prototype.reset = function() {
 	this.nextIndex = this.initialIndex;
 }
 
-DeQueueArray.prototype.pushCallBack = function(event) {
-	if($(".btn").is(":disabled")) {
-		return;
-	}
-	var pushVal = this.pushValue.value;
-	if (pushVal != "" && !isNaN(pushVal)) {
-		//this.implementAction(this.push.bind(this), pushVal);
+DeQueueArray.prototype.injectCallBack = function(event) {
+	this.btnWithValues();
+	var injectVal = this.injectValue.value;
+	if (injectVal != "" && !isNaN(injectVal)) {
+		deQArr.push(parseInt(injectVal));
+		this.implementAction(this.inject.bind(this), injectVal);
 	}
 }
 
 DeQueueArray.prototype.popCallBack = function(event) {
-	if($(".btn").is(":disabled")) {
-		return;
-	}
-	//this.implementAction(this.pop.bind(this), "");
+	this.btnWithValues();
+	this.implementAction(this.pop.bind(this), "");
 }
 
-DeQueueArray.prototype.injectCallBack = function(event) {
-	if($(".btn").is(":disabled")) {
-		return;
-	}
-	var injectVal = this.injectValue.value;
-	if (injectVal != "" && !isNaN(injectVal)) {
-		//this.implementAction(this.inject.bind(this), injectVal);
+
+DeQueueArray.prototype.pushCallBack = function(event) {
+	this.btnWithValues();
+	var pushVal = this.pushValue.value;
+	if (pushVal != "" && !isNaN(pushVal)) {
+		this.implementAction(this.push.bind(this), pushVal);
 	}
 }
 
 DeQueueArray.prototype.ejectCallBack = function(event) {
-	if($(".btn").is(":disabled")) {
-		return;
-	}
-	//this.implementAction(this.eject.bind(this), "");
+	this.btnWithValues();
+	this.implementAction(this.eject.bind(this), "");
 }
 
 DeQueueArray.prototype.displayCallback = function(event) {
-	if($(".btn").is(":disabled")) {
-		return;
-	}
+	this.btnWithValues();
 	this.implementAction(this.displayData.bind(this), "");
 }
 
@@ -205,21 +208,276 @@ DeQueueArray.prototype.clearData = function(ignored) {
 	return this.commands;
 }
 
-DeQueueArray.prototype.enqueue = function(elemToPush) {
+DeQueueArray.prototype.inject = function(elemToPush) {
 	this.commands = new Array();
+	
+	if (this.rear != SIZE - 1) {
+		
+		this.rear++;
+		rearVal++;
+		
+		this.enqueueFun(elemToPush, "Injected value is : ", REAR_VAL_X, this.rearValID, this.rear);
+		
+		if (this.rear == 0) {
+			this.cmd("DisConnect", this.dummyRearValID, this.lineID1);
+		} else {
+			this.cmd("DisConnect", this.dummyRearValID, this.dummyIndexArrayID[this.rear - 1]);
+		}
+		
+		this.cmd("Connect", this.dummyRearValID, this.dummyIndexArrayID[this.rear]);
+		
+		this.movingEnqueueValue(this.rear, elemToPush);
+		
+		if (this.front == -1) {
+			
+			this.front = 0;
+			rearVal = 0;
+			
+			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
+			this.cmd("Step");
+			this.cmd("SetText", this.frontValID, this.front);
+			this.cmd("Step");
+			this.cmd("DisConnect", this.dummyFrontValID, this.lineID1);
+			this.cmd("Connect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
+			this.cmd("step");
+			this.cmd("Delete", this.highlightID);
+		}
+		this.cmd("Delete", this.injectLabelID);
+		this.cmd("Delete", this.injectValID);
+		
+	} else {
+		alert("Underflow");
+	}
+	
 	return this.commands;
 }
 
-DeQueueArray.prototype.dequeue = function(ignored) {
+DeQueueArray.prototype.pop = function(ignored) {
 	this.commands = new Array();
-
+	
+	var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+	var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
+	
+	if (this.front != -1) {
+		
+		this.dequeueFun(xPos, yPos, FRONT_VAL_X, "Popped value is : ", deQArr[0], this.front);
+		
+		deQArr.splice(0, 1);
+		
+		if (this.front == this.rear) {
+		
+			this.assignFrontNRearToMinusOne();
+		
+		} else {
+			
+			this.front++;
+			frontVal++;
+			
+			this.incRearRFront(FRONT_VAL_X, this.frontValID, this.front, this.dummyFrontValID, this.front - 1);
+		}
+		this.cmd("Step");
+		this.cmd("Delete", this.highlightID);
+		
+	} else {
+		alert("Overflow");
+	}
+	
 	return this.commands;
 }
+
+DeQueueArray.prototype.push = function(elemToPush) {
+	this.commands = new Array();
+	
+	if (!(this.front == -1 || this.front == 0)) {
+		
+		deQArr.splice(0, 0, parseInt(elemToPush));
+		this.front--;
+		frontVal--;
+		
+		this.enqueueFun(elemToPush, "Pushed value is : ", FRONT_VAL_X, this.frontValID, this.front);
+		
+		this.cmd("DisConnect", this.dummyFrontValID, this.dummyIndexArrayID[this.front + 1]);
+		if (this.front != -1) {
+			this.cmd("Connect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
+		} else {
+			this.cmd("Connect", this.dummyFrontValID, this.lineID1);
+		}
+		
+		this.movingEnqueueValue(this.front, elemToPush);
+		
+		this.cmd("Delete", this.injectLabelID);
+		this.cmd("Delete", this.injectValID);
+	} else {
+		alert("Underflow");
+	}
+	
+	return this.commands;
+}
+
+DeQueueArray.prototype.eject = function(ignored) {
+	this.commands = new Array();
+	
+	var xPos = (this.rear) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+	var yPos = Math.floor(this.rear / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
+	
+	if (this.rear != -1) {
+		this.dequeueFun(xPos, yPos, REAR_VAL_X, "Ejected value is : ", deQArr[deQArr.length - 1], this.rear);
+		if (this.front == this.rear) {
+		
+			this.assignFrontNRearToMinusOne();
+			
+		} else {
+			
+			this.rear--;
+			rearVal--;
+			
+			this.incRearRFront(REAR_VAL_X, this.rearValID, this.rear, this.dummyRearValID, this.rear + 1);
+		}
+		this.cmd("Step");
+		this.cmd("Delete", this.highlightID);
+	} else {
+		alert("Overflow");
+	}
+	
+	return this.commands;
+}
+
 
 DeQueueArray.prototype.displayAll = function() {
 	this.commands = new Array();
-
+	this.dummyDisplayId = new Array(SIZE);
+	
+	if (!(this.front == -1 && this.rear == -1)) {
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
+		this.cmd("Step");
+		
+		let t = ARRAY_START_X + 50;
+		var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+		var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
+		
+		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
+		this.cmd("Step");
+		this.cmd("CreateLabel", this.injectLabelID, "Element in the dequeue : ", ARRAY_START_X, DISPLAY_VAL_Y);
+		
+		var m = 0;
+		for (let iVal = this.front; iVal <= this.rear; iVal++) {
+			t = t + 35;
+			
+			xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+			yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y - ARRAY_ELEM_WIDTH - 4;
+			if (iVal != this.front) { 
+				this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos - ARRAY_ELEM_WIDTH, yPos);
+				xPos = xPos;
+				this.cmd("Move", this.highlightID, xPos, yPos);
+				this.cmd("Step");
+			}
+			this.cmd("Step");
+			this.dummyDisplayId[iVal] = this.nextIndex++;
+			yPos = yPos + ARRAY_ELEM_WIDTH + 4;
+			this.cmd("CreateLabel", this.dummyDisplayId[iVal], "", t, DISPLAY_VAL_Y);
+			this.cmd("CreateLabel", this.dummyInjectValID, deQArr[m], xPos, yPos);
+			this.cmd("SetHighlight", this.dummyInjectValID, "#0000FF");
+			this.cmd("Move", this.dummyInjectValID, t, DISPLAY_VAL_Y);
+			this.cmd("Step");
+			this.cmd("SetText", this.dummyDisplayId[iVal], deQArr[m]);
+			this.cmd("Step");
+			this.cmd("Delete", this.dummyInjectValID);
+			this.cmd("Delete", this.highlightID);
+			m++;
+		}
+		this.cmd("Step");
+		this.cmd("Delete", this.injectLabelID);
+		for (let iVal = this.front; iVal <= this.rear; iVal++) {
+			this.cmd("Delete", this.dummyDisplayId[iVal]);
+		}
+	}
 	return this.commands;
+}
+
+DeQueueArray.prototype.btnWithValues = function () {
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+}
+
+DeQueueArray.prototype.enqueueFun = function(elemToPush, text, xVal, id, val) {
+	this.cmd("CreateLabel", this.injectLabelID, text, ARRAY_START_X, DISPLAY_VAL_Y);
+	this.cmd("CreateLabel", this.injectValID, parseInt(elemToPush), ARRAY_START_X + 50, DISPLAY_VAL_Y);
+	this.cmd("Step");
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xVal, Y_VALUE);
+	this.cmd("Step");
+	this.cmd("SetText", id, val);
+	this.cmd("Step");
+}
+
+DeQueueArray.prototype.movingEnqueueValue = function(val, elemToPush) {
+	this.cmd("Step");
+	
+	var xPos = (val) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
+	var yPos = Math.floor(val / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
+	
+	this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
+	this.cmd("SetHighlight", this.injectValID, "#0000FF");
+	this.cmd("Step");
+	this.cmd("CreateLabel", this.dummyInjectValID, parseInt(elemToPush), ARRAY_START_X + 50, DISPLAY_VAL_Y);
+	this.cmd("Move", this.dummyInjectValID, xPos, yPos);
+	this.cmd("Step");
+	this.cmd("SetText", this.arrayID[val], parseInt(elemToPush));
+	this.cmd("SetHighlight", this.injectValID, "");
+	this.cmd("Delete", this.highlightID);
+	this.cmd("Delete", this.dummyInjectValID);
+	this.cmd("Step");
+}
+
+DeQueueArray.prototype.dequeueFun = function(xPos, yPos, pos, text, val, i) {
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", pos, Y_VALUE);
+	this.cmd("Step");
+	this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
+	this.cmd("CreateLabel", this.popLabelID, text, ARRAY_START_X, DISPLAY_VAL_Y);
+	this.cmd("CreateLabel", this.popValID, val, xPos, yPos);
+	this.cmd("SetHighlight", this.popValID, "#0000FF");
+	this.cmd("Step");
+	this.cmd("SetText", this.arrayID[i], "");
+	this.cmd("SetHighlight", this.popValID, "");
+	this.cmd("Move", this.popValID, ARRAY_START_X + 50, DISPLAY_VAL_Y);
+	this.cmd("Step");
+	this.cmd("Delete", this.highlightID);
+	this.cmd("Step");
+	this.cmd("Delete", this.popLabelID);
+	this.cmd("Delete", this.popValID);
+}
+
+DeQueueArray.prototype.assignFrontNRearToMinusOne = function() {
+	this.cmd("Step");
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
+	this.cmd("Step");
+	this.cmd("SetText", this.frontValID, "-1");
+	this.cmd("Step");
+	this.cmd("DisConnect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
+	this.cmd("Connect", this.dummyFrontValID, this.lineID1);
+	this.cmd("Step");
+	this.cmd("Delete", this.highlightID);
+	this.cmd("Step");
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", REAR_VAL_X, Y_VALUE);
+	this.cmd("Step");
+	this.cmd("SetText", this.rearValID, "-1");
+	this.cmd("Step");
+	this.cmd("DisConnect", this.dummyRearValID, this.dummyIndexArrayID[this.rear]);
+	this.cmd("Connect", this.dummyRearValID, this.lineID1);
+
+	this.front = this.rear = -1;
+}
+
+DeQueueArray.prototype.incRearRFront = function(xVal, id, value, dummyId, idxVal) {
+	this.cmd("Step");
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xVal, Y_VALUE);
+	this.cmd("Step");
+	this.cmd("SetText", id, value);
+	this.cmd("Step");
+	this.cmd("DisConnect", dummyId, this.dummyIndexArrayID[idxVal]);
+	this.cmd("Connect", dummyId, this.dummyIndexArrayID[value]);
 }
 
 DeQueueArray.prototype.clearAll = function() {
