@@ -69,8 +69,8 @@
 	font-family: monospace;
 }
 
-.introjs-tooltiptext {
-	min-width: 250px;
+.introjs-tooltip {
+	min-width: 270px;
 }
 
 .introjs-tooltiptext li span {
@@ -146,10 +146,6 @@ r {
 .position-css {
 	display: inline-block;
 	position: relative;
-}
-
-.introjs-tooltip {
-	min-width: 270px;
 }
 
 </style>

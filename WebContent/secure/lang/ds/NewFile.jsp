@@ -195,10 +195,10 @@ int front = -1, rear = -1;</pre>
 						<div class='col-xs-12 padding0 margin-top-20 text-center'>
 							<div class='col-xs-offset-1 col-xs-10 padding0' id='btnsDiv'>
 								
-								<div class="position-css margin-left30">
+								<div class="position-css">
 									<input class="form-control input-sm" id="injectText" name="inject" type="text" size="4"/>
 									<span class="input-group-addon input-group-addon-border" style="display: inline-table">
-										<span id="injectBtn" class="btn btn-sm btn-success">Inject</span></span>
+										<span id="injectBtn" class="btn btn-sm btn-success">Inject</span>
 									</span>
 								</div>
 								

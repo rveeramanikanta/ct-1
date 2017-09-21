@@ -1,6 +1,5 @@
 var flag = false, iVal = 0;
 function circularQueueArrayReady() {
-//	$('.opacity00').removeClass('opacity00');
 	lang = getURLParameter("lang");
 	$("#enqueueText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -70,12 +69,15 @@ function initIntroJS() {
 					introjs.refresh();
 					$("#mainCallMethod *").removeAttr("id");
 					$('#mainCallMethod').append('<div id="lastCall" class="opacity00"></div>');
-					//$("#mainCallMethod").scrollTo($("#mainCallMethod > div:last-child()"), 100);
 					flag = false;
 					$('.background-color-yellow').removeClass('background-color-yellow');
 					$('.fa').remove();
 					$('#enqueueText').val('');
-					typing('.introjs-tooltiptext', 'Choose any operation.');
+					if (introjs._currentStep == 1) {
+						typing('.introjs-tooltiptext', 'Provide any number.');	
+					} else {
+						typing('.introjs-tooltiptext', 'Choose any operation.');
+					}
 					if ($("#enqueueText").is(":disabled")) {
 						doPlayPause();
 					}
@@ -92,7 +94,7 @@ function initIntroJS() {
 				break;
 				case 'enqueuMethod':
 					if (!flag) {
-						text = 'In this method we are inserting a value into the <y>circular queue</y>.';
+						text = 'In this method we are inserting a value into the <y>queue</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span>int x</span></li></ul>');
 							travel('#enqueueXDec', '.introjs-tooltiptext li:last span', function() {
@@ -119,7 +121,7 @@ function initIntroJS() {
 					}
 				break;
 				case 'dequeuMethod':
-					text = 'In this method we are deleting an element from the <y>circular queue</y>.';
+					text = 'In this method we are deleting an element from the <y>queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#frontIsMinusOne', '#frontIsMinusOne', function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
@@ -166,7 +168,7 @@ function initIntroJS() {
 				break;
 				case 'displayMethod':
 					iVal = 0;
-					text = 'In this method we are printing all the elements from the <y>circular queue</y>.';
+					text = 'In this method we are printing all the elements from the <y>queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#ifFrontNRearIsMinusOne', '#ifFrontNRearIsMinusOne', function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span><span id="frontVal">front</span>'
@@ -240,6 +242,7 @@ function initIntroJS() {
 					} else {
 						doPlayPause();
 						setTimeout(function() {
+							$('#mainCallMethod, #output').empty();
 							typing(".introjs-tooltiptext", "Successfully clear the <y>queue</y>.");
 						}, 1500);
 					}

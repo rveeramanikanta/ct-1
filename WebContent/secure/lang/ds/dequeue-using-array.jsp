@@ -42,6 +42,7 @@
 <script type="text/javascript" src="js/al-li/dequeue-using-array.js"></script>
 
 <style type="text/css">
+
 .padding0 {
 	padding: 0;
 }
@@ -135,7 +136,7 @@ r {
 	background-color: green;
 }
 
-.introjs-tooltiptext > ul > li {
+.introjs-tooltiptext ul li, .style-css {
 	font-family: monospace;
 }
 
@@ -144,9 +145,6 @@ r {
 	position: relative;
 }
 
-.introjs-tooltip {
-	min-width: 270px;
-}
 
 </style>
 
@@ -160,12 +158,12 @@ r {
 <body onload="init();" class="VisualizationMainPage">
 	<div id="container">
 		<div class='col-xs-12 text-center' style="margin-top: 20px;">
-			<h1 class='label label-default ct-demo-heading' id="heading">DeQueue using Arrays</h1>
+			<h1 class='label label-default ct-demo-heading' id="deQueueHeading">Double-Ended Queue using Arrays</h1>
 		</div>
 
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3'>
-				<div class='col-xs-12 box-border'>
+				<div class='col-xs-12 box-border opacity00' id="preCode">
 					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
 
@@ -175,7 +173,7 @@ int front = -1, rear = -1;</pre>
 					<pre class='creampretab4 hide' id="queueMain">void main() {
 	<div id="mainCallMethod" class="position-css"></div>		
 }</pre>
-					<pre class='creampretab4 hide' id="deQueueMethods"></pre>
+					<div id="deQueueMethods"></div>
 				</div>
 				<div id="outputDiv" class='opacity00 col-xs-12 padding0 margin-top-20'>
 					<div class="output-console-title-bar">
@@ -186,13 +184,13 @@ int front = -1, rear = -1;</pre>
 
 			</div>
 			<div class='col-xs-9'>
-				<div class='col-xs-12 padding0 box-border text-center ' id='animationDiv'>
+				<div class='col-xs-12 padding0 box-border text-center opacity00' id='animationDiv'>
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
 						<div class='col-xs-12 padding0 margin-top-20 text-center'>
 							<div class='col-xs-offset-1 col-xs-10 padding0' id='btnsDiv'>
 								
 								<div class='col-sm-2 padding0'>
-									<div class='col-sm-12' id='injectDiv' style="padding: 0 5px">
+									<div class='col-sm-12' style="padding: 0 5px">
 										<div class="input-group">
 											<input class="form-control input-sm text-center" id="injectText" name="inject" type="text" />
 												<span class="input-group-addon"> <span id="injectBtn" class="btn btn-sm btn-success">Inject</span>
@@ -202,7 +200,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-9' id='popDiv'>
+									<div class='col-sm-9'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="popBtn" class="btn btn-sm btn-success">Pop</span>
@@ -212,7 +210,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class='col-sm-2 padding0'>
-									<div class='col-sm-12' id='pushDiv'>
+									<div class='col-sm-12'>
 										<div class="input-group">
 											<input class="form-control input-sm" id="pushText" name="push" type="text" />
 												<span class="input-group-addon"> <span id="pushBtn" class="btn btn-sm btn-success">Push</span>
@@ -222,7 +220,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-10' id='ejectDiv'>
+									<div class='col-sm-10'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="ejectBtn" class="btn btn-sm btn-success">Eject</span>
@@ -232,7 +230,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-12' id='displayQueueDiv'>
+									<div class='col-sm-12'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
@@ -242,7 +240,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-12 padding0' id='clearQueueDiv'>
+									<div class='col-sm-12 padding0'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="clearBtn" class="btn btn-sm btn-success">Clear Queue</span>

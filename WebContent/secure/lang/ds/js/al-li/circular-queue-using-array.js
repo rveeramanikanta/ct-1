@@ -459,7 +459,7 @@ CircularQueueArray.prototype.displayAll = function() {
 
 CircularQueueArray.prototype.clearAll = function() {
 	this.commands = new Array();
-	
+	$('#dequeuMethod, #enqueuMethod, #displayMethod').addClass('hide');
 	this.introSteps('#animationDiv', 'left', 'show');
 	
 	this.enqueueData = [];

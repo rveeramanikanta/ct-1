@@ -13,7 +13,6 @@ var REAR_VAL_X = 520;
 var DISPLAY_VAL_Y = 30;
 
 var SIZE = 20;
-
 var rearVal, frontVal, deQArr = [];
 
 function DeQueueArray(am, w, h) {
@@ -97,11 +96,9 @@ DeQueueArray.prototype.setup = function() {
 	this.lineID1 = this.nextIndex++;
 	this.lineID2 = this.nextIndex++;
 	this.highlightID = this.nextIndex++;
-	
 	this.injectLabelID = this.nextIndex++;
 	this.injectValID = this.nextIndex++;
 	this.dummyInjectValID = this.nextIndex++;
-	
 	this.popLabelID = this.nextIndex++;
 	this.popValID = this.nextIndex++;
 	
@@ -111,7 +108,7 @@ DeQueueArray.prototype.setup = function() {
 		this.dummyIndexArrayID[i] = this.nextIndex++;
 		
 		var xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
-		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;	// indexes
+		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
 		
 		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
 		this.cmd("SetBackGroundColor", this.arrayID[i], "#c4e4ed");
@@ -157,35 +154,66 @@ DeQueueArray.prototype.reset = function() {
 }
 
 DeQueueArray.prototype.injectCallBack = function(event) {
-	this.btnWithValues();
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+	
 	var injectVal = this.injectValue.value;
 	if (injectVal != "" && !isNaN(injectVal)) {
+		btnName = 'inject';
 		deQArr.push(parseInt(injectVal));
+		injectMethod();
 		this.implementAction(this.inject.bind(this), injectVal);
 	}
 }
 
 DeQueueArray.prototype.popCallBack = function(event) {
-	this.btnWithValues();
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+	btnName = 'pop';
+	popMethod();
 	this.implementAction(this.pop.bind(this), "");
 }
 
 
 DeQueueArray.prototype.pushCallBack = function(event) {
-	this.btnWithValues();
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+	btnName = 'push';
 	var pushVal = this.pushValue.value;
 	if (pushVal != "" && !isNaN(pushVal)) {
+		pushMethod();
 		this.implementAction(this.push.bind(this), pushVal);
 	}
 }
 
 DeQueueArray.prototype.ejectCallBack = function(event) {
-	this.btnWithValues();
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+	btnName = 'eject';
+	ejectMethod();
 	this.implementAction(this.eject.bind(this), "");
 }
 
 DeQueueArray.prototype.displayCallback = function(event) {
-	this.btnWithValues();
+	if($(".btn").is(":disabled")) {
+		return;
+	}
+	frontVal = this.front;
+	rearVal = this.rear;
+	btnName = 'display';
+	displayMethod();
 	this.implementAction(this.displayData.bind(this), "");
 }
 
@@ -211,11 +239,11 @@ DeQueueArray.prototype.clearData = function(ignored) {
 DeQueueArray.prototype.inject = function(elemToPush) {
 	this.commands = new Array();
 	
+	this.fstStep(parseInt(elemToPush));
+	
 	if (this.rear != SIZE - 1) {
 		
 		this.rear++;
-		rearVal++;
-		
 		this.enqueueFun(elemToPush, "Injected value is : ", REAR_VAL_X, this.rearValID, this.rear);
 		
 		if (this.rear == 0) {
@@ -225,14 +253,18 @@ DeQueueArray.prototype.inject = function(elemToPush) {
 		}
 		
 		this.cmd("Connect", this.dummyRearValID, this.dummyIndexArrayID[this.rear]);
-		
 		this.movingEnqueueValue(this.rear, elemToPush);
+		
+		if (this.front != -1) {
+			this.cmd("Delete", this.injectLabelID);
+			this.cmd("Delete", this.injectValID);
+		}
+		
+		this.introSteps('#injectDiv', 'right', 'show');
 		
 		if (this.front == -1) {
 			
 			this.front = 0;
-			rearVal = 0;
-			
 			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
 			this.cmd("Step");
 			this.cmd("SetText", this.frontValID, this.front);
@@ -241,62 +273,52 @@ DeQueueArray.prototype.inject = function(elemToPush) {
 			this.cmd("Connect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
 			this.cmd("step");
 			this.cmd("Delete", this.highlightID);
+			this.cmd("Delete", this.injectLabelID);
+			this.cmd("Delete", this.injectValID);
+			this.introSteps("#printSuccess", '', 'hide');
 		}
-		this.cmd("Delete", this.injectLabelID);
-		this.cmd("Delete", this.injectValID);
-		
-	} else {
-		alert("Underflow");
 	}
-	
+	this.introSteps("#btnsDiv", 'left', 'show');
 	return this.commands;
 }
 
 DeQueueArray.prototype.pop = function(ignored) {
 	this.commands = new Array();
-	
 	var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 	var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
 	
+	this.fstStep('');
+	
 	if (this.front != -1) {
-		
+	
+		this.introSteps("#animationDiv", '', 'hide');
 		this.dequeueFun(xPos, yPos, FRONT_VAL_X, "Popped value is : ", deQArr[0], this.front);
-		
-		deQArr.splice(0, 1);
+		this.introSteps("#popDiv", 'right', 'show');
 		
 		if (this.front == this.rear) {
-		
 			this.assignFrontNRearToMinusOne();
-		
 		} else {
-			
 			this.front++;
-			frontVal++;
-			
 			this.incRearRFront(FRONT_VAL_X, this.frontValID, this.front, this.dummyFrontValID, this.front - 1);
 		}
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
-		
-	} else {
-		alert("Overflow");
 	}
-	
+	this.introSteps("#btnsDiv", 'left', 'show');
 	return this.commands;
 }
 
 DeQueueArray.prototype.push = function(elemToPush) {
 	this.commands = new Array();
 	
+	this.fstStep(parseInt(elemToPush));
+	
 	if (!(this.front == -1 || this.front == 0)) {
-		
 		deQArr.splice(0, 0, parseInt(elemToPush));
 		this.front--;
-		frontVal--;
-		
 		this.enqueueFun(elemToPush, "Pushed value is : ", FRONT_VAL_X, this.frontValID, this.front);
-		
 		this.cmd("DisConnect", this.dummyFrontValID, this.dummyIndexArrayID[this.front + 1]);
+		
 		if (this.front != -1) {
 			this.cmd("Connect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
 		} else {
@@ -304,13 +326,11 @@ DeQueueArray.prototype.push = function(elemToPush) {
 		}
 		
 		this.movingEnqueueValue(this.front, elemToPush);
-		
 		this.cmd("Delete", this.injectLabelID);
 		this.cmd("Delete", this.injectValID);
-	} else {
-		alert("Underflow");
+		this.introSteps("#printSuccess", '', 'hide');
 	}
-	
+	this.introSteps("#btnsDiv", 'left', 'show');
 	return this.commands;
 }
 
@@ -320,24 +340,24 @@ DeQueueArray.prototype.eject = function(ignored) {
 	var xPos = (this.rear) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 	var yPos = Math.floor(this.rear / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
 	
+	this.fstStep('');
+	
 	if (this.rear != -1) {
+		this.introSteps("#animationDiv", '', 'hide');
 		this.dequeueFun(xPos, yPos, REAR_VAL_X, "Ejected value is : ", deQArr[deQArr.length - 1], this.rear);
-		if (this.front == this.rear) {
+		this.introSteps("#ejectDiv", 'right', 'show');
 		
+		if (this.front == this.rear) {
 			this.assignFrontNRearToMinusOne();
-			
 		} else {
-			
 			this.rear--;
-			rearVal--;
-			
 			this.incRearRFront(REAR_VAL_X, this.rearValID, this.rear, this.dummyRearValID, this.rear + 1);
 		}
+		
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
-	} else {
-		alert("Overflow");
 	}
+	this.introSteps("#btnsDiv", 'left', 'show');
 	
 	return this.commands;
 }
@@ -347,22 +367,23 @@ DeQueueArray.prototype.displayAll = function() {
 	this.commands = new Array();
 	this.dummyDisplayId = new Array(SIZE);
 	
+	this.fstStep('');
+	
 	if (!(this.front == -1 && this.rear == -1)) {
-		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
-		this.cmd("Step");
-		
-		let t = ARRAY_START_X + 50;
+		var m = 0;
+		let t = ARRAY_START_X + 70;
 		var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
+
+		this.introSteps("#displayDiv", 'right', 'show');
 		
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, Y_VALUE);
+		this.cmd("Step");
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
 		this.cmd("Step");
-		this.cmd("CreateLabel", this.injectLabelID, "Element in the dequeue : ", ARRAY_START_X, DISPLAY_VAL_Y);
+		this.cmd("CreateLabel", this.injectLabelID, "Elements in the dequeue : ", ARRAY_START_X, DISPLAY_VAL_Y);
 		
-		var m = 0;
 		for (let iVal = this.front; iVal <= this.rear; iVal++) {
-			t = t + 35;
-			
 			xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 			yPos = Math.floor(iVal / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y - ARRAY_ELEM_WIDTH - 4;
 			if (iVal != this.front) { 
@@ -371,6 +392,7 @@ DeQueueArray.prototype.displayAll = function() {
 				this.cmd("Move", this.highlightID, xPos, yPos);
 				this.cmd("Step");
 			}
+			
 			this.cmd("Step");
 			this.dummyDisplayId[iVal] = this.nextIndex++;
 			yPos = yPos + ARRAY_ELEM_WIDTH + 4;
@@ -384,22 +406,62 @@ DeQueueArray.prototype.displayAll = function() {
 			this.cmd("Delete", this.dummyInjectValID);
 			this.cmd("Delete", this.highlightID);
 			m++;
+			t = t + 30;
 		}
+		
 		this.cmd("Step");
 		this.cmd("Delete", this.injectLabelID);
+		
 		for (let iVal = this.front; iVal <= this.rear; iVal++) {
 			this.cmd("Delete", this.dummyDisplayId[iVal]);
 		}
+		this.introSteps("#outputDiv", '', 'hide');
 	}
+	this.introSteps("#btnsDiv", 'left', 'show');
 	return this.commands;
 }
 
-DeQueueArray.prototype.btnWithValues = function () {
-	if($(".btn").is(":disabled")) {
-		return;
+DeQueueArray.prototype.clearAll = function() {
+	this.commands = new Array();
+	deQArr = [];
+	frontVal = rearVal = -1;
+	
+	this.introSteps('#animationDiv', 'left', 'show');
+	
+	for (let i = this.front; i <= this.rear; i++) {
+		this.cmd("SetText", this.arrayID[i], "");
 	}
-	frontVal = this.front;
-	rearVal = this.rear;
+	
+	this.cmd("SetText", this.frontValID, "-1");
+	this.cmd("DisConnect", this.dummyFrontValID, this.dummyIndexArrayID[this.front]);
+	this.cmd("Connect", this.dummyFrontValID, this.lineID1);
+	this.cmd("Step");
+	
+	this.cmd("SetText", this.rearValID, "-1");
+	this.cmd("DisConnect", this.dummyRearValID, this.dummyIndexArrayID[this.rear]);
+	this.cmd("Connect", this.dummyRearValID, this.lineID1);
+	this.front = this.rear = -1;
+	this.cmd("step");
+	this.introSteps("#btnsDiv", 'left', 'show');
+	return this.commands;
+}
+
+DeQueueArray.prototype.fstStep = function(val) {
+	$('#queueMain').removeClass('hide');
+	$("#mainCallMethod *").removeAttr("id");
+	$('#mainCallMethod').append('<span id="lastCall" class="opacity00">' + btnName + '(' + val + ');</span>\n');
+	$('#lastCall').text(btnName + '(' + val + ');');
+
+	this.introSteps("#lastCall", '', 'hide');
+	$('#' + btnName + 'Method').removeClass('hide');
+	this.introSteps('#' + btnName + 'Method', 'right', 'show');
+}
+
+DeQueueArray.prototype.introSteps = function(id, position, tooltip) {
+	this.cmd("SetNextIntroStep", id, "", position, tooltip);
+	this.cmd("RunNextIntroStep");
+	this.cmd("Step");
+	this.cmd("Step");
 }
 
 DeQueueArray.prototype.enqueueFun = function(elemToPush, text, xVal, id, val) {
@@ -413,11 +475,10 @@ DeQueueArray.prototype.enqueueFun = function(elemToPush, text, xVal, id, val) {
 }
 
 DeQueueArray.prototype.movingEnqueueValue = function(val, elemToPush) {
-	this.cmd("Step");
-	
 	var xPos = (val) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 	var yPos = Math.floor(val / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
-	
+
+	this.cmd("Step");
 	this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
 	this.cmd("SetHighlight", this.injectValID, "#0000FF");
 	this.cmd("Step");
@@ -440,9 +501,9 @@ DeQueueArray.prototype.dequeueFun = function(xPos, yPos, pos, text, val, i) {
 	this.cmd("SetHighlight", this.popValID, "#0000FF");
 	this.cmd("Step");
 	this.cmd("SetText", this.arrayID[i], "");
-	this.cmd("SetHighlight", this.popValID, "");
 	this.cmd("Move", this.popValID, ARRAY_START_X + 50, DISPLAY_VAL_Y);
 	this.cmd("Step");
+	this.cmd("SetHighlight", this.popValID, "");
 	this.cmd("Delete", this.highlightID);
 	this.cmd("Step");
 	this.cmd("Delete", this.popLabelID);
@@ -478,12 +539,6 @@ DeQueueArray.prototype.incRearRFront = function(xVal, id, value, dummyId, idxVal
 	this.cmd("Step");
 	this.cmd("DisConnect", dummyId, this.dummyIndexArrayID[idxVal]);
 	this.cmd("Connect", dummyId, this.dummyIndexArrayID[value]);
-}
-
-DeQueueArray.prototype.clearAll = function() {
-	this.commands = new Array();
-	
-	return this.commands;
 }
 
 var currentAlg;
