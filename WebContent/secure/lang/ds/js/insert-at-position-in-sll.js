@@ -8,7 +8,7 @@ function InsertAtPositionInSllReady() {
 
 //	$('.opacity00').removeClass('opacity00');
 	
-	lang = getURLParameter("lang");
+	lang = getURLParameter("lang");  
 	svgAppend("#animationDiv");
 	svgMarkerAppend("arrow");    
 	initIntroJS();
