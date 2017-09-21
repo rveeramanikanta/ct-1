@@ -10,7 +10,7 @@ function InsertAtPositionInSllReady() {
 	
 	lang = getURLParameter("lang");
 	svgAppend("#animationDiv");
-	svgMarkerAppend("arrow");  
+	svgMarkerAppend("arrow");    
 	initIntroJS();
 }
 
