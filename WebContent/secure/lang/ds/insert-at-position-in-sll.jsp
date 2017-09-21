@@ -19,7 +19,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/ds/js/insert-at-position-in-sll.js"></script>
-<style type="text/css">
+<style type="text/css">   
 
 .margin-top25 {
 	margin-top: 25px;
