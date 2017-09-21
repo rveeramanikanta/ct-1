@@ -95,9 +95,13 @@ CircularQueueArray.prototype.setup = function() {
 		/*End of variables */
 		
 		this.cmd("CreateRectangle", this.arrayID[i], "", ARRAY_ELEM_WIDTH, ARRAY_ELEM_HEIGHT, xPos, yPos);
+		this.cmd("SetBackGroundColor", this.arrayID[i], "#c4e4ed");
 		this.cmd("CreateLabel", this.indexArrayID[i], i, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("SetTextColor", this.indexArrayID[i], "#006600");
 		this.cmd("CreateLabel", this.dummyIndexArrayID[i], "", xPos, yPos - ARRAY_ELEM_HEIGHT - 8);
+		
+		this.cmd("SetTextColor", this.arrayID[i], "#000000");
+		this.cmd("SetText", this.arrayID[i], "");
 	}
 	var x1 = ARRAY_START_X - ARRAY_ELEM_WIDTH / 2;
 	var y2 = ARRAY_START_Y - ARRAY_ELEM_WIDTH / 2;
@@ -136,6 +140,7 @@ CircularQueueArray.prototype.enqueueCallBack = function(event) {
 	}
 	var enqueueVal = this.enqueueValue.value;
 	if (enqueueVal != "" && !isNaN(enqueueVal)) {
+		$('#errMsg').remove();
 		$('#dequeuMethod, #displayMethod').addClass('hide');
 		$('#enqueuMethod').removeClass('hide');
 		frontVal = this.front;
@@ -143,6 +148,9 @@ CircularQueueArray.prototype.enqueueCallBack = function(event) {
 		queueArr.push(parseInt(enqueueVal));
 		
 		this.implementAction(this.enqueue.bind(this), enqueueVal);
+	} else {
+		$('#errMsg').remove();
+		$('.introjs-tooltiptext').append('<div id="errMsg"><br><r>Please enter a number</r></div>');
 	}
 }
 
@@ -202,9 +210,8 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		this.displayVal = this.nextIndex++;
 		this.dummyDisplayVal = this.nextIndex++;
 		
-		this.cmd("CreateLabel", this.displayText, "Enqueue Value :", 50, 50);
+		this.cmd("CreateLabel", this.displayText, "Enqueue value :", 50, 50);
 		this.cmd("CreateLabel", this.displayVal, parseInt(elemToPush), 100, 50);
-		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("CreateLabel", this.dummyDisplayVal, "", 100, 50);
 		
 		if (this.rear == SIZE - 1) {
@@ -231,7 +238,7 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 			this.cmd("Step");
 			this.cmd("SetText", this.frontValID, this.front);
 			this.cmd("Step");
-			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);//write cmd for front to disconnect
+			this.cmd("DisConnect", this.dummyFrontID, this.lineID1);
 			this.cmd("Connect", this.dummyFrontID, this.dummyIndexArrayID[this.front]);
 			this.cmd("Delete", this.highlightID);
 		}
@@ -261,12 +268,10 @@ CircularQueueArray.prototype.enqueue = function(elemToPush) {
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("Step");
 		this.cmd("SetText", this.dummyDisplayVal, parseInt(elemToPush));
-		this.cmd("SetTextColor", this.dummyDisplayVal, "#0645aa");
 		this.cmd("Move", this.dummyDisplayVal, xPos, yPos);
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
 		this.cmd("SetText", this.arrayID[this.rear], parseInt(elemToPush));
-		this.cmd("SetTextColor", this.arrayID[this.rear], "#0645aa");
 		this.cmd("Delete", this.displayVal);
 		this.cmd("Delete", this.displayText);
 		this.cmd("Delete", this.dummyDisplayVal);
@@ -309,7 +314,6 @@ CircularQueueArray.prototype.dequeue = function(ignored) {
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", FRONT_VAL_X, FRONT_VAL_Y);
 		this.cmd("CreateLabel", this.displayText, "Dequeue Value : ", 50, 50);
 		this.cmd("CreateLabel", this.displayVal, this.dummyDelVal, xPos, yPos);
-		this.cmd("SetTextColor", this.displayVal, "#0645aa");
 		this.cmd("Step");
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_HEIGHT);
 		this.cmd("Step");

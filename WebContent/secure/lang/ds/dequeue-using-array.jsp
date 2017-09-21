@@ -158,7 +158,7 @@ r {
 <body onload="init();" class="VisualizationMainPage">
 	<div id="container">
 		<div class='col-xs-12 text-center' style="margin-top: 20px;">
-			<h1 class='label label-default ct-demo-heading' id="deQueueHeading">Double-Ended Queue using Arrays</h1>
+			<h1 class='label label-default ct-demo-heading' id="deQueueHeading">Double Ended Queue using Arrays</h1>
 		</div>
 
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
@@ -200,7 +200,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-9'>
+									<div class='col-sm-6'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="popBtn" class="btn btn-sm btn-success">Pop</span>
@@ -212,7 +212,7 @@ int front = -1, rear = -1;</pre>
 								<div class='col-sm-2 padding0'>
 									<div class='col-sm-12'>
 										<div class="input-group">
-											<input class="form-control input-sm" id="pushText" name="push" type="text" />
+											<input class="form-control input-sm text-center" id="pushText" name="push" type="text" />
 												<span class="input-group-addon"> <span id="pushBtn" class="btn btn-sm btn-success">Push</span>
 											</span>
 										</div>
@@ -220,7 +220,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-10'>
+									<div class='col-sm-7'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="ejectBtn" class="btn btn-sm btn-success">Eject</span>
@@ -230,7 +230,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-12'>
+									<div class='col-sm-8'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
@@ -240,7 +240,7 @@ int front = -1, rear = -1;</pre>
 								</div>
 								
 								<div class="col-sm-2">
-									<div class='col-sm-12 padding0'>
+									<div class='col-sm-8 padding0'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
 												<span id="clearBtn" class="btn btn-sm btn-success">Clear Queue</span>

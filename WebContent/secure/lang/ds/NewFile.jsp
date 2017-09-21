@@ -21,8 +21,6 @@
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 
-<script type="text/javascript" src="js/dequeue-using-array.js"></script>
-
 
 <!-- Javascript for the actual visualization code -->
 <script type="text/javascript" src="js-min/an-li/custom-events.js"></script>
@@ -157,7 +155,7 @@ r {
 <script type="text/javascript">
 
  $(document).ready(function() {
-	DeQueueArrayReady();
+	//DeQueueArrayReady();
 });
 </script>
 </head>

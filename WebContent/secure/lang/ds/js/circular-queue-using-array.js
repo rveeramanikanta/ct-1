@@ -40,7 +40,6 @@ function getURLParameter(sParam) {
 	}
 }
 
-
 function initIntroJS() {
 	introjs = introJs();
 	introjs.setOptions({
@@ -73,11 +72,7 @@ function initIntroJS() {
 					$('.background-color-yellow').removeClass('background-color-yellow');
 					$('.fa').remove();
 					$('#enqueueText').val('');
-					if (introjs._currentStep == 1) {
-						typing('.introjs-tooltiptext', 'Provide any number.');	
-					} else {
-						typing('.introjs-tooltiptext', 'Choose any operation.');
-					}
+					typing('.introjs-tooltiptext', 'Choose any operation.');
 					if ($("#enqueueText").is(":disabled")) {
 						doPlayPause();
 					}
@@ -94,7 +89,7 @@ function initIntroJS() {
 				break;
 				case 'enqueuMethod':
 					if (!flag) {
-						text = 'In this method we are inserting a value into the <y>queue</y>.';
+						text = 'In this method we are <y>inserting</y> a value into the <y>queue</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span>int x</span></li></ul>');
 							travel('#enqueueXDec', '.introjs-tooltiptext li:last span', function() {
@@ -102,11 +97,13 @@ function initIntroJS() {
 								$(".introjs-tooltiptext ul li span").append(" = <span>" + enqueueValue + "</span>.");
 								$("#enqueueXDec").removeClass('background-color-yellow');
 								arrow('#enqueIfCond', '#enqueIfCond', function() {
-									$('.introjs-tooltiptext ul').append('<li><span id="enqTotlIfCond"><span id="enqIfCond1">(<span id="enqIf1">'
-													+ ' <span id="rear1">rear</span> == <span id="totlMaxVal"><span id="maxVal">MAX</span> - 1</span></span>'
-													+ ' && <span id="enqIf2"><span id="frontVal">front</span> == 0</span>)</span> || '
-													+ '<span id="enqIfCond2"><span id="rearPlusVal"><span id="rearVal">rear</span> + 1</span> == '
-													+ ' <span id="rearFrontVal">front</span></span></span></li>');
+									$('.introjs-tooltiptext ul').append('<li><span>The condition </span> '
+											+ ' <span id="enqTotlIfCond" class="ct-code-b-yellow"><span id="enqIfCond1">(<span id="enqIf1">'
+											+ ' <span id="rear1">rear</span> == <span id="totlMaxVal"><span id="maxVal">MAX</span> - 1</span></span>'
+											+ ' && <span id="enqIf2"><span id="frontVal">front</span> == 0</span>)</span> || '
+											+ '<span id="enqIfCond2"><span id="rearPlusVal"><span id="rearVal">rear</span> + 1</span> == '
+											+ ' <span id="rearFrontVal">front</span></span></span></li>');
+									$('.introjs-tooltiptext li:last').append('');
 									travel('#enqueIfCond', '#enqTotlIfCond', function() {
 										flipAnimation('#maxVal', '#totlMaxVal', '#rear1', 10, 9, rearVal, function() {
 											enqueueIfCondition();
@@ -121,7 +118,7 @@ function initIntroJS() {
 					}
 				break;
 				case 'dequeuMethod':
-					text = 'In this method we are deleting an element from the <y>queue</y>.';
+					text = 'In this method we are <y>deleting</y> an element from the <y>queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#frontIsMinusOne', '#frontIsMinusOne', function() {
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
@@ -168,10 +165,11 @@ function initIntroJS() {
 				break;
 				case 'displayMethod':
 					iVal = 0;
-					text = 'In this method we are printing all the elements from the <y>queue</y>.';
+					text = 'In this method we are <y>printing</y> all the elements from the <y>queue</y>.';
 					typing('.introjs-tooltiptext', text, function() {
 						arrow('#ifFrontNRearIsMinusOne', '#ifFrontNRearIsMinusOne', function() {
-							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span><span id="frontVal">front</span>'
+							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"><li><span>The condition </span>'
+											+ ' <span class="ct-code-b-yellow"><span id="frontVal">front</span>'
 											+ ' == -1 && <span id="rearVal">rear</span> == -1</span></li></ul>');
 							travel('#ifFrontNRearIsMinusOne', '.introjs-tooltiptext li', function() {
 								flip('#frontVal', frontVal, function() {
@@ -191,7 +189,7 @@ function initIntroJS() {
 												$('#displayDiv').addClass('Checking');
 												arrowMoving("#ifFrontNRearIsMinusOne", '#displayElsePrintf', function() {
 													$('#displayElsePrintf').addClass('background-color-yellow');
-													$('#output').append('<div class="opacity00">Elements in the queue : </div>');
+													$('#output').append('<div class="opacity00">Elements in the circular queue : </div>');
 													$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 												});
 											}
@@ -322,9 +320,9 @@ function enqueElseFrontIsMinus1() {
 		ifCondAnim('front', ' -1 ', '', ' == ', '#ifFrontIsMinusOne', frontVal, '-1', false, function() {
 			let cond = frontVal == -1;
 			if (cond) {  
-				text = 'Condition evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
+				text = ' evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
 			} else {
-				text = 'Condition evaluates to <y>false</y>. Hence control comes out of the <y>if-block</y>.';
+				text = ' evaluates to <r>false</r>. Hence control comes out of the <y>if-block</y>.';
 			}
 			ifCondBtn(cond, text, 'assignFrontVal0', 'rearIncrementation');
 		});
@@ -449,7 +447,7 @@ function displayAnim(selector1, selector2, frCond, frCondVal, frInit, frInitVal,
 				+ " <y>" + frCond + " </y> value (i.e., <y>" + frCondVal + "</y>).";
 		typing(".introjs-tooltiptext li:last", text, function() {
 			$('.introjs-tooltiptext ul').append('<li></li>')
-			var text = "Initially the <y>i</y> value is initialize with <y>" + frInit + "</y> value" 
+			var text = "Initially the <y>i</y> value is initialized with <y>" + frInit + "</y> value" 
 				+ " (i.e., <b style='font-family: monospace;'>i = " + frInitVal + "</b>).";
 			typing($(".introjs-tooltiptext ul li:last"), text, function() {
 				$(".introjs-tooltiptext ul").append("<li></li>");
@@ -484,9 +482,9 @@ function displayAnim1(cond1, callBackFunction) {
 
 function ifElseCondText(cond) {
 	if (cond) {  
-		text = 'Condition evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
+		text = ' evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
 	} else {
-		text = 'Condition evaluates to <y>false</y>. Hence control enters into the <y>else-block</y>.';
+		text = ' evaluates to <r>false</r>. Hence control enters into the <y>else-block</y>.';
 	}
 }
 	
@@ -502,8 +500,9 @@ function ifCondBtn(cond, text, btn1, btn2) {
 }
 
 function ifCondAnim(val1, val2, val3, cond, selector, id1Val, id2Val, flag, callBackFunction) {
-	$('.introjs-tooltiptext ul').append('<li><span id="ifCondtion"><span id="frstVal">' + val1 + '</span> ' + cond+ ' <span id="secndVal">'
-				+'<span id="secndVal1">' +  val2 + '</span> <span id="secndVal2">' + val3 + '</span></span></span></li>');
+	$('.introjs-tooltiptext ul').append('<li><span>The condition </span> <span id="ifCondtion" class="ct-code-b-yellow"><span id="frstVal">' 
+									+ val1 + '</span> ' + cond + ' <span id="secndVal"><span id="secndVal1">' +  val2 
+									+ '</span> <span id="secndVal2">' + val3 + '</span></span></span></li>');
 	travel(selector, '#ifCondtion', function() {
 		flip('#frstVal', id1Val, function() {
 			if (flag) {

@@ -178,7 +178,7 @@ int front = -1, rear = -1;</pre>
 					<pre class='creampretab4 hide' id="enqueuMethod">
 <div class="position-css">void enqueue(<span id="enqueueXDec">int x</span>) {
 	<div class="position-css" id="enqueIfCond">if (((<span id="rearIsMaxMinusOne">rear == MAX - 1</span>) && (<span id="frontIsZero">front == 0</span>))
-				|| (<span id="rearPlusOneIsFront">rear + 1 == front</span>)) {</div>
+		|| (<span id="rearPlusOneIsFront">rear + 1 == front</span>)) {</div>
 		<span id="enqueIfPrintf">printf("Circular Queue is overflow\n");</span>
 	} else {
 		<span id="ifRearIsMaxMinusOne">if (rear == MAX - 1) {</span>
@@ -213,7 +213,7 @@ int front = -1, rear = -1;</pre>
 	<span id="ifFrontNRearIsMinusOne">if (front == -1 && rear == -1) {</span>
 		<span id="displayIfPrintf">printf("Circular Queue is empty.\n");</span>
 	} else {
-		<span id="displayElsePrintf">printf("Elements in the queue : \n");</span>
+		<span id="displayElsePrintf">printf("Elements in the circular queue : \n");</span>
 		<span id="ifFrontLesThanRear">if (front &lt;= rear) {</span>
 			<div id="frontLesRearForLoop" class="position-css">for (i = front; i <= rear; i++) {
 	<span id="printf1">printf("%d", queue[i]);</span>
@@ -256,7 +256,7 @@ int front = -1, rear = -1;</pre>
 									</div>
 								</div>
 	
-								<div class="col-sm-offset-1 col-sm-2 padding0">
+								<div class="col-sm-offset-1 col-sm-1 padding0">
 									<div class='col-sm-12' id='popDiv'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
@@ -266,7 +266,7 @@ int front = -1, rear = -1;</pre>
 									</div>
 								</div>
 								
-								<div class="col-sm-offset-1 col-sm-2 padding0">
+								<div class="col-sm-offset-2 col-sm-1 padding0">
 									<div class='col-sm-12' id='displayQueueDiv'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">
@@ -276,7 +276,7 @@ int front = -1, rear = -1;</pre>
 									</div>
 								</div>
 								
-								<div class="col-sm-offset-1 col-sm-2 padding0">
+								<div class="col-sm-offset-2 col-sm-1 padding0">
 									<div class='col-sm-12 padding0' id='clearQueueDiv'>
 										<div class="input-group">
 											<span class="input-group-addon input-group-addon-border">

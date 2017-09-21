@@ -159,13 +159,16 @@ DeQueueArray.prototype.injectCallBack = function(event) {
 	}
 	frontVal = this.front;
 	rearVal = this.rear;
-	
+	btnName = 'inject';
 	var injectVal = this.injectValue.value;
 	if (injectVal != "" && !isNaN(injectVal)) {
-		btnName = 'inject';
+		$('#errMsg').remove();
 		deQArr.push(parseInt(injectVal));
 		injectMethod();
 		this.implementAction(this.inject.bind(this), injectVal);
+	} else {
+		$('#errMsg').remove();
+		$('.introjs-tooltiptext').append('<div id="errMsg"><br><r>Please enter a number</r></div>');
 	}
 }
 
@@ -190,8 +193,12 @@ DeQueueArray.prototype.pushCallBack = function(event) {
 	btnName = 'push';
 	var pushVal = this.pushValue.value;
 	if (pushVal != "" && !isNaN(pushVal)) {
+		$('#errMsg').remove();
 		pushMethod();
 		this.implementAction(this.push.bind(this), pushVal);
+	} else {
+		$('#errMsg').remove();
+		$('.introjs-tooltiptext').append('<div id="errMsg"><br><r>Please enter a number</r></div>');
 	}
 }
 
@@ -244,7 +251,7 @@ DeQueueArray.prototype.inject = function(elemToPush) {
 	if (this.rear != SIZE - 1) {
 		
 		this.rear++;
-		this.enqueueFun(elemToPush, "Injected value is : ", REAR_VAL_X, this.rearValID, this.rear);
+		this.enqueueFun(elemToPush, "Injected value : ", REAR_VAL_X, this.rearValID, this.rear);
 		
 		if (this.rear == 0) {
 			this.cmd("DisConnect", this.dummyRearValID, this.lineID1);
@@ -292,7 +299,7 @@ DeQueueArray.prototype.pop = function(ignored) {
 	if (this.front != -1) {
 	
 		this.introSteps("#animationDiv", '', 'hide');
-		this.dequeueFun(xPos, yPos, FRONT_VAL_X, "Popped value is : ", deQArr[0], this.front);
+		this.dequeueFun(xPos, yPos, FRONT_VAL_X, "Popped value : ", deQArr[0], this.front);
 		this.introSteps("#popDiv", 'right', 'show');
 		
 		if (this.front == this.rear) {
@@ -316,7 +323,7 @@ DeQueueArray.prototype.push = function(elemToPush) {
 	if (!(this.front == -1 || this.front == 0)) {
 		deQArr.splice(0, 0, parseInt(elemToPush));
 		this.front--;
-		this.enqueueFun(elemToPush, "Pushed value is : ", FRONT_VAL_X, this.frontValID, this.front);
+		this.enqueueFun(elemToPush, "Pushed value : ", FRONT_VAL_X, this.frontValID, this.front);
 		this.cmd("DisConnect", this.dummyFrontValID, this.dummyIndexArrayID[this.front + 1]);
 		
 		if (this.front != -1) {
@@ -344,7 +351,7 @@ DeQueueArray.prototype.eject = function(ignored) {
 	
 	if (this.rear != -1) {
 		this.introSteps("#animationDiv", '', 'hide');
-		this.dequeueFun(xPos, yPos, REAR_VAL_X, "Ejected value is : ", deQArr[deQArr.length - 1], this.rear);
+		this.dequeueFun(xPos, yPos, REAR_VAL_X, "Ejected value : ", deQArr[deQArr.length - 1], this.rear);
 		this.introSteps("#ejectDiv", 'right', 'show');
 		
 		if (this.front == this.rear) {
@@ -371,7 +378,7 @@ DeQueueArray.prototype.displayAll = function() {
 	
 	if (!(this.front == -1 && this.rear == -1)) {
 		var m = 0;
-		let t = ARRAY_START_X + 70;
+		let t = ARRAY_START_X + 100;
 		var xPos = (this.front) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(this.front / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y;
 
@@ -381,7 +388,7 @@ DeQueueArray.prototype.displayAll = function() {
 		this.cmd("Step");
 		this.cmd("Move", this.highlightID, xPos, yPos - ARRAY_ELEM_WIDTH - 4);
 		this.cmd("Step");
-		this.cmd("CreateLabel", this.injectLabelID, "Elements in the dequeue : ", ARRAY_START_X, DISPLAY_VAL_Y);
+		this.cmd("CreateLabel", this.injectLabelID, "Elements in double ended queue : ", ARRAY_START_X + 10, DISPLAY_VAL_Y);
 		
 		for (let iVal = this.front; iVal <= this.rear; iVal++) {
 			xPos = iVal * ARRAY_ELEM_WIDTH + ARRAY_START_X;

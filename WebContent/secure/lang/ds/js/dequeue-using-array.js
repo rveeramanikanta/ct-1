@@ -41,10 +41,11 @@ function injectMethod() {
 						+ '\t\t<span id="frontIsMinusOne">if (front == -1) {</span>\n'
 						+ '\t\t\t<span id="frontIsZero">front = 0;</span>\n'
 						+ '\t\t}\n'
-						+ '\t\t<span id="printSuccess">printf("Successfully inserted...\\n");</span>\n\t}\n}</div>');
+						+ '\t\t<div id="printSuccess" class="position-css">printf("Successfully inserted at"\n\t\t\t\t\t\t\t\t\t" rear side\\n");</div>'
+						+ '\n\t}\n}</div>');
 	if (lang == 'cpp') {
 		$('#injectTrue').html('cout << "Dequeue is overflow...\\n";');
-		$('#printSuccess').html('cout << "Successfully inserted...\\n";');
+		$('#printSuccess').html('cout << "Successfully inserted at"\n\t\t\t\t\t\t\t\t" rear side\\n";');
 	}
 }
 
@@ -54,7 +55,8 @@ function popMethod() {
 						+ '\t<span id="frontIsMinusOne">if (front == -1) {</span>\n'
 						+ '\t\t<span id="popTrue">printf("Dequeue is underflow...\\n");</span>\t\n'
 						+ '\t} else {\n'
-						+ '\t\t<div id="popFalse" class="position-css">printf("Deleted element : %d\\n",\n\t\t\t\t\t\t\t deQueue[front]);</div>\n' 
+						+ '\t\t<div id="popFalse" class="position-css">printf("Deleted element %d from " \n\t\t '
+						+ '" front side\\n", deQueue[front]);</div>\n' 
 						+ '\t\t<span id="popIf">if (front == rear) {</span>\n'
 						+ '\t\t\t<span id="FrntRerIsMinusOne">front = rear = -1;</span>\n'
 						+ '\t\t} else {\n'
@@ -62,7 +64,7 @@ function popMethod() {
 						+ '\t\t}\n\t}\n}</div>');
 	if (lang == 'cpp') {
 		$('#popTrue').html('cout << "Dequeue is underflow...\\n";');
-		$('#popFalse').html('cout << "Deleted element : " << \n\t\t\t\t\t\t\t deQueue[front];');
+		$('#popFalse').html('cout << "Deleted element " << \n\t deQueue[front] << " from front side";');
 	}
 }
 
@@ -74,11 +76,11 @@ function pushMethod() {
 						+ '\t} else {\n'
 						+ '\t\t<span id="frntDec">front--;</span>\n'
 						+ '\t\t<span id="xInDQAtFront">deQueue[front] = x;</span>\n'
-						+ '\t\t<span id="printSuccess">printf("Successfully inserted...\\n");</span>\n'
-						+ '\t}\n}</div>');
+						+ '\t\t<div id="printSuccess" class="position-css">printf("Successfully inserted at"\n\t\t\t\t\t\t\t\t\t" front side\\n");'
+						+ '</div>\n\t}\n}</div>');
 	if (lang == 'cpp') {
 		$('#pushTrue').html('cout << "Dequeue is overflow...\\n";');
-		$('#printSuccess').html('cout << "Successfully inserted...\\n";');
+		$('#printSuccess').html('cout << "Successfully inserted at"\n\t\t\t\t\t\t\t\t\t\t\t" front side\\n";');
 	}
 }
 
@@ -88,7 +90,8 @@ function ejectMethod() {
 						+ '\t<span id="rearIsMinusOne">if (rear == -1) {</span>\n'
 						+ '\t\t<span id="ejectTrue">printf("Dequeue is underflow...\\n");</span>\t\n'
 						+ '\t} else {\n'
-						+ '\t\t<div id="ejectFalse" class="position-css">printf("Deleted element : %d\\n",\n\t\t\t\t\t\t\t deQueue[rear]);</div>\n'
+						+ '\t\t<div id="ejectFalse" class="position-css">printf("Deleted element %d from " \n\t\t'
+						+ ' " rear side\\n" deQueue[rear]);</div>\n'
 						+ '\t\t<span id="ejectIf">if (front == rear) {</span>\n'
 						+ '\t\t\t<span id="FrntRerIsMinusOne">front = rear = -1;</span>\n'
 						+ '\t\t} else {\n'
@@ -96,7 +99,7 @@ function ejectMethod() {
 						+ '\t\t}\n\t}\n}</div>');
 	if (lang == 'cpp') {
 		$('#ejectTrue').html('cout << "Dequeue is underflow...\\n";');
-		$('#ejectFalse').html('cout << "Deleted element : " << \n\t\t\t\t\t\t\t deQueue[rear];');
+		$('#ejectFalse').html('cout << "Deleted element " <<\n\t deQueue[rear] << " from rear side";');
 	}
 }
 
@@ -107,7 +110,7 @@ function displayMethod() {
 						+ '\t<span id="ifCond">if(front == -1 && rear == -1) {</span>\n'
 						+ '\t\t<span id="displayTrue">printf("Double ended queue is empty.");</span>\t\n'
 						+ '\t} else {\n'
-						+ '\t\t<span id="displayFalse">printf("Elements in the dequeue : \\n");</span>\n'
+						+ '\t\t<span id="displayFalse">printf("Elements in double ended queue: \\n");</span>\n'
 						+ '\t\t<div id="frLoop" class="position-css">for(i = front; i <= rear; i++) {\n'
 						+ '\t<span id="displayValue">printf("%d ", deQueue[i]);</span>\n'
 						+ '}</div>\n'
@@ -115,7 +118,7 @@ function displayMethod() {
 						+ '\t<span id="displayNewLine">printf("\\n");</span>\n}</div>');
 	if (lang == 'cpp') {
 		$('#displayTrue').html('cout << "Double ended queue is empty.";');
-		$('#displayFalse').html('cout << "Elements in the dequeue : \\n";');
+		$('#displayFalse').html('cout << "Elements in double ended queue : \\n";');
 		$('#displayValue').html('cout << deQueue[i] << " ";');
 		$('#displayNewLine').html('cout << "\\n";');
 	}
@@ -144,7 +147,7 @@ function initIntroJS() {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		switch(elementId) {
 			case 'deQueueHeading':
-				text = '<y>Double-ended queue</y> allows <y>insertion</y> and <y>deletion</y> at both the sides.';
+				text = '<y>Double ended queue</y> allows <y>insertion</y> and <y>deletion</y> at both the sides.';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 					$('#preCode').removeClass('opacity00');
@@ -167,11 +170,7 @@ function initIntroJS() {
 					$('.background-color-yellow').removeClass('background-color-yellow');
 					$('.fa').remove();
 					$('#injectText, #pushText').val('');
-					if (introjs._currentStep == 2) {
-						typing('.introjs-tooltiptext', 'Provide any number.');	
-					} else {
-						typing('.introjs-tooltiptext', 'Choose any operation.');
-					}
+					typing('.introjs-tooltiptext', 'Choose any operation.');
 					$('#injectText, #pushText').effect('highlight', {color: '#e0e092'}, 500)
 					if ($("#injectText, #pushText").is(":disabled")) {
 						doPlayPause();
@@ -224,13 +223,14 @@ function initIntroJS() {
 								});
 							});
 						} else {
-							$('.introjs-tooltiptext ul').append('<li><span id="ifCondition"><span id="frntVal">front</span> == -1</span></li>');
+							$('.introjs-tooltiptext ul').append('<li><span>The condition </span> <span id="ifCondition" class="ct-code-b-yellow">'
+										+ ' <span id="frntVal">front</span> == -1</span></li>');
 							travel('#frontIsMinusOne', '#ifCondition', function() {
 								flip('#frntVal', frontVal, function() {
-									text = 'Condition evaluates to <y>false</y>. Hence control comes out of the <y>if-block</y>.';
+									text = ' evaluates to <r>false</r>. Hence control comes out of the <y>if-block</y>.';
 									$('.introjs-tooltiptext ul').append('<div class="style-css"></div>');
 									typing('.introjs-tooltiptext ul div', text, function() {
-										outputSteps('#frontIsZero', '#printSuccess', 'Successfully inserted...', true);
+										outputSteps('#frontIsZero', '#printSuccess', 'Successfully inserted at rear side', true);
 									});
 								});
 							});
@@ -240,13 +240,15 @@ function initIntroJS() {
 			break;
 			case 'printSuccess':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var selector;
+					var selector, value;
 					if (btnName == 'inject') {
 						selector = '#frontIsZero';
+						value = 'rear';
 					} else {
 						selector = '#xInDQAtFront';
+						value = 'front';
 					}
-					outputSteps(selector, '#printSuccess', 'Successfully inserted...', false);
+					outputSteps(selector, '#printSuccess', 'Successfully inserted at ' + value + ' side', false);
 				});
 			break;
 			case 'popMethod':
@@ -262,9 +264,10 @@ function initIntroJS() {
 			case 'pushMethod':
 				insertAnim('front', '#frontIsMinusOne', function() {
 					arrowMoving('#frontIsMinusOne', '#frontIsMinusOne', function() {
-						$('.introjs-tooltiptext ul').append('<li><span><span id="cond1"><span id="frntVal1">front</span> == -1</span> ||'
-								+ ' <span id="cond2"><span id="frntVal2">front</span> == 0</span></span></li>');
-						travel('#frontIsMinusOne', '.introjs-tooltiptext li:last span', function() {
+						$('.introjs-tooltiptext ul').append('<li><span>The condition </span> <span id="ifCondition" class="ct-code-b-yellow">'
+								+ '<span id="cond1"><span id="frntVal1">front</span>'
+								+ ' == -1</span> || <span id="cond2"><span id="frntVal2">front</span> == 0</span></span></li>');
+						travel('#frontIsMinusOne', '#ifCondition', function() {
 							flip('#frntVal1', frontVal, function() {
 								flip('#frntVal2', frontVal, function() {
 									flip('#cond1', frontVal == -1, function() {
@@ -307,7 +310,7 @@ function initIntroJS() {
 								outputSteps('#ifCond', '#displayTrue', 'Double ended queue is empty.', true);
 							} else {
 								ifElseCondText(con, function() {
-									outputSteps('#ifCond', '#displayFalse', 'Elements in the dequeue : ', true);
+									outputSteps('#ifCond', '#displayFalse', 'Elements in double ended queue : ', true);
 								});
 							}
 						});
@@ -352,7 +355,7 @@ function initIntroJS() {
 						doPlayPause();
 						setTimeout(function() {
 							$('#mainCallMethod, #deQueueMethods, #output').empty();
-							typing(".introjs-tooltiptext", "Successfully clear the <y>queue</y>.");
+							typing(".introjs-tooltiptext", "Successfully clear the <y>deQueue</y>.");
 						}, 1500);
 					}
 				});
@@ -438,7 +441,7 @@ function deletingElem(valText, id1, value, condition, delValue) {
 			if (condition) {
 				outputSteps(id1, '#' + btnName + 'True', 'Dequeue is underflow...', true);
 			} else {
-				outputSteps(id1, '#' + btnName + 'False', 'Deleted element : ' + delValue, true);
+				outputSteps(id1, '#' + btnName + 'False', 'Deleted element ' + delValue + ' from ' + valText + ' side', true);
 			}
 		});
 	});
@@ -494,7 +497,8 @@ function methodDefinition(text, id, callBackFunction) {
 }
 
 function ifCondAnim(val1, val2, val3, operatr, selector, id1Val, id2Val, flag, cond, callBackFunction) {
-	$('.introjs-tooltiptext ul').append('<li><span id="ifCondtion"><span id="frstVal">' + val1 + '</span> ' + operatr + ' <span id="secndVal">'
+	$('.introjs-tooltiptext ul').append('<li><span>The condition </span> <span id="ifCondtion" class="ct-code-b-yellow"><span id="frstVal">' 
+				+ val1 + '</span> ' + operatr + ' <span id="secndVal">'
 				+'<span id="secndSubVal1">' +  val2 + '</span> <span id="secndSubVal2">' + val3 + '</span></span></span></li>');
 	travel(selector, '#ifCondtion', function() {
 		flip('#frstVal', id1Val, function() {
@@ -517,9 +521,9 @@ function ifCondAnim(val1, val2, val3, operatr, selector, id1Val, id2Val, flag, c
 
 function ifElseCondText(cond, callBackFunction) {
 	if (cond) {  
-		text = 'Condition evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
+		text = ' evaluates to <y>true</y>. Hence control enters into the <y>if-block</y>.';
 	} else {
-		text = 'Condition evaluates to <y>false</y>. Hence control enters into the <y>else-block</y>.';
+		text = ' evaluates to <r>false</r>. Hence control enters into the <y>else-block</y>.';
 	}
 	$('.introjs-tooltiptext ul').append('<div class="style-css"></div>');
 	typing('.introjs-tooltiptext ul div', text, function() {
