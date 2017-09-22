@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -200,7 +200,7 @@ $(document).ready(function() {
 						</div>
 						<div class="col-xs-12 margin-top25 padding0" style="margin-bottom: 8px;" id="extraNodesParent">
 							<div class="col-xs-3 padding0"><div class="col-xs-12 padding0" id="dupNode"></div></div>
-							<div class="col-xs-1 col-xs-offset-1 padding0 opacity00" id="tempNodeParent">
+							<div class="col-xs-1 padding0 opacity00" id="tempNodeParent">
 								<div class="col-xs-12 box padding0" id="tempNodeDiv">
 									<span id="tempNode" class="ct-brown-color ct-fonts position-css"></span>
 								</div>

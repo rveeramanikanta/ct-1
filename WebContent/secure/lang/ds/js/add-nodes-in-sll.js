@@ -4,6 +4,7 @@ function addNodesInSLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes(1);
 	lang = getURLParameter("lang");
+	lang = (lang == undefined) ? "c" : lang;
 	svgAppend("#animationDiv", "svgId");
 	svgMarkerAppend("#svgId", "arrow");
 	initIntroJS();
@@ -371,7 +372,7 @@ function initIntroJS() {
 		});
 	});
 	introjs.start();
-	text = 'Here we will learn about <y>addNodes()</y> method in <y>Single Linked List</y>.';
+	text = 'Here we will learn about <y>addNode()</y> method in a <y>Single Linked List</y>.';
 	typing('.introjs-tooltiptext', text, function() {
 		$('.introjs-nextbutton').show();
 	});
@@ -512,6 +513,7 @@ function firstCreation() {
 		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
 			zoomInEffect('#firstNode', function() {
 				zoomInEffect('#firstVal', function() {
+					$('#firstNode').addClass("zIndex").attr({"data-placement" : "left", "title" : "First contains first node address"}).tooltip();
 					nextBtnWithoutCalling(true, '', function() {
 						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
 								+ ' <y>data</y> and <y>next</y>.</li>'

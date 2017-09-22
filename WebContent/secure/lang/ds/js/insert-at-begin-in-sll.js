@@ -4,6 +4,7 @@ function insertAtBeginInSllReady() {
 	createDynamicNodes('#dynamicNodes', 1);
 	createDynamicNodes('#dupNode', 2);
 	lang = getURLParameter("lang");
+	lang = (lang == undefined) ? "c" : lang;
 	svgAppend("#animationDiv");
 	svgMarkerAppend("arrow");
 	initIntroJS();
@@ -177,7 +178,7 @@ function initIntroJS() {
 
 function fstNodeAnim() {
 	$('.introjs-tooltip').removeClass('hide');
-	text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
+	text = 'Let us learn how to create <y>node</y> at <y>first</y> position.<span id="appendText"></span>';
 	typing('.introjs-tooltiptext', text, function() {
 		$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
 		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
@@ -207,7 +208,7 @@ function fstNodeAnim() {
 
 function secndNdeAnim() {
 	$('.introjs-tooltip').removeClass('hide');
-	text = 'Repeat the steps.';
+	text = 'Let us insert another node at <y>first</y> position. Repeat the steps.';
 	typing('.introjs-tooltiptext', text, function() {
 		$('#algorithmDiv').addClass('z-index10000');
 		$('#l1').css({'background-color' : 'yellow'});

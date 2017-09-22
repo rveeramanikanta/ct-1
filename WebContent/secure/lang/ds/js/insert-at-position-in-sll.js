@@ -6,9 +6,8 @@ function InsertAtPositionInSllReady() {
 	createDynamicNodes('#dynamicNodes', 1);
 	createDynamicNodes('#dupNode', 2);
 
-//	$('.opacity00').removeClass('opacity00');
-	
 	lang = getURLParameter("lang");  
+	lang = (lang == undefined) ? "c" : lang;
 	svgAppend("#animationDiv"); 
 	svgMarkerAppend("arrow");      
 	initIntroJS();   
@@ -64,8 +63,26 @@ function initIntroJS() {
 					switch(animateStep) {
 						case "posLesThanZero":
 							zoomInEffect('#animationDiv', function() {
-								//fstNodeAnim();
 								posLesThanZero();
+							});
+						break;
+						case 'pos1Node':
+							$('.introjs-tooltip').removeClass('hide');
+							text = 'Let us assume a node, the base address is stored in <y>first</y>.';
+							typing('.introjs-tooltiptext', text, function() {
+								nodeCreationAnim(1, function() {
+									svgAnimatingLineTopToBottom('#tempNode', '#nextDiv1', 'line11', 'arrow', function() {
+										fadeInBounceEffectWithTimelineMax('#tempNode', '#firstVal', function() {
+											svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv1', 'line1', 'arrow', function() {
+												nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+													$('#line11').remove();
+													$('#tempNode, #tempNodeParent').addClass('opacity00');
+													fstNodeAnim();
+												});
+											});
+										});
+									});
+								});
 							});
 						break;
 					}
@@ -76,12 +93,12 @@ function initIntroJS() {
 						case 'posLesThanZero':
 							zoomInEffect('#algorithmDiv', function() {
 								zoomInEffect('#stepNme', function() {
-									$('#algorithmSteps').append('<ul class="padding10"></ul>');
+									$('#algorithmSteps').append('<ul style="list-style-type: circle"></ul>');
 									text = '<li><span id="l1">If <bl>position</b> is <g>less than or equal to zero</g>.</span>'
-											+ '<ul class="margin-left"><li><span id="l2">Pringt <brn>No such position in SLL So insertion'
-											+ ' is not possible</brn></span></li></ul></li>';
+											+ '<ul class="margin-left" style="list-style-type: none"><li><span id="l2">Print <brn>No such position'
+											+ ' in SLL So insertion is not possible</brn></span>  &emsp;</li></ul></li>';
 									typing('#algorithmSteps > ul', text, function() {
-										animationDivStep('#algorithmSteps li', 'pos1Node');
+										animationDivStep('#algorithmSteps #l2', 'pos1Node');
 									});
 								});
 							});
@@ -115,59 +132,19 @@ function initIntroJS() {
 	});
 }
 
-function posLesThanZero() {
-	$('.introjs-tooltip').removeClass('hide');
-	text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
-	typing('.introjs-tooltiptext', text, function() {
-		$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
-		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
-			zoomInEffect('#firstNode', function() {
-				zoomInEffect('#firstVal', function() {
-					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-						$('.introjs-tooltiptext ul').append('<li></li>');
-						text = 'Let us insert a node at <y>zeroth</y> position.';
-						typing('.introjs-tooltiptext ul', text, function() {
-							$('.introjs-tooltiptext ul').append('<li></li>');
-							text = 'If <y>posiitonL</y> is <y>less than or equal to zero</y> we can\'t insert any nodes.';
-							typing('.introjs-tooltiptext ul', text, function() {
-								introNextSteps('#algorithmDiv', 'posLesThanZero');
-								$('.introjs-nextbutton').show();
-							});
-						});
-					});
-				});
-			});
-		}});
+function animationDivStep(id, animateStep) {
+	introNextSteps('#animationDiv', animateStep);
+	nextBtnWithoutCalling(id, function() {
+		introjs.nextStep();
 	});
 }
 
-function fstNodeAnim() {
-	$('.introjs-tooltip').removeClass('hide');
-	text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
-	typing('.introjs-tooltiptext', text, function() {
-		$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
-		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
-			zoomInEffect('#firstNode', function() {
-				zoomInEffect('#firstVal', function() {
-					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
-								+ ' <y>data</y> and <y>next</y>.</li>'
-								+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
-						$('#appendText ul').append(text);
-						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
-							TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
-								nodeCreationAnim(1, function() {
-									svgAnimatingLineTopToBottom('#tempNode', '#nextDiv1', 'line11', 'arrow', function() {
-										introNextSteps('#algorithmDiv', 'memoryAlloc');
-										$('.introjs-nextbutton').show();
-									});
-								});
-							}});
-						}});
-					});
-				});
-			});
-		}});
+
+function zoomInWithFromEffectAnim(val, callBackFunction) {
+	zoomInEffect('#tempNodeParent', function() {
+		fromEffectWithTweenMax("#dataAddress" + val, "#tempNode", function() {
+			callBackFunction();
+		});
 	});
 }
 
@@ -182,15 +159,130 @@ function nodeCreationAnim(val, callBackFunction) {
 	});
 }
 
-function zoomInWithFromEffectAnim(val, callBackFunction) {
-	zoomInEffect('#tempNodeParent', function() {
-		fromEffectWithTweenMax("#dataAddress" + val, "#tempNode", function() {
+function nextBtnWithFadeInEffect(id1, id2, callBackFunction) {
+	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+		fadeInBounceEffectWithTimelineMax(id1, id2, function() {
 			callBackFunction();
 		});
 	});
 }
 
+function fstNodeAnim() {
+	$('.introjs-tooltip').removeClass('hide');
+	text = 'Let us <y>insert</y> a node at <y>first</y> position.';
+	typing('.introjs-tooltiptext', text, function() {
+		text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
+				+ ' <y>data</y> and <y>next</y>.</li>'
+				+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
+		$('.introjs-tooltiptext').append('<ul>' + text + '</ul>');
+		TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
+			TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
+				nodeCreationAnim(2, function() {
+					svgAnimatingLineLeftToRight('#tempNodeParent', '#nextDiv2', 'line11', 'arrow', function() {
+						nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+							$('.introjs-tooltiptext ul').append('<li></li>');
+							text = 'Store the <y>first</y> value (i.e., <y>' + $('#firstVal').text() + '</y>) in <y>temp -> next</y>.'
+							typing('.introjs-tooltiptext li:last', text, function() {
+								nextBtnWithFadeInEffect('#firstVal', '#next2', function() {
+									svgAnimatingLineTopToBottom('#nextDiv2', '#nextDiv1', 'line2', 'arrow', function() {
+										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+											$('.introjs-tooltiptext ul').append('<li></li>');
+											text = 'Store the <y>temp</y> value (i.e., <y>' + $('#tempNode').text() + '</y>) in <y>first</y>.'
+											typing('.introjs-tooltiptext li:last', text, function() {
+												nextBtnWithFadeInEffect('#tempNode', '#firstVal', function() {
+													$('#line1').remove();
+													svgAnimatingLineBottomToTop('#firstDiv', '#nextDiv2', 'line1', 'arrow', function() {
+														rearranging();
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			}});
+		}});
+	});
+}
 
+function rearranging() {
+	$('.introjs-tooltiptext').append('<br>Now rearrange the nodes.');
+	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+		
+	});
+}
+
+function movingNodes(id1) {
+	/*TweenMax.to('#node1', 1, {left: '130px', onComplete: function() {
+		createDynamicNodes('#dynamicNodes', 2);
+		var t = $("#dynamicNodes #node2").detach();//detach is used to remove the selected element and re-inserted.
+		$('#node1').before(t);
+		$('#dynamicNodes #node2').html($('#dupNode #node2').html());
+		$('#node1').css('left', '0');
+		changeIds(function() {
+			var l1 = $('#dupNode #node2').offset();
+			var l2 = $('#dynamicNodes #node1').offset();
+			var topLength = l1.top - l2.top;
+			var leftLength = l1.left - l2.left;
+			$('#node1').removeClass('opacity00');
+			$('#dupNode #node2').addClass('opacity00');
+			TweenMax.from($('#dynamicNodes #node1'), 1, {top: topLength, left: leftLength, onComplete: function() {
+				
+			}});
+		});
+	}});*/
+}
+function changeIds1(elementParent, idAttr) {
+	$(elementParent).each(function(index) {
+      	$(this).attr("id", idAttr + (index + 1));
+    	
+	});
+}
+
+function changeIds(callBackFunction) {
+	$('#dynamicNodes .nodes').each(function(index) {
+	      $(this).attr("id", "node"+ (index + 1));
+	}); 
+	changeIds1($("#dynamicNodes .data-nodes"), "nodeData");
+	changeIds1($("#dynamicNodes .data-div"), "dataDiv");
+	changeIds1($("#dynamicNodes .next-div"), "nextDiv");
+	changeIds1($("#dynamicNodes .data-address"), "dataAddress");
+	changeIds1($("#dynamicNodes .data-span"), "data");
+	changeIds1($("#dynamicNodes .next-span"), "next");
+	if (typeof callBackFunction === "function") {
+		callBackFunction();
+	}
+}
+
+function posLesThanZero() {
+	$('.introjs-tooltip').removeClass('hide');
+	text = 'Let us learn how to create <y>nodes</y>.<span id="appendText"></span>';
+	typing('.introjs-tooltiptext', text, function() {
+		$('.introjs-tooltiptext').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y>'
+				+ ' is <y>NULL</y>.</li></ul>');
+		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
+			zoomInEffect('#firstNode', function() {
+				zoomInEffect('#firstVal', function() {
+					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+						$('.introjs-tooltiptext ul').append('<li></li>');
+						text = 'Let us insert a node at <y>zeroth</y> position.';
+						typing('.introjs-tooltiptext ul li:last', text, function() {
+							$('.introjs-tooltiptext li:last').append('<li></li>');
+							text = 'If <y>position</y> is <y>less than or equal to zero</y> we can\'t insert any nodes.';
+							typing('.introjs-tooltiptext li:last', text, function() {
+								introNextSteps('#algorithmDiv', 'posLesThanZero');
+								$('.introjs-nextbutton').show();
+							});
+						});
+					});
+				});
+			});
+		}});
+	});
+}
 
 function typing(typingId, typingContent, typingCallbackFunction) {
 	$('.typingCursor').removeClass('typingCursor');
@@ -251,7 +343,7 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 }
 
 function nextBtnWithoutCalling(id, callBackFunction) {
-	$(id).append('<a class="introjs-button user-btn">Next &#8594</a>');
+	$(id).append('  <a class="introjs-button user-btn">Next &#8594</a>');
 	$('.user-btn').click(function() {
 		$('.user-btn').remove();
 		callBackFunction();

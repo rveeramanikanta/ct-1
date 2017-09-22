@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html                                                                                                                        >
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>AddNodes Method in SLL</title>
+<title>Add Node Method in SLL</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -14,12 +14,12 @@
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/intro.js"></script>
-<script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/anis.min.js"></script>
+<script src="/secure/lang/ds/js/add-nodes-in-sll.js"></script>
 
 <style type="text/css">
 .margin-top25 {
@@ -192,17 +192,22 @@ y {
 	border: 1px solid blue;
 	z-index: 99999999 !important;
 }
+
+.zIndex {
+	z-index: 99999999;
+}
 </style>
 </head>
 <body>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		$('#headingInSll').addClass("zIndex").attr({"data-placement" : "bottom", "title" : "Mallika Balla"}).tooltip();
 		addNodesInSLLReady();
 	});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">AddNodes() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">addNode() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25 padding0">
 			<div class="col-xs-10 col-xs-offset-1 padding0" id="explanationDiv">
