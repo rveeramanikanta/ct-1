@@ -154,22 +154,6 @@ function initIntroJS() {
 						case 'explainDataNext':
 							zoomInEffect('#animationDiv', function() {
 								$('#data1, #next1').addClass('opacity00');
-								/*$('#node' + nodeCount).removeClass('opacity00');
-								TweenMax.from("#node" + nodeCount, 1, {top : -30, onComplete:function() {
-									$('.introjs-tooltip').removeClass('hide');
-									text = 'This is the <y>node</y>. It contains <y>two fields</y>. They are: ';
-									typing('.introjs-tooltiptext', text, function() {
-										$('.introjs-tooltiptext').append('<ul><li><y>data</y> filed - Which is <y>entered</y> by the'
-														+ ' <y>user</y></li></ul>');
-										$('#dataDiv1').addClass('blinking');
-										nextBtnWithoutCalling(true, '', function() {
-											$('#dataDiv1').removeClass('blinking');
-											$('.introjs-tooltiptext > ul').append('<li><y>next</y> filed - Which stores the <y>next node address</y>'
-														+ ' or <y>NULL</y></li>');
-											$('#nextDiv1').addClass('blinking');;
-												appendNextButton('firstCreation');
-										});
-									});*/
 								$('.introjs-tooltip').removeClass('hide');
 								text = '<ul><li><y>Linked list</y> contains single or multiple nodes. </li>'
 										+ ' <li>Each <y>node</y> contains <y>two</y> fields <y>data</y>(<y>info</y>) and <y>next</y>.</li>'
