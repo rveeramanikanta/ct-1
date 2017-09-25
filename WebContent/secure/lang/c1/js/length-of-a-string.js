@@ -5,7 +5,7 @@ var iValue = 0;
 
 var spaceCheckflag = true; 
 
-var lengthOfAString = function() {
+var lengthOfAStringReady = function() {
 	introGuide();
 	
 	$('#restart').click(function() {
@@ -212,14 +212,14 @@ function introGuide() {
 							break;
 							
 						case "lastPrint":
-							$(".thirdLine").append('<span id="lengthString">The length of the string : </span>');
+							$(".thirdLine").append('<span id="lengthString">The length of the string </span>');
 							$.each($("#usrText").val().split(""), function(index, value) {
 								if (value.trim() == "") {
 									return false;
 								}
 								$("#lengthString").append('<span class="ct-code-b-yellow">' + value + '</span>');
 							});
-							$("#lengthString").append('<span id="length"> is <span class="ct-code-b-yellow">' + count +'</span></span>');
+							$("#lengthString").append('<span id="length"> is : <span class="ct-code-b-yellow">' + count +'</span></span>');
 							timeOut();
 							break;
 					}
@@ -262,26 +262,56 @@ function introGuide() {
 										+ " which is used to mark the end of the character sequence.<br><br>";
 					var text1 = "The condition in the while loop evaluates if the character at the given position" 
 								+ " <span class='ct-code-b-yellow'>i</span> is"
-								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br>"
-					if (($("#usrText").val().charAt(count)) == " " || ($("#usrText").val().charAt(count) == "")) {
-						var text2 =	"ch[" + count + "] = '\\0' and"
-									+ " <span class='ct-code-b-yellow'>'\\0' != '\\0'</span><br>since the above condition evaluates to"
-									+ " <span class='ct-red'>false</span>. The control comes out of the <br>"
-									+ " <span class='ct-code-b-yellow'>while-loop</span> block.";
-					} else {
-						nextStep("#increment");
-						var text2 = "ch[" + count + "] = " + $('#usrText').val().charAt(count) + " and "
-									+ "<span class='ct-code-b-yellow'>" +  $('#usrText').val().charAt(count) + " != '\\0' </span><br>"
-									+ " since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>."
-									+ " The control enters in to the <span class='ct-code-b-yellow'>while-loop</span> block.";
-					}
+								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br><div id='appendText'></div>"
 					if (count == 0) {
-						var text = startingText + text1 + text2;
+						var text = startingText + text1;
 					} else {
-						var text = text1 + text2;
+						var text = text1;
 					}
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-tooltipbuttons').append('<a class="introjs-button usr-btn">Next &#8594;</a>');
+						$('.usr-btn').click(function() {
+							$('.usr-btn').remove();
+							$('#appendText').append('<span class="position-css ct-code-b-yellow opacity00" id="condition"><span class="position-css"'
+										+ ' id="chVal">ch[<span id="iVal" class="position-css">i</span>]</span> != \'\\0\'</span>'
+										+ '<div id="appendText1"></div>');
+							var l1 = $("#chIsNotZero").offset();
+							$("#condition").offset({top:l1.top, left:l1.left});
+							$("#condition").removeClass("opacity00");
+							TweenMax.to("#condition", 1, {top:0, left:0, onComplete: function() {
+								rotationEffect('#iVal', count, function() {
+									var value;
+									if (($("#usrText").val().charAt(count)) == " " || ($("#usrText").val().charAt(count) == "")) {
+										var text2 = "Since the above condition evaluates to"
+													+ " <span class='ct-red'>false</span>. The control comes out of the <br>"
+													+ " <span class='ct-code-b-yellow'>while-loop</span> block.";
+										value = '\'\\0\'';
+										rotationEffect('#chVal', value, function() {
+											typing('#appendText1', text2, function() {
+												$('.introjs-nextbutton').show();
+											});
+										});
+									} else {
+										nextStep("#increment");
+										var text2 = "Since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>."
+													+ " The control enters in to the <span class='ct-code-b-yellow'>while-loop</span> block.";
+										value = '\'' + $("#usrText").val().charAt(count) + '\'';
+										rotationEffect('#chVal', value, function() {
+											typing('#appendText1', text2, function() {
+												if (iValue >= 3) {
+													$('#appendText1').append("<br>If you want to <span class='ct-code-b-yellow'>terminate</span> the "
+															+ "<span class='ct-code-b-yellow'>loop</span> click on the <span class='ct-code-b-yellow'>"
+															+ "skip</span> button.");
+													$('.introjs-tooltipbuttons').append('<a class="introjs-button skip-button" id="skipBtn"'
+																+ ' onClick="skipNext()">Skip</a>');
+												}
+												$('.introjs-nextbutton').show();
+											});
+										});
+									}
+								});
+							}});
+						});
 					});
 				});
 				break;
@@ -289,14 +319,15 @@ function introGuide() {
 			case "increment":
 				iValue++;
 				count++;
+				$('.skip-button').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					if (iValue <= 2) {
+					if (!$('#increment').hasClass('skip-clicked')) {
 						nextStep("#cup");
 						setTimeout(function() {
 							introjs.nextStep();
 						}, 400);
 					} else {
-						lengthIncrement(iValue);
+						lengthText();
 					}
 				});
 				break;
@@ -385,20 +416,13 @@ function events() {
 	$("#usrText").on("keydown", function(e) {
 		var max = $(this).attr("maxlength");
 		$('.error-text').remove();
-		
 		//space bar = 32, backspace = 8, delete = 46, leftarrow = 37, rightarrow = 39, esc = 27, enter = 13, tab = 9;
 		if (e.keyCode == 32) {
 			spaceCheckflag = false;
 		}
-		
 		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
 			return;
 		}
-		
-		if (e.keyCode == 13 || e.keyCode === 9) {
-			e.preventDefault();
-		}
-		
 		if ($(this).val().length > max-1) {
 			$('.introjs-tooltiptext').append("<span class='ct-red error-text'><br/>Please restrict the string maximum length to 19.</span>");
 			e.preventDefault();
@@ -411,6 +435,9 @@ function events() {
 			$('.introjs-nextbutton').hide();
 		} else {
 			$('.introjs-nextbutton').show();
+			if (e.keyCode == 13) {
+				introjs.nextStep();
+			}
 		}
 	});
 }
@@ -452,8 +479,8 @@ function rotationEffect(selector, val, callBackFunction) {
 }
 
 function lengthIncrement(val) {
-	if (($("#usrText").val().charAt(val)) == " " || ($("#usrText").val().charAt(val) == "")) {
-		lengthText();
+	if (($("#usrText").val().charAt(val + 1)) == " " || ($("#usrText").val().charAt(val + 1) == "")) {
+		introjs.nextStep();	
 	} else {
 		count++;
 		iValue++;
@@ -462,16 +489,19 @@ function lengthIncrement(val) {
 	}
 }
 
+function skipNext() {
+	$('.introjs-nextbutton').hide();
+	$('.skip-button').remove();
+	$('#increment').addClass('skip-clicked');
+	lengthIncrement(iValue);
+}
+
 function lengthText() {
 	$('.introjs-tooltip').removeClass("hide");
-	var text = "Similarly loop continuosly runs upto <span class='ct-code-b-yellow'>i = " + (iValue - 1) + "</span>. ";
+	var text = "<span class='ct-code-b-yellow'>i</span> value incremented to <span class='ct-code-b-yellow'>" + (iValue)+"</span>";
 	typing('.introjs-tooltiptext', text, function() {
-		$('.introjs-tooltiptext').append("<div id='appendText'></div>");
-		var text = "<br><span class='ct-code-b-yellow'>i</span> value incremented to <span class='ct-code-b-yellow'>"
-					+ (iValue)+"</span>"; 
-		typing("#appendText", text, function() {
-			nextStep("#cup");
-			$('.introjs-nextbutton').show();
-		});
+		$("#iSpan").text(iValue - 1);
+		nextStep("#cup");
+		$('.introjs-nextbutton').show();
 	});
 }

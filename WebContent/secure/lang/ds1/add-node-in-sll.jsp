@@ -106,11 +106,12 @@ y, yy {
 	font-family: monospace;
 	background-color: #fffae6;
 	height: 330px;
+	overflow-y: auto;
 }
 
 .algorithm-div {
 	font-size: 12px;
-	padding: 8px;
+	padding: 6px;
 }
 
 .padding5 {
@@ -166,6 +167,15 @@ y, yy {
 	color: white;
 	padding-left: 11px;
 }
+
+
+.first-css, bgb {
+	color: white;
+	background-color: black;
+	padding: 2px 4px;
+	border-radius: 3px;
+	font-family: monospace;
+}
 </style>
 
 </head>
@@ -181,12 +191,12 @@ y, yy {
 			<h1 class="label ct-demo-heading" id="headingInSll">addNode() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
-			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0">
+			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 50px;">
 				<div class="col-xs-12 margin-top25" id="fstExplain">
 					<div class="col-xs-2 padding0 opacity00" id="firstNode">
 						<div class="text-center col-xs-12 ct-green-color ct-fonts padding0">first</div>
 						<div class="col-xs-12 box padding0" id="firstDiv" style="border: 1px solid black;">
-							<span id="firstVal" class="ct-fonts position-css opacity00" style="color: ActiveBorder;">NULL</span>
+							<span id="firstVal" class="ct-fonts position-css" style="color: darkslategrey;">NULL</span>
 						</div>
 					</div>
 				</div>

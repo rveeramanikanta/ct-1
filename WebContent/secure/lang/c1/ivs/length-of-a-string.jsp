@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/ivs-js/length-of-a-string.js"></script>
+<script src="/secure/lang/c1/js/length-of-a-string.js"></script>
 <title>Length of a string</title>
 <style>
 
@@ -141,9 +141,18 @@ table {
 	color: green;
 }
 
-#iSpan {
+#iSpan, .position-css {
 	display: inline-block;
 	position: relative;
+}
+
+.usr-btn {
+	background-color: green;
+}
+
+.skip-button {
+	background: orange;
+	margin-right: 15px !important;
 }
 </style>
 </head>
@@ -160,12 +169,12 @@ int main() {
 	<span id="charDec">char ch[20];</span>
 	<span id="intDec">int i = <span class="zero">0</span>;</span>
 	<span id="enterString">printf("Enter a string : ");</span>
-	<span id="scanf">scanf ("%s", ch );</span>
+	<span id="scanf">scanf ("%s", ch);</span>
 	<span id="stringIs">printf("The entered string is : %s\n", ch);</span>
-	<span id="whileCond">while (ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b>)</span> {
+	<span id="whileCond">while (<span id="chIsNotZero">ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">printf("The length of the string :  %s is %d\n", ch, i);</span>
+	<span id="stringLength">printf("The length of the string %s is : %d\n", ch, i);</span>
 }
 </pre>
 			</div>
@@ -202,7 +211,7 @@ int main() {
 <script>
 
 $(document).ready(function() {
-	lengthOfAString();
+	lengthOfAStringReady();
 });
 
 

@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/ivs-js/concatination-of-strings.js"></script>
+<script src="/secure/lang/c1/js/concatination-of-strings.js"></script>
 
 <title>Concatenation of strings</title>
 </head>
@@ -157,6 +157,10 @@ table {
 
 b {
 	font-family: monospace;
+}
+.position-css {
+	display: inline-block;
+	position: relative;
 }
 
 </style>

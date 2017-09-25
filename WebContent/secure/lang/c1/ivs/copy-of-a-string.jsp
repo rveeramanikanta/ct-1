@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js-min/soac.min.js"></script>
+<script src="/secure/lang/c1/js/copy-of-a-string.js"></script>
 
 <title>Copy of a string</title>
 <style>
@@ -146,9 +146,13 @@ b {
 	color: green;
 }
 
-#iSpan {
+#iSpan, .position-css {
 	display: inline-block;
 	position: relative;
+}
+
+.usr-btn {
+	background-color: green;
 }
 
 </style>
@@ -165,13 +169,13 @@ b {
 int main() {
 	<span id="intDec">int i;</span>
 	<span id="charDec">char a[20], b[20];</span>
-	<span id="enterString">printf ("Enter a string : ");</span>
-	<span id="scanf">scanf ("%s", a);</span>
+	<span id="enterString">printf("Enter a string : ");</span>
+	<span id="scanf">scanf("%s", a);</span>
 	<span id="forLoop">for (<span id="iInitialization">i = <span class="zero">0</span></span>; <span id="condition">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="increment">i++</span>) {</span>
 		<span id="line1">b[i] = a[i];</span>
 	}
 	<span id="delimeter">b[i] = '\0';</span>
-	<span id="stringLength">printf ("The copied string = %s\n", b);</span>
+	<span id="stringLength">printf("The copied string = %s\n", b);</span>
 }</pre>
 			</div>
 			<div class="col-xs-7">
@@ -222,7 +226,7 @@ int main() {
 <script>
 
 $(document).ready(function() {
-	copyOfAString();
+	copyOfStringReady();
 });
 
 </script>

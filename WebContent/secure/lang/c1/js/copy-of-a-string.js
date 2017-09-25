@@ -5,7 +5,7 @@ var i = 0;
 
 var spaceFlag = true;
 
-var copyOfAString = function() {
+var copyOfStringReady = function() {
 	introGuide();
 	
 	$('#restart').click(function() {
@@ -233,23 +233,45 @@ function introGuide() {
 				$('.introjs-tooltip').css({'min-width' : '250px'});
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide")
-					var text1 = "The condition in the while loop evaluates if the character at the given position"
+					var text = "The condition in the while loop evaluates if the character at the given position"
 								+ " <span class='ct-code-b-yellow'>i</span> is"
-								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br>"
-					if (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == "")) {
-						nextStep("#delimeter")
-						var text = text1 + "a[" + count + "] = '\\0' and" 
-									+ " <span class='ct-code-b-yellow'>'\\0' != '\\0'</span> <br>condition evaluates to <span class='ct-red'>"
-									+ "false</span>. The control comes out of the for loop.";
-						
-					} else {
-						nextStep("#line1");
-						var text = text1 + "a[" + count + "] = " + $('#usrText').val().charAt(count)
-									+ " and <span class='ct-code-b-yellow'>" +  $('#usrText').val().charAt(count) +" != '\\0' </span> <br>condition"
-									+ " evaluates to <span class='ct-code-b-yellow'>true</span>. The control enters in to the for loop.";
-					}
+								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br><div id='appendText'></div>"
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-tooltipbuttons').append('<a class="introjs-button usr-btn">Next &#8594;</a>');
+						$('.usr-btn').click(function() {
+							$('.usr-btn').remove();
+							$('#appendText').append('<span class="position-css ct-code-b-yellow opacity00" id="frcondition">'
+										+ ' <span class="position-css" id="aVal">a['
+										+ '<span id="iVal" class="position-css">i</span>]</span> != \'\\0\'</span><div id="appendText1"></div>');
+							var l1 = $("#condition").offset();
+							$("#frcondition").offset({top:l1.top, left:l1.left});
+							$("#frcondition").removeClass("opacity00");
+							TweenMax.to("#frcondition", 1, {top:0, left:0, onComplete: function() {
+								rotationEffect('#iVal', count, function() {
+									var value;
+									if (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == "")) {
+										nextStep("#delimeter")
+										var text = // + "a[" + count + "] = '\\0' and" 
+													//+ " <span class='ct-code-b-yellow'>'\\0' != '\\0'</span> <br>"
+													"Since the above condition evaluates to <span class='ct-red'>"
+													+ "false</span>. The control comes out of the for loop.";
+										value = '\'\\0\'';
+									} else {
+										nextStep("#line1");
+										var text =// text1 + "a[" + count + "] = " + $('#usrText').val().charAt(count)
+													//+ " and <span class='ct-code-b-yellow'>" +  $('#usrText').val().charAt(count) +" != '\\0' </span>"
+													" Since the above condition  evaluates to "
+													+ "<span class='ct-code-b-yellow'>true</span>. The control enters in to the for loop.";
+										value = '\'' + $('#usrText').val().charAt(count) + '\'';
+									}
+									rotationEffect('#aVal', value, function() {
+										typing('#appendText1', text, function() {
+											$('.introjs-nextbutton').show();
+										});
+									});
+								});
+							}});
+						});
 					});
 				});
 				break;
@@ -258,7 +280,7 @@ function introGuide() {
 				$('.introjs-tooltip').css({'min-width' : '200px'});
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					var text = "<span class='ct-code-b-yellow'>b[" + count + "] = " + $('#usrText').val().charAt(count) + "</span>";
+					var text = "<span class='ct-code-b-yellow'>b[" + count + "] = \'" + $('#usrText').val().charAt(count) + "\'</span>";
 					typing('.introjs-tooltiptext', text, function () {
 						nextStep("#tableId2");	
 						$('.introjs-nextbutton').show();
@@ -416,19 +438,16 @@ function events() {
 	$("#usrText").on("keydown", function(e) {
 		var max = $(this).attr("maxlength");
 		$('.error-text').remove();
-
 		// space bar = 32, backspace = 8, delete = 46, leftarrow = 37, rightarrow = 39, esc = 27, enter = 13, tab = 9
 		if (e.keyCode == 32) {
 			spaceFlag = false;
 		}
-		
 		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
 			return;
 		}
-		
-		if (e.keyCode == 13 || e.keyCode === 9) {
+		/*if (e.keyCode == 13 || e.keyCode === 9) {
 			e.preventDefault();
-		}
+		}*/
 		if ($(this).val().length > max-1) {
 			$('.introjs-tooltiptext').append("<span class='ct-red error-text'><br/>String length 19.</span>");
 			e.preventDefault();
@@ -440,6 +459,9 @@ function events() {
 			$('.introjs-nextbutton').hide();
 		} else {
 			$('.introjs-nextbutton').show();
+			if (e.keyCode == 13) {
+				introjs.nextStep();
+			}
 		}
 	});
 }
