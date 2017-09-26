@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add Node in SLL</title>
+<title>insert At Begin() in SLL</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds1/js/add-node-in-sll.js"></script>
+<script src="/secure/lang/ds1/js/insert-at-begin-in-sll.js"></script>
 <style type="text/css">
 .margin-top25 {
 	margin-top: 25px;
@@ -186,12 +186,12 @@ y, yy {
 <body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		addNodesInSLLReady();
+		insertAtBeginInSLLReady();
 	});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">addNode() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">insertAtBegin() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
 			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 50px;">
@@ -210,7 +210,6 @@ y, yy {
 				<div class="col-xs-12 padding0" id="codeAndAlgorithmDiv">
 					<div class="col-xs-6 padding5">
 						<div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv">
-							<!-- <span class="ct-green-color">Steps</span> -->
 						</div>
 					</div>
 					<div class="col-xs-6 padding5">

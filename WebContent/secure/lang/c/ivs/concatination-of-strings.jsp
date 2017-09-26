@@ -158,6 +158,10 @@ table {
 b {
 	font-family: monospace;
 }
+.position-css {
+	display: inline-block;
+	position: relative;
+}
 
 </style>
 <body>

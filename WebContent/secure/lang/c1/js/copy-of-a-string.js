@@ -87,7 +87,7 @@ function introGuide() {
 		switch (elementId) {
 		
 			case "program":
-				var text = "In this program we will learn how to <span class='ct-code-b-yellow'>copy of a string</span> without"
+				var text = "In this program we will learn how to <span class='ct-code-b-yellow'>copy a string</span> without"
 							+ " using any string library functions.";
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').show();
@@ -96,7 +96,7 @@ function introGuide() {
 				
 			case "intDec":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "Let us declare a variable <span class='ct-code-b-yellow'>i</span> of type"
+					var text = "A variable <span class='ct-code-b-yellow'>i</span> of type"
 								+ " <span class='ct-code-b-yellow'>int</span> is declared."
 					typing('.introjs-tooltiptext', text, function() {
 						$("#intDec").effect("transfer", {to: $("#cup"), className: "ui-effects-transfer"}, 500, function() {
@@ -133,8 +133,8 @@ function introGuide() {
 						var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads all the characters that are specified"
 									+ " in the console in the same sequence.";
 					} else {
-						var text1 = "Since you have provided a space only the first sequence of characters before the space is considered is"
-									+ " read by the <span class='ct-code-b-yellow'>scanf()</span> method.";
+						var text1 = "Since you have provided a <span class='ct-code-b-yellow'>space</span> only the first sequence of characters"
+									+ " before the space is considered is read by the <span class='ct-code-b-yellow'>scanf()</span> method.";
 					}
 					var text = text1 + "<br><br>Also note the <span class='ct-code-b-yellow'>delimiter('\\0')</span> character that is"
 								+ " automatically appended as the last character that indicates the end of the string in the array.";
@@ -197,8 +197,7 @@ function introGuide() {
 								+ " <span class='ct-code-b-yellow'>%s</span> reads multiple characters specified"
 								+ " on the console until it encounters a white space.<br><br>"
 								+ " The content that is stored into the <span class='ct-code-b-yellow'>ch</span> character array"
-								+ " will always have a <span class='ct-code-b-yellow'>'\\0'</span> character that is"
-								+ "  automatically appended as the last character that indicates the end of the string in the array." 
+								+ " will always have a <span class='ct-code-b-yellow'>'\\0'</span>." 
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-nextbutton').show();
 					});
@@ -233,46 +232,67 @@ function introGuide() {
 				$('.introjs-tooltip').css({'min-width' : '250px'});
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide")
-					var text = "The condition in the while loop evaluates if the character at the given position"
-								+ " <span class='ct-code-b-yellow'>i</span> is"
-								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br><div id='appendText'></div>"
-					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-tooltipbuttons').append('<a class="introjs-button usr-btn">Next &#8594;</a>');
-						$('.usr-btn').click(function() {
-							$('.usr-btn').remove();
-							$('#appendText').append('<span class="position-css ct-code-b-yellow opacity00" id="frcondition">'
-										+ ' <span class="position-css" id="aVal">a['
-										+ '<span id="iVal" class="position-css">i</span>]</span> != \'\\0\'</span><div id="appendText1"></div>');
-							var l1 = $("#condition").offset();
-							$("#frcondition").offset({top:l1.top, left:l1.left});
-							$("#frcondition").removeClass("opacity00");
-							TweenMax.to("#frcondition", 1, {top:0, left:0, onComplete: function() {
-								rotationEffect('#iVal', count, function() {
-									var value;
-									if (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == "")) {
-										nextStep("#delimeter")
-										var text = // + "a[" + count + "] = '\\0' and" 
-													//+ " <span class='ct-code-b-yellow'>'\\0' != '\\0'</span> <br>"
-													"Since the above condition evaluates to <span class='ct-red'>"
-													+ "false</span>. The control comes out of the for loop.";
-										value = '\'\\0\'';
-									} else {
-										nextStep("#line1");
-										var text =// text1 + "a[" + count + "] = " + $('#usrText').val().charAt(count)
-													//+ " and <span class='ct-code-b-yellow'>" +  $('#usrText').val().charAt(count) +" != '\\0' </span>"
-													" Since the above condition  evaluates to "
-													+ "<span class='ct-code-b-yellow'>true</span>. The control enters in to the for loop.";
-										value = '\'' + $('#usrText').val().charAt(count) + '\'';
-									}
-									rotationEffect('#aVal', value, function() {
-										typing('#appendText1', text, function() {
-											$('.introjs-nextbutton').show();
+					if (count <= 2 || (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == ""))) {
+						var text = "The condition in the while loop evaluates if the character at the given position"
+									+ " <span class='ct-code-b-yellow'>i</span> is"
+									+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br><div id='appendText'></div>"
+						typing('.introjs-tooltiptext', text, function() {
+							$('.introjs-tooltipbuttons').append('<a class="introjs-button usr-btn">Next &#8594;</a>');
+							$('.usr-btn').click(function() {
+								$('.usr-btn').remove();
+								$('#appendText').append('<span class="position-css ct-code-b-yellow opacity00" id="frcondition">'
+											+ ' <span class="position-css" id="aVal">a['
+											+ '<span id="iVal" class="position-css">i</span>]</span> != \'\\0\'</span><div id="appendText1"></div>');
+								var l1 = $("#condition").offset();
+								$("#frcondition").offset({top:l1.top, left:l1.left});
+								$("#frcondition").removeClass("opacity00");
+								TweenMax.to("#frcondition", 1, {top:0, left:0, onComplete: function() {
+									rotationEffect('#iVal', count, function() {
+										var value;
+										if (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == "")) {
+											nextStep("#delimeter")
+											var text = "Since the above condition evaluates to <span class='ct-red'>"
+														+ "false</span>. The control comes out of the <span class='ct-code-b-yellow'>for-loop</span>.";
+											value = '\'\\0\'';
+										} else {
+											nextStep("#line1");
+											var text = " Since the above condition  evaluates to "
+														+ "<span class='ct-code-b-yellow'>true</span>. The control enters in to the"
+														+ " <span class='ct-code-b-yellow'>for-loop</span>.";
+											value = '\'' + $('#usrText').val().charAt(count) + '\'';
+										}
+										rotationEffect('#aVal', value, function() {
+											typing('#appendText1', text, function() {
+												$('.introjs-nextbutton').show();
+											});
 										});
 									});
-								});
-							}});
+								}});
+							});
 						});
-					});
+					} else {
+						$('.introjs-tooltiptext').append('<span class="position-css ct-code-b-yellow opacity00" id="frcondition">'
+											+ ' <span class="position-css" id="aVal">a['
+											+ '<span id="iVal" class="position-css">i</span>]</span> != \'\\0\'</span><div id="appendText1"></div>');
+						var l1 = $("#condition").offset();
+						$("#frcondition").offset({top:l1.top, left:l1.left});
+						$("#frcondition").removeClass("opacity00");
+						TweenMax.to("#frcondition", 0.5, {top:0, left:0, onComplete: function() {
+							rotationEffect('#iVal', count, function() {
+								var value;
+								if (($('#usrText').val().charAt(count) == " ") || ($('#usrText').val().charAt(count) == "")) {
+									nextStep("#delimeter")
+									value = '\'\\0\'';
+								} else {
+									nextStep("#line1");
+									value = '\'' + $('#usrText').val().charAt(count) + '\'';
+								}
+								rotationEffect('#aVal', value, function() {
+									timeOut();
+								});
+							});
+						}});
+					}
 				});
 				break;
 				
@@ -283,7 +303,11 @@ function introGuide() {
 					var text = "<span class='ct-code-b-yellow'>b[" + count + "] = \'" + $('#usrText').val().charAt(count) + "\'</span>";
 					typing('.introjs-tooltiptext', text, function () {
 						nextStep("#tableId2");	
-						$('.introjs-nextbutton').show();
+						if (count <= 3) {
+							$('.introjs-nextbutton').show();
+						} else {
+							timeOut();
+						}
 					});
 				});
 				break;
@@ -305,6 +329,7 @@ function introGuide() {
 				i++;
 				count++;
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					
 					setTimeout(function() {
 						nextStep("#cup");
 						introjs.nextStep();
@@ -445,9 +470,6 @@ function events() {
 		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
 			return;
 		}
-		/*if (e.keyCode == 13 || e.keyCode === 9) {
-			e.preventDefault();
-		}*/
 		if ($(this).val().length > max-1) {
 			$('.introjs-tooltiptext').append("<span class='ct-red error-text'><br/>String length 19.</span>");
 			e.preventDefault();

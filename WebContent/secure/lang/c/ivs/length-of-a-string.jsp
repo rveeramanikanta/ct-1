@@ -19,9 +19,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/c/js-min/loas.min.js"></script>
-
 <title>Length of a string</title>
-</head>
 <style>
 
 .margin-top-25 {
@@ -37,12 +35,9 @@
 }
 
 pre {
-    padding: 10px;
-    font-size: 13px;
-    white-space: pre;
-	tab-size: 3;
-    border-radius: 8px;
-    background-color: lavander;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	font-family: monospace;
 }
 
 .memory {
@@ -61,47 +56,28 @@ table {
 .td-border {
 	padding: 4px;
 	text-align: center;
-	border: 1px solid lightgray;
-}
-
-.output {
-	height: 129px;
-	border-radius: 8px;
-	border: 1px solid lightgray;
+	border: 1px solid black;
 }
 
 .padding0 {
 	padding: 0;
 }
 
-.panel-heading {
-	padding: 3px;
-	letter-spacing: 1px;
-	font-family: monospace;
+.output-console-title-bar {
 	font-weight: bold;
-	background-image: -moz-linear-gradient(center top, #e8e8e8, #bcbbbc);
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
 }
 
-.panel {
-	border-radius: 0px;
-}
-
-.panel-body {
-	padding: 8px;
-	letter-spacing: 1px;
-	background-color: black;
-	color: white;
+.output-console-body {
 	height: 100px;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
+	padding: 10px;
+	white-space: initial;
+	font-size: 14px;
 }
 
 .input {
 	background-color: black;
 	border: medium none;
-	letter-spacing: 1px;
+	font-family: monospace;
 }
 
 .user-string {
@@ -113,7 +89,6 @@ table {
 
 .ct-red {
 	font-family: monospace;
-	font-weight: bold;
 	color: red;
 }
 
@@ -156,11 +131,6 @@ table {
 	z-index: 9999999;
 }
 
-.z-index999999 {
-	z-index: 9999999;
-	background: white;
-}
-
 .ui-effects-transfer {
 	z-index: 999999;
 	border: 1px solid #003399;
@@ -171,17 +141,25 @@ table {
 	color: green;
 }
 
+#iSpan, .position-css {
+	display: inline-block;
+	position: relative;
+}
+
+.usr-btn {
+	background-color: green;
+}
+
+.skip-button {
+	background: orange;
+	margin-right: 15px !important;
+}
 </style>
-<script>
+</head>
 
-	$(document).ready(function() {
-		lengthOfAStringReady();
-	});
-
-</script>
 <body>
 	<div class="demo-heading text-center margin-top-25">
-		<h4 class="label ct-demo-heading" id="heading">Sample program on Strings</h4>
+		<h4 class="label ct-demo-heading" id="heading">Sample Program on Strings</h4>
 	</div>
 	<div class="col-xs-12 margin-top-40">
 		<div class="col-xs-12">
@@ -191,12 +169,12 @@ int main() {
 	<span id="charDec">char ch[20];</span>
 	<span id="intDec">int i = <span class="zero">0</span>;</span>
 	<span id="enterString">printf("Enter a string : ");</span>
-	<span id="scanf">scanf ("%s", ch );</span>
+	<span id="scanf">scanf ("%s", ch);</span>
 	<span id="stringIs">printf("The entered string is : %s\n", ch);</span>
-	<span id="whileCond">while (ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b>)</span> {
+	<span id="whileCond">while (<span id="chIsNotZero">ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">printf("The length of the string :  %s is %d\n", ch, i);</span>
+	<span id="stringLength">printf("The length of the string %s is : %d\n", ch, i);</span>
 }
 </pre>
 			</div>
@@ -206,28 +184,10 @@ int main() {
 						<tbody>
 							<tr class="address-one" id="addresId">
 								<td><b class="ct-blue-color">ch</b></td>
-								<td>0</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-								<td>13</td>
-								<td>14</td>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
+								<%for (int i = 0; i < 20; i++) {%>
+									<td><%=i%></td>
+								<%}%>
 							</tr>
-								
 							<tr id="userString" class="hide user-string">
 								<td><div class="td-border opacity00">00</div></td>
 							</tr>
@@ -236,8 +196,8 @@ int main() {
 				</div>
 			</div>
 			<div class="col-xs-5 col-xs-offset-1 margin-top-25 padding0 opacity00 output" id="output">
-				<div class="panel-heading text-center">Output</div>
-				<div class="panel panel-body margin0">
+				<div class="output-console-title-bar">Output</div>
+				<div class="output-console-body margin0">
 					<div class="firstLine"></div>
 					<div class="secondLine"></div>
 					<div class="thirdLine"></div>
@@ -248,5 +208,14 @@ int main() {
 			<span id="restart" class="opacity00 btn btn-warning">Restart</span>
 		</div>
 	</div>
+<script>
+
+$(document).ready(function() {
+	lengthOfAStringReady();
+});
+
+
+</script>
+
 </body>
 </html>

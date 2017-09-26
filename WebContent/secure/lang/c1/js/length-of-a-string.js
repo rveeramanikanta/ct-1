@@ -137,8 +137,9 @@ function introGuide() {
 								var text = "The <span class='ct-code-b-yellow'>scanf()</span> function reads all the characters that are specified"
 											+ " in the console in the same sequence.";
 							} else {
-								var text = "Since you have provided a space only the first sequence of characters before the space is considered is"
-											+ " read by the <span class='ct-code-b-yellow'>scanf()</span> method.";
+								var text = "Since you have provided a <span class='ct-code-b-yellow'>space</span> only the first sequence of"
+											+ " characters before the space is considered is read by the <span class='ct-code-b-yellow'>scanf()</span>"
+											+ " method.";
 							}
 							var text = text + "<br><br>Also note the <span class='ct-code-b-yellow'>delimiter('\\0')</span> character that"
 										+ " is automatically appended as the last character that indicates the end of the string in the array.";
@@ -152,10 +153,9 @@ function introGuide() {
 				
 			case "intDec":
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "Let us declare a variable <span class='ct-code-b-yellow'>i</span> of type"
+					var text = "A variable <span class='ct-code-b-yellow'>i</span> of type"
 								+ " <span class='ct-code-b-yellow'>int</span> is declared"
-								+ " and initialized to <span class='ct-code-b-yellow'>0</span>."
-								+ " This variable will be used while trying to find the length of a string."
+								+ " and initialized to <span class='ct-code-b-yellow'>0</span>.";
 					typing('.introjs-tooltiptext', text, function() {
 						$("#cup").addClass("z-index");
 						$(".cup-value").removeClass("opacity00");

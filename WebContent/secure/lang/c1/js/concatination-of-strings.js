@@ -160,8 +160,8 @@ function introGuide() {
 						var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads all the characters that are specified"
 									+ " in the console in the same sequence.";
 					} else {
-						var text1 = "Since you have provided a space only the first sequence of characters before the space is considered is"
-									+ " read by the <span class='ct-code-b-yellow'>scanf()</span> method.";
+						var text1 = "Since you have provided a <span class='ct-code-b-yellow'>space</span> only the first sequence of characters"
+									+ " before the space is considered is read by the <span class='ct-code-b-yellow'>scanf()</span> method.";
 					}
 					var text = text1 + "<br><br> Also note the <span class='ct-code-b-yellow'>delimeter('\\0')</span> character that is"
 								+ " automatically appended as the last character that indicates the end of the string in the array.";
@@ -294,29 +294,34 @@ function introGuide() {
 					$("#frcondition").removeClass("opacity00");
 					TweenMax.to("#frcondition", 1, {top:0, left:0, onComplete: function() {
 						rotationEffect('#iVal', countI, function() {
-							if (($("#user1Text").val().charAt(countI) != " ") && ($("#user1Text").val().charAt(countI) != "")) {
-								rotationEffect('#aVal', '\'' + $("#user1Text").val().charAt(countI) + '\'', function() {
-									var text = //"a[" + countI + "] = " + $('#user1Text').val().charAt(countI) + "<br><span class='ct-code-b-yellow'>"
-												//+ "" +  $('#user1Text').val().charAt(countI) +" != '\\0' </span> since the"
-												"Since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>. Hence the control"
-												+ " enters in to the <span class='ct-code-b-yellow'>for-loop</span>.";
-									typing('#appendText', text, function() {
-										nextStep("#line1");
-										$('.introjs-nextbutton').show();
+							if (countI <= 3 || (($("#user1Text").val().charAt(countI) == " ") || ($("#user1Text").val().charAt(countI) == ""))) {
+								if (($("#user1Text").val().charAt(countI) != " ") && ($("#user1Text").val().charAt(countI) != "")) {
+									rotationEffect('#aVal', '\'' + $("#user1Text").val().charAt(countI) + '\'', function() {
+										var text = "Since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>. Hence the control"
+													+ " enters in to the <span class='ct-code-b-yellow'>for-loop</span>.";
+										typing('#appendText', text, function() {
+											nextStep("#line1");
+											$('.introjs-nextbutton').show();
+										});
 									});
-								});
+								} else {
+									rotationEffect('#aVal', '\'\\0\'', function() {
+										var text ="Since the above condition evaluates to"
+													+ " <span class='ct-red'>false</span>. Hence the control comes out of the"
+													+ " <span class='ct-code-b-yellow'>for-loop</span>.";
+										typing('#appendText', text, function() {
+											var newStep = getStep("#loopB", '', 'hide', '');
+											introjs.insertOption(introjs._currentStep + 1, newStep);
+											$('.introjs-nextbutton').show();
+										});
+									});
+								}
 							} else {
-								rotationEffect('#aVal', '\'\\0\'', function() {
-									var text =// "a[" + countI + "] = '\\0' <br>"
-												//+ "<span class='ct-code-b-yellow'>'\\0' != '\\0'</span> "
-												"Since the above condition evaluates to"
-												+ " <span class='ct-red'>false</span>. Hence the control comes out of the"
-												+ " <span class='ct-code-b-yellow'>for-loop</span>.";
-									typing('#appendText', text, function() {
-										var newStep = getStep("#loopB", '', 'hide', '');
-										introjs.insertOption(introjs._currentStep + 1, newStep);
-										$('.introjs-nextbutton').show();
-									});
+								rotationEffect('#aVal', '\'' + $("#user1Text").val().charAt(countI) + '\'', function() {
+									nextStep("#line1");
+									setTimeout(function() {
+										introjs.nextStep();
+									}, 500);
 								});
 							}
 						});
@@ -331,7 +336,13 @@ function introGuide() {
 					typing('.introjs-tooltiptext', text, function() {
 						var newStep = getStep("#tableId3", '', 'hide', '');
 						introjs.insertOption(introjs._currentStep + 1, newStep);
-						$('.introjs-nextbutton').show();
+						if (countI <= 3) {
+							$('.introjs-nextbutton').show();
+						} else {
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 500);
+						}
 					});
 				});
 				break;
@@ -341,10 +352,12 @@ function introGuide() {
 					introjs.refresh();
 					if (($("#user1Text").val().charAt(countI) != " ") && ($("#user1Text").val().charAt(countI) != "")) {
 						$("#tdBorder" + iVal).text(($("#user1Text").val().charAt(countI)));
-						nextStep("#iIncrement");
+						var newStep = getStep("#iIncrement", '', 'hide', '');
+						introjs.insertOption(introjs._currentStep + 1, newStep);
 					} else if (countJ < $('.auto-filled').length) {
 						$("#tdBorder" + iVal).text(($(".auto-filled").text().charAt(countJ)));
-						nextStep("#secondIIncrement");
+						var newStep = getStep("#secondIIncrement", '', 'hide', '');
+						introjs.insertOption(introjs._currentStep + 1, newStep);
 					}
 					else {
 						$("#tdBorder" + iVal).text("\\0");
@@ -354,17 +367,28 @@ function introGuide() {
 				break;
 				
 			case "iIncrement":
+				$('.introjs-tooltip').addClass('hide');
 				iVal++;
 				countI++;
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "<span class='ct-code-b-yellow value-text'>i</span> is incremented to <span class='ct-code-b-yellow' id='animateI'>"
-								+ iVal + "</span>";
-					typing('.introjs-tooltiptext', text, function () {
-						fromEffectWithTweenMax("#iSpan", "#animateI", iVal, function() {
-							nextStep("#condition1");
-							$('.introjs-nextbutton').show();
+					if (iVal == 1) {
+						$('.introjs-tooltip').removeClass('hide');
+						var text = "<span class='ct-code-b-yellow value-text'>i</span> is incremented to <span class='ct-code-b-yellow' id='animateI'>"
+									+ iVal + "</span>";
+						typing('.introjs-tooltiptext', text, function () {
+							fromEffectWithTweenMax("#iSpan", "#animateI", iVal, function() {
+								nextStep("#condition1");
+								$('.introjs-nextbutton').show();
+							});
 						});
-					});
+					} else {
+						$('#iIncrement').append("<span class='opacity00' id='animateI'>" + iVal + "</span>");
+						fromEffectWithTweenMax("#iSpan", "#animateI", iVal, function() {
+							$('#animateI').remove();
+							nextStep("#condition1");
+							introjs.nextStep();
+						});
+					}
 				});
 				break;
 				
@@ -394,27 +418,32 @@ function introGuide() {
 					$("#frcondition").removeClass("opacity00");
 					TweenMax.to("#frcondition", 1, {top:0, left:0, onComplete: function() {
 						rotationEffect('#iVal', countJ, function() {
-							if (countJ < $('.auto-filled').length) {
-								rotationEffect('#aVal', '\'' + $('.auto-filled').text().charAt(countJ) + '\'', function() {
-									var text =// "b[" + countJ + "] = " + $('.auto-filled').text().charAt(countJ) + "<br>"
-												//+ "<span class='ct-code-b-yellow'>" + $('.auto-filled').text().charAt(countJ) +" != '\\0' </span>condition"
-												 " Since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>. The control"
-												+ " enters in to the <span class='ct-code-b-yellow'>for-loop</span>.";
-									typing('#appendText', text, function() {
-										nextStep("#line2");
-										$('.introjs-nextbutton').show();
+							if (countJ <= 3 || countJ == $('.auto-filled').length) {
+								if (countJ < $('.auto-filled').length) {
+									rotationEffect('#aVal', '\'' + $('.auto-filled').text().charAt(countJ) + '\'', function() {
+										var text =" Since the above condition evaluates to <span class='ct-code-b-yellow'>true</span>. The control"
+													+ " enters in to the <span class='ct-code-b-yellow'>for-loop</span>.";
+										typing('#appendText', text, function() {
+											nextStep("#line2");
+											$('.introjs-nextbutton').show();
+										});
 									});
-								});
+								} else {
+									rotationEffect('#aVal', "'\\0'", function() {
+										var text = " Since the above condition evaluates to  <span class='ct-red'>false</span>. The control comes"
+													+ " out of the <span class='ct-code-b-yellow'>for-loop</span>.";
+										typing('#appendText', text, function() {
+											nextStep("#delimeter");
+											$('.introjs-nextbutton').show();
+										});
+									});
+								}
 							} else {
-								rotationEffect('#aVal', '\'\\0\'', function() {
-									var text =// "b[" + countJ + "] = '\\0'<br>"
-												//+ "<span class='ct-code-b-yellow'>'\\0' != '\\0'</span> condition evaluates to"
-												 " Since the above condition evaluates to  <span class='ct-red'>false</span>. The control comes"
-												+ " out of the <span class='ct-code-b-yellow'>for-loop</span>.";
-									typing('#appendText', text, function() {
-										nextStep("#delimeter");
-										$('.introjs-nextbutton').show();
-									});
+								rotationEffect('#aVal', '\'' + $('.auto-filled').text().charAt(countJ) + '\'', function() {
+									nextStep("#line2");
+									setTimeout(function() {
+										introjs.nextStep();
+									}, 500);
 								});
 							}
 						});
@@ -428,41 +457,58 @@ function introGuide() {
 					typing('.introjs-tooltiptext', text, function() {
 						var newStep = getStep("#tableId3", '', 'hide', '');
 						introjs.insertOption(introjs._currentStep + 1, newStep);
-						$('.introjs-nextbutton').show();
+						if (countJ <= 3) {
+							$('.introjs-nextbutton').show();
+						} else {
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 500);
+						}
 					});
 				});
 				break;
 					
 			case "jIncrement":
+				$('.introjs-tooltip').addClass('hide');
 				jVal++;	
 				countJ++;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#cupJ").addClass("z-index");
 					$("#cupI").removeClass("z-index");
-					var text = "<span class='ct-code-b-yellow value-text-j'>j</span> is incremented to <span class='ct-code-b-yellow' id='animateJ'>"
-								+ jVal + "</span>";
-					typing('.introjs-tooltiptext', text, function () {
-						fromEffectWithTweenMax("#jSpan", "#animateJ", jVal, function() {
-							nextStep("#condition2");
-							$('.introjs-nextbutton').show();
+					if (jVal == 1) {
+						$('.introjs-tooltip').removeClass('hide');
+						var text = "<span class='ct-code-b-yellow value-text-j'>j</span> is incremented to <span class='ct-code-b-yellow' id='animateJ'>"
+									+ jVal + "</span>";
+						typing('.introjs-tooltiptext', text, function () {
+							fromEffectWithTweenMax("#jSpan", "#animateJ", jVal, function() {
+								nextStep("#condition2");
+								$('.introjs-nextbutton').show();
+							});
 						});
-					});
+					} else {
+						$('#jIncrement').append("<span class='opacity00' id='animateJ'>"+ jVal + "</span>")
+						fromEffectWithTweenMax("#jSpan", "#animateJ", jVal, function() {
+							$('#animateJ').remove();
+							nextStep("#condition2");
+							introjs.nextStep();
+						});
+					}
 				});
 				break;
 				
 			case "secondIIncrement":
+				$('.introjs-tooltip').addClass('hide');
 				iVal++;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#cupJ").removeClass("z-index");
 					$("#cupI").addClass("z-index");
-					var text = "<span class='ct-code-b-yellow value-text1'>i</span> is incremented to <span class='ct-code-b-yellow' id='animateII'>"
-								+ iVal + "</span>.";
-					typing('.introjs-tooltiptext', text, function () {
-						nextStep("#jIncrement");
-						fromEffectWithTweenMax("#iSpan", "#animateII", iVal, function() {
-							$('.introjs-nextbutton').show();
-						})
-					});
+					$('#secondIIncrement').append("<span class='opacity00' id='animateII'>"+ iVal + "</span>")
+					var newStep = getStep("#jIncrement", '', 'hide', '');
+					introjs.insertOption(introjs._currentStep + 1, newStep);
+					fromEffectWithTweenMax("#iSpan", "#animateII", iVal, function() {
+						$('#animateII').remove();
+						introjs.nextStep();
+					})
 				});
 				break;
 				
