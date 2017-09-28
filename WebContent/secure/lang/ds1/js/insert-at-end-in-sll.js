@@ -1,16 +1,31 @@
+var lang;
 function insertAtEndInSLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes('#dynamicNodes', 1);
 	svgAppend("#animationDiv");
+	lang = getURLParameter("lang");
+	lang = (lang == undefined) ? "c" : lang;
 	initIntroJS();
 }
+
+function getURLParameter(sParam) {	//language selection in url
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++) {
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam) {
+			return sParameterName[1];
+		}
+	}
+}
+
 
 function dynamicTempNodes(val) {	//temp nodes
 	$('#tempDynamicNodes').append('<div class="col-xs-2 col-xs-offset-1 padding0 opacity00" id="tempNodeParent' + val + '">'
 						+ '<div class="col-xs-12 box padding0 temp-node"><span id="tempNode' + val + '"'
 						+ ' class="ct-brown-color ct-fonts position-css temp-node-val opacity00">1245</span></div>'
 						+ '<div class="text-center col-xs-12 padding0 ct-green-color ct-fonts" id="tempame' + val + '">temp</div></div>');
-	animatedTooltip('.temp-node', "bottom", "Address of the newly created node.");
+	animatedTooltip('.temp-node', "top", "Address of the newly created node.");
 }
 
 function createDynamicNodes(id, nodeNum) {	//node
@@ -44,12 +59,20 @@ function structCode() {
 }
 
 function insertAtEndMethod() {
-	$('#codeDiv').append('<br><br><div class="position-css" id="insertAtEndMethod"><span id="line1">node <g>insertAtEnd(int x)</g> {\n'
-						 + '\t<span id="step1">node temp;\n'
-						 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
-						 + '\ttemp -> data = x;</span>'
-						 + '\n\treturn first;\n'
-						 + '}</span></div>');
+	if (lang == 'c') {
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtEndMethod"><span id="line1">node <g>insertAtEnd(int x)</g> {\n'
+							 + '\t<span id="step1">node temp;\n'
+							 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
+							 + '\ttemp -> data = x;</span>'
+							 + '\n\treturn first;\n'
+							 + '}</span></div>');
+	} else if (lang == 'cpp') {
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtEndMethod"><span id="line1">node <g>insertAtEnd(int x)</g> {\n'
+				 + '\t<span id="step1">node temp;\n'
+				 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
+				 + '\ttemp -> data = x;</span>'
+				 + '\n}</span></div>');
+	}
 	$('#insertAtEndMethod span').addClass('opacity00');
 }
 
@@ -74,6 +97,10 @@ function initIntroJS() {
 				element: '#headingInSll',
 				intro: ''
 			}, {
+				element: '#algorithmDiv',
+				intro: '',
+				tooltipClass: 'hide'
+			}, {
 				element: '#animationDiv',
 				intro: '',
 				animateStep: 'fstDeclaration',
@@ -92,6 +119,18 @@ function initIntroJS() {
 					$('.introjs-nextbutton').show();
 				});
 			break;
+			case 'algorithmDiv':
+				$('#algorithmDiv').removeClass('opacity00');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$('#codeAndAlgorithmDiv').addClass('box-border');
+					text = 'Let us learn about adding a <bl>node</bl> at <bl>end</bl> to a <bl>Single Linked List(SLL)</bl>. &emsp;';
+					typing('#algorithmDiv', text, function() {
+						nextBtnWithoutCalling('#algorithmDiv', function() {
+							introjs.nextStep();
+						});
+					});
+				});
+			break;
 			case 'animationDiv':
 				$('#animationDiv').removeClass('opacity00');
 				introjs.refresh();
@@ -100,7 +139,7 @@ function initIntroJS() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 					switch(animateStep) {
 						case 'fstDeclaration':
-							animatedTooltip('#firstDiv', "top", "first stores the begining of the linked list");
+							animatedTooltip('#firstDiv', "bottom", "first stores the begining of the linked list");
 							zoomInEffect('#firstNode', function() {
 								$('.introjs-tooltip').removeClass('hide');
 								text = '<span id="l2">Let us store the <yy class="ct-fonts">begining of the linked list</yy> in a pointer variable'
@@ -191,14 +230,18 @@ function initIntroJS() {
 									$('#line3').css({'background-color' : 'yellow'});
 									createNodeMethod();
 									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
-										$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list">struct list</span>));');
+										if (lang == 'c') {
+											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list">struct list</span>));');
+										} else if (lang == 'cpp') {
+											$('#allocMemory').html('temp = new list;');
+										}
 										$('.introjs-tooltip').removeClass('hide');
 										text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
 										typing('.introjs-tooltiptext', text, function() {
+											structCode();
+											$('#codeDiv').scrollTo('#structCode span:last', 300);
 											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 												transWithZoomInEffect('#line3', '#createNodeFun', function() {
-													structCode();
-													$('#codeDiv').scrollTo('#structCode span:last', 300);
 													$('#list').css({'background-color' : 'yellow'});
 													transWithZoomInEffect('#list', '#structCode', function() {///////////
 														$('#line3, #l3Div, #list').css({'background-color' : ''});
@@ -261,8 +304,7 @@ function initIntroJS() {
 			break;
 			case 'restartBtn':
 				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
-				$('#animationDiv, #codeAndAlgorithmDiv').addClass('zIndex z-index10000');
-				$('.zIndex').css({'zIndex': '99999999'});
+				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'zIndex': '99999999'});
 				$('#restartBtn').removeClass('opacity00');;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click to restart.', function() {
@@ -322,9 +364,9 @@ function secondNdeAnim(val) {
 					stepText = '<span id="l5" class="opacity00">If the <bgb>first</bgb> is already points to a'
 								+ ' <bl>node</bl>, <bl>fetch</bl> that <bl>node</bl> for the newly created '
 								+ '<g>address</g> in that node\'s <g>next pointer variable</g>.</span>'
+					$('#algorithmDiv ul:last').append('<li>' + stepText + '</li>');
+					$('#algorithmDiv').scrollTo('#ul2 span:last', 300);
 					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-						$('#algorithmDiv ul:last').append('<li>' + stepText + '</li>');
-						$('#algorithmDiv').scrollTo('#ul2 span:last', 300);
 						transferEffect('#lastLi', '#l5', function() {
 							introNextSteps('#codeAndAlgorithmDiv', 'lastToTemp', 'hide');
 							$('.introjs-nextbutton').show();
@@ -336,11 +378,12 @@ function secondNdeAnim(val) {
 			$('.introjs-tooltiptext ul').append('<li style="list-style-type: none"></li>');
 			$('.introjs-tooltip').css({'height':'300px', 'overflow-y':'auto'});
 			$('.introjs-tooltip').scrollTo('.introjs-tooltiptext li:last', 300);
-			text = 'Note : If the <yy class="ct-fonts one">next</yy> pointer variable is also pointing to another <yy class="ct-fonts">node</yy>, we need'
-					+ ' to fetch the <yy class="ct-fonts one">next</yy> <yy class="ct-fonts">node</yy> until'
+			text = 'Note : If the <yy class="ct-fonts one">next</yy> pointer variable is also pointing to another <yy class="ct-fonts">node</yy>,'
+					+ ' we need to fetch the <yy class="ct-fonts one">next</yy> <yy class="ct-fonts">node</yy> until'
 					+ ' its <yy class="ct-fonts one">next</yy> pointer value is <yy class="ct-fonts one">NULL</yy>.';
+			$('#algorithmDiv li:last').append('<br><span id="l6" class="opacity00">&emsp; [' + text + ']</span>');
+			$('#algorithmDiv').scrollTo('#ul2 span:last', 300);
 			typing('.introjs-tooltiptext li:last', '<br>' + text, function() {
-				$('#algorithmDiv li:last').append('<br><span id="l6" class="opacity00">&emsp; [' + text + ']</span>');
 				$('#l6 yy').not('.one').addClass('ct-blue-color').removeClass('ct-fonts');
 				$('#algorithmDiv .one').removeClass('ct-blue-color ct-fonts').addClass('ct-green-color');
 				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="whileCondAnim()">Next &#8594;</a>');
@@ -375,7 +418,6 @@ function whileCondAnim() {
 function whileCondAnimText() {
 	$('.user-btn').remove();
 	$('#l5').css({'background-color' : ''});
-	$('#algorithmDiv').scrollTo('#ul2 span:last', 300);
 	transferEffect('.introjs-tooltiptext li:last', '#l6', function() {
 		introNextSteps('#codeAndAlgorithmDiv', 'whileCode', 'hide');
 		$('.introjs-nextbutton').show();
@@ -527,9 +569,6 @@ function validation(selector, val) {
 		if (((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) || (e.keyCode == 13 || e.keyCode ==9)){
 			e.preventDefault();
 		}
-		if ($(selector).val().length != 0) {
-			$('.error-text').remove();
-		}
 		if ($(this).val().length > max - 1) {
 			$('.error-text').remove();
 			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Please restrict the maximum length to 3 digits only.</div>')
@@ -538,7 +577,7 @@ function validation(selector, val) {
 	});
 	$(selector).on('keyup', function(e) {
 		if ($(selector).val().length != 0) {
-			$('.user-btn').remove();
+			$('.user-btn, .errMsg').remove();
 			if (val == 1) {
 				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="validationAnim()">Next &#8594;</a>');
 				if (e.keyCode == 13) {
@@ -553,7 +592,7 @@ function validation(selector, val) {
 		} else {
 			$('.user-btn').hide();
 			$('.error-text').remove();
-			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Please enter number.</div>');
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Please enter number.</div>');
 		}
 	});
 }

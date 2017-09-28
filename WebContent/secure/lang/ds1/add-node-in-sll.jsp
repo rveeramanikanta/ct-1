@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
 <link rel="stylesheet" href="/css/animate.css">
 
 <script src="/js/jquery-latest.js"></script>
