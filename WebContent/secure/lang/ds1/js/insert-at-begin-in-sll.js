@@ -2,6 +2,8 @@ var lang;
 function insertAtBeginInSLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes('#dynamicNodes', 1);
+	createDynamicNodes('#fstExplain', 0);
+	createDynamicNodes('#fstExplain', 2);
 	svgAppend("#animationDiv");
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
@@ -118,11 +120,6 @@ function initIntroJS() {
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		switch(elementId) {
 			case 'headingInSll':
-				//let sum = (a, b) => a + b;
-				//console.log(sum("Hello ", "mallika"));
-				/*let abc = 15;
-				let fun = (abc > 18) ? () => console.log('major') : () => console.log('minor');
-				fun();*/
 				text = 'Here we will learn about <y>insertAtBegin()</y> method in a <y>Single Linked List</y>.';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').show();
@@ -198,16 +195,28 @@ function initIntroJS() {
 							typing('.introjs-tooltiptext', text, function() {
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
-										$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
-										$('#algorithmDiv #l5').addClass('opacity00');
-										$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
-										$('#algorithmDiv').addClass('z-index10000');
-										transWithZoomInEffect('.intorjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
-											introNextSteps('#codeAndAlgorithmDiv', 'tmpToFst', 'hide');
-											$('.introjs-nextbutton').show();
+										svgAnimatingLineBottomToTop('#firstDiv', '#nextDiv1', 'line1', function() {
+											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
+											$('#algorithmDiv #l5').addClass('opacity00');
+											$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
+											$('#algorithmDiv').addClass('z-index10000');
+											$('#algorithmDiv li:last').removeClass('opacity00');
+											transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
+												introNextSteps('#codeAndAlgorithmDiv', 'tmpToFst', 'hide');
+												$('.introjs-nextbutton').show();
+											});
 										});
 									});
 								});
+							});
+						break;
+						case 'secondNode':
+							$('#line11').remove();
+							$('#tempNodeParent1').addClass('opacity00');
+							text = 'Let us add another <y>node</y> at <y>begin</y> for the given value.<br>Enter a value '
+									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
+							typing('.introjs-tooltiptext', text, function() {
+								validation('#nodeVal', 2);
 							});
 						break;
 					}
@@ -266,6 +275,8 @@ function initIntroJS() {
 							});
 						break;
 						case 'fstToTmpNxt':
+							$('#codeDiv').scrollTo('#fstCreation', 300);
+							$('#l4').effect('highlight', {color: 'yellow'}, 1200);
 							transWithZoomInEffect('#l4', '#fstToTmpNxt', function() {
 								nextBtnWithoutCalling('#fstToTmpNxt', function() {
 									introNextSteps('#animationDiv', 'tempToFst', 'show');
@@ -274,10 +285,14 @@ function initIntroJS() {
 							});
 						break;
 						case 'tmpToFst':
-							$('#fstToTmpNxt').after('\n\t<span id="tempToFst">first = temp;</span>');
+							$('#fstToTmpNxt').after('\n\t<span id="tempToFst" class="opacity00">first = temp; &emsp;</span>');
+							$('#codeDiv').scrollTo('#fstCreation', 300);
+							$('#l5').effect('highlight', {color: 'yellow'}, 1200);
 							transWithZoomInEffect('#l5', '#tempToFst', function() {
-								$('#codeDiv').scrollTo('#fstCreation', 300);
-								
+								nextBtnWithoutCalling('#tempToFst', function() {
+									introNextSteps('#animationDiv', 'secondNode', 'show');
+									introjs.nextStep();
+								});
 							});
 						break;
 					}
@@ -286,6 +301,46 @@ function initIntroJS() {
 		}
 	});
 	introjs.start();
+}
+function secondNdeAnim() {
+	$('.user-btn').remove();
+	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
+	$('#algorithmDiv').addClass('z-index10000');
+	$('.introjs-tooltiptext').append('<ol></ol>');
+	dynamicTempNodes(2);
+	text = '<li>Allocate <y>memory</y> for the new node (<y>address</y> of the new node is stored in'
+			+ ' <y>temp</y>) and store the given value in <y>data</y>.</li>';
+	typing('.introjs-tooltiptext ol', text, function() {
+		nodeAnim(2, function() {
+			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+				$('.introjs-tooltiptext ol').append('<li></li>');
+				text = '<y>fetch</y> the <bgb>first</bgb> <y>node</y> for the newly created <y>address</y> in that '
+						+ '<y>node\'s</y> <y>next pointer variable<y>.';
+				typing('.introjs-tooltiptext li:last', text, function() {
+					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+						fadeInBounceEffectWithTimelineMax('#firstVal', '#next2', true, 400, function() {
+							svgAnimatingLineBottomToTop('#nextDiv2', '#nextDiv1', 'line2', function() {
+								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									$('.introjs-tooltiptext ol').append('<li></li>');
+									text = 'Store the <y>address</y> of the <y>newly created node</y> in the <bgb>first</bgb> variable.';
+									typing('.introjs-tooltiptext li:last', text, function() {
+										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+											fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, -350, function() {
+												$('#line1').remove();
+												svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv2', 'line1', function() {
+													
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
 }
 
 function validationAnim() {
@@ -447,7 +502,7 @@ function validation(selector, val) {
 					validationAnim();
 				}
 			} else {
-				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="secondNdeAnim(' + val + ')">Next &#8594;</a>');
+				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="secondNdeAnim()">Next &#8594;</a>');
 				if (e.keyCode == 13) {
 					secondNdeAnim(val);
 				}

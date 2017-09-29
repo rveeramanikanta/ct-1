@@ -111,7 +111,7 @@ y, yy {
 
 .algorithm-div {
 	font-size: 12px;
-	padding: 6px;
+	padding: 8px;
 }
 
 .padding5 {
