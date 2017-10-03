@@ -110,8 +110,8 @@ function initIntroJS() {
 	});
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
-		$('.zIndex').not('.introjs-showElement, #headingInSll').css({'zIndex': '0'});
-		$('.introjs-showElement .zIndex').css({'zIndex': '99999999'});
+		$('.zIndex').not('.introjs-showElement, #headingInSll').css({'z-index': '0'});
+		$('.introjs-showElement .zIndex').css({'z-index': '99999999'});
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		switch(elementId) {
 			case 'headingInSll':
@@ -332,7 +332,8 @@ function initIntroJS() {
 			break;
 			case 'restartBtn':
 				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
-				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'zIndex': '99999999'});
+				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
+				$('.zIndex').css({'z-index': '99999999'});
 				$('#restartBtn').removeClass('opacity00');;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click to restart.', function() {

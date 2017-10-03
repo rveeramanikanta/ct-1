@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>insert At Begin() in SLL</title>
+<title>Insert At Position</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -20,8 +20,9 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds1/js/insert-at-begin-in-sll.js"></script>
+<script src="/secure/lang/ds1/js/insert-at-position-in-sll.js"></script>
 <style type="text/css">
+
 .margin-top25 {
 	margin-top: 25px;
 }
@@ -169,7 +170,7 @@ y, yy {
 	border: none;
 	border-radius: 5px;
 	color: white;
-	padding-left: 11px;
+	text-align: center;
 }
 
 
@@ -186,12 +187,12 @@ y, yy {
 <body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		insertAtBeginInSLLReady();
+		insertAtPositionInSLLReady();
 	});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">insertAtBegin() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">insertAtPosition() in SLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
 			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 38px;">
