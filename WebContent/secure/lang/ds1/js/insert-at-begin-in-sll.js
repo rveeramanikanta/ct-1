@@ -682,20 +682,6 @@ function svgAnimatingLineTopToBottom(selector1, selector2, svgLineId, callBackFu
 	}});
 }
 
-function svgAnimatingLineLeftToRight(selector1, selector2, svgLineId, callBackFunction) {
-	var parentOffset = $("#animationDiv").offset();
-	var x1 = $(selector1).offset().left - parentOffset.left;
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
-	svgLineAppend(svgLineId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
 function svgAnimatingLineBottomToTop(selector1, selector2, svgLineId, callBackFunction) {
 	var parentOffset = $("#animationDiv").offset();
 	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;

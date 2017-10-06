@@ -161,8 +161,8 @@ function initIntroJS() {
 							});
 						break;
 						case 'tempToFst':
-							text = '<span id="l4">Store the <yy class="ct-fonts one">address</yy> of the newly created <yy class="ct-fonts">node</yy> in the'
-									+ ' <yy class="ct-fonts first-css">first</yy> variable if it is <yy class="ct-fonts one">NULL</yy>.</span>';
+							text = '<span id="l4">Store the <yy class="ct-fonts one">address</yy> of the newly created <yy class="ct-fonts">node</yy> '
+									+ 'in the <yy class="ct-fonts first-css">first</yy> variable if it is <yy class="ct-fonts one">NULL</yy>.</span>';
 							typing('.introjs-tooltiptext', text, function() {
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
@@ -711,20 +711,6 @@ function svgAnimatingLineTopToBottom(selector1, selector2, svgLineId, callBackFu
 	var y1 = $(selector1).offset().top - parentOffset.top;
 	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
-	svgLineAppend(svgLineId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-function svgAnimatingLineLeftToRight(selector1, selector2, svgLineId, callBackFunction) {
-	var parentOffset = $("#animationDiv").offset();
-	var x1 = $(selector1).offset().left - parentOffset.left;
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgLineId, x1, y1, x1, y1);
 	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
 		if (typeof callBackFunction === "function") {

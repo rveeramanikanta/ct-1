@@ -120,7 +120,7 @@ y, yy {
 }
 
 .introjs-tooltip {
-	min-width: 350px;
+	min-width: 400px;
 }
 
 .user-btn {
