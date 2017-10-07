@@ -56,9 +56,8 @@ function animatedTooltip(id, position, tooltipText) {
 	$(id).addClass('zIndex').attr({"data-placement" : position, "title" : tooltipText}).tooltip();
 }
 
-
 function structCode() {
-	$('#codeDiv').append('<div id="structCode" class="position-css opacity00">struct list {\n'
+	$('#codeDiv').append('<div id="structCode" class="position-css opacity00">struct <g>list</g> {\n'
 						+ '\tint <bl>data</bl>;\n'
 						+ '\tstruct list <g>*next</g>;\n'
 						+ '};\n<span>typedef struct list *node; \t</span> </div>');
@@ -66,16 +65,16 @@ function structCode() {
 
 function insertAtBeginMethod() {
 	if (lang == 'c') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line1">node <g>insertAtBegin(int x)</g> {\n'
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">node <g>insertAtBegin(int x)</g> {\n'
 						 + '\t<span id="step1">node temp;\n'
-						 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
 						 + '\ttemp -> data = x;</span>'
 						 + '\n\treturn first;\n'
 						 + '}</span></div>');
 	} else if (lang == 'cpp') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line1">node <g>insertAtBegin(int x)</g> {\n'
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">void Sll::<g>insertAtBegin(int x)</g> {\n'
 						 + '\t<span id="step1">node temp;\n'
-						 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
 						 + '\ttemp -> data = x;</span>'
 						 + '\n}</span></div>');
 	}
@@ -171,10 +170,9 @@ function initIntroJS() {
 									+ ' <yy class="ct-fonts one">next pointer variable<yy>.</span>';
 							typing('.introjs-tooltiptext', text, function() {
 								$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
+								$('#algorithmDiv #l4').addClass('opacity00');
 								$('#algorithmDiv #l4 yy').addClass('ct-blue-color').removeClass('ct-fonts');
 								$('#algorithmDiv #l4 .one').removeClass('ct-blue-color').addClass('ct-green-color');
-								$('#algorithmDiv #l4 bgb').removeClass('ct-fonts');
-								$('#algorithmDiv #l4').addClass('opacity00');
 								$('#step1').after('\n\t<span class="opacity00" id="fstToTmpNxt">temp -> next = first; &emsp;</span>');
 								$('#codeDiv').scrollTo('#insertAtBeginMethod span:last', 300);
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
@@ -195,7 +193,7 @@ function initIntroJS() {
 							typing('.introjs-tooltiptext', text, function() {
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
-										svgAnimatingLineBottomToTop('#firstDiv', '#nextDiv1', 'line1', function() {
+										svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv1', 'line1', false, function() {
 											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
 											$('#algorithmDiv #l5').addClass('opacity00');
 											$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
@@ -243,16 +241,16 @@ function initIntroJS() {
 						break;
 						case 'methodCreation':
 							$('#l3Span').effect('highlight', {color: 'yellow'}, 1200);
-							transWithZoomInEffect('#l3Span', '#line1', function() {
+							transWithZoomInEffect('#l3Span', '#line5', function() {
 								$('#l3Div').css({'background-color' : 'yellow'});
 								transWithZoomInEffect('#l3Div', '#step1', function() {
-									$('#line3').css({'background-color' : 'yellow'});
+									$('#line6').css({'background-color' : 'yellow'});
 									createNodeMethod();
 									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 										if (lang == 'c') {
-											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list">struct list</span>));');
+											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list"><g>struct list</g></span>));');
 										} else if (lang == 'cpp') {
-											$('#allocMemory').html('temp = new list;');
+											$('#allocMemory').html('temp = <span id="list"><g>new list</g>;</span>');
 										}
 										$('.introjs-tooltip').removeClass('hide');
 										text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
@@ -260,10 +258,10 @@ function initIntroJS() {
 											structCode();
 											$('#codeDiv').scrollTo('#structCode span:last', 300);
 											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-												transWithZoomInEffect('#line3', '#createNodeFun', function() {
+												transWithZoomInEffect('#line6', '#createNodeFun', function() {
 													$('#list').css({'background-color' : 'yellow'});
 													transWithZoomInEffect('#list', '#structCode', function() {
-														$('#line3, #l3Div, #list').css({'background-color' : ''});
+														$('#line6, #l3Div, #list').css({'background-color' : ''});
 														introNextSteps('#animationDiv', 'fstToTmpNxt', 'show');
 														$('.introjs-nextbutton').show();
 													});
@@ -316,8 +314,6 @@ function initIntroJS() {
 	introjs.start();
 }
 function secondNdeAnim() {
-	$('.user-btn').remove();
-	$('input').attr('disabled', true);
 	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
 	$('#algorithmDiv').addClass('z-index10000');
 	$('#l3Div').css({'background-color' : 'yellow'});
@@ -336,7 +332,7 @@ function secondNdeAnim() {
 				typing('.introjs-tooltiptext li:last', text, function() {
 					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 						fadeInBounceEffectWithTimelineMax('#firstVal', '#next2', true, 400, function() {
-							svgAnimatingLineBottomToTop('#nextDiv2', '#nextDiv1', 'line2', function() {
+							svgAnimatingLineTopAndBottom('#nextDiv2', '#nextDiv1', 'line2', false, function() {
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 									$('#l4').css({'background-color' : ''});
 									$('#l5').css({'background-color' : 'yellow'});
@@ -379,8 +375,8 @@ function rearrangeNode() {
 		$('#node2').addClass('opacity00').remove();;
 		TweenMax.to('#node3', 1, {top : 0, left : 0, onComplete : function() {
 			$('#node3').attr('id', 'node2');
-			svgAnimatingLineTopToBottom('#tempNodeParent2', '#nextDiv2', 'line3');
-			svgAnimatingLineBottomToTop('#firstDiv', '#nextDiv2', 'line1');
+			svgAnimatingLineTopAndBottom('#tempNodeParent2', '#nextDiv2', 'line3', true);
+			svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv2', 'line1', false);
 			svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2');
 			animatedTooltip('#dataDiv2', "bottom", "data holds user data");
 			animatedTooltip('#nextDiv2', "bottom", "next holds next node's address");
@@ -391,9 +387,6 @@ function rearrangeNode() {
 }
 
 function validationAnim() {
-	$('#nodeVal').off();
-	$('input').attr('disabled', true);
-	$('.user-btn, .error-text').remove();
 	$('.introjs-tooltiptext').append('<br><br><div id="l3Div"><div>')
 	text = 'Allocate <yy class="ct-fonts one">memory</yy> for the new node (<yy class="ct-fonts one">address</yy> of the new node is stored in'
 			+ ' <yy class="ct-fonts one">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
@@ -414,8 +407,8 @@ function validationAnim() {
 					transferEffect('.introjs-tooltiptext #l3Div', '#algorithmDiv #l3Div', function() {
 						$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
 						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
-						$('.introjs-nextbutton').show();
 						insertAtBeginMethod();
+						$('.introjs-nextbutton').show();
 					});
 				});
 			});
@@ -429,7 +422,7 @@ function nodeAnim(val, callBackFunction) {
 		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
 			zoomInEffect('#tempNodeParent' + val, function() {
 				fromEffectWithTweenMax('#dataAddress' + val, '#tempNode' + val, true, function() {
-					svgAnimatingLineTopToBottom('#tempNodeParent' + val, '#nextDiv' + val, 'line11', function() {
+					svgAnimatingLineTopAndBottom('#tempNodeParent' + val, '#nextDiv' + val, 'line11', true, function() {
 						fromEffectWithTweenMax('#nodeVal', '#data' + val, false, function() {
 							$('#nodeVal').css({'color': 'white'});
 							callBackFunction();
@@ -509,7 +502,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 function transWithZoomInEffect(selector1, selector2, callBackFunction) {
 	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
 		if (selector2 == '#step1') {
-			$('#line3').removeClass('opacity00');
+			$('#line6').removeClass('opacity00');
 		}
 		$(selector2).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			$(selector2).removeClass("animated zoomIn")
@@ -518,10 +511,6 @@ function transWithZoomInEffect(selector1, selector2, callBackFunction) {
 			}
 		});
 	});
-}
-
-function animatedTooltip(id, position, tooltipText) {
-	$(id).addClass('zIndex').attr({"data-placement" : position, "title" : tooltipText}).tooltip();
 }
 
 function validation(selector, val) {
@@ -541,18 +530,14 @@ function validation(selector, val) {
 		}
 	});
 	$(selector).on('keyup', function(e) {
+		if ($(this).val().length == 2) {
+			$('.error-text').remove();
+		}
 		if ($(selector).val().length != 0) {
 			$('.user-btn, .errMsg').remove();
-			if (val == 1) {
-				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="validationAnim()">Next &#8594;</a>');
-				if (e.keyCode == 13) {
-					validationAnim();
-				}
-			} else {
-				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="secondNdeAnim()">Next &#8594;</a>');
-				if (e.keyCode == 13) {
-					secondNdeAnim(val);
-				}
+			$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="eventValidation(' + val + ')">Next &#8594;</a>');
+			if (e.keyCode == 13) {
+				eventValidation(val)
 			}
 		} else {
 			$('.user-btn').hide();
@@ -560,6 +545,17 @@ function validation(selector, val) {
 			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Please enter number.</div>');
 		}
 	});
+}
+
+function eventValidation(val) {
+	$('.user-btn').remove();
+	$('#nodeVal').off();
+	$('input').attr('disabled', true);
+	if (val == 1) {
+		validationAnim();
+	} else {
+		secondNdeAnim();
+	}
 }
 
 function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
@@ -668,32 +664,21 @@ function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, callBackFu
 	}});
 }
 
-function svgAnimatingLineTopToBottom(selector1, selector2, svgLineId, callBackFunction) {
+function svgAnimatingLineTopAndBottom(selector1, selector2, svgLineId, flag, callBackFunction) {
 	var parentOffset = $("#animationDiv").offset();
 	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
-	var y1 = $(selector1).offset().top - parentOffset.top;
 	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	if (flag) {
+		var y1 = $(selector1).offset().top - parentOffset.top;
+		var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	} else {
+		var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+		var y2 = $(selector2).offset().top - parentOffset.top;
+	}
 	svgLineAppend(svgLineId, x1, y1, x1, y1);
 	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
 	}});
-}
-
-function svgAnimatingLineBottomToTop(selector1, selector2, svgLineId, callBackFunction) {
-	var parentOffset = $("#animationDiv").offset();
-	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
-	var y2 = $(selector2).offset().top - parentOffset.top;
-	svgLineAppend(svgLineId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-					
+}					

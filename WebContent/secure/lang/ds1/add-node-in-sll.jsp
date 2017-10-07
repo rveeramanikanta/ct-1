@@ -95,9 +95,6 @@ y, yy {
 .creamPreTab {
 	tab-size: 2;
 	-moz-tab-size: 2;
-	padding: 8px;
-	font-family: monospace;
-	background-color: #fffae6;
 	margin-bottom: 0;
 }
 
@@ -106,11 +103,8 @@ y, yy {
 	background-color: #fffae6;
 	height: 330px;
 	overflow-y: auto;
-}
-
-.algorithm-div {
+	padding: 8px;
 	font-size: 12px;
-	padding: 6px;
 }
 
 .padding5 {
@@ -118,7 +112,7 @@ y, yy {
 }
 
 .introjs-tooltip {
-	min-width: 350px;
+	min-width: 400px;
 }
 
 .user-btn {
@@ -151,7 +145,7 @@ y, yy {
 	stroke-width: 2;
 }
 
-.tooltip-inner {
+.tooltip-inner, .introjs-tooltiptext ul {
 	font-family: monospace;
 }
 
@@ -168,11 +162,10 @@ y, yy {
 	border: none;
 	border-radius: 5px;
 	color: white;
-	padding-left: 11px;
+	text-align: center;
 }
 
-
-.first-css, bgb {
+bgb {
 	color: white;
 	background-color: black;
 	padding: 2px 4px;
@@ -180,13 +173,12 @@ y, yy {
 	font-family: monospace;
 }
 </style>
-
 </head>
 <body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		addNodesInSLLReady();
-	});
+	<script type="text/javascript">
+		$(document).ready(function() {
+			addNodesInSLLReady();
+		});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
@@ -207,20 +199,12 @@ y, yy {
 			</div>
 			<div class="col-xs-7" style="padding-right: 0px">
 				<div class="col-xs-12 padding0" id="codeAndAlgorithmDiv">
-					<div class="col-xs-6 padding5">
-						<div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv">
-							<!-- <span class="ct-green-color">Steps</span> -->
-						</div>
-					</div>
-					<div class="col-xs-6 padding5">
-						<pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre>
-					</div>
+					<div class="col-xs-6 padding5"><div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv"></div></div>
+					<div class="col-xs-6 padding5"><pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 text-center margin-top25">
-			<span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span>
-		</div>
+		<div class="col-xs-12 text-center margin-top25"><span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span></div>
 	</div>
 </body>
 </html>

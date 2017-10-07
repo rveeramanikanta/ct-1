@@ -97,9 +97,6 @@ y, yy {
 .creamPreTab {
 	tab-size: 2;
 	-moz-tab-size: 2;
-	padding: 8px;
-	font-family: monospace;
-	background-color: #fffae6;
 	margin-bottom: 0;
 }
 
@@ -108,9 +105,6 @@ y, yy {
 	background-color: #fffae6;
 	height: 330px;
 	overflow-y: auto;
-}
-
-.algorithm-div {
 	font-size: 12px;
 	padding: 8px;
 }
@@ -153,7 +147,7 @@ y, yy {
 	stroke-width: 2;
 }
 
-.tooltip-inner {
+.tooltip-inner, .introjs-tooltiptext ul {
 	font-family: monospace;
 }
 
@@ -173,22 +167,24 @@ y, yy {
 	text-align: center;
 }
 
-
-.first-css, bgb {
+bgb {
 	color: white;
 	background-color: black;
 	padding: 2px 4px;
 	border-radius: 3px;
 	font-family: monospace;
 }
-</style>
 
+#positionBox {
+	padding: 3px 8px;
+}
+</style>
 </head>
 <body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		insertAtPositionInSLLReady();
-	});
+	<script type="text/javascript">
+		$(document).ready(function() {
+			insertAtPositionInSLLReady();
+		});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
@@ -203,25 +199,23 @@ y, yy {
 							<span id="firstVal" class="ct-fonts position-css" style="color: darkslategrey;">NULL</span>
 						</div>
 					</div>
+					<div class="col-xs-3 col-xs-offset-1 text-center padding0 opacity00" id="posDec">
+						<div style="margin-top: 15px;"><b>position = <span class="box-border position-css" id="positionBox"> 
+							<span class="opacity00 position-css" id="posVal">12</span></span></b>
+						</div>
+					</div>
 				</div>
 				<div class="col-xs-12 margin-top25" id="dynamicNodes"></div>
 				<div class="col-xs-12 margin-top25" id="tempDynamicNodes" style="margin-bottom: 15px;"></div>
 			</div>
 			<div class="col-xs-7" style="padding-right: 0px">
 				<div class="col-xs-12 padding0" id="codeAndAlgorithmDiv">
-					<div class="col-xs-6 padding5">
-						<div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv">
-						</div>
-					</div>
-					<div class="col-xs-6 padding5">
-						<pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre>
-					</div>
+					<div class="col-xs-6 padding5"><div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv"></div></div>
+					<div class="col-xs-6 padding5"><pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 text-center margin-top25">
-			<span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span>
-		</div>
+		<div class="col-xs-12 text-center margin-top25"><span class="btn btn-warning text-center opacity00" id="restartBtn">Restart</span></div>
 	</div>
 </body>
 </html>
