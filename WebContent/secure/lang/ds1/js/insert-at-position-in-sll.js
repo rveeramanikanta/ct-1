@@ -38,7 +38,7 @@ function createDynamicNodes(id, nodeNum) {	//node
 					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
 					+ '</span></div></div></div>');
-	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
+	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data hold user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
 }
 
@@ -122,10 +122,10 @@ function initIntroJS() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 					switch(animateStep) {
 						case 'fstDeclaration':
-							animatedTooltip('#firstDiv', "bottom", "first stores the begining of the linked list");
+							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
 							zoomInEffect('#firstNode', function() {
 								$('.introjs-tooltip').removeClass('hide');
-								text = '<span id="l1">Let us store the <yy class="ct-fonts">begining of the linked list</yy> in a pointer variable'
+								text = '<span id="l1">Let us store the <yy class="ct-fonts">beginning of the linked list</yy> in a pointer variable'
 										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts">Linked list</yy> is'
 										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts grn">NULL</yy>.';
 								typing('.introjs-tooltiptext', text, function() {
@@ -163,8 +163,8 @@ function initIntroJS() {
 									algorithmAnim('#ul2', '#l8', function() {
 										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 											$('.introjs-tooltiptext').append('<ul><li></li></ul>');
-											text = '<span id="l9">Let us initialize two tempary nodes (<yy class="ct-fonts">prevPos</yy> and '
-													+ '<yy class="ct-fonts">last</yy>) with <bgb>first</bgb> value.</span>';
+											text = '<span id="l9">Let us initialize two temporary nodes (<yy class="ct-fonts">prevPos</yy> and '
+													+ '<yy class="ct-fonts">last</yy>) with the <bgb>first</bgb> value.</span>';
 											typing('.introjs-tooltiptext li', text, function() {
 												dynamicTempNodes(2);
 												dynamicTempNodes(3);
@@ -207,7 +207,7 @@ function initIntroJS() {
 										$('#algorithmDiv').addClass('z-index10000');
 										$('#l9').css({'background-color' : 'yellow'});
 										$('.introjs-tooltiptext').append('<ul><li></li></ul>');
-										text = 'Let us initialize two tempary nodes (<y>prevPos</y> and <y>last</y>) with <bgb>first</bgb> value.';
+										text = 'Let us initialize two temporary nodes (<y>prevPos</y> and <y>last</y>) with the <bgb>first</bgb> value.';
 										typing('.introjs-tooltiptext li', text, function() {
 											tempararyNodeDec(1, function() {
 												tempararyNodeDec(2, function() {
@@ -253,7 +253,7 @@ function initIntroJS() {
 											+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"></i></span> &emsp;</span>');
 								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 								transWithZoomInEffect('#l1', '#fstCreation', function() {
-									animatedTooltip('#helpText', "bottom", "first stores the begining of the linked list");
+									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
 									nextBtnWithoutCalling('#fstCreation', function() {
 										introNextSteps('#animationDiv', 'ifPosZeroStep', 'show');
 										introjs.nextStep();
@@ -577,7 +577,7 @@ function frLoopAnim1() {
 
 function posZeroAnim() {
 	text = '<span id="l2">Let us consider the <y>steps</y> involved in <yy class="ct-fonts">adding</yy> a new '
-		+ '<yy class="ct-fonts">node</yy> at particular <yy class="ct-fonts brn">position</yy> for a given value.</span>';
+		+ '<yy class="ct-fonts">node</yy> at a particular <yy class="ct-fonts brn">position</yy> for a given value.</span>';
 	typing('.introjs-tooltiptext', text, function() {
 		$('#algorithmDiv').append(text);
 		$('#algorithmDiv #l2').addClass('opacity00');
@@ -589,7 +589,7 @@ function posZeroAnim() {
 				fromEffectWithTweenMax('#l3 .one', '#posVal', true, function() {
 					animatedTooltip('#positionBox', "bottom", "Position of the node");
 					$('.introjs-tooltiptext li').append('<div id="appendText"></div>');
-					text1 = ' We can\'t <yy class="ct-fonts">insert</yy> any node if <yy class="ct-fonts brn">position</yy> is '
+					text1 = ' We can\'t <yy class="ct-fonts">insert</yy> any node if the <yy class="ct-fonts brn">position</yy> is '
 							+ '<yy class="ct-fonts brn"><span class="grn">less than or equal to</span> zero</yy>.<br>Print'
 							+ ' <yy class="ct-fonts brn">No such position in SLL. So insertion is not possible</yy>.</span></li>';
 					typing('#appendText', text1, function() {

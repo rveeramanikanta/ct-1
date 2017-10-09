@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Delete at End Algorithm</title>
+<title>Search in SLL</title>
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -20,9 +20,15 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/daeis.min.js"></script>
-
+<script src="/secure/lang/ds/js-min/sis.min.js"></script>
 <style type="text/css">
+
+/* .tooltip-inner {
+  color: white;
+  background-color: #003399;
+  border: 2px solid white;
+  box-shadow: 1px 1px 1px 3px white;
+} */
 
 .introjs-tooltip {
 	min-width: 410px;
@@ -43,12 +49,20 @@
 	margin-top: 30px;
 }
 
+.margin-top-20 {
+	margin-top: 25px;
+}
+
 .margin-top-5 {
 	margin-top: 5px;
 }
 
 .margin-bottom-25 {
 	margin-bottom: 30px;
+}
+
+.margin-bottom-20 {
+	margin-bottom: 25px;
 }
 
 .margin-top-15 {
@@ -221,6 +235,13 @@ y {
 	color: yellow;
 }
 
+.y {
+	font-family: monospace;
+	font-weight: bold;
+	background-color: yellow; 
+}
+
+
 bwBg {
 	color: white;
 	font-weight: bold;
@@ -246,7 +267,7 @@ bwBg {
 .padding5 {
 	padding: 5px;
 }
-	
+
 </style>
 </head>
 <body>
@@ -254,15 +275,15 @@ bwBg {
 <script type="text/javascript">
 	$(document).ready(function() {
 		//$('.opacity00').removeClass('opacity00');
-		deleteAtEndNodeAnimation();
+		searchInSll();
 	});
 </script>
 
-	<div class='col-xs-12 padding00'>
+<div class='col-xs-12 padding00'>
 		<div class='col-xs-12 padding00'>
 			<div class="ct-box-main">
 				<div class='text-center'>
-					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtEnd() in Singly Linked List</h4>
+					<h4 class='label ct-demo-heading' id='headingDiv'>search() in Singly Linked List</h4>
 				</div>
 			</div>
 			
@@ -272,7 +293,14 @@ bwBg {
 						<div class='col-xs-12 margin-top-15 padding00'>
 							<div class='col-xs-12 box-border' id='animationDiv'>
 								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
-									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+									<div class="col-xs-12 padding00">
+										<div class="col-xs-10" id="countValDiv">
+											<div class="col-xs-3 text-center opacity00" id="countVar">count = <span id="count" class="position">0</span></div>
+											<div class="col-xs-5 text-center opacity00" id="keyVar">key = <span id="key" class="position">10</span></div>
+										</div>
+									</div>
+								
+									<div class="col-xs-12 padding00 margin-top-20" id="csllNodes">
 										<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
 											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
 												<div class="col-xs-12 box1 padding00 tooltopClass zindex" id="firstDiv">
@@ -281,35 +309,36 @@ bwBg {
 												<div class="col-xs-12 padding00">
 												<div class="col-xs-6 padding00 text-center">
 													<span id="dataAddress1" class="position  ct-brown-color ct-fonts opacity00">2318</span>
-												</div>
+		</div>
+											</div>
+										</div>
+										<div class="col-xs-10 text-center" id="searchStatus">
+											<div class = "col-xs-4 status opacity00" id="status1">
+												<i class="fa fa-times"></i>
+											</div>
+											<div class = "col-xs-3 status opacity00" id="status2">
+												<i class="fa fa-times"></i>
+											</div>
+											<div class = "col-xs-5 status opacity00" id="status3">
+												<i class="fa fa-times"></i>
 											</div>
 										</div>
 										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
 									</div>
-									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
+									<div class="col-xs-12 margin-top-20 padding00" id="declareNodes"></div>
 								</div>
 							</div>
 						</div>
-						<!-- <div class='col-xs-12'>
-							<div class='col-xs-12 padding00 margin-top-15'>
-								<pre class="creamPreTab opacity00 " id="parentPre"></pre>
-							</div>
-						</div> -->
 					</div>
 					<div class='col-xs-7 margin-top-15'>
 						<div class='col-xs-12 box-border padding00' id="mainDiv">
 							<div class='col-xs-6' style='padding: 5px;'>
 								<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'></div>
 							</div>
-							<div class='col-xs-6 padding00''>
+							<div class='col-xs-6 padding00'>
 								<pre class="creamPreTab opacity00 box-border" id="parentPre"></pre>
 							</div>
 						</div>
-					
-						<!-- <div class='col-xs-12 margin-top-15'>
-							<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>

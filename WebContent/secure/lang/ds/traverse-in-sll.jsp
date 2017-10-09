@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Delete at End Algorithm</title>
+<title>Traverse in SLL</title>
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -20,8 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/daeis.min.js"></script>
-
+<script src="/secure/lang/ds/js-min/tis.min.js"></script>
 <style type="text/css">
 
 .introjs-tooltip {
@@ -43,12 +42,20 @@
 	margin-top: 30px;
 }
 
+.margin-top-20 {
+	margin-top: 25px;
+}
+
 .margin-top-5 {
 	margin-top: 5px;
 }
 
 .margin-bottom-25 {
 	margin-bottom: 30px;
+}
+
+.margin-bottom-20 {
+	margin-bottom: 25px;
 }
 
 .margin-top-15 {
@@ -221,6 +228,13 @@ y {
 	color: yellow;
 }
 
+.y {
+	font-family: monospace;
+	font-weight: bold;
+	background-color: yellow; 
+}
+
+
 bwBg {
 	color: white;
 	font-weight: bold;
@@ -246,7 +260,7 @@ bwBg {
 .padding5 {
 	padding: 5px;
 }
-	
+
 </style>
 </head>
 <body>
@@ -254,15 +268,15 @@ bwBg {
 <script type="text/javascript">
 	$(document).ready(function() {
 		//$('.opacity00').removeClass('opacity00');
-		deleteAtEndNodeAnimation();
+		traverseInSll();
 	});
 </script>
 
-	<div class='col-xs-12 padding00'>
+<div class='col-xs-12 padding00'>
 		<div class='col-xs-12 padding00'>
 			<div class="ct-box-main">
 				<div class='text-center'>
-					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtEnd() in Singly Linked List</h4>
+					<h4 class='label ct-demo-heading' id='headingDiv'>traverse() in Singly Linked List</h4>
 				</div>
 			</div>
 			
@@ -272,7 +286,13 @@ bwBg {
 						<div class='col-xs-12 margin-top-15 padding00'>
 							<div class='col-xs-12 box-border' id='animationDiv'>
 								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
-									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+									<div class="col-xs-12 padding00">
+										<div class="col-xs-12 padding00" id="traverseValDiv">
+											<div class="col-xs-12 opacity00 padding00" id="traverseVar">elements in SLL = <span id="ndata1"></span><span id="ndata2"></span><span id="ndata3"></span><span id="ndata4"></span></div>
+										</div>
+									</div>
+								
+									<div class="col-xs-12 padding00 margin-top-20" id="csllNodes">
 										<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
 											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
 												<div class="col-xs-12 box1 padding00 tooltopClass zindex" id="firstDiv">
@@ -286,15 +306,10 @@ bwBg {
 										</div>
 										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
 									</div>
-									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
+									<div class="col-xs-12 margin-top-20 padding00" id="declareNodes"></div>
 								</div>
 							</div>
 						</div>
-						<!-- <div class='col-xs-12'>
-							<div class='col-xs-12 padding00 margin-top-15'>
-								<pre class="creamPreTab opacity00 " id="parentPre"></pre>
-							</div>
-						</div> -->
 					</div>
 					<div class='col-xs-7 margin-top-15'>
 						<div class='col-xs-12 box-border padding00' id="mainDiv">
@@ -305,11 +320,6 @@ bwBg {
 								<pre class="creamPreTab opacity00 box-border" id="parentPre"></pre>
 							</div>
 						</div>
-					
-						<!-- <div class='col-xs-12 margin-top-15'>
-							<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>

@@ -145,7 +145,7 @@ y, yy {
 	stroke-width: 2;
 }
 
-.tooltip-inner, .introjs-tooltiptext ul {
+.tooltip-inner {
 	font-family: monospace;
 }
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Delete at End Algorithm</title>
+<title>Count in SLL</title>
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -20,9 +20,9 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/daeis.min.js"></script>
-
+<script src="/secure/lang/ds/js-min/cis.min.js"></script>
 <style type="text/css">
+
 
 .introjs-tooltip {
 	min-width: 410px;
@@ -43,12 +43,20 @@
 	margin-top: 30px;
 }
 
+.margin-top-20 {
+	margin-top: 25px;
+}
+
 .margin-top-5 {
 	margin-top: 5px;
 }
 
 .margin-bottom-25 {
 	margin-bottom: 30px;
+}
+
+.margin-bottom-20 {
+	margin-bottom: 25px;
 }
 
 .margin-top-15 {
@@ -221,6 +229,13 @@ y {
 	color: yellow;
 }
 
+.y {
+	font-family: monospace;
+	font-weight: bold;
+	background-color: yellow; 
+}
+
+
 bwBg {
 	color: white;
 	font-weight: bold;
@@ -246,7 +261,7 @@ bwBg {
 .padding5 {
 	padding: 5px;
 }
-	
+
 </style>
 </head>
 <body>
@@ -254,15 +269,15 @@ bwBg {
 <script type="text/javascript">
 	$(document).ready(function() {
 		//$('.opacity00').removeClass('opacity00');
-		deleteAtEndNodeAnimation();
+		countInSll();
 	});
 </script>
 
-	<div class='col-xs-12 padding00'>
+<div class='col-xs-12 padding00'>
 		<div class='col-xs-12 padding00'>
 			<div class="ct-box-main">
 				<div class='text-center'>
-					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtEnd() in Singly Linked List</h4>
+					<h4 class='label ct-demo-heading' id='headingDiv'>count() in Singly Linked List</h4>
 				</div>
 			</div>
 			
@@ -272,7 +287,14 @@ bwBg {
 						<div class='col-xs-12 margin-top-15 padding00'>
 							<div class='col-xs-12 box-border' id='animationDiv'>
 								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
-									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+									<div class="col-xs-12">
+										<div class="col-xs-2"></div>
+										<div class="col-xs-10" id="sumValDiv">
+											<div class="col-xs-3 text-center opacity00" id="sumVar">sum = <span id="sum" class="position">0</span></div>
+										</div>
+									</div>
+								
+									<div class="col-xs-12 padding00 margin-top-20" id="csllNodes">
 										<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
 											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
 												<div class="col-xs-12 box1 padding00 tooltopClass zindex" id="firstDiv">
@@ -286,7 +308,7 @@ bwBg {
 										</div>
 										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
 									</div>
-									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
+									<div class="col-xs-12 margin-top-20 padding00" id="declareNodes"></div>
 								</div>
 							</div>
 						</div>

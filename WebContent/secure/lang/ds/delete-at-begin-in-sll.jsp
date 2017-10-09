@@ -17,6 +17,7 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
+<script src="/js/jquery.scrollTo.js"></script>
 <script src="/secure/lang/ds/js-min/dabis.min.js"></script>
 
 <title>Delete-At-Begin-Node-in-SLL</title>
@@ -24,7 +25,8 @@
 <style type="text/css">
 
 .introjs-tooltip {
-	min-width: 380px;
+	min-width: 410px;
+	overflow-y: auto;
 }
 
 .introjs-duplicate-nextbutton {
@@ -82,12 +84,10 @@
 
 .ct-green-color, g{
 	color: green;
-	font-weight: bold;
 }
 
 .ct-brown-color, brown{
 	color: brown;
-	font-weight: bold;
 }
 
 .error-text {
@@ -109,18 +109,22 @@
 	border-radius: 6px;
 }
 
-.algorithm-steps-Div {
-	min-height: 230px;
+.algorithm-steps-Div, #parentPre {
+	height: 250px;
 	background-color: #fffae6;
+	overflow-y: auto; 
 }
 
-.box {
+.box, .box1 {
 	min-height: 24px;
 	text-align: center;
 	border-radius: 6px;
 	border: 1px solid green;
 }
 
+.box1 {
+	border: 1px solid gray;
+}
 
 .div-border {
 	margin: 0;
@@ -208,7 +212,6 @@ div, span {
 }
 
 blue {
-	font-weight: bold;
 	color: blue;
 }
 
@@ -218,18 +221,30 @@ y {
 	color: yellow;
 }
 
-bgw {
+bwBg {
 	color: white;
 	font-weight: bold;
 	border-radius: 4px;
 	font-family: monospace;
-	background-color: green;
-	padding: 4px;
+	background-color: black;
+	padding: 2px 4px;
+}
+
+#animationDiv {
+	margin-top: 35px;
 }
 
 .ui-effects-transfer {
 	border: 1px solid blue;
 	z-index: 99999999 !important;
+}
+
+.zindex {
+	z-index: 1000000 !important;
+}
+
+.padding5 {
+	padding: 5px;
 }
 </style>
 </head>
@@ -242,58 +257,68 @@ bgw {
 	});
 </script>
 
-<div class='col-xs-12'>
-	<div class='col-xs-12 padding00'>
-		<div class="ct-box-main">
-			<div class='margin-top-25 text-center'>
-				<h4 class='label ct-demo-heading' id='headingDiv'>DeleteAtBegin() in Singly Linked List</h4>
-			</div>
-		</div>
-		<div class='buttons-div'>
-			<button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button>
-		</div>
-		<div class='col-xs-12 margin-top-25' id='totalDiv'>
-			<div class='col-xs-12'>
-				<div class='col-xs-4 col-xs-offset-1 padding00'>
-					<div class='col-xs-12 padding00 margin-top-15'>
-						<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'>
-						</div>
-					</div>
+<div class='col-xs-12 padding00'>
+		<div class='col-xs-12 padding00'>
+			<div class="ct-box-main">
+				<div class='text-center'>
+					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtBegin() in Singly Linked List</h4>
 				</div>
-				<div class='col-xs-6'>
-					<div class='col-xs-12 margin-top-15 padding00'>
-						<div class='col-xs-12 box-border' id='animationDiv'>
-							<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
-								<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
-									<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
-										<div class="text-center col-xs-12 padding00 ct-green-color">first</div>
-										<div class="col-xs-12 box padding00" id="firstDiv">
-											<span  id="firstVal" class="position ct-green-color">NULL</span>
-										</div>
-										<div class="col-xs-12 padding00">
-											<div class="col-xs-6 padding00 text-center">
-												<span id="dataAddress1" class="position  ct-brown-color ct-fonts opacity00">2318</span>
+			</div>
+			
+			<div class='col-xs-12 margin-top-5' id='totalDiv'>
+				<div class='col-xs-12 padding00'>
+					<div class='col-xs-5 padding00'>
+						<div class='col-xs-12 margin-top-15 padding00'>
+							<div class='col-xs-12 box-border' id='animationDiv'>
+								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
+									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+										<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
+											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
+												<div class="col-xs-12 box1 padding00 tooltopClass zindex" id="firstDiv">
+													<span  id="firstVal" class="position">NULL</span>
+												</div>
+												<div class="col-xs-12 padding00">
+												<div class="col-xs-6 padding00 text-center">
+													<span id="dataAddress1" class="position  ct-brown-color ct-fonts opacity00">2318</span>
+												</div>
 											</div>
 										</div>
+										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
 									</div>
-									<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
+									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
 								</div>
-								<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
 							</div>
 						</div>
+						<!-- <div class='col-xs-12'>
+							<div class='col-xs-12 padding00 margin-top-15'>
+								<pre class="creamPreTab opacity00 " id="parentPre"></pre>
+							</div>
+						</div> -->
+					</div>
+					<div class='col-xs-7 margin-top-15'>
+						<div class='col-xs-12 box-border padding00' id="mainDiv">
+							<div class='col-xs-6' style='padding: 5px;'>
+								<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'></div>
+							</div>
+							<div class='col-xs-6 padding00''>
+								<pre class="creamPreTab opacity00 box-border" id="parentPre"></pre>
+							</div>
+						</div>
+					
+						<!-- <div class='col-xs-12 margin-top-15'>
+							<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'>
+							</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
-			<div class='col-xs-12'>
-				<div class='col-xs-4 col-xs-offset-1 padding00'>
-					<div class='col-xs-12 padding00 margin-top-15'>
-						<pre class="creamPreTab opacity00 " id="parentPre"></pre>
-					</div>
-				</div>
+			<div class='col-xs-12 text-center'>
+				<div class='buttons-div'>
+					<button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button>
+				</div>	
 			</div>
 		</div>
 	</div>
-</div>
 
 </body>
-</html>
+</html>.

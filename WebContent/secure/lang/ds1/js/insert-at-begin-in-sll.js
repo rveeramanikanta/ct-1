@@ -5,6 +5,7 @@ function insertAtBeginInSLLReady() {
 	createDynamicNodes('#fstExplain', 0);
 	createDynamicNodes('#fstExplain', 2);
 	svgAppend("#animationDiv");
+	
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
 	initIntroJS();
@@ -42,7 +43,7 @@ function createDynamicNodes(id, nodeNum) {	//node
 					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
 					+ '</span></div></div></div>');
-	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
+	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data hold user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
 }
 
@@ -128,7 +129,7 @@ function initIntroJS() {
 				$('#algorithmDiv').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#codeAndAlgorithmDiv').addClass('box-border');
-					text = 'Let us learn about adding a <bl>node</bl> at <bl>begin</bl> to a <bl>Single Linked List(SLL)</bl>. &emsp;';
+					text = 'Let us learn about adding a <bl>node</bl> at <bl>beginning</bl> of the <bl>Single Linked List(SLL)</bl>. &emsp;';
 					typing('#algorithmDiv', text, function() {
 						nextBtnWithoutCalling('#algorithmDiv', function() {
 							introjs.nextStep();
@@ -143,12 +144,12 @@ function initIntroJS() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 					switch(animateStep) {
 						case 'fstDeclaration':
-							animatedTooltip('#firstDiv', "bottom", "first stores the begining of the linked list");
+							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
 							zoomInEffect('#firstNode', function() {
 								$('.introjs-tooltip').removeClass('hide');
-								text = '<span id="l2">Let us store the <yy class="ct-fonts">begining of the linked list</yy> in a pointer variable'
+								text = '<span id="l2">Let us store the <yy class="ct-fonts">beginning of the linked list</yy> in a pointer variable'
 										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts">Linked list</yy> is'
-										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts one">NULL</yy>.';
+										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts grn">NULL</yy>.';
 								typing('.introjs-tooltiptext', text, function() {
 									$('#algorithmDiv').removeClass('opacity00').append('<ul style="list-style-type: circle" id="ul1"></ul>');
 									algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 0, 'fstCreation');
@@ -166,13 +167,13 @@ function initIntroJS() {
 						break;
 						case 'fstToTmpNxt':
 							text = '<spna id="l4"><yy class="ct-fonts">fetch</yy> the <bgb>first</bgb> <yy class="ct-fonts">node</yy> for the '
-									+ 'newly created <yy class="ct-fonts one">address</yy> in that <yy class="ct-fonts">node\'s</yy>'
-									+ ' <yy class="ct-fonts one">next pointer variable<yy>.</span>';
+									+ '<yy class="ct-fonts">newly created</yy> <yy class="ct-fonts grn">address</yy> in that <yy class="ct-fonts">'
+									+ 'node\'s</yy> <yy class="ct-fonts grn">next</yy> <yy class="ct-fonts">pointer variable</yy>.</span>';
 							typing('.introjs-tooltiptext', text, function() {
 								$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
 								$('#algorithmDiv #l4').addClass('opacity00');
 								$('#algorithmDiv #l4 yy').addClass('ct-blue-color').removeClass('ct-fonts');
-								$('#algorithmDiv #l4 .one').removeClass('ct-blue-color').addClass('ct-green-color');
+								$('#algorithmDiv #l4 .grn').removeClass('ct-blue-color').addClass('ct-green-color');
 								$('#step1').after('\n\t<span class="opacity00" id="fstToTmpNxt">temp -> next = first; &emsp;</span>');
 								$('#codeDiv').scrollTo('#insertAtBeginMethod span:last', 300);
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
@@ -188,7 +189,7 @@ function initIntroJS() {
 							});
 						break;
 						case 'tempToFst':
-							text = '<span id="l5">Store the <yy class="ct-fonts">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
+							text = '<span id="l5">Store the <yy class="ct-fonts grn">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
 									+ ' in the <bgb>first</bgb> variable.</span>';
 							typing('.introjs-tooltiptext', text, function() {
 								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
@@ -197,6 +198,7 @@ function initIntroJS() {
 											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
 											$('#algorithmDiv #l5').addClass('opacity00');
 											$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
+											$('#algorithmDiv .grn').removeClass('ct-blue-color').addClass('ct-green-color');
 											$('#algorithmDiv').addClass('z-index10000');
 											$('#algorithmDiv li:last').removeClass('opacity00');
 											transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
@@ -231,7 +233,7 @@ function initIntroJS() {
 											+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"></i></span> &emsp;</span>');
 								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 								transWithZoomInEffect('#l2', '#fstCreation', function() {
-									animatedTooltip('#helpText', "bottom", "first stores the begining of the linked list");
+									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
 									nextBtnWithoutCalling('#fstCreation', function() {
 										introNextSteps('#animationDiv', 'fstListCreation', 'show');
 										introjs.nextStep();
@@ -248,9 +250,9 @@ function initIntroJS() {
 									createNodeMethod();
 									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 										if (lang == 'c') {
-											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list"><g>struct list</g></span>));');
+											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list" class="ct-green-color">struct list</span>));');
 										} else if (lang == 'cpp') {
-											$('#allocMemory').html('temp = <span id="list"><g>new list</g>;</span>');
+											$('#allocMemory').html('temp = <span id="list" class="ct-green-color">new list;</span>');
 										}
 										$('.introjs-tooltip').removeClass('hide');
 										text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
@@ -313,14 +315,15 @@ function initIntroJS() {
 	});
 	introjs.start();
 }
+
 function secondNdeAnim() {
 	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
 	$('#algorithmDiv').addClass('z-index10000');
 	$('#l3Div').css({'background-color' : 'yellow'});
 	$('.introjs-tooltiptext').append('<ol></ol>');
 	dynamicTempNodes(2);
-	text = '<li>Allocate <y>memory</y> for the new node (<y>address</y> of the new node is stored in'
-			+ ' <y>temp</y>) and store the given value in <y>data</y>.</li>';
+	text = '<li>Allocate <y>memory</y> for the new node (<y>address</y> of the new node is stored in <y>temp</y>) and store'
+				+ ' the given value in <y>data</y>.</li>';
 	typing('.introjs-tooltiptext ol', text, function() {
 		nodeAnim(2, function() {
 			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
@@ -343,9 +346,12 @@ function secondNdeAnim() {
 											fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, -350, function() {
 												$('#line1').remove();
 												svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv2', 'line1', function() {
-													$('#l5').css({'background-color' : ''});	
-													$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="rearrangeNode()">'
-																+ ' Next &#8594;</a>');
+													$('#l5').css({'background-color' : ''});
+													$('.introjs-tooltiptext ol').append('<br><div id="appendText"></div>');
+													typing('#appendText', 'Now rearrange the nodes.', function() {
+														$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" '
+																		+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
+													});
 												});
 											});
 										});
@@ -388,24 +394,24 @@ function rearrangeNode() {
 
 function validationAnim() {
 	$('.introjs-tooltiptext').append('<br><br><div id="l3Div"><div>')
-	text = 'Allocate <yy class="ct-fonts one">memory</yy> for the new node (<yy class="ct-fonts one">address</yy> of the new node is stored in'
-			+ ' <yy class="ct-fonts one">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
+	text = 'Allocate <yy class="ct-fonts grn">memory</yy> for the new node (<yy class="ct-fonts grn">address</yy> of the new node is stored in'
+			+ ' <yy class="ct-fonts grn">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
 	typing('#l3Div', text, function() {
 		nodeAnim(1, function() {
-			$('#algorithmDiv').append('<span id="l3Span" class="opacity00">' 
-							+ $('.introjs-tooltiptext #l3Span').html() + '</span>');
-			$('#algorithmDiv yy').not('.one').addClass('ct-blue-color').removeClass('ct-fonts');
-			$('#algorithmDiv .one').addClass('ct-green-color').removeClass('ct-fonts ct-blue-color');
+			$('#algorithmDiv').append('<span id="l3Span" class="opacity00">' + $('.introjs-tooltiptext #l3Span').html() + '</span>');
+			$('#algorithmDiv #l3Span').after('<ul style="list-style-type: circle" id="ul2"><li class="opacity00"><span id="l3Div" class="opacity00">'
+											+ $('.introjs-tooltiptext #l3Div').html() + '</span></li></ul>');
+			$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
+			$('#algorithmDiv .grn').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
 			$('#algorithmDiv y').addClass('ct-brown-color');
 			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 				$('#algorithmDiv').addClass('z-index10000');
 				transferEffect('.introjs-tooltiptext #l3Span', '#algorithmDiv #l3Span', function() {
-					$('#algorithmDiv #l3Span').after('<ul style="list-style-type: circle" id="ul2"><li><span id="l3Div" class="opacity00">'
-								+ $('.introjs-tooltiptext #l3Div').html() + '</span></li></ul>');
-					$('#algorithmDiv yy').not('.one').addClass('ct-blue-color').removeClass('ct-fonts');
-					$('#algorithmDiv .one').addClass('ct-green-color').removeClass('ct-fonts');
+					/*$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
+					$('#algorithmDiv .grn').addClass('ct-green-color').removeClass('ct-fonts ct-blue-color');*/
+					$('#ul2 li').removeClass('opacity00')
 					transferEffect('.introjs-tooltiptext #l3Div', '#algorithmDiv #l3Div', function() {
-						$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
+						//$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
 						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
 						insertAtBeginMethod();
 						$('.introjs-nextbutton').show();

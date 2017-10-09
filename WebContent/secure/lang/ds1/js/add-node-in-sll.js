@@ -1,11 +1,12 @@
 var lang;
 function addNodesInSLLReady() {
 	dynamicTempNodes(1);
-	lang = getURLParameter("lang");
-	lang = (lang == undefined) ? "c" : lang;
 	createDynamicNodes('#fstExplain', 0);
 	createDynamicNodes('#dynamicNodes', 1);
+	lang = getURLParameter("lang");
 	svgAppend("#animationDiv");
+	
+	lang = (lang == undefined) ? "c" : lang;
 	initIntroJS();
 }
 
@@ -41,7 +42,7 @@ function createDynamicNodes(id, nodeNum) {	//node
 					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
 					+ '</span></div></div></div>');
-	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
+	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data hold user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
 }
 
@@ -162,10 +163,10 @@ function initIntroJS() {
 						break;
 						case 'fstDeclaration':
 							$('#node0').css({'opacity' : '0.5'});
-							animatedTooltip('#firstDiv', "bottom", "first stores the begining of the linked list");
+							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
 							zoomInEffect('#firstNode', function() {
 								$('.introjs-tooltip').removeClass('hide');
-								text = '<span id="l2">Let us store the <yy class="ct-fonts">begining of the linked list</yy> in a pointer variable'
+								text = '<span id="l2">Let us store the <yy class="ct-fonts">beginning of the linked list</yy> in a pointer variable'
 										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts">Linked list</yy> is'
 										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts one">NULL</yy>.';
 								typing('.introjs-tooltiptext', text, function() {
@@ -247,7 +248,7 @@ function initIntroJS() {
 										+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"	></i></span> &emsp;</span>');
 							$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 							transWithZoomInEffect('#l2', '#fstCreation', function() {
-								animatedTooltip('#helpText', "top", "first stores the begining of the linked list");
+								animatedTooltip('#helpText', "top", "first stores the beginning of the linked list");
 								nextBtnWithoutCalling('#fstCreation', function() {
 									introNextSteps('#animationDiv', 'fstListCreation', 'show');
 									introjs.nextStep();
@@ -368,7 +369,7 @@ function secondAndThirdNodesAnim(val, callBackFunction) {
 						$('#tempame' + (val -1)).text('lastNode');
 						zoomInEffect('#tempNodeParent' + (val -1), function() {
 							fromEffectWithTweenMax('#firstVal', '#tempNode' + (val -1), true, function() {
-								$('#tempDiv' + (val - 1)).attr({'data-original-title' : 'Address of the begining of the linked list'});
+								$('#tempDiv' + (val - 1)).attr({'data-original-title' : 'Address of the beginning of the linked list'});
 								svgAnimatingLineTopAndBottom('#tempNodeParent' + (val -1), '#nextDiv1', 'line12', true, function() {
 									if (typeof callBackFunction === "function") {
 										callBackFunction();
@@ -624,7 +625,6 @@ function eventValidation(val) {
 		secondNdeAnim(val);
 	}
 }
-
 
 function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
 	if (flag) {

@@ -1,586 +1,14 @@
-var lang, introjs;
-
-function insertAtBeginInSllReady() {
+var lang;
+function insertAtBeginInSLLReady() {
+	dynamicTempNodes(1);
 	createDynamicNodes('#dynamicNodes', 1);
-	createDynamicNodes('#dupNode', 2);
+	createDynamicNodes('#fstExplain', 0);
+	createDynamicNodes('#fstExplain', 2);
+	svgAppend("#animationDiv");
+	
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
-	svgAppend("#animationDiv");
-	svgMarkerAppend("arrow");
 	initIntroJS();
-}
-
-function createDynamicNodes(selector, nodeNum) {	//node
-	var randomAddress = getRandomInt(1000, 5000);
-	$(selector).append('<div class="col-xs-2 nodes opacity00 position-css" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
-					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 ct-blue-color ct-fonts padding0 text-center">'
-					+ ' data</div><div class="ct-green-color ct-fonts text-center">next</div></div>'
-					+ ' <div id="nodedata' + nodeNum + '"><div id="dataDiv' + nodeNum + '"'
-					+ ' class="div-border left-radius col-xs-6 data-div"><span id="data' + nodeNum +'"'
-					+ ' class="data-span ct-blue-color ct-fonts position-css" style="top: 0px; left: 0px;">' + nodeNum + '</span></div>'
-					+ ' <div id="nextDiv' + nodeNum +'" class="position-css div-border right-radius col-xs-6 next-div">'
-					+ ' <span id="next' + nodeNum +'" class="position-css next-span ct-green-color ct-fonts position-css">NULL</span></div></div>'
-					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
-					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
-					+ '</span></div></div></div>');
-}
-
-function getRandomInt(min, max) { //random address
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function insertAtBgnMthd() {
-	$('#insertBeginMthd').append('<span id="createMthdNme"></span>\n'
-								+ '\t<span id="tmpDec">node temp;</span>\n' 
-								+ '\t<span id="createMthdCall"></span>\n'
-								+ '\t<span id="tmpNxtNl">temp -> next = NULL;</span>\n'
-								+ '\t<span id="rtnTmp">return temp;</span>\n'
-								+ '<span id="createClose">}</span>\n\n'
-								+ '<span id="mthdName"></span>\n'
-								+ '\t<span id="mthdTmpDec">node temp;</span>\n'
-								+ '\t<span id="createCall">' + $('#l1').html() + '</span>\n'
-								+ '\t<span id="tmpData">temp -> data = x;</span>\n'
-								+ '\t<span id="fstToTmpNxt">' + $("#l2").html() + '</span>\n'
-								+ '\t<span id="tmpToFst">' + $("#l3").html() + '</span>'
-								+ '\n<span id="insrtMthdClose">}</span>\n\n');
-	if (lang == 'c') {
-		$('#mthdName').html('node <g>insertAtBegin(node first, int x) {</g>');
-		$('#createMthdNme').html('node <g>createNode()</g> {');
-		$('#createMthdCall').html('temp = (node)<brn>malloc(sizeof(struct list));</brn>');
-	} else if (lang == 'cpp') {
-		$('#mthdName').html('void Sll::<g>insertAtBegin(int x)</g> {');
-		$('#createMthdNme').html('node Sll::<g>createNode()</g> {');
-		$('#createMthdCall').html('temp = <brn>new list;</brn>');
-	}
-	$('#insertBeginMthd span').addClass('position-css opacity00')
-}
-
-function initIntroJS() {
-	introjs = introJs();
-	introjs.setOptions({
-		showBullets: false,
-		showStepNumbers: false,
-		keyboardNavigation: false,
-		exitOnOverlayClick: false,
-		exitOnEsc: false,
-		steps: [ {
-					element: '#headingInSll',
-					intro: ''
-				}, {
-					element: '#animationDiv',
-					animateStep: 'firstNodeCreation',
-					intro: '',
-					tooltipClass: 'hide'
-			} ]
-	});
-	introjs.onafterchange(function(targetElement) {
-		var elementId = targetElement.id;
-		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
-		$('.introjs-helperLayer').one('transitionend', function() {
-			switch(elementId) {
-				case "animationDiv":
-					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-					switch(animateStep) {
-						case "firstNodeCreation":
-							zoomInEffect('#animationDiv', function() {
-								fstNodeAnim();
-							});
-						break;
-						case 'tmpNxtToFst':
-							$('.introjs-tooltip').removeClass('hide');
-							text = 'Now store the <y>first</y> value (i.e., <y>' + $('#firstVal').text() + '</y>) in <y>temp -> next</y>.';
-							typing('.introjs-tooltiptext', text, function() {
-								nextBtnWithFadeInEffect('#firstVal', '#next1', function() {
-									introNextSteps('#algorithmDiv', 'fstInTmpNxt');
-									$('.introjs-nextbutton').show();	
-								});
-							});
-						break;
-						case 'tmpToFst':
-							$('.introjs-tooltip').removeClass('hide');
-							text = 'Now store the <y>temp</y> value (i.e., <y>' + $('#tempNode').text() + '</y>) in <y>first</y>.';
-							typing('.introjs-tooltiptext', text, function() {
-								nextBtnWithFadeInEffect('#tempNode', '#firstVal', function() {
-									svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv1', 'line1', 'arrow', function() {
-										introNextSteps('#algorithmDiv', 'fstInTmp');
-										$('.introjs-nextbutton').show();
-									});
-								});
-							});
-						break;
-						case 'secndNodeCreation':
-							secndNdeAnim();
-						break;
-					}
-				break;
-				case 'algorithmDiv':
-					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-					switch(animateStep) {
-						case 'memoryAlloc':
-							zoomInEffect('#algorithmDiv', function() {
-								zoomInEffect('#stepNme', function() {
-									$('#algorithmSteps').append('<ul style="list-style-type:circle"></ul>');
-									text = '<li><span id="l1">Allocate <brn>dynamic memory</brn>. </span></li>';
-									typing('#algorithmSteps > ul', text, function() {
-										animationDivStep('#algorithmSteps li', 'tmpNxtToFst');
-									});
-								});
-							});
-						break;
-						case 'fstInTmpNxt':
-							$('#algorithmSteps > ul').append('<li></li>');
-							text = '<span id="l2">Store the <bl>first</bl> value in <g>temp -> next</g>. </span>';
-							algorithmStepsAnim(text, 'tmpToFst');
-						break;
-						case 'fstInTmp':
-							$('#line11').remove();
-							$('#tempNode, #tempNodeParent').addClass('opacity00');
-							$('#algorithmSteps > ul').append('<li></li>');
-							text = '<span id="l3">Store the <bl>temp</bl> value in <g>first</g>. </span>';
-							algorithmStepsAnim(text, 'secndNodeCreation');
-						break;
-					}
-				break;
-				case 'insertBeginMthd':
-					$('#line3, #dupNode #node2').remove();
-					$('#tempNodeParent').addClass('opacity00');
-					zoomInEffect('#insertBeginMthd', function() {
-						$('.introjs-tooltip').removeClass('hide');
-						text = 'Now convert the <y>algorithm</y> to <y>' + lang.toUpperCase() + ' </y> program.'
-						typing(".introjs-tooltiptext", text, function() {
-							nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-								convertingAlgorithmToCodeAnim();
-							});
-						});
-					});
-				break;
-				case 'restartBtn':
-					$('.z-index10000').removeClass('z-index10000');
-					$('.introjs-tooltip').css({'min-width': '125px'}).removeClass('hide');
-					$('#restartBtn').removeClass('opacity00');
-					typing('.introjs-tooltiptext', 'Click to restart.', function() {
-						$('#restartBtn').click(function() {
-							location.reload();
-						});
-					});
-				break;
-			}
-		});
-	});
-	introjs.start();
-	text = 'Here we will learn about <y>insertAtBegin()</y> method in <y>Single Linked List</y>.';
-	typing('.introjs-tooltiptext', text, function() {
-		$('.introjs-nextbutton').show();
-	});
-}
-
-function fstNodeAnim() {
-	$('.introjs-tooltip').removeClass('hide');
-	text = 'Let us learn how to create <y>node</y> at <y>first</y> position.<span id="appendText"></span>';
-	typing('.introjs-tooltiptext', text, function() {
-		$('#appendText').append('<ul><li id="li1" class="opacity00">First time the <y>node pointer</y> variable <y>first</y> is <y>NULL</y>.</li></ul>');
-		TweenMax.to('#li1', 0.5, {opacity: 1, onComplete: function() {
-			zoomInEffect('#firstNode', function() {
-				zoomInEffect('#firstVal', function() {
-					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-						text = '<li id="li2" class="opacity00">Let us create a <y>dynamic memory</y>. Which contains <y>two</y> fields'
-								+ ' <y>data</y> and <y>next</y>.</li>'
-								+ '<li id="li3" class="opacity00">Which returns a value and that value should be stored in <y>temp</y>.</li>';
-						$('#appendText ul').append(text);
-						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
-							TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
-								nodeCreationAnim(1, function() {
-									svgAnimatingLineTopToBottom('#tempNode', '#nextDiv1', 'line11', 'arrow', function() {
-										introNextSteps('#algorithmDiv', 'memoryAlloc');
-										$('.introjs-nextbutton').show();
-									});
-								});
-							}});
-						}});
-					});
-				});
-			});
-		}});
-	});
-}
-
-function secndNdeAnim() {
-	$('.introjs-tooltip').removeClass('hide');
-	text = 'Let us insert another node at <y>first</y> position. Repeat the steps.';
-	typing('.introjs-tooltiptext', text, function() {
-		$('#algorithmDiv').addClass('z-index10000');
-		$('#l1').css({'background-color' : 'yellow'});
-		$('.introjs-tooltiptext').append('<ul></ul><br><span id="appendText"></span>');
-		text = '<li>Let us assume another <y>dynamic memory</y>. Which contains <y>two</y> fields'
-				+ ' <y>data</y> and <y>next</y>. Which returns a value and that value should be stored in <y>temp</y>.</li>';
-		typing('.introjs-tooltiptext > ul', text, function() {
-			nodeCreationAnim(2, function() {
-				svgAnimatingLineLeftToRight('#tempNodeDiv', '#nextDiv2', 'line11', 'arrow', function() {
-					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-						$('#l1').css({'background-color' : ''});
-						$('#l2').css({'background-color' : 'yellow'});
-						text = 'Now store the <y>first</y> value (i.e., <y>' + $('#firstVal').text() + '</y>) in <y>temp -> next</y>.';
-						typingWithFade(text, '#firstVal', '#next2', function() {
-							svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2', 'arrow', function() {
-								$('#l2').css({'background-color' : ''});
-								$('#l3').css({'background-color' : 'yellow'});
-								text = 'Now store the <y>temp</y> value (i.e., <y>' + $('#tempNode').text() + '</y>) in <y>first</y>.';
-								typingWithFade(text, '#tempNode', '#firstVal', function() {
-									$('#line1').remove();
-									svgAnimatingLineBottomToTop('#firstDiv', '#dataDiv2', 'line1', 'arrow', function() {
-										$('#l3').css({'background-color' : ''});
-										text = 'Now rearrange the nodes.';
-										typing('#appendText', text, function() {
-											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-												$('line').remove();
-												regenerateArrows();
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function convertingAlgorithmToCodeAnim() {
-	zoomInEffect('#mthdName', function() {
-		$('#insrtMthdClose').removeClass('opacity00');
-		mthdText = 'temp = <bl>createNode();</bl>';
-		$('#l1').css({'background-color': 'yellow'});
-		transWitFlipAnim('#l1', '#createCall', mthdText, function() { 
-			zoomInEffect('#createMthdNme', function() {
-				$('#createClose').removeClass('opacity00');
-				createNodeCalling(function() {
-					$('#l1').css({'background-color': ''});
-					mthdText = 'temp -> next = first;';
-					transWitFlipAnim('#l2', '#fstToTmpNxt', mthdText, function() {
-						mthdText = 'first = temp;';
-						transWitFlipAnim('#l3', '#tmpToFst', mthdText, function() {
-							zoomInEffect('#mthdTmpDec', function() {
-								zoomInEffect('#tmpData', function() {
-									if (lang == 'c') {
-										$('#tmpToFst').after('\n\t<span id="retnFst" class="position-css opacity00">'
-												+ 'return first;</span>');
-										zoomInEffect('#retnFst', function() {
-											introNextSteps('#restartBtn', '', 'right');
-											$('.introjs-nextbutton').show();
-										});
-									} else if (lang == 'cpp') {
-										introNextSteps('#restartBtn', '', 'right');
-										$('.introjs-nextbutton').show();
-									}
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function createNodeCalling(callBackFunction) {
-	 var arr = ['tmpDec', 'createMthdCall', 'tmpNxtNl', 'rtnTmp'];
-	 createMthdAnim(arr, 0, callBackFunction);
-}
-
-function createMthdAnim(arr, i, callBackFunction) {
-	if (i < arr.length) {
-		zoomInEffect('#' + arr[i], function() {
-			i++;
-			createMthdAnim(arr, i, callBackFunction);
-		});
-	} else {
-		callBackFunction();
-	}
-}
-
-function regenerateArrows() {
-	TweenMax.to('#node1', 1, {left: '130px', onComplete: function() {
-		createDynamicNodes('#dynamicNodes', 2);
-		var t = $("#dynamicNodes #node2").detach();//detach is used to remove the selected element and re-inserted.
-		$('#node1').before(t);
-		$('#dynamicNodes #node2').html($('#dupNode #node2').html());
-		$('#node1').css('left', '0');
-		var l1 = $('#dupNode #node2').offset();
-		var l2 = $('#dynamicNodes #node2').offset();
-		var topLength = l1.top - l2.top;
-		var leftLength = l1.left - l2.left;
-		$('#node2').removeClass('opacity00');
-		$('#dupNode #node2').addClass('opacity00');
-		TweenMax.from($('#dynamicNodes #node2'), 1, {top: topLength, left: leftLength, onComplete: function() {
-			svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv2', 'line1', 'arrow');
-			svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2', 'arrow');
-			svgAnimatingLineTopToBottom('#tempNodeDiv', '#nextDiv2', 'line3', 'arrow');
-			insertAtBgnMthd();
-			introNextSteps('#insertBeginMthd', '', 'right');
-			$('.introjs-nextbutton').show();
-		}});
-	}});
-}
-
-function typingWithFade(text, id1, id2, callBackFunction) {
-	$('.introjs-tooltiptext > ul').append('<li></li>');
-	typing('.introjs-tooltiptext > ul li:last-child', text, function() {
-		nextBtnWithFadeInEffect(id1, id2, function() {
-			callBackFunction();
-		});
-	});
-}
-
-function zoomInWithFromEffectAnim(val, callBackFunction) {
-	zoomInEffect('#tempNodeParent', function() {
-		fromEffectWithTweenMax("#dataAddress" + val, "#tempNode", function() {
-			callBackFunction();
-		});
-	});
-}
-
-function nodeCreationAnim(val, callBackFunction) {
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-		$('#node' + val).removeClass('opacity00');
-		TweenMax.from("#node" + val, 1, {top : -30, onComplete:function() {
-			zoomInWithFromEffectAnim(val, function() {
-				callBackFunction();
-			});
-		}});
-	});
-}
-
-function nextBtnWithFadeInEffect(id1, id2, callBackFunction) {
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-		fadeInBounceEffectWithTimelineMax(id1, id2, function() {
-			callBackFunction();
-		});
-	});
-}
-
-function algorithmStepsAnim(text, stepId) {
-	typing('#algorithmSteps > ul li:last-child', text, function() {
-		animationDivStep('#algorithmSteps li:last', stepId);
-	});
-}
-
-function animationDivStep(id, animateStep) {
-	introNextSteps('#animationDiv', animateStep);
-	nextBtnWithoutCalling(id, function() {
-		introjs.nextStep();
-	});
-}
-
-function transWitFlipAnim(id1, id2, text, callBackFunction) {
-	transferEffect(id1, id2, function() {
-		flipEffectWithTweenMax(id2, text, function() {
-			callBackFunction();
-		});
-	});
-}
-
-function typing(typingId, typingContent, typingCallbackFunction) {
-	$('.typingCursor').removeClass('typingCursor');
-	$(typingId).typewriting(typingContent, {
-		"typing_interval" : "1",
-		"cursor_color": "white"
-	}, function() {
-		typingCallbackFunction();
-		$('.introjs-tooltip').show();
-	});
-}
-
-function introNextSteps(stepId, animateStep, position) {
-	$('.introjs-disabled').removeClass('introjs-disabled');
-	var options = {
-			element: stepId,
-			intro: '',
-			tooltipClass: 'hide',
-			position: position,
-			animateStep: animateStep
-	}
-	introjs.insertOption(introjs._currentStep + 1, options);
-	introjs._options.steps.push({"element" : stepId});
-}
-
-function zoomInEffect(selector1, callBackFunction) {
-	$(selector1).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-		$(selector1).removeClass("animated zoomIn")
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	});
-}
-
-function transferEffect(selector1, selector2, callBackFunction) {
-	$(selector1).effect( "highlight",{color: 'blue'}, 500, function() {
-		$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
-			$(selector2).removeClass('opacity00');
-			if (typeof callBackFunction === "function") {
-				callBackFunction();
-			}
-		});
-	});
-}
-
-function flipEffectWithTweenMax(selector, val, callBackFunction) {
-	setTimeout(function(){
-		TweenMax.to($(selector), 0.5, {rotationX : -90, onComplete:function() {
-			$(selector).html(val);
-			TweenMax.to($(selector), 0.5, {rotationX : 0, onComplete:function() {
-				introjs.refresh();
-				if (typeof callBackFunction === "function") {
-					callBackFunction();
-				}
-			}});
-		}});
-	},200);
-}
-
-function nextBtnWithoutCalling(id, callBackFunction) {
-	$(id).append('<a class="introjs-button user-btn">Next &#8594</a>');
-	$('.user-btn').click(function() {
-		$('.user-btn').remove();
-		callBackFunction();
-	});
-}
-
-
-function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
-	$(selector2).text($(selector1).text()).addClass('opacity00');
-	var l1 = $(selector1).offset();
-	var l2 = $(selector2).css({"color" : "brown", "font-width" : "bold", "z-index" : "99999999"}).offset();
-	var topLength = l1.top - l2.top;
-	var leftLength = l1.left - l2.left;
-	$("body").append("<span id='dummy' style='position: relative; z-index: 9999999; color: brown;'>" + $(selector2).text() + "</span>");
-	$("#dummy").offset({"top" : l2.top, "left" : l2.left});
-	$(selector1).addClass('z-index1000000').effect( "highlight",{color: '#ffff33'}, 800);
-	$("#dummy").remove();
-	$(selector2).removeClass('opacity00');
-	TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
-		$(selector2).removeAttr("style").css("color", "brown");
-		$(selector1).removeClass('z-index1000000');
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-function fadeInBounceEffectWithTimelineMax(selector1, selector2, callBackFunction) {
-	var timelineMax = new TimelineMax();
-	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
-		var l1 = $(selector1).offset();
-		var l2 = $(selector2).offset();
-		var topLength = l1.top - l2.top;
-		var leftLength = l1.left - l2.left;
-		$("body").append("<span id='dummy' class='ct-brown-color ct-fonts' style='position: relative;z-index: 9999999;'>" 
-		+ $(selector2).text() + "</span>");
-		$('#dummy').offset({"top": l2.top, "left": l2.left});
-		$(selector2).text($(selector1).text());
-		timelineMax.from(selector2, 2, {ease: Bounce.easeOut, top: topLength, left: leftLength, onComplete: function() {
-			$(selector2).removeAttr("style")
-			if (typeof callBackFunction === "function") {
-				callBackFunction();
-			}
-		}}).to('#dummy', 0.5, {opacity: 1, top: parseInt($('#dummy').css("top")) - 40, onComplete: function() {
-			$(selector2).text($(selector1).text());
-			$("body").removeAttr("style");			
-			$('#dummy').remove();
-		}}, "-=0.5");
-	});
-}
-
-function svgAppend(selector) {
-	var code = '<svg class="svg-css" id="svgId"></svg>';
-	$(selector).append(code);
-}
-
-function svgMarkerAppend(svgMarkerId) {
-	var marker = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
-	marker.setAttribute('id', svgMarkerId);
-	marker.setAttribute('refX', '5');
-	marker.setAttribute('refY', '2.5');
-	marker.setAttribute('markerWidth', '5');
-	marker.setAttribute('markerHeight', '5');
-	marker.setAttribute('orient', 'auto');
-	marker.style.fill = 'gray';
-	$('#svgId').append(marker);
-	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
-	$('#' + svgMarkerId).append(path);
-}
-
-function svgLineAppend(svgLineId, markerId, x1, y1, x2, y2) {
-	var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-	line.setAttribute("id", svgLineId);
-	line.setAttribute("class", "svg-line");
-	line.setAttribute("x1", x1);
-	line.setAttribute("y1", y1);
-	line.setAttribute("x2", x2);
-	line.setAttribute("y2", y2);
-	line.style.markerEnd = 'url("#' + markerId + '")';
-	$('#svgId').append(line);
-}
-
-function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, markerId, callBackFunction) {
-	var parentOffset = $('#animationDiv').offset();
-	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
-	var x2 = $(selector2).offset().left - parentOffset.left;
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
-	svgLineAppend(svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-
-function svgAnimatingLineTopToBottom(selector1, selector2, svgLineId, markerId, callBackFunction) {
-	var parentOffset = $('#animationDiv').offset();
-	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
-	var y1 = $(selector1).offset().top - parentOffset.top;
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
-	svgLineAppend(svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-function svgAnimatingLineLeftToRight(selector1, selector2, svgLineId, markerId, callBackFunction) {
-	var parentOffset = $('#animationDiv').offset();
-	var x1 = $(selector1).offset().left - parentOffset.left;
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
-	svgLineAppend(svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
-}
-
-function svgAnimatingLineBottomToTop(selector1, selector2, svgLineId, markerId, callBackFunction) {
-	var parentOffset = $('#animationDiv').offset();
-	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
-	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
-	var y2 = $(selector2).offset().top - parentOffset.top;
-	svgLineAppend(svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
 }
 
 function getURLParameter(sParam) {	//language selection in url
@@ -594,7 +22,669 @@ function getURLParameter(sParam) {	//language selection in url
 	}
 }
 
+function dynamicTempNodes(val) {	//temp nodes
+	$('#tempDynamicNodes').append('<div class="col-xs-2 col-xs-offset-1 padding0 opacity00" id="tempNodeParent' + val + '">'
+						+ '<div class="col-xs-12 box padding0 temp-node"><span id="tempNode' + val + '"'
+						+ ' class="ct-brown-color ct-fonts position-css temp-node-val opacity00">1245</span></div>'
+						+ '<div class="text-center col-xs-12 padding0 ct-green-color ct-fonts" id="tempame' + val + '">temp</div></div>');
+	animatedTooltip('.temp-node', "bottom", "Address of the newly created node.");
+}
 
+function createDynamicNodes(id, nodeNum) {	//node
+	var randomAddress = getRandomInt(1000, 5000);
+	$(id).append('<div class="col-xs-2 nodes list-nodes opacity00" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
+					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 ct-blue-color ct-fonts padding0 text-center">'
+					+ ' data</div><div class="ct-green-color ct-fonts text-center">next</div></div>'
+					+ ' <div id="nodedata' + nodeNum + '"><div id="dataDiv' + nodeNum + '"'
+					+ ' class="div-border left-radius col-xs-6 data-div"><span id="data' + nodeNum +'"'
+					+ ' class="data-span ct-blue-color ct-fonts position-css" style="top: 0px; left: 0px;"></span></div>'
+					+ ' <div id="nextDiv' + nodeNum +'" class="position-css div-border right-radius col-xs-6 next-div">'
+					+ ' <span id="next' + nodeNum +'" class="position-css next-span ct-green-color ct-fonts position-css">NULL</span></div></div>'
+					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
+					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
+					+ '</span></div></div></div>');
+	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data hold user data");
+	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
+}
 
+function getRandomInt(min, max) { //random address
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
+}
 
+function animatedTooltip(id, position, tooltipText) {
+	$(id).addClass('zIndex').attr({"data-placement" : position, "title" : tooltipText}).tooltip();
+}
 
+function structCode() {
+	$('#codeDiv').append('<div id="structCode" class="position-css opacity00">struct <g>list</g> {\n'
+						+ '\tint <bl>data</bl>;\n'
+						+ '\tstruct list <g>*next</g>;\n'
+						+ '};\n<span>typedef struct list *node; \t</span> </div>');
+}
+
+function insertAtBeginMethod() {
+	if (lang == 'c') {
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">node <g>insertAtBegin(int x)</g> {\n'
+						 + '\t<span id="step1">node temp;\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
+						 + '\ttemp -> data = x;</span>'
+						 + '\n\treturn first;\n'
+						 + '}</span></div>');
+	} else if (lang == 'cpp') {
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">void Sll::<g>insertAtBegin(int x)</g> {\n'
+						 + '\t<span id="step1">node temp;\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
+						 + '\ttemp -> data = x;</span>'
+						 + '\n}</span></div>');
+	}
+	$('#insertAtBeginMethod span').addClass('opacity00');
+}
+
+function createNodeMethod() {
+$('#codeDiv').append('\n\n<span id="createNodeFun" class="opacity00">node <g>createNode()</g> {\n'
+					+ '\tnode temp;\n'
+					+ '\t<span id="allocMemory"></span>\n'
+					+ '\ttemp -> next = NULL;\n'
+					+ '\t<span>return temp;</span>\n'
+					+ '} &emsp;</span>\n\n');
+}
+
+function initIntroJS() {
+	introjs = introJs();
+	introjs.setOptions({
+		showBullets: false,
+		showStepNumbers: false,
+		exitOnOverlayClick: false,
+		exitOnEsc: false,
+		keyboardNavigation: false,
+		steps: [ {
+				element: '#headingInSll',
+				intro: ''
+			}, {
+				element: '#algorithmDiv',
+				intro: '',
+				tooltipClass: 'hide'
+			}, {
+				element: '#animationDiv',
+				intro: '',
+				animateStep: 'fstDeclaration',
+				tooltipClass: 'hide'
+		} ]
+	});
+	introjs.onafterchange(function(targetElement) {
+		var elementId = targetElement.id;
+		$('.zIndex').not('.introjs-showElement, #headingInSll').css({'z-index': '0'});
+		$('.introjs-showElement .zIndex').css({'zIndex': '99999999'});
+		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
+		switch(elementId) {
+			case 'headingInSll':
+				text = 'Here we will learn about <y>insertAtBegin()</y> method in a <y>Single Linked List</y>.';
+				typing('.introjs-tooltiptext', text, function() {
+					$('.introjs-nextbutton').show();
+				});
+			break;
+			case 'algorithmDiv':
+				$('#algorithmDiv').removeClass('opacity00');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$('#codeAndAlgorithmDiv').addClass('box-border');
+					text = 'Let us learn about adding a <bl>node</bl> at <bl>beginning</bl> of the <bl>Single Linked List(SLL)</bl>. &emsp;';
+					typing('#algorithmDiv', text, function() {
+						nextBtnWithoutCalling('#algorithmDiv', function() {
+							introjs.nextStep();
+						});
+					});
+				});
+			break;
+			case 'animationDiv':
+				$('#animationDiv').removeClass('opacity00');
+				introjs.refresh();
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+					switch(animateStep) {
+						case 'fstDeclaration':
+							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
+							zoomInEffect('#firstNode', function() {
+								$('.introjs-tooltip').removeClass('hide');
+								text = '<span id="l2">Let us store the <yy class="ct-fonts">beginning of the linked list</yy> in a pointer variable'
+										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts">Linked list</yy> is'
+										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts grn">NULL</yy>.';
+								typing('.introjs-tooltiptext', text, function() {
+									$('#algorithmDiv').removeClass('opacity00').append('<ul style="list-style-type: circle" id="ul1"></ul>');
+									algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 0, 'fstCreation');
+									$('#algorithmDiv #l2 yy:last').addClass('ct-green-color').removeClass('ct-blue-color');
+								});
+							});
+						break;
+						case 'fstListCreation':
+							text = '<span id="l3Span">Let us consider the <y>steps</y> involved in <yy class="ct-fonts">adding</yy> a new '
+									+ '<yy class="ct-fonts">node</yy> at <yy class="ct-fonts">begin</yy> for a given value.</span><br><br>Enter a value : '
+									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
+							typing('.introjs-tooltiptext', text, function() {
+								validation('#nodeVal', 1);
+							});
+						break;
+						case 'fstToTmpNxt':
+							text = '<spna id="l4"><yy class="ct-fonts">fetch</yy> the <bgb>first</bgb> <yy class="ct-fonts">node</yy> for the '
+									+ '<yy class="ct-fonts">newly created</yy> <yy class="ct-fonts grn">address</yy> in that <yy class="ct-fonts">'
+									+ 'node\'s</yy> <yy class="ct-fonts grn">next</yy> <yy class="ct-fonts">pointer variable</yy>.</span>';
+							typing('.introjs-tooltiptext', text, function() {
+								$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
+								$('#algorithmDiv #l4').addClass('opacity00');
+								$('#algorithmDiv #l4 yy').addClass('ct-blue-color').removeClass('ct-fonts');
+								$('#algorithmDiv #l4 .grn').removeClass('ct-blue-color').addClass('ct-green-color');
+								$('#step1').after('\n\t<span class="opacity00" id="fstToTmpNxt">temp -> next = first; &emsp;</span>');
+								$('#codeDiv').scrollTo('#insertAtBeginMethod span:last', 300);
+								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									fadeInBounceEffectWithTimelineMax('#firstVal', '#next1', false, 80, function() {
+										$('#algorithmDiv li:last').removeClass('opacity00');
+										$('#algorithmDiv').addClass('z-index10000');
+										transWithZoomInEffect('.introjs-tooltiptext #l4', '#algorithmDiv #l4', function() {
+											introNextSteps('#codeAndAlgorithmDiv', 'fstToTmpNxt', 'hide');
+											$('.introjs-nextbutton').show();
+										});
+									});
+								});
+							});
+						break;
+						case 'tempToFst':
+							text = '<span id="l5">Store the <yy class="ct-fonts grn">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
+									+ ' in the <bgb>first</bgb> variable.</span>';
+							typing('.introjs-tooltiptext', text, function() {
+								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
+										svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv1', 'line1', false, function() {
+											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
+											$('#algorithmDiv #l5').addClass('opacity00');
+											$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
+											$('#algorithmDiv .grn').removeClass('ct-blue-color').addClass('ct-green-color');
+											$('#algorithmDiv').addClass('z-index10000');
+											$('#algorithmDiv li:last').removeClass('opacity00');
+											transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
+												introNextSteps('#codeAndAlgorithmDiv', 'tmpToFst', 'hide');
+												$('.introjs-nextbutton').show();
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'secondNode':
+							$('#line11').remove();
+							$('#tempNodeParent1').addClass('opacity00');
+							text = 'Let us add another <y>node</y> at <y>begin</y> for the given value.<br>Enter a value '
+									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
+							typing('.introjs-tooltiptext', text, function() {
+								validation('#nodeVal', 2);
+							});
+						break;
+					}
+				});
+			break;
+			case 'codeAndAlgorithmDiv':
+				$('#algorithmDiv').removeClass('z-index10000');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+					switch(animateStep) {
+						case 'fstCreation':
+							zoomInEffect('#codeDiv', function() {
+								$('#codeDiv').append('<span id="fstCreation" class="opacity00">node first = <g>NULL</g>; '
+											+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"></i></span> &emsp;</span>');
+								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
+								transWithZoomInEffect('#l2', '#fstCreation', function() {
+									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
+									nextBtnWithoutCalling('#fstCreation', function() {
+										introNextSteps('#animationDiv', 'fstListCreation', 'show');
+										introjs.nextStep();
+									});
+								});
+							});
+						break;
+						case 'methodCreation':
+							$('#l3Span').effect('highlight', {color: 'yellow'}, 1200);
+							transWithZoomInEffect('#l3Span', '#line5', function() {
+								$('#l3Div').css({'background-color' : 'yellow'});
+								transWithZoomInEffect('#l3Div', '#step1', function() {
+									$('#line6').css({'background-color' : 'yellow'});
+									createNodeMethod();
+									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
+										if (lang == 'c') {
+											$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list" class="ct-green-color">struct list</span>));');
+										} else if (lang == 'cpp') {
+											$('#allocMemory').html('temp = <span id="list" class="ct-green-color">new list;</span>');
+										}
+										$('.introjs-tooltip').removeClass('hide');
+										text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
+										typing('.introjs-tooltiptext', text, function() {
+											structCode();
+											$('#codeDiv').scrollTo('#structCode span:last', 300);
+											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+												transWithZoomInEffect('#line6', '#createNodeFun', function() {
+													$('#list').css({'background-color' : 'yellow'});
+													transWithZoomInEffect('#list', '#structCode', function() {
+														$('#line6, #l3Div, #list').css({'background-color' : ''});
+														introNextSteps('#animationDiv', 'fstToTmpNxt', 'show');
+														$('.introjs-nextbutton').show();
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'fstToTmpNxt':
+							$('#codeDiv').scrollTo('#fstCreation', 300);
+							$('#l4').effect('highlight', {color: 'yellow'}, 1200);
+							transWithZoomInEffect('#l4', '#fstToTmpNxt', function() {
+								nextBtnWithoutCalling('#fstToTmpNxt', function() {
+									introNextSteps('#animationDiv', 'tempToFst', 'show');
+									introjs.nextStep();
+								});
+							});
+						break;
+						case 'tmpToFst':
+							$('#fstToTmpNxt').after('\n\t<span id="tempToFst" class="opacity00">first = temp; &emsp;</span>');
+							$('#codeDiv').scrollTo('#fstCreation', 300);
+							$('#l5').effect('highlight', {color: 'yellow'}, 1200);
+							transWithZoomInEffect('#l5', '#tempToFst', function() {
+								nextBtnWithoutCalling('#tempToFst', function() {
+									introNextSteps('#animationDiv', 'secondNode', 'show');
+									introjs.nextStep();
+								});
+							});
+						break;
+					}
+				});
+			break;
+			case 'restartBtn':
+				$('.introjs-tooltip').css({'min-width': '125px'});
+				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000');
+				$('.zIndex').css({'z-index': '99999999'});
+				$('#restartBtn').removeClass('opacity00');;
+				$('.introjs-helperLayer').one('transitionend', function() {
+					typing('.introjs-tooltiptext', 'Click to restart.', function() {
+						$('#restartBtn').click(function() {
+							location.reload();
+						});
+					});
+				});
+			break;
+		}
+	});
+	introjs.start();
+}
+
+function secondNdeAnim() {
+	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
+	$('#algorithmDiv').addClass('z-index10000');
+	$('#l3Div').css({'background-color' : 'yellow'});
+	$('.introjs-tooltiptext').append('<ol></ol>');
+	dynamicTempNodes(2);
+	text = '<li>Allocate <y>memory</y> for the new node (<y>address</y> of the new node is stored in <y>temp</y>) and store'
+				+ ' the given value in <y>data</y>.</li>';
+	typing('.introjs-tooltiptext ol', text, function() {
+		nodeAnim(2, function() {
+			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+				$('#l3Div').css({'background-color' : ''});
+				$('#l4').css({'background-color' : 'yellow'});
+				$('.introjs-tooltiptext ol').append('<li></li>');
+				text = '<y>fetch</y> the <bgb>first</bgb> <y>node</y> for the newly created <y>address</y> in that '
+						+ '<y>node\'s</y> <y>next pointer variable<y>.';
+				typing('.introjs-tooltiptext li:last', text, function() {
+					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+						fadeInBounceEffectWithTimelineMax('#firstVal', '#next2', true, 400, function() {
+							svgAnimatingLineTopAndBottom('#nextDiv2', '#nextDiv1', 'line2', false, function() {
+								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									$('#l4').css({'background-color' : ''});
+									$('#l5').css({'background-color' : 'yellow'});
+									$('.introjs-tooltiptext ol').append('<li></li>');
+									text = 'Store the <y>address</y> of the <y>newly created node</y> in the <bgb>first</bgb> variable.';
+									typing('.introjs-tooltiptext li:last', text, function() {
+										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+											fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, -350, function() {
+												$('#line1').remove();
+												svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv2', 'line1', function() {
+													$('#l5').css({'background-color' : ''});
+													$('.introjs-tooltiptext ol').append('<br><div id="appendText"></div>');
+													typing('#appendText', 'Now rearrange the nodes.', function() {
+														$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" '
+																		+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function rearrangeNode() {
+	$('.user-btn').remove();
+	$('line').remove();
+	TweenMax.to('#node1', 1, {left: '130px', onComplete: function() {
+		createDynamicNodes('#dynamicNodes', 3);
+		var t = $("#node3").detach();//detach is used to remove the selected element and re-inserted.
+		$('#node1').before(t);
+		$('#node3').html($('#node2').html());
+		$('#node1').css('left', '0');
+		var l = $('#node2').offset();
+		$('#node3').offset({top : l.top, left : l.left});
+		$('#node3').removeClass('opacity00');
+		$('#node2').addClass('opacity00').remove();;
+		TweenMax.to('#node3', 1, {top : 0, left : 0, onComplete : function() {
+			$('#node3').attr('id', 'node2');
+			svgAnimatingLineTopAndBottom('#tempNodeParent2', '#nextDiv2', 'line3', true);
+			svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv2', 'line1', false);
+			svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2');
+			animatedTooltip('#dataDiv2', "bottom", "data holds user data");
+			animatedTooltip('#nextDiv2', "bottom", "next holds next node's address");
+			introNextSteps('#restartBtn', '', 'show', 'right');
+			$('.introjs-nextbutton').show();
+		}});
+	}});
+}
+
+function validationAnim() {
+	$('.introjs-tooltiptext').append('<br><br><div id="l3Div"><div>')
+	text = 'Allocate <yy class="ct-fonts grn">memory</yy> for the new node (<yy class="ct-fonts grn">address</yy> of the new node is stored in'
+			+ ' <yy class="ct-fonts grn">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
+	typing('#l3Div', text, function() {
+		nodeAnim(1, function() {
+			$('#algorithmDiv').append('<span id="l3Span" class="opacity00">' + $('.introjs-tooltiptext #l3Span').html() + '</span>');
+			$('#algorithmDiv #l3Span').after('<ul style="list-style-type: circle" id="ul2"><li class="opacity00"><span id="l3Div" class="opacity00">'
+											+ $('.introjs-tooltiptext #l3Div').html() + '</span></li></ul>');
+			$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
+			$('#algorithmDiv .grn').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
+			$('#algorithmDiv y').addClass('ct-brown-color');
+			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+				$('#algorithmDiv').addClass('z-index10000');
+				transferEffect('.introjs-tooltiptext #l3Span', '#algorithmDiv #l3Span', function() {
+					/*$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
+					$('#algorithmDiv .grn').addClass('ct-green-color').removeClass('ct-fonts ct-blue-color');*/
+					$('#ul2 li').removeClass('opacity00')
+					transferEffect('.introjs-tooltiptext #l3Div', '#algorithmDiv #l3Div', function() {
+						//$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
+						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
+						insertAtBeginMethod();
+						$('.introjs-nextbutton').show();
+					});
+				});
+			});
+		});
+	});
+}
+
+function nodeAnim(val, callBackFunction) {
+	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+		$('#node' + val).removeClass('opacity00');
+		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
+			zoomInEffect('#tempNodeParent' + val, function() {
+				fromEffectWithTweenMax('#dataAddress' + val, '#tempNode' + val, true, function() {
+					svgAnimatingLineTopAndBottom('#tempNodeParent' + val, '#nextDiv' + val, 'line11', true, function() {
+						fromEffectWithTweenMax('#nodeVal', '#data' + val, false, function() {
+							$('#nodeVal').css({'color': 'white'});
+							callBackFunction();
+						});
+					});
+				});
+			});
+		}});
+	});
+}
+
+function algorithmSteps(text, id1, id2, val, animatedStep) {
+	$('#algorithmDiv ul').append('<li class="opacity00">' + text + '</li>');
+	$(id2).addClass('opacity00');
+	$(id2 +' yy').addClass('ct-blue-color').removeClass('ct-fonts');
+	$('#algorithmDiv .one').removeClass('ct-blue-color').addClass('ct-green-color');
+	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+		$('#algorithmDiv').addClass('z-index10000');
+		transferEffect(id1, id2, function() {
+			$('#algorithmDiv li').not('ol li').eq(val).removeClass('opacity00');
+			introNextSteps('#codeAndAlgorithmDiv', animatedStep, 'hide');
+			$('.introjs-nextbutton').show();
+		});
+	});
+}
+		
+function typing(typingId, typingContent, typingCallbackFunction) {
+	$('.typingCursor').removeClass('typingCursor');
+	$(typingId).typewriting(typingContent, {
+		"typing_interval" : '1',
+		"cursor_color" : 'white'
+	}, function() {
+		typingCallbackFunction();
+		$('.introjs-tooltip').show();
+	});
+}
+
+function introNextSteps(stepName, animatedStep, tooltip, position) {
+	$('.introjs-disabled').removeClass('introjs-disabled');
+	var options = {
+			element :stepName,
+			intro :'',
+			position : position,
+			tooltipClass : tooltip,
+			animateStep: animatedStep
+	}
+	introjs.insertOption(introjs._currentStep + 1, options);
+	introjs._options.steps.push({"element" : stepName});
+}
+
+function nextBtnWithoutCalling(id, callBackFunction) {
+	$(id).append('<a class="introjs-button user-btn">Next &#8594;</a>');
+	$('.user-btn').click(function() {
+		$('.user-btn').remove();
+		callBackFunction();
+	});
+}
+
+function zoomInEffect(selector1, callBackFunction) {
+	$(selector1).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+		$(selector1).removeClass("animated zoomIn")
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
+function transferEffect(selector1, selector2, callBackFunction) {
+	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
+		$(selector2).removeClass('opacity00')
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
+function transWithZoomInEffect(selector1, selector2, callBackFunction) {
+	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
+		if (selector2 == '#step1') {
+			$('#line6').removeClass('opacity00');
+		}
+		$(selector2).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+			$(selector2).removeClass("animated zoomIn")
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		});
+	});
+}
+
+function validation(selector, val) {
+	$(selector).effect('highlight', {color: 'yellow'}, 500).focus();
+	$(selector).on('keydown', function(e) {
+		var max = $(this).attr('maxlength');
+		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
+			return;
+		}
+		if (((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) || (e.keyCode == 13 || e.keyCode ==9)){
+			e.preventDefault();
+		}
+		if ($(this).val().length > max - 1) {
+			$('.error-text').remove();
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Please restrict the maximum length to 3 digits only.</div>')
+			e.preventDefault();
+		}
+	});
+	$(selector).on('keyup', function(e) {
+		if ($(this).val().length == 2) {
+			$('.error-text').remove();
+		}
+		if ($(selector).val().length != 0) {
+			$('.user-btn, .errMsg').remove();
+			$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="eventValidation(' + val + ')">Next &#8594;</a>');
+			if (e.keyCode == 13) {
+				eventValidation(val)
+			}
+		} else {
+			$('.user-btn').hide();
+			$('.error-text').remove();
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Please enter number.</div>');
+		}
+	});
+}
+
+function eventValidation(val) {
+	$('.user-btn').remove();
+	$('#nodeVal').off();
+	$('input').attr('disabled', true);
+	if (val == 1) {
+		validationAnim();
+	} else {
+		secondNdeAnim();
+	}
+}
+
+function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
+	if (flag) {
+		$(selector2).text($(selector1).text()).addClass('opacity00');
+	} else {
+		$(selector2).text($(selector1).val()).addClass('opacity00');
+	}
+	var l1 = $(selector1).offset();
+	var l2 = $(selector2).css({"color" : "brown", "font-width" : "bold", "z-index" : "99999999"}).offset();
+	var topLength = l1.top - l2.top;
+	var leftLength = l1.left - l2.left;
+	$("body").append("<span id='dummy' style='position: relative; z-index: 9999999; color: brown;'>" + $(selector2).text() + "</span>");
+	$("#dummy").offset({"top" : l2.top, "left" : l2.left});
+	$(selector1).addClass('z-index1000000').effect( "highlight",{color: '#ffff33'}, 500);
+	$("#dummy").remove();
+	$(selector2).removeClass('opacity00');
+	TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
+		$(selector2).removeAttr("style").css("color", "brown");
+		$(selector1).removeClass('z-index1000000');
+		if (typeof callBackFunction === "function") {
+			introjs.refresh();
+			callBackFunction();
+		}
+	}});
+}
+
+function fadeInBounceEffectWithTimelineMax(selector1, selector2, flag, val, callBackFunction) {
+	var timelineMax = new TimelineMax();
+	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
+		var l1 = $(selector1).offset();
+		var l2 = $(selector2).offset();
+		var topLength = l1.top - l2.top;
+		var leftLength = l1.left - l2.left;
+		$("body").append("<span id='dummy' class='ct-brown-color ct-fonts' style='position: relative;z-index: 9999999;'>" 
+					+ $(selector2).text() + "</span>");
+		$('#dummy').offset({"top": l2.top, "left": l2.left});
+		$(selector2).text($(selector1).text());
+		TweenLite.from(selector2, 2.8, {ease: Bounce.easeOut, top: topLength, left: leftLength});
+		if (flag) {
+			TweenLite.to('#dummy', 1.5, {ease: Sine.easeOut, left: val, delay : 1.1, opacity:0 , onComplete: function() {
+				bounceAnim(selector1, selector2, callBackFunction);
+			}});
+		} else {
+			TweenLite.to('#dummy', 1.5, {ease: Sine.easeOut, top: val , delay : 1.1, opacity:0 , onComplete: function() {
+				bounceAnim(selector1, selector2, callBackFunction);
+			}});
+		}
+	});
+}
+
+function bounceAnim(selector1, selector2, callBackFunction) {
+	$(selector2).removeAttr("style");
+	if (typeof callBackFunction === "function") {
+		callBackFunction();
+	}
+	$(selector2).text($(selector1).text());
+	$("body").removeAttr("style");			
+	$('#dummy').remove();
+}
+
+function svgAppend(selector) {
+	var code = '<svg class="svg-css" id="svgId"></svg>';
+	$(selector).append(code);
+	svgMarkerAppend();
+}
+
+function svgMarkerAppend() {
+	var marker = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
+	marker.setAttribute('id', 'arrow');
+	marker.setAttribute('refX', '5');
+	marker.setAttribute('refY', '2.5');
+	marker.setAttribute('markerWidth', '5');
+	marker.setAttribute('markerHeight', '5');
+	marker.setAttribute('orient', 'auto');
+	marker.style.fill = 'gray';
+	$("#svgId").append(marker);
+	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
+	$('#arrow').append(path);
+}
+
+function svgLineAppend(svgLineId, x1, y1, x2, y2) {
+	var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+	line.setAttribute("id", svgLineId);
+	line.setAttribute("class", "svg-line");
+	line.setAttribute("x1", x1);
+	line.setAttribute("y1", y1);
+	line.setAttribute("x2", x2);
+	line.setAttribute("y2", y2);
+	line.style.markerEnd = 'url("#arrow")';
+	$("#svgId").append(line);
+}
+
+function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, callBackFunction) {
+	var parentOffset = $("#animationDiv").offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	svgLineAppend(svgLineId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
+
+function svgAnimatingLineTopAndBottom(selector1, selector2, svgLineId, flag, callBackFunction) {
+	var parentOffset = $("#animationDiv").offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	if (flag) {
+		var y1 = $(selector1).offset().top - parentOffset.top;
+		var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	} else {
+		var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+		var y2 = $(selector2).offset().top - parentOffset.top;
+	}
+	svgLineAppend(svgLineId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}					
