@@ -1,0 +1,7 @@
+function polynomialArrayReady() {
+	
+}
+
+function initIntroJS() {
+	
+}
