@@ -90,8 +90,9 @@
 .output-console-body {
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
-	height: 100px;
+	height: 200px;
 	padding: 10px;
+	white-space: initial;
 }
 
 .output-console-title-bar {
@@ -147,13 +148,28 @@ r {
 	margin-left: 4%;
 }
 
+.usr-txt {
+	background-color: black;
+	border: none;
+	font-weight: bold;
+	text-align: center;
+	color: yellow;
+}
 
+.scanf-line {
+	outline: medium none;
+}
+
+.scanf-line:empty::before {
+	color: lightblue !important;
+	content: attr(placeholder);
+}
 </style>
 
 <script type="text/javascript">
 
  $(document).ready(function() {
-	polynomialArrayReady();
+	 polynomialArrayReady();
 });
 </script>
 </head>
@@ -169,7 +185,7 @@ r {
 					<pre class='creampretab4' style="margin-top: 10px;"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
 
-#define MAX 20
+#define MAX 10
 </pre>
 					<pre class='creampretab4 hide' id="arrayMain">void main() {
 	<div id="mainCallMethod" class="position-css"></div>		
@@ -178,7 +194,8 @@ r {
 				</div>
 				<div id="outputDiv" class='col-xs-12 padding0 margin-top-20'>
 					<div class="output-console-title-bar"><span class="title">Output</span></div>
-					<div class="output-console-body"><span id="output"></span></div>
+					<div class="output-console-body"><span id="output"></span>
+					</div>
 				</div>
 
 			</div>
@@ -188,6 +205,7 @@ r {
 						<div class='col-xs-12 padding0 text-center'>
 							<div class='col-xs-offset-2 col-xs-8 padding0' id='btnsDiv'>
 								<div class="position-css">
+									<!-- <input class="form-control input-sm text-center" size="3" id="createText" type="text" /> -->
 									<span class="input-group-addon-border"><span id="createBtn" class="btn btn-sm btn-success">Create</span></span>
 								</div>
 								<div class="position-css margin-left">
@@ -201,6 +219,10 @@ r {
 								</div>
 								<div class="position-css margin-left">
 									<span class="input-group-addon-border"><span id="displayBtn" class="btn btn-sm btn-success">Display</span></span>
+								</div>
+								
+								<div class="position-css margin-left">
+									<span class="input-group-addon-border"><span id="testingBtn" class="btn btn-sm btn-success">a</span></span>
 								</div>
 							</div>
 						</div>
