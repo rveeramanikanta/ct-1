@@ -185,7 +185,7 @@ r {
 			<div class='col-xs-9'>
 				<div class='col-xs-12 padding0 box-border text-center' id='animationDiv'>
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
-						<div class='col-xs-12 padding0 margin-top-20 text-center'>
+						<div class='col-xs-12 padding0 text-center'>
 							<div class='col-xs-offset-2 col-xs-8 padding0' id='btnsDiv'>
 								<div class="position-css">
 									<span class="input-group-addon-border"><span id="createBtn" class="btn btn-sm btn-success">Create</span></span>
@@ -197,18 +197,11 @@ r {
 									<span class="input-group-addon-border"><span id="subBtn" class="btn btn-sm btn-success">Subtraction</span></span>
 								</div>
 								<div class="position-css margin-left">
-									<span class="input-group-addon-border"> <span id="mulBtn" class="btn btn-sm btn-success">Multiplication</span></span>
+									<span class="input-group-addon-border"><span id="mulBtn" class="btn btn-sm btn-success">Multiplication</span></span>
 								</div>
 								<div class="position-css margin-left">
 									<span class="input-group-addon-border"><span id="displayBtn" class="btn btn-sm btn-success">Display</span></span>
 								</div>
-								<!-- <div class="position-css margin-left">
-									<div class="input-group">
-										<span class="input-group-addon-border">
-											<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
-										</span>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</div>
