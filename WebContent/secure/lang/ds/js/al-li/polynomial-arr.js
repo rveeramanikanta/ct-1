@@ -468,7 +468,7 @@ PolynomialArray.prototype.SumSubAnim = function() {
 		if (hpow1 > hpow2) {
 			X = ARRAY1_START_X; 
 		} else {
-			X = ARRAY2_START_X;
+			X = ARRAY2_START_X; 
 		}
 		
 		var xPos = -1.5 * ARRAY_ELEM_WIDTH + X;
