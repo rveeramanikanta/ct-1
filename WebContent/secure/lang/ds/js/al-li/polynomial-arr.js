@@ -469,7 +469,7 @@ PolynomialArray.prototype.SumSubAnim = function() {
 			X = ARRAY1_START_X; 
 		} else {
 			X = ARRAY2_START_X;
-		}
+		}   
 		
 		var xPos = -1.5 * ARRAY_ELEM_WIDTH + X;
 		var yPos = Math.floor(-1.5 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY1_START_Y;
