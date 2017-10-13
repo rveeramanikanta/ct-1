@@ -91,7 +91,7 @@
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 	height: 200px;
-	padding: 10px;
+	padding: 8px;
 	white-space: initial;
 }
 
@@ -153,7 +153,7 @@ r {
 	border: none;
 	font-weight: bold;
 	text-align: center;
-	color: yellow;
+	color: greenyellow;
 }
 
 .scanf-line {
@@ -227,7 +227,7 @@ r {
 							</div>
 						</div>
 					</div>
-					<canvas id="canvas" width="900" height="500"></canvas>
+					<canvas id="canvas" width="900" height="520"></canvas>
 				</div>
 			</div>
 			<div id="generalAnimationControlSection">
