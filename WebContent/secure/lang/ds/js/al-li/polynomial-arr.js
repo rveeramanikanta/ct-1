@@ -9,7 +9,11 @@ var ARRAY_ELEM_HEIGHT = 30;
 var ARRRAY_ELEMS_PER_LINE = 10;
 
 var SIZE = 10;
-var head1 = [], head2 = [], head3 = [], hpow1, hpow2;
+var hpow1, hpow2, hpow;
+//The fill() method fills all the elements of an array from a start index to an end index with a static value.
+var head1 = Array(SIZE).fill(0);
+var head2 = Array(SIZE).fill(0);
+var head3 = Array(SIZE).fill(0);
 var iVal = 1;
 
 function PolynomialArray(am, w, h) {
@@ -88,6 +92,10 @@ PolynomialArray.prototype.setup = function() {
 	this.dummyDisplayXID2 = new Array(SIZE);
 	this.dummyDisplayPowerID2 = new Array(SIZE);
 	this.dummyDisplayArrowID2 = new Array(SIZE);
+	this.dummyDisplayID3 = new Array(SIZE);
+	this.dummyDisplayXID3 = new Array(SIZE);
+	this.dummyDisplayPowerID3 = new Array(SIZE);
+	this.dummyDisplayArrowID3 = new Array(SIZE);
 	
 	this.headID1 = this.nextIndex++;
 	this.exponentID1 = this.nextIndex++;
@@ -99,6 +107,7 @@ PolynomialArray.prototype.setup = function() {
 	this.powerValueID2 = this.nextIndex++;
 	this.firstPolyID = this.nextIndex++;
 	this.secondPolyID = this.nextIndex++;
+	this.thirdPolyID = this.nextIndex++;
 	this.highlightID = this.nextIndex++;
 	
 	var xPos = -1.5 * ARRAY_ELEM_WIDTH + ARRAY1_START_X;
@@ -181,19 +190,19 @@ PolynomialArray.prototype.createCallBack = function(event) {
 
 PolynomialArray.prototype.additionCallBack = function(event) {
 	buttonName = "addition";
-	head3 = [];
+	head3 = Array(SIZE).fill(0);
 	this.implementAction(this.addition.bind(this), "");
 }
 
 PolynomialArray.prototype.subtractionCallBack = function(event) {
 	buttonName = "subtraction";
-	head3 = [];
+	head3 = Array(SIZE).fill(0);
 	this.implementAction(this.subtraction.bind(this), "");
 }
 
 PolynomialArray.prototype.multiplicationCallBack = function(event) {
 	buttonName = "multiplication";
-	head3 = [];
+	head3 = Array(SIZE).fill(0);
 	this.implementAction(this.multiplication.bind(this), "");
 }
 
@@ -299,29 +308,33 @@ PolynomialArray.prototype.testing = function() {
 	var testingVal;
 	if (iVal == 1) {
 		testingVal = hpow1;
-		this.coeffAnimation(testingVal, ARRAY1_START_X, ARRAY1_START_Y, this.coeffID1, head1);
+		this.coeffAnimation(testingVal, ARRAY1_START_X, ARRAY1_START_Y, this.coeffID1);
 	} else if (iVal == 2) {
 		testingVal = hpow2;
-		this.coeffAnimation(testingVal, ARRAY2_START_X, ARRAY1_START_Y, this.coeffID2, head2);
+		this.coeffAnimation(testingVal, ARRAY2_START_X, ARRAY1_START_Y, this.coeffID2);
 	}
 	
 	return this.commands;
 }
 
-PolynomialArray.prototype.coeffAnimation = function(elemToPush, ARRAY_START_X, ARRAY_START_Y, coeffID, head) {//coefficient values
+PolynomialArray.prototype.coeffAnimation = function(elemToPush, ARRAY_START_X, ARRAY_START_Y, coeffID) {//coefficient values
 	let t = 0;
 	for (let i = elemToPush; i >= 0; i--) {
 		var xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY_START_X;
 		var yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY_START_Y + ARRAY_ELEM_WIDTH;
 		
-		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos + 3, yPos + ARRAY_ELEM_WIDTH + 9);
+		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos + 2, yPos + ARRAY_ELEM_WIDTH + 9);
 		$('#create1Text' + t).effect('highligh', {color: 'blue'}, 500);
 		this.cmd("SetText", coeffID[i], $('#create' + iVal + 'Text' + t).val());
 		if (i > 0) {
 			this.cmd("Step");
-			this.cmd("Move", this.highlightID, xPos - ARRAY_ELEM_WIDTH + 3, yPos + ARRAY_ELEM_WIDTH + 9);
+			this.cmd("Move", this.highlightID, xPos - ARRAY_ELEM_WIDTH + 2, yPos + ARRAY_ELEM_WIDTH + 9);
 		}
-		head.push($('#create' + iVal + 'Text' + t).val());
+		if (iVal == 1) {
+			head1[i] = parseInt($('#create' + iVal + 'Text' + t).val());
+		} else {
+			head2[i] = parseInt($('#create' + iVal + 'Text' + t).val());
+		}
 		this.cmd("Step");
 		this.cmd("Delete", this.highlightID);
 		t++;
@@ -338,6 +351,9 @@ PolynomialArray.prototype.displayAll = function() {
 		} else if (iVal == 2){
 			this.displayAnim(this.dummyDisplayID2, this.dummyDisplayXID2, this.dummyDisplayPowerID2, this.dummyDisplayArrowID2, 
 					this.secondPolyID, ARRAY2_START_X, "Second polynomial is : ", 50, ARRAY1_START_Y, hpow2, head2);
+		/*} else if (iVal == 3) {
+			this.displayAnim(this.dummyDisplayID3, this.dummyDisplayXID3, this.dummyDisplayPowerID3, this.dummyDisplayArrowID3, 
+					this.thirdPolyID, ARRAY3_START_X, "Third polynomial is : ", 75, ARRAY3_START_Y, hpow, head3);*/
 		} else {
 			this.cmd("Step");
 			this.cmd("Step");
@@ -406,7 +422,7 @@ PolynomialArray.prototype.displayAnim = function(dummyID, dummyXID, dummyPowerID
 		
 		this.cmd("Step");
 		if (i != 0) {
-			this.cmd("Move", this.highlightID, xPos -  ARRAY_ELEM_WIDTH + 3, yPos + 5);
+			this.cmd("Move", this.highlightID, xPos -  ARRAY_ELEM_WIDTH + 2, yPos + 5);
 			this.cmd("Step");
 		}
 		t = t + 48;
@@ -463,30 +479,136 @@ PolynomialArray.prototype.dupArrayCreation = function(arrName) {//local array
 }
 
 PolynomialArray.prototype.SumSubAnim = function() {
-	if (hpow1 != undefined && hpow2 != undefined) {
-		let X, hpow = (hpow1 > hpow2) ? hpow1 : hpow2;
-		if (hpow1 > hpow2) {
-			X = ARRAY1_START_X; 
-		} else {
-			X = ARRAY2_START_X;
-		}   
-		
-		var xPos = -1.5 * ARRAY_ELEM_WIDTH + X;
-		var yPos = Math.floor(-1.5 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY1_START_Y;
-		
-		this.cmd("Step");
-		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) + 25);
+	let X, t = 0;
 	
-		for (let i = hpow; i >= 0; i--) {
-			if(buttonName == "addition") {
-				head3[i] = head1[i] + head2[i];
-			} else if(buttonName == "subtraction") {
-				head3[i] = head1[i] - head2[i];
-			}
-		}
+	this.dupValID1 = this.nextIndex++;
+	this.dupSymbolID1 = this.nextIndex++;
+	this.dupValID2 = this.nextIndex++;
+	this.dupSymbolID2 = this.nextIndex++;
+	this.mathValueID = this.nextIndex++;
+	this.dummyValueID = this.nextIndex++;
+	
+	hpow = (hpow1 > hpow2) ? hpow1 : hpow2;
+	if (hpow1 > hpow2) {
+		X = ARRAY1_START_X; 
 	} else {
-		alert("Please insert hpow values");
+		X = ARRAY2_START_X;
+	}   
+	
+	var xPos = -1.5 * ARRAY_ELEM_WIDTH + X;
+	var yPos = Math.floor(-1.5 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY1_START_Y;
+	
+	this.cmd("Step");
+	this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) + 25);
+	
+	xPos = -1.5 * ARRAY_ELEM_WIDTH + ARRAY3_START_X;
+	yPos = Math.floor(-1.5 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY3_START_Y + ARRAY_ELEM_WIDTH;
+	
+	this.cmd("Step");
+	this.cmd("Move", this.highlightID, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
+	this.cmd("Step");
+	this.createPowerAnimation(this.powerValueID3, hpow, this.exponentID3, this.exponentValID3, this.exponentArrayID3, this.coeffID3);
+	this.cmd("Step");
+	this.cmd("Delete", this.highlightID);
+	this.cmd("Step");
+	
+	dupXPos = (0) * ARRAY_ELEM_WIDTH + ARRAY1_START_X;
+	dupYPos = Math.floor(0 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY1_START_Y + (5 * ARRAY_ELEM_WIDTH);
+	
+	for (let i = hpow; i >= 0; i--) {
+		if(buttonName == "addition") {
+			head3[i] = head1[i] + head2[i];
+		} else if(buttonName == "subtraction") {
+			head3[i] = head1[i] - head2[i];
+		}
+		
+		xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY1_START_X;
+		yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY1_START_Y + ARRAY_ELEM_WIDTH;
+		
+		this.movingcalculationValues(head1[i], xPos, yPos, this.dupValID1, dupXPos, dupYPos);
+		
+		//Math.sign function returns the sign of a number, indicating whether the number is +, - or zero.
+		if ((Math.sign(head1[i]) == -1 || Math.sign(head1[i]) == -0) && head1[i] != 0) {
+			this.cmd("SetText", this.dupValID1, "(" + head1[i] + ")");
+		} else {
+			this.cmd("SetText", this.dupValID1, head1[i]);
+		}
+		
+		if(buttonName == "addition") {
+			this.cmd("CreateLabel", this.dupSymbolID1, " + ", dupXPos + 20, dupYPos);
+		} else if(buttonName == "subtraction") {
+			this.cmd("CreateLabel", this.dupSymbolID1, " - ", dupXPos + 20, dupYPos);
+		}
+		
+		xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY2_START_X;
+		
+		this.movingcalculationValues(head2[i], xPos, yPos, this.dupValID2, dupXPos + 35, dupYPos);
+		
+		if ((Math.sign(head2[i]) == -1 || Math.sign(head2[i]) == -0) && head2[i] != 0) {
+			this.cmd("SetText", this.dupValID2, "(" + head2[i] + ")");
+		} else {
+			this.cmd("SetText", this.dupValID2, head2[i]);
+		}
+		
+		this.cmd("CreateLabel", this.dupSymbolID2, " = ", dupXPos + 50, dupYPos);
+		this.cmd("CreateLabel", this.mathValueID, head3[i], dupXPos + 70, dupYPos);
+		this.cmd("Step");
+		
+		xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY3_START_X;
+		yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY3_START_Y + ARRAY_ELEM_WIDTH;
+		
+		if ( i == hpow) {
+			this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos, yPos + ARRAY_ELEM_WIDTH + 11);
+		}
+		this.movingcalculationValues(head3[i], dupXPos + 70, dupYPos, this.dummyValueID, xPos, yPos);
+		this.cmd("SetText", this.coeffID3[i], head3[i]);
+		this.cmd("Step");
+		
+		if (i != 0) {
+			xPos = xPos -  ARRAY_ELEM_WIDTH + 2;
+		}
+		yPos = yPos + ARRAY_ELEM_WIDTH + 9;
+		
+		this.cmd("Move", this.highlightID, xPos, yPos);
+		this.cmd("Step");
+		this.cmd("Step");
+		this.cmd("Step");
+		this.cmd("Delete", this.dupValID1);
+		this.cmd("Delete", this.dupSymbolID1);
+		this.cmd("Delete", this.dupValID2);
+		this.cmd("Delete", this.dupSymbolID2);
+		this.cmd("Delete", this.mathValueID);
+		this.cmd("Delete", this.dummyValueID);
+		t++;	
 	}
+	
+	this.cmd("Step");
+	this.cmd("Step");
+	this.cmd("Step");
+	this.cmd("Delete", this.headID3);
+	this.cmd("Delete", this.exponentID3);
+	this.cmd("Delete", this.powerID3);
+	this.cmd("Delete", this.powerValueID3);
+	this.cmd("Delete", this.highlightID);
+	
+	for (var i = 0; i < SIZE; i++) {
+		this.cmd("Delete", this.coeffID3[i]);
+		this.cmd("Delete", this.indexArrayID3[i]);
+		this.cmd("Delete", this.exponentValID3[i]);
+		this.cmd("Delete", this.exponentArrayID3[i]);
+	}
+	
+	/*this.displayAnim(this.dummyDisplayID3, this.dummyDisplayXID3, this.dummyDisplayPowerID3, this.dummyDisplayArrowID3, 
+			this.thirdPolyID, ARRAY3_START_X, "Third polynomial is : ", 75, ARRAY3_START_Y, hpow, head3);*/
+}
+
+PolynomialArray.prototype.movingcalculationValues = function(val, xPos, yPos, dupValID, dupXPos, dupYPos) {
+	this.cmd("CreateLabel", dupValID, val, xPos, yPos);
+	this.cmd("SetHighlight", dupValID, "#0000FF");
+	this.cmd("Step");
+	this.cmd("Move", dupValID, dupXPos, dupYPos);
+	this.cmd("Step");
+	this.cmd("SetHighlight", dupValID, "");
 }
 
 var currentAlg;

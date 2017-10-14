@@ -227,7 +227,7 @@ r {
 							</div>
 						</div>
 					</div>
-					<canvas id="canvas" width="900" height="520"></canvas>
+					<canvas id="canvas" width="900" height="500"></canvas>
 				</div>
 			</div>
 			<div id="generalAnimationControlSection">
