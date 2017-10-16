@@ -2,7 +2,7 @@ var buttonName;
 
 function polynomialArrayReady() {
 	if (iVal == 1) {
-		$('#output').append('<span id="power1Span">Enter highest power of first polynomial : <input class="usr-txt" size="3" maxlength="1"'
+		$('#output').empty().append('<span id="power1Span">Enter highest power of first polynomial : <input class="usr-txt" size="3" maxlength="1"'
 						+ ' id="create1Text" type="text"/></span>');
 		coeffValidation('#create1Text', '', '', '', 1, true);
 	/*} else if (iVal == 2) {
