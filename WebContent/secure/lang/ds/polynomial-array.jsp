@@ -40,6 +40,7 @@
 <script type="text/javascript" src="js-min/al-li/algorithm.js"></script>
 
 <script type="text/javascript" src="js/al-li/polynomial-arr.js"></script>
+<!-- <script type="text/javascript" src="js/al-li/dummy-polynomial-arr.js"></script> -->
 
 <style type="text/css">
 
@@ -66,7 +67,7 @@
 	padding: 5px;
 	overflow-y: auto;
 	white-space: pre;
-	word-spacing: -3px;
+	/* word-spacing: -3px; */
 	font-family: monospace;
 }
 
@@ -180,9 +181,9 @@ r {
 		</div>
 
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
-			<div class='col-xs-3'>
-				<div class='col-xs-12 box-border ' id="preCode">
-					<pre class='creampretab4' style="margin-top: 10px;"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
+			<div class='col-xs-3' style="padding-right: 0px;">
+				<div class='col-xs-12 box-border opacity00' id="preCode">
+					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
 
 #define MAX 10
@@ -192,7 +193,7 @@ r {
 }</pre>
 					<div id="arrayMethods"></div>
 				</div>
-				<div id="outputDiv" class='col-xs-12 padding0 margin-top-20'>
+				<div id="outputDiv" class='col-xs-12 padding0 margin-top-20 opacity00'>
 					<div class="output-console-title-bar"><span class="title">Output</span></div>
 					<div class="output-console-body"><span id="output"></span>
 					</div>
@@ -200,7 +201,7 @@ r {
 
 			</div>
 			<div class='col-xs-9'>
-				<div class='col-xs-12 padding0 box-border text-center' id='animationDiv'>
+				<div class='col-xs-12 padding0 box-border text-center opacity00' id='animationDiv'>
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
 						<div class='col-xs-12 padding0 text-center'>
 							<div class='col-xs-offset-2 col-xs-8 padding0' id='btnsDiv'>
@@ -227,7 +228,7 @@ r {
 							</div>
 						</div>
 					</div>
-					<canvas id="canvas" width="900" height="500"></canvas>
+					<canvas id="canvas" width="900" height="500" class="opacity00"></canvas>
 				</div>
 			</div>
 			<div id="generalAnimationControlSection">

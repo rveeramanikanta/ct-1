@@ -1,6 +1,5 @@
 var btnName;
 function DeQueueArrayReady() {
-	lang = getURLParameter("lang");
 	$("#injectText, #pushText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
 			return;

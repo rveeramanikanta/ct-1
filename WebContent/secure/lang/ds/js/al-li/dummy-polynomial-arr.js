@@ -186,10 +186,9 @@ PolynomialArray.prototype.reset = function() {
 }
 
 PolynomialArray.prototype.createCallBack = function(event) {
-	/*if($(".btn").is(":disabled")) {
+	if($(".btn").is(":disabled")) {
 		return;
-	}*/
-	$('#arrayMain').removeClass('hide');
+	}
 	buttonName = "create";
 	this.implementAction(this.create.bind(this));
 }
@@ -236,30 +235,14 @@ PolynomialArray.prototype.displayData = function(ignored) {
 
 PolynomialArray.prototype.create = function() {
 	this.commands = new Array();
-	
-	createMain();
-	
-	this.introSteps('#arrayDeclaration', 'right', 'show');
-	this.cmd("Step");
-	
-	if (iVal == 1) {
-		this.cmd("Step");
-			customIntroNextSteps('#animationDiv', 'hpow1Anim', 'hide', 'right');
-			this.cmd("Step");
-			this.cmd("Step");
-			this.cmd("Step");
-			//change value(5) to $('#create1Text').val()
-			this.createPowerAnimation(this.powerValueID1, 5, this.exponentID1, this.exponentValID1, this.exponentArrayID1, this.coeffID1);
-			this.cmd("Step");
-			this.cmd("Step");
-			this.introSteps('#printf2', '', 'hide')
-			this.introSteps('#createMethodCal1', 'right', 'show')
-			
-			/*$('#output').append('<div id="coeff1Span0">Enter coeff value for ' + hpow1 + ' degree term : '
-					+ ' <input class="usr-txt" size="3" maxlength="2" id="create1Text0" type="text"/></div>');
-			coeffValidation('#create1Text0', hpow1, 0, hpow1, 1, false);*/
-			
-		/*} else if (iVal == 2){
+	if ($('#create1Text').val() != "" && $('#create2Text').val() != "") {
+		if (iVal == 1) {
+			hpow1 = parseInt($('#create1Text').val());
+			this.createPowerAnimation(this.powerValueID1, hpow1, this.exponentID1, this.exponentValID1, this.exponentArrayID1, this.coeffID1);
+			$('#output').append('<div id="coeff1Span0">Enter coeff value for ' + hpow1 + ' degree term : '
+							+ ' <input class="usr-txt" size="3" maxlength="2" id="create1Text0" type="text"/></div>');
+			coeffValidation('#create1Text0', hpow1, 0, hpow1, 1, false);
+		} else if (iVal == 2){
 			hpow2 = parseInt($('#create2Text').val());
 			this.createPowerAnimation(this.powerValueID2, hpow2, this.exponentID2, this.exponentValID2, this.exponentArrayID2, this.coeffID2);
 			$('#output').append('<div id="coeff2Span0">Enter coeff value for ' + hpow2 + ' degree term : '
@@ -278,22 +261,12 @@ PolynomialArray.prototype.create = function() {
 					+ ' id="create1Text" type="text"/></span>');
 			iVal = 1;
 			coeffValidation('#create1Text', '', '', '', 1, true);
-		}*/
-	//} else {
-	//	alert("Please insert hpow values to create");
+		}
 	} else {
-		alert(iVal);
+		alert("Please insert hpow values to create");
 	}
 	return this.commands;
 }
-
-PolynomialArray.prototype.introSteps = function(id, position, tooltip) {
-	this.cmd("SetNextIntroStep", id, "", position, tooltip);
-	this.cmd("RunNextIntroStep");
-	this.cmd("Step");
-	this.cmd("Step");
-}
-
 
 PolynomialArray.prototype.addition = function() {
 	this.commands = new Array();
@@ -364,7 +337,7 @@ PolynomialArray.prototype.displayAll = function() {
 
 PolynomialArray.prototype.createPowerAnimation = function(powerValueID, elemToPush, exponentID, exponentValID, exponentArrayID, coeffID) {//powers showing
 	let i;
-	this.cmd("SetText", powerValueID, elemToPush);
+	this.cmd("SetText", powerValueID, hpow1);
 	this.cmd("Step");
 	this.cmd("SetText", exponentID, "Exp");
 	
