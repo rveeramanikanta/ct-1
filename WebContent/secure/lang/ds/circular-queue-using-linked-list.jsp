@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
-<script type="text/javascript" src="js/circular-queue-linked-list.js"></script>
+<script type="text/javascript" src="js-min/cqull.min.js"></script>
 
 
 <!-- Javascript for the actual visualization code -->
@@ -38,7 +38,7 @@
 <script type="text/javascript" src="js/al-li/algorithm.js"></script>
 <!-- <script type="text/javascript" src="js/al-li/CQLL-Dummy.js"></script> -->
 
-<script type="text/javascript" src="js/al-li/circular-queueLL.js"></script>
+<script type="text/javascript" src="js-min/al-li/circular-queueLL.min.js"></script>
 
 <style type="text/css">
 .ct-demo-heading {

@@ -49,7 +49,7 @@
 }
 
 .margin-top-20 {
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .box-border {
@@ -105,6 +105,7 @@
 #outputDiv {
 	position: relative;
 	z-index: 9999999;
+	margin-top: 5px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -193,7 +194,7 @@ r {
 }</pre>
 					<div id="arrayMethods"></div>
 				</div>
-				<div id="outputDiv" class='col-xs-12 padding0 margin-top-20 opacity00'>
+				<div id="outputDiv" class='col-xs-12 padding0 opacity00'>
 					<div class="output-console-title-bar"><span class="title">Output</span></div>
 					<div class="output-console-body"><span id="output"></span>
 					</div>
@@ -205,8 +206,7 @@ r {
 					<div class='col-xs-12 padding0 margin-top-20 text-center'>
 						<div class='col-xs-12 padding0 text-center'>
 							<div class='col-xs-offset-2 col-xs-8 padding0' id='btnsDiv'>
-								<div class="position-css">
-									<!-- <input class="form-control input-sm text-center" size="3" id="createText" type="text" /> -->
+								<div class="position-css" id="createBtnDiv">
 									<span class="input-group-addon-border"><span id="createBtn" class="btn btn-sm btn-success">Create</span></span>
 								</div>
 								<div class="position-css margin-left">

@@ -21,7 +21,7 @@
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 
-<script type="text/javascript" src="js/circular-queue-using-array.js"></script>
+<script type="text/javascript" src="js-min/cqua.min.js"></script>
 
 
 <!-- Javascript for the actual visualization code -->
@@ -39,7 +39,7 @@
 <script type="text/javascript" src="js-min/an-li/animation-main.js"></script>
 <script type="text/javascript" src="js-min/al-li/algorithm.js"></script>
 
-<script type="text/javascript" src="js/al-li/circular-queue-using-array.js"></script>
+<script type="text/javascript" src="js-min/al-li/circular-queue-array.min.js"></script>
 
 <style type="text/css">
 .padding0 {

@@ -1,12 +1,6 @@
-var buttonName;
+var buttonName, hVal;
 
 function polynomialArrayReady() {
-	/*if (iVal == 1) {
-		$('#output').empty().append('<span id="power1Span">Enter highest power of first polynomial : <input class="usr-txt" size="3" maxlength="1"'
-						+ ' id="create1Text" type="text"/></span>');
-		coeffValidation('#create1Text', '', '', '', 1, true);
-	}
-	*/
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
 	
@@ -76,16 +70,28 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					text = 'Let us declare a <y>MAX</y> with maximum size <y>10</y>.'
 					typing('.introjs-tooltiptext', text, function() {
+						//$('.margin-left').addClass('hide');
 						$('#animationDiv').removeClass("opacity00");
-						getIntrojsStep('#btnsDiv', '', 'left', 'show');
+						getIntrojsStep('#createBtnDiv', '', '', 'show');
 						$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 					});
 				});
 			break;
+			case 'createBtnDiv':
+				$('.introjs-helperLayer').one('transitionend', function() {
+					typing('.introjs-tooltiptext', 'Click on create.');
+					setTimeout(function() {
+						$("#btnsDiv [disabled]").removeAttr("disabled");
+						doPlayPause();
+					}, 500);
+				});
+			break;
 			case 'btnsDiv':
 				introjs.refresh();
+				$('.fa').remove();
+				$('.background-color-yellow').removeClass('background-color-yellow');
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$('.fa').remove();
+					$('#arrayMethods, #mainCallMethod').empty();
 					typing('.introjs-tooltiptext', 'Choose any operation.');
 					setTimeout(function() {
 						$("#btnsDiv [disabled]").removeAttr("disabled");
@@ -104,28 +110,43 @@ function initIntroJS() {
 					});
 				});
 			break;
+			case 'printf3':
 			case 'printf1':
 				$('.introjs-helperLayer').one('transitionend', function() {
 					customIntroNextSteps('#outputDiv', '', 'show', 'right');
-					$('#output').empty().append('<div id="power1Span" class="opacity00">Enter highest power of first polynomial :'
-										+ ' <input class="usr-txt" size="3" maxlength="1" id="create1Text" type="text"/></div>');
+					if (elementId == 'printf1') {
+						$('#output').empty().append('<div id="power1Span" class="opacity00">Enter highest power of first polynomial :'
+											+ ' <input class="usr-txt" size="3" maxlength="1" id="create1Text" type="text"/></div>');
+					} else {
+						$('#line2').removeClass('background-color-yellow');
+						$('.fa, #createMethod').remove();
+						iVal++;
+						$('#output').append('<div id="power2Span">Enter highest power of second polynomial : <input class="usr-txt" size="3"'
+								+ ' maxlength="1" id="create2Text" type="text"/></div>');
+					}
 					setTimeout(function() {
 						introjs.nextStep();
 					}, 500);
 				});
 			break;
+			case 'printf4':
 			case 'printf2':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#output").append('<div class="opacity00">Enter first polynomial : </div><br>');
+					if (elementId == 'printf2') {
+						$("#output").append('<div class="opacity00">Enter first polynomial : </div>');
+					} else {
+						$("#output").append('<div class="opacity00">Enter second polynomial : </div>');
+					}
 					setTimeout(function() {
 						customIntroNextSteps('#outputDiv', '', 'hide');
 						introjs.nextStep();
 					}, 500);
 				});
 			break;
+			case 'createMethodCal2':
 			case 'createMethodCal1':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					text = 'Here we are calling <y>create</y>method</y> and passing <y>head1</y> and <y>hpow1</y> as arguments.';
+					text = 'Here we are calling <y>create</y>method</y> and passing <y>head' + iVal + '</y> and <y>hpow' + iVal + '</y> as arguments.';
 					typing('.introjs-tooltiptext', text, function() {
 						createMethod();
 						getIntrojsStep('#createMethod', '', 'right', 'show');
@@ -136,13 +157,33 @@ function initIntroJS() {
 			case 'createMethod':
 				$('#createMethod').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
-					text = 'In this method we are <y>inserting</y> values into the <y>head1</y>.'
+					text = 'In this method we are <y>inserting</y> values into the <y>head' + iVal + '</y>.'
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-tooltiptext').append('<ul><li><span>int power</span></li></ul>');
 						travel('#powerDec', '.introjs-tooltiptext ul li span', function() {
-							$(".introjs-tooltiptext ul li span").append(" = <span>" + hpow1 + "</span>");
-							arrowMoving('#line1', '#line2', function() {
-								
+							hVal = (iVal == 1) ? hpow1 : hpow2; 
+							$(".introjs-tooltiptext ul li span").append(" = <span>" + hVal + "</span>");
+							text = 'Let us declare an <y>int</y> variable <y>i</y>.';
+							arrowMoving('#line1', '#line1', text, function() {
+								nextBtnWithoutCalling(function() {
+									text = "This <y>for-loop</y> is repeated untill the <y>i</y> value is greater than or equal to <y>zero</y>.";
+									arrowMoving('#line1', '#line2', text, function() {
+										text = "Initially the <y>i</y> value is initialize with <y>power</y> value (i.e., "
+												+ " <b style='font-family: monospace;'> i = " + $('#create' + iVal + 'Text').val() + "</b>).";
+										liTying(text, function() {
+											text = "It is used to enter the <y>coefficient</y> values.";
+											liTying(text, function() {
+												nextBtnWithoutCalling(function() {
+													$('#output').append('<div id="coeff' + iVal + 'Span0" class="opacity00">Enter coeff value for '  
+																	+ hVal + ' degree term : <input class="usr-txt" size="3" maxlength="2"'
+																	+ ' id="create' + iVal + 'Text0" type="text"/></div>');
+													customIntroNextSteps('#outputDiv', '', 'show', 'right');
+													introjs.nextStep();
+												});
+											});
+										});
+									});
+								});
 							});
 						});
 					});
@@ -155,18 +196,26 @@ function initIntroJS() {
 					switch (animateStep) {
 						case 'arrayInit':
 							$('#canvas').removeClass("opacity00");
-							customIntroNextSteps('#printf1', '', 'hide');
 							setTimeout(function() {
+								customIntroNextSteps('#printf1', '', 'hide');
 								introjs.nextStep();
-							}, 500);
+							}, 800);
 						break;
 						case 'hpow1Anim':
+							console.log(iVal)
 							if (iVal == 1) {
 								hpow1 = parseInt($('#create1Text').val());
-								setTimeout(function() {
-									doPlayPause();
-								}, 500);
+							} else {
+								hpow2 = parseInt($('#create2Text').val());
 							}
+							doPlayPause();
+						break;
+						case 'coeffAnim':
+							let t = parseInt($('#create1Text').val());
+							for (let i = t; i >= 0; i--) {
+								head1[i] = parseInt($('#create' + iVal + 'Text' + t).val());
+							}
+							doPlayPause();
 						break;
 					}
 				});
@@ -174,15 +223,19 @@ function initIntroJS() {
 			case 'outputDiv':
 				$("#outputDiv").removeClass("opacity00");
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$(".output-console-body").scrollTo($("#output > div:last"), 500, function() {
+					$(".output-console-body").scrollTo($("#output > div:last"), 300, function() {
 						$("#output > div:last").removeClass("opacity00");
 						if (introjs._introItems[introjs._currentStep].tooltipClass == "hide") {
 							doPlayPause();
 						} else {
-							if (iVal == 1) {
+							let t = $('#output input:last').attr('id');
+							if (t == 'create1Text' || t == 'create2Text') {
 								typing('.introjs-tooltiptext', 'Enter highest power', function() {
-									doPlayPause();
-									coeffValidation('#create1Text', '', '', '', 1, true);
+									coeffValidation('#' + t, '', '', '', '', true);
+								});
+							} else {
+								typing('.introjs-tooltiptext', 'Enter coefficient value.', function() {
+									coeffValidation('#create' + iVal + 'Text0', hVal, 0, hVal, iVal, false);
 								});
 							}
 						}
@@ -223,32 +276,39 @@ function coeffValidation(id, power, val, hpower, i, flag) {
 		}
 		if ($(this).val().length > 0) {	
 			if (flag) {
+				customIntroNextSteps('#animationDiv', 'hpow1Anim', 'hide', 'right');
 				$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 				if (e.keyCode == 13) {
 					$(this).attr("disabled", true);
 					introjs.nextStep();
 				}
 			} else {
-				$(this).attr("disabled", true);
-				if (e.keyCode == 13) {
+				if (($(id).val().length >= 2 && $(id).val().indexOf('-', $(id).val().indexOf('-') + 1) == -1) || (!$(id).val().startsWith('-'))) {
 					if (hpower == val) {
 						e.preventDefault();
+						customIntroNextSteps('#animationDiv', 'coeffAnim', 'hide', 'right');
 						$('.introjs-nextbutton').removeClass('introjs-disabled').show();
-						
-						if (i == 1) {
+						if (e.keyCode == 13) {
+							introjs.nextStep();
+						}
+						/*if (i == 1) {
 							$('#output').append('<div id="power2Span">Enter highest power of second polynomial : <input class="usr-txt" size="3"'
 									+ ' maxlength="1" id="create2Text" type="text"/></div>');
 							coeffValidation('#create2Text', '', '', '', '', true);
-						}
-						
+						}*/
 					} else {
-						$('.introjs-nextbutton').hide();
-						power--;
-						val++;
-						$("#output").append('<div id="coeff' + i + 'Span' + val +'">Enter coeff value for ' + (power) + ' degree term : '  
-											+ '<input class="usr-txt" size="3" id="create' + i + 'Text' + val + '" maxlength="2" type="text"/></div>');
-						coeffValidation('#create' + i + 'Text' + val, power, val, hpower, i, false);
-				    }
+						if (e.keyCode == 13) {
+							$('.introjs-nextbutton').hide();
+							$(this).attr("disabled", true);
+							power--;
+							val++;
+							$("#output").append('<div id="coeff' + i + 'Span' + val +'">Enter coeff value for ' + (power) + ' degree term : '  
+												+ '<input class="usr-txt" size="3" id="create' + i + 'Text' + val + '" maxlength="2" type="text"/></div>');
+							coeffValidation('#create' + i + 'Text' + val, power, val, hpower, i, false);
+					    }
+					}
+				} else {
+					$('.introjs-nextbutton').hide();
 				}
 			}
    		} else {
@@ -258,27 +318,42 @@ function coeffValidation(id, power, val, hpower, i, flag) {
 }
 
 function createMain() {
-	$('#mainCallMethod').text('').append('<span id="arrayDeclaration">int hpow1, hpow2;\n'
+	iVal = 1;
+	$('#mainCallMethod').html('').append('<span id="arrayDeclaration">int hpow1, hpow2;\n'
 							+ 'int head1[MAX + 1] = {0},\n\t\t head2[MAX + 1] = {0};</span>\n'
 							+ '<div id="printf1" class="position-css">printf("Enter highest power of first polynomial : ");\n'
 							+ 'scanf("%d", &hpow1);</div>\n'
 							+ '<span id="printf2">printf("Enter first polynomial : \\n");</span>\n'
 							+ '<span id="createMethodCal1">create(head1, hpow1);</span>\n'
-							+ 'printf("Enter highest power of second polynomial : ");\n'
-							+ 'scanf("%d", &hpow2);\n'
-							+ 'printf("Enter second polynomial : \\n");\n'
-							+ 'create(head2, hpow2);')
+							+ '<div id="printf3" class="position-css">printf("Enter highest power of second polynomial : ");\n'
+							+ 'scanf("%d", &hpow2);</div>\n'
+							+ '<span id="printf4">printf("Enter second polynomial : \\n");</span>\n'
+							+ '<span id="createMethodCal2">create(head2, hpow2);</span>');
+	getIntrojsStep('#arrayDeclaration', '', 'right', 'show');
+	introjs.nextStep();
 }
 
 function createMethod() {
-	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="createMethod"></pre>');
-	$('#createMethod').append('<span id="line1">void create(int arr[max + 1], <span id="powerDec">int power</span>) {</span>\n'
-							+ '\t<span id="line2">int i;</span>\n'
-							+ '\tfor(i = power; i >= 0; i--) {\n'
-							+ '\t\tprintf("Enter coeff value for %d degree term : " , i);\n'
-							+ '\t\tscanf(" %d", &arr[i]);\n'
-							+ '\t}\n'
+	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
+	$('#' + buttonName + 'Method').append('<span id="methodDiv">void ' + buttonName + '(int arr[max + 1], <span id="powerDec">int power</span>) {\n'
+							+ '\t<span id="line1">int i;</span>\n'
+							+ '\t<div id="line2" class="position-css">for(i = power; i >= 0; i--) {\n'
+							+ '\t<div id="methodText" class="position-css"></div>\n}</div>\n</span>'
 							+ '}');
+							if (buttonName == 'create') {
+								$('#methodText').append('printf("Enter coeff value for %d degree term : ", i);\n'
+													+ 'scanf("%d", &arr[i]);');
+							} else {
+								$('#methodText').append('printf("%d X^ %d --> ", arr[i], i);');
+								$('#methodDiv').append('printf("\n");\n')
+							}
+}
+
+function displayMain() {
+	$('#mainCallMethod').html('').append('printf("First polynomial is : ");\n'
+							+ 'display(head1, hpow1);\n'
+							+ 'printf("Second polynomial is : ");\n'
+							+ 'display(head2, hpow2);')
 }
 
 function arrow(fromId, toId, callBackFunction) {
@@ -302,15 +377,32 @@ function arrow(fromId, toId, callBackFunction) {
 	}});
 }
 
-function arrowMoving(id1, id2, callBackFunction) {
+function arrowMoving(id1, id2, text, callBackFunction) {
 	$('.user-btn').remove();
 	$('.background-color-yellow').removeClass('background-color-yellow');
 	$(".introjs-tooltiptext ul li *").removeAttr("id");
 	arrow(id1, id2, function() {
+		$(id2).addClass('background-color-yellow');
+		liTying(text, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function liTying(text, callBackFunction) {
+	$('.introjs-tooltiptext ul').append('<li></li>');
+	typing($(".introjs-tooltiptext ul li:last"), text, function() {
 		callBackFunction();
 	});
 }
 
+function nextBtnWithoutCalling(callBackFunction) {
+	$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn">Next &#8594;</a>');
+	$('.user-btn').click(function() {
+		$(this).remove();
+		callBackFunction();
+	});
+}
 
 
 
