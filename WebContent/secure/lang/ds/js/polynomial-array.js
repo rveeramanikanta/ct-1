@@ -218,6 +218,7 @@ function initIntroJS() {
 													$(id).css({'color' : 'greenyellow'});
 													flip(id, hVal, function() {
 														
+														
 													});
 												});
 											});
