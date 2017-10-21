@@ -23,7 +23,6 @@
 
 <script type="text/javascript" src="js/polynomial-array.js"></script>
 
-
 <!-- Javascript for the actual visualization code -->
 <script type="text/javascript" src="js-min/an-li/custom-events.js"></script>
 <script type="text/javascript" src="js-min/an-li/undo-functions.js"></script>
@@ -67,7 +66,6 @@
 	padding: 5px;
 	overflow-y: auto;
 	white-space: pre;
-	/* word-spacing: -3px; */
 	font-family: monospace;
 }
 
@@ -157,15 +155,6 @@ r {
 	text-align: center;
 	color: greenyellow;
 }
-
-.scanf-line {
-	outline: medium none;
-}
-
-.scanf-line:empty::before {
-	color: lightblue !important;
-	content: attr(placeholder);
-}
 </style>
 
 <script type="text/javascript">
@@ -184,7 +173,7 @@ r {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3' style="padding-right: 0px;">
 				<div class='col-xs-12 box-border opacity00' id="preCode">
-					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include&lt;stdio.h&gt;</span>
+					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include &lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
 
 #define MAX 10
@@ -220,10 +209,6 @@ r {
 								</div>
 								<div class="position-css margin-left">
 									<span class="input-group-addon-border"><span id="displayBtn" class="btn btn-sm btn-success">Display</span></span>
-								</div>
-								
-								<div class="position-css margin-left">
-									<span class="input-group-addon-border"><span id="testingBtn" class="btn btn-sm btn-success">a</span></span>
 								</div>
 							</div>
 						</div>

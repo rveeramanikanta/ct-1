@@ -1210,7 +1210,7 @@ getIntrojsStep = function(element, intro, position, tooltipClass) {
 
 typing = function(selector, text, callBackFunction) {
 	$(selector).typewriting(text, {
-		"typing_interval" : 5,
+		"typing_interval" : 1,
 		"cursor_color" : 'white',
 	}, function() {
 		$(selector).removeClass("typingCursor");
