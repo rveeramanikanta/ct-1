@@ -142,7 +142,7 @@ function initIntroJS() {
 						$('#printf5').addClass('background-color-yellow');
 						let calcName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
 						arrow('#frLoop1', '#printf5');
-						$("#output").append('<div class="opacity00">' + calcName + ' polynomial is : </div>');
+						$("#output").append('<div class="opacity00 position-css">' + calcName + ' polynomial is : &nbsp;</div>');
 					} else if (buttonName == 'create') {
 						if (elementId == 'printf2') {
 							$("#output").append('<div class="opacity00">Enter first polynomial : </div>');
@@ -232,7 +232,7 @@ function initIntroJS() {
 						text = "This <y>for-loop</y> is repeated untill the <y>i</y> and <y>j</y> value is greater than or equal to <y>zero</y>.";
 						text1 = "Initially the <y>i</y> value is initialize with <y>hpow1</y> value (i.e., "
 								+ " <b style='font-family: monospace;'> i = " + hpow1 + "</b>) and the <y>j</y> value is "
-								+ " initalize with <y>hpow2</y> value (i.e., <b style='font-family: monospace;'> i = " + hpow2 + "</b>)";
+								+ " initalize with <y>hpow2</y> value (i.e., <b style='font-family: monospace;'> j = " + hpow2 + "</b>)";
 						text2 = 'It is used to <y>multiply</y> the polynomials <y>head1</y> and <y>head2</y>.';
 					} else {
 						selector = '#hpowVal';
@@ -436,11 +436,16 @@ function creationNDisplayAnim() {
 	typing('.introjs-tooltiptext', text, function() {
 		$('.introjs-tooltiptext').append('<ul><li><span>int power</span></li></ul>');
 		travel('#powerDec', '.introjs-tooltiptext ul li span', function() {
-			//hVal = (iVal == 1) ? hpow1 : hpow2;
-			hVal = (iVal == 1) ? hpow1 : (iVal == 2) ? hpow2 : hpow;
+			if (buttonName == 'multiplication') {
+				hVal = hpow;
+			} else {
+				hVal = (iVal == 1) ? hpow1 : hpow2;
+			}
+			//hVal = (iVal == 1) ? hpow1 : (iVal == 2) ? hpow2 : hpow;
 			$(".introjs-tooltiptext ul li span").append(" = <span>" + hVal + "</span>");
 			text = 'Let us declare an <y>int</y> variable <y>i</y>.';
 			arrowMoving('#varDec', '#varDec', text, function() {
+				introjs.refresh();
 				nextBtnWithoutCalling(function() {
 					text = "This <y>for-loop</y> is repeated untill the <y>i</y> value is greater than or equal to <y>zero</y>.";
 					arrowMoving('#varDec', '#frLoop', text, function() {
@@ -454,27 +459,25 @@ function creationNDisplayAnim() {
 							liTying(text, function() {
 								if (buttonName == 'create') {
 									nextBtnWithoutCalling(function() {
-										$('#output').append('<div id="coeff' + iVal + 'Span0" class="opacity00">Enter coeff value for '  
-														+ hVal + ' degree term : <input class="usr-txt" size="3" maxlength="2"'
+										$('#output').append('<div id="coeff' + iVal + 'Span0" class="opacity00">Enter coeff value for ' + hVal 
+														+ ' degree term : <input class="usr-txt" size="3" maxlength="2"'
 														+ ' id="create' + iVal + 'Text0" type="text"/></div>');
 										customIntroNextSteps('#outputDiv', '', 'show', 'right');
 										introjs.nextStep();
 									});
-								} else if (buttonName == 'display') {
-									let displayText = " ";
-									let arr = (iVal == 1) ? head1 : head2;
-									for (let i = hVal; i >= 0; i--) {
-										displayText = displayText + arr[i]  + ' X^ ' + i + ' --> '; 
-									}
-									$('#output').append('<div class="opacity00 position-css">' + displayText + '</div><br>');
-									customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
-									$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 								} else {
-									let displayText = " ";
-									for (let i = hVal; i >= 0; i--) {
-										displayText = displayText + head3[i]  + ' X^ ' + i + ' --> '; 
+									let displayText = "";
+									if (buttonName == 'display') {
+										let arr = (iVal == 1) ? head1 : head2;
+										for (let i = hVal; i >= 0; i--) {
+											displayText = displayText + arr[i]  + ' X^ ' + i + ' --> '; 
+										}
+									} else {
+										for (let i = hVal; i >= 0; i--) {
+											displayText = displayText + head3[i]  + ' X^ ' + i + ' --> '; 
+										}
 									}
-									$('#output').append('<div class="opacity00 position-css">' + displayText + '</div><br>');
+									$('#output').append('<div class="opacity00" style="display: inline;">' + displayText + '</div><br>');
 									customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
 									$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 								}
@@ -512,7 +515,7 @@ function varDecNStoreHpowVal(callBackFunction) {
 	$('.introjs-tooltiptext').append('<ul><li><span>int hpow1</span></li></ul>');
 	travel('#power1', '.introjs-tooltiptext li span', function() {
 		$(".introjs-tooltiptext ul li span").append(" = <span><y>" + hpow1 + "</y></span>");
-		$('.introjs-tooltiptext li').append(', <span>int hpow2</span>');
+		$('.introjs-tooltiptext li').append(', <span>hpow2</span>');
 		travel('#power2', '.introjs-tooltiptext li span:last', function() {
 			$(".introjs-tooltiptext ul li span:last").append(" = <span><y>" + hpow2 + "</y></span>");
 			let funNme = buttonName.substring(0, 3);
