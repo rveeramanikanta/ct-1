@@ -167,7 +167,7 @@ r {
 <body onload="init();" class="VisualizationMainPage">
 	<div id="container">
 		<div class='col-xs-12 text-center margin-top-20'>
-			<h1 class='label ct-demo-heading' id="polynomialHeading">Polynomial using Arrays</h1>
+			<h1 class='label ct-demo-heading' id="polynomialHeading">Polynomial using Array</h1>
 		</div>
 
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
@@ -175,7 +175,6 @@ r {
 				<div class='col-xs-12 box-border opacity00' id="preCode">
 					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include &lt;stdio.h&gt;</span>
 #include &lt;stdlib.h&gt;
-
 #define MAX 10
 </pre>
 					<pre class='creampretab4 hide' id="arrayMain">void main() {
@@ -185,10 +184,8 @@ r {
 				</div>
 				<div id="outputDiv" class='col-xs-12 padding0 opacity00'>
 					<div class="output-console-title-bar"><span class="title">Output</span></div>
-					<div class="output-console-body"><span id="output"></span>
-					</div>
+					<div class="output-console-body"><span id="output"></span></div>
 				</div>
-
 			</div>
 			<div class='col-xs-9'>
 				<div class='col-xs-12 padding0 box-border text-center opacity00' id='animationDiv'>
@@ -216,9 +213,7 @@ r {
 					<canvas id="canvas" width="900" height="500" class="opacity00"></canvas>
 				</div>
 			</div>
-			<div id="generalAnimationControlSection">
-				<table id="GeneralAnimationControls" class='hide'></table>
-			</div>
+			<div id="generalAnimationControlSection"><table id="GeneralAnimationControls" class='hide'></table></div>
 		</div>
 	</div>
 </body>
