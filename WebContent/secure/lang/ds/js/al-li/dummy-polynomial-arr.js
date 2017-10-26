@@ -128,6 +128,11 @@ PolynomialArray.prototype.setup = function() {
 	this.cmd("CreateRectangle", this.powerValueID2, "", ARRAY_ELEM_WIDTH + 10, ARRAY_ELEM_HEIGHT, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
 	this.cmd("SetBackGroundColor", this.powerValueID2, "#ccc");
 	
+	xPos = -1.5 * ARRAY_ELEM_WIDTH + ARRAY3_START_X;
+	yPos = Math.floor(-1.5 / ARRRAY_ELEMS_PER_LINE) * 0 + ARRAY3_START_Y + ARRAY_ELEM_WIDTH;
+	this.powerValueID3 = this.nextIndex++;
+	this.cmd("CreateRectangle", this.powerValueID3, "0", ARRAY_ELEM_WIDTH + 10, ARRAY_ELEM_HEIGHT, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
+	
 	for (var i = 0; i < SIZE; i++) {
 		this.coeffID1[i] = this.nextIndex++;
 		this.indexArrayID1[i] = this.nextIndex++;
@@ -407,7 +412,7 @@ PolynomialArray.prototype.dupArrayCreation = function(arrName) {//local array
 	this.headID3 = this.nextIndex++;
 	this.exponentID3 = this.nextIndex++;
 	this.powerID3 = this.nextIndex++;
-	this.powerValueID3 = this.nextIndex++;
+	//this.powerValueID3 = this.nextIndex++;
 	
 	for (var i = 0; i < SIZE; i++) {
 		this.coeffID3[i] = this.nextIndex++;
@@ -421,7 +426,7 @@ PolynomialArray.prototype.dupArrayCreation = function(arrName) {//local array
 	this.cmd("CreateLabel", this.headID3, arrName, xPos, yPos);
 	this.cmd("CreateLabel", this.exponentID3, "Exp", xPos, yPos + ARRAY_ELEM_WIDTH + 7);
 	this.cmd("CreateLabel", this.powerID3, "hpow", xPos + 150, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
-	this.cmd("CreateRectangle", this.powerValueID3, "0", ARRAY_ELEM_WIDTH + 10, ARRAY_ELEM_HEIGHT, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
+	//this.cmd("CreateRectangle", this.powerValueID3, "0", ARRAY_ELEM_WIDTH + 10, ARRAY_ELEM_HEIGHT, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
 	this.cmd("SetBackGroundColor", this.powerValueID3, "#ccc");
 		
 	for (var i = 0; i < SIZE; i++) {

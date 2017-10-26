@@ -18,7 +18,6 @@ function customIntroNextSteps(stepName, animatedStep, tooltip, position) {
 			animateStep: animatedStep
 	}
 	introjs.insertOption(introjs._currentStep + 1, options);
-	//introjs._options.steps.push({"element" : stepName});
 }
 
 function getURLParameter(sParam) {
@@ -57,8 +56,6 @@ function initIntroJS() {
 			case 'polynomialHeading':
 				text = 'A <y>polynomial</y> is an <y>expression</y> consisting of <y>variables</y> (or <y>indeterminates</y>) and <y>coefficients</y>.'
 						+ '<br>Ex : X<sup>2</sup> - 2X + 1';
-				//A <y>polynomial</y> is an expression consisting of the sum of two or more terms each of which is the product of a constant and a 
-				//variable raised to an integral power: aX<sup>2</sup> + bX + c is a polynomial, where a, b, and c are constants and X is a variable. 
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 					$('#preCode').removeClass('opacity00');
@@ -301,11 +298,12 @@ function initIntroJS() {
 							setTimeToIntroNextStep();
 						break;
 						case 'hpow1Anim':
-							if (iVal == 1) {
+							$('#testingBtn').click();
+							/*if (iVal == 1) {
 								hpow1 = parseInt($('#create1Text').val());
 							} else {
 								hpow2 = parseInt($('#create2Text').val());
-							}
+							}*/
 							doPlayPause();
 						break;
 						case 'coeffAnim':
@@ -468,6 +466,9 @@ function creationNDisplayAnim() {
 											displayText = displayText + arr[i]  + ' X^ ' + i + ' --> '; 
 										}
 									} else {
+										if (buttonName != 'multiplication') {
+											hVal = (hpow1 > hpow2) ? hpow1 : hpow2;
+										}
 										for (let i = hVal; i >= 0; i--) {
 											displayText = displayText + head3[i]  + ' X^ ' + i + ' --> '; 
 										}
@@ -495,10 +496,14 @@ function additionNSubtractionAnim() {
 				flip('#hpow2Val', hpow2, function() {
 					hVal = (flag = (hpow1 > hpow2)) ? hpow1 : hpow2;
 					$('.introjs-tooltiptext li:last').append('<span id="appendText"></span>');
-					text = ' evaluates to <y>' + flag + '</y>. Then <br> <y>hpow</y> = <y>' + hVal + '</y>';
+					text1 = (hpow1 > hpow2) ? 'hpow1' : 'hpow2';
+					text = ' evaluates to <y>' + flag + '</y>. Then <br> <y>hpow</y> = <span class="ct-code-b-yellow" id="finalVal">' 
+								+ text1 + '</span>';
 					typing('#appendText', text, function() {
-						customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
-						$('.introjs-nextbutton').removeClass('introjs-disabled').show();
+						flip('#finalVal', hVal, function() {
+							customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
+							$('.introjs-nextbutton').removeClass('introjs-disabled').show();
+						});
 					});
 				});
 			});
@@ -547,8 +552,6 @@ function createMain() {
 		$('#printf3').html('cout << "Enter highest power of second"\n\t\t\t\t\t" polynomial : ";\ncin >> hpow2;');
 		$('#printf4').html('cout << "Enter second polynomial : \\n";');
 	}
-	/*getIntrojsStep('#arrayDeclaration', '', 'right', 'show');
-	introjs.nextStep();*/
 	if (introjs._currentStep != 2) {
 		doPlayPause();
 	}
@@ -557,7 +560,7 @@ function createMain() {
 
 function createMethod(buttonName) {
 	$('#arrayMethods').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
-	$('#' + buttonName + 'Method').append('<span id="methodDiv">void ' + buttonName + '(int arr[max + 1], <span id="powerDec">int power</span>) {\n'
+	$('#' + buttonName + 'Method').append('<span id="methodDiv">void ' + buttonName + '(int arr[MAX + 1], <span id="powerDec">int power</span>) {\n'
 							+ '\t<span id="varDec">int i;</span>\n'
 							+ '\t<div id="frLoop" class="position-css">for(i = power; i >= 0; i--) {\n'
 							+ '\t<div id="methodText" class="position-css"></div>\n}</div>\n'
@@ -604,9 +607,9 @@ function addSubMethod() {
 	let funNme = buttonName.substring(0, 3);
 	let calcName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
 	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
-	$('#' + buttonName + 'Method').append('void ' + funNme + '(int head1[max + 1], <span id="power1">int hpow1</span>,\n'
-									+ '\t\t\t\t int head2[max + 1], <span id="power2">int hpow2</span>) {\n'
-									+ '\t<span id="varDec1">int poly' + funNme + '[max + 1] = {0}, hpow = 0, i;</span>\n'	
+	$('#' + buttonName + 'Method').append('void ' + funNme + '(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
+									+ '\t\t\t\t int head2[MAX + 1], <span id="power2">int hpow2</span>) {\n'
+									+ '\t<span id="varDec1">int poly' + funNme + '[MAX + 1] = {0}, hpow = 0, i;</span>\n'	
 									+ '\t<span id="hpowVal">hpow = (hpow1 > hpow2) ? hpow1 : hpow2;</span>\n'
 									+ '\t<div id="frLoop1" class="position-css">for (i = hpow; i >= 0; i--) {\n'
 									+ '\t<span id="calcLine"></span>\n}</div>\n'
@@ -624,9 +627,9 @@ function addSubMethod() {
 
 function multiplicationMethod() {
 	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
-	$('#' + buttonName + 'Method').append('void mul(int head1[max + 1], <span id="power1">int hpow1</span>,\n'
-									+ ' \t\t\t\t int head2[max + 1], <span id="power2">int hpow2</span>) {\n'
-									+ '\t<span id="varDec1">int polymul[max + 1] = {0}, hpow = 0, i, j;</span>\n'
+	$('#' + buttonName + 'Method').append('void mul(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
+									+ ' \t\t\t\t int head2[MAX + 1], <span id="power2">int hpow2</span>) {\n'
+									+ '\t<span id="varDec1">int polymul[MAX + 1] = {0}, hpow = 0, i, j;</span>\n'
 									+ '\t<span id="hpowVal">hpow = hpow1 + hpow2;</span>\n'
 									+ '\t<span id="ifCond">if (hpow >= MAX) {</span>\n'
 									+ '\t\t<span id="printf6">printf("Array is overflow\\n");</span>\n'

@@ -207,6 +207,7 @@ r {
 								<div class="position-css margin-left">
 									<span class="input-group-addon-border"><span id="displayBtn" class="btn btn-sm btn-success">Display</span></span>
 								</div>
+								<span class="input-group-addon-border hide"><span id="testingBtn" class="btn btn-sm btn-success">testing</span></span>
 							</div>
 						</div>
 					</div>

@@ -487,7 +487,31 @@ function AnimationManager(objectManager) {
 				&& !foundBreak) {
 			var nextCommand = this.AnimationSteps[this.currentAnimation]
 					.split("<;>");
-			if (nextCommand[0].toUpperCase() == "HIDE") {
+			
+			
+			if (nextCommand[0].toUpperCase() == "DYNAMICSETTEXT") {// modified by mallika
+				if (document.getElementById(nextCommand[2]).tagName == 'INPUT') {
+					nextCommand[2] = $('#' + nextCommand[2]).val();
+				} else {
+					nextCommand[2] = $('#' + nextCommand[2]).text();
+				}
+				if (nextCommand.length > 3) {
+					var oldText = this.animatedObjects.getText(parseInt(nextCommand[1]), parseInt(nextCommand[3]));
+					this.animatedObjects.setText(parseInt(nextCommand[1]), nextCommand[2], parseInt(nextCommand[3]));
+					if (oldText != undefined) {
+						undoBlock.push(new UndoSetText(parseInt(nextCommand[1]), oldText, parseInt(nextCommand[3])));
+					}
+				} else {
+					oldText = this.animatedObjects.getText(parseInt(nextCommand[1]), 0);
+					this.animatedObjects.setText(parseInt(nextCommand[1]), nextCommand[2], 0);
+					if (oldText != undefined) {
+						undoBlock.push(new UndoSetText(parseInt(nextCommand[1]), oldText, 0));
+					}
+				}
+				
+				
+				
+			} else if (nextCommand[0].toUpperCase() == "HIDE") {
 				$(nextCommand[1]).hide();
 				$(nextCommand[1]).addClass("hide");
 			} else if (nextCommand[0].toUpperCase() == "SHOW") {
