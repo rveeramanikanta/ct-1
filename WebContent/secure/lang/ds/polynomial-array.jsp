@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
-<link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
@@ -173,9 +172,9 @@ r {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3' style="padding-right: 0px;">
 				<div class='col-xs-12 box-border opacity00' id="preCode">
-					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include &lt;stdio.h&gt;</span>
+					<pre class='creampretab4' style="margin-top: 10px;" id="polyArrayInit"><span id="headerFiles">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#define MAX 10
+#define MAX 10</span>
 </pre>
 					<pre class='creampretab4 hide' id="arrayMain">void main() {
 	<div id="mainCallMethod" class="position-css"></div>		
@@ -207,7 +206,8 @@ r {
 								<div class="position-css margin-left">
 									<span class="input-group-addon-border"><span id="displayBtn" class="btn btn-sm btn-success">Display</span></span>
 								</div>
-								<span class="input-group-addon-border hide"><span id="testingBtn" class="btn btn-sm btn-success">testing</span></span>
+								<span class="input-group-addon-border hide"><span id="pwrBtn" class="btn btn-sm btn-success">testing</span></span>
+								<span class="input-group-addon-border hide"><span id="coeffBtn" class="btn btn-sm btn-success">testing</span></span>
 							</div>
 						</div>
 					</div>

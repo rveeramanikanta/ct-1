@@ -490,7 +490,7 @@ function AnimationManager(objectManager) {
 			
 			
 			if (nextCommand[0].toUpperCase() == "DYNAMICSETTEXT") {// modified by mallika
-				if (document.getElementById(nextCommand[2]).tagName == 'INPUT') {
+				/*if (document.getElementById(nextCommand[2]).tagName == 'INPUT') {
 					nextCommand[2] = $('#' + nextCommand[2]).val();
 				} else {
 					nextCommand[2] = $('#' + nextCommand[2]).text();
@@ -507,7 +507,7 @@ function AnimationManager(objectManager) {
 					if (oldText != undefined) {
 						undoBlock.push(new UndoSetText(parseInt(nextCommand[1]), oldText, 0));
 					}
-				}
+				}*/
 				
 				
 				

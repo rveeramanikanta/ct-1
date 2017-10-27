@@ -1,9 +1,8 @@
 function polynomialArrayReady() {
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
-	
 	if (lang == 'cpp') {
-		$('#headerFiles').html('#include &lt;iostream&gt;\nusing namespace std;');
+		$('#headerFiles').html('#include &lt;iostream&gt;\n#include &lt;stdlib.h&gt;\n#define MAX 10\nusing namespace std;');
 	}
 	initIntroJS();
 }
@@ -55,25 +54,27 @@ function initIntroJS() {
 		switch(elementId) {
 			case 'polynomialHeading':
 				text = 'A <y>polynomial</y> is an <y>expression</y> consisting of <y>variables</y> (or <y>indeterminates</y>) and <y>coefficients</y>.'
-						+ '<br>Ex : X<sup>2</sup> - 2X + 1';
+						+ '<br>Ex : <y>X<sup>2</sup> - 2X + 1</y>';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').removeClass('introjs-disabled').show();
-					$('#preCode').removeClass('opacity00');
 				});
 			break;
 			case 'polyArrayInit':
+				$('#preCode').removeClass('opacity00');
+				introjs.refresh();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					text = 'Let us define a <y>MAX</y> with maximum size <y>10</y>.';
 					typing('.introjs-tooltiptext', text, function() {
-						$('#animationDiv').removeClass("opacity00");
 						getIntrojsStep('#createBtnDiv', '', '', 'show');
 						$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 					});
 				});
 			break;
 			case 'createBtnDiv':
+				$('#animationDiv').removeClass("opacity00");
+				introjs.refresh();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					typing('.introjs-tooltiptext', 'Click on create.');
+					typing('.introjs-tooltiptext', 'Click on <y>create</y> button to enter the <y>polynomial</y>.');
 					setTimeout(function() {
 						$("#btnsDiv [disabled]").removeAttr("disabled");
 						doPlayPause();
@@ -95,9 +96,9 @@ function initIntroJS() {
 			break;
 			case 'arrayDeclaration':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					text = '<ul><li>Let us declare two int arrays <y>head1</y> and <y>head2</y> with maximum size <y>MAX + 1</y> (i.e., <y>11</y>)'
-							+ ' and initialize with <y>zero</y>(0).</li>'
-							+ ' <li>Let us declare two int variables <y>hpow1</y> and <y>hpow2</y>.</li></ul>';
+					text = 'Let us declare <ul> <li>Two int variables <y>hpow1</y> and <y>hpow2</y>.</li>'
+							+ '<li>Two int arrays <y>head1</y> and <y>head2</y> with maximum size <y>MAX + 1</y> (i.e., <y>11</y>)'
+							+ ' and initialize with <y>zero</y>(<y>0</y>).</li></ul>';
 					typing('.introjs-tooltiptext', text, function() {
 						customIntroNextSteps('#animationDiv', 'arrayInit', 'hide');
 						$('.introjs-nextbutton').removeClass('introjs-disabled').show();
@@ -250,7 +251,7 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					arrow('#printf5', '#printfFun', function() {
 						$('#printfFun').addClass('background-color-yellow');
-						let funNme = buttonName.substring(0, 3);
+						let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 						text = 'Here we are calling <y>display</y> method with <y>poly' + funNme + '</y> and <y>hpow</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							createMethod('display');
@@ -294,19 +295,15 @@ function initIntroJS() {
 					switch (animateStep) {
 						case 'arrayInit':
 							$('#canvas').removeClass("opacity00");
-							getIntrojsStep('#printf1', '', '', 'hide');
-							setTimeToIntroNextStep();
+							doPlayPause();
 						break;
 						case 'hpow1Anim':
-							$('#testingBtn').click();
-							/*if (iVal == 1) {
-								hpow1 = parseInt($('#create1Text').val());
-							} else {
-								hpow2 = parseInt($('#create2Text').val());
-							}*/
+							$('.usr-txt').attr('disabled', true);
+							$('#pwrBtn').click();
 							doPlayPause();
 						break;
 						case 'coeffAnim':
+							$('.usr-txt').attr('disabled', true);
 							let t = 0;
 							for (let i = parseInt($('#create' + iVal + 'Text').val()); i >= 0; i--) {
 								if (iVal == 1) {
@@ -316,6 +313,7 @@ function initIntroJS() {
 								}
 								t++;
 							}
+							$('#coeffBtn').click();
 							doPlayPause();
 						break;
 						case 'displayAnim':
@@ -338,11 +336,11 @@ function initIntroJS() {
 						} else {
 							let t = $('#output input:last').attr('id');
 							if (t == 'create1Text' || t == 'create2Text') {
-								typing('.introjs-tooltiptext', 'Enter highest power', function() {
+								typing('.introjs-tooltiptext', 'Enter a value (i.e., <y>highest power of the polynomial<y>).', function() {
 									coeffValidation('#' + t, '', '', '', '', true);
 								});
 							} else {
-								text = 'Enter coefficient value. <br>Press <y>enter</y> to enter the next value.';
+								text = 'Enter a value (i.e., <y>coefficient value</y>). <br>Press <y>enter</y> to enter the next value.';
 								typing('.introjs-tooltiptext', text, function() {
 									coeffValidation('#create' + iVal + 'Text0', hVal, 0, hVal, iVal, false);
 								});
@@ -359,6 +357,9 @@ function initIntroJS() {
 function coeffValidation(id, power, val, hpower, i, flag) {
 	$(".usr-txt").off("keydown");
 	var minusFlag = true;
+	$('.output-console-body').click(function() {
+		$(id).focus();
+	});
 	$(id).effect('highlight', {color: 'blue'}, 800).focus();
 	$(id).on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -383,7 +384,7 @@ function coeffValidation(id, power, val, hpower, i, flag) {
 		} else if ($(id).val().indexOf('-') == -1 && (!flag)) {
 			$(id).attr("maxlength", "2");
 		}
-		if ($(id).val().length > 0) {	
+		if ($(id).val().length > 0) {
 			if (flag) {
 				customIntroNextSteps('#animationDiv', 'hpow1Anim', 'hide', 'right');
 				$('.introjs-nextbutton').removeClass('introjs-disabled').show();
@@ -423,7 +424,7 @@ function coeffValidation(id, power, val, hpower, i, flag) {
 
 function creationNDisplayAnim() {
 	text1 = 'In this method we are <y>inserting</y> values into the <y>head' + iVal + '</y>.'
-	let funNme = buttonName.substring(0, 3);
+	let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 	text3 = (buttonName == 'display') ? 'head' + iVal : 'poly' + funNme;
 	text2 = 'In this method we are <y>displaying</y> all the elements from <y>' + text3 + '</y>.'
 	text = (buttonName == 'create') ? text1 : text2;
@@ -489,20 +490,21 @@ function creationNDisplayAnim() {
 function additionNSubtractionAnim() {
 	varDecNStoreHpowVal(function() {
 		$('.introjs-tooltiptext ul').append('<li>The condition <span id="condition" class="ct-code-b-yellow"><span id="hpow1Val"'
-				+ ' class="position-css">hpow1</span> > <span id="hpow2Val" class="position-css">hpow2</span>'
-				+ ' </span> </li>');
+										+ ' class="position-css">hpow1</span> > <span id="hpow2Val" class="position-css">hpow2</span>'
+										+ ' </span> </li>');
 		travel('#hpowVal', '.introjs-tooltiptext li:last span', function() {
 			flip('#hpow1Val', hpow1, function() {
 				flip('#hpow2Val', hpow2, function() {
 					hVal = (flag = (hpow1 > hpow2)) ? hpow1 : hpow2;
 					$('.introjs-tooltiptext li:last').append('<span id="appendText"></span>');
 					text1 = (hpow1 > hpow2) ? 'hpow1' : 'hpow2';
-					text = ' evaluates to <y>' + flag + '</y>. Then <br> <y>hpow</y> = <span class="ct-code-b-yellow" id="finalVal">' 
-								+ text1 + '</span>';
+					text = ' evaluates to <y>' + flag + '</y>. Then <br> <y>hpow</y> = <span class="ct-code-b-yellow" id="finalVal">' + text1 + '</span>';
 					typing('#appendText', text, function() {
-						flip('#finalVal', hVal, function() {
-							customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
-							$('.introjs-nextbutton').removeClass('introjs-disabled').show();
+						setTimeout(function() {
+							flip('#finalVal', hVal, function() {
+								customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
+								$('.introjs-nextbutton').removeClass('introjs-disabled').show();
+							}, 500);
 						});
 					});
 				});
@@ -518,7 +520,7 @@ function varDecNStoreHpowVal(callBackFunction) {
 		$('.introjs-tooltiptext li').append(', <span>hpow2</span>');
 		travel('#power2', '.introjs-tooltiptext li span:last', function() {
 			$(".introjs-tooltiptext ul li span:last").append(" = <span><y>" + hpow2 + "</y></span>");
-			let funNme = buttonName.substring(0, 3);
+			let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 			text = 'Let us declare three variables <y>poly' + funNme + '</y>, <y>hpow</y> and <y>i</y> and initialize'
 					+ ' <y>poly' + funNme + '</y> and <y>hpow</y> with <y>0</y>.';
 			arrowMoving('#varDec1', '#varDec1', text, function() {
@@ -534,7 +536,6 @@ function varDecNStoreHpowVal(callBackFunction) {
 }
 
 function createMain() {
-	iVal = 1;
 	$('#mainCallMethod, #output').html('')
 	$('#mainCallMethod').append('<span id="arrayDeclaration">int hpow1, hpow2;\n'
 							+ 'int head1[MAX + 1] = {0},\n\t\t head2[MAX + 1] = {0};</span>\n'
@@ -604,10 +605,10 @@ function methodsInMain() {
 }
 
 function addSubMethod() {
-	let funNme = buttonName.substring(0, 3);
+	let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 	let calcName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
 	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
-	$('#' + buttonName + 'Method').append('void ' + funNme + '(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
+	$('#' + buttonName + 'Method').append('void ' + buttonName.substring(0, 3) + '(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
 									+ '\t\t\t\t int head2[MAX + 1], <span id="power2">int hpow2</span>) {\n'
 									+ '\t<span id="varDec1">int poly' + funNme + '[MAX + 1] = {0}, hpow = 0, i;</span>\n'	
 									+ '\t<span id="hpowVal">hpow = (hpow1 > hpow2) ? hpow1 : hpow2;</span>\n'
@@ -629,17 +630,17 @@ function multiplicationMethod() {
 	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
 	$('#' + buttonName + 'Method').append('void mul(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
 									+ ' \t\t\t\t int head2[MAX + 1], <span id="power2">int hpow2</span>) {\n'
-									+ '\t<span id="varDec1">int polymul[MAX + 1] = {0}, hpow = 0, i, j;</span>\n'
+									+ '\t<span id="varDec1">int polyMul[MAX + 1] = {0}, hpow = 0, i, j;</span>\n'
 									+ '\t<span id="hpowVal">hpow = hpow1 + hpow2;</span>\n'
 									+ '\t<span id="ifCond">if (hpow >= MAX) {</span>\n'
 									+ '\t\t<span id="printf6">printf("Array is overflow\\n");</span>\n'
 									+ '\t} else {\n'
 									+ '\t\t<div id="frLoop1" class="position-css">for(i = hpow1; i >= 0; i--) {\n'
 									+ '\tfor(j = hpow2; j >= 0; j--) {\n'
-									+ '\t\tpolymul[i + j] = polymul[i + j] \n\t\t\t\t\t\t\t + head1[i] * head2[j];\n'
+									+ '\t\tpolyMul[i + j] = polyMul[i + j] \n\t\t\t\t\t\t\t + head1[i] * head2[j];\n'
 									+ '\t}\n}</div>\n'
 									+ '\t\t<span id="printf5">printf("Multiplication polynomial is : ");</span>\n'
-									+ '\t\t<span id="printfFun">display(polymul, hpow);</span>\n\t}\n}');
+									+ '\t\t<span id="printfFun">display(polyMul, hpow);</span>\n\t}\n}');
 	if (lang == 'cpp') {
 		$('#printf6').html('cout << "Array is overflow\\n";');
 		$('#printf5').html('cout << "Multiplication polynomial is : ";');
