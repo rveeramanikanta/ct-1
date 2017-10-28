@@ -445,7 +445,6 @@ PolynomialArray.prototype.dupArrayCreation = function(arrName) {//dummy array
 	this.exponentID3 = this.nextIndex++;
 	this.powerID3 = this.nextIndex++;
 	this.powerValueID3 = this.nextIndex++;
-	this.dummyhpowValID = this.nextIndex++;
 	
 	for (var i = 0; i < SIZE; i++) {
 		this.coeffID3[i] = this.nextIndex++;
@@ -460,7 +459,6 @@ PolynomialArray.prototype.dupArrayCreation = function(arrName) {//dummy array
 	this.cmd("CreateLabel", this.exponentID3, "Exp", xPos, yPos + ARRAY_ELEM_WIDTH - 3);
 	this.cmd("CreateLabel", this.powerID3, "hpow", xPos + 150, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
 	this.cmd("CreateRectangle", this.powerValueID3, "0", ARRAY_ELEM_WIDTH + 10, ARRAY_ELEM_HEIGHT, xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
-	this.cmd("CreateLabel", this.dummyhpowValID, "", xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 5);
 	this.cmd("SetBackGroundColor", this.powerValueID3, "#ccc");
 		
 	for (var i = 0; i < SIZE; i++) {
@@ -621,6 +619,7 @@ PolynomialArray.prototype.mulAnim = function() {
 		this.cmd("Step");
 		this.introSteps('#ifCond', 'right', 'show');
 		this.cmd("Step");
+		this.highlightID = this.nextIndex++;
 		this.cmd("CreateHighlightCircle", this.highlightID, "#0000FF", xPos + 200, yPos - (3 * ARRAY_ELEM_WIDTH) - 4);
 		this.cmd("Step");
 		
