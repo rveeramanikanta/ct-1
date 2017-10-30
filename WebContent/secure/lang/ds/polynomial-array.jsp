@@ -23,19 +23,19 @@
 <script type="text/javascript" src="js/polynomial-array.js"></script>
 
 <!-- Javascript for the actual visualization code -->
-<script type="text/javascript" src="js-min/an-li/custom-events.js"></script>
-<script type="text/javascript" src="js-min/an-li/undo-functions.js"></script>
-<script type="text/javascript" src="js-min/an-li/animated-object.js"></script>
-<script type="text/javascript" src="js-min/an-li/animated-label.js"></script>
-<script type="text/javascript" src="js-min/an-li/animated-circle.js"></script>
-<script type="text/javascript" src="js-min/an-li/animated-rectangle.js"></script>
-<script type="text/javascript" src="js-min/an-li/animated-linked-list.js"></script>
-<script type="text/javascript" src="js-min/an-li/highlight-circle.js"></script>
-<script type="text/javascript" src="js-min/an-li/line.js"></script>
-<script type="text/javascript" src="js-min/an-li/draw-line.js"></script>
-<script type="text/javascript" src="js-min/an-li/object-manager.js"></script>
-<script type="text/javascript" src="js-min/an-li/animation-main.js"></script>
-<script type="text/javascript" src="js-min/al-li/algorithm.js"></script>
+<script type="text/javascript" src="js-min/an-li/custom-events.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/undo-functions.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-object.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-label.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-circle.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-rectangle.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animated-linked-list.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/highlight-circle.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/line.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/draw-line.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/object-manager.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/animation-main.min.js"></script>
+<script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
 
 <script type="text/javascript" src="js/al-li/polynomial-arr.js"></script>
 <!-- <script type="text/javascript" src="js/al-li/dummy-polynomial-arr.js"></script> -->

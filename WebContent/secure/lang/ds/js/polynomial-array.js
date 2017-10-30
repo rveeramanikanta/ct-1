@@ -53,8 +53,7 @@ function initIntroJS() {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		switch(elementId) {
 			case 'polynomialHeading':
-				text = 'A <y>polynomial</y> is an <y>expression</y> consisting of <y>variables</y> (or <y>indeterminates</y>) and <y>coefficients</y>.'
-						+ '<br>Ex : <y>X<sup>2</sup> - 2X + 1</y>';
+				text = 'Here we will learn about <y>polynomial</y> using <y>arrays</y>.';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 				});
@@ -71,7 +70,7 @@ function initIntroJS() {
 				});
 			break;
 			case 'createBtnDiv':
-				$('#animationDiv').removeClass("opacity00");
+				$('#animationDiv').removeClass('opacity00');
 				introjs.refresh();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click on <y>create</y> button to enter the <y>polynomial</y>.');
@@ -95,6 +94,7 @@ function initIntroJS() {
 				});
 			break;
 			case 'arrayDeclaration':
+				$('#arrayDeclaration').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					text = 'Let us declare <ul> <li>Two int variables <y>hpow1</y> and <y>hpow2</y>.</li>'
 							+ '<li>Two int arrays <y>head1</y> and <y>head2</y> with maximum size <y>MAX + 1</y> (i.e., <y>11</y>)'
@@ -252,6 +252,7 @@ function initIntroJS() {
 					arrow('#printf5', '#printfFun', function() {
 						$('#printfFun').addClass('background-color-yellow');
 						let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
+						$('.introjs-tooltip').removeClass('hide');
 						text = 'Here we are calling <y>display</y> method with <y>poly' + funNme + '</y> and <y>hpow</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							createMethod('display');
@@ -265,20 +266,24 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#hpowVal').removeClass('background-color-yellow');
 					arrow('#hpowVal', '#ifCond', function() {
-						text = '<ul><li>The condition <span class="ct-code-b-yellow"><span id="hpowValue" class="position-css">hpow</span> >='
-								+ ' <span id="maxVal" class="position-css">MAX</span></span></li></ul>';
-						$('.introjs-tooltiptext').append(text);
+						text1 = (flag = hpow >= SIZE) ? 'if' : 'else';
+						text = 'The condition <span class="ct-code-b-yellow"><span id="hpowValue" class="position-css">hpow</span> >='
+								+ ' <span id="maxVal" class="position-css">MAX</span></span>';
+						if (flag) {
+							$('.introjs-tooltiptext').append(text);
+						} else {
+							$('.introjs-tooltiptext').append('<ul><li>' + text + '</li></ul>');
+						}
 						travel('#ifCond', '.introjs-tooltiptext li:last span', function() {
 							flip('#hpowValue', hpow, function() {
 								flip('#maxVal', SIZE, function() {
 									$('.introjs-tooltiptext li:last').append('<span id="appendText"></span>');
-									text1 = (flag = hpow >= SIZE) ? 'if' : 'else';
 									text = ' evaluates to <y>' + flag + '</y>. Hence control enters into the <y>' + text1 + ' block</y>.';
 									typing('#appendText', text, function() {
 										if (flag) {
 											getIntrojsStep('#printf6', '', '', 'hide');
 										} else {
-											getIntrojsStep('#frLoop1', '', 'right', 'show');
+											getIntrojsStep('#frLoop1', 'hide', 'right', 'show');
 										}
 										$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 									});
@@ -294,6 +299,7 @@ function initIntroJS() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 					switch (animateStep) {
 						case 'arrayInit':
+							$("#btnsDiv .btn").attr("disabled", "disabled");
 							$('#canvas').removeClass("opacity00");
 							doPlayPause();
 						break;
@@ -336,7 +342,7 @@ function initIntroJS() {
 						} else {
 							let t = $('#output input:last').attr('id');
 							if (t == 'create1Text' || t == 'create2Text') {
-								typing('.introjs-tooltiptext', 'Enter a value (i.e., <y>highest power of the polynomial<y>).', function() {
+								typing('.introjs-tooltiptext', 'Enter a value (i.e., <y>highest power of the polynomial</y>).', function() {
 									coeffValidation('#' + t, '', '', '', '', true);
 								});
 							} else {
@@ -423,10 +429,10 @@ function coeffValidation(id, power, val, hpower, i, flag) {
 }
 
 function creationNDisplayAnim() {
-	text1 = 'In this method we are <y>inserting</y> values into the <y>head' + iVal + '</y>.'
+	text1 = 'In this method we are <y>inserting</y> values into the <y>arr</y> (i.e., <y>head' + iVal + '</y>).'
 	let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 	text3 = (buttonName == 'display') ? 'head' + iVal : 'poly' + funNme;
-	text2 = 'In this method we are <y>displaying</y> all the elements from <y>' + text3 + '</y>.'
+	text2 = 'In this method we are <y>displaying</y> all the elements from <y>arr</y> (i.e., <y>' + text3 + '</y>).'
 	text = (buttonName == 'create') ? text1 : text2;
 	typing('.introjs-tooltiptext', text, function() {
 		$('.introjs-tooltiptext').append('<ul><li><span>int power</span></li></ul>');
@@ -447,8 +453,8 @@ function creationNDisplayAnim() {
 								+ " <b style='font-family: monospace;'> i = " + hVal + "</b>).";
 						liTying(text, function() {
 							text1 = "It is used to enter the <y>coefficient</y> values.";
-							text3 = (buttonName == 'display') ? 'head' + iVal : 'arr (i.e., poly' + funNme + ').';
-							text2 = "It is used to print the <y>" + text3 + "</y>.";
+							text3 = (buttonName == 'display') ? '<y>head' + iVal + '</y>' : '<y>arr</y> (i.e., <y>poly' + funNme + '</y>).';
+							text2 = "It is used to print the " + text3 + ".";
 							text = (buttonName == 'create') ? text1 : text2;
 							liTying(text, function() {
 								if (buttonName == 'create') {
@@ -504,7 +510,7 @@ function additionNSubtractionAnim() {
 							flip('#finalVal', hVal, function() {
 								customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
 								$('.introjs-nextbutton').removeClass('introjs-disabled').show();
-							}, 500);
+							}, 800);
 						});
 					});
 				});
@@ -536,10 +542,12 @@ function varDecNStoreHpowVal(callBackFunction) {
 }
 
 function createMain() {
-	$('#mainCallMethod, #output').html('')
-	$('#mainCallMethod').append('<span id="arrayDeclaration">int hpow1, hpow2;\n'
-							+ 'int head1[MAX + 1] = {0},\n\t\t head2[MAX + 1] = {0};</span>\n'
-							+ '<div id="printf1" class="position-css">printf("Enter highest power of first"\n\t\t\t\t\t" polynomial : ");\n'
+	$('#mainCallMethod, #output').html('');
+	if (introjs._currentStep == 2) {
+		$('#mainCallMethod').append('<span id="arrayDeclaration">int hpow1, hpow2;\n'
+								+ 'int head1[MAX + 1] = {0},\n\t\t head2[MAX + 1] = {0};</span>\n');
+	}
+	$('#mainCallMethod').append('<div id="printf1" class="position-css">printf("Enter highest power of first"\n\t\t\t\t\t" polynomial : ");\n'
 							+ 'scanf("%d", &hpow1);</div>\n'
 							+ '<span id="printf2">printf("Enter first polynomial : \\n");</span>\n'
 							+ '<span id="createMethodCal1">create(head1, hpow1);</span>\n'
@@ -673,6 +681,7 @@ function arrowMoving(id1, id2, text, callBackFunction) {
 	$(".introjs-tooltiptext ul li *").removeAttr("id");
 	arrow(id1, id2, function() {
 		$(id2).addClass('background-color-yellow');
+		$('.introjs-tooltip').removeClass('hide');
 		liTying(text, function() {
 			callBackFunction();
 		});

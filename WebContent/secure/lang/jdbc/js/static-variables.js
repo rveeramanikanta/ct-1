@@ -53,13 +53,14 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "codeAnimation":
-				$("#codeAnimation").addClass("display");
+				$(".output-console-body").empty();
 			break;
 			case "functionDec":
 			break;
 			case "mainFunction":
 			break;
 			case "functionDef":
+				$('#varDec').text('int i = 1;');
 			break;
 			case "startMain":
 			break;
@@ -80,23 +81,22 @@ function introGuide() {
 				if (introjs._currentStep == 7) {
 					$("#animationBox").addClass("opacity00");
 				}
-					if((i < 4) && (count == 0)) {
-						$("#lVal").text(1);
-						if( i == 1) {
-							$("#boxHeading, #functionBox").css({'opacity' : '0'})
-							$("#localVal").addClass("opacity00");
-						}
-						$("#localVal, #lVal").css({'opacity' : '0'});
-					} else {
-						if(i == 1) {
-							$("#lVal").text(1);
-							$("#localVal").css({opacity: '0'})
-						}
-						$("#lVal").css({opacity: '0'});
-						$("#lVal").addClass("opacity00");
+				if((i < 4) && (count == 0)) {
+					$("#lVal").text(1);
+					if( i == 1) {
+						$("#boxHeading, #functionBox").css({'opacity' : '0'})
+						$("#localVal").addClass("opacity00");
 					}
-				break;
-				
+					$("#localVal, #lVal").css({'opacity' : '0'});
+				} else {
+					if(i == 1) {
+						$("#lVal").text(1);
+						$("#localVal").css({opacity: '0'})
+					}
+					$("#lVal").css({opacity: '0'});
+					$("#lVal").addClass("opacity00");
+				}
+			break;
 			case "localVal":
 				$("#lVal").text(1);
 				$("#localVal").removeClass("blinking-white");
@@ -108,7 +108,7 @@ function introGuide() {
 			case "iInc":
 			break;
 			case "consoleId":
-				if (introjs._currentStep == 10) {
+				if (count == 0) {
 					$("#lVal").text(1);
 				}
 			break;
@@ -117,10 +117,16 @@ function introGuide() {
 					$("#localVal").removeClass("blinking-white");
 					$("#localVal, #lVal").css({opacity: '1'})
 					$("#localVal, #lVal").removeClass("opacity00");
-				} else {
 				}
 				break;
 			case "endMain":
+				if (count == 1 && introjs._direction == 'backward') {
+					i = 4;
+					--count;
+					for (let t = 1; t <= 3; t++) {
+						$('.output-console-body').append('<div id="runEditor' + t + '">i = 1</div>');
+					}
+				}
 			break;
 		}
 	});
@@ -145,11 +151,9 @@ function introGuide() {
 		// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "codeAnimation":
 			$("#codeAnimation").removeClass("opacity00");
 			if(count == 1) {
-				$(".console-print").empty();
 				$("#codeAnimation").removeClass("display");
 				var text = "Now we will try the same program by using a <span class='ct-code-b-yellow'>static variable</span> " 
 							+ " in function <span class='ct-code-b-yellow'>display()</span>.";
@@ -309,7 +313,7 @@ function introGuide() {
 		case "localVal":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('.introjs-tooltip').removeClass('hide');
-				if (introjs._direction == 'backward') {
+				if (introjs._direction == 'backward' && count == 0) {
 					--i;
 				}
 				if (i < 4) {
@@ -339,6 +343,10 @@ function introGuide() {
 			$("#varDec").removeClass("blinking-white");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if(count == 1) {
+					/*if (introjs._direction == "backward" && i > 1) {
+						i = i - 1;
+					}*/
+					$("#lVal").text(i);
 					$('.introjs-tooltip').removeClass("hide");
 					var text1 = "The value of the <span class='ct-code-b-yellow'>static</span> variable <span class='ct-code-b-yellow'>i</span> is "
 									+ "<span class='ct-code-b-yellow'>"+ i + "</span>, which is the value ";
@@ -377,6 +385,9 @@ function introGuide() {
 		case "consoleId":
 			$("#consoleId").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				if ((count == 1 && introjs._direction == "backward") && i > 1) {
+					i = i - 1;
+				}
 				if (introjs._direction == 'forward') {
 					$(".output-console-body").append('<div id="runEditor' + i + '" class="console-print"></div>')
 					if(count == 1) {
@@ -404,14 +415,8 @@ function introGuide() {
 		case "endFunc":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('.introjs-tooltip').removeClass('hide');
-				if (count == 1 && introjs._direction == 'backward') {
-					i = 4;
-					--count;
-					for (let t = 1; t <= 3; t++) {
-						$('.output-console-body').append('<div id="runEditor' + t + '">i = 1</div>');
-					}
-				}
 				if(i < 4 && count == 0) {
+					$("#lVal").text('2');
 					$("#localVal").addClass("blinking-white");
 					var text = "When the <span class='ct-code-b-yellow'>display()</span> function ends, all the <span class='ct-code-b-yellow'>"
 								+ "local</span> variables will be <span class='ct-code-b-yellow'>destroyed</span>.";
@@ -422,6 +427,7 @@ function introGuide() {
 							$("#lVal").css("opacity", 0);
 							$("#localVal").removeClass("blinking-white");
 							if (introjs._direction == "forward") {
+								console.log('425 inc');
 								++i;
 							} 
 							if(i < 4 && introjs._introItems[introjs._currentStep].stepFlag == "false") {
@@ -433,7 +439,11 @@ function introGuide() {
 					});
 				} else {
 					if (introjs._direction == "forward") {
+						console.log('437 inc');
 						++i;
+					} else {
+						console.log('440 dec');
+						$('#lVal').text(i - 1);
 					}
 					var text = "<span class='ct-code-b-yellow'>display()</span> function ends here.<br><br> The static variable "
 						+ " <span class='ct-code-b-yellow'>i</span> will not be <y>destroyed</y> and will persist till the end of the program."; 
@@ -447,6 +457,7 @@ function introGuide() {
 		case "endMain":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._direction == 'forward') {
+					console.log('455 count inc');
 					++count;
 				}
 				if(count == 1 && introjs._introItems[introjs._currentStep].stepFlag == "false") {
@@ -456,11 +467,12 @@ function introGuide() {
 				}
 				setTimeout(function() {
 					if (introjs._direction == 'forward') {
+						i = 1;
 						introjs.nextStep();
 					} else {
 						introjs.previousStep();
 					}
-				}, 500);
+				}, 800);
 			});
 			break;
 			
