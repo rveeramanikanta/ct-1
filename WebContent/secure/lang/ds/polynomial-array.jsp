@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Polynomial Using Array</title>
+<title>Polynomials Using Array</title>
 
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -38,7 +38,6 @@
 <script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
 
 <script type="text/javascript" src="js/al-li/polynomial-arr.js"></script>
-<!-- <script type="text/javascript" src="js/al-li/dummy-polynomial-arr.js"></script> -->
 
 <style type="text/css">
 
@@ -117,17 +116,10 @@
 	padding: 4px 6px;
 }
 
-y, r {
+y {
 	font-family: monospace;
 	font-weight: bold;
-}
-
-y {
 	color: yellow;
-}
-
-r {
-	color: red;
 }
 
 .user-btn {	

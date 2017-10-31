@@ -599,7 +599,6 @@ PolynomialArray.prototype.mulAnim = function() {
 		}
 		this.introSteps('#btnsDiv', 'left', 'show');
 	} else {
-		this.cmd("Step");
 		this.createPowerAnimation(this.powerValueID3, hpow, this.exponentID3, this.exponentValID3, this.exponentArrayID3, this.coeffID3);
 		this.cmd("Step");
 		this.introSteps('#ifCond', 'right', 'show');
@@ -756,6 +755,10 @@ PolynomialArray.prototype.AnimationOfSumSub = function() {
 		xPos = (i) * ARRAY_ELEM_WIDTH + ARRAY1_START_X;
 		yPos = Math.floor(i / ARRRAY_ELEMS_PER_LINE) * 0 + Y + ARRAY_ELEM_WIDTH - 1;
 		
+		this.cmd("SetHighlight", this.indexArrayID1[i], "#66cc66");
+		this.cmd("SetHighlight", this.indexArrayID2[i], "#66cc66");
+		this.cmd("Step");
+		
 		this.cmd("SetHighlight", this.coeffID1[i], "#66cc66");
 		this.movingcalculationValues(head1[i], xPos, yPos - 8, this.dupValID1, dupXPos, dupYPos);
 		this.findingSign(head1[i], this.dupValID1);
@@ -791,6 +794,8 @@ PolynomialArray.prototype.AnimationOfSumSub = function() {
 		
 		yPos = yPos + ARRAY_ELEM_WIDTH + 8;
 		
+		this.cmd("SetHighlight", this.indexArrayID1[i], "");
+		this.cmd("SetHighlight", this.indexArrayID2[i], "");
 		this.cmd("Move", this.highlightID, xPos, yPos);
 		this.cmd("Step");
 		this.cmd("Step");

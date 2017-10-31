@@ -596,7 +596,7 @@ function validation(selector, val) {
 		}
 		if ($(this).val().length > max - 1) {
 			$('.error-text').remove();
-			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Please restrict the maximum length to 3 digits only.</div>')
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Here we restrict the maximum length to 3 digits only.</div>')
 			e.preventDefault();
 		}
 	});
@@ -616,7 +616,7 @@ function validation(selector, val) {
 }
 
 function eventValidation(val) {
-	$('.user-btn').remove();
+	$('.user-btn, .error-text').remove();
 	$('#nodeVal').off();
 	$('input').attr('disabled', true);
 	if (val == 1) {

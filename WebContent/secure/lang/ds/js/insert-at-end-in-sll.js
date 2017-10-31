@@ -590,7 +590,7 @@ function validation(selector, val) {
 }
 
 function eventValidation(val) {
-	$('.user-btn').remove();
+	$('.user-btn, .error-text').remove();
 	$('#nodeVal').off();
 	$('input').attr('disabled', true);
 	if (val == 1) {

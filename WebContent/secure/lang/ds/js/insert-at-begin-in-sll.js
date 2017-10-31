@@ -407,11 +407,8 @@ function validationAnim() {
 			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
 				$('#algorithmDiv').addClass('z-index10000');
 				transferEffect('.introjs-tooltiptext #l3Span', '#algorithmDiv #l3Span', function() {
-					/*$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
-					$('#algorithmDiv .grn').addClass('ct-green-color').removeClass('ct-fonts ct-blue-color');*/
 					$('#ul2 li').removeClass('opacity00')
 					transferEffect('.introjs-tooltiptext #l3Div', '#algorithmDiv #l3Div', function() {
-						//$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
 						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
 						insertAtBeginMethod();
 						$('.introjs-nextbutton').show();
@@ -554,7 +551,7 @@ function validation(selector, val) {
 }
 
 function eventValidation(val) {
-	$('.user-btn').remove();
+	$('.user-btn, .error-text').remove();
 	$('#nodeVal').off();
 	$('input').attr('disabled', true);
 	if (val == 1) {

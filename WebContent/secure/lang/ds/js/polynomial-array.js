@@ -164,7 +164,7 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (elementId == 'mainCallMethod') {
 						let funNme = buttonName.substring(0, 3);
-						text = 'Here we are calling <y>' + funNme + '</y> method and passing <y>head1</y>, <y>hpow1</y>,'
+						text = 'Here we are calling <y>' + funNme + '()</y> method and passing <y>head1</y>, <y>hpow1</y>,'
 								+ ' <y>head2</y> and <y>hpow2</y> as arguments.';
 						if (buttonName == 'multiplication') {
 							multiplicationMethod();
@@ -172,7 +172,7 @@ function initIntroJS() {
 							addSubMethod();
 						}
 					} else {
-						text = 'Here we are calling <y>' + buttonName + '</y> method and passing <y>head' + iVal + '</y> and <y>hpow' + iVal
+						text = 'Here we are calling <y>' + buttonName + '()</y> method and passing <y>head' + iVal + '</y> and <y>hpow' + iVal
 								+ '</y> as arguments.';
 						createMethod(buttonName);
 					}
@@ -216,6 +216,7 @@ function initIntroJS() {
 			break;
 			case 'frLoop1':
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$('.introjs-tooltip').removeClass('hide');
 					$('.introjs-tooltiptext').append('<ul></ul>');
 					let selector;
 					if (buttonName == 'multiplication') {
@@ -253,7 +254,7 @@ function initIntroJS() {
 						$('#printfFun').addClass('background-color-yellow');
 						let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
 						$('.introjs-tooltip').removeClass('hide');
-						text = 'Here we are calling <y>display</y> method with <y>poly' + funNme + '</y> and <y>hpow</y>.';
+						text = 'Here we are calling <y>display()</y> method with <y>poly' + funNme + '</y> and <y>hpow</y>.';
 						typing('.introjs-tooltiptext', text, function() {
 							createMethod('display');
 							getIntrojsStep('#displayMethod', '', 'right', 'show');
@@ -283,7 +284,7 @@ function initIntroJS() {
 										if (flag) {
 											getIntrojsStep('#printf6', '', '', 'hide');
 										} else {
-											getIntrojsStep('#frLoop1', 'hide', 'right', 'show');
+											getIntrojsStep('#frLoop1', '', 'right', 'hide');
 										}
 										$('.introjs-nextbutton').removeClass('introjs-disabled').show();
 									});
@@ -346,7 +347,7 @@ function initIntroJS() {
 									coeffValidation('#' + t, '', '', '', '', true);
 								});
 							} else {
-								text = 'Enter a value (i.e., <y>coefficient value</y>). <br>Press <y>enter</y> to enter the next value.';
+								text = 'Enter a value (i.e., <y>coefficient value</y>). <br><br>Press <y>enter</y> to enter the next value.';
 								typing('.introjs-tooltiptext', text, function() {
 									coeffValidation('#create' + iVal + 'Text0', hVal, 0, hVal, iVal, false);
 								});
@@ -510,7 +511,7 @@ function additionNSubtractionAnim() {
 							flip('#finalVal', hVal, function() {
 								customIntroNextSteps('#animationDiv', 'displayAnim', 'hide');
 								$('.introjs-nextbutton').removeClass('introjs-disabled').show();
-							}, 800);
+							}, 1000);
 						});
 					});
 				});
@@ -681,7 +682,7 @@ function arrowMoving(id1, id2, text, callBackFunction) {
 	$(".introjs-tooltiptext ul li *").removeAttr("id");
 	arrow(id1, id2, function() {
 		$(id2).addClass('background-color-yellow');
-		$('.introjs-tooltip').removeClass('hide');
+		//$('.introjs-tooltip').removeClass('hide');
 		liTying(text, function() {
 			callBackFunction();
 		});
