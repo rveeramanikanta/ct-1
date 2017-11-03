@@ -1,6 +1,5 @@
-function addNodesInDLLReady() {
+function insertAtEndInDLLReady() {
 	dynamicTempNodes(1);
-	createDynamicNodes('#fstExplain', 0);
 	createDynamicNodes('#dynamicNodes', 1);
 	svgAppend("#animationDiv");
 	lang = getURLParameter("lang");
@@ -35,11 +34,6 @@ function initIntroJS() {
 			intro: '',
 			animateStep: 'listExplain',
 			tooltipClass: 'hide'
-		}, {
-			element: '#animationDiv',
-			intro: '',
-			animateStep: 'nodeExplanation',
-			tooltipClass: 'hide'
 		} ]
 	});
 	introjs.onafterchange(function(targetElement) {
@@ -49,7 +43,7 @@ function initIntroJS() {
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'headingInDll':
-			text = 'Here we will learn about <y>addNode()</y> method in a <y>Doubly Linked List</y>.';
+			text = 'Here we will learn about <y>insertAtEnd()</y> method in a <y>Doubly Linked List</y>.';
 			typing('.introjs-tooltiptext', text, function() {
 				$('.introjs-nextbutton').show();
 			});
@@ -61,11 +55,11 @@ function initIntroJS() {
 				switch(animateStep) {
 					case 'listExplain':
 						$('#codeAndAlgorithmDiv').addClass('box-border');
-						text = 'Let us learn about adding a <bl>node</bl> to a <bl>Doubly Linked List(DLL)</bl>. &emsp;';
+						text = 'Let us learn about adding a <bl>node</bl> at the end of the <bl>Doubly Linked List(DLL)</bl>. &emsp;';
 						typing('#algorithmDiv', text, function() {
 							nextBtnCalling('#algorithmDiv', function() {
 								$('#algorithmDiv').append('<ul style="list-style-type: circle" id="ul1"></ul>');
-								$('#node0 > div:last').remove();
+								introNextSteps('#animationDiv', 'fstDeclaration', 'hide');
 								introjs.nextStep();
 							});
 						});
@@ -76,25 +70,9 @@ function initIntroJS() {
 		case 'animationDiv':
 			$('#animationDiv').removeClass('opacity00');
 			introjs.refresh();
-			$('#node0').addClass('zIndex');
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
-					case 'nodeExplanation':
-						$('#prev0, #data0, #next0').addClass('opacity00');
-						$('#node0').removeClass('opacity00').addClass('col-xs-offset-1');
-						TweenMax.from("#node0", 1, {top : -30, onComplete:function() {
-							$('.introjs-tooltip').removeClass('hide');
-							text = '<span id="l1">Let us consider a <yy class="ct-fonts b">node</yy> structure which '
-									+ 'contains <yy class="ct-fonts brn">three members</yy>.'
-									+ '<ol><li>A <yy class="ct-fonts g">pointer</yy> to the <yy class="ct-fonts g">previous</yy> node.</li>'
-									+ '<li>An <yy class="ct-fonts">int</yy> data type to hold the user <yy class="ct-fonts">data</yy>.</li>'
-									+ '<li>A <yy class="ct-fonts g">pointer</yy> to the <yy class="ct-fonts g">next</yy> node.</li></ol></span>';
-							typing('.introjs-tooltiptext', text, function() {
-								algorithmSteps(text, '.introjs-tooltiptext #l1', '#algorithmDiv #l1', 0, 'structCode');
-							});
-						}});
-					break;
 					case 'fstDeclaration':
 						$('#node0').css({'opacity' : '0.5'});
 						zoomInEffect('#firstNode', function() {
@@ -105,7 +83,7 @@ function initIntroJS() {
 									+ 'list</yy> is <yy class="ct-fonts brn">not yet created</yy> we should initialize it with'
 									+ ' <yy class="ct-fonts g">NULL</yy>.';
 							typing('.introjs-tooltiptext', text, function() {
-								algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 1, 'fstCreation');
+								algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 0, 'fstCreation');
 							});
 						});
 					break;
@@ -160,30 +138,17 @@ function initIntroJS() {
 			});
 			break;
 		case 'codeAndAlgorithmDiv':
-			$('#algorithmDiv').removeClass('z-index10000');
+			$('#algorithmDiv, #codeDiv').removeClass('z-index10000 opacity00');
 			$('.introjs-tooltip').css({'height':''});
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
-					case 'structCode':
-						zoomInEffect('#codeDiv', function() {
-							structCode();
-							$('#l1').parent().attr('id', 'l1Parent');
-							$('#algorithmDiv ul li').not('ol li').eq(0).effect('highlight', {color: 'yellow'}, 1400);
-							transWithZoomInEffect('#algorithmDiv #l1Parent', '#structCode', function() {
-								introNextSteps('#animationDiv', 'fstDeclaration', 'hide');
-								nextBtnCalling('#structCode', function() {
-									introjs.nextStep();
-								});
-							});
-						});
-					break;
 					case 'fstCreation':
-						$('#codeDiv').append('<br><br><span id="fstCreation" class="opacity00">node first = <g>NULL</g>; '
+						$('#codeDiv').append('<span id="fstCreation" class="opacity00">node first = <g>NULL</g>; '
 								+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"	></i></span> &emsp;</span>');
 						$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 						transWithZoomInEffect('#l2', '#fstCreation', function() {
-							animatedTooltip('#helpText', "top", "first stores the beginning of the linked list");
+							animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
 							nextBtnCalling('#fstCreation', function() {
 								introNextSteps('#animationDiv', 'fstListCreation', 'show');
 								introjs.nextStep();
@@ -593,7 +558,7 @@ function algorithmSteps(text, id1, id2, val, animatedStep) {
 }
 
 function structCode() {
-	$('#codeDiv').text('').append('<div id="structCode" class="position-css opacity00"><brn>struct list</brn> {\n'
+	$('#codeDiv').append('<br><div id="structCode" class="position-css opacity00"><brn>struct list</brn> {\n'
 						+ '\tint <bl>data</bl>;\n'
 						+ '\tstruct list <g>*prev</g>;\n'
 						+ '\tstruct list <g>*next</g>;\n'
@@ -666,7 +631,6 @@ function getRandomInt(min, max) { //random address
 function animatedTooltip(id, position, tooltipText) {
 	$(id).addClass('zIndex').attr({"data-placement" : position, "data-original-title" : tooltipText}).tooltip();
 }
-
 
 function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
 	if (flag) {

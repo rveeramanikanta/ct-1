@@ -134,9 +134,9 @@ function initIntroJS() {
 					} else if (elementId == 'printf5') {
 						$('#frLoop1').removeClass('background-color-yellow');
 						$('#printf5').addClass('background-color-yellow');
-						let calcName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
+						let methodName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
 						arrow('#frLoop1', '#printf5');
-						$("#output").append('<div class="opacity00 position-css">' + calcName + ' polynomial is :&nbsp;</div>');
+						$("#output").append('<div class="opacity00 position-css">' + methodName + ' polynomial is :&nbsp;</div>');
 					} else if (buttonName == 'create') {
 						if (elementId == 'printf2') {
 							$("#output").append('<div class="opacity00">Enter first polynomial :&nbsp;</div>');
@@ -305,8 +305,11 @@ function initIntroJS() {
 							doPlayPause();
 						break;
 						case 'hpow1Anim':
-							$('.usr-txt').attr('disabled', true);
-							$('#pwrBtn').click();
+						case 'displayAnim':
+							if (elementId == 'hpow1Anim') {
+								$('.usr-txt').attr('disabled', true);
+								$('#pwrBtn').click();
+							}
 							doPlayPause();
 						break;
 						case 'coeffAnim':
@@ -321,9 +324,6 @@ function initIntroJS() {
 								t++;
 							}
 							$('#coeffBtn').click();
-							doPlayPause();
-						break;
-						case 'displayAnim':
 							doPlayPause();
 						break;
 					}
@@ -615,7 +615,7 @@ function methodsInMain() {
 
 function addSubMethod() {
 	let funNme = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, 3);
-	let calcName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
+	let methodName = buttonName.charAt(0).toUpperCase() + buttonName.substring(1, buttonName.length);
 	$('#arrayMethods').html('').append('<pre class="creampretab4 opacity00" id="' + buttonName + 'Method"></pre>');
 	$('#' + buttonName + 'Method').append('void ' + buttonName.substring(0, 3) + '(int head1[MAX + 1], <span id="power1">int hpow1</span>,\n'
 									+ '\t\t\t\t int head2[MAX + 1], <span id="power2">int hpow2</span>) {\n'
@@ -623,7 +623,7 @@ function addSubMethod() {
 									+ '\t<span id="hpowVal">hpow = (hpow1 > hpow2) ? hpow1 : hpow2;</span>\n'
 									+ '\t<div id="frLoop1" class="position-css">for (i = hpow; i >= 0; i--) {\n'
 									+ '\t<span id="calcLine"></span>\n}</div>\n'
-									+ '\t<span id="printf5">printf("' + calcName + ' polynomial is : ");</span>\n'
+									+ '\t<span id="printf5">printf("' + methodName + ' polynomial is : ");</span>\n'
 									+ '\t<span id="printfFun">display(poly' + funNme + ', hpow);</span>\n}');
 	if (buttonName == 'addition') {
 		$('#calcLine').html('poly' + funNme+ '[i] = head1[i] + head2[i];');
@@ -631,7 +631,7 @@ function addSubMethod() {
 		$('#calcLine').html('poly' + funNme+ '[i] = head1[i] - head2[i];');
 	}
 	if (lang == 'cpp') {
-		$('#printf5').html('cout << "' + calcName + ' polynomial is : ";');
+		$('#printf5').html('cout << "' + methodName + ' polynomial is : ";');
 	}
 }
 
@@ -682,7 +682,6 @@ function arrowMoving(id1, id2, text, callBackFunction) {
 	$(".introjs-tooltiptext ul li *").removeAttr("id");
 	arrow(id1, id2, function() {
 		$(id2).addClass('background-color-yellow');
-		//$('.introjs-tooltip').removeClass('hide');
 		liTying(text, function() {
 			callBackFunction();
 		});
@@ -709,6 +708,3 @@ function setTimeToIntroNextStep() {
 		introjs.nextStep();
 	}, 500);
 }
-
-
-

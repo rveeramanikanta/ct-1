@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>AddNode in DLL</title>
+<title>InsertAtEnd in DLL</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -19,7 +19,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/add-node-in-dll.js"></script>
+<script src="/secure/lang/ds/js/insert-at-end-in-dll.js"></script>
 <style type="text/css">
 .margin-top25 {
 	margin-top: 25px;
@@ -183,12 +183,12 @@ bgb {
 <body>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			addNodesInDLLReady();
+			insertAtEndInDLLReady();
 		});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInDll">addNode() in DLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInDll">insertAtEnd() in DLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
 			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 50px;">
