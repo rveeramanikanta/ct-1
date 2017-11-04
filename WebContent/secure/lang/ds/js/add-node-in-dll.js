@@ -192,11 +192,11 @@ function initIntroJS() {
 					break;
 					case 'methodCreation':
 						$('#l3Span').effect('highlight', {color: 'yellow'}, 1200);
-						transWithZoomInEffect('#l3Span', '#line1', function() {
+						transWithZoomInEffect('#l3Span', '#addNodeFun', function() {
 							$('#l3Div').css({'background-color' : 'yellow'});
-							$('#line3').removeClass('opacity00');
+							$('#callCreateNodeMthd').removeClass('opacity00');
 							transWithZoomInEffect('#l3Div', '#step1', function() {
-								$('#line3').css({'background-color' : 'yellow'});
+								$('#callCreateNodeMthd').css({'background-color' : 'yellow'});
 								createNodeMethod();
 								$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 									if (lang == 'c') {
@@ -208,8 +208,8 @@ function initIntroJS() {
 									text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
 									typing('.introjs-tooltiptext', text, function() {
 										nextBtnCalling('.introjs-tooltipbuttons', function() {
-											transWithZoomInEffect('#line3', '#createNodeFun', function() {
-												$('#line3, #l3Div').css({'background-color' : ''});
+											transWithZoomInEffect('#callCreateNodeMthd', '#createNodeFun', function() {
+												$('#callCreateNodeMthd, #l3Div').css({'background-color' : ''});
 												introNextSteps('#animationDiv', 'tempToFst', 'show');
 												$('.introjs-nextbutton').show();
 											});
@@ -221,8 +221,7 @@ function initIntroJS() {
 					break;
 					case 'ifCondition':
 						$('#step1').after('\n\t<span id="line5" class="opacity00">if (<g>first == NULL</g>) {\n'
-									 + '\t\tfirst = temp;\n'
-									 + '\t} </span>');
+									 + '\t\tfirst = temp;\n\t} </span>');
 						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
 						$('#l4').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l4', '#line5', function() {
@@ -238,8 +237,7 @@ function initIntroJS() {
 						$('#line5').after('<span id="elsePart" class="opacity00">else {\n'
 									 + '\t\t<span id="line8">node lastNode = first;</span>\n'
 									 + '\t\tlastNode -> next = temp;\n'
-									 + '\t\ttemp -> prev = lastNode;\n'
-									 + '\t}</span>');
+									 + '\t\ttemp -> prev = lastNode;\n\t}</span>');
 						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
 						$('#l5Div').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l5Div', '#elsePart', function() {
@@ -253,8 +251,7 @@ function initIntroJS() {
 					break;
 					case 'whileCode':
 						$('#line8').after('\n\t\t<span id="line9" class="opacity00">while (<g>lastNode -> next != NULL</g>) {\n'
-									 + '\t\t\tlastNode = lastNode -> next;\n'
-									 + '\t\t}</span>');
+									 + '\t\t\tlastNode = lastNode -> next;\n\t\t}</span>');
 						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
 						$('#l7').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l7', '#line9', function() {
@@ -601,20 +598,18 @@ function structCode() {
 }
 
 function addNodeMethod() {
+	$('#codeDiv').append('<br><br><div class="position-css" id="addNodeMethod"><span id="addNodeFun"></span></div');
 	if (lang == 'c') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="addNodeMethod"><span id="line1">node <bl>addNode(int x)</bl> {\n'
-							 + '\t<span id="step1">node temp;\n'
-							 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
-							 + '\ttemp -> data = x;</span>'
-							 + '\n\treturn first;\n'
-							 + '}</span></div>');
+		$('#addNodeFun').html('node <bl>addNode(int x)</bl> {\n'
+							 + '\t<span id="step1"></span>'
+							 + '\n\treturn first;\n}');
 	} else if (lang == 'cpp') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="addNodeMethod"><span id="line1">void Dll::<bl>addNode(int x)</bl> {\n'
-				 + '\t<span id="step1">node temp;\n'
-				 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
-				 + '\ttemp -> data = x;</span>'
-				 + '\n}</span></div>');
+		$('#addNodeFun').html('void Dll::<bl>addNode(int x)</bl> {\n'
+				 		+ '\t<span id="step1"></span>\n}');
 	}
+	$('#step1').html('node temp;\n'
+				 + '\t<span id="callCreateNodeMthd">temp = <g>createNode()</g>;</span>\n'
+				 + '\ttemp -> data = x;');
 	$('#addNodeMethod span').addClass('opacity00');
 }
 
@@ -666,7 +661,6 @@ function getRandomInt(min, max) { //random address
 function animatedTooltip(id, position, tooltipText) {
 	$(id).addClass('zIndex').attr({"data-placement" : position, "data-original-title" : tooltipText}).tooltip();
 }
-
 
 function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
 	if (flag) {

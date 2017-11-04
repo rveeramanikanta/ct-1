@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>insert At End() in SLL</title>
+<title>insertAtBegin() in DLL</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/insert-at-end-in-sll.js"></script>
+<script src="/secure/lang/ds/js/insert-at-begin-in-dll.js"></script>
 <style type="text/css">
 .margin-top25 {
 	margin-top: 25px;
@@ -68,7 +68,7 @@ y, yy {
 .div-border {
 	margin: 0;
 	padding: 0;
-	width: 50px;
+	width: 45px;
 	min-height: 24px;
 	text-align: center;
 	display: inline-block;
@@ -77,14 +77,20 @@ y, yy {
 
 .left-radius {
 	border-right: none;
-	border-color: blue;
+	border-color: green;
 	border-radius: 6px 0 0 6px;
+}
+
+.no-radius {
+	border-color: blue;
 }
 
 .right-radius {
 	border-color: green;
 	border-radius: 0 6px 6px 0;
+	border-left: none;
 }
+
 
 .box {
 	min-height: 24px;
@@ -113,7 +119,7 @@ y, yy {
 }
 
 .introjs-tooltip {
-	min-width: 350px;
+	min-width: 400px;
 }
 
 .user-btn {
@@ -178,15 +184,15 @@ bgb {
 <body>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			insertAtEndInSLLReady();
+			insertAtBeginInDLLReady();
 		});
 	</script>
 	<div class="col-xs-12 padding0">
 		<div class="text-center margin-top25 col-xs-12 padding0">
-			<h1 class="label ct-demo-heading" id="headingInSll">insertAtEnd() in SLL</h1>
+			<h1 class="label ct-demo-heading" id="headingInSll">insertAtBegin() in DLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
-			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 50px;">
+			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 38px;">
 				<div class="col-xs-12 margin-top25" id="fstExplain">
 					<div class="col-xs-2 padding0 opacity00" id="firstNode">
 						<div class="text-center col-xs-12 ct-fonts padding0">first</div>

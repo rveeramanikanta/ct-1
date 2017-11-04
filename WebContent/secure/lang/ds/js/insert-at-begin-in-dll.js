@@ -1,5 +1,4 @@
-var lang;
-function insertAtBeginInSLLReady() {
+function insertAtBeginInDLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes('#dynamicNodes', 1);
 	createDynamicNodes('#fstExplain', 0);
@@ -33,17 +32,21 @@ function dynamicTempNodes(val) {	//temp nodes
 function createDynamicNodes(id, nodeNum) {	//node
 	var randomAddress = getRandomInt(1000, 5000);
 	$(id).append('<div class="col-xs-2 nodes list-nodes opacity00" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
-					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 ct-blue-color ct-fonts padding0 text-center">'
-					+ ' data</div><div class="ct-green-color ct-fonts text-center">next</div></div>'
-					+ ' <div id="nodedata' + nodeNum + '"><div id="dataDiv' + nodeNum + '"'
-					+ ' class="div-border left-radius col-xs-6 data-div"><span id="data' + nodeNum +'"'
-					+ ' class="data-span ct-blue-color ct-fonts position-css" style="top: 0px; left: 0px;"></span></div>'
-					+ ' <div id="nextDiv' + nodeNum +'" class="position-css div-border right-radius col-xs-6 next-div">'
-					+ ' <span id="next' + nodeNum +'" class="position-css next-span ct-green-color ct-fonts position-css">NULL</span></div></div>'
-					+ ' <div class="col-xs-12 padding0"><div class="col-xs-6 padding0 text-center">'
-					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress 
+	 				+ ' <div class="col-xs-12 padding0"><div class="col-xs-4 ct-green-color ct-fonts text-center padding0">prev</div>'
+					+ ' <div class="col-xs-4 ct-blue-color ct-fonts padding0 text-center">data</div>'
+					+ '	<div class="col-xs-4 ct-green-color ct-fonts text-center padding0">next</div></div>'
+					+ ' <div id="nodedata' + nodeNum + '"><div id="prevDiv' + nodeNum + '" class="div-border left-radius col-xs-4 prev-div">'
+					+ ' <span id="prev' + nodeNum + '" class="prev-span ct-green-color">NULL</span></div>'
+					+ ' <div id="dataDiv' + nodeNum + '" class="div-border no-radius col-xs-4 data-div">'
+					+ ' <span id="data' + nodeNum + '" class="data-span ct-blue-color opacity00" style="top: 0px; left: 0px;"></span></div>'
+					+ ' <div id="nextDiv' + nodeNum + '" class="div-border right-radius col-xs-6 next-div">'
+					+ ' <span id="next' + nodeNum + '" class="next-span ct-green-color">NULL</span></div></div>'
+					+ ' <div class="col-xs-12 padding0"><div class="col-xs-4 col-xs-offset-4 padding0 text-center">'
+					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress
 					+ '</span></div></div></div>');
-	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data hold user data");
+	$('#prev' + nodeNum + ', #data' + nodeNum + ', #next' + nodeNum).addClass('position-css ct-fonts');
+	animatedTooltip('#prevDiv' + nodeNum, "bottom", "prev holds previous node's address");
+	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
 }
 
@@ -60,6 +63,7 @@ function animatedTooltip(id, position, tooltipText) {
 function structCode() {
 	$('#codeDiv').append('<div id="structCode" class="position-css opacity00">struct <g>list</g> {\n'
 						+ '\tint <bl>data</bl>;\n'
+						+ '\tstruct list <g>*prev</g>;\n'
 						+ '\tstruct list <g>*next</g>;\n'
 						+ '};\n<span>typedef struct list *node; \t</span> </div>');
 }
@@ -75,13 +79,13 @@ function insertAtBeginMethod() {
 						 + '\t<span id="step1"></span>\n}');
 	}
 	$('#step1').html('node temp;\n'
-				 + '\t<span id="calCreateNodeMthd">temp = <g>createNode()</g>;</span>\n'
-				 + '\ttemp -> data = x;')
+						 + '\t<span id="callCreateNode">temp = <g>createNode()</g>;</span>\n'
+						 + '\ttemp -> data = x;');
 	$('#insertAtBeginMethod span').addClass('opacity00');
 }
 
 function createNodeMethod() {
-$('#codeDiv').append('\n\n<span id="createNodeFun" class="opacity00">node <g>createNode()</g> {\n'
+	$('#codeDiv').append('\n\n<span id="createNodeFun" class="opacity00">node <g>createNode()</g> {\n'
 					+ '\tnode temp;\n'
 					+ '\t<span id="allocMemory"></span>\n'
 					+ '\ttemp -> next = NULL;\n'
@@ -118,7 +122,7 @@ function initIntroJS() {
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		switch(elementId) {
 			case 'headingInSll':
-				text = 'Here we will learn about <y>insertAtBegin()</y> method in a <y>Single Linked List</y>.';
+				text = 'Here we will learn about <y>insertAtBegin()</y> method in a <y>Doubly Linked List</y>.';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -127,9 +131,9 @@ function initIntroJS() {
 				$('#algorithmDiv').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#codeAndAlgorithmDiv').addClass('box-border');
-					text = 'Let us learn about adding a <bl>node</bl> at <bl>beginning</bl> of the <bl>Single Linked List(SLL)</bl>. &emsp;';
+					text = 'Let us learn about adding a <bl>node</bl> at <bl>beginning</bl> of the <bl>Doubly Linked List(DLL)</bl>. &emsp;';
 					typing('#algorithmDiv', text, function() {
-						nextBtnWithoutCalling('#algorithmDiv', function() {
+						callingNextBtn('#algorithmDiv', function() {
 							introjs.nextStep();
 						});
 					});
@@ -145,58 +149,61 @@ function initIntroJS() {
 							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
 							zoomInEffect('#firstNode', function() {
 								$('.introjs-tooltip').removeClass('hide');
-								text = '<span id="l2">Let us store the <yy class="ct-fonts">beginning of the linked list</yy> in a pointer variable'
-										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts">Linked list</yy> is'
-										+ ' <yy class="ct-fonts">not yet created</yy> we should initialize it with <yy class="ct-fonts grn">NULL</yy>.';
+								text = '<span id="l2">Let us store the <yy class="ct-fonts brn">beginning of the linked list</yy> in a pointer variable'
+										+ ' of type node (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts brn">Linked list</yy> is'
+										+ ' <yy class="ct-fonts brn">not yet created</yy> we should initialize it with <yy class="ct-fonts g">NULL</yy>.';
 								typing('.introjs-tooltiptext', text, function() {
 									$('#algorithmDiv').removeClass('opacity00').append('<ul style="list-style-type: circle" id="ul1"></ul>');
 									algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 0, 'fstCreation');
-									$('#algorithmDiv #l2 yy:last').addClass('ct-green-color').removeClass('ct-blue-color');
 								});
 							});
 						break;
 						case 'fstListCreation':
 							text = '<span id="l3Span">Let us consider the <y>steps</y> involved in <yy class="ct-fonts">adding</yy> a new '
-									+ '<yy class="ct-fonts">node</yy> at <yy class="ct-fonts">begin</yy> for a given value.</span><br><br>Enter a value : '
+									+ '<yy class="ct-fonts bl">node</yy> at <yy class="ct-fonts bl">begin</yy> for a given value.</span><br>'
+									+ ' <br>Enter a value : '
 									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
 							typing('.introjs-tooltiptext', text, function() {
 								validation('#nodeVal', 1);
 							});
 						break;
-						case 'fstToTmpNxt':
-							text = '<spna id="l4"><yy class="ct-fonts">fetch</yy> the <bgb>first</bgb> <yy class="ct-fonts">node</yy> for the '
-									+ '<yy class="ct-fonts">newly created</yy> <yy class="ct-fonts grn">address</yy> in that <yy class="ct-fonts">'
-									+ 'node\'s</yy> <yy class="ct-fonts grn">next</yy> <yy class="ct-fonts">pointer variable</yy>.</span>';
+						case 'tempToFirst':
+							text = '<span id="l4">Check the condition if <bgb>first</bgb> is <y>NULL</y> or <y>not</y>.<br><br>'
+									+ ' If <bgb>first</bgb> is not <y>NULL</y>'
+									+ ' then <y>fetch</y> the newly created node <y>address</y> in <bgb>first</bgb>.</span>'
 							typing('.introjs-tooltiptext', text, function() {
-								$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
-								$('#algorithmDiv #l4').addClass('opacity00');
-								$('#algorithmDiv #l4 yy').addClass('ct-blue-color').removeClass('ct-fonts');
-								$('#algorithmDiv #l4 .grn').removeClass('ct-blue-color').addClass('ct-green-color');
-								$('#step1').after('\n\t<span class="opacity00" id="fstToTmpNxt">temp -> next = first; &emsp;</span>');
-								$('#codeDiv').scrollTo('#insertAtBeginMethod span:last', 300);
-								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-									fadeInBounceEffectWithTimelineMax('#firstVal', '#next1', false, 80, function() {
-										$('#algorithmDiv li:last').removeClass('opacity00');
-										$('#algorithmDiv').addClass('z-index10000');
-										transWithZoomInEffect('.introjs-tooltiptext #l4', '#algorithmDiv #l4', function() {
-											introNextSteps('#codeAndAlgorithmDiv', 'fstToTmpNxt', 'hide');
-											$('.introjs-nextbutton').show();
+								callingNextBtn('.introjs-tooltipbuttons', function() {
+									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -380, function() {
+										svgAnimatingLineTopAndBottom('#firstDiv', '#dataDiv1', 'line2', false, function() {
+											callingNextBtn('.introjs-tooltipbuttons', function() {
+												text = '<li><span id="l4" class="opacity00"><bl>Fetch</bl> the newly created <bl>node</bl>'
+														+ ' <g>address</g> in <bgb>first</bgb>. If it is <g>NULL</g>.</li>';
+												$('#algorithmDiv #ul2').append(text);
+												$('#algorithmDiv').addClass('z-index10000');
+												transWithZoomInEffect('.introjs-tooltiptext #l4', '#algorithmDiv #l4', function() {
+													introNextSteps('#codeAndAlgorithmDiv', 'tempToFirst', 'hide');
+													$('.introjs-nextbutton').show();
+												});
+											});
 										});
 									});
 								});
 							});
 						break;
+						
+						
+						
+						/*
 						case 'tempToFst':
-							text = '<span id="l5">Store the <yy class="ct-fonts grn">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
+							text = '<span id="l5">Store the <yy class="ct-fonts g">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
 									+ ' in the <bgb>first</bgb> variable.</span>';
 							typing('.introjs-tooltiptext', text, function() {
-								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+								callingNextBtn('.introjs-tooltipbuttons', function() {
 									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
 										svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv1', 'line1', false, function() {
 											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
 											$('#algorithmDiv #l5').addClass('opacity00');
-											$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
-											$('#algorithmDiv .grn').removeClass('ct-blue-color').addClass('ct-green-color');
+											algorithmDivColors();
 											$('#algorithmDiv').addClass('z-index10000');
 											$('#algorithmDiv li:last').removeClass('opacity00');
 											transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
@@ -207,7 +214,7 @@ function initIntroJS() {
 									});
 								});
 							});
-						break;
+						break;*/
 						case 'secondNode':
 							$('#line11').remove();
 							$('#tempNodeParent1').addClass('opacity00');
@@ -232,7 +239,7 @@ function initIntroJS() {
 								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 								transWithZoomInEffect('#l2', '#fstCreation', function() {
 									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
-									nextBtnWithoutCalling('#fstCreation', function() {
+									callingNextBtn('#fstCreation', function() {
 										introNextSteps('#animationDiv', 'fstListCreation', 'show');
 										introjs.nextStep();
 									});
@@ -244,7 +251,7 @@ function initIntroJS() {
 							transWithZoomInEffect('#l3Span', '#insertAtBeginFun', function() {
 								$('#l3Div').css({'background-color' : 'yellow'});
 								transWithZoomInEffect('#l3Div', '#step1', function() {
-									$('#calCreateNodeMthd').css({'background-color' : 'yellow'});
+									$('#callCreateNode').css({'background-color' : 'yellow'});
 									createNodeMethod();
 									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 										if (lang == 'c') {
@@ -257,12 +264,12 @@ function initIntroJS() {
 										typing('.introjs-tooltiptext', text, function() {
 											structCode();
 											$('#codeDiv').scrollTo('#structCode span:last', 300);
-											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-												transWithZoomInEffect('#calCreateNodeMthd', '#createNodeFun', function() {
+											callingNextBtn('.introjs-tooltipbuttons', function() {
+												transWithZoomInEffect('#callCreateNode', '#createNodeFun', function() {
 													$('#list').css({'background-color' : 'yellow'});
 													transWithZoomInEffect('#list', '#structCode', function() {
-														$('#calCreateNodeMthd, #l3Div, #list').css({'background-color' : ''});
-														introNextSteps('#animationDiv', 'fstToTmpNxt', 'show');
+														$('#callCreateNode, #l3Div, #list').css({'background-color' : ''});
+														introNextSteps('#animationDiv', 'tempToFirst', 'show');
 														$('.introjs-nextbutton').show();
 													});
 												});
@@ -272,26 +279,21 @@ function initIntroJS() {
 								});
 							});
 						break;
-						case 'fstToTmpNxt':
+						case 'tempToFirst':
 							$('#codeDiv').scrollTo('#fstCreation', 300);
 							$('#l4').effect('highlight', {color: 'yellow'}, 1200);
-							transWithZoomInEffect('#l4', '#fstToTmpNxt', function() {
-								nextBtnWithoutCalling('#fstToTmpNxt', function() {
-									introNextSteps('#animationDiv', 'tempToFst', 'show');
-									introjs.nextStep();
-								});
-							});
-						break;
-						case 'tmpToFst':
-							$('#fstToTmpNxt').after('\n\t<span id="tempToFst" class="opacity00">first = temp; &emsp;</span>');
-							$('#codeDiv').scrollTo('#fstCreation', 300);
-							$('#l5').effect('highlight', {color: 'yellow'}, 1200);
-							transWithZoomInEffect('#l5', '#tempToFst', function() {
-								nextBtnWithoutCalling('#tempToFst', function() {
+							$('#step1').after('\n\t<span id="bgnIfCond" class="opacity00">first = temp;&emsp;</span>');
+							transWithZoomInEffect('#l4', '#bgnIfCond', function() {
+								callingNextBtn('#bgnIfCond', function() {
 									introNextSteps('#animationDiv', 'secondNode', 'show');
 									introjs.nextStep();
 								});
 							});
+						break;
+						case 'ifCondCode':
+							$('#bgnIfCond').before('<span id="">if (first != NULL) {\n'
+											+ '\t\ttemp -> next = first;\n'
+											+ '\t\tfirst -> prev = temp;\n\t}</span>\n\t');
 						break;
 					}
 				});
@@ -314,6 +316,14 @@ function initIntroJS() {
 	introjs.start();
 }
 
+function algorithmDivColors() {
+	$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
+	$('#algorithmDiv .g').removeClass('ct-blue-color').addClass('ct-green-color');
+	$('#algorithmDiv .brn').removeClass('ct-blue-color').addClass('ct-brown-color');
+	$('#algorithmDiv y').addClass('ct-brown-color');
+}
+
+
 function secondNdeAnim() {
 	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
 	$('#algorithmDiv').addClass('z-index10000');
@@ -324,31 +334,50 @@ function secondNdeAnim() {
 				+ ' the given value in <y>data</y>.</li>';
 	typing('.introjs-tooltiptext ol', text, function() {
 		nodeAnim(2, function() {
-			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+			callingNextBtn('.introjs-tooltipbuttons', function() {
 				$('#l3Div').css({'background-color' : ''});
-				$('#l4').css({'background-color' : 'yellow'});
 				$('.introjs-tooltiptext ol').append('<li></li>');
-				text = '<y>fetch</y> the <bgb>first</bgb> <y>node</y> for the newly created <y>address</y> in that '
-						+ '<y>node\'s</y> <y>next pointer variable<y>.';
+				text = '<span id="l5">Store the <bgb>first</bgb> in newlyy created node\'s <yy class="ct-fonts g">next</yy> next pointer variable. '
+						+ 'If <bgb>first</bgb> is not <yy class="ct-fonts g">NULL</yy>.</span>';
 				typing('.introjs-tooltiptext li:last', text, function() {
-					nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+					callingNextBtn('.introjs-tooltipbuttons', function() {
 						fadeInBounceEffectWithTimelineMax('#firstVal', '#next2', true, 400, function() {
-							svgAnimatingLineTopAndBottom('#nextDiv2', '#nextDiv1', 'line2', false, function() {
-								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-									$('#l4').css({'background-color' : ''});
-									$('#l5').css({'background-color' : 'yellow'});
-									$('.introjs-tooltiptext ol').append('<li></li>');
-									text = 'Store the <y>address</y> of the <y>newly created node</y> in the <bgb>first</bgb> variable.';
-									typing('.introjs-tooltiptext li:last', text, function() {
-										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-											fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, -350, function() {
-												$('#line1').remove();
-												svgAnimatingLineRightToLeft('#firstDiv', '#dataDiv2', 'line1', function() {
-													$('#l5').css({'background-color' : ''});
-													$('.introjs-tooltiptext ol').append('<br><div id="appendText"></div>');
-													typing('#appendText', 'Now rearrange the nodes.', function() {
-														$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" '
-																		+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
+							svgAnimatingLineTopAndBottom('#nextDiv2', '#nextDiv1', 'line3', false, function() {
+								$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
+								$('#algorithmDiv #l5').addClass('opacity00');
+								algorithmDivColors();
+								transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
+									callingNextBtn('.introjs-tooltipbuttons', function() {
+										$('.introjs-tooltiptext ol').append('<li></li>');
+										text = '<span id="l6">Now Store the <yy class="ct-fonts b">newly created node\'s</yy>'
+												+ ' <yy class="ct-fonts g">address</yy>'
+												+ ' in <bgb>first</bgb> node\'s <yy class="ct-fonts g">prev</yy> pointer variable.</span>';
+										typing('.introjs-tooltiptext li:last', text, function() {
+											callingNextBtn('.introjs-tooltipbuttons', function() {
+												fadeInBounceEffectWithTimelineMax('#tempNode2', '#prev1', false, -350, function() {
+													svgAnimatingLineTopAndBottom('#prevDiv1', '#prevDiv2', 'line4', true, function() {
+														$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
+														$('#algorithmDiv #l6').addClass('opacity00');
+														algorithmDivColors();
+														transWithZoomInEffect('.introjs-tooltiptext #l6', '#algorithmDiv #l6', function() {
+															callingNextBtn('.introjs-tooltipbuttons', function() {
+																$('.introjs-tooltiptext ol').append('<li></li>');
+																text = '<span id="l5">Store the <y>address</y> of the <y>newly created node</y>'
+																		+ ' in the <bgb>first</bgb> variable.</span>';
+																typing('.introjs-tooltiptext li:last', text, function() {
+																	callingNextBtn('.introjs-tooltipbuttons', function() {
+																		fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, 
+																				-350, function() {
+																			$('#line2').remove();
+																			svgAnimatingLineRightToLeft('#firstDiv', '#prevDiv2', 'line2', function() {
+																				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn"'
+																						+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
+																			});
+																		});
+																	});
+																});
+															});
+														});
 													});
 												});
 											});
@@ -356,7 +385,7 @@ function secondNdeAnim() {
 									});
 								});
 							});
-						});
+						}); 
 					});
 				});
 			});
@@ -379,12 +408,15 @@ function rearrangeNode() {
 		$('#node2').addClass('opacity00').remove();;
 		TweenMax.to('#node3', 1, {top : 0, left : 0, onComplete : function() {
 			$('#node3').attr('id', 'node2');
-			svgAnimatingLineTopAndBottom('#tempNodeParent2', '#nextDiv2', 'line3', true);
+			svgAnimatingLineTopAndBottom('#tempNodeParent2', '#nextDiv2', 'line4', true);
 			svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv2', 'line1', false);
-			svgAnimatingLineRightToLeft('#nextDiv2', '#dataDiv1', 'line2');
+			svgAnimatingLineRightToLeft('#nextDiv2', '#prevDiv1', 'line2');
+			svgAnimatingLineLeftToRight('#prevDiv1', '#nextDiv2', 'line3')
+			animatedTooltip('#prevDiv2', "bottom", "prev holds prev node's address");
 			animatedTooltip('#dataDiv2', "bottom", "data holds user data");
 			animatedTooltip('#nextDiv2', "bottom", "next holds next node's address");
-			introNextSteps('#restartBtn', '', 'show', 'right');
+			introNextSteps('#codeAndAlgorithmDiv', 'ifCondCode', 'hide');
+			//introNextSteps('#restartBtn', '', 'show', 'right');
 			$('.introjs-nextbutton').show();
 		}});
 	}});
@@ -392,17 +424,15 @@ function rearrangeNode() {
 
 function validationAnim() {
 	$('.introjs-tooltiptext').append('<br><br><div id="l3Div"><div>')
-	text = 'Allocate <yy class="ct-fonts grn">memory</yy> for the new node (<yy class="ct-fonts grn">address</yy> of the new node is stored in'
-			+ ' <yy class="ct-fonts grn">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
+	text = 'Allocate <yy class="ct-fonts brn">memory</yy> for the new node (<yy class="ct-fonts g">address</yy> of the new node is stored in'
+			+ ' <yy class="ct-fonts g">temp</yy>) and store the given value in <yy class="ct-fonts bl">data</yy>.';
 	typing('#l3Div', text, function() {
 		nodeAnim(1, function() {
 			$('#algorithmDiv').append('<span id="l3Span" class="opacity00">' + $('.introjs-tooltiptext #l3Span').html() + '</span>');
 			$('#algorithmDiv #l3Span').after('<ul style="list-style-type: circle" id="ul2"><li class="opacity00"><span id="l3Div" class="opacity00">'
 											+ $('.introjs-tooltiptext #l3Div').html() + '</span></li></ul>');
-			$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
-			$('#algorithmDiv .grn').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
-			$('#algorithmDiv y').addClass('ct-brown-color');
-			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+			algorithmDivColors();
+			callingNextBtn('.introjs-tooltipbuttons', function() {
 				$('#algorithmDiv').addClass('z-index10000');
 				transferEffect('.introjs-tooltiptext #l3Span', '#algorithmDiv #l3Span', function() {
 					$('#ul2 li').removeClass('opacity00')
@@ -418,7 +448,7 @@ function validationAnim() {
 }
 
 function nodeAnim(val, callBackFunction) {
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+	callingNextBtn('.introjs-tooltipbuttons', function() {
 		$('#node' + val).removeClass('opacity00');
 		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
 			zoomInEffect('#tempNodeParent' + val, function() {
@@ -438,9 +468,8 @@ function nodeAnim(val, callBackFunction) {
 function algorithmSteps(text, id1, id2, val, animatedStep) {
 	$('#algorithmDiv ul').append('<li class="opacity00">' + text + '</li>');
 	$(id2).addClass('opacity00');
-	$(id2 +' yy').addClass('ct-blue-color').removeClass('ct-fonts');
-	$('#algorithmDiv .one').removeClass('ct-blue-color').addClass('ct-green-color');
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+	algorithmDivColors();
+	callingNextBtn('.introjs-tooltipbuttons', function() {
 		$('#algorithmDiv').addClass('z-index10000');
 		transferEffect(id1, id2, function() {
 			$('#algorithmDiv li').not('ol li').eq(val).removeClass('opacity00');
@@ -474,7 +503,7 @@ function introNextSteps(stepName, animatedStep, tooltip, position) {
 	introjs._options.steps.push({"element" : stepName});
 }
 
-function nextBtnWithoutCalling(id, callBackFunction) {
+function callingNextBtn(id, callBackFunction) {
 	$(id).append('<a class="introjs-button user-btn">Next &#8594;</a>');
 	$('.user-btn').click(function() {
 		$('.user-btn').remove();
@@ -503,7 +532,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 function transWithZoomInEffect(selector1, selector2, callBackFunction) {
 	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
 		if (selector2 == '#step1') {
-			$('#calCreateNodeMthd').removeClass('opacity00');
+			$('#callCreateNode').removeClass('opacity00');
 		}
 		$(selector2).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			$(selector2).removeClass("animated zoomIn")
@@ -651,18 +680,23 @@ function svgLineAppend(svgLineId, x1, y1, x2, y2) {
 	$("#svgId").append(line);
 }
 
+
 function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, callBackFunction) {
 	var parentOffset = $("#animationDiv").offset();
 	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
 	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
-	svgLineAppend(svgLineId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}});
+	lineAnim(svgLineId, x1, y1, x2, y2, callBackFunction);
+}
+
+function svgAnimatingLineLeftToRight(selector1, selector2, svgLineId, callBackFunction) {
+	var parentOffset = $("#animationDiv").offset();
+	var x1 = $(selector1).offset().left - parentOffset.left;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 5;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 5;
+	lineAnim(svgLineId, x1, y1, x2, y2, callBackFunction);
 }
 
 function svgAnimatingLineTopAndBottom(selector1, selector2, svgLineId, flag, callBackFunction) {
@@ -676,10 +710,14 @@ function svgAnimatingLineTopAndBottom(selector1, selector2, svgLineId, flag, cal
 		var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
 		var y2 = $(selector2).offset().top - parentOffset.top;
 	}
+	lineAnim(svgLineId, x1, y1, x2, y2, callBackFunction);
+}	
+
+function lineAnim(svgLineId, x1, y1, x2, y2, callBackFunction) {
 	svgLineAppend(svgLineId, x1, y1, x1, y1);
 	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
-		if (typeof callBackFunction === "function") {
+		if (typeof callBackFunction === 'function') {
 			callBackFunction();
 		}
 	}});
-}					
+}

@@ -55,7 +55,7 @@ function initIntroJS() {
 				switch(animateStep) {
 					case 'listExplain':
 						$('#codeAndAlgorithmDiv').addClass('box-border');
-						text = 'Let us learn about adding a <bl>node</bl> at the end of the <bl>Doubly Linked List(DLL)</bl>. &emsp;';
+						text = 'Let us learn about adding a <bl>node</bl> at the <bl>end</bl> of a <bl>Doubly Linked List(DLL)</bl>. &emsp;';
 						typing('#algorithmDiv', text, function() {
 							nextBtnCalling('#algorithmDiv', function() {
 								$('#algorithmDiv').append('<ul style="list-style-type: circle" id="ul1"></ul>');
@@ -157,26 +157,32 @@ function initIntroJS() {
 					break;
 					case 'methodCreation':
 						$('#l3Span').effect('highlight', {color: 'yellow'}, 1200);
-						transWithZoomInEffect('#l3Span', '#line1', function() {
+						transWithZoomInEffect('#l3Span', '#insertAtEndFun', function() {
 							$('#l3Div').css({'background-color' : 'yellow'});
-							$('#line3').removeClass('opacity00');
+							$('#callCreateMethod').removeClass('opacity00');
 							transWithZoomInEffect('#l3Div', '#step1', function() {
-								$('#line3').css({'background-color' : 'yellow'});
+								$('#callCreateMethod').css({'background-color' : 'yellow'});
 								createNodeMethod();
 								$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 									if (lang == 'c') {
-										$('#allocMemory').html('temp = (node)malloc(sizeof(<brn>struct list</brn>));');
+										$('#allocMemory').html('temp = (node)malloc(sizeof(<brn id="structList">struct list</brn>));');
 									} else if (lang == 'cpp') {
-										$('#allocMemory').html('temp = <brn>new list</brn>;');
+										$('#allocMemory').html('temp = <brn id="structList">new list</brn>;');
 									}
 									$('.introjs-tooltip').removeClass('hide');
 									text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
 									typing('.introjs-tooltiptext', text, function() {
 										nextBtnCalling('.introjs-tooltipbuttons', function() {
-											transWithZoomInEffect('#line3', '#createNodeFun', function() {
-												$('#line3, #l3Div').css({'background-color' : ''});
-												introNextSteps('#animationDiv', 'tempToFst', 'show');
-												$('.introjs-nextbutton').show();
+											transWithZoomInEffect('#callCreateMethod', '#createNodeFun', function() {
+												$('#structList').css({'background-color' : 'yellow'});
+												structCode();
+												$('#codeDiv').scrollTo('#structCode brn:last', 300, function() {
+													transWithZoomInEffect('#structList', '#structCode', function() {
+														$('#callCreateMethod, #l3Div, #structList').css({'background-color' : ''});
+														introNextSteps('#animationDiv', 'tempToFst', 'show');
+														$('.introjs-nextbutton').show();
+													});
+												});
 											});
 										});
 									});
@@ -188,7 +194,7 @@ function initIntroJS() {
 						$('#step1').after('\n\t<span id="line5" class="opacity00">if (<g>first == NULL</g>) {\n'
 									 + '\t\tfirst = temp;\n'
 									 + '\t} </span>');
-						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
+						$('#codeDiv').scrollTo('#insertAtEndMethod span:first', 300);
 						$('#l4').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l4', '#line5', function() {
 							nextBtnCalling('#line5', function() {
@@ -205,7 +211,7 @@ function initIntroJS() {
 									 + '\t\tlastNode -> next = temp;\n'
 									 + '\t\ttemp -> prev = lastNode;\n'
 									 + '\t}</span>');
-						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
+						$('#codeDiv').scrollTo('#insertAtEndMethod span:first', 300);
 						$('#l5Div').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l5Div', '#elsePart', function() {
 							nextBtnCalling('#elsePart', function() {
@@ -220,7 +226,7 @@ function initIntroJS() {
 						$('#line8').after('\n\t\t<span id="line9" class="opacity00">while (<g>lastNode -> next != NULL</g>) {\n'
 									 + '\t\t\tlastNode = lastNode -> next;\n'
 									 + '\t\t}</span>');
-						$('#codeDiv').scrollTo('#addNodeMethod span:first', 300);
+						$('#codeDiv').scrollTo('#insertAtEndMethod span:first', 300);
 						$('#l7').effect('highlight', {color: 'yellow'}, 1200);
 						transWithZoomInEffect('#l7', '#line9', function() {
 							nextBtnCalling('#line9', function() {
@@ -376,7 +382,7 @@ function validationAnim() {
 						$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
 						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
 						$('.introjs-nextbutton').show();
-						addNodeMethod();
+						insertAtEndMethod();
 					});
 				});
 			});
@@ -412,6 +418,7 @@ function secondNdeAnim(val) {
 														transferEffect('#lastLi', '#l6', function() {
 															introNextSteps('#codeAndAlgorithmDiv', 'lastToTemp', 'hide');
 															$('.introjs-nextbutton').show();
+															$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons a:last', 300);
 														});
 													});
 												});
@@ -466,7 +473,8 @@ function whileCondAnim() {
 									svgAnimatingLineLeftToRight('#prevDiv3', '#nextDiv2', 'line14', function() {
 										$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="whileCondAnimText()">'
 															+ ' Next &#8594;</a>');
-										$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
+										$('#l6').css({'background-color' : ''});
+										$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons a:last', 300);
 									});
 								});
 							});
@@ -480,7 +488,6 @@ function whileCondAnim() {
 
 function whileCondAnimText() {
 	$('.user-btn').remove();
-	$('#l6').css({'background-color' : ''});
 	transferEffect('.introjs-tooltiptext li:last', '#l7', function() {
 		introNextSteps('#codeAndAlgorithmDiv', 'whileCode', 'hide');
 		$('.introjs-nextbutton').show();
@@ -565,22 +572,19 @@ function structCode() {
 						+ '};\ntypedef <brn>struct list</brn> *node; \t </div>');
 }
 
-function addNodeMethod() {
+function insertAtEndMethod() {
+	$('#codeDiv').append('<br><br><div class="position-css" id="insertAtEndMethod"><span id="insertAtEndFun"></span></div>');
 	if (lang == 'c') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="addNodeMethod"><span id="line1">node <bl>addNode(int x)</bl> {\n'
-							 + '\t<span id="step1">node temp;\n'
-							 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
-							 + '\ttemp -> data = x;</span>'
-							 + '\n\treturn first;\n'
-							 + '}</span></div>');
+		$('#insertAtEndFun').html('node <bl>insertAtEnd(int x)</bl> {\n'
+						 + '\t<span id="step1"></span>'
+						 + '\n\treturn first;\n}');
 	} else if (lang == 'cpp') {
-		$('#codeDiv').append('<br><br><div class="position-css" id="addNodeMethod"><span id="line1">void Dll::<bl>addNode(int x)</bl> {\n'
-				 + '\t<span id="step1">node temp;\n'
-				 + '\t<span id="line3">temp = <g>createNode()</g>;</span>\n'
-				 + '\ttemp -> data = x;</span>'
-				 + '\n}</span></div>');
+		$('#insertAtEndFun').html('void Dll::<bl>insertAtEnd(int x)</bl> {\n\n}');
 	}
-	$('#addNodeMethod span').addClass('opacity00');
+	$('#step1').html('node temp;\n'
+				 + '\t<span id="callCreateMethod">temp = <g>createNode()</g>;</span>\n'
+				 + '\ttemp -> data = x;</span>')
+	$('#insertAtEndMethod span').addClass('opacity00');
 }
 
 function createNodeMethod() {
