@@ -447,7 +447,7 @@ function creationNDisplayAnim() {
 			text = 'Let us declare an <y>int</y> variable <y>i</y>.';
 			arrowMoving('#varDec', '#varDec', text, function() {
 				introjs.refresh();
-				nextBtnWithoutCalling(function() {
+				callingNextBtn(function() {
 					text = "This <y>for-loop</y> is repeated untill the <y>i</y> value is greater than or equal to <y>zero</y>.";
 					arrowMoving('#varDec', '#frLoop', text, function() {
 						text = "Initially the <y>i</y> value is initialize with <y>power</y> value (i.e., "
@@ -459,7 +459,7 @@ function creationNDisplayAnim() {
 							text = (buttonName == 'create') ? text1 : text2;
 							liTying(text, function() {
 								if (buttonName == 'create') {
-									nextBtnWithoutCalling(function() {
+									callingNextBtn(function() {
 										$('#output').append('<div id="coeff' + iVal + 'Span0" class="opacity00">Enter coeff value for ' + hVal 
 														+ ' degree term : <input class="usr-txt" size="3" maxlength="2"'
 														+ ' id="create' + iVal + 'Text0" type="text"/></div>');
@@ -497,8 +497,7 @@ function creationNDisplayAnim() {
 function additionNSubtractionAnim() {
 	varDecNStoreHpowVal(function() {
 		$('.introjs-tooltiptext ul').append('<li>The condition <span id="condition" class="ct-code-b-yellow"><span id="hpow1Val"'
-										+ ' class="position-css">hpow1</span> > <span id="hpow2Val" class="position-css">hpow2</span>'
-										+ ' </span> </li>');
+										+ ' class="position-css">hpow1</span> > <span id="hpow2Val" class="position-css">hpow2</span> </span> </li>');
 		travel('#hpowVal', '.introjs-tooltiptext li:last span', function() {
 			flip('#hpow1Val', hpow1, function() {
 				flip('#hpow2Val', hpow2, function() {
@@ -695,7 +694,7 @@ function liTying(text, callBackFunction) {
 	});
 }
 
-function nextBtnWithoutCalling(callBackFunction) {
+function callingNextBtn(callBackFunction) {
 	$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn">Next &#8594;</a>');
 	$('.user-btn').click(function() {
 		$(this).remove();

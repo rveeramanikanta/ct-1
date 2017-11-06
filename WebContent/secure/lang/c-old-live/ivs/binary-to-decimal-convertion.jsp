@@ -14,8 +14,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<!-- <script src="/secure/lang/c/js-min/btdc.min.js"></script> -->
-	<script src="/secure/lang/c/js/binary-to-decimal-convertion.js"></script>
+	<script src="/secure/lang/c/js-min/btdc.min.js"></script>
 	<link rel="/css/animate.css"/>
 	<title>Binary to Decimal</title>
 </head>
@@ -284,7 +283,7 @@ div, span {
 			</div>
 </div>
 <div  class=" col-xs-12" >
-	<div id="calculationtable" class='col-xs-offset-2 col-xs-8 opacity00'>
+	<div id="calculationtable" class='col-xs-offset-2 col-xs-8 visibility-hidden'>
 			<div class='col-xs-12'>
 				<div id="tablecal" class="col-xs-offset-3 col-xs-6 text-center">Conversion of Binary to Decimal </div>
 			</div>
@@ -292,14 +291,14 @@ div, span {
 				<span id="get"  class="col-xs-4  color-lightrose">Binary Digits<b>:</b></span> <span class='col-xs-8' ><span style='height: 31px; display: inline-block;position: relative;' id="binary"></span></span>
 			</div>
 			<div class="visibility-hidden col-xs-12" style='margin-top: 1px;' id="positionBox">
-				<span id="get"  class="col-xs-4  color-lightrose">Positions <b>:</b></span><span id="" class='col-xs-8'><span style='display: inline-block;position: relative;' id="positionDiv" ></span></span>
+				<span id="get"  class="col-xs-4  color-lightrose">Positions <b>:</b></span><span class='col-xs-8'><span style='display: inline-block;position: relative;' id="positionDiv" ></span></span>
 			</div>
 			<div class="visibility-hidden col-xs-12" style='margin-top: 15px;' id="secondbox">
 				<span id="get"  class="col-xs-4  ct-code-b-green "></span><span class='col-xs-8'><span style='height: 31px; display: inline-block;position: relative;' id="power" ></span></span>
 			</div>
 			
 			<div class="visibility-hidden col-xs-12" style='margin-top: 15px;' id="thirdbox">
-				<span id="get" class="color-lightrose col-xs-4" >Conversion<b>:</b></span><span class='col-xs-8'><span id="powercalculation"></span></span>
+				<span id="get" class="color-lightrose col-xs-4" >Conversion<b>:</b></span><span class='col-xs-8'><span id="powecalculation"></span></span>
 			</div>
 			
 			<div class="col-xs-12 visibility-hidden" style='margin-top: 15px;'  id="fourthbox">

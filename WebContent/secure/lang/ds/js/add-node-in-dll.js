@@ -43,7 +43,7 @@ function initIntroJS() {
 		} ]
 	});
 	introjs.onafterchange(function(targetElement) {
-		$('.zIndex').not('.introjs-showElement, #headingInSll').css({'z-index': '0'});
+		$('.zIndex').not('.introjs-showElement, #headingInDll').css({'z-index': '0'});
 		$('.introjs-showElement .zIndex').css({'z-index': '99999999'});
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;

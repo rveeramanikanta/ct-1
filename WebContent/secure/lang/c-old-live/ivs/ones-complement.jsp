@@ -18,8 +18,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/oc.min.js"></script> -->
-<script src="/secure/lang/c/js/ones-complement.js"></script>
+<script src="/secure/lang/c/js-min/oc.min.js"></script>
+
 <title>one's complement</title>
 <style>
 .input-text {

@@ -138,7 +138,6 @@ function initIntroJS() {
 										arrowMoving("#frontIsMinusOne", '#dequeElsePrintf', function() {
 											$('#dequeElsePrintf').addClass('background-color-yellow');
 											$('#output').append('<div class="opacity00">Deleted element = ' + displayArr[0] + '</div>');
-											//queueArr.splice(frontVal, 1);
 											queueArr.splice(0, 1);
 											displayArr.splice(0, 1);
 											$('.introjs-nextbutton').removeClass('introjs-disabled').show();
@@ -202,10 +201,10 @@ function initIntroJS() {
 				break;
 				case 'displayDiv':
 					let cond1 = frontVal <= rearVal;
+					var displayText = "";
 					if (cond1) {
 						displayAnim1(cond1, function() {
-							var displayText = "";
-							for (var i = 0; i < queueArr.length; i++) {
+							for (let i = 0; i < queueArr.length; i++) {
 								displayText = displayText + queueArr[i] + " "; 
 							}
 							displayAnim("#ifFrontLesThanRear", '#frontLesRearForLoop', 'rear', rearVal, 'front', frontVal, displayText);
@@ -213,7 +212,6 @@ function initIntroJS() {
 					} else {
 						if ($('#displayDiv').hasClass('Checking')) {
 							displayAnim1(cond1, function() {
-								let displayText = "";
 								for (let i = frontVal; i <= 9; i++) {
 									displayText = displayText + displayArr[iVal] + " ";
 									iVal++;
@@ -224,12 +222,11 @@ function initIntroJS() {
 						} else {
 							$('.introjs-tooltip').removeClass('hide');
 							$('.introjs-tooltiptext').append('<ul style="font-family: monospace"></ul>');
-							let displayText1 = "";
 							for (let i = 0; i <= rearVal; i++) {
-								displayText1 = displayText1 + displayArr[iVal] + " ";
+								displayText = displayText + displayArr[iVal] + " ";
 								iVal++;
 							}
-							displayAnim("#elseFrLoop1", '#elseFrLoop2', 'rear', rearVal, '0', 0, displayText1);
+							displayAnim("#elseFrLoop1", '#elseFrLoop2', 'rear', rearVal, '0', 0, displayText);
 						}
 					}
 				break;
@@ -417,7 +414,7 @@ function dequeAnim1() {
 
 function dequeAnim2() {
 	$('.user-btn').remove();
-	let cond2 = frontVal == 9;	//this cond (let cond2 = frontVal == 9;)
+	let cond2 = frontVal == 9;
 	if (cond2) {
 		arrowMoving("#frontIsMaxMinusOne", '#asignFrontIsZero', function() {
 			$('.introjs-tooltiptext ul').append('<li><span>front = 0</span></li>');

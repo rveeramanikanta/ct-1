@@ -20,8 +20,8 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<!-- <script src="/secure/lang/c/js-min/tc.min.js"></script> -->
-<script src="/secure/lang/c/js/twos-complement.js"></script>
+<script src="/secure/lang/c/js-min/tc.min.js"></script>
+
 <title>Two's complement</title>
 <style>
 .input-text {
@@ -47,10 +47,7 @@
 	position: relative;
 	width: 30px;
 }
-.prevButton {
-	 background-color: #5bc0de !important;
-    border-radius: 3px !important;
-}
+
 .box-yellow {
 	background-color: #f0e68c;
 	border-radius: 2px;

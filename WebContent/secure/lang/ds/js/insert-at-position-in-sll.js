@@ -109,7 +109,7 @@ function initIntroJS() {
 					text = 'Let us learn about adding a <bl>node</bl> at a particular <brn>position</brn> to a'
 							+ ' <bl>Single Linked List(SLL)</bl>. &emsp;';
 					typing('#algorithmDiv', text, function() {
-						nextBtnWithoutCalling('#algorithmDiv', function() {
+						callingNextBtn('#algorithmDiv', function() {
 							introjs.nextStep();
 						});
 					});
@@ -153,7 +153,7 @@ function initIntroJS() {
 						case 'posTwoNode':
 							$('#line11').remove();
 							$('#tempNodeParent1, #tempNode1').addClass('opacity00');
-							text = '<span id="l8" >Let us <yy class="ct-fonts">insert</yy> another node at <yy class="brn ct-fonts">position '
+							text = '<span id="l8">Let us <yy class="ct-fonts">insert</yy> another node at <yy class="brn ct-fonts">position '
 									+ '<span class="one">2<span></yy> (i.e., greater than 1).</span>';
 							typing('.introjs-tooltiptext', text, function() {
 								fromEffectWithTweenMax('.introjs-tooltiptext .one', '#posVal', true, function() {
@@ -161,7 +161,7 @@ function initIntroJS() {
 									$('#algorithmDiv #ul2').append('<li class="opacity00">' + text + '</li>');
 									$('#algorithmDiv #l8').addClass('opacity00');
 									algorithmAnim('#ul2', '#l8', function() {
-										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+										callingNextBtn('.introjs-tooltipbuttons', function() {
 											$('.introjs-tooltiptext').append('<ul><li></li></ul>');
 											text = '<span id="l9">Let us initialize two temporary nodes (<yy class="ct-fonts">prevPos</yy> and '
 													+ '<yy class="ct-fonts">last</yy>) with the <bgb>first</bgb> value.</span>';
@@ -203,7 +203,7 @@ function initIntroJS() {
 							text = 'Let us <y>insert</y> another node at <y>position <span class="one">5<span></y>. Repeat the <y>position 2 steps</y>.';
 							typing('.introjs-tooltiptext', text, function() {
 								fromEffectWithTweenMax('.introjs-tooltiptext .one', '#posVal', true, function() {
-									nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									callingNextBtn('.introjs-tooltipbuttons', function() {
 										$('#algorithmDiv').addClass('z-index10000');
 										$('#l9').css({'background-color' : 'yellow'});
 										$('.introjs-tooltiptext').append('<ul><li></li></ul>');
@@ -211,7 +211,7 @@ function initIntroJS() {
 										typing('.introjs-tooltiptext li', text, function() {
 											tempararyNodeDec(1, function() {
 												tempararyNodeDec(2, function() {
-													nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+													callingNextBtn('.introjs-tooltipbuttons', function() {
 														text = "Let us take one <y>integer</y> variable <y>i</y> and initialize it with <y>1</yy>.";
 														noPositionAnim('#l9', '#l10', text, function() {
 															text = 'Repeat the <y>loop</y> until the <y>i</y> value is <y>'
@@ -254,23 +254,18 @@ function initIntroJS() {
 								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
 								transWithZoomInEffect('#l1', '#fstCreation', function() {
 									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
-									nextBtnWithoutCalling('#fstCreation', function() {
-										introNextSteps('#animationDiv', 'ifPosZeroStep', 'show');
-										introjs.nextStep();
-									});
+									nextBtnWithNextStep('#fstCreation', '#animationDiv', 'ifPosZeroStep', 'show');
 								});
 							});
 						break;
 						case 'posLesThanZero':
 							$('#l2').effect('highlight', {color: 'yellow'}, 1400);
+							$('#codeDiv').append('\n\n<div id="positionDiv" class="position-css"><span id="line1" class="opacity00"></span></div>');
 							if (lang == 'c') {
-								$('#codeDiv').append('\n\n<div id="positionDiv" class="position-css"><span id="line1" class="opacity00">node'
-													+ ' insertAtPosition(int <brn>position</brn>, int x) {<span id="line1Close">\n\t'
-													+ '<span id="retn">return first;\n</span>}</span></span></div>');
+								$('#line1').html('node insertAtPosition(int <brn>position</brn>, int x) {<span id="line1Close">\n\t'
+													+ '<span id="retn">return first;\n</span>}</span>');
 							} else if (lang == 'cpp') {
-								$('#codeDiv').append('\n\n<div id="positionDiv" class="position-css"><span id="line1" class="opacity00">void'
-													+ ' Sll::insertAtPosition(int <brn>position</brn>, int x) {<span id="line1Close">\n'
-													+ '}</span></span></div>');
+								$('#line1').html('void Sll::insertAtPosition(int <brn>position</brn>, int x) {<span id="line1Close">\n}</span>');
 							}
 							transWithZoomInEffect('#l2', '#line1', function() {
 								$('#line1Close').before('\n\t<span id="line2" class="opacity00">if (<brn>position</brn> <g><=</g> <brn>0</brn>) {\n\t'
@@ -281,10 +276,7 @@ function initIntroJS() {
 													+ 'not possible</brn>\\n";\n\t\treturn;');
 								}
 								codeDivAnim('#l3', '#line2', function() {
-									nextBtnWithoutCalling('#line1', function() {
-										introNextSteps('#animationDiv', 'ifPosIsOne', 'show');
-										introjs.nextStep();
-									});
+									nextBtnWithNextStep('#line1', '#animationDiv', 'ifPosIsOne', 'show');
 								});
 							});
 						break;
@@ -303,7 +295,7 @@ function initIntroJS() {
 									$('.introjs-tooltip').removeClass('hide');
 									text = '<y>createNode()</y> is used to <y>allocate memory</y>.';
 									typing('.introjs-tooltiptext', text, function() {
-										nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+										callingNextBtn('.introjs-tooltipbuttons', function() {
 											$('#codeDiv').scrollTo('#structCode span:first', 300, function() {
 												if (lang == 'c') {
 													$('#allocMemory').html('temp = (node)malloc(sizeof(<span id="list"><g>struct list</g></span>));');
@@ -332,10 +324,7 @@ function initIntroJS() {
 							$('#algorithmDiv').scrollTo('#ul3 span:last', 300);
 							codeDivAnim('#l6', '#line3', function() {
 								codeDivAnim('#l7', '#line4', function() {
-									nextBtnWithoutCalling('#line4', function() {
-										introNextSteps('#animationDiv', 'posTwoNode', 'show');
-										introjs.nextStep();
-									});
+									nextBtnWithNextStep('#line4', '#animationDiv', 'posTwoNode', 'show');
 								});
 							});
 						break;
@@ -362,10 +351,7 @@ function initIntroJS() {
 													$('#frClose').before('\t\t<span id="prevLstInit" class="opacity00">prevPos = last;\n'
 																+ '\t\tlast = last -> next;</span>\n');
 													positonNodeAnimInCode('#l13', '#prevLstInit', '#line2', function() {
-														nextBtnWithoutCalling('#frLoop', function() {
-															introNextSteps('#animationDiv', 'secondNode', 'show');
-															introjs.nextStep();
-														});
+														nextBtnWithNextStep('#frLoop', '#animationDiv', 'secondNode', 'show');
 													});
 												});
 											});
@@ -381,10 +367,7 @@ function initIntroJS() {
 							codeDivAnim('#l14', '#line5', function() {
 								$('#codeDiv').scrollTo('#positionDiv #createCall', 300);
 								codeDivAnim('#l15', '#line6', function() {
-									nextBtnWithoutCalling('#line6', function() {
-										introNextSteps('#animationDiv', 'NoPosition', 'show');
-										introjs.nextStep();
-									});
+									nextBtnWithNextStep('#line6', '#animationDiv', 'NoPosition', 'show');
 								});
 							});
 						break;
@@ -396,10 +379,7 @@ function initIntroJS() {
 											+ 'not possible</brn>\\n";\n\t\t\treturn;');
 							}
 							positonNodeAnimInCode('#l16', '#line7', '#decI', function() {
-								nextBtnWithoutCalling('#line7', function() {
-									introNextSteps('#restartBtn', '', 'show', 'right');
-									introjs.nextStep();
-								});
+								nextBtnWithNextStep('#line7', '#restartBtn', '', 'show', 'right');
 							});
 						break;
 					}
@@ -489,6 +469,13 @@ function tempararyNodeDec(val, callBackFunction) {
 	});	
 }
 
+function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip) {
+	callingNextBtn(selector1, function() {
+		introNextSteps(parentSelector, selector2, tooltip);
+		introjs.nextStep();
+	});
+}
+
 function forLoopAnim() {
 	$('.user-btn').remove();
 	text = "<span id='l10'>Let us take one <yy class='ct-fonts'>integer</yy> variable <yy class='ct-fonts'>i</yy> and initialize it with"
@@ -528,10 +515,8 @@ function frLoopAnim1() {
 	$('.user-btn').remove();
 	fadeInBounceEffectWithTimelineMax('#tempNode2', '#tempNode1', true, -50, function() {
 		$('#tempBox1').attr('data-original-title' , 'Address of the previous position node.');
-		//animatedTooltip('#tempBox1', "bottom", "Address of the previous position node.");
 		fadeInBounceEffectWithTimelineMax('#next1', '#tempNode2', false, -50, function() {
 			$('#tempBox2').attr('data-original-title' , 'Address of the next position node.');
-			//animatedTooltip('#tempBox2', "bottom", "Address of the next position node.");
 			$('#line13').remove();
 			if ($('#posVal').text() == 2) {
 				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn">Next &#8594;</a>');
@@ -598,15 +583,12 @@ function posZeroAnim() {
 						$('#ul2').append(text + text1);
 						$('#algorithmDiv #l3, #algorithmDiv li:last').addClass('opacity00');
 						algorithmColorAnim();
-						nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+						callingNextBtn('.introjs-tooltipbuttons', function() {
 							$('#algorithmDiv').addClass('z-index10000');
 							transWithZoomInEffect('.introjs-tooltiptext #l2', '#algorithmDiv #l2', function() {
 								$('#algorithmDiv li:last').removeClass('opacity00');
 								transWithZoomInEffect('.introjs-tooltiptext #l3', '#algorithmDiv #l3', function() {
-									nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-										introNextSteps('#codeAndAlgorithmDiv', 'posLesThanZero', 'hide');
-										introjs.nextStep();
-									});
+									nextBtnWithNextStep('.introjs-tooltipbuttons', '#codeAndAlgorithmDiv', 'posLesThanZero', 'hide');
 								});
 							});
 						});
@@ -625,22 +607,22 @@ function posOneAnim() {
 	typing('.introjs-tooltiptext li', text, function() {
 		$('#algorithmDiv #ul3').append('<li class="opacity00">' + text + '</li>');
 		$('#ul3 #l6').addClass('opacity00');
-		nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+		callingNextBtn('.introjs-tooltipbuttons', function() {
 			fadeInBounceEffectWithTimelineMax('#firstVal', '#next1', false, -50, function() {
 				$('#algorithmDiv').addClass('z-index10000');
-				nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+				callingNextBtn('.introjs-tooltipbuttons', function() {
 					algorithmAnim('#ul3', '#l6', function() {
-						nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+						callingNextBtn('.introjs-tooltipbuttons', function() {
 							$('.introjs-tooltiptext ul').append('<li></li>');
 							text = '<span id="l7">Store the <yy class="ct-fonts grn">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
 										+ ' in the <bgb>first</bgb> variable.</span>';
 							typing('.introjs-tooltiptext li:last', text, function() {
 								$('#algorithmDiv #ul3').append('<li class="opacity00">' + text + '</li>');
 								$('#ul3 #l7').addClass('opacity00');
-								nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+								callingNextBtn('.introjs-tooltipbuttons', function() {
 									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
 										svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv1', 'line1', false, function() {
-											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+											callingNextBtn('.introjs-tooltipbuttons', function() {
 												algorithmAnim('#ul3', '#l7', function() {
 													introNextSteps('#codeAndAlgorithmDiv', 'posOneStep', 'hide');
 													$('.introjs-nextbutton').show();
@@ -714,7 +696,7 @@ function posOneValidationAnim() {
 								+ '</span></li>');
 			$('#algorithmDiv #l4').after('<ul id="ul3"><li class="opacity00">' + text + '</li></ul>');
 			algorithmColorAnim();
-			nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+			callingNextBtn('.introjs-tooltipbuttons', function() {
 				$('#algorithmDiv').addClass('z-index10000');
 				$('#algorithmDiv #l5').addClass('opacity00');
 				$('#algorithmDiv #ul2 > li:last').removeClass('opacity00');
@@ -741,16 +723,16 @@ function posTwoValidationAnim() {
 			text = '<span id="l14">Now store the <yy class="ct-fonts">previous position(prevPos)\'s</yy> <yy class="ct-fonts grn">next</yy> value in'
 					+ ' <yy class="ct-fonts">newly created node\'s</yy> <yy class="ct-fonts grn">next</yy> pointer variable.</span>';
 			frLoopAnimText(text, '14', function() {
-				nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+				callingNextBtn('.introjs-tooltipbuttons', function() {
 					fadeInBounceEffectWithTimelineMax('#next1', '#next2', true, 320, function() {
 						$('#algorithmDiv').addClass('z-index10000');
 						algorithmAnim('#ul4', '#l14', function() {
-							nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+							callingNextBtn('.introjs-tooltipbuttons', function() {
 								text = '<span id="l15">Now store the <yy class="ct-fonts">newly created node\'s</yy> <yy class="ct-fonts grn">'
 										+ ' address</yy> in the <yy class="ct-fonts">previous position(prevPos)\'s</yy> '
 										+ ' <yy class="ct-fonts grn">next</yy> pointer variable.</span>';
 								frLoopAnimText(text, '15', function() {
-									nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+									callingNextBtn('.introjs-tooltipbuttons', function() {
 										fadeInBounceEffectWithTimelineMax('#tempNode3', '#next1', false, -320, function() {
 											svgAnimatingLineRightToLeft('#nextDiv1', '#dataDiv2', 'line2', function() {
 												algorithmAnim('#ul4', '#l15', function() {
@@ -771,7 +753,7 @@ function posTwoValidationAnim() {
 }
 
 function nodeAnim(val, val1, callBackFunction) {
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+	callingNextBtn('.introjs-tooltipbuttons', function() {
 		$('#node' + val).removeClass('opacity00');
 		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
 			zoomInEffect('#tempNodeParent' + val1, function() {
@@ -792,7 +774,7 @@ function algorithmSteps(text, id1, id2, val, animatedStep) {
 	$('#algorithmDiv ul').append('<li class="opacity00">' + text + '</li>');
 	$(id2).addClass('opacity00');
 	algorithmColorAnim();
-	nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
+	callingNextBtn('.introjs-tooltipbuttons', function() {
 		$('#algorithmDiv').addClass('z-index10000');
 		transferEffect(id1, id2, function() {
 			$('#algorithmDiv li').not('ol li').eq(val).removeClass('opacity00');
@@ -826,7 +808,7 @@ function introNextSteps(stepName, animatedStep, tooltip, position) {
 	introjs._options.steps.push({"element" : stepName});
 }
 
-function nextBtnWithoutCalling(id, callBackFunction) {
+function callingNextBtn(id, callBackFunction) {
 	$(id).append('<a class="introjs-button user-btn">Next &#8594;</a>');
 	$('.user-btn').click(function() {
 		$('.user-btn').remove();

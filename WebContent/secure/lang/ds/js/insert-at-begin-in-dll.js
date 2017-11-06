@@ -75,7 +75,7 @@ function insertAtBeginMethod() {
 						 + '\t<span id="step1"></span>'
 						 + '\n\treturn first;\n}');
 	} else if (lang == 'cpp') {
-		$('#insertAtBeginFun').html('void Sll::<g>insertAtBegin(int x)</g> {\n'
+		$('#insertAtBeginFun').html('void Dll::<g>insertAtBegin(int x)</g> {\n'
 						 + '\t<span id="step1"></span>\n}');
 	}
 	$('#step1').html('node temp;\n'
@@ -102,7 +102,7 @@ function initIntroJS() {
 		exitOnEsc: false,
 		keyboardNavigation: false,
 		steps: [ {
-				element: '#headingInSll',
+				element: '#headingInDll',
 				intro: ''
 			}, {
 				element: '#algorithmDiv',
@@ -117,11 +117,11 @@ function initIntroJS() {
 	});
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
-		$('.zIndex').not('.introjs-showElement, #headingInSll').css({'z-index': '0'});
+		$('.zIndex').not('.introjs-showElement, #headingInDll').css({'z-index': '0'});
 		$('.introjs-showElement .zIndex').css({'zIndex': '99999999'});
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		switch(elementId) {
-			case 'headingInSll':
+			case 'headingInDll':
 				text = 'Here we will learn about <y>insertAtBegin()</y> method in a <y>Doubly Linked List</y>.';
 				typing('.introjs-tooltiptext', text, function() {
 					$('.introjs-nextbutton').show();
@@ -168,53 +168,22 @@ function initIntroJS() {
 							});
 						break;
 						case 'tempToFirst':
-							text = '<span id="l4">Check the condition if <bgb>first</bgb> is <y>NULL</y> or <y>not</y>.<br><br>'
-									+ ' If <bgb>first</bgb> is not <y>NULL</y>'
-									+ ' then <y>fetch</y> the newly created node <y>address</y> in <bgb>first</bgb>.</span>'
+							text = '<span id="l4"><yy class="ct-fonts b">Fetch</yy> the newly created node <yy class="ct-fonts g">address</yy>'
+										+ ' in <bgb>first</bgb>.</span>'
 							typing('.introjs-tooltiptext', text, function() {
-								callingNextBtn('.introjs-tooltipbuttons', function() {
-									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -380, function() {
-										svgAnimatingLineTopAndBottom('#firstDiv', '#dataDiv1', 'line2', false, function() {
-											callingNextBtn('.introjs-tooltipbuttons', function() {
-												text = '<li><span id="l4" class="opacity00"><bl>Fetch</bl> the newly created <bl>node</bl>'
-														+ ' <g>address</g> in <bgb>first</bgb>. If it is <g>NULL</g>.</li>';
-												$('#algorithmDiv #ul2').append(text);
-												$('#algorithmDiv').addClass('z-index10000');
-												transWithZoomInEffect('.introjs-tooltiptext #l4', '#algorithmDiv #l4', function() {
-													introNextSteps('#codeAndAlgorithmDiv', 'tempToFirst', 'hide');
-													$('.introjs-nextbutton').show();
-												});
-											});
-										});
+								btnWithFadeInAndTopToBottomLine('#tempNode1', '#firstVal', false, -380, '#firstDiv', '#dataDiv1', 'line2', 
+											false, function() {
+									callingNextBtn('.introjs-tooltipbuttons', function() {
+										$('#algorithmDiv').addClass('z-index10000');
+										$('#algorithmDiv #ul2').append('<li>' + text + '</li>');
+										algorithmDivColors();
+										$('#algorithmDiv #l4').addClass('opacity00');
+										transWithZoomAndNextStep('.introjs-tooltiptext #l4', '#algorithmDiv #l4', '.introjs-tooltipbuttons',
+												'#codeAndAlgorithmDiv', 'tempToFirst', 'hide');
 									});
 								});
 							});
 						break;
-						
-						
-						
-						/*
-						case 'tempToFst':
-							text = '<span id="l5">Store the <yy class="ct-fonts g">address</yy> of the <yy class="ct-fonts">newly created node</yy>'
-									+ ' in the <bgb>first</bgb> variable.</span>';
-							typing('.introjs-tooltiptext', text, function() {
-								callingNextBtn('.introjs-tooltipbuttons', function() {
-									fadeInBounceEffectWithTimelineMax('#tempNode1', '#firstVal', false, -350, function() {
-										svgAnimatingLineTopAndBottom('#firstDiv', '#nextDiv1', 'line1', false, function() {
-											$('#algorithmDiv ul:last').append('<li class="opacity00">' + text + '</li>');
-											$('#algorithmDiv #l5').addClass('opacity00');
-											algorithmDivColors();
-											$('#algorithmDiv').addClass('z-index10000');
-											$('#algorithmDiv li:last').removeClass('opacity00');
-											transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
-												introNextSteps('#codeAndAlgorithmDiv', 'tmpToFst', 'hide');
-												$('.introjs-nextbutton').show();
-											});
-										});
-									});
-								});
-							});
-						break;*/
 						case 'secondNode':
 							$('#line11').remove();
 							$('#tempNodeParent1').addClass('opacity00');
@@ -237,13 +206,8 @@ function initIntroJS() {
 								$('#codeDiv').append('<span id="fstCreation" class="opacity00">node first = <g>NULL</g>; '
 											+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"></i></span> &emsp;</span>');
 								$('#algorithmDiv ul li:last').effect('highlight', {color: 'yellow'}, 1400);
-								transWithZoomInEffect('#l2', '#fstCreation', function() {
-									animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
-									callingNextBtn('#fstCreation', function() {
-										introNextSteps('#animationDiv', 'fstListCreation', 'show');
-										introjs.nextStep();
-									});
-								});
+								transWithZoomAndNextStep('#l2', '#fstCreation', '#fstCreation', '#animationDiv', 'fstListCreation', 'show');
+								animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
 							});
 						break;
 						case 'methodCreation':
@@ -267,11 +231,9 @@ function initIntroJS() {
 											callingNextBtn('.introjs-tooltipbuttons', function() {
 												transWithZoomInEffect('#callCreateNode', '#createNodeFun', function() {
 													$('#list').css({'background-color' : 'yellow'});
-													transWithZoomInEffect('#list', '#structCode', function() {
+													transWithZoomAndNextStep('#list', '#structCode', '.introjs-tooltipbuttons', '#animationDiv',
+															'tempToFirst', 'show');
 														$('#callCreateNode, #l3Div, #list').css({'background-color' : ''});
-														introNextSteps('#animationDiv', 'tempToFirst', 'show');
-														$('.introjs-nextbutton').show();
-													});
 												});
 											});
 										});
@@ -283,17 +245,16 @@ function initIntroJS() {
 							$('#codeDiv').scrollTo('#fstCreation', 300);
 							$('#l4').effect('highlight', {color: 'yellow'}, 1200);
 							$('#step1').after('\n\t<span id="bgnIfCond" class="opacity00">first = temp;&emsp;</span>');
-							transWithZoomInEffect('#l4', '#bgnIfCond', function() {
-								callingNextBtn('#bgnIfCond', function() {
-									introNextSteps('#animationDiv', 'secondNode', 'show');
-									introjs.nextStep();
-								});
-							});
+							transWithZoomAndNextStep('#l4', '#bgnIfCond', '#bgnIfCond', '#animationDiv', 'secondNode', 'show');
 						break;
 						case 'ifCondCode':
-							$('#bgnIfCond').before('<span id="">if (first != NULL) {\n'
+							$('#bgnIfCond').before('<span id="fstIsNotNul" class="opacity00">if (first != NULL) {\n'
 											+ '\t\ttemp -> next = first;\n'
-											+ '\t\tfirst -> prev = temp;\n\t}</span>\n\t');
+											+ '\t\t<span id="tmpToFstPrev" class="opacity00">first -> prev = temp;</span>\n\t}</span>\n\t');
+							$('#codeDiv').scrollTo('#fstCreation', 300);
+							transWithZoomInEffect('#l5', '#fstIsNotNul', function() {
+								transWithZoomAndNextStep('#l6', '#tmpToFstPrev', '#fstIsNotNul', '#restartBtn', '', 'show', 'right');
+							});
 						break;
 					}
 				});
@@ -302,7 +263,7 @@ function initIntroJS() {
 				$('.introjs-tooltip').css({'min-width': '125px'});
 				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000');
 				$('.zIndex').css({'z-index': '99999999'});
-				$('#restartBtn').removeClass('opacity00');;
+				$('#restartBtn').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click to restart.', function() {
 						$('#restartBtn').click(function() {
@@ -316,13 +277,21 @@ function initIntroJS() {
 	introjs.start();
 }
 
+function transWithZoomAndNextStep(selector1, selector2, selector3, parentSelector, stepName, tooltip) {
+	transWithZoomInEffect(selector1, selector2, function() {
+		callingNextBtn(selector3, function() {
+			introNextSteps(parentSelector, stepName, tooltip);
+			introjs.nextStep();
+		});
+	});
+}
+
 function algorithmDivColors() {
 	$('#algorithmDiv yy').addClass('ct-blue-color').removeClass('ct-fonts');
 	$('#algorithmDiv .g').removeClass('ct-blue-color').addClass('ct-green-color');
 	$('#algorithmDiv .brn').removeClass('ct-blue-color').addClass('ct-brown-color');
 	$('#algorithmDiv y').addClass('ct-brown-color');
 }
-
 
 function secondNdeAnim() {
 	$('.introjs-tooltiptext').append('<br><br>Follow the steps : ');
@@ -337,45 +306,38 @@ function secondNdeAnim() {
 			callingNextBtn('.introjs-tooltipbuttons', function() {
 				$('#l3Div').css({'background-color' : ''});
 				$('.introjs-tooltiptext ol').append('<li></li>');
-				text = '<span id="l5">Store the <bgb>first</bgb> in newlyy created node\'s <yy class="ct-fonts g">next</yy> next pointer variable. '
+				text = '<span id="l5">Store the <bgb>first</bgb> in newly created node\'s <yy class="ct-fonts g">next</yy> pointer variable. '
 						+ 'If <bgb>first</bgb> is not <yy class="ct-fonts g">NULL</yy>.</span>';
 				typing('.introjs-tooltiptext li:last', text, function() {
-					callingNextBtn('.introjs-tooltipbuttons', function() {
-						fadeInBounceEffectWithTimelineMax('#firstVal', '#next2', true, 400, function() {
-							svgAnimatingLineTopAndBottom('#nextDiv2', '#nextDiv1', 'line3', false, function() {
-								$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
-								$('#algorithmDiv #l5').addClass('opacity00');
-								algorithmDivColors();
-								transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
-									callingNextBtn('.introjs-tooltipbuttons', function() {
-										$('.introjs-tooltiptext ol').append('<li></li>');
-										text = '<span id="l6">Now Store the <yy class="ct-fonts b">newly created node\'s</yy>'
-												+ ' <yy class="ct-fonts g">address</yy>'
-												+ ' in <bgb>first</bgb> node\'s <yy class="ct-fonts g">prev</yy> pointer variable.</span>';
-										typing('.introjs-tooltiptext li:last', text, function() {
+					btnWithFadeInAndTopToBottomLine('#firstVal', '#next2', true, 400, '#nextDiv2', '#nextDiv1', 'line3', false, function() {
+						$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
+						$('#algorithmDiv #l5').addClass('opacity00');
+						algorithmDivColors();
+						transWithZoomInEffect('.introjs-tooltiptext #l5', '#algorithmDiv #l5', function() {
+							callingNextBtn('.introjs-tooltipbuttons', function() {
+								$('.introjs-tooltiptext ol').append('<li></li>');
+								text = '<span id="l6">Now Store the <yy class="ct-fonts b">newly created node\'s</yy>'
+										+ ' <yy class="ct-fonts g">address</yy>'
+										+ ' in <bgb>first</bgb> node\'s <yy class="ct-fonts g">prev</yy> pointer variable.</span>';
+								typing('.introjs-tooltiptext li:last', text, function() {
+									btnWithFadeInAndTopToBottomLine('#tempNode2', '#prev1', false, -350, '#prevDiv1', '#prevDiv2', 'line4', true,
+											function() {
+										$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
+										$('#algorithmDiv #l6').addClass('opacity00');
+										algorithmDivColors();
+										transWithZoomInEffect('.introjs-tooltiptext #l6', '#algorithmDiv #l6', function() {
 											callingNextBtn('.introjs-tooltipbuttons', function() {
-												fadeInBounceEffectWithTimelineMax('#tempNode2', '#prev1', false, -350, function() {
-													svgAnimatingLineTopAndBottom('#prevDiv1', '#prevDiv2', 'line4', true, function() {
-														$('#algorithmDiv ul:last').append('<li>' + text + '</li>');
-														$('#algorithmDiv #l6').addClass('opacity00');
-														algorithmDivColors();
-														transWithZoomInEffect('.introjs-tooltiptext #l6', '#algorithmDiv #l6', function() {
-															callingNextBtn('.introjs-tooltipbuttons', function() {
-																$('.introjs-tooltiptext ol').append('<li></li>');
-																text = '<span id="l5">Store the <y>address</y> of the <y>newly created node</y>'
-																		+ ' in the <bgb>first</bgb> variable.</span>';
-																typing('.introjs-tooltiptext li:last', text, function() {
-																	callingNextBtn('.introjs-tooltipbuttons', function() {
-																		fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, 
-																				-350, function() {
-																			$('#line2').remove();
-																			svgAnimatingLineRightToLeft('#firstDiv', '#prevDiv2', 'line2', function() {
-																				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn"'
-																						+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
-																			});
-																		});
-																	});
-																});
+												$('#l4').css({'background-color' : 'yellow'});
+												$('.introjs-tooltiptext ol').append('<li></li>');
+												text = '<y>Fetch</y> the newly created node <y>address</y> in <bgb>first</bgb>.';
+												typing('.introjs-tooltiptext li:last', text, function() {
+													callingNextBtn('.introjs-tooltipbuttons', function() {
+														fadeInBounceEffectWithTimelineMax('#tempNode2', '#firstVal', false, -350, function() {
+															$('#line2').remove();
+															svgAnimatingLineRightToLeft('#firstDiv', '#prevDiv2', 'line2', function() {
+																$('#l4').css({'background-color' : ''});
+																$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn"'
+																		+ ' onclick="rearrangeNode()"> Next &#8594;</a>');
 															});
 														});
 													});
@@ -416,7 +378,6 @@ function rearrangeNode() {
 			animatedTooltip('#dataDiv2', "bottom", "data holds user data");
 			animatedTooltip('#nextDiv2', "bottom", "next holds next node's address");
 			introNextSteps('#codeAndAlgorithmDiv', 'ifCondCode', 'hide');
-			//introNextSteps('#restartBtn', '', 'show', 'right');
 			$('.introjs-nextbutton').show();
 		}});
 	}});
@@ -465,6 +426,15 @@ function nodeAnim(val, callBackFunction) {
 	});
 }
 
+function btnWithFadeInAndTopToBottomLine(selector1, selector2, flag, val, selector3, selector4, lineId, lineFlag, callBackFunction) {
+	callingNextBtn('.introjs-tooltipbuttons', function() {
+		fadeInBounceEffectWithTimelineMax(selector1, selector2, flag, val, function() {
+			svgAnimatingLineTopAndBottom(selector3, selector4, lineId, lineFlag, function() {
+				callBackFunction();
+			});
+		});
+	});
+}
 function algorithmSteps(text, id1, id2, val, animatedStep) {
 	$('#algorithmDiv ul').append('<li class="opacity00">' + text + '</li>');
 	$(id2).addClass('opacity00');
@@ -570,8 +540,7 @@ function validation(selector, val) {
 				eventValidation(val)
 			}
 		} else {
-			$('.user-btn').hide();
-			$('.error-text').remove();
+			$('.user-btn, .error-text').remove();
 			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Please enter number.</div>');
 		}
 	});
@@ -684,9 +653,9 @@ function svgLineAppend(svgLineId, x1, y1, x2, y2) {
 function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, callBackFunction) {
 	var parentOffset = $("#animationDiv").offset();
 	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
-	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 1.5;
 	var x2 = $(selector2).offset().left - parentOffset.left;
-	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 1.5;
 	lineAnim(svgLineId, x1, y1, x2, y2, callBackFunction);
 }
 

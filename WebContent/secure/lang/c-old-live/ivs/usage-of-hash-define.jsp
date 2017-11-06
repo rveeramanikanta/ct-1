@@ -14,8 +14,8 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/usage-of-hash-define.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script>
+
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
@@ -164,10 +164,6 @@
 	background-color: green !important;
 	margin: 0 5px !important;
 }
-y {
-	color: yellow;
-	font-weight: bold;
-}
 </style>
 <body>
 	<div class="col-sm-12 text-center">
@@ -262,7 +258,7 @@ void <span id="line3"><b>main()</b></span> {
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
 								<span id="typeRadiusId" class=""></span> <span
-									id="enterRadiusValue" class="opacity00">Enter the radius :
+									id="enterRadiusValue" class="hidden">Enter the radius :
 									<input id='inputChar' maxlength='3' class='enter-values'
 									tabindex='0' />
 								</span> <span id="finalAreaValue"></span><br /> <span id="finalCircumferenceValue"></span>
@@ -321,7 +317,7 @@ void <span id="line13"><b>main()</b></span> {
 		</div>
 	</div>
 	<div>
-		<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top : 15px;">Restart</button></div>
+		<button type="button" class="col-sm-1 col-sm-offset-6 btn btn-warning opacity00" id="restartBtn" style="margin-top: 10px;">Restart</button>
 	</div>
 <script type="text/javascript">
 $(document).ready(function() {
