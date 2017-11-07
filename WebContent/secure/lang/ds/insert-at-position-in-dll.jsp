@@ -69,7 +69,7 @@ y, yy {
 .div-border {
 	margin: 0;
 	padding: 0;
-	width: 50px;
+	width: 44px;
 	min-height: 24px;
 	text-align: center;
 	display: inline-block;
@@ -111,7 +111,7 @@ y, yy {
 	height: 330px;
 	overflow-y: auto;
 	font-size: 12px;
-	padding: 8px;
+	padding: 4px;
 }
 
 .padding5 {
@@ -183,6 +183,11 @@ bgb {
 #positionBox {
 	padding: 3px 8px;
 }
+
+.algorithm-div ul {
+	padding-left: 15px;
+	margin : 0;
+}
 </style>
 </head>
 <body>
@@ -196,9 +201,9 @@ bgb {
 			<h1 class="label ct-demo-heading" id="headingInDll">insertAtPosition() in DLL</h1>
 		</div>
 		<div class="col-xs-12 margin-top25">
-			<div class="col-xs-5 box-border opacity00" id="animationDiv" style="padding-left: 0; margin-top: 38px;">
+			<div class="col-xs-6 box-border padding0 opacity00" id="animationDiv" style="margin-top: 38px;">
 				<div class="col-xs-12 margin-top25" id="fstExplain">
-					<div class="col-xs-2 padding0 opacity00" id="firstNode">
+					<div class="col-xs-1 padding0 opacity00" id="firstNode">
 						<div class="text-center col-xs-12 ct-fonts padding0">first</div>
 						<div class="col-xs-12 box padding0" id="firstDiv" style="border: 1px solid black;">
 							<span id="firstVal" class="ct-fonts position-css" style="color: darkslategrey;">NULL</span>
@@ -206,17 +211,19 @@ bgb {
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 text-center padding0 opacity00" id="posDec">
 						<div style="margin-top: 15px;"><b>position = <span class="box-border position-css" id="positionBox"> 
-							<span class="opacity00 position-css" id="posVal">12</span></span></b>
+							<span class="opacity00 position-css" id="posVal">2</span></span></b>
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 margin-top25" id="dynamicNodes"></div>
+				<div class="col-xs-12 margin-top25 padding0" id="dynamicNodes"></div>
 				<div class="col-xs-12 margin-top25" id="tempDynamicNodes" style="margin-bottom: 15px;"></div>
 			</div>
-			<div class="col-xs-7" style="padding-right: 0px">
+			<div class="col-xs-6" style="padding-right: 0px">
 				<div class="col-xs-12 padding0" id="codeAndAlgorithmDiv">
 					<div class="col-xs-6 padding5"><div class="col-xs-12 padding0 algorithm-div box-border opacity00" id="algorithmDiv"></div></div>
-					<div class="col-xs-6 padding5"><pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre></div>
+					<div class="col-xs-6 padding5" style="padding-left: 0px;">
+						<pre class="creamPreTab col-xs-12 box-border code-div opacity00" id="codeDiv"></pre>
+					</div>
 				</div>
 			</div>
 		</div>
