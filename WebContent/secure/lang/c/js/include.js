@@ -79,7 +79,8 @@ function introGuide() {
 				},{
 			 		element : "#code2",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass : "hide"
 				},{
 			 		element : "#printf2",
 					intro : "",
@@ -121,7 +122,7 @@ function introGuide() {
 				$('#include1').addClass('opacity00');
 				$("#include1").removeClass("colorMain");
 			} else if (introjs._currentStep == 7) {
-				//$("#outputBody > div:last-child").empty();
+				$('#code2').addClass('opacity00');
 			 } else if (introjs._currentStep == 10) {
 				 introjs.refresh();
 				 $('#include21, #include22').addClass('opacity00');
@@ -143,6 +144,7 @@ function introGuide() {
 			if(introjs._direction == "backward") {
 				$('#code').show();
 				 $("#printf2").addClass("colorMain");
+				 $('#code2').removeClass('opacity00');
 			}
 		break;
 		case "totalPro2":
@@ -323,6 +325,7 @@ function introGuide() {
 				 typing($("#outputBody > #code"), text, function() {
 					 $("#ct").removeClass("colorWhite");
 					 $('.introjs-nextbutton, .introjs-prevbutton').show();
+					 $('.introjs-tooltiptext').css("");
 				});
 			});
 		 } else if (introjs._currentStep == 10) {
@@ -388,12 +391,14 @@ function introGuide() {
 			 });
 		break;
 		case "code2":
-			$("#code2").removeClass("opacity00");
-			$("#code").removeClass("hide");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#code2").removeClass("opacity00");
+				$("#code").removeClass("hide");
 				var text = "Let us consider another sample program and compile it  without the <b class ='ct-code-b-yellow'>#include</b> directives.";
+				$('.introjs-tooltip').removeClass('hide');
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
+					//$("#code2").addClass("opacity00");
 				});
 			});
 		break;
@@ -406,14 +411,14 @@ function introGuide() {
 				if (introjs._direction == "forward") {
 					$("#printf2").addClass("colorMain");
 						setTimeout(function() {
-							//introjs.nextStep();
+							introjs.nextStep();
 						},500)
 					} else {
 						$("#sqrt").removeClass("colorWhite");
 						$("#printf2").addClass("colorMain");
 						$("#error1").empty();
 						setTimeout(function() {
-							//introjs.previousStep();
+							introjs.previousStep();
 						},500)
 					}
 				});
