@@ -93,6 +93,7 @@ function introJsFunction() {
 			position : "right"
 		}
 		]});
+
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
@@ -138,8 +139,7 @@ function introJsFunction() {
 			$('.introjs-helperLayer').one('transitionend', function () {
 				charAtEnd('chValue');
 				introjsDynamicStep('#printf1', '', 'top', '');
-				var typingContent = 'You can change the value of <span class="ct-code-b-yellow">ch</span> and try or '+
-									'<span class="ct-code-b-yellow">skip</span> for restart.';
+				var typingContent = 'You can change the value of <span class="ct-code-b-yellow">ch</span> and try.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$(".introjs-tooltipbuttons").prepend('<a class="introjs-button user-btn" id="skipbutton" onclick="skipRestart()"> Skip</a>');
 					$('.introjs-nextbutton').show();
@@ -147,24 +147,21 @@ function introJsFunction() {
 			});
 			break;
 		case "printf1":
-			$("#skipbutton").remove();
+			$('.user-btn').remove();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				introjsDynamicStep('#outputBox', '', 'top', 'hide');
 				$('.output-console-body').append('<span class="visibility-hidden">The value of ch in character : ' + $('#chValue').val() + '</span><br>');
-				var typingContent = 'In this <span class="ct-code-b-yellow">cout</span> statement it prints <span class="ct-code-b-yellow">ch</span> '+
-					'in a <span class="ct-code-b-yellow">character</span> type.';
+				var typingContent = 'In this <span class="ct-code-b-yellow">printf()</span> statement <span class="ct-code-b-yellow">%c</span> prints <span class="ct-code-b-yellow">ch</span> in a <span class="ct-code-b-yellow">character</span> type.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});
 			});
 			break;
 		case "printf2":
-			$("#skipbutton").remove();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				introjsDynamicStep('#outputBox', '', '', 'hide');
 				$('.output-console-body').append('<span class="visibility-hidden">The value of ch in ASCII : ' + $('#chValue').val().charCodeAt(0) + '</span><br>');
-				var typingContent = 'In this <span class="ct-code-b-yellow">cout</span> statement <span class="ct-code-b-yellow">int(ch)</span> '+
-					'prints <span class="ct-code-b-yellow">ch</span> in a number. That number is <span class="ct-code-b-yellow">ASCII</span> value.';
+				var typingContent = 'In this <span class="ct-code-b-yellow">printf()</span> statement <span class="ct-code-b-yellow">%d</span> prints <span class="ct-code-b-yellow">ch</span> in a number. That number is <span class="ct-code-b-yellow">ASCII</span> value.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -215,11 +212,7 @@ function introjsDynamicStep(element, intro, position, tooltipClass) {
 	}
 	introjs.insertOption(introjs._currentStep + 1, step);
 }
-function skipRestart() {
-	$("#skipbutton").remove();
-	introjsDynamicStep('#restartBtn', 'Click here to restart', 'right', '');
-	introjs.goToStep(introjs._introItems.length);
-}
+
 function charAtEnd(elementId) {
 	$('#' + elementId).select();
 	var element = document.getElementById(elementId);
@@ -264,7 +257,11 @@ function charFunction2() {
 		});
 	});
 }
-
+function skipRestart() {
+	$("#skipbutton").remove();
+	introjsDynamicStep('#restartBtn', 'Click here to restart', 'right', '');
+	introjs.goToStep(introjs._introItems.length);
+}
 function charFunction3() {
 	$('.introjs-duplicate-nextbutton').remove();
 	introjs.nextStep();

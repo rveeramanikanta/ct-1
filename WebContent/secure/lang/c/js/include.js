@@ -381,9 +381,9 @@ function introGuide() {
 			var text = $("#include1").html();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#include1").removeClass("opacity00");
-				$('.introjs-tooltip').removeClass('hide');
 				typing("#include1", text, function() {
 					var text1 = "Now let us include the header file <b class ='ct-code-b-yellow'>stdio.h</b> which contains the <b class ='ct-code-b-yellow'>printf()</b> function.";
+					$('.introjs-tooltip').removeClass('hide');
 					typing($(".introjs-tooltiptext"), text1, function() {
 						 $('.introjs-nextbutton, .introjs-prevbutton').show();
 					});	

@@ -98,7 +98,7 @@
 
 .output-console-body {
 	background-color: black;
-	border-bottom-left-radius:						 8px;
+	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	color: #f0f0f0;
 	font-family: monospace;
@@ -108,6 +108,7 @@
 	overflow: auto;
 	padding: 10px;
 	white-space: inherit;
+	font-weight: bold;
 }
 
 .preJavaBoxCodeDiv1 {
@@ -154,9 +155,10 @@
 .enter-values {
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
 	border: 1px solid grey;
 	border-radius: 4px;
+	color: yellow;
+	font-weight: bold;
 }
 
 .next-btn {
@@ -263,8 +265,8 @@ void <span id="line3"><b>main()</b></span> {
 							<div class="output-console-body" id="consoleBodyDiv">
 								<span id="typeRadiusId" class=""></span> <span
 									id="enterRadiusValue" class="opacity00">Enter the radius :
-									<input id='inputChar' maxlength='3' class='enter-values'
-									tabindex='0' />
+									<y><input id='inputChar' maxlength='3' class='enter-values'
+									tabindex='0' /></y>
 								</span> <span id="finalAreaValue"></span><br /> <span id="finalCircumferenceValue"></span>
 							</div>
 						</div>

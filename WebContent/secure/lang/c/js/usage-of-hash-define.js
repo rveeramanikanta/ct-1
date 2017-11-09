@@ -1,7 +1,7 @@
 var t1;
 var TweenMax;
 var tl = new TimelineLite();
-var typingSpeed = 10;
+var typingSpeed = 1;
 var executeBtnCount = 1;
 
 var usageOfHashDefineReady = function() {
@@ -205,7 +205,7 @@ function introjsGuide() {
 					element :'#line15',
 					intro :'',
 					tooltipClass: "hide",
-					position:"bottom"
+					//position:"bottom"
 				},{
 					element :'#consoleId1',
 					intro :'',
@@ -229,7 +229,7 @@ function introjsGuide() {
 				},{
 					element :'#line17',
 					intro :'',
-					tooltipClass: "hide",
+					//tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#cubeAId',
@@ -387,7 +387,7 @@ function introjsGuide() {
 		case "line4" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext',"we are declare 3float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
+				typing('.introjs-tooltiptext',"we are declare 3 float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -458,9 +458,11 @@ function introjsGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in area.</br>" +
-						"<span><span class='ct-code-b-yellow'>area</span> = <span id='totalRadius' class='ct-code-b-yellow position-relative display-inline'>3.141 * <span  id='radiusOne' class='ct-code-b-yellow position-relative display-inline'>r</span> * <span id='radiusTwo' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>"+
-						" <span id='tooltipAreaNextBtn' class='introjs-button next-btn opacity00' onclick='tooltipFlipArea()'>Next &#8594;</span>", function() {
-					$('#tooltipAreaNextBtn').removeClass("opacity00");
+						"<span><span class='ct-code-b-yellow'>area</span> = "
+						+ "<span id='totalRadius' class='ct-code-b-yellow position-relative display-inline'>3.141 *"
+						+ " <span  id='radiusOne' class='ct-code-b-yellow position-relative display-inline'>r</span> *"
+						+ " <span id='radiusTwo' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>", function() {
+					$('.introjs-tooltipbuttons').append("<span id='tooltipAreaNextBtn' class='introjs-button next-btn' onclick='tooltipFlipArea()'>Next &#8594;</span>");
 				});
 			});
 			break;
@@ -470,9 +472,9 @@ function introjsGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in circumference.</br>" +
-						"<span><span class='ct-code-b-yellow'>circumference</span> = <span id='totalCircumference' class='ct-code-b-yellow position-relative display-inline'>2 * <span  id='circumPiValue' class='ct-code-b-yellow position-relative display-inline'>3.141</span> * <span id='circumRadius' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>" +
-						"<span id='tooltipCircumNextBtn' class='introjs-button next-btn opacity00' onclick='tooltipFlipCircum()'>Next &#8594;</span>", function() {
-						$('#tooltipCircumNextBtn').removeClass("opacity00");
+						"<span><span class='ct-code-b-yellow'>circumference</span> = <span id='totalCircumference' class='ct-code-b-yellow position-relative display-inline'>2 * <span  id='circumPiValue' class='ct-code-b-yellow position-relative display-inline'>3.141</span>"
+						+ " * <span id='circumRadius' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>", function() {
+					$('.introjs-tooltipbuttons').append('<span id="tooltipCircumNextBtn" class="introjs-button next-btn" onclick="tooltipFlipCircum()">Next &#8594;</span>');
 				});
 			});
 			break;
@@ -496,7 +498,7 @@ function introjsGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('introjs-tooltiptext', "", function() {
+				typing('.introjs-tooltiptext', "To print the <y>circumference</y> of the <y>circle</y>.", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -604,7 +606,7 @@ function introjsGuide() {
 			} else if(intro._currentStep == 16) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._direction == "forward") {
-					typing("#finalAreaValue", "<br /> Area of circle is : <span class='ct-code-b-green'>"+ $("#panelAreaBody").text() +"</span>", function() {
+					typing("#finalAreaValue", "<br /> Area of circle is : <y>"+ $("#panelAreaBody").text() +"</y>", function() {
 						setTimeout(function() {
 							intro.nextStep();
 						}, 500);
@@ -621,13 +623,14 @@ function introjsGuide() {
 			} else if(intro._currentStep == 18) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._direction == "forward") {
-					typing("#finalCircumferenceValue", "Circumference of circle : <span class='ct-code-b-green'>"+ $("#panelCircumferenceBody").text() +"</span>", function() {
+					typing("#finalCircumferenceValue", "Circumference of circle : <y>"+ $("#panelCircumferenceBody").text() +"</y>", function() {
 						setTimeout(function() {
 							intro.nextStep();
 						}, 1000);
 					});
 					} else {
 						typing("#finalCircumferenceValue", "", function() {
+							$("#preBody1").addClass("opacity00");
 						setTimeout(function() {
 							intro.previousStep();
 						}, 1000);
@@ -649,6 +652,7 @@ function introjsGuide() {
 					},500);
 				} else {
 					setTimeout(function() {
+						$("#animationDiv1").addClass("opacity00");
 						intro.previousStep();
 					},500);
 				}
@@ -678,17 +682,15 @@ function introjsGuide() {
 			break;
 			
 		case "line15" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('introjs-tooltiptext', "", function() {
-					$('.introjs-nextbutton,.introjs-prevbutton').show();
+				typing('.introjs-tooltiptext', "<y>printf</y> is used to to print the <y>number</y>.", function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 			
 		case "line16" :
-			$('.introjs-nextbutton').hide();
 			if (intro._direction == 'forward') {
 				$("#typeInputChar1").addClass("hidden");
 				$("#enterNumberId").removeClass("hidden");
@@ -713,10 +715,9 @@ function introjsGuide() {
 			break;
 			
 		case "line17" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$('.introjs-tooltip').removeClass('hide');
-				typing('introjs-tooltiptext',"", function() {
+				//$('.introjs-tooltip').removeClass('hide');
+				typing('.introjs-tooltiptext',"<y>printf</y> is used to print the <y>cube of a given number</y>.", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -878,7 +879,7 @@ function introjsGuide() {
 			else if(intro._currentStep == 31) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if(intro._direction == 'forward') {
-						typing("#finalCubeValue", "The cube of the given number is : <span class='ct-code-b-green'>"+ $("#aCubeValue").text() +"</span>", function() {
+						typing("#finalCubeValue", "The cube of the given number is : <span class='ct-code-b-yellow'>"+ $("#aCubeValue").text() +"</span>", function() {
 							setTimeout(function() {
 								intro.nextStep();
 							},1500);

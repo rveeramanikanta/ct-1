@@ -286,6 +286,7 @@ td {
 
 .color-yellow {
 	color : yellow;	
+	font-weight: bold;
 }
 
 #fspan31 {

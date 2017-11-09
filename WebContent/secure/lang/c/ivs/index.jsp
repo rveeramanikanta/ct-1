@@ -17,6 +17,10 @@ r {
 	color: red;
 	font-weight: bold;
 }
+
+.fa-check {
+	color: #8B0000;
+}
 </style>
 <script type="text/javascript">
 
@@ -144,12 +148,15 @@ r {
 						<td>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of #include', 'include.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #include</span>
+									
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; explanation of #define
@@ -168,6 +175,7 @@ r {
 						<td>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Sample program in C using printf()', 'sample-of-printf.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf()</span>
@@ -188,7 +196,8 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Binary-to-Decimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Decimal', 'binary-to-decimal-convertion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Decimal</span></td>
 						<td>Suresh / bannu <r>(back)</r></td>
@@ -368,7 +377,8 @@ r {
 					<tr>
 						<td>23</td>
 						<td>float datatype</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>	<i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; float Data-type</td>
 						<td>Padmaja / bannu <r>(back)</r></td>
@@ -380,7 +390,8 @@ r {
 					<tr>
 						<td>24</td>
 						<td>double datatype</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>	<i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; double Data-type</td>
 						<td>Padmaja / bannu <r>(back)</r></td>
@@ -440,7 +451,8 @@ r {
 					<tr>
 						<td>29</td>
 						<td>One's complement</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of ones complement', 'ones-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of	one's complement</span></td>
 						<td>Ramya / bannu <r>(back)</r></td>
@@ -452,7 +464,8 @@ r {
 					<tr>
 						<td>30</td>
 						<td>Two's complement</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of twos complement', 'twos-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of two's complement</span></td>
 						<td>Ramya / bannu <r>(back)</r></td>
@@ -727,10 +740,10 @@ r {
 					<tr>
 						<td>1</td>
 						<td>Directives #include</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #include', 'include.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of #include</span></td>
-						<td>Anil</td>
+						<td>Anil / swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>01-09-2016</td>
@@ -753,10 +766,11 @@ r {
 					<tr>
 						<td>3</td>
 						<td>Directives #if, #else</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #if #else', 'usage-of-hash-if-else.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #if #else</td>
-						<td>Mahesh</td>
+						<td>Mahesh / swathi <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully completed </td>
 						<td>21-09-2016</td>
@@ -765,10 +779,11 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Directives #if, #elif</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #if #elif', 'usage-of-hash-elif.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #if #elif</td>
-						<td>Mahesh</td>
+						<td>Mahesh / swathi <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully completed </td>
 						<td>22-09-2016</td>
@@ -777,10 +792,11 @@ r {
 					<tr>
 						<td>5</td>
 						<td>Directives #undef</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #undef', 'usage-of-undef.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of #undef</td>
-						<td>Mahesh</td>
+						<td>Mahesh / swathi <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully completed </td>
 						<td>23-09-2016</td>
@@ -789,10 +805,11 @@ r {
 					<tr>
 						<td>6</td>
 						<td>Directives ##</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of ##', 'usage-of-double-hash.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of ##</td>
-						<td>Mahesh</td>
+						<td>Mahesh / swathi <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully completed </td>
 						<td>24-09-2016</td>
@@ -1114,7 +1131,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of if-else', 'if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of if-else</td>
-						<td>Padmaja</td>
+						<td>Padmaja / <r>karthik</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
@@ -1166,7 +1183,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of if-else-if', 'if-else-if-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of if-else-if</td>
-						<td>Suresh</td>
+						<td>Suresh / <r>karthik</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-10-2016</td>

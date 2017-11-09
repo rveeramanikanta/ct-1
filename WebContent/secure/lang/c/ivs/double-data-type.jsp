@@ -144,6 +144,7 @@
 
 .color-yellow {
 	color:yellow;
+	font-weight: bold;
 }
 
 #numDiv {
