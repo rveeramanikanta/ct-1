@@ -95,11 +95,12 @@
 .color-yellow {
 	color: yellow;
 	font-size: bold;
+	font-family: monospace;
 }
 
 .introjs-tooltip {
-	max-width: 500px !important;
-	min-width: 315px !important;
+	max-width: 500px;
+	min-width: 315px;
 }
 
 .errorText {

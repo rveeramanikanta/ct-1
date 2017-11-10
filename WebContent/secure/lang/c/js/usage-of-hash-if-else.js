@@ -95,6 +95,7 @@ var usageOfHashIfElseReady = function() {
 				},{
 					element :'#line3',
 					intro :'',
+					tooltipClass:"hide",
 					position:"bottom"
 				},{
 					element :'#totalElse',
@@ -167,6 +168,10 @@ var usageOfHashIfElseReady = function() {
 			
 		case "line10" :
 			 //$("#typeChar").addClass("hide");
+			if (intro._currentStep == 11) {
+				$('#printMaxValue').text('10');
+				$('#printMinValue').text('20')
+			}
 			break;
 			
 		case "totalElse" :
@@ -197,7 +202,6 @@ var usageOfHashIfElseReady = function() {
 		case "consoleId" :
 		
 			if (intro._currentStep == 12) {
-				
 			} else if(intro._currentStep == 22) {
 				
 			}
@@ -309,9 +313,10 @@ var usageOfHashIfElseReady = function() {
 				
 			} else if (intro._currentStep == 15) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#printMaxValue").text("MAX");
+					$("#printMinValue").text("MIN");
+					$('.introjs-tooltip').removeClass("hide");
 					typing(".introjs-tooltiptext", "here MAX is undefined. So it returns <span class='ct-code-b-yellow'>false</span>, then <span class='ct-code-b-yellow'>else</span> part will be executed. In this case it does not execute <span class='ct-code-b-red'>true</span> part.", 1, "",function() {
-						$("#printMaxValue").text("MAX");
-						$("#printMinValue").text("MIN");
 						$("#typeChar").removeClass("hide");
 						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
@@ -359,8 +364,8 @@ var usageOfHashIfElseReady = function() {
 		case "line10" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('.introjs-tooltip').removeClass("hide");
 				$("#typeChar").removeClass("hide");
+				$('.introjs-tooltip').removeClass("hide");
 				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is a library function, used to display the message specified with in double quotes on the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});

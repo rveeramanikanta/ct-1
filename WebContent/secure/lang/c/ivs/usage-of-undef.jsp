@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/usage-of-undef.js" type="text/javascript"></script>
 
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
@@ -20,6 +19,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
+
+<script src="/secure/lang/c/js/usage-of-undef.js" type="text/javascript"></script>
 <title>Usage of undef</title>
 </head>
 <style>
@@ -44,7 +45,7 @@
 	height: 70px;
 	overflow: auto;
 	padding: 10px;
-	white-space: pre-line;
+	white-space: initial;
 }
 
 #informationdiv {
@@ -230,7 +231,7 @@
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
+				<span id="typeChar"></span><br>
 				<span id="typeChar1"></span>
 			</div>
 		</div>

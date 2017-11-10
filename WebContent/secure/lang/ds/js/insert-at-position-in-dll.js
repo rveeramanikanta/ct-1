@@ -28,7 +28,7 @@ function dynamicTempNodes(val) {	//temp nodes
 
 function createDynamicNodes(id, nodeNum) {	//node
 	var randomAddress = getRandomInt(1000, 5000);
-	$(id).append('<div class="col-xs-2 nodes list-nodes opacity00 hide" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
+	$(id).append('<div class="col-xs-2 nodes list-nodes opacity00" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
 	 				+ ' <div class="col-xs-12 padding0"><div class="col-xs-4 ct-green-color ct-fonts text-center padding0">prev</div>'
 					+ ' <div class="col-xs-4 ct-blue-color ct-fonts padding0 text-center">data</div>'
 					+ '	<div class="col-xs-4 ct-green-color ct-fonts text-center padding0">next</div></div>'
@@ -122,6 +122,7 @@ function initIntroJS() {
 			break;
 			case 'animationDiv':
 				$('#animationDiv').removeClass('opacity00');
+				$('.introjs-tooltip').css({'height' : ''});
 				introjs.refresh();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -149,9 +150,10 @@ function initIntroJS() {
 						case 'posTwoNode':
 						case 'firstPosition':
 						case 'positionGreaterOne':
+						case 'noPositionStep':
 							var nodeVal;
-							$('#line11, #line12').remove();
-							$('#tempNodeParent1, #tempNodeParent2, #tempNodeParent3, #tempNode1, #tempNode2').addClass('opacity00');
+							$('#line11, #line12, #line14').remove();
+							$('#tempDynamicNodes > div, .temp-node-val').addClass('opacity00');
 							if (animateStep == 'ifPosIsOne') {
 								text = '<span>Let us <yy class="ct-fonts">insert</yy> a node at <yy class="ct-fonts brn one">'
 										+ '1</yy>st <yy class="ct-fonts brn">position</yy> </span>';
@@ -163,9 +165,12 @@ function initIntroJS() {
 							} else if (animateStep == 'firstPosition') {
 								text = 'Let us insert another <y>node</y> at <y class="one">1</y><y>st position</y>';
 								nodeVal = 3;
-							} else {
+							} else if (animateStep == 'positionGreaterOne'){
 								text = 'Let us insert another <y>node</y> at <y class="one">4</y><y>th position</y>';
 								nodeVal = 4;
+							} else {
+								text = 'Let us insert another <y>node</y> at <y class="one">6</y><y>th position</y>';
+								nodeVal = 6;
 							}
 							text1 = text + ' for a given value. <br>Enter a value : '
 									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
@@ -269,7 +274,7 @@ function initIntroJS() {
 											+ '\t\t<span id="tmpToLstNxt" class="opacity00">last -> next = temp;</span>\n'
 											+ '\t\t<span id="tmpToTmpPrev" class="opacity00">temp -> prev = last;</span>\n\t}</span>');
 							codeDivAnim('#l9', '#lstDec', '#ifPosIsZero', '#codeDiv', function() {
-								recursionAnim('11', '#posNotOne span', 0, 13, '#createCall', '#codeDiv', function() {
+								recursionAnim('11', '#posNotOne span', 0, 13, '#createCall', '#codeDiv', '#algorithmDiv', function() {
 									callingNextBtn('#posNotOne', function() {
 										introNextSteps('#animationDiv', 'firstPosition', 'show');
 										introjs.nextStep();
@@ -289,6 +294,21 @@ function initIntroJS() {
 									nextBtnWithNextStep('#posOneNotNlCond', '#animationDiv', 'positionGreaterOne', 'show');
 								});
 							});
+						break;
+						case 'posTwoSteps':
+							$('#tempDec').after('\n\t<span id="frLoop"><span id="decI">int i;</span>\n'
+											+ '\t<span id="frLoopDec">for (i = 1; i < (<brn>position</brn> - 1); i++) {\n'
+											+ '\t\t<span id="lstNxtIsNLRNot">if (last -> next == NULL) {\n'
+											+ '\t\t<div id="printf1" class="position-css"></div>}</span>\n'
+											+ '\t\t<span id="lstToLstNxt">last = last -> next;</span>\n\t}</span></span>');
+							$('#frLoop span').addClass('opacity00');
+							$('#algorithmDiv').scrollTo('#l12', 300);
+							recursionAnim('16', '#frLoop span', 0, 19, '#ifPosIsZero', '#codeDiv', '#algorithmDiv', function() {
+								nextBtnWithNextStep('#frLoop', '#animationDiv', 'noPositionStep', 'show');
+							});
+						break;
+						case 'noPositionStep':
+							$('#printf1').html('')
 						break;
 					}
 				});
@@ -326,7 +346,7 @@ function rearrangingNodes() {
 	TweenMax.to($('#node2'), 1, {left: '130', onComplete: function () {
 		TweenMax.to($('#node1'), 1, {left: '130', onComplete: function () {
 			changeIdsBasedOnCond(function() {
-				$('#dynamicNodes #node3').html($('#node2').html()).removeClass('hide opacity00');
+				$('#dynamicNodes #node3').html($('#node2').html()).removeClass('opacity00');
 				$('#node2').html($('#node1').html());
 				$('#node1').html($('#fstExplain #node3').html()).addClass('opacity00');
 				$('.nodes').not('#node1').css('left', '0');
@@ -353,47 +373,134 @@ function rearrangingNodes() {
 
 function positionFourAnim() {
 	$('#algorithmDiv li').removeAttr('class');
-	$('.introjs-tooltiptext').append('<ul></ul>');
+	$('.introjs-tooltiptext').append('<br>Repeat the <y>position 2</y> steps. <ul></ul>');
 	text = 'Let us initialize a temporary node (<yy class="ct-fonts">last</yy>) with the <bgb>first</bgb> value.';
 	liTyping(text, function() {
 		$('#tempame3').text('last');
 		tempararyNodeDec(3, function() {
-			text = "<span id='l14'>Let us take one <yy class='ct-fonts'>integer</yy> variable <yy class='ct-fonts'>i</yy> and initialize it with"
+			text1 = "<span id='l16'>Let us take one <yy class='ct-fonts'>integer</yy> variable <yy class='ct-fonts'>i</yy> and initialize it with"
 					+ " <yy class='ct-fonts'>1</yy>.";
-			frLoopAnimText(text, '14', '#ul4', function() {
-				text = '<span id="l15">Repeat the <yy class="ct-fonts">loop</yy> until the <yy class="ct-fonts">i</yy> value is <yy class="ct-fonts grn">'
-						+ 'less than</yy> the <yy class="ct-fonts brn">position minus one(4 - 1 = 3)</yy>.</span>';
-				frLoopAnimText(text, '15', '#ul4', function() {
-					$('.introjs-tooltiptext li:last').append('<br><br><div id="appendText1"></div><br>');
-					text = '<y>1 < 3</y> condition evaluates to <y>true</y>. Hence control enters into the <y>for-loop block</y>.';
-					typing('#appendText1', text, function() {
-						text = '<span id="l16">If it is <yy class="ct-fonts grn">true</yy>, then check <yy class="ct-fonts">last -> next</yy> is'
-								+ ' <yy class="ct-fonts grn">NULL</yy> or not.</span>';
-						frLoopAnimText(text, '16', '#ul4', function() {
-							$('.introjs-tooltip').css({'height':'300px', 'overflow-y':'auto'}).scrollTo('.introjs-tooltiptext li:last', 300);
-							$('.introjs-tooltiptext li:last').append('<br><br><div id="appendText2"></div><br>');
-							text = '<y>last -> next</y> value (i.e, <y>' + $('#next1').text() + '</y>) is <y>not NULL</y>. Hence condition evaluates to <y>false</y>.';
-							typing('#appendText2', text, function() {
-								$('.introjs-tooltip').scrollTo('.introjs-tooltiptext div:last', 300);
-								text = '<span id="l17">If  <yy class="ct-fonts">last</yy> is <yy class="ct-fonts grn"> not NULL</yy> then assign '
-									+ '<yy class="ct-fonts grn">next field of</yy> <yy class="ct-fonts">last</yy> to <yy class="ct-fonts">last</yy>.</span>';
-								frLoopAnimText(text, '17', '#ul4', function() {	
-									$('.introjs-tooltip').scrollTo('.introjs-tooltiptext li:last', 300);
-									$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="frLoopAnim()">Next &#8594;</a>');
-									$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
-								});
+			text2 = '<span id="l17">Repeat the <yy class="ct-fonts">loop</yy> until the <yy class="ct-fonts">i</yy> value is'
+					+ ' <yy class="ct-fonts g">less than</yy> the <yy class="ct-fonts brn">position minus one(4 - 1 = 3)</yy>.</span>';
+			text3 = '<span id="l18">If it is <yy class="ct-fonts g">true</yy>, then check <yy class="g ct-fonts">last\'s next</yy> is'
+							+ ' <yy class="ct-fonts g">NULL</yy> or not.</span>';
+			text4 = '<span id="l19">If  <yy class="g ct-fonts">last\'s next</yy> is <yy class="ct-fonts g"> not NULL</yy> then assign '
+					+ '<yy class="ct-fonts g">next field of</yy> <yy class="g ct-fonts">last</yy> to <yy class="g ct-fonts">last</yy>.</span>';
+			if ($('#posVal').text() == 4) {		
+				frLoopAnimText(text1, '16', '#ul4', function() {
+					frLoopAnimText(text2, '17', '#ul4', function() {
+						frLoopAnimText(text3, '18', '#ul4', function() {
+							frLoopAnimText(text4, '19', '#ul4', function() {	
+								$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="frLoopAnim()">Next &#8594;</a>');
 							});
 						});
 					});
 				});
-			});
+			} else {
+				liTyping(text1, function() {
+					liTyping(text2, function() {
+						liTyping(text3, function() {
+							liTyping(text4, function() {
+								$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="frLoopAnim()">Next &#8594;</a>');
+							});
+						});
+					});
+				});
+			}
 		});
 	});
 }
 
 function frLoopAnim() {
-	fadeInBounceEffectWithTimelineMax('#next1', '#tempNode1', true, -50, function() {
-		$('#tempBox1').attr('data-original-title' , 'Address of the first next node.');
+	$('.user-btn').remove();
+	fadeInNSvgTopAndBottom('#next1', '#tempNode3', '#tempNodeParent3', '#nextDiv2', 'line14', true, function() {
+		$('#tempBox3').attr('data-original-title' , 'Address of the first next node.');
+		$('#nextDiv2').effect('highlight', {color: 'blue'}, 500, function() {
+			fadeInNSvgTopAndBottom('#next2', '#tempNode3', '#tempNodeParent3', '#nextDiv3', 'line14', true, function() {
+				if ($('#posVal').text() == 4) {
+					callingNextBtn('.introjs-tooltipbuttons', function() {
+						$('#algorithmDiv').addClass('z-index10000');
+						recursionAnim('16', '#ul4 span', 5, 19, '#l13', '#algorithmDiv', '.introjs-tooltiptext', function() {
+							$('.introjs-tooltip').css({'height':'250px', 'overflow-y':'auto'}).scrollTo('.introjs-tooltiptext li:last', 300);
+							repeatedTextTyping('#l10', false, '', '', '', '', function() {
+								dynamicTempNodes(4);
+								createDynamicNodes('#dynamicNodes', 4);
+								nodeAnim(4, function() {
+									repeatedTextTyping('#l11', true, '#next3', '#next4', true, 700, function() {
+										repeatedTextTyping('#l12', true, '#tempNode4', '#next3', false, -350, function() {
+											svgAnimatingLineRightToLeft('#nextDiv3', '#prevDiv4', 'line6', function() {
+												repeatedTextTyping('#l13', true, '#tempNode3', '#prev4', false, -350, function() {
+													svgAnimatingLineLeftToRight('#prevDiv4', '#nextDiv3', 'line7', function() {
+														nextBtnWithNextStep('.introjs-tooltipbuttons', '#codeAndAlgorithmDiv', 'posTwoSteps', 'hide');
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				} else {
+					$('#nextDiv3').effect('highlight', {color: 'blue'}, 500, function() {
+						fadeInNSvgTopAndBottom('#next3', '#tempNode3', '#tempNodeParent3', '#nextDiv4', 'line14', true, function() {
+							$('.introjs-tooltiptext ul').append('<div id="appendText"></div>');
+							text = '<yy class="ct-fonts">last\'s next</yy> value is <yy class="ct-fonts">NULL</yy>. Here, for loop fails we can\'t '
+									+ ' insert any node. <br>Print <yy class="brn ct-fonts">No such position in Doubly Linked List so insertion is'
+									+ ' not possible</yy>.';
+							typing('#appendText', text, function() {
+								nextBtnWithNextStep('.introjs-tooltipbuttons', 'codeAndAlgorithmDiv', 'noPositionStep', 'hide');
+							});
+						});
+					});
+				}
+			});
+		});
+	});
+}
+
+function repeatedTextTyping(selector1, checkFlag, selector2, selector3, flag, val, callBackFunction) {
+	$('#algorithmDiv').scrollTo('#l15', 300);
+	$(selector1).effect('highlight', {color: 'yellow'}, 500);
+	$('.introjs-tooltiptext ul').append('<li>' + $(selector1).html() + '</li>');
+	$('.introjs-tooltiptext li:last yy[class*=ct]').removeAttr("class").addClass('ct-fonts');
+	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
+	if (checkFlag) {
+		fadeInBounceEffectWithTimelineMax(selector2, selector3, flag, val, function() {
+			callBackFunction();
+		});
+	} else {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}
+}
+
+function fadeInNSvgTopAndBottom(selector1, selector2, selector3, selector4, lineId, flag, callBackFunction) {
+	fadeInBounceEffectWithTimelineMax(selector1, selector2, false, 250, function() {
+		$('#' + lineId).remove();
+		svgAnimatingLineTopAndBottom(selector3, selector4, lineId, flag, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function recursionAnim(idVal, selector, val, finlVal, scrollID, scrollParentId, parentId, callBackFunction) {
+	if (idVal <= finlVal) {
+		let t = $(selector).eq(val).attr('id');
+		$(parentId + ' #l' + idVal).effect('highlight', {color: 'yellow'}, 1400);
+		codeDivAnim('#l' + idVal, '#' + t, scrollID, scrollParentId, function() {
+			recursionAnim(++idVal, selector, ++val, finlVal, scrollID, scrollParentId, parentId, callBackFunction)
+		});
+	} else {
+		callBackFunction();
+	}
+}
+
+function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip) {
+	callingNextBtn(selector1, function() {
+		introNextSteps(parentSelector, selector2, tooltip);
+		introjs.nextStep();
 	});
 }
 
@@ -402,8 +509,8 @@ function positionThreeAnim() {
 	$('.introjs-tooltiptext').append('<br><br>Repeat the steps<ul></ul>');
 	$('#algorithmDiv').addClass('z-index10000').scrollTo('#l3', 300);
 	$('#l5').css({'background-color' : 'yellow'});
-	text = 'Allocate <y>memory</y> for the <y>new node</y> (<y>address</y> of the <y>new node</y> is stored in <y>temp</y>) and store the given value in'
-			+ ' <y>data</y>'
+	text = 'Allocate <y>memory</y> for the <y>new node</y> (<y>address</y> of the <y>new node</y> is stored in <y>temp</y>) and'
+			+ ' store the given value in <y>data</y>'
 	liTyping(text, function() {
 		dynamicTempNodes(3);
 		nodeAnim(3, function() {
@@ -440,24 +547,6 @@ function positionThreeAnim() {
 				});
 			});
 		});
-	});
-}
-
-function recursionAnim(idVal, selector, val, finlVal, scrollID, scrollParentId, callBackFunction) {
-	if (idVal <= finlVal) {
-		let t = $(selector).eq(val).attr('id');
-		codeDivAnim('#l' + idVal, '#' + t, scrollID, scrollParentId, function() {
-			recursionAnim(++idVal, selector, ++val, finlVal, scrollID, scrollParentId, callBackFunction)
-		});
-	} else {
-		callBackFunction();
-	}
-}
-
-function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip) {
-	callingNextBtn(selector1, function() {
-		introNextSteps(parentSelector, selector2, tooltip);
-		introjs.nextStep();
 	});
 }
 
@@ -575,16 +664,16 @@ function posTwoValidationAnim() {
 								$('#algorithmDiv ul:last').append('<li><span id="l10" class="opacity00">' + $('#l5').html() + '</span></li>');
 								$('#algorithmDiv').scrollTo('yy:last', 300);
 								codeDivAnim('.introjs-tooltiptext #l10', '#algorithmDiv #l10', 'yy:last', '#algorithmDiv', function() {
-									text = "<span id='l11'>Store the <yy class='ct-fonts g'>previous node\'s next</yy> value in newly created node's"
+									text = "<span id='l11'>Store the <yy class='ct-fonts g'>last node\'s next</yy> value in newly created node's"
 											+ " <yy class='ct-fonts g'>next</yy> pointer variable.</span>";
 									frLoopWithNextBtnAndBounceEffect('#ul4', '11', '#next1', '#next2', true, 320, function() {
 										codeDivAnim('.introjs-tooltiptext #l11', '#algorithmDiv #l11', 'yy:last', '#algorithmDiv', function() {
 											text = '<span id="l12">Store the newly created node\'s <yy class="ct-fonts g">address</yy> in '
-															+ ' <yy class="ct-fonts g">previous node\'s next</yy> pointer variable.</span>';
+															+ ' <yy class="ct-fonts g">last node\'s next</yy> pointer variable.</span>';
 											frLoopWithNextBtnAndBounceEffect('#ul4', '12', '#tempNode2', '#next1', false, -320, function() {
 												svgAnimatingLineRightToLeft('#nextDiv1', '#prevDiv2', 'line2', function() {
 													codeDivAnim('.introjs-tooltiptext #l12', '#algorithmDiv #l12', 'yy:last', '#algorithmDiv', function() {
-														text = '<span id="l13">Store the <yy class="ct-fonts g">previous</yy> node\'s '
+														text = '<span id="l13">Store the <yy class="ct-fonts g">last</yy> node\'s '
 																+ ' <yy class="ct-fonts g">address</yy> in newly created node\'s '
 																+ ' <yy class="ct-fonts g">prev</yy> pointer variable</span>.';
 														frLoopWithNextBtnAndBounceEffect('#ul4', '13', '#tempNode1', '#prev2', false, -320, function() {
@@ -726,12 +815,13 @@ function validationAnim(val) {
 
 function nodeAnim(val, callBackFunction) {
 	callingNextBtn('.introjs-tooltipbuttons', function() {
-		$('#node' + val).removeClass('hide opacity00');
+		$('#node' + val).removeClass('opacity00');
 		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
 			zoomInEffect('#tempNodeParent' + val, function() {
 				animatedTooltip('#tempBox' + val, "top", "Address of the newly created node.");
 				fromEffectWithTweenMax('#dataAddress' + val, '#tempNode' + val, true, function() {
 					svgAnimatingLineTopAndBottom('#tempNodeParent' + val, '#nextDiv' + val, 'line11', true, function() {
+						$('.introjs-tooltip').scrollTo('input', 300);
 						fromEffectWithTweenMax('#nodeVal', '#data' + val, false, function() {
 							$('#nodeVal').css({'color': 'white'});
 							callBackFunction();
@@ -783,6 +873,7 @@ function introNextSteps(stepName, animatedStep, tooltip, position) {
 
 function callingNextBtn(id, callBackFunction) {
 	$(id).append('<a class="introjs-button user-btn">Next &#8594;</a>');
+	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons a:last', 300);
 	$('.user-btn').click(function() {
 		$('.user-btn').remove();
 		callBackFunction();

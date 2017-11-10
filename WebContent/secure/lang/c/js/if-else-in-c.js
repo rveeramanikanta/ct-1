@@ -78,26 +78,18 @@ var typingSpeed = 5;
 				flipEffectWithTweenMax($('#disMarks'), distinction_marks, function(){
 					if (marks > distinction_marks) {
 						typing('#conditionTyping', 'evaluates to <b class=ct-code-b-yellow>true</b>.', function() {
-							/*$(".evaluateBtn").removeClass("hidden");*/
-							/*if (introjs._introItems[introjs._currentStep]["visited"] == undefined) {
-								introjs._introItems[introjs._currentStep]["visited"] = "true";*/
 								introjs.insertOption(introjs._currentStep + 1,insertionIntro("ifStmt", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 2,insertionIntro("outputDiv", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 3,insertionIntro("mainEnd", "", "top", "hide"));
-								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "click to  restart", "right", ""));
-							/*}*/
+								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "Click to restart", "right", ""));
 							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
 					} else {
 						typing('#conditionTyping', 'evaluates to <b class=color-red>false</b>.', function() {
-							/*$(".evaluateBtn").removeClass("hidden");*/
-							/*if (introjs._introItems[introjs._currentStep]["visited"] == undefined) {
-								introjs._introItems[introjs._currentStep]["visited"] = "true";*/
 								introjs.insertOption(introjs._currentStep + 1,insertionIntro("elseStmt", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 2,insertionIntro("outputDiv", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 3,insertionIntro("mainEnd", "", "top", "hide"));
-								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "click to  restart", "right", ""));
-							/*}*/
+								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "Click to  restart.", "right", ""));
 							$(".introjs-nextbutton,.introjs-prevbutton").show();
 						});
 					}
@@ -146,21 +138,13 @@ function introJsGuide() {
 			element : '#initialization',
 			intro : "",
 			position : 'bottom',
-			tooltipClass : ''
+			tooltipClass : 'hide'
 		}, {
 			element : "#condition",
 			intro : "",
 			position: "bottom",
 			tooltipClass: "hide"
-		}/*,{
-			element : '#mainEnd',
-			tooltipClass : 'hide'
-		}, {
-			element : "#restart",
-			intro : "Click to restart.",
-			tooltipClass: "",
-			position: "right",
-		}*/]
+		}]
 	});
 	introjs.setOption('showStepNumbers', false);
 	introjs.setOption('exitOnOverlayClick', false);
@@ -178,54 +162,23 @@ function introJsGuide() {
 		switch (elementId) {
 		
 		case "ifElseBlock":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				typing(".introjs-tooltiptext", text, function() {
-					
-				});
-			})*/
+			
 		break;	
 			
 		case "citizenAge":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>distinction_marks</b> is declared and initialized to " 
-				+ "<b class='ct-code-b-yellow'>75</b>."
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});*/
+			
 			
 		break;	
 		
 		case "initialization":
 			
 			$(".animateBtn").remove();
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>marks</b> is declared and initialized to " 
-				+ "<b class='ct-code-b-yellow changeVal'>60</b>.<br/> You can also change the value " 
-				+ "<b class='ct-code-b-yellow'>60</b> to any other number.</span><br><span class='errorText'>";
-				charAtEnd("initializationValue");
-				//$('.introjs-nextbutton').hide();
-				//$('.initializeBtn').removeClass("hidden");
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-				
-			});*/
+			
 			break;
 			
 		case "ifBlock":
 		case "elseBlock":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				if (elementId == "ifBlock") {
-					var text = "This is called the <b class='ct-code-b-yellow' style = 'white-space: nowrap;'>if-block</b>."
-				} else {
-					var text = "This is called the <b class='ct-code-b-yellow' style = 'white-space: nowrap;'>else-block</b>";
-				}
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				})
-			})	
-			introjs.refresh();*/
+			
 			break;
 		
 		case "condition":
@@ -236,78 +189,27 @@ function introJsGuide() {
 			if (introjs._introItems.length == 10) {
 				introjs._introItems.splice(6);
 			}
-			
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				//$('.introjs-nextbutton').addClass("opacity00");
-				var text = "<span class='oacity00 conditionTxt'>This is the <b class='ct-code-b-yellow'>condition</b> part. <br/>If the condition evaluates to " 
-				+ "<b class='ct-code-b-yellow'>true</b>, control enters into the " 
-				+ "<b class='ct-code-b-yellow'>if-block</b>, otherwise the control enters into the " 
-				+ "<b class='ct-code-b-yellow'>else-block</b>." 
-				+ "</span><br><div id='conditionTest'></div><br><span id='conditionTyping'></span>";
-				
-				typing(".introjs-tooltiptext", text, function() {
-					$(".animateBtn").removeClass("hidden");
-				})
-				
-				//var text = $(".conditionTxt").removeClass("opacity00").html();
-				typing(".conditionTxt", text, function() {
-					$(".animateBtn").removeClass("hidden");
-				});
-			});*/
-			
 			break;
 			
 		case "ifStmt":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				var text = "Since the condition evaluates to <b class='ct-code-b-yellow'>true</b>, control enters " 
-					+ "into the <b class='ct-code-b-yellow'>if-block</b>.";
-				$('#output').append("<div class='opacity00'>User got distinction.</div>");
-				typing(".introjs-tooltiptext", text, function() {
-					//$(".animateBtn").removeClass("hidden");
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-				
-			});*/
-			break;
+			
+		break;
 			
 		case "elseStmt":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				var text = "Since the condition evaluates to <b class='color-red'>false</b>, control enters " 
-					+ "into the <b class='ct-code-b-yellow'>else-block</b>.";
-				$('#output').append("<div class='opacity00'>User did not get distinction.</div>");
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});*/
-			break;
+			
+		break;
 			
 		case "outputDiv":
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				$('#output > div').fadeTo(200, 1, function () {
-					setTimeout(function() {
-						introjs.nextStep();
-					}, 1000);
-				});
-			});*/
-			break;
+			
+		break;
 			
 		case "mainEnd":
 			
-			/*$(".introjs-nextbutton").addClass("opacity00");
-			$('.introjs-helperLayer').one('transitionend', function () {
-				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
-			});*/
-			break;
+		break;
 		
 		case "restart":
-			/*$('.introjs-tooltipbuttons').addClass("hide");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
-			});*/
-			break;
+			
+		break;
 		}
 	});
 	
@@ -337,9 +239,6 @@ function introJsGuide() {
 		
 		case "ifElseBlock":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				/*typing(".introjs-tooltiptext", text, function() {
-					
-				});*/
 				$(".introjs-nextbutton").show();
 			})
 		break;	
@@ -357,12 +256,11 @@ function introJsGuide() {
 		
 		case "initialization":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>marks</b> is declared and initialized to " 
 				+ "<b class='ct-code-b-yellow changeVal'>60</b>.<br/> You can also change the value " 
 				+ "<b class='ct-code-b-yellow'>60</b> to any other number.</span><br><span class='errorText'>";
 				charAtEnd("initializationValue");
-				//$('.introjs-nextbutton').hide();
-				//$('.initializeBtn').removeClass("hidden");
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -390,7 +288,6 @@ function introJsGuide() {
 		case "condition":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-tooltip").removeClass("hide");
-				//$('.introjs-nextbutton').addClass("opacity00");
 				var text = "<span class='oacity00 conditionTxt'>This is the <b class='ct-code-b-yellow'>condition</b> part. <br/>If the condition evaluates to " 
 				+ "<b class='ct-code-b-yellow'>true</b>, control enters into the " 
 				+ "<b class='ct-code-b-yellow'>if-block</b>, otherwise the control enters into the "
@@ -407,11 +304,6 @@ function introJsGuide() {
 					}
 					
 				})
-				
-				//var text = $(".conditionTxt").removeClass("opacity00").html();
-				/*typing(".conditionTxt", text, function() {
-					$(".animateBtn").removeClass("hidden");
-				});*/
 			});
 			break;
 			
@@ -422,7 +314,6 @@ function introJsGuide() {
 					+ "into the <b class='ct-code-b-yellow'>if-block</b>.";
 				$('#output').append("<div class='opacity00'>User got distinction.</div>");
 				typing(".introjs-tooltiptext", text, function() {
-					//$(".animateBtn").removeClass("hidden");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 				
@@ -462,6 +353,7 @@ function introJsGuide() {
 			break;
 		
 		case "restart":
+			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$('.introjs-tooltipbuttons').addClass("hide");
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#restart").fadeTo(1000, 1);

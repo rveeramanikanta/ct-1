@@ -89,6 +89,7 @@
 	margin-top: 10px ;
 	margin-bottom: 10px;
 	padding: 5px 15px;
+	min-height: 280px;
 }
 
 .array-div-css {
@@ -239,7 +240,7 @@
 			<div class='col-xs-offset-2 col-xs-8 padding-col0 opacity00' id='preCodeDiv'>
 				<div class='col-xs-6 box-border padding10'>
 <pre class='creamPreTab4' id='preCode'>
-<span id='charLine'>char ch = <input type="text" name="lname" id='chValue' class='input-text-editor' maxlength="1" value='A'>';</span>
+<span id='charLine'>char ch = '<input type="text" name="lname" id='chValue' class='input-text-editor' maxlength="1" value='A'>';</span>
 <span id='printf1'>printf("The value of ch in character : %c\n", ch);</span>
 <span id='printf2'>printf("The value of ch in ASCII : %d\n", ch);</span>
 </pre>

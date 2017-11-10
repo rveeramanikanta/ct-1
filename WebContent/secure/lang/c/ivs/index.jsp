@@ -1128,10 +1128,11 @@ r {
 					<tr>
 						<td>1</td>
 						<td>if-else</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of if-else', 'if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of if-else</td>
-						<td>Padmaja / <r>karthik</r></td>
+						<td>Padmaja / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
@@ -1180,10 +1181,10 @@ r {
 					<tr>
 						<td>3</td>
 						<td>if-else-if</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of if-else-if', 'if-else-if-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of if-else-if</td>
-						<td>Suresh / <r>karthik</r></td>
+						<td>Suresh / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-10-2016</td>
@@ -1192,10 +1193,10 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Nested if-else-if</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Nested if-else-if', 'nested-if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Nested if-else-if</td>
-						<td>Ajay</td>
+						<td>Ajay / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-10-2016</td>
@@ -1280,7 +1281,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of goto Statement', 'goto.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of goto statement</td>
-						<td>Anil</td>
+						<td>Anil / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>15-09-2016</td>
@@ -1496,10 +1497,11 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Arrays</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimesional-arrays.jsp', 1, 1)"><i
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 1-D arrays</td>
-						<td>Shiva</td>
+						<td>Shiva / Shiva <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>10-09-2016</td>

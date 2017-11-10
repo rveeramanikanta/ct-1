@@ -77,6 +77,12 @@ var ifElseIfInCReady = function() {
 		t1 = new TimelineLite();
 		var elementId = targetElement.id;
 		switch (elementId) {
+		case "mainFunctions" :
+			
+		break; 
+		case "charCh" :
+			
+		break;
 	 	case "enterCharSpan" :
 	 		$("#consoleId").addClass("opacity00");
 	 		$("#charInput").removeAttr("disabled");
@@ -84,7 +90,9 @@ var ifElseIfInCReady = function() {
 		break; 
 		
 		case "consoleId":
+			
 			if (intro._currentStep == 4) {
+				console.log("In the before consoleId of 4th step... ");
 				$("#charInput").removeAttr("disabled");
 		 		$("#charInput").val("");
 			} else if (intro._currentStep == 7) {
@@ -92,6 +100,15 @@ var ifElseIfInCReady = function() {
 			} else if (intro._currentStep == 9) {
 				$("#valGet").empty();
 			} 
+			break;
+		case "getCh" :
+			
+			break;
+		case "enteredCharSpan" :
+		break; 
+		case "putChar" :
+			$(".user-btn").remove();
+			break;
 		case "ifCondition" :
 			$(".user-btn").remove();
 			checkingFlag = false;
@@ -100,8 +117,37 @@ var ifElseIfInCReady = function() {
 				intro._introItems.splice(11);
 			}
 			break;
+		case "ifConditionForLowerCase":
+			
+			break;
+		case "printF1":
+			
+			break;
+		case "ifConditionForUpperCase":
+			
+			break;
+		case "printF1":
+			
+			break;
+		case "ifConditionForUpperCase":
+			
+			break;
+		case "printF2":
+		
+			break;
+		case "printF3":
+		
+			break;
+		case "printF4":
+		
+			break;
+		case "restartBtn":
+		
+		break;
 		}
 	});
+	
+	
 	
 	intro.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
@@ -234,6 +280,7 @@ var ifElseIfInCReady = function() {
 						stepNext();
 					} else {
 						$(".introjs-tooltip").removeClass("hide");
+						$("#charInput").focus();
 					}
 				}
 				
@@ -352,8 +399,8 @@ var ifElseIfInCReady = function() {
 			break;
 		case "restartBtn":
 			$("#charInput").attr("disabled", false);
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-tooltip').css({'min-width' : '125px'});
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
 					$("#restartBtn").removeClass("opacity00");
@@ -439,21 +486,12 @@ function charcheck() {
 	  }
    }
    else {
-	   /*console.log("out of .. aeiou....");
-   	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-   	$(".introjs-prevbutton").show();
-   	$(".user-btn").click(function() {
-	   	$(".user-btn").remove();
-	   	 intro.goToStep(20);
-        });*/
-	   
 	   if (intro._introItems[intro._currentStep]["visited"] == undefined) {
 			intro._introItems[intro._currentStep]["visited"] = "true";
 				intro.insertOption(intro._currentStep + 1, insertionIntro("printF4", "", "right"));
 				intro.insertOption(intro._currentStep + 2, insertionIntro("consoleId", "", "right", "hide", "notALetter"));
 				intro.insertOption(intro._currentStep + 3, insertionIntro("restartBtn", "", "right", ""));
 	   }
-   	//$(".introjs-prevbutton, .introjs-nextbutton").show();
 	}
 	$(".introjs-prevbutton, .introjs-nextbutton").show();
 
