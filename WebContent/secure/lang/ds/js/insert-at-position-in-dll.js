@@ -5,6 +5,10 @@ function insertAtPositionInDLLReady() {
 	svgAppend("#animationDiv");
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
+	
+	$('#restartBtn').click(function() {
+		location.reload();
+	});
 	initIntroJS();
 }
 
@@ -299,7 +303,7 @@ function initIntroJS() {
 							$('#tempDec').after('\n\t<span id="frLoop"><span id="decI">int i;</span>\n'
 											+ '\t<span id="frLoopDec">for (i = 1; i < (<brn>position</brn> - 1); i++) {\n'
 											+ '\t\t<span id="lstNxtIsNLRNot">if (last -> next == NULL) {\n'
-											+ '\t\t<div id="printf1" class="position-css"></div>}</span>\n'
+											+ '\t\t\t<div id="printfStatement" class="position-css"></div>\n\t\t}</span>\n'
 											+ '\t\t<span id="lstToLstNxt">last = last -> next;</span>\n\t}</span></span>');
 							$('#frLoop span').addClass('opacity00');
 							$('#algorithmDiv').scrollTo('#l12', 300);
@@ -308,9 +312,27 @@ function initIntroJS() {
 							});
 						break;
 						case 'noPositionStep':
-							$('#printf1').html('')
+							$('#printfStatement').html('<span id="printf1">printf("<brn>No such position in DLL. </brn>" \n'
+													+ '\n\t"<brn>So insertion is not possible</brn>\\n");\n'
+													+ 'return first;</span>');
+							if (lang == 'cpp') {
+								$('#printfStatement').html('<span id="printf1" class="opacity00">cout << "<brn>No such position in DLL. </brn>"'
+														+ ' \t"<brn>So insertion is not possible</brn>\\n";\n'
+														+ 'return;</span>');
+							}
+							transWithZoomInEffect('#l20', '#printf1', function() {
+								nextBtnWithNextStep('#printf1', '#restartBtn', '', 'show', 'right');
+							});
 						break;
 					}
+				});
+			break;
+			case 'restartBtn':
+				$('#restartBtn').removeClass('opacity00');
+				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
+				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
+				$('.introjs-helperLayer').one('transitionend', function() {
+					typing('.introjs-tooltiptext', 'Click to restart.');
 				});
 			break;
 		}
@@ -343,8 +365,8 @@ function changeIdsBasedOnCond(callBackFunction) {
 function rearrangingNodes() {
 	$('line').remove();
 	createDynamicNodes('#dynamicNodes', 3);
-	TweenMax.to($('#node2'), 1, {left: '130', onComplete: function () {
-		TweenMax.to($('#node1'), 1, {left: '130', onComplete: function () {
+	TweenMax.to($('#node2'), 1, {left: '165', onComplete: function () {
+		TweenMax.to($('#node1'), 1, {left: '165', onComplete: function () {
 			changeIdsBasedOnCond(function() {
 				$('#dynamicNodes #node3').html($('#node2').html()).removeClass('opacity00');
 				$('#node2').html($('#node1').html());
@@ -430,6 +452,7 @@ function frLoopAnim() {
 										repeatedTextTyping('#l12', true, '#tempNode4', '#next3', false, -350, function() {
 											svgAnimatingLineRightToLeft('#nextDiv3', '#prevDiv4', 'line6', function() {
 												repeatedTextTyping('#l13', true, '#tempNode3', '#prev4', false, -350, function() {
+													$('.background-yellow').removeClass('background-yellow');
 													svgAnimatingLineLeftToRight('#prevDiv4', '#nextDiv3', 'line7', function() {
 														nextBtnWithNextStep('.introjs-tooltipbuttons', '#codeAndAlgorithmDiv', 'posTwoSteps', 'hide');
 													});
@@ -446,10 +469,17 @@ function frLoopAnim() {
 						fadeInNSvgTopAndBottom('#next3', '#tempNode3', '#tempNodeParent3', '#nextDiv4', 'line14', true, function() {
 							$('.introjs-tooltiptext ul').append('<div id="appendText"></div>');
 							text = '<yy class="ct-fonts">last\'s next</yy> value is <yy class="ct-fonts">NULL</yy>. Here, for loop fails we can\'t '
-									+ ' insert any node. <br>Print <yy class="brn ct-fonts">No such position in Doubly Linked List so insertion is'
+									+ ' insert any node. <br>Print <yy class="brn ct-fonts">No such position in DLL. So insertion is'
 									+ ' not possible</yy>.';
 							typing('#appendText', text, function() {
-								nextBtnWithNextStep('.introjs-tooltipbuttons', 'codeAndAlgorithmDiv', 'noPositionStep', 'hide');
+								text = '<li><span id="l20" class="opacity00">If <g>last next\'s</g> value is <g>NULL</g>. Then print <brn>No'
+										+ ' such position in DLL. So insertion is not possible</brn>.</span></li>'
+								$('#algorithmDiv ul:last').append(text);
+								$('#algorithmDiv').addClass('z-index10000').scrollTo('yy:last', 300, function() {
+									transWithZoomInEffect('#appendText', '#l20', function() {
+										nextBtnWithNextStep('.introjs-tooltipbuttons', '#codeAndAlgorithmDiv', 'noPositionStep', 'hide');
+									});
+								});
 							});
 						});
 					});
@@ -461,7 +491,8 @@ function frLoopAnim() {
 
 function repeatedTextTyping(selector1, checkFlag, selector2, selector3, flag, val, callBackFunction) {
 	$('#algorithmDiv').scrollTo('#l15', 300);
-	$(selector1).effect('highlight', {color: 'yellow'}, 500);
+	$('.background-yellow').removeClass('background-yellow');
+	$(selector1).parent().addClass('background-yellow');
 	$('.introjs-tooltiptext ul').append('<li>' + $(selector1).html() + '</li>');
 	$('.introjs-tooltiptext li:last yy[class*=ct]').removeAttr("class").addClass('ct-fonts');
 	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
@@ -497,14 +528,56 @@ function recursionAnim(idVal, selector, val, finlVal, scrollID, scrollParentId, 
 	}
 }
 
-function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip) {
+function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip, position) {
 	callingNextBtn(selector1, function() {
-		introNextSteps(parentSelector, selector2, tooltip);
+		introNextSteps(parentSelector, selector2, tooltip, position);
 		introjs.nextStep();
 	});
 }
 
-function positionThreeAnim() {
+function liTyping(text, callBackFunction) {
+	$('.introjs-tooltiptext ul').append('<li></li>');
+	typing('.introjs-tooltiptext li:last', text, function() {
+		callBackFunction();
+	});
+}
+
+function codeDivAnim(id1, id2, id3, id4, callBackFunction) {
+	$(id4).scrollTo(id3, 300);
+	$(id1).effect('highlight', {color: 'yellow'}, 1400);
+	$(id2).parent().removeClass('opacity00');
+	transWithZoomInEffect(id1, id2, function() {
+		callBackFunction();
+	});
+}
+
+function frLoopAnimText(text, val, id, callBackFunction) {
+	liTyping(text, function() {
+		$('#algorithmDiv ' + id).append('<li class="opacity00">' + text + '</li>');
+		$('#algorithmDiv #l' + val).addClass('opacity00');
+		$('#algorithmDiv').scrollTo(id, 300);
+		algorithmAnim();
+		callBackFunction();
+	});
+}
+
+function algorithmColorAnim() {
+	$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
+	$('#algorithmDiv .brn').removeClass('ct-fonts ct-blue-color').addClass('ct-brown-color');
+	$('#algorithmDiv .g').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
+}
+
+function algorithmAnim(id1, id2, callBackFunction) {
+	algorithmColorAnim();
+	$('#algorithmDiv').scrollTo(id1 + ' span:last', 300, function() {
+		$('#algorithmDiv ' + id2).parent().removeClass('opacity00');
+		transWithZoomInEffect('.introjs-tooltiptext ' + id2, '#algorithmDiv ' + id2, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function positionOneRepeatAnim() {
 	$('#algorithmDiv li').removeAttr('class');
 	$('.introjs-tooltiptext').append('<br><br>Repeat the steps<ul></ul>');
 	$('#algorithmDiv').addClass('z-index10000').scrollTo('#l3', 300);
@@ -517,7 +590,7 @@ function positionThreeAnim() {
 			$('#l5').css({'background-color' : ''});
 			text = '<span id="l14">Store the <bgb>first</bgb> value in <yy class="ct-fonts bl">newly created node\'s'
 					+ ' </yy> <yy class="ct-fonts g">next</yy> pointer variable. If <bgb>first</bgb> is <yy class="ct-fonts g">not NULL</yy>.</span>';
-			frLoopWithNextBtnAndBounceEffect('#ul3', '14', '#firstVal', '#next3', false, -320, function() {
+			frLoopWithNextBtnAndBounceEffect('#ul3', '14', '#firstVal', '#next3', true, 500, function() {
 				svgAnimatingLineTopAndBottom('#dataDiv3', '#nextDiv1', 'line4', false, function() {
 					callingNextBtn('.introjs-tooltipbuttons', function() {
 						text = '<span id="l15">Store the newly created node\'s <yy class="ct-fonts g">address</yy> in first node\'s <yy class="ct-fonts g">'
@@ -708,49 +781,6 @@ function frLoopWithNextBtnAndBounceEffect(id, liId, selector1, selector2, flag, 
 		});
 	});
 }
-
-function liTyping(text, callBackFunction) {
-	$('.introjs-tooltiptext ul').append('<li></li>');
-	typing('.introjs-tooltiptext li:last', text, function() {
-		callBackFunction();
-	});
-}
-
-function codeDivAnim(id1, id2, id3, id4, callBackFunction) {
-	$(id4).scrollTo(id3, 300);
-	$(id1).effect('highlight', {color: 'yellow'}, 1400);
-	$(id2).parent().removeClass('opacity00');
-	transWithZoomInEffect(id1, id2, function() {
-		callBackFunction();
-	});
-}
-
-function frLoopAnimText(text, val, id, callBackFunction) {
-	liTyping(text, function() {
-		$('#algorithmDiv ' + id).append('<li class="opacity00">' + text + '</li>');
-		$('#algorithmDiv #l' + val).addClass('opacity00');
-		$('#algorithmDiv').scrollTo(id, 300);
-		algorithmAnim();
-		callBackFunction();
-	});
-}
-
-function algorithmColorAnim() {
-	$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
-	$('#algorithmDiv .brn').removeClass('ct-fonts ct-blue-color').addClass('ct-brown-color');
-	$('#algorithmDiv .g').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
-}
-
-function algorithmAnim(id1, id2, callBackFunction) {
-	algorithmColorAnim();
-	$('#algorithmDiv').scrollTo(id1 + ' span:last', 300, function() {
-		$('#algorithmDiv ' + id2).parent().removeClass('opacity00');
-		transWithZoomInEffect('.introjs-tooltiptext ' + id2, '#algorithmDiv ' + id2, function() {
-			callBackFunction();
-		});
-	});
-}
-
 	
 function tempararyNodeDec(val, callBackFunction) {
 	$('#tempBox' + val).attr('data-original-title' , '');
@@ -763,7 +793,6 @@ function tempararyNodeDec(val, callBackFunction) {
 		});
 	});	
 }
-
 
 function validation(selector, val) {
 	$(selector).effect('highlight', {color: 'yellow'}, 500).focus();
@@ -807,7 +836,7 @@ function validationAnim(val) {
 	} else if (val == 2) {
 		posTwoValidationAnim();
 	} else if (val == 3) {
-		positionThreeAnim();
+		positionOneRepeatAnim();
 	} else {
 		positionFourAnim();
 	}
@@ -1001,7 +1030,6 @@ function svgLineAppend(svgLineId, x1, y1, x2, y2) {
 	line.style.markerEnd = 'url("#arrow")';
 	$("#svgId").append(line);
 }
-
 
 function svgAnimatingLineRightToLeft(selector1, selector2, svgLineId, callBackFunction) {
 	var parentOffset = $("#animationDiv").offset();

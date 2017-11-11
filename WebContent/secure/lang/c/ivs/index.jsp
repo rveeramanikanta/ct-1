@@ -403,7 +403,8 @@ r {
 					<tr>
 						<td>25</td>
 						<td>char datatype</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span></td>
 						<td>Padmaja / bannu <r>(back)</r></td>
@@ -569,7 +570,7 @@ r {
 							</div>
 
 						</td>
-						<td>Poorna</td>
+						<td>Poorna / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>17-08-2016</td>
@@ -582,7 +583,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Conditional Operators', 'conditional-operator-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Conditional Operators</span></td>
-						<td>Pavan</td>
+						<td>Pavan / Anil <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully Completed</td>
 						<td>17-08-2016</td>
@@ -1278,7 +1279,8 @@ r {
 					<tr>
 						<td>11</td>
 						<td>goto statement</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of goto Statement', 'goto.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of goto statement</td>
 						<td>Anil / karthik <r>(back)</r></td>
@@ -1309,22 +1311,25 @@ r {
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Pyramid in reverse', 'pyramid-reverse-triangle.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Pyramid in reverse
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Lower triangle', 'pyramid-lowertriangle-star.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Lower triangle
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Floyds Triangle', 'floyds-triangle-c.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print floyds triangle
 							</div>
 						</td>
-						<td>Poorna & Durga Mahesh</td>
+						<td>Poorna & Durga Mahesh / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>02-11-2016</td>
@@ -1333,10 +1338,11 @@ r {
 					<tr>
 						<td>13</td>
 						<td>Program to print pyramind</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to print pyramind', 'pyramid-triangle-star-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramind</td>
-						<td>Durga Mahesh</td>
+						<td>Durga Mahesh / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>07-11-2016</td>

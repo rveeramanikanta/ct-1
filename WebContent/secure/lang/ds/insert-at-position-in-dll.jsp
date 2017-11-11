@@ -57,6 +57,10 @@ y, yy {
 	color: yellow;
 }
 
+.background-yellow {
+	background-color: yellow;
+}
+
 .error-text {
 	color: red;
 }

@@ -75,7 +75,8 @@ function introGuide() {
 				},{
 				 	element : "#code",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass: "hide"
 				},{
 				 	element : "#char",
 					intro : "",
@@ -115,6 +116,7 @@ function introGuide() {
 			
 			if (introjs._currentStep == 5) {
 				$("#li5").removeAttr("style");
+				$("#code").addClass("opacity00");
 			}
 		break;
 		case "forwardGotoLabel":
@@ -138,7 +140,9 @@ function introGuide() {
 		case "label":
 		break;
 		case "printf1":
-			
+			if (introjs._currentStep == 9) {
+				$("#outputDiv").addClass("opacity00");
+			}
 		break;
 		case "outputDiv":
 			
@@ -278,6 +282,7 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 			introjs.refresh();
 			$("#code").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "This sample <b class='ct-code-b-yellow'>C</b> program  will show how <b class='ct-code-b-yellow'>goto</b> work.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					introjs.refresh();
@@ -402,7 +407,7 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 							var leftLength = l2.left - l1.left;
 							TweenMax.from("#cnd", 1, {top : topLength, left : leftLength, onComplete:function() {
 								TweenMax.to("#chVal", 0.5, {rotationX : -90, onComplete:function() {
-									$("#chVal").text($("#inputChar").val());
+									$("#chVal").text($("#body > div .input-char").last().val());
 									$("#colon1").removeClass("opacity00");
 									$("#colon2").removeClass("opacity00");
 									TweenMax.to("#chVal", 0.5, {rotationX : 0, onComplete:function() {
