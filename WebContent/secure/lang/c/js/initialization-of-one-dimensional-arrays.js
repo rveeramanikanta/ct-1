@@ -137,7 +137,7 @@ function introGuide() {
 				$("#address6").addClass("opacity00").removeClass("animated zoomIn");
 			break;
 		}
-	})
+	});
 	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();

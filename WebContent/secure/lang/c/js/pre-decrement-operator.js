@@ -115,10 +115,7 @@ var preDecrementOperatorReady = function() {
 			$('.introjs-tooltip').removeClass('hide');
 		break;
 		case "xCup":
-			$("#xCup").addClass("visibility-hidden");
 			$("#xvalue").attr("contenteditable", "false");
-			$("#xCupValue").text("");
-			$("#xVariableDeclararionLine").addClass("z-index1000000");
 		break;
 		case "expressionStatement":
 			$("#yVariableDeclararionLine").addClass("z-index1000000");
@@ -239,30 +236,31 @@ var preDecrementOperatorReady = function() {
 				});
 			break;
 			case "xCup":
-				$("#xCup").addClass("visibility-hidden");
 				$("#xvalue").attr("contenteditable", "false");
-				$("#xVariableDeclararionLine").addClass("z-index1000000");
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
-					$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
-						$("#xCup").removeClass("visibility-hidden");
-						$("#xCupValue").text($("#xvalue").text());
-						$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
-						fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {							
-						   $("#xCupValue").removeClass("z-index100000000");
-						   $("#xVariableDeclararionLine").removeClass("z-index1000000");
-						   if (introcode._direction == "forward") {
+					if (introcode._direction == "forward") {
+						$("#xVariableDeclararionLine").addClass("z-index1000000");
+						$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
+						$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
+							$("#xCup").removeClass("visibility-hidden");
+							$("#xCupValue").text($("#xvalue").text());
+							$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
+							fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {							
+							   $("#xCupValue").removeClass("z-index100000000");
+							   $("#xVariableDeclararionLine").removeClass("z-index1000000");
 								setTimeout(function () {
 									introcode.nextStep();
 								}, 1000);
-							} else {
-								setTimeout(function () {
-									introcode.previousStep();
-								}, 1000);
-							}
-						});
-					});							
+							});
+						});	
+					} else {
+						$("#xCupValue").text("");
+						$("#xCup").addClass("visibility-hidden");
+						setTimeout(function () {
+							introcode.previousStep();
+						}, 400);
+					}
 				});
 			break;
 			case "expressionStatement":
@@ -615,7 +613,6 @@ function changeValue() {
 			$(this).removeClass("empty");
 		}
 		introcode.refresh();
-		
 		if ($(".empty").length > 0) {
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {

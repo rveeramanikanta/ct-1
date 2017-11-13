@@ -3,7 +3,7 @@ function insertAtPositionInDLLReady() {
 	createDynamicNodes('#dynamicNodes', 1);
 	createDynamicNodes('#fstExplain', 3);
 	svgAppend("#animationDiv");
-	lang = getURLParameter("lang");
+	var lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
 	
 	$('#restartBtn').click(function() {
@@ -32,7 +32,7 @@ function dynamicTempNodes(val) {	//temp nodes
 
 function createDynamicNodes(id, nodeNum) {	//node
 	var randomAddress = getRandomInt(1000, 5000);
-	$(id).append('<div class="col-xs-2 nodes list-nodes opacity00" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
+	var x = '<div class="col-xs-2 nodes list-nodes opacity00" id="node' + nodeNum + '" style="top: 0px; width: auto;">'
 	 				+ ' <div class="col-xs-12 padding0"><div class="col-xs-4 ct-green-color ct-fonts text-center padding0">prev</div>'
 					+ ' <div class="col-xs-4 ct-blue-color ct-fonts padding0 text-center">data</div>'
 					+ '	<div class="col-xs-4 ct-green-color ct-fonts text-center padding0">next</div></div>'
@@ -44,8 +44,9 @@ function createDynamicNodes(id, nodeNum) {	//node
 					+ ' <span id="next' + nodeNum + '" class="next-span ct-green-color">NULL</span></div></div>'
 					+ ' <div class="col-xs-12 padding0"><div class="col-xs-4 col-xs-offset-4 padding0 text-center">'
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress
-					+ '</span></div></div></div>');
-	$('#prev' + nodeNum + ', #data' + nodeNum + ', #next' + nodeNum).addClass('position-css ct-fonts');
+					+ '</span></div></div></div>';
+	$(id).append(x);
+	$('.nodes:last span').addClass('position ct-fonts');
 	animatedTooltip('#prevDiv' + nodeNum, "bottom", "prev holds previous node's address");
 	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
@@ -216,9 +217,9 @@ function initIntroJS() {
 							}
 							transWithZoomInEffect('#l2', '#insertAtPositionMthd', function() {
 								$('#insertAtPosition').before('\n\t<span id="ifPosIsZero" class="opacity00">'
-												+ ' if (<brn>position</brn> <g><=</g> <brn>0</brn>) {\n\t\t<span id="printf0">printf("'
-												+ '<brn>No such position in DLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
-												+ 'not possible</brn>\\n");\n\t\treturn first;</span>\n\t}</span>');
+														+ ' if (<brn>position</brn> <g><=</g> <brn>0</brn>) {\n\t\t<span id="printf0">printf("'
+														+ '<brn>No such position in DLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
+														+ 'not possible</brn>\\n");\n\t\treturn first;</span>\n\t}</span>');
 								if (lang == 'cpp') {
 									$('#printf0').html('cout << "<brn>No such position in DLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
 													+ 'not possible</brn>\\n";\n\t\treturn;');
@@ -230,9 +231,9 @@ function initIntroJS() {
 						break;
 						case 'mallocCreation':
 							$('#ifPosIsZero').after('\n<span id="createMethod" class="opacity00">\t<span id="tempDec">node temp;</span>\n'
-											+ '\t<span id="createCall">temp = <g>createNode()</g>;</span>\n\ttemp -> data = x;</span>'
-											+ '\n\t<span id="ifPosIsOne" class="opacity00">if (<brn>position</brn> <g>==</g> <brn>1</brn>) {\n'
-											+ '<span id="posOneCond"></span>\t<span id="posOneClose">}</span></span>');
+												+ '\t<span id="createCall">temp = <g>createNode()</g>;</span>\n\ttemp -> data = x;</span>'
+												+ '\n\t<span id="ifPosIsOne" class="opacity00">if (<brn>position</brn> <g>==</g> <brn>1</brn>) {\n'
+												+ '<span id="posOneCond"></span>\t<span id="posOneClose">}</span></span>');
 							codeDivAnim('#l4', '#ifPosIsOne', '#createCall', '#codeDiv', function() {
 								codeDivAnim('#l5', '#createMethod', '#createCall', '#codeDiv', function() {
 									createNodeMethod();
@@ -312,7 +313,7 @@ function initIntroJS() {
 							});
 						break;
 						case 'noPositionStep':
-							$('#printfStatement').html('<span id="printf1">printf("<brn>No such position in DLL. </brn>" \n'
+							$('#printfStatement').html('<span id="printf1">printf("<brn>No such position in DLL. </brn>"'
 													+ '\n\t"<brn>So insertion is not possible</brn>\\n");\n'
 													+ 'return first;</span>');
 							if (lang == 'cpp') {
@@ -330,36 +331,14 @@ function initIntroJS() {
 			case 'restartBtn':
 				$('#restartBtn').removeClass('opacity00');
 				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
-				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
+				$('#codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
 				$('.introjs-helperLayer').one('transitionend', function() {
-					typing('.introjs-tooltiptext', 'Click to restart.');
+					$('.introjs-tooltiptext').append('Click to restart.');
 				});
 			break;
 		}
 	});
 	introjs.start();
-}
-
-
-function changeIds(elemParent, idAttr) {//changing Ids based on situation
-	$(elemParent).each(function(index){
-		$(this).attr('id', (idAttr + (index + 1)));
-	});
-}
-
-function changeIdsBasedOnCond(callBackFunction) {
-	changeIds($('#dynamicNodes .nodes'), 'node');
-	changeIds($('#dynamicNodes .data-nodes'), 'nodeData');
-	changeIds($('#dynamicNodes .prev-div'), 'prevDiv');
-	changeIds($("#dynamicNodes .data-div"), "dataDiv");
-	changeIds($("#dynamicNodes .next-div"), "nextDiv");
-	changeIds($("#dynamicNodes .data-address"), "dataAddress");
-	changeIds($("#dynamicNodes .prev-span"), "prev");
-	changeIds($("#dynamicNodes .data-span"), "data");
-	changeIds($("#dynamicNodes .next-span"), "next");
-	if (typeof callBackFunction === "function") {
-		callBackFunction();
-	}
 }
 
 function rearrangingNodes() {
@@ -489,94 +468,6 @@ function frLoopAnim() {
 	});
 }
 
-function repeatedTextTyping(selector1, checkFlag, selector2, selector3, flag, val, callBackFunction) {
-	$('#algorithmDiv').scrollTo('#l15', 300);
-	$('.background-yellow').removeClass('background-yellow');
-	$(selector1).parent().addClass('background-yellow');
-	$('.introjs-tooltiptext ul').append('<li>' + $(selector1).html() + '</li>');
-	$('.introjs-tooltiptext li:last yy[class*=ct]').removeAttr("class").addClass('ct-fonts');
-	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
-	if (checkFlag) {
-		fadeInBounceEffectWithTimelineMax(selector2, selector3, flag, val, function() {
-			callBackFunction();
-		});
-	} else {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}
-}
-
-function fadeInNSvgTopAndBottom(selector1, selector2, selector3, selector4, lineId, flag, callBackFunction) {
-	fadeInBounceEffectWithTimelineMax(selector1, selector2, false, 250, function() {
-		$('#' + lineId).remove();
-		svgAnimatingLineTopAndBottom(selector3, selector4, lineId, flag, function() {
-			callBackFunction();
-		});
-	});
-}
-
-function recursionAnim(idVal, selector, val, finlVal, scrollID, scrollParentId, parentId, callBackFunction) {
-	if (idVal <= finlVal) {
-		let t = $(selector).eq(val).attr('id');
-		$(parentId + ' #l' + idVal).effect('highlight', {color: 'yellow'}, 1400);
-		codeDivAnim('#l' + idVal, '#' + t, scrollID, scrollParentId, function() {
-			recursionAnim(++idVal, selector, ++val, finlVal, scrollID, scrollParentId, parentId, callBackFunction)
-		});
-	} else {
-		callBackFunction();
-	}
-}
-
-function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip, position) {
-	callingNextBtn(selector1, function() {
-		introNextSteps(parentSelector, selector2, tooltip, position);
-		introjs.nextStep();
-	});
-}
-
-function liTyping(text, callBackFunction) {
-	$('.introjs-tooltiptext ul').append('<li></li>');
-	typing('.introjs-tooltiptext li:last', text, function() {
-		callBackFunction();
-	});
-}
-
-function codeDivAnim(id1, id2, id3, id4, callBackFunction) {
-	$(id4).scrollTo(id3, 300);
-	$(id1).effect('highlight', {color: 'yellow'}, 1400);
-	$(id2).parent().removeClass('opacity00');
-	transWithZoomInEffect(id1, id2, function() {
-		callBackFunction();
-	});
-}
-
-function frLoopAnimText(text, val, id, callBackFunction) {
-	liTyping(text, function() {
-		$('#algorithmDiv ' + id).append('<li class="opacity00">' + text + '</li>');
-		$('#algorithmDiv #l' + val).addClass('opacity00');
-		$('#algorithmDiv').scrollTo(id, 300);
-		algorithmAnim();
-		callBackFunction();
-	});
-}
-
-function algorithmColorAnim() {
-	$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
-	$('#algorithmDiv .brn').removeClass('ct-fonts ct-blue-color').addClass('ct-brown-color');
-	$('#algorithmDiv .g').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
-}
-
-function algorithmAnim(id1, id2, callBackFunction) {
-	algorithmColorAnim();
-	$('#algorithmDiv').scrollTo(id1 + ' span:last', 300, function() {
-		$('#algorithmDiv ' + id2).parent().removeClass('opacity00');
-		transWithZoomInEffect('.introjs-tooltiptext ' + id2, '#algorithmDiv ' + id2, function() {
-			callBackFunction();
-		});
-	});
-}
-
 function positionOneRepeatAnim() {
 	$('#algorithmDiv li').removeAttr('class');
 	$('.introjs-tooltiptext').append('<br><br>Repeat the steps<ul></ul>');
@@ -593,14 +484,16 @@ function positionOneRepeatAnim() {
 			frLoopWithNextBtnAndBounceEffect('#ul3', '14', '#firstVal', '#next3', true, 500, function() {
 				svgAnimatingLineTopAndBottom('#dataDiv3', '#nextDiv1', 'line4', false, function() {
 					callingNextBtn('.introjs-tooltipbuttons', function() {
-						text = '<span id="l15">Store the newly created node\'s <yy class="ct-fonts g">address</yy> in first node\'s <yy class="ct-fonts g">'
-								+ ' prev</yy> pointer variable.</span>';
+						text = '<span id="l15">Store the newly created node\'s <yy class="ct-fonts g">address</yy> in first node\'s'
+								+ ' <yy class="ct-fonts g"> prev</yy> pointer variable.</span>';
 						frLoopWithNextBtnAndBounceEffect('#ul3', '15', '#tempNode3', '#prev1', false, -320, function() {
 							svgAnimatingLineTopAndBottom('#dataDiv1', '#prevDiv3', 'line5', true, function() {
+								$('#l7').addClass('background-yellow');
 								text = 'Store the <y>address</y> of the <y>newly created node</y> in the <bgb>first</bgb> variable.</span>';
 								liTyping(text, function() {
 									callingNextBtn('.introjs-tooltipbuttons', function() {
 										fadeInBounceEffectWithTimelineMax('#tempNode3', '#firstVal', false, -400, function() {
+											$('.background-yellow').removeClass('background-yellow');
 											$('#line1').remove();
 											svgAnimatingLineRightToLeft('#firstDiv', '#prevDiv3', 'line1', function() {
 												codeDivAnim('.introjs-tooltiptext #l14', '#algorithmDiv #l14', '#ul3', '#algorithmDiv', function() {
@@ -625,7 +518,7 @@ function positionOneRepeatAnim() {
 
 function posZeroAnim() {
 	text = '<span id="l2">Let us consider the <y>steps</y> involved in <yy class="ct-fonts">adding</yy> a new '
-		+ '<yy class="ct-fonts bl">node</yy> at a particular <yy class="ct-fonts brn">position</yy> for a given value.</span>';
+			+ '<yy class="ct-fonts bl">node</yy> at a particular <yy class="ct-fonts brn">position</yy> for a given value.</span>';
 	typing('.introjs-tooltiptext', text, function() {
 		$('#algorithmDiv').append(text);
 		$('#algorithmDiv #l2').addClass('opacity00');
@@ -768,6 +661,115 @@ function posTwoValidationAnim() {
 					});
 				});
 			});
+		});
+	});
+}
+
+function changeIds(elemParent, idAttr) {//changing Ids based on situation
+	$(elemParent).each(function(index){
+		$(this).attr('id', (idAttr + (index + 1)));
+	});
+}
+
+function changeIdsBasedOnCond(callBackFunction) {
+	changeIds($('#dynamicNodes .nodes'), 'node');
+	changeIds($('#dynamicNodes .data-nodes'), 'nodeData');
+	changeIds($('#dynamicNodes .prev-div'), 'prevDiv');
+	changeIds($("#dynamicNodes .data-div"), "dataDiv");
+	changeIds($("#dynamicNodes .next-div"), "nextDiv");
+	changeIds($("#dynamicNodes .data-address"), "dataAddress");
+	changeIds($("#dynamicNodes .prev-span"), "prev");
+	changeIds($("#dynamicNodes .data-span"), "data");
+	changeIds($("#dynamicNodes .next-span"), "next");
+	if (typeof callBackFunction === "function") {
+		callBackFunction();
+	}
+}
+
+function repeatedTextTyping(selector1, checkFlag, selector2, selector3, flag, val, callBackFunction) {
+	$('#algorithmDiv').scrollTo('#l15', 300);
+	$('.background-yellow').removeClass('background-yellow');
+	$(selector1).parent().addClass('background-yellow');
+	$('.introjs-tooltiptext ul').append('<li>' + $(selector1).html() + '</li>');
+	$('.introjs-tooltiptext li:last yy[class*=ct]').removeAttr("class").addClass('ct-fonts');
+	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons', 300);
+	if (checkFlag) {
+		fadeInBounceEffectWithTimelineMax(selector2, selector3, flag, val, function() {
+			callBackFunction();
+		});
+	} else {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}
+}
+
+function fadeInNSvgTopAndBottom(selector1, selector2, selector3, selector4, lineId, flag, callBackFunction) {
+	fadeInBounceEffectWithTimelineMax(selector1, selector2, false, 250, function() {
+		$('#' + lineId).remove();
+		svgAnimatingLineTopAndBottom(selector3, selector4, lineId, flag, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function recursionAnim(idVal, selector, val, finlVal, scrollID, scrollParentId, parentId, callBackFunction) {
+	if (idVal <= finlVal) {
+		let t = $(selector).eq(val).attr('id');
+		$(parentId + ' #l' + idVal).effect('highlight', {color: 'yellow'}, 1400);
+		codeDivAnim('#l' + idVal, '#' + t, scrollID, scrollParentId, function() {
+			recursionAnim(++idVal, selector, ++val, finlVal, scrollID, scrollParentId, parentId, callBackFunction)
+		});
+	} else {
+		callBackFunction();
+	}
+}
+
+function nextBtnWithNextStep(selector1, parentSelector, selector2, tooltip, position) {
+	callingNextBtn(selector1, function() {
+		introNextSteps(parentSelector, selector2, tooltip, position);
+		introjs.nextStep();
+	});
+}
+
+function liTyping(text, callBackFunction) {
+	$('.introjs-tooltiptext ul').append('<li></li>');
+	typing('.introjs-tooltiptext li:last', text, function() {
+		callBackFunction();
+	});
+}
+
+function codeDivAnim(id1, id2, id3, id4, callBackFunction) {
+	$(id4).scrollTo(id3, 300);
+	$(id1).effect('highlight', {color: 'yellow'}, 1400);
+	$(id2).parent().removeClass('opacity00');
+	transWithZoomInEffect(id1, id2, function() {
+		callBackFunction();
+	});
+}
+
+function frLoopAnimText(text, val, id, callBackFunction) {
+	liTyping(text, function() {
+		$('#algorithmDiv ' + id).append('<li class="opacity00">' + text + '</li>');
+		$('#algorithmDiv #l' + val).addClass('opacity00');
+		$('#algorithmDiv').scrollTo(id, 300);
+		algorithmAnim();
+		callBackFunction();
+	});
+}
+
+function algorithmColorAnim() {
+	$('#algorithmDiv yy').removeClass('ct-fonts').addClass('ct-blue-color');
+	$('#algorithmDiv .brn').removeClass('ct-fonts ct-blue-color').addClass('ct-brown-color');
+	$('#algorithmDiv .g').removeClass('ct-fonts ct-blue-color').addClass('ct-green-color');
+}
+
+function algorithmAnim(id1, id2, callBackFunction) {
+	algorithmColorAnim();
+	$('#algorithmDiv').scrollTo(id1 + ' span:last', 300, function() {
+		$('#algorithmDiv ' + id2).parent().removeClass('opacity00');
+		transWithZoomInEffect('.introjs-tooltiptext ' + id2, '#algorithmDiv ' + id2, function() {
+			callBackFunction();
 		});
 	});
 }

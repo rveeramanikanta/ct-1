@@ -66,7 +66,7 @@ r {
 		</div>
 		<div class='row'>
 			<div class='text-center'>
-				<h3>UNIT-1</h3>
+				<h3>UNIT-1 (RAJ)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -209,10 +209,12 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Binary-to-Octal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Octal', 'binary-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Octal conversion</span></td>
-						<td>Shiva</td>
+						<td>Shiva / bannu <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>20-08-2016</td>
@@ -479,7 +481,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-2</h3>
+				<h3>UNIT-2 (ANIL)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -546,24 +548,28 @@ r {
 						<td>Unary Operators</td>
 						<td>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Post Increment Operator', 'post-increment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of	Post Increment Operator</span>
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Post Decrement Operator', 'post-decrement-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Post Decrement Operator</span>
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Pre Increment Operator', 'pre-increment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Pre Increment Operator</span>
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Pre Decrement Operator', 'pre-decrement-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Pre	Decrement Operator</span>
@@ -580,8 +586,10 @@ r {
 					<tr>
 						<td>6</td>
 						<td>Conditional Operators</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Conditional Operators', 'conditional-operator-c.jsp', 1, 1)"><i
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Conditional Operators', 'conditional-operator-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Conditional Operators</span></td>
 						<td>Pavan / Anil <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
@@ -725,7 +733,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-3</h3>
+				<h3>UNIT-3 (SWATHI)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1113,7 +1121,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-4</h3>
+				<h3>UNIT-4 (KARTHIK)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1353,34 +1361,39 @@ r {
 						<td>Programs on loops</td>
 						<td>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Pascal triangle', 'pascal-triangle-c.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Pascal triangle 
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print multiplication table as pyramid', 'pyramid-multiplication-table.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print multiplication table as pyramid
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print pyramid of numbers in lower triangle', 'pyramid-lowertriangle-number.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramid of numbers in lower triangle
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>	
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print pyramid of numbers in reverse order in lower triangle', 'pyramid-lowertriangle-numbers-reverse.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramid of numbers in reverse order in lower triangle
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print line number in same row as pyramid', 'pyramid-lowertriangle-line-in-same-row.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print line number in same row as pyramid
 							</div>
 						</td>
-						<td>Anil</td>
+						<td>Anil / karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>17-11-2016</td>
@@ -1390,7 +1403,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-5</h3>
+				<h3>UNIT-5 (SHIVA)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1503,11 +1516,13 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Arrays</td>
-						<td><i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 1-D arrays</td>
-						<td>Shiva / Shiva <r>(back)</r></td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 1-D arrays</td>
+							<td>Shiva / Shiva <r>(back)</r>
+						</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>10-09-2016</td>
@@ -1516,10 +1531,12 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+						<i class="fa fa-check fa-1x"></i>	
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of 2-D arrays', 'initialization-of-two-dimensional-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 2-D arrays</td>
-						<td>Shiva</td>
+						<td>Shiva / Shiva <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>14-09-2016</td>
@@ -1563,7 +1580,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-6</h3>
+				<h3>UNIT-6 (SATHISH)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>

@@ -212,6 +212,9 @@
 	color: black;
 }
 
+.introjs-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>

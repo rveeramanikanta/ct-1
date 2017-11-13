@@ -101,6 +101,9 @@ var postIncrementOperatorReady = function() {
 		case "animationDiv1"  :
 			introcode.refresh();
 			$('.animation-div1, .animation-div2, .animation-div3').removeAttr("style");
+			$('.svg-text').css({fill: 'white'});
+			TweenMax.to($('.svg-line').hide().eq(0), 0.5, {attr: {y2: '39.2%'}});
+			$("#preIncrement").removeClass("svg-border");
 			$(".animation-div1").removeClass("opacity00")
 			$('.introjs-tooltip').removeClass('hide');
 		break;
@@ -111,8 +114,6 @@ var postIncrementOperatorReady = function() {
 		break;
 		case "xCup":
 			$("#xvalue").attr("contenteditable", "false");
-			$("#xCupValue").text("");
-			$("#xVariableDeclararionLine").addClass("z-index1000000");
 		break;
 		case "expressionStatement":
 			$("#yVariableDeclararionLine").addClass("z-index1000000");
@@ -237,28 +238,30 @@ var postIncrementOperatorReady = function() {
 				});
 			break;
 			case "xCup":
-				$("#xCup").addClass("visibility-hidden");
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
-					$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
-						$("#xCup").removeClass("visibility-hidden");
-						$("#xCupValue").text($("#xvalue").text());
-						$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
-						fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
-							$("#xCupValue").removeClass("z-index100000000");
-						  	$("#xVariableDeclararionLine").removeClass("z-index1000000");
-						  	if (introcode._direction == "forward") {
-								setTimeout(function () {
-									introcode.nextStep();
-								}, 1000);
-							} else {
-								setTimeout(function () {
-									introcode.previousStep();
-								}, 1000);
-							}
-						});
-					});							
+					if (introcode._direction == "forward") {
+						$("#xCupValue").text("");
+						$("#xVariableDeclararionLine").addClass("z-index1000000");
+						$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
+						$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
+							$("#xCup").removeClass("visibility-hidden");
+							$("#xCupValue").text($("#xvalue").text());
+							$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
+							fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
+								$("#xCupValue").removeClass("z-index100000000");
+							  	$("#xVariableDeclararionLine").removeClass("z-index1000000");
+									setTimeout(function () {
+										introcode.nextStep();
+									}, 1000);
+							});
+						});							
+					} else {
+						$("#xCup").addClass("visibility-hidden");
+						setTimeout(function () {
+							introcode.previousStep();
+						}, 400);
+					}
 				});
 			break;
 			case "expressionStatement":
@@ -625,8 +628,7 @@ function changeValue() {
 			$(this).removeClass("empty");
 		}
 		introcode.refresh();
-		
-		if ($(".empty").length == 0) {
+		if ($(".empty").length > 0) {
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
 			$(".introjs-nextbutton, .introjs-prevbutton").show();

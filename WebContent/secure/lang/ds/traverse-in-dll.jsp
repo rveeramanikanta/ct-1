@@ -28,11 +28,6 @@
 	overflow-y: auto;
 }
 
-.introjs-duplicate-nextbutton {
-	margin: 0px !important;
-	background-color: green;
-}
-
 .user-btn {
 	margin: 0px !important;
 	background-color: green;
@@ -121,6 +116,7 @@
 	background-color: #fffae6;
 	overflow-y: auto;
 	font-family: monospace; 
+	font-size: 12px;
 }
 
 .box, .box1 {
@@ -160,19 +156,6 @@
 	border-radius: 0 6px 6px 0;
 }
 
-.inline-css {
-	margin: 0 10px;
-	position: relative;
-	display: inline-block;
-}
-
-.buttons {
-	color: black;
-	letter-spacing: 1px;
-	font-family: monospace;
-	box-shadow: 1px 2px 4px 0;
-}
-
 .user-text {
 	width: 82px;
 	height: 27px;
@@ -196,35 +179,11 @@
 	background-color: #fffae6;
 }
 
-.blinkingRed {
-	animation-name: blink;
-	animation-duration: 1s;
-	animation-iteration-count: infinite;
- }
-
-@keyframes blink {
-	50% {
-		background:  #ffad99;
-	}
-}
-
-.blinkingGreen {
-	animation-name: blink1;
-	animation-duration: 1s;
-	animation-iteration-count: infinite;
- }
-
-@keyframes blink1 {
-	50% {
-		background:   #ccffcc;
-	}
-}
-
 div, span {
 	position: relative;
 }
 
-blue {
+blue, bl {
 	color: blue;
 }
 

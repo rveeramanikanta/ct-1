@@ -130,8 +130,12 @@ function introJsFunction() {
 		if (introjs._currentStep == 1) {
 			$(".introjs-duplicate-nextbutton").remove()
 			$(".animation-div1").css({"opacity":1});
-			$("#box1, #box2, #box3").addClass("opacity00");
-			$("#svgLine1, #svgLine2, #svgLine3").hide();
+			$("#box1, #box2, #box3, .statement-css").addClass("opacity00");
+			$('#svgId').remove();
+			$('.statement-css').removeAttr('style');
+			$('.box-css').css({'border-color' : 'transparent'});
+			
+			//$("#svgLine1, #svgLine2, #svgLine3").hide();
 			/*$("#condition, #num1-num2").removeClass("opacity00");
 			$("#svgLine1").show();*/
 		} else if (introjs._currentStep == 5) {
@@ -226,7 +230,7 @@ function introJsFunction() {
 						svgAppend($('.animation-div1'), 'svgId');
 						svgMarkerAppend($('#svgId'), 'markerEnd');
 						$("#box1").removeClass("opacity00");
-						$("#svgLine1").show();
+						//$("#svgLine1").show();
 						svgBoxAnimation(1, function() {
 							$('.introjs-tooltip').removeClass('hide');
 							typingId = '.introjs-tooltiptext';

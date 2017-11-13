@@ -211,6 +211,10 @@
 	font-family: monospace;
 	color: black;
 }
+
+.introcode-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>
