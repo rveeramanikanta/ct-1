@@ -120,7 +120,7 @@ function introFunction() {
 								+ '\n\t} <span id="whileBody"></span>'
 								+'</span>\n}');
 						if (lang == 'cpp') {
-							$('#functionName').html('void Sll::<g>traverse()</g>');
+							$('#functionName').html('void Dll::<g>traverse()</g>');
 							$('#printf1').html('cout << "<brown>List is Empty.</brown>";');
 						}
 						$('#parentPre').removeClass('opacity00');
@@ -450,7 +450,7 @@ function bounceCallBack(selector1, selector2, callBackFunction) {
 }
 
 function tooltipDisplay(selector, position, text) {
-	$(selector).attr({"data-placement": ""+ position +"", "title": text}).tooltip();
+	$(selector).attr({"data-placement": position, "title": text}).tooltip();
 }
 
 function svgAppend(selector, svgId) {
