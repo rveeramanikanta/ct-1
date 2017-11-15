@@ -110,6 +110,8 @@
 	background-color: #fffae6;
 	overflow-y: auto; 
 	margin: 0;
+	font-family: monospace;
+	font-size: 12px;
 }
 
 .box, .box1 {
@@ -224,7 +226,7 @@ bwBg {
 </script>
 
 	<div class='col-xs-12 padding00'>
-		<div class='text-center margin-top-15'><h4 class='label ct-demo-heading' id='headingDiv'>Search() in DLL</h4></div>
+		<div class='text-center margin-top-20'><h4 class='label ct-demo-heading' id='headingDiv'>Search() in DLL</h4></div>
 		<div class='col-xs-12 margin-top-15' id='totalDiv'>
 			<div class='col-xs-5 padding00 margin-top-15'>
 				<div class='col-xs-12 padding00 box-border margin-top-20' id='animationDiv'>

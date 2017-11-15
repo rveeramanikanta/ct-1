@@ -50,6 +50,7 @@
 	border-radius: 10px;
 	margin-left: 19.5%;
 	margin-top: 1%;
+	font-family: monospace;
 }
 
 .index-textbox-size {

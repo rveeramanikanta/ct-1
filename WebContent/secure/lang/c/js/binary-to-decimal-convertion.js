@@ -84,7 +84,8 @@ var binaryToDecimalConvetionReady = function()	{
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "inputDiv":
-				//$("#binarylValue").removeAttr("disabled");	
+				//$("#binarylValue").removeAttr("disabled");
+				$("#convert").addClass("disabled").attr("disabled", true);
 				$("#inputDiv").addClass("visibility-hidden");
 				$('input').val(null);
 				$("#binary").empty();
@@ -361,6 +362,7 @@ var binaryToDecimalConvetionReady = function()	{
 		});
 	
 	$("#convert").click(function() {
+		$("#convert").addClass("disabled").attr("disabled", true);
 		$('#positionDiv, #powercalculation').empty();
 		$("#power").empty();
 		$('#multiply').empty();

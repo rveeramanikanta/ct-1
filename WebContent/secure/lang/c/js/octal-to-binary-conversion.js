@@ -66,6 +66,7 @@ var octalToBinaryConversionReady = function() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "numberconversion" :
+			$("#convert").addClass("disabled").attr("disabled", true);
 			$("#inputDiv").addClass("opacity00");
 			$("#octalValue").attr("disabled", true);
 			$("#octalValue").removeClass("backgroundColor");
@@ -281,6 +282,7 @@ var octalToBinaryConversionReady = function() {
  			if ($('#convert').hasClass('disabled')) {
  				return;
  			}
+ 			$("#convert").addClass("disabled").attr("disabled", true);
  			valuelength = $("#octalValue").val().substring(1, $('#octalValue').val().length); 
  			numberlength = valuelength.length;
  			p = numberlength - 1;

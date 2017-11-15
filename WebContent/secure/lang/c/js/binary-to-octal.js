@@ -30,6 +30,7 @@ var binaryToOctalReady = function() {
 			var no_spl_char = yourInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 			$(this).val(no_spl_char);
 		}
+
 		if ($("#binaryValue").val().length > 0) {
 			$("#convert").removeClass("disabled").removeClass("opacity40");
 			$("#binaryValue").removeClass("backgroundColor");
@@ -42,6 +43,7 @@ var binaryToOctalReady = function() {
 		});
 	
 	$("#convert").click(function() {
+		$("#convert").addClass("disabled").attr("disabled", true);
 		input = $("#binaryValue").val();
 		$("body").keydown(function(e) {
 			if (e.keyCode == 13) {
@@ -141,6 +143,7 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'textDiv':
+			$("#convert").addClass("disabled").attr("disabled", true);
 			$("#positionSpan0 .box5, #positionSpan3  .box5, #positionSpan6  .box5").remove();
 			$("#squareDiv0 .binaryBox2, #squareDiv3  .binaryBox2, #squareDiv6  .binaryBox2").remove();
 			$("#squareDiv #squareDiv0 .binaryBox2, #squareDiv #squareDiv3  .binaryBox2,#squareDiv #squareDiv6  .binaryBox2").remove();

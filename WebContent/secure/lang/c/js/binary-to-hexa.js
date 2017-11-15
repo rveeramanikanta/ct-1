@@ -48,6 +48,7 @@ var binaryToHexaReady = function() {
 	
 	
 	$("#convert").click(function() {
+		$("#convert").addClass("disabled").attr("disabled", true);
 		$("#positionSpan1 > .box5").remove();
 		$('#twoPowerDiv1 > td').remove();
 		var input = $("#binaryValue").val();
@@ -337,6 +338,7 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'input':
+			$("#convert").addClass("disabled").attr("disabled", true);
 			$('#binaryValue').val('');
 			$("#numberBox, #numberBox1").empty();
 			$("#boxDiv, #numberBox").addClass("visibility-hidden").removeAttr('style');

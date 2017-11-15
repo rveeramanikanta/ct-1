@@ -45,7 +45,7 @@ function introFunction() {
 				switch(animateStep) {
 					case 'tempNodeNull': 
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>linked is empty</y>. i.e <bwBg>first</bwBg> is "
+						text = "<ul><li>Let us assume <y>linked is empty</y>. i.e., <bwBg>first</bwBg> is "
 								+ " <y>NULL</y>.</li><li>For example user want to <y>search</y> an element (<y>10</y>) in the list.</li></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							tooltipDisplay("#firstDiv", "bottom", "first stores the beginning of the linked list");
@@ -72,57 +72,57 @@ function introFunction() {
 			case "algorithmStepsDiv" :
 				$('.introjs-tooltip').css('height','');
 				$('#algorithmStepsDiv, .zindex').removeClass('opacity00 zindex');
-				$('.tooltopClass').addClass('zindex');
 				intro.refresh();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
-				case 'Step1':
-					$('#s1').addClass('opacity00');
-					appendSteps(1);
-					var text = '<ul><li>Let us declare an integer variable <g>key</g> and initialize with the user <g>search element</g> to <g>Key</g>.'
-								+ ' </li><li>Check the condition <bwBg>first</bwBg> is equal to <g>NULL</g> or not.</li>'
-								+ ' <li>If it is <brown>true</brown>, then print <brown>The given element'
-								+ ' is not found in the given DLL</brown>.<span id="btn"></span></li></ul>';
-					$('#stepDes1').html(text);
-					stepCount++;
-					zoomInEffect('#s1', function() {
-						introNextSteps('#mainDiv', 'first');
-						appendNextBtn('#btn', 'moveStep');
-					});
-				break;
-				case "Step2" :
-					$('#s2').addClass('opacity00');
-					appendSteps(2);
-					var text = '<ul><li>If it is <brown>false</brown>, then take one temporary node <g>currentNode</g> and initialize with'
-								+ ' <bwBg>first</bwBg> value also take two integer variables <brown>count</brown> and <brown>key</brown>,'
-								+ ' <g>count</g> will be initialized with the value <g>0</g> and key will be initialize with user search element.</li>'
-								+ ' <li>Repeat the loop until the <g>next</g> of <g>currentNode</g> is equal to <g>key</g>.</li>'
-								+ ' <li>If <g>key</g> is <brown>not found</brown> then check the another condition the <g>next</g> filed of '
-								+ ' <g>currentNode</g> is <g>equal</g> to <g>NULL</g></li><li>If is <g>NULL</g> then display '
-								+ ' <brown>The given element is not found in the given DLL</brown>.</li><li>If it is <brown>Not NULL</brown>'
-								+ ' <g>increment</g> the count value by <g>one</g> also travers the <g>next</g> field of <g>currentNode</g>'
-								+ '  to <g>currentNode</g>.<span id="btn"></span></li></ul>';
-					$('#stepDes2').html(text);
-					stepCount++;
-					zoomInEffect('#s2', function() {
-						$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
-						introNextSteps('#mainDiv', 'second');
-						appendNextBtn('#btn', 'moveStep');
-					});
-				break;
-				case "Step3" :
-					$('#s3').addClass('opacity00');
-					appendSteps(3);
-					var text = '<ul><li>If the <g>key</g> value is <brown>found</brown> then display '
-							+ ' <brown>The given element is found at location</brown>.</li><span id="btn"></span></li></ul>';
-			$('#stepDes3').html(text);
-			stepCount++;
-			zoomInEffect('#s3', function() {
-				$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
-				introNextSteps('#mainDiv', 'three');
-				appendNextBtn('#btn', 'moveStep');
-			});
-				break;
+					case 'Step1':
+						$('#s1').addClass('opacity00');
+						appendSteps(1);
+						var text = 'Let us learn how to <bl>search</bl> an element in <brown>Doubly Linked List (DLL)</brown>.<ul><li>Let us declare '
+									+ ' an integer variable <bl>key</bl> and initialize with the user <bl>search element</bl> to <bl>Key</bl>.'
+									+ ' </li><li>Check the condition <bwBg>first</bwBg> is equal to <g>NULL</g> or not.</li>'
+									+ ' <li>If it is <g>true</g>, then print "<brown>The given element'
+									+ ' is not found in the given DLL</brown>."<span id="btn"></span></li></ul>';
+						$('#stepDes1').html(text);
+						stepCount++;
+						zoomInEffect('#s1', function() {
+							introNextSteps('#mainDiv', 'first');
+							appendNextBtn('#btn', 'moveStep');
+						});
+					break;
+					case "Step2" :
+						$('#s2').addClass('opacity00');
+						appendSteps(2);
+						var text = '<ul><li>If it is <brown>false</brown>, then declare a temporary node as <g>currentNode</g> and initialize with'
+									+ ' <bwBg>first</bwBg> value also declare two integer variables <bl>count</bl> and <bl>key</bl>, <bl>count</bl> '
+									+ ' is initialized with the value <bl>0</bl> and <bl>key</bl> initializes with the user search element.</li>'
+									+ ' <li>Repeat the loop until the <g>next</g> field of <g>currentNode</g> is equal to <bl>key</bl>.</li>'
+									+ ' <li>If <bl>key</bl> is <brown>not found</brown> then check the another condition the <g>next</g> filed of '
+									+ ' <g>currentNode</g> is <g>equal</g> to <g>NULL</g>.</li><li>If it is <g>NULL</g> then print '
+									+ ' "<brown>The given element is not found in the given DLL</brown>."</li><li>If it is <brown>not NULL</brown>'
+									+ ' then <g>increment</g> the <bl>count</bl> value by <g>one</g> and travers the <g>next</g> field of <g>currentNode</g>'
+									+ '  to <g>currentNode</g>.<span id="btn"></span></li></ul>';
+						$('#stepDes2').html(text);
+						stepCount++;
+						zoomInEffect('#s2', function() {
+							$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
+							introNextSteps('#mainDiv', 'second');
+							appendNextBtn('#btn', 'moveStep');
+						});
+					break;
+					case "Step3" :
+						$('#s3').addClass('opacity00');
+						appendSteps(3);
+						var text = '<ul><li>If the <bl>key</bl> value is <brown>found</brown>. Then print '
+								+ ' "<brown>The given element is found at location</brown>."<span id="btn"></span></li></ul>';
+						$('#stepDes3').html(text);
+						stepCount++;
+						$('#algorithmStepsDiv').scrollTo('span:last', 500);
+						zoomInEffect('#s3', function() {
+							introNextSteps('#mainDiv', 'three');
+							appendNextBtn('#btn', 'moveStep');
+						});
+					break;
 				}
 			break;
 			case "mainDiv" :
@@ -135,15 +135,15 @@ function introFunction() {
 						$('#parentPre').append('<span id="funName"><span id="functionName">node <g>search(int element)</g></span> { '
 											+ '<span id="ifTempEqNull" class="opacity00">'
 											+ '\n\tint key = element;'
-											+ '\n\tif (<brown>first == NULL</brown>) {'
-											+ '\n\t\t<span id="p1">printf("<brown>The given element %d is"\n\t\t\t'
-											+' "not found in the given"\n\t\t\t" DLL.</brown>", key);</span>'
-											+ '\n\t} <span id="whileBody"></span>'
-											+'\n}</span>');
+											+ '\n\tif (<g>first == NULL</g>) {'
+											+ '\n\t\t<span id="p1">printf("<brown>The given element %d is not"\n\t\t\t\t\t\t\t'
+											+' " found in the given DLL.</brown>", key);</span>'
+											+ '\n\t} <span id="whileBody"></span></span>'
+											+'\n}');
 						$('#parentPre').removeClass('opacity00');
 						if (lang == 'cpp') {
-							$('#functionName').html('void Sll::<g>search(int element)</g>');
-							$('#p1').html('cout << "The given element "\n\t\t\t\t\t << key << " is not found in the"\n\t\t\t\t\t" given DLL.";');
+							$('#functionName').html('void Dll::<g>search(int element)</g>');
+							$('#p1').html('cout << "The given element " << key << \n\t\t\t\t\t" is not found in the given DLL.";');
 						}
 						$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:first','#ifTempEqNull', function() {
@@ -160,8 +160,8 @@ function introFunction() {
 										+ '\n\t\tint count = 0'
 										+ '\n\t\twhile (currentNode -> data != key) {'
 										+ '\n\t\t\tif (currentNode -> next == NULL) {'
-										+ '\n\t\t\t\t<span id="p2">printf("<brown>The given element %d is"\n\t\t\t\t\t'
-										+ '"not found in the given"\n\t\t\t\t\t" DLL.</brown>", key);</span>'
+										+ '\n\t\t\t\t<span id="p2">printf("<brown>The given element %d is not</brown>"\n\t\t\t\t\t\t\t'
+										+ '"<brown> found in the given DLL.</brown>", key);</span>'
 										+ '\n\t\t\t\treturn 0;'
 										+ '\n\t\t\t} else {'
 										+ '\n\t\t\t\tcount++;'
@@ -169,8 +169,9 @@ function introFunction() {
 										+ '\n\t\t\t}\n\t\t}<span id="returnCount"></span>');
 						$('#whileBody').addClass('opacity00');
 						if (lang == 'cpp') {
-							$('#p2').html('cout << "The given element " \n\t\t\t\t\t<< key << " is not found in the\n\t\t\t\t\t given DLL.";');
+							$('#p2').html('cout << "The given element " << key <<  \n\t\t\t\t\t" is not found in the given DLL.";');
 						}
+						$('#parentPre').scrollTo('span:last', 500);
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:last','#whileBody', function() {
 								$('#whileBody').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
@@ -183,10 +184,10 @@ function introFunction() {
 						});
 					break;
 					case "three" :
-						$('#returnCount').append('\n\t\t<span id="p3">printf("The given element is  %d"\n\t\t\t "found at position %d"'
+						$('#returnCount').append('\n\t\t<span id="p3">printf("The given element is %d found"\n\t\t\t\t " at position %d"'
 								+ 'key, count);</span>');
 						if (lang == 'cpp') {
-							$('#p3').html('\n\t\tcout << "The given element is " \n\t\t\t << key << "found at position " \n\t\t\t << '
+							$('#p3').html('\n\t\tcout << "The given element is " << key << \n\t\t\t\t "found at position " \n\t\t\t << '
 									+ 'count << ".";');
 						}
 						$('#returnCount').addClass('opacity00');
@@ -244,7 +245,7 @@ function assignElemtoKey() {
 
 function ifTempValueIsNull() {
 	$('.user-btn, #btn').remove();
-	text = 'Check if <bwBg>first</bwBg> value is <y>NULL</y>.';
+	text = 'Check if <bwBg>first</bwBg> is <y>NULL</y> or not.';
 	appendLiAndTyping(text, function() {
 		appendNextBtn('.introjs-tooltipbuttons', 'ifTempValueIsNullAnimation');
 	});
@@ -253,15 +254,15 @@ function ifTempValueIsNull() {
 function ifTempValueIsNullAnimation() {
 	$('.user-btn, #btn').remove();
 	if ($('#firstVal').text() == "NULL") {
-		text = 'Here, the condition is evaluates to <y>true</y> so, display <y>The given element 10 is not found in the given DLL.</y>';
+		text = 'Here, the condition evaluates to <y>true</y>. Hence, print "<y>The given element 10 is not found in the given DLL.</y>"';
 		appendLiAndTyping(text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 			$('.introjs-nextbutton').show();
 		});
 	} else {
-		text = 'Here, the condition is evaluates to <y>false</y>, so repeat the loop until <y>temp</y> is <y>equal</y> to <y>NULL</y>.<br/>'
-				+' It it is <y>true</y> then, print the <y>data</y> filed of the <y>temp</y> and also traverse the '
-				+ '<y>next</y> field of <y>temp</y> to <y>temp</y> node. Otherwise print <y>NULL</y>';
+		text = 'Here, the condition evaluates to <y>false</y>. Hence repeat the loop until <y>currentNode</y> is <y>equal</y> to <y>NULL</y>.<br/>'
+				+' It it is <y>true</y> then, print the "<y>data</y>" filed of the <y>currentNode</y> and also traverse the '
+				+ '<y>next</y> field of <y>currentNode</y> to <y>currentNode</y> node. Otherwise print "<y>NULL</y>"';
 		appendLiAndTyping(text, function() {
 			appendNextBtn('.introjs-tooltipbuttons', 'tempNotNull');
 		});
@@ -278,7 +279,7 @@ function firstNotEqNull() {
 
 function firstIsNotNull() {
 	$('.user-btn, #btn').remove();
-	text = 'Here, <y>first</y> is <y>not</y> a <y>NULL</y>, means it contains some <y>address</y>, means <y>list</y> contains some nodes.';
+	text = 'Here, <bwBg>first</bwBg> is <y>not</y> <y>NULL</y>, means it contains some <y>address</y>, means <y>list</y> contains nodes.';
 	appendLiAndTyping(text, function() {
 		appendNextBtn('.introjs-tooltipbuttons', 'declareCurrentNode');
 	});
@@ -286,11 +287,11 @@ function firstIsNotNull() {
 
 function declareCurrentNode() {
 	$('.user-btn, #btn').remove();
-	text = 'Let us declare one temporary node <y>currentNode</y> and initialize with <y>first</y> value (i.e. <y>'
+	text = 'Let us declare one temporary node as <y>currentNode</y> and initialize with <bwBg>first</bwBg> value (i.e. <y>'
 			+ $('#firstVal').text() +'</y>).';
 	appendLiAndTyping(text, function() {
-		text = 'Let us take two temporary int variable <y>count</y> and <y>key</y>, count will be initialize with <y>0</y> and key will'
-				+ ' be initialize with user search element (i.e. <y>'+ sVal +'</y>).';
+		text = 'Let us declare two temporary int variables <y>count</y> and <y>key</y>, <y>count</y> is initialized with <y>0</y> and <y>key</y>'
+				+ ' is initialized with the user <y>search</y> element (i.e., <y>'+ sVal +'</y>).';
 		appendLiAndTyping(text, function() {
 			appendNextBtn('.introjs-tooltipbuttons', 'declareCurrentNodeAnimation');
 		});
@@ -314,11 +315,10 @@ function declareCurrentNodeAnimation() {
 							text = 'If it is <y>true</y> then check the another condition the <y>next</y> field of <y>currentNode</y> is <y>equal</y>'
 									+' to <y>NULL</y>.';
 							appendLiAndTyping(text, function() {
-								text = 'If it is <y>NULL</y>, then display <y>The given element '
-										+ 'is not found in the given DLL</y>.<span id="btn"></span>';
+								text = 'If it is <y>NULL</y>, then print "<y>The given element is not found in the given DLL</y>."<span id="btn"></span>';
 								appendLiAndTyping(text, function() {
-									text = 'If it is <y>not NULL</y>, then <y>increment</y> the <y>count</y> value by <y>one</y> and also '
-											+'traverse the <y>next</y> filed of <y>currentNode</y> to <y>currentNode</y> node.';
+									text = 'If it is <y>not NULL</y>, then <y>increment</y> the <y>count</y> value by <y>one</y> and '
+											+ ' traverse the <y>next</y> filed of <y>currentNode</y> to <y>currentNode</y>.';
 									appendLiAndTyping(text, function() {
 										appendNextBtn('.introjs-tooltipbuttons', 'repeatLoop');
 									});
@@ -338,8 +338,8 @@ function repeatLoop() {
 		$('#data' + nodeCount).parent().css({'background-color': '#ccffcc'});
 		$('#status' + nodeCount).empty().append('<i class="fa fa-check" style="color: green"></i>');
 		zoomInEffect('#status' + nodeCount, function() {
-			text = 'Here, the  <y>key</y> value <y>found</y> in <y>count + 1</y> position '
-				+' so, print <y>The given element '+ sVal +' is found at position '+ (count + 1) +'.</y>';
+			text = 'Here, the  <y>key</y> value is <y>found</y> at (<y>count + 1</y>) position. '
+				+' Then, print "<y>The given element '+ sVal +' is found at position '+ (count + 1) +'.</y>"';
 			appendLiAndTyping(text, function() {
 				introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 				$('.introjs-nextbutton').show();
@@ -353,29 +353,25 @@ function repeatLoop() {
 				zoomInEffect('#status' +nodeCount, function() {
 					if ($('#next' + nodeCount).text() != "NULL") {
 						++count;
-						$('#count').effect( "highlight",{color: 'yellow'}, 600, function() {
-							flipEffectWithTweenMax('#count', count, function() {
-								$('#currentVal').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-									svgAnimatingLineTopAndBottom("#currentNode", "#prevDiv" + nodeCount, "line111", true, false, function() {
-										$('#line111').remove();
-										$('#next' + nodeCount).parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-											fadeInBounceEffectWithTimelineMax("#next" + nodeCount, "#currentVal", "bottom", function() {
-												$('#line11').remove();
-												svgAnimatingLineTopAndBottom("#currentNode", "#prevDiv" + (nodeCount + 1), "line11", true, false, 
-														function() {
-													nodeCount++;
-													repeatLoop();
-												});
-											}); 
+						flipEffectWithTweenMax('#count', count, function() {
+							$('#currentVal').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
+								svgAnimatingLineTopAndBottom("#currentNode", "#prevDiv" + nodeCount, "line111", true, false, function() {
+									$('#line111').remove();
+									fadeInBounceEffectWithTimelineMax("#next" + nodeCount, "#currentVal", "bottom", function() {
+										$('#line11').remove();
+										svgAnimatingLineTopAndBottom("#currentNode", "#prevDiv" + (nodeCount + 1), "line11", true, false, 
+												function() {
+											nodeCount++;
+											repeatLoop();
 										});
-									});
+									}); 
 								});
 							});
 						});
 					} else  {
 						$('#next' + nodeCount).parent().css({'background-color': '#ffcccc'});
-						text = 'Here, the next field of <y>currentNode</y> is <y>NULL</y> means there is no more nodes to check'
-								+' so, display <y>The given element '+ sVal +' is not found in the given DLL.</y>';
+						text = 'Here, the next field of <y>currentNode</y> is <y>NULL</y> means there is no more nodes to check.'
+								+' Then, print "<y>The given element '+ sVal +' is not found in the given DLL.</y>"';
 						appendLiAndTyping(text, function() {
 							introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 							$('.introjs-nextbutton').show();
@@ -543,7 +539,8 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, pos, callBackFu
 		var l2 = $(selector2).offset();
 		var topLength = l1.top - l2.top;
 		var leftLength = l1.left - l2.left;
-		$("body").append("<span id='dummy' class='ct-brown-color' style='position: relative;z-index: 9999999;'>" + $(selector2).text() + "</span>");
+		$("body").append("<span id='dummy' class='ct-brown-color ct-fonts' style='position: relative;z-index: 9999999;'>"
+					+ $(selector2).text() + "</span>");
 		$('#dummy').offset({"top": l2.top, "left": l2.left});
 		$(selector2).text($(selector1).text());
 		TweenLite.from(selector2, 2.8, { ease:  Bounce.easeOut, top:l1.top-l2.top, left :l1.left-l2.left});
@@ -564,12 +561,10 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, pos, callBackFu
 }
 
 function bounceCallBack(selector1, selector2, callBackFunction) {
-	$(selector2).removeAttr("style")
+	$(selector2 + ', #animatinDiv').removeAttr("style")
 	if (typeof callBackFunction === "function") {
 		callBackFunction();
 	}
-	$(selector2).text($(selector1).text());
-	$("#animatinDiv").removeAttr("style");			
 	$('#dummy').remove();
 }
 
