@@ -608,7 +608,7 @@ r {
 						<td>Successfully Completed</td>
 						<td>17-08-2016</td>
 					</tr>
-
+ 
 					<tr>
 						<td>7</td>
 						<td>Bitwise Operators</td>
