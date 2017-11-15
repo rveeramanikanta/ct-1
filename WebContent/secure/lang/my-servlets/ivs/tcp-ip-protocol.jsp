@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/alertify.js" type="text/javascript" charset="utf-8"></script>
-<script src="/secure/lang/servlets/js-min/tip.min.js" type="text/javascript"></script>
+<script src="/secure/lang/servlets/js/tcp-ip-protocol.js" type="text/javascript"></script>
 <title>TCP/IP Protocol</title>
 <style type="text/css">
 

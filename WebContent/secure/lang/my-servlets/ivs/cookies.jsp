@@ -19,7 +19,7 @@
 <script src="/js/intro.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/servlets/js-min/cks.min.js"></script>
+<script src="/secure/lang/servlets/js/cookies.js"></script>
 
 <style type="text/css">
 

@@ -79,10 +79,10 @@ function introFunction() {
 				case 'Step1':
 					$('#s1').addClass('opacity00');
 					appendSteps(1);
-					var text = '<ul><li>Declare an integer variable <g>key</g> and initialize with user <g>search element</g> to <g>Key</g>.</li>'
-								+ ' <li>Check the condition <bwBg>first</bwBg> is equal to <g>NULL</g> or not.</li>'
-								+ ' <li>If it is <brown>true</brown>, then display <brown>The given element'
-								+ ' is not found in the given SLL</brown>.<span id="btn"></span></li></ul>';
+					var text = '<ul><li>Let us declare an integer variable <g>key</g> and initialize with the user <g>search element</g> to <g>Key</g>.'
+								+ ' </li><li>Check the condition <bwBg>first</bwBg> is equal to <g>NULL</g> or not.</li>'
+								+ ' <li>If it is <brown>true</brown>, then print <brown>The given element'
+								+ ' is not found in the given DLL</brown>.<span id="btn"></span></li></ul>';
 					$('#stepDes1').html(text);
 					stepCount++;
 					zoomInEffect('#s1', function() {
@@ -99,7 +99,7 @@ function introFunction() {
 								+ ' <li>Repeat the loop until the <g>next</g> of <g>currentNode</g> is equal to <g>key</g>.</li>'
 								+ ' <li>If <g>key</g> is <brown>not found</brown> then check the another condition the <g>next</g> filed of '
 								+ ' <g>currentNode</g> is <g>equal</g> to <g>NULL</g></li><li>If is <g>NULL</g> then display '
-								+ ' <brown>The given element is not found in the given SLL</brown>.</li><li>If it is <brown>Not NULL</brown>'
+								+ ' <brown>The given element is not found in the given DLL</brown>.</li><li>If it is <brown>Not NULL</brown>'
 								+ ' <g>increment</g> the count value by <g>one</g> also travers the <g>next</g> field of <g>currentNode</g>'
 								+ '  to <g>currentNode</g>.<span id="btn"></span></li></ul>';
 					$('#stepDes2').html(text);
@@ -137,13 +137,13 @@ function introFunction() {
 											+ '\n\tint key = element;'
 											+ '\n\tif (<brown>first == NULL</brown>) {'
 											+ '\n\t\t<span id="p1">printf("<brown>The given element %d is"\n\t\t\t'
-											+' "not found in the given"\n\t\t\t" SLL.</brown>", key);</span>'
+											+' "not found in the given"\n\t\t\t" DLL.</brown>", key);</span>'
 											+ '\n\t} <span id="whileBody"></span>'
 											+'\n}</span>');
 						$('#parentPre').removeClass('opacity00');
 						if (lang == 'cpp') {
 							$('#functionName').html('void Sll::<g>search(int element)</g>');
-							$('#p1').html('cout << "The given element "\n\t\t\t\t\t << key << " is not found in the"\n\t\t\t\t\t" given SLL.";');
+							$('#p1').html('cout << "The given element "\n\t\t\t\t\t << key << " is not found in the"\n\t\t\t\t\t" given DLL.";');
 						}
 						$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:first','#ifTempEqNull', function() {
@@ -161,7 +161,7 @@ function introFunction() {
 										+ '\n\t\twhile (currentNode -> data != key) {'
 										+ '\n\t\t\tif (currentNode -> next == NULL) {'
 										+ '\n\t\t\t\t<span id="p2">printf("<brown>The given element %d is"\n\t\t\t\t\t'
-										+ '"not found in the given"\n\t\t\t\t\t" SLL.</brown>", key);</span>'
+										+ '"not found in the given"\n\t\t\t\t\t" DLL.</brown>", key);</span>'
 										+ '\n\t\t\t\treturn 0;'
 										+ '\n\t\t\t} else {'
 										+ '\n\t\t\t\tcount++;'
@@ -169,7 +169,7 @@ function introFunction() {
 										+ '\n\t\t\t}\n\t\t}<span id="returnCount"></span>');
 						$('#whileBody').addClass('opacity00');
 						if (lang == 'cpp') {
-							$('#p2').html('cout << "The given element " \n\t\t\t\t\t<< key << " is not found in the\n\t\t\t\t\t given SLL.";');
+							$('#p2').html('cout << "The given element " \n\t\t\t\t\t<< key << " is not found in the\n\t\t\t\t\t given DLL.";');
 						}
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:last','#whileBody', function() {
@@ -217,7 +217,7 @@ function introFunction() {
 	});
 	intro.start();
 	$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
-	text = " Here, we will learn how to <y>search</y> an element in <y>Singly Linked List</y>.";
+	text = " Here, we will learn how to <y>search</y> an element in <y>Doubly Linked List</y>.";
 	typing(".introjs-tooltiptext", text, function() {
 		$('.introjs-nextbutton').show();
 	});
@@ -232,7 +232,7 @@ function appendLiAndTyping(text, callBackFunction) {
 
 function assignElemtoKey() {
 	$('.user-btn, #btn').remove();
-	text = 'Declare an integer variable <y>key</y> and initialize with search element.';
+	text = 'Let us declare an integer variable <y>key</y> and initialize with <y>search</y> element.';
 	appendLiAndTyping(text, function() {
 		sVal = 10;
 		$('#key').text();
@@ -253,7 +253,7 @@ function ifTempValueIsNull() {
 function ifTempValueIsNullAnimation() {
 	$('.user-btn, #btn').remove();
 	if ($('#firstVal').text() == "NULL") {
-		text = 'Here, the condition is evaluates to <y>true</y> so, display <y>The given element 10 is not found in the given SLL.</y>';
+		text = 'Here, the condition is evaluates to <y>true</y> so, display <y>The given element 10 is not found in the given DLL.</y>';
 		appendLiAndTyping(text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 			$('.introjs-nextbutton').show();
@@ -286,7 +286,7 @@ function firstIsNotNull() {
 
 function declareCurrentNode() {
 	$('.user-btn, #btn').remove();
-	text = 'Declare one temporary node <y>currentNode</y> and initialize with <y>first</y> value (i.e. <y>'
+	text = 'Let us declare one temporary node <y>currentNode</y> and initialize with <y>first</y> value (i.e. <y>'
 			+ $('#firstVal').text() +'</y>).';
 	appendLiAndTyping(text, function() {
 		text = 'Let us take two temporary int variable <y>count</y> and <y>key</y>, count will be initialize with <y>0</y> and key will'
@@ -315,7 +315,7 @@ function declareCurrentNodeAnimation() {
 									+' to <y>NULL</y>.';
 							appendLiAndTyping(text, function() {
 								text = 'If it is <y>NULL</y>, then display <y>The given element '
-										+ 'is not found in the given SLL</y>.<span id="btn"></span>';
+										+ 'is not found in the given DLL</y>.<span id="btn"></span>';
 								appendLiAndTyping(text, function() {
 									text = 'If it is <y>not NULL</y>, then <y>increment</y> the <y>count</y> value by <y>one</y> and also '
 											+'traverse the <y>next</y> filed of <y>currentNode</y> to <y>currentNode</y> node.';
@@ -375,7 +375,7 @@ function repeatLoop() {
 					} else  {
 						$('#next' + nodeCount).parent().css({'background-color': '#ffcccc'});
 						text = 'Here, the next field of <y>currentNode</y> is <y>NULL</y> means there is no more nodes to check'
-								+' so, display <y>The given element '+ sVal +' is not found in the given SLL.</y>';
+								+' so, display <y>The given element '+ sVal +' is not found in the given DLL.</y>';
 						appendLiAndTyping(text, function() {
 							introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 							$('.introjs-nextbutton').show();
@@ -406,7 +406,7 @@ function multipleNodes() {
 				svgAnimatingLineLeftAndRight("#nextDiv"+ (i - 1), "#prevDiv"+ i, "line"+ i, true, true);
 				svgAnimatingLineLeftAndRight("#prevDiv"+ i, "#nextDiv"+ (i - 1), "line1"+ i, false, true);
 			}
-			$('#data' + i).text(i+'0').removeClass('opacity00');
+			$('#data' + i).text(i +'0').removeClass('opacity00');
 			$('#node'+ i).removeClass('opacity00');
 			$('#line' + i).css('opacity', '1');
 		}
