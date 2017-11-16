@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/search-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/sid.min.js"></script>
 <style type="text/css">
 
 .introjs-tooltip {
@@ -31,10 +31,6 @@
 .user-btn {
 	margin: 0px !important;
 	background-color: green;
-}
-
-.margin-top-25 {
-	margin-top: 30px;
 }
 
 .margin-top-20 {
@@ -199,7 +195,7 @@ bwBg {
 }
 
 .zindex {
-	z-index: 1000000 !important;
+	z-index: 1000000;
 }
 
 .padding5 {
@@ -207,8 +203,9 @@ bwBg {
 }
 
 
-.tooltip-inner {
+.tooltip {
 	font-family: monospace;
+	z-index: 99999999;
 }
 
 .radius-50 {
@@ -243,7 +240,7 @@ bwBg {
 						</div>
 						<div class="col-xs-12 margin-top-5 padding00" id="dynamicNodes"></div>
 						<div class="col-xs-12 margin-top-20 padding00" id="declareNodes">
-							<div class="col-xs-2 col-xs-offset-3 extraNode opacity00 padding00 tooltopClass zindex" id='currentNode'>
+							<div class="col-xs-2 col-xs-offset-3 extraNode opacity00 padding00 zindex" id='currentNode'>
 								<div class="col-xs-12 box position">
 									<span id='currentVal' class="extrNodeVal ct-brown-color ct-fonts position"></span>
 								</div>

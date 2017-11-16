@@ -318,7 +318,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Binary', 'hexadecimal-binary.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary</span></td>
-						<td>Padmaja</td>
+						<td>Padmaja / bannu <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
@@ -342,7 +342,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Octal', 'hexadecimal-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Octal</span></td>
-						<td>Padmaja</td>
+						<td>Padmaja / bannu <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully Completed</td>
 						<td>01-10-2016</td>
@@ -612,7 +612,9 @@ r {
 					<tr>
 						<td>7</td>
 						<td>Bitwise Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise AND Operator', 'bitwise-and-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise AND Operator</span></td>
 						<td>Ramya / Anil <r>(back)</r></td>
@@ -624,7 +626,9 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Bitwise Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise OR Operator', 'bitwise-or-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise OR Operator</span>
 						</td>
@@ -637,11 +641,13 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Bitwise Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise XOR Operator', 'bitwise-xor-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise XOR</span>
 							Operator</td>
-						<td>Ramya</td>
+						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>21-08-2016</td>
@@ -653,7 +659,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise LeftShif', 'bitwise-left-shift-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise LeftShif</span></td>
-						<td>Ramya</td>
+						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>23-08-2016</td>
@@ -665,7 +671,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise RightShift', 'bitwise-right-shift-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise RightShift</span></td>
-						<td>Ramya</td>
+						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>25-08-2016</td>
@@ -677,7 +683,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise One's complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's complement operator</span></td>
-						<td>Ramya</td>
+						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>27-08-2016</td>
@@ -911,16 +917,17 @@ r {
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-comma.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with comma
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with comma <r>(No Demo)</r>
 							</div>
 
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-dot.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with dot
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with dot <r>(No Demo)</r>
 							</div>
 
 							<div>
+								<i class="fa fa-check"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-fieldwidth.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with fieldwidth
@@ -951,7 +958,7 @@ r {
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with suppresion of value
 							</div>
 						</td>
-						<td>Ajay</td>
+						<td>Ajay / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>07-09-2016</td>
@@ -2425,10 +2432,12 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Unions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of Unions', 'usage-of-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of Unions</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>30-09-2016</td>
@@ -2437,10 +2446,12 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Structure vs Union</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure vs Union', 'difference-between-structure-and-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure vs Union	with example</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>04-10-2016</td>

@@ -2,9 +2,9 @@ var lang, introjs, sum = 0, nodeCount = stepCount = 1;
 
 function countInDll() {
 	svgAppend("#animationDiv", "svgId");
-	var toolTopText = "This is a temporary node to store the address of node.";
-	tooltipDisplay("#temp", "bottom", toolTopText);
-
+	tooltipDisplay("#temp div:first", "top", "This is a temporary node to store the address of node.");
+	tooltipDisplay('#sumVar > span', 'bottom', 'To count the number of nodes');
+	
 	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
 	introFunction();
@@ -33,11 +33,10 @@ function introFunction() {
 		introjs.refresh();
 		var elementId = targetElement.id;
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
-		$('.zindex').removeClass('zindex');
+		$('#animationDiv').hasClass('introjs-showElement') ? $('.zindex').css('z-index', '1000000') : $('.zindex').css('z-index', '0'); 
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch (elementId) {
 			case 'animationDiv' :
-				$('.tooltopClass').addClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -64,8 +63,6 @@ function introFunction() {
 			case "algorithmStepsDiv" :
 				$('.introjs-tooltip').css('height','');
 				$('#algorithmStepsDiv').removeClass('opacity00');
-				$('.tooltopClass').addClass('zindex');
-				$('.zindex').removeClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -73,10 +70,10 @@ function introFunction() {
 					$('#s1').addClass('opacity00');
 					appendSteps(1);
 					var text = 'Let us learn how to <bl>count</bl> the number of nodes in <brown>Doubly Linked List(DLL)</brown>.'
-								+ '<ul><li>Let us take one temporary node <g>last</g> and it can be initialized with the <bwBg>first</bwBg> value.</li>'
-								+ '<li> Let us take one temporary int variable <bl>sum</bl> and it can be initialized with <bl>0</bl>.</li>'
-								+ '<li>Repeat the loop until <g>last</g> is equal to <g>NULL</g>.</li>'
-								+ '<li>If it is <brown>false</brown>, then return the <bl>sum</bl>.<span id="btn"></span></li></ul>';
+								+ '<ul><li>Let us declare a temporary node as <g>last</g> and initialize with the <bwBg>first</bwBg> value.</li>'
+								+ '<li> Let us declare an int variable <bl>sum</bl> and initialize with the <bl>0</bl>.</li>'
+								+ '<li>Repeat the loop until <g>last</g> is equal to <g>NULL</g>.</li><li>If it is <brown>false</brown>,'
+								+ ' then print "<brown>The number of nodes in a DLL are <bl>sum</bl>.</brown>" <span id="btn"></span></li></ul>';
 					$('#stepDes1').html(text);
 					stepCount++;
 					zoomInEffect('#s1', function() {
@@ -88,8 +85,8 @@ function introFunction() {
 					$('#s2').addClass('opacity00');
 					appendSteps(2);
 					var text = '<ul><li>If it is <brown>true</brown>, then <g>increment</g> the <bl>sum</bl> value by <brown>one</brown>'
-								+ ' and traverse the <g>next</g> field of <g>last</g> to <g>last</g>.</li><li>Finally, return the '
-								+ ' <bl>sum</bl> value as count.<span id="btn"></span></li></ul>';
+								+ ' and traverse the <g>next</g> field of <g>last</g> to <g>last</g>.</li><li>Finally, print '
+								+ ' "<brown>The number of nodes in a DLL are <bl>sum</bl>.</brown>" <span id="btn"></span></li></ul>';
 					$('#stepDes2').html(text);
 					stepCount++;
 					zoomInEffect('#s2', function() {
@@ -101,7 +98,6 @@ function introFunction() {
 			break;
 			case "mainDiv" :
 				$('#parentPre').removeClass('opacity00');
-				$('.zindex').removeClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -110,9 +106,11 @@ function introFunction() {
 											+ '\n\t<span id="ifTempEqNull" class="opacity00">node last = first;'
 											+ '\n\tint sum = 0;'
 											+ '\n\twhile (last != NULL) { <span id="whileBody"></span>\n\t}'
-											+ '\n\treturn sum;</span>\n}</span>');
+											+ '\n\t<span id="printf">printf("<brown>The number of nodes in a DLL are : </brown>"'
+											+ ' \n\t\t\t\t\t</brown>"%d</brown>\\n", <brown>sum</brown>);</span></span>\n}</span>');
 						if (lang == 'cpp') {
 							$('#functionName').html('int Dll::<g>count()</g>');
+							$('#printf').html('cout << "<brown>The number of nodes in a DLL are : </brown>" \n\t\t\t\t\t<brown><< sum << </brown>".\\n";')
 						}
 						$('#parentPre').removeClass('opacity00');
 						$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
@@ -174,8 +172,7 @@ function tempEqNull() {
 	if ($('#firstVal').text() == "NULL") {
 		zoomInEffect('#firstNode');
 	} 
-	text = 'Let us take one temporary node (<y>last</y>) and store the <bwBg>first</bwBg> value (i.e., <y> '
-		+ $('#firstVal').text() +'</y>) to <y>last</y>.';
+	text = 'Let us declare a temporary node as <y>last</y> and initialize with the <bwBg>first</bwBg> value (i.e., <y> ' + $('#firstVal').text() +'</y>).';
 	appendLiAndTyping(text, function() {
 		appendNextBtn('.introjs-tooltipbuttons', 'lastNodeAnimation');
 	});
@@ -199,7 +196,7 @@ function lastNodeAnimation() {
 }
 
 function sumText() {
-	text = 'Let us take one temporary int variable <y>sum</y> and it can be initialized with value <y>0</y>.';
+	text = 'Let us declare an int variable <y>sum</y> and initialize with <y>0</y>.';
 	appendLiAndTyping(text, function() {
 		appendNextBtn('.introjs-tooltipbuttons', 'sumVarInitialization');
 	});
@@ -218,11 +215,11 @@ function sumVarInitialization() {
 function checkTempNotEqNull() {
 	$('.user-btn, #btn').remove();
 	if ($('#tempVal').text() != 'NULL') {
-		$('.introjs-tooltip').css('height','200');
 		text = 'Here, the condition evaluates to <y>true</y>, because <y>last</y> is <y>not equal</y> to <y>NULL</y>. So '
 				+ ' increment the <y>sum</y> value by <y>one</y>, then assign <y>next</y> field of <y>last</y> to <y>last</y>. Until '
 				+ '<y>last</y> is <y>equal</y> to <y>NULL</y>.';
 		appendLiAndTyping(text, function() {
+			$('.introjs-tooltip').css('height','200');
 			$('.introjs-tooltiptext').scrollTo('ul li:last', 500);
 			appendNextBtn('.introjs-tooltipbuttons', 'tempNotNull');
 		});
@@ -235,7 +232,7 @@ function tempIsNull() {
 	text = 'Here, the condition evaluates to <y>false</y>, because <y>last</y> is <y>equal</y> to <y>NULL</y>.';
 	appendLiAndTyping(text, function() {
 		$('.introjs-tooltiptext').scrollTo('ul li:last', 500);
-		text = 'Now, return the <y>sum</y> (i.e., <y>'+ sum +'</y>).';
+		text = 'Now, print "<y>The number of nodes in a DLL are sum</y>" (i.e., <y>'+ sum +'</y>).';
 		appendLiAndTyping(text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 			$('.introjs-nextbutton').show();
@@ -359,9 +356,9 @@ function createDynamicNodes(nodeCount) { //Create data & next field div.
 			+ '</span></div></div></div>';
 	$('#dynamicNodes').append(x);
 	$('.nodes:last span').addClass('position ct-fonts');
-	tooltipDisplay(".prev-div", "top", "This is an pointer type to hold the address of the previous node");
-	tooltipDisplay(".data-div", "top", "This is an int data type to hold the user data");
-	tooltipDisplay(".next-div", "top", "This is an pointer type to hold the address of the next node");
+	tooltipDisplay("#prevDiv" + nodeCount, "top", "This is an pointer type to hold the address of the previous node");
+	tooltipDisplay("#dataDiv" + nodeCount, "top", "This is an int data type to hold the user data");
+	tooltipDisplay("#nextDiv" + nodeCount, "top", "This is an pointer type to hold the address of the next node");
 }
 
 function transferEffect(selector1, selector2, callBackFunction) {
@@ -466,7 +463,7 @@ function svgLineAppend(svgLineId, x1, y1, x2, y2, flag) {
 		line.setAttribute("opacity", 0);
 	}
 	line.style.markerEnd = 'url("#arrow")';
-	$(svgId).append(line);
+	$("#svgId").append(line);
 }
 
 function svgAnimatingLineLeftAndRight(selector1, selector2, svgLineId, lineFlag, flag, callBackFunction) {

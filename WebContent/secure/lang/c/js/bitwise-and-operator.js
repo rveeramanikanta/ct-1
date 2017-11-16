@@ -1,6 +1,7 @@
 var intro;
 var typingInterval = 5;
 var res, res1;
+var resxyz, resxyz1; //new added
 var tl = new TimelineLite();
 var flag = true;
 var flag1 = true;
@@ -79,6 +80,7 @@ var bitwiseAndOperator = function() {
 				
 			break;	
 			case "inputDiv":
+				$(".value").empty();
 				$('#valueSpan1, #valueSpan2').empty();
 				$('#firstBinaryValue').addClass('opacity00').removeAttr('style');
 			break;
@@ -94,13 +96,13 @@ var bitwiseAndOperator = function() {
 				$("#lineDiv").addClass("opacity00");
 				$("#xAndY, #resultValueDiv").addClass("opacity00");
 				$("#table1").css({"opacity":1});
-				
-				
 				$("#firstBinaryNumber").removeAttr("style");
 				$("#secondBinaryNumber").removeAttr("style");
 			break;
 			case "addOperationDiv":
 				$("#addOperationDiv").removeClass("opacity00").removeAttr("style");
+				
+				
 				$("#firstBinaryNumber").removeAttr("style");
 				$("#secondBinaryNumber").removeAttr("style");
 				$(".line-div").remove();
@@ -162,7 +164,7 @@ var bitwiseAndOperator = function() {
 						typing(".introjs-tooltiptext", text, function() {
 							$("#firstNum, #secondNum").effect( "highlight",{color: 'yellow'}, 1500 );
 							$("#firstNum").focus();
-							$("#value, #value2").empty();
+							$("#value, #value2").empty(); // new added
 							if (flag) {
 								flag = !flag;
 							$('#animationProcessDiv').append('<div class="col-xs-12" id="binaryValues"><div class="col-xs-6 padding0">'
@@ -233,7 +235,7 @@ var bitwiseAndOperator = function() {
 				}
 				res1 = "";
 				var number1 = "";
-				$.each((zeros2+num2).split(""), function(ind, val){
+				$.each((zeros2+num2).split(""), function(ind, val) {
 					number1 = number1 + " " + val;
 					res1 =  res1 + " " + '<span id="count' + ind + '" >' + val + '</span>';
 				});
@@ -253,21 +255,24 @@ var bitwiseAndOperator = function() {
 			break;
 			case "table1":
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
-				$('.introjs-tooltip').removeClass('hide');
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					$("#table1").removeClass("opacity00").hide().fadeIn(2000, function() {
-						$('#animationProcessDiv').append('<div id="addOperationDiv" class="col-xs-12"><div class="opacity00" id="firstBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:30px;padding: 2px 3px;" id="binaryDigits1"><b class=" ct-code-b-green">x</b> =   '
-								+ '</span> <span id="res">' + res  + '</span></div></div></div>');
-							$('#addOperationDiv').append('<div class="opacity00" id="secondBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:10px;padding: 2px 3px;" id="binaryDigits2"><b class=" ct-code-b-green">y</b> =   '
-									+ '</span> <span id="res1">' + res1  + '</span></div></div>');
+					$("#table1").removeClass("opacity00", function() {
 						var text="As per the table the bitwise <span class = 'ct-code-b-yellow'>AND(&)</span> operation will" 
 									+ " return <span class = 'ct-code-b-yellow'>1</span> only" 
 									+ " when <span class = 'ct-code-b-yellow'>both</span> the bits of operand1 and" 
 									+ " operand2 are <span class = 'ct-code-b-yellow'>1</span>.<br>";
+						$('.introjs-tooltip').removeClass('hide');
 						typing(".introjs-tooltiptext", text, function() {
 							$("#table1").addClass("z-index-class");
+							$("#resxyz, #resxyz1").empty();                          //new added	
 							if(flag1) {
-								flag1 = false;
+							flag1 =  !flag1;
+							// new added
+							$('#animationProcessDiv').append('<div id="addOperationDiv" class="col-xs-12"><div class="opacity00" id="firstBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:30px;padding: 2px 3px;" id="binaryDigits1"><b class=" ct-code-b-green">x</b> =   '
+									+ '</span> <span id="resxyz"></span></div></div></div>');
+								$('#addOperationDiv').append('<div class="opacity00" id="secondBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:10px;padding: 2px 3px;" id="binaryDigits2"><b class=" ct-code-b-green">y</b> =   '
+										+ '</span> <span id="resxyz1"></span></div></div>');
+						
 								var newStep = {
 									"element" : "#addOperationDiv",
 									"position" : "right",
@@ -286,6 +291,7 @@ var bitwiseAndOperator = function() {
 				$("#addOperationDiv").removeClass("opacity00");
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					intro.refresh();
+					$("#resxyz, #resxyz1").empty(); //new added
 					var num1=parseInt($('#firstNum').val(), 10).toString(2);
 					intro.refresh();
 					var num2=parseInt($('#secondNum').val(), 10).toString(2);
@@ -297,20 +303,16 @@ var bitwiseAndOperator = function() {
 					for(var i=num2.length; i < 8; i++) {
 					  zeros2 = 0 + zeros2;
 					}
-					var res = "";
 					var number = "";
 					$.each((zeros1+num1).split(""), function(ind, val){
 						number = number + " " + val;
-						res =  res + " " + '<span id="index' + ind + '" >' + val + '</span>';
+						$("#resxyz").append('&nbsp;<span id="index' + ind + '" >' + val + '</span>');   //new added
 					});
-					var res1 = "";
 					var number1 = "";
 					$.each((zeros2+num2).split(""), function(ind, val){
 						number1 = number1 + " " + val;
-						res1 =  res1 + " " + '<span id="count' + ind + '" >' + val + '</span>';
+						$("#resxyz1").append('&nbsp;<span id="count' + ind + '" >' + val + '</span>');   //new added
 					});
-					res="";
-					res1="";
 					afterConverting();
 				});
 			break;	
@@ -425,7 +427,7 @@ function perform(i) {
 						$('#addOperationDiv').append('<div class="col-xs-offset-4 col-xs-2 " style="margin-top:10px;padding:0;width:34%;" id="">'
 								+ '<div class="line-div reveal-right" id="lineDiv"></div>'
 								+ '<div class="opacity00" style="margin-top:10px;" id="resultDiv"><span class="ct-code-b-green" style="margin-left:-29px;" id="xAndY"><b>x & y</b> =</span>'
-								+ '<span id="resultValueDiv" style="margin-left: 5px;"><span class="opacity00" id="result0">0</span> '
+								+ '<span id="resultValueDiv" style="margin-left: 10px;"><span class="opacity00" id="result0">0</span> '
 								+ '<span class="opacity00" id="result1">0</span> '
 								+ '<span class="opacity00" id="result2">0</span> '
 								+ '<span class="opacity00" id="result3">0</span> '

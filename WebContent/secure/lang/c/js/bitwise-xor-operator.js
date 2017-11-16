@@ -1,6 +1,7 @@
 var intro;
 var typingInterval = 5;
 var res, res1;
+var resxyz, resxyz1;
 var flag = true;
 var flag1 = true;
 var tl = new TimelineLite();
@@ -95,11 +96,14 @@ var bitwiseXorOperator = function() {
 				$("#xAndY, #resultValueDiv").addClass("opacity00");
 				$("#table1").css({"opacity":1});
 				
+				
 				$("#firstBinaryNumber").removeAttr("style");
 				$("#secondBinaryNumber").removeAttr("style");
 			break;
 			case "addOperationDiv":
 				$("#addOperationDiv").removeClass("opacity00").removeAttr("style");
+				
+				
 				$("#firstBinaryNumber").removeAttr("style");
 				$("#secondBinaryNumber").removeAttr("style");
 				$(".line-div").remove();
@@ -107,7 +111,7 @@ var bitwiseXorOperator = function() {
 				$("#secondBinaryNumber + div").remove();
 				$("#display").empty().removeAttr('style');
 				$("#display").addClass("opacity00");
-			break;	
+			break;		
 			case "display":
 				
 			break;
@@ -165,16 +169,26 @@ var bitwiseXorOperator = function() {
 						typing(".introjs-tooltiptext", text, function() {
 							$("#firstNum, #secondNum").effect( "highlight",{color: 'yellow'}, 1500 );
 							$("#firstNum").focus();
+							$("#value, #value2").empty();
 							
-							$('#animationProcessDiv').append('<div class="col-xs-12" id="binaryValues"><div class="col-xs-6 padding0"><div id="firstBinaryValue" class="opacity00"><b>x</b> = <span id="valueSpan1">' 
+							/*$('#animationProcessDiv').append('<div class="col-xs-12" id="binaryValues"><div class="col-xs-6 padding0"><div id="firstBinaryValue" class="opacity00"><b>x</b> = <span id="valueSpan1">' 
 									+ '</span><span class="fa fa-long-arrow-right" aria-hidden="true" style="margin:15px;">' 
 									+ '</span><span id="value"></span></div></div></div>');
 							$('#binaryValues').append('<div class="col-xs-6 padding0"><div id="secondBinaryValue" class="opacity00"><b>y</b> = <span id="valueSpan2">'
 									+ '</span><span class="fa fa-long-arrow-right" aria-hidden="true" style="margin:15px;">' 
-								 	+ '</span><span id="value2"></span></div></div>');
+								 	+ '</span><span id="value2"></span></div></div>');*/
 							
 							if (flag) {
 								flag = !flag;
+								
+								$('#animationProcessDiv').append('<div class="col-xs-12" id="binaryValues"><div class="col-xs-6 padding0">'
+										+ '<div id="firstBinaryValue" class="opacity00"><b>x</b> = <span id="valueSpan1">' 
+										+ '</span><span class="fa fa-long-arrow-right" aria-hidden="true" style="margin:15px;">' 
+										+ '</span><span id="value"></span></div></div></div>');
+								$('#binaryValues').append('<div class="col-xs-6 padding0"><div id="secondBinaryValue" class="opacity00"><b>y</b> = <span id="valueSpan2">'
+										+ '</span><span class="fa fa-long-arrow-right" aria-hidden="true" style="margin:15px;">' 
+									 	+ '</span><span id="value2"></span></div></div>');
+								
 							var newStep = {
 								"element" : "#firstBinaryValue",
 								"position" : "right",
@@ -254,19 +268,26 @@ var bitwiseXorOperator = function() {
 			case "table1":
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					$("#table1").removeClass("opacity00").hide().fadeIn(2000, function() {
-						$('#animationProcessDiv').append('<div id="addOperationDiv" class="col-xs-12"><div class="opacity00" id="firstBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:30px;padding: 2px 3px;"><b class=" ct-code-b-green">x</b> =   '
+					$("#table1").removeClass("opacity00", function() {
+						/*$('#animationProcessDiv').append('<div id="addOperationDiv" class="col-xs-12"><div class="opacity00" id="firstBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:30px;padding: 2px 3px;"><b class=" ct-code-b-green">x</b> =   '
 								+ '</span>' + res  + '</div></div></div>');
 							$('#addOperationDiv').append('<div class="opacity00" id="secondBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:10px;padding: 2px 3px;"><b class=" ct-code-b-green">y</b> =   '
-									+ '</span>' + res1  + '</div></div>');
+									+ '</span>' + res1  + '</div></div>');*/
 						var text="As per the table the bitwise <span class = 'ct-code-b-yellow'>XOR(^)</span> operation will" 
 									+ " return <span class = 'ct-code-b-yellow'>0</span> only" 
 									+ " when <span class = 'ct-code-b-yellow'>both</span> the bits of operand1 and" 
 									+ " operand2 are either <span class = 'ct-code-b-yellow'>0</span> or <span class = 'ct-code-b-yellow'>1</span>.<br>"; 
 						typing(".introjs-tooltiptext", text, function() {
 							$("#table1").addClass("z-index-class");
+							$("#resxyz, #resxyz1").empty();
 							if(flag1) {
 								flag1 = false;
+								
+								$('#animationProcessDiv').append('<div id="addOperationDiv" class="col-xs-12"><div class="opacity00" id="firstBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:30px;padding: 2px 3px;" id="binaryDigits1"><b class=" ct-code-b-green">x</b> =   '
+										+ '</span> <span id="resxyz"></span></div></div></div>');
+									$('#addOperationDiv').append('<div class="opacity00" id="secondBinaryNumber"><div class="col-xs-offset-4 col-xs-5" style="margin-top:10px;padding: 2px 3px;" id="binaryDigits2"><b class=" ct-code-b-green">y</b> =   '
+											+ '</span> <span id="resxyz1"></span></div></div>');
+									
 								var newStep = {
 									"element" : "#addOperationDiv",
 									"position" : "right",
@@ -283,6 +304,7 @@ var bitwiseXorOperator = function() {
 			case "addOperationDiv":
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$("#resxyz, #resxyz1").empty();
 					var num1=parseInt($('#firstNum').val(), 10).toString(2);
 					var num2=parseInt($('#secondNum').val(), 10).toString(2);
 					var zeros1='';
@@ -297,16 +319,18 @@ var bitwiseXorOperator = function() {
 					var number = "";
 					$.each((zeros1+num1).split(""), function(ind, val){
 						number = number + " " + val;
-						res =  res + " " + '<span id="index' + ind + '" >' + val + '</span>';
+						//res =  res + " " + '<span id="index' + ind + '" >' + val + '</span>';
+						$("#resxyz").append('&nbsp;<span id="index' + ind + '" >' + val + '</span>');
 					});
 					var res1 = "";
 					var number1 = "";
 					$.each((zeros2+num2).split(""), function(ind, val){
 						number1 = number1 + " " + val;
-						res1 =  res1 + " " + '<span id="count' + ind + '" >' + val + '</span>';
+						//res1 =  res1 + " " + '<span id="count' + ind + '" >' + val + '</span>';
+						$("#resxyz1").append('&nbsp;<span id="count' + ind + '" >' + val + '</span>');
 					});
-					res="";
-					res1="";
+					/*res="";
+					res1="";*/
 					afterConverting();
 				});
 			break;	
@@ -420,7 +444,7 @@ function perform(i) {
 						$('#addOperationDiv').append('<div class="col-xs-offset-4 col-xs-2 " style="margin-top:10px;padding:0;width:34%;">'
 								+ '<div class="line-div reveal-right" id="lineDiv"></div>'
 								+ '<div class="opacity00" style="margin-top:10px;" id="resultDiv"><span class="ct-code-b-green" style="margin-left:-29px;" id="xAndY"><b>x ^ y</b> =</span>'
-								+ '<span id="resultValueDiv" style="margin-left: 5px;"><span class="opacity00" id="result0">0</span> '
+								+ '<span id="resultValueDiv" style="margin-left: 10px;"><span class="opacity00" id="result0">0</span> '
 								+ '<span class="opacity00" id="result1">0</span> '
 								+ '<span class="opacity00" id="result2">0</span> '
 								+ '<span class="opacity00" id="result3">0</span> '

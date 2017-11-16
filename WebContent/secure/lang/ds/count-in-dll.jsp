@@ -19,7 +19,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/count-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/cid.min.js"></script>
 
 <style type="text/css">
 
@@ -175,7 +175,7 @@ bwBg {
 }
 
 .zindex {
-	z-index: 1000000 !important;
+	z-index: 1000000;
 }
 
 .padding5 {
@@ -187,8 +187,15 @@ bwBg {
 	 font-weight: bold;
 }
 
-.tooltip-inner {
+.tooltip {
 	font-family: monospace;
+	zindex: 999999999;
+}
+
+.radius-50 {
+	border: 1px solid grey;
+	border-radius: 50%;
+	padding: 4px;
 }
 </style>
 </head>
@@ -209,7 +216,7 @@ bwBg {
 						<div class="col-xs-12">
 							<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
 								<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
-								<div class="col-xs-12 box1 box-border padding00 tooltopClass zindex" id="firstDiv">
+								<div class="col-xs-12 box1 box-border padding00 zindex" id="firstDiv">
 									<span  id="firstVal" class="position first-val">NULL</span>
 								</div>
 								<div class="col-xs-12 padding00 text-center">
@@ -217,14 +224,15 @@ bwBg {
 								</div>
 							</div>
 							<div class="col-xs-3 col-xs-offset-2 margin-top-15" id="sumValDiv">
-								<div class="text-center opacity00" id="sumVar">sum = <span id="sum" class="position">0</span></div>
+								<div class="text-center opacity00" id="sumVar">sum = 
+									<span class="radius-50 position zindex"><span id="sum" class="position">0</span></span></div>
 							</div>
 						</div>
 						<div class="col-xs-12 padding00 margin-top-20" id="csllNodes">
 							<div class="col-xs-12" id="dynamicNodes" style='padding-right: 0;'></div>
 						</div>
 						<div class="col-xs-12 margin-top-20 padding00" id="declareNodes">
-							<div class="col-xs-2 col-xs-offset-1 extraNode opacity00 padding00 tooltopClass zindex" id='temp'>
+							<div class="col-xs-2 col-xs-offset-1 extraNode opacity00 padding00 zindex" id='temp'>
 								<div class="col-xs-12 box padding00 position">
 									<span id='tempVal' class="extrNodeVal ct-brown-color ct-fonts position"></span>
 								</div>
