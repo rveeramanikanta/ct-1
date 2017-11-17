@@ -3,8 +3,7 @@ var lang, introjs, sum = 0, nodeCount = stepCount = 1;
 function traverseInDll() {
 	svgAppend("#animationDiv", "svgId");
 	svgMarkerAppend("#svgId");
-	var toolTopText = "This is a temporary node to store the address of node.";
-	tooltipDisplay("#temp", "bottom", toolTopText);
+	tooltipDisplay("#temp", "top", "This is a temporary node to store the address of node.");
 	
 	for (var i = 1; i < 4; i++ ) {
 		createDynamicNodes(i);
@@ -37,11 +36,10 @@ function introFunction() {
 		introjs.refresh();
 		var elementId = targetElement.id;
 		$('.introjs-nextbutton, .intorjs-prevbutton').hide();
-		$('.zindex').removeClass('zindex');
+		$('#animationDiv').hasClass('introjs-showElement') ? $('.zindex').css('z-index', '100000') : $('.zindex').css('z-index', '0');
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch (elementId) {
 			case 'animationDiv' :
-				$('.tooltopClass').addClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -58,6 +56,7 @@ function introFunction() {
 					break;
 					case "tempNotEqNull" :
 						$('#sumVar, #temp').addClass('opacity00');
+						$('#temp').removeClass('zindex');
 						$('#ifTempEqNull').removeClass('y')
 						$('.introjs-tooltip').removeClass('hide');
 						text = "<ul><li>Let us assume <y>linked list</y> can contain <y>more than one node</y>."
@@ -72,8 +71,6 @@ function introFunction() {
 			case "algorithmStepsDiv" :
 				$('.introjs-tooltip').css('height','');
 				$('#algorithmStepsDiv').removeClass('opacity00');
-				$('.tooltopClass').addClass('zindex');
-				$('.zindex').removeClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -82,7 +79,7 @@ function introFunction() {
 					appendSteps(1);
 					var text = 'Let us learn how to <bl>count</bl> the number of nodes in a <brown>Doubly Linked List(DLL)</brown>'
 								+ ' <ul><li>Check the condition <bgb>first</bgb> is equal to <g>NULL</g> or not.</li>'
-								+ '<li>If it is <brown>TRUE</brown>, then print <brown>List is Empty</brown>.<span id="btn"></span></li></ul>';
+								+ '<li>If it is <brown>true</brown>, then print "<brown>List is Empty</brown>."<span id="btn"></span></li></ul>';
 					$('#stepDes1').html(text);
 					stepCount++;
 					zoomInEffect('#s1', function() {
@@ -93,10 +90,10 @@ function introFunction() {
 				case "Step2" :
 					$('#s2').addClass('opacity00');
 					appendSteps(2);
-					var text = '<ul><li>If it is <brown>FALSE</brown>, then take one temporary node <g>last</g> and initialize with the <bgb>first</bgb>'
-								+ ' value.</li> <li>Repeat the loop until <g>last</g> is equal to <g>NULL</g>.</li>'
-								+ ' <li>If it is <g>not NULL</g> then print the <bl>data</bl> field of <g>last</g> and assign <g>next</g> field of '
-								+ ' <g>last</g> to <g>last</g>, otherwise print <g>NULL</g>.<span id="btn"></span></li></ul>';
+					var text = '<ul><li>If it is <brown>false</brown>, then declare a temporary node as <g>last</g> and initialize with the'
+								+ ' <bgb>first</bgb> value.</li> <li>Repeat the loop until <g>last</g> is equal to <g>NULL</g>.</li>'
+								+ ' <li>If it is <g>not NULL</g> then print the "<bl>data</bl>" field of <g>last</g> and assign <g>next</g> field of '
+								+ ' <g>last</g> to <g>last</g>, otherwise print "<g>NULL</g>."<span id="btn"></span></li></ul>';
 					$('#stepDes2').html(text);
 					stepCount++;
 					zoomInEffect('#s2', function() {
@@ -108,12 +105,11 @@ function introFunction() {
 			break;
 			case "mainDiv" :
 				$('#parentPre').removeClass('opacity00');
-				$('.zindex').removeClass('zindex');
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
 					case 'first':
-						$('#parentPre').append('<span id="funName"><span id="functionName">node <g>traverse()</g></span> { '
+						$('#parentPre').append('<span id="funName"><span id="functionName">void <g>traverse()</g></span> { '
 								+ '<span id="ifTempEqNull" class="opacity00">'
 								+ '\n\tif (<brown>first == NULL</brown>) {'
 								+ '\n\t\t<span id="printf1">printf("<brown>List is Empty.</brown>");</span>'
@@ -137,12 +133,12 @@ function introFunction() {
 						$('#whileBody').append('<span id="whileBodyDec"> else {'
 											+ '\n\t\tnode last = first;'
 											+ '\n\t\twhile (last != NULL) {'
-											+ '\n\t\t\t<span id="printf2">printf("%d --> ", last -> data);</span>'
+											+ '\n\t\t\t<span id="printf2">printf("<brown>%d --> </brown>", <brown>last -> data</brown>);</span>'
 											+ '\n\t\t\tlast = last -> next;'
-											+ '\n\t\t}</span>\n\t\t<span id="printf3">printf("NULL\\n");</span>\n\t}');
+											+ '\n\t\t}</span>\n\t\t<span id="printf3">printf("<brown>NULL</brown>\\n");</span>\n\t}');
 						if (lang == 'cpp') {
-							$('#printf2').html('cout << last -> data << " --> ";');
-							$('#printf3').html('cout << "NULL\\n";');
+							$('#printf2').html('cout << <brown>last -> data << </brown>" <brown>--> </brown>";');
+							$('#printf3').html('cout << "<brown>NULL</brown>\\n";');
 						}
 						$('#whileBody').addClass('opacity00');
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
@@ -157,12 +153,11 @@ function introFunction() {
 				}
 			break;
 			case "restartBtn":
-				$('.introjs-tooltip').css('min-width','');
 				$('#mainDiv').addClass('z-index1000000');
 				$("#restartBtn").removeClass('opacity00');
 				$('#whileBody').removeClass('y');
-				$('.introjs-tooltip').removeClass('hide');
-				$('.intorjs-tooltiptext').append('Click to restart.');
+				$('.introjs-tooltip').css('min-width','125px').removeClass('hide');
+				$('.introjs-tooltiptext').append('Click to restart.');
 				$('#restartBtn').click(function() {
 					location.reload();
 				});
@@ -182,8 +177,8 @@ function introFunction() {
 function tempEqNull() {
 	$('.user-btn, #btn').remove();
 	$('.introjs-tooltiptext ul li:last').after('<li></li>');
-	text = 'Let us take one temporary node (<y>last</y>) and store the <bgb>first</bgb> value (i.e., <y> ' 
-			+  $('#firstVal').text() +'</y>) to <y>last</y>.';
+	text = 'Let us declare a temporary node as <y>last</y> and initialize with the <bgb>first</bgb> value (i.e., <y> ' 
+			+  $('#firstVal').text() +'</y>).';
 	typing('.introjs-tooltiptext ul li:last', text, function() {
 		appendNextBtn('.introjs-tooltipbuttons', 'lastNodeAnimation');
 	});
@@ -193,6 +188,7 @@ function lastNodeAnimation() {
 	$('.user-btn, #btn').remove();
 	$('#tempVal').text('');
 	zoomInEffect('#temp', function() {
+		$('#temp').addClass('zindex');
 		$('#tempVal').removeClass('opacity00');
 		fromEffectWithTweenMax("#tempVal", "#firstVal", $("#firstVal").text(), function() {
 			if ($('#tempVal').text() != 'NULL') {
@@ -219,15 +215,15 @@ function ifTempValueIsNullAnimation() {
 	$('.user-btn, #btn').remove();
 	$('.introjs-tooltiptext ul li:last').after('<li></li>');
 	if ($('#firstVal').text() == "NULL") {
-		text = 'Here, the condition evaluates to <y>TRUE</y>. So, display <y>List is Empty.</y>';
+		text = 'Here, the condition evaluates to <y>true</y>. So, display "<y>List is Empty.</y>"';
 		typing('.introjs-tooltiptext ul li:last', text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step'+ stepCount);
 			$('.introjs-nextbutton').show();
 		});
 	} else {
-		text = 'Here, the condition evaluates to <y>FALSE</y>. So repeat the loop until <y>last</y> is <y>equal</y> to <y>NULL</y>.<br/>'
-				+' If it is <y>TRUE</y> then, print the <y>data</y> filed of the <y>last</y> and also traverse the '
-				+ '<y>next</y> field of <y>last</y> to <y>last</y> node. Otherwise, print <y>NULL</y>';
+		text = 'Here, the condition evaluates to <y>false</y>. So repeat the loop until <y>last</y> is <y>equal</y> to <y>NULL</y>.<br/>'
+				+' If it is <y>true</y> then, print the "<y>data</y>" filed of the <y>last</y> and also traverse the '
+				+ '<y>next</y> field of <y>last</y> to <y>last</y> node. Otherwise, print "<y>NULL</y>."';
 		typing('.introjs-tooltiptext ul li:last', text, function() {
 			appendNextBtn('.introjs-tooltipbuttons', 'tempNotNull');
 			
@@ -363,17 +359,17 @@ function createDynamicNodes(nodeNum) {	//node
 	 				+ ' <div class="col-xs-12 padding00"><div class="col-xs-4 ct-green-color ct-fonts text-center padding00">prev</div>'
 					+ ' <div class="col-xs-4 ct-blue-color ct-fonts padding00 text-center">data</div>'
 					+ '	<div class="col-xs-4 ct-green-color ct-fonts text-center padding00">next</div></div>'
-					+ ' <div id="nodedata' + nodeNum + '"><div id="prevDiv' + nodeNum + '" class="div-border left-radius col-xs-4 prev-div">'
+					+ ' <div id="nodedata' + nodeNum + '"><div id="prevDiv' + nodeNum + '" class="div-border left-radius col-xs-4 prev-div zindex">'
 					+ ' <span id="prev' + nodeNum + '" class="prev-span ct-green-color">NULL</span></div>'
-					+ ' <div id="dataDiv' + nodeNum + '" class="div-border no-radius col-xs-4 data-div">'
+					+ ' <div id="dataDiv' + nodeNum + '" class="div-border no-radius col-xs-4 data-div zindex">'
 					+ ' <span id="data' + nodeNum + '" class="data-span ct-blue-color opacity00" style="top: 0px; left: 0px;"></span></div>'
-					+ ' <div id="nextDiv' + nodeNum + '" class="div-border right-radius col-xs-6 next-div">'
+					+ ' <div id="nextDiv' + nodeNum + '" class="div-border right-radius col-xs-6 next-div zindex">'
 					+ ' <span id="next' + nodeNum + '" class="next-span ct-green-color">NULL</span></div></div>'
 					+ ' <div class="col-xs-12 padding00"><div class="col-xs-4 col-xs-offset-4 padding00 text-center">'
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding00 ct-brown-color ct-fonts">'+ randomAddress
 					+ '</span></div></div></div>';
 	$('#dynamicNodes').append(x);
-	$('.nodes:last span').addClass('position ct-fonts');
+	$('.nodes span').addClass('position ct-fonts');
 	tooltipDisplay(".data-div", "top", "This is an int data type to hold the user data");
 	tooltipDisplay(".next-div", "top", "This is an pointer type to hold the address of the next node");
 	tooltipDisplay(".prev-div", "top", "This is an pointer type to hold the previous node's address");
@@ -419,7 +415,8 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, pos, callBackFu
 		var l2 = $(selector2).offset();
 		var topLength = l1.top - l2.top;
 		var leftLength = l1.left - l2.left;
-		$("body").append("<span id='dummy' class='ct-brown-color' style='position: relative;z-index: 9999999;'>" + $(selector2).text() + "</span>");
+		$("body").append("<span id='dummy' class='ct-brown-color ct-fonts' style='position: relative;z-index: 9999999;'>"
+					+ $(selector2).text() + "</span>");
 		$('#dummy').offset({"top": l2.top, "left": l2.left});
 		$(selector2).text($(selector1).text());
 		TweenLite.from(selector2, 2.8, { ease:  Bounce.easeOut, top:l1.top-l2.top, left :l1.left-l2.left});

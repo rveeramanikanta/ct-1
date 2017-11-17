@@ -48,6 +48,7 @@
     margin-top: 15px;
     padding-top : 2px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -92,14 +93,6 @@
 	color: aqua;
 }
 
-/* .introjs-tooltip {
-	min-width: 250px;
-} */
-
-/* .introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
-} */
-
 #calculationTable {
 	border: 1px solid black;
 	height: 180px;
@@ -141,6 +134,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .color-green {
@@ -168,7 +163,7 @@ div, span, tr, td {
 	position: relative;
 }
 
-.introjs-tooltiptext {
+.introjs-tooltip {
 	min-width: 210px;
 }
 </style>
@@ -252,7 +247,7 @@ div, span, tr, td {
 </div>
 
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

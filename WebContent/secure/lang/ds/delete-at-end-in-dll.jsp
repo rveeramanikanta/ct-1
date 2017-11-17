@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Traverse in DLL</title>
+<title>Delete at End Algorithm</title>
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -20,7 +20,8 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js-min/tid.min.js"></script>
+<script src="js/delete-at-end-in-dll.js"></script>
+
 <style type="text/css">
 
 .introjs-tooltip {
@@ -37,20 +38,12 @@
 	margin-top: 30px;
 }
 
-.margin-top-20 {
-	margin-top: 25px;
-}
-
 .margin-top-5 {
 	margin-top: 5px;
 }
 
 .margin-bottom-25 {
 	margin-bottom: 30px;
-}
-
-.margin-bottom-20 {
-	margin-bottom: 25px;
 }
 
 .margin-top-15 {
@@ -78,7 +71,7 @@
 	marker-end: url("#arrowEnd"); 
 }
 
-.ct-fonts, .y, y, bgb {
+.ct-fonts, y, .y {
 	font-weight: bold;
 	font-family: monospace;
 }
@@ -89,11 +82,6 @@
 
 .ct-brown-color, brown{
 	color: brown;
-}
-
-.error-text {
-	color :red;
-	font-weight: bold;
 }
 
 .padding00 {
@@ -113,9 +101,7 @@
 .algorithm-steps-Div, #parentPre {
 	height: 300px;
 	background-color: #fffae6;
-	overflow-y: auto;
-	font-family: monospace; 
-	font-size: 12px;
+	overflow-y: auto; 
 }
 
 .box, .box1 {
@@ -132,7 +118,7 @@
 .div-border {
 	margin: 0;
 	padding: 0;
-	width: 44px;
+	width: 45px;
 	min-height: 24px;
 	text-align: center;
 	display: inline-block;
@@ -141,25 +127,31 @@
 
 .left-radius {
 	border-right: none;
-	border-color: blue;
+	border-color: green;
 	border-radius: 6px 0 0 6px;
 }
 
 .no-radius {
 	border-color: blue;
-	border-right: none;
 }
 
 .right-radius {
 	border-color: green;
 	border-radius: 0 6px 6px 0;
+	border-left: none;
 }
 
-.user-text {
-	width: 82px;
-	height: 27px;
-	border: none;
-	background: black;
+.inline-css {
+	margin: 0 10px;
+	position: relative;
+	display: inline-block;
+}
+
+.buttons {
+	color: black;
+	letter-spacing: 1px;
+	font-family: monospace;
+	box-shadow: 1px 2px 4px 0;
 }
 
 .z-index1000000 {
@@ -178,7 +170,31 @@
 	background-color: #fffae6;
 }
 
-blue, bl {
+.blinkingRed {
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+ }
+
+@keyframes blink {
+	50% {
+		background:  #ffad99;
+	}
+}
+
+.blinkingGreen {
+	animation-name: blink1;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+ }
+
+@keyframes blink1 {
+	50% {
+		background:   #ccffcc;
+	}
+}
+
+.blue, bl {
 	color: blue;
 }
 
@@ -186,13 +202,11 @@ y {
 	color: yellow;
 }
 
-.y {
-	background-color: yellow; 
-}
-
-bgb {
+bwBg {
 	color: white;
+	font-weight: bold;
 	border-radius: 4px;
+	font-family: monospace;
 	background-color: black;
 	padding: 2px 4px;
 }
@@ -213,70 +227,45 @@ bgb {
 .padding5 {
 	padding: 5px;
 }
-
-.tooltip {
-	font-family: monospace;
-	z-index: 999999999;
-}
-
+	
 </style>
 </head>
 <body>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		traverseInDll();
+		deleteAtEndNodeAnimation();
 	});
 </script>
 
-<div class='col-xs-12 padding00'>
+	<div class='col-xs-12 padding00'>
 		<div class='col-xs-12 padding00'>
 			<div class="ct-box-main">
-				<div class='text-center'>
-					<h4 class='label ct-demo-heading' id='headingDiv'>Traverse() in DLL</h4>
-				</div>
+				<div class='text-center'><h4 class='label ct-demo-heading' id='headingDiv'>deleteAtEnd() in DLL</h4></div>
 			</div>
 			
 			<div class='col-xs-12 margin-top-5' id='totalDiv'>
 				<div class='col-xs-12 padding00'>
-					<div class='col-xs-6 padding00'>
+					<div class='col-xs-5 padding00'>
 						<div class='col-xs-12 margin-top-15 padding00'>
-							<div class='col-xs-12 box-border padding00' id='animationDiv'>
-								<div class='col-xs-12 margin-top-5 margin-bottom-25 padding00'>
-									<div class="col-xs-12 padding00 margin-top-5">
-										<div class="col-xs-12 padding00" id="traverseValDiv">
-											<div class="col-xs-12 opacity00" id="traverseVar">Elements in SLL = 
-												<span id="ndata1"></span><span id="ndata2"></span><span id="ndata3"></span><span id="ndata4"></span>
+							<div class='col-xs-12 box-border' id='animationDiv'>
+								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
+									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
+										<div class="col-xs-2 padding00 opacity00" id="firstNode">
+											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
+												<div class="col-xs-12 box1 padding00 position zindex" id="firstDiv">
+													<span id="firstVal" class="position">NULL</span>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-xs-2 opacity00 position margin-top-5" id="firstNode">
-										<div class="text-center col-xs-12 padding00 ct-fonts" id="firstLabel">first</div>
-											<div class="col-xs-12 box1 padding00 zindex" id="firstDiv">
-												<span  id="firstVal" class="position ct-fonts" style="color: darkslategrey;">NULL</span>
-											</div>
-											<div class="col-xs-12 padding00">
-											<div class="col-xs-6 padding00 text-center">
-												<span id="dataAddress1" class="position  ct-brown-color ct-fonts opacity00">2318</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-12 padding00 margin-top-5" id="csllNodes">
 										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>
 									</div>
-									<div class="col-xs-12 margin-top-20 padding00" id="declareNodes">
-										<div class="col-xs-2 col-xs-offset-3 extraNode opacity00 padding00" id='temp'>
-											<div class="col-xs-12 box padding00 position">
-												<span id='tempVal' class="extrNodeVal ct-brown-color ct-fonts position"></span>
-											</div>
-											<div class="text-center col-xs-12 padding00 ct-green-color">last</div>
-										</div>
-									</div>
+									<div class="col-xs-12 margin-top-25 padding00" id="declareNodes"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class='col-xs-6 margin-top-15'>
+					<div class='col-xs-7 margin-top-15'>
 						<div class='col-xs-12 box-border padding00' id="mainDiv">
 							<div class='col-xs-6' style='padding: 5px;'>
 								<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'></div>
@@ -289,9 +278,7 @@ bgb {
 				</div>
 			</div>
 			<div class='col-xs-12 text-center'>
-				<div class='buttons-div'>
-					<button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button>
-				</div>	
+				<div class='buttons-div'><button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button></div>	
 			</div>
 		</div>
 	</div>

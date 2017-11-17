@@ -266,8 +266,7 @@ function initIntroJS() {
 			break;
 			case 'restartBtn':
 				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
-				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
-				$('.zIndex').css({'z-index': '99999999'});
+				$('#codeAndAlgorithmDiv').addClass('z-index10000');
 				$('#restartBtn').removeClass('opacity00');;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click to restart.', function() {

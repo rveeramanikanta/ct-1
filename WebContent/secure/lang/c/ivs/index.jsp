@@ -2445,7 +2445,7 @@ r {
 
 					<tr>
 						<td>9</td>
-						<td>Structure vs Union</td>
+						<td>Structure vs Union</td> 
 						<td>
 							<i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -2461,10 +2461,12 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Processing a Structures</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing a structure using arrow operator', 'processing-of-structure-with-arrow.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing a structure using arrow operator</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>26-09-2016</td>

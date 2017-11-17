@@ -240,8 +240,7 @@ function initIntroJS() {
 			break;
 			case 'restartBtn':
 				$('.introjs-tooltip').css({'height':'', 'min-width': '125px'});
-				$('#animationDiv, #codeAndAlgorithmDiv').addClass('z-index10000').css({'z-index': '99999999'});
-				$('.zIndex').css({'z-index': '99999999'});
+				$('#codeAndAlgorithmDiv').addClass('z-index10000');
 				$('#restartBtn').removeClass('opacity00');;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					typing('.introjs-tooltiptext', 'Click to restart.', function() {
@@ -579,7 +578,7 @@ function insertAtEndMethod() {
 						 + '\t<span id="step1"></span>'
 						 + '\n\treturn first;\n}');
 	} else if (lang == 'cpp') {
-		$('#insertAtEndFun').html('void Dll::<bl>insertAtEnd(int x)</bl> {\n\n}');
+		$('#insertAtEndFun').html('void Dll::<bl>insertAtEnd(int x)</bl> {\n\t<span id="step1"></span>\n}');
 	}
 	$('#step1').html('node temp;\n'
 				 + '\t<span id="callCreateMethod">temp = <g>createNode()</g>;</span>\n'

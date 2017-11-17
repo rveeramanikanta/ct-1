@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/insert-at-begin-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/iabid.min.js"></script>
 <style type="text/css">
 .margin-top25 {
 	margin-top: 25px;

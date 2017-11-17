@@ -1,9 +1,10 @@
+var lang;
 function insertAtPositionInDLLReady() {
 	dynamicTempNodes(1);
 	createDynamicNodes('#dynamicNodes', 1);
 	createDynamicNodes('#fstExplain', 3);
 	svgAppend("#animationDiv");
-	var lang = getURLParameter("lang");
+	lang = getURLParameter("lang");
 	lang = (lang == undefined) ? "c" : lang;
 	
 	$('#restartBtn').click(function() {
@@ -46,7 +47,7 @@ function createDynamicNodes(id, nodeNum) {	//node
 					+ ' <span id="dataAddress' + nodeNum + '" class="data-address padding0 ct-brown-color ct-fonts">'+ randomAddress
 					+ '</span></div></div></div>';
 	$(id).append(x);
-	$('.nodes:last span').addClass('position ct-fonts');
+	$('.nodes span').addClass('position-css ct-fonts');
 	animatedTooltip('#prevDiv' + nodeNum, "bottom", "prev holds previous node's address");
 	animatedTooltip('#dataDiv' + nodeNum, "bottom", "data holds user data");
 	animatedTooltip('#nextDiv' + nodeNum, "bottom", "next holds next node's address");
@@ -209,10 +210,10 @@ function initIntroJS() {
 							$('#codeDiv').append('\n\n<div id="positionDiv" class="position-css"><span id="insertAtPositionMthd" class="opacity00">'
 											+ ' </span></div>');
 							if (lang == 'c') {
-								$('#insertAtPositionMthd').html('node insertAtPosition(int <brn>position</brn>, int x) {'
+								$('#insertAtPositionMthd').html('node <g>insertAtPosition(int <brn>position</brn>, int x)</g> {'
 															+ ' <span id="insertAtPosition">\n\t<span id="retn">return first;\n</span>}</span>');
 							} else if (lang == 'cpp') {
-								$('#insertAtPositionMthd').html('void Dll::insertAtPosition(int <brn>position</brn>, int x) {'
+								$('#insertAtPositionMthd').html('void Dll::<g>insertAtPosition(int <brn>position</brn>, int x)</g> {'
 															+ ' <span id="insertAtPosition">\n}</span>');
 							}
 							transWithZoomInEffect('#l2', '#insertAtPositionMthd', function() {
@@ -313,12 +314,12 @@ function initIntroJS() {
 							});
 						break;
 						case 'noPositionStep':
-							$('#printfStatement').html('<span id="printf1">printf("<brn>No such position in DLL. </brn>"'
+							$('#printfStatement').html('<span id="printf1" class="opacity00">printf("<brn>No such position in DLL. </brn>"'
 													+ '\n\t"<brn>So insertion is not possible</brn>\\n");\n'
 													+ 'return first;</span>');
 							if (lang == 'cpp') {
 								$('#printfStatement').html('<span id="printf1" class="opacity00">cout << "<brn>No such position in DLL. </brn>"'
-														+ ' \t"<brn>So insertion is not possible</brn>\\n";\n'
+														+ ' \n\t"<brn>So insertion is not possible</brn>\\n";\n'
 														+ 'return;</span>');
 							}
 							transWithZoomInEffect('#l20', '#printf1', function() {
@@ -364,6 +365,10 @@ function rearrangingNodes() {
 						svgAnimatingLineRightToLeft('#nextDiv2', '#prevDiv3', 'line4');
 						svgAnimatingLineLeftToRight('#prevDiv3', '#nextDiv2', 'line5');
 						svgAnimatingLineTopAndBottom('#tempBox3', '#nextDiv1', 'line11', true);
+						$('.prev-div, .next-div, .data-div').removeAttr('data-original-title data-placement');
+						animatedTooltip('.prev-div', "bottom", "prev holds previous node's address");
+						animatedTooltip('.data-div', "bottom", "data holds user data");
+						animatedTooltip('.next-div', "bottom", "next holds next node's address");
 						nextBtnWithNextStep('.introjs-tooltipbuttons', '#codeAndAlgorithmDiv', 'posOneNotNul', 'hide');
 					}});
 				}, 800);

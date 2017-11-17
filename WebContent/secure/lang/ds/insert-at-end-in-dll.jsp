@@ -19,7 +19,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/ds/js/insert-at-end-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/iaeid.min.js"></script>
 <style type="text/css">
 .margin-top25 {
 	margin-top: 25px;
@@ -89,7 +89,6 @@ y, yy {
 	border-radius: 0 6px 6px 0;
 	border-left: none;
 }
-
 
 .box {
 	min-height: 24px;
