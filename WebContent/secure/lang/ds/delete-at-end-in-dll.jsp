@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="js/delete-at-end-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/daeid.min.js"></script>
 
 <style type="text/css">
 
@@ -102,6 +102,8 @@
 	height: 300px;
 	background-color: #fffae6;
 	overflow-y: auto; 
+	font-family: monospace;
+	font-size: 12px;
 }
 
 .box, .box1 {
@@ -227,6 +229,11 @@ bwBg {
 .padding5 {
 	padding: 5px;
 }
+
+.tooltip {
+	font-family: monospace;
+	z-index: 9999999;
+}
 	
 </style>
 </head>
@@ -252,10 +259,9 @@ bwBg {
 								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
 									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
 										<div class="col-xs-2 padding00 opacity00" id="firstNode">
-											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
-												<div class="col-xs-12 box1 padding00 position zindex" id="firstDiv">
-													<span id="firstVal" class="position">NULL</span>
-												</div>
+											<div class="text-center col-xs-12 padding00 ct-fonts" id="firstLabel">first</div>
+											<div class="col-xs-12 box1 padding00 position zindex" id="firstDiv">
+												<span id="firstVal" class="position ct-fonts" style="color: darkslategrey;">NULL</span>
 											</div>
 										</div>
 										<div class="col-xs-10" id="dynamicNodes" style='padding-right: 0;'></div>

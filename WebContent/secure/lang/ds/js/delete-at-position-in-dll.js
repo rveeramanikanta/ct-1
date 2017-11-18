@@ -5,12 +5,13 @@ function deleteAtPositionAnimation() { //call the method to start the intro and 
 	declareNodesWhenFunctionCall("last", "lastVal", "lastInDelMtd", "last");
 	declareNodesWhenFunctionCall("prev", "prevVal", "prevInDelMtd", "prev");
 	createDynamicNodes(1);
+	var toolTopText = "This is a temporary node to store the address of node.";
+	tooltipDisplay("#last", "top", toolTopText);
+	tooltipDisplay("#prev", "top", toolTopText);
+	tooltipDisplay("#pos", "bottom", "Position of the deleted element");
 	svgAppend("#animationDiv", "svgId");
 	svgMarkerAppend("#svgId", "arrow");
 	introFunction();
-	var toolTopText = "This is a tempary node to store the address of node.";
-	tooltipDisplay("#last", "bottom", toolTopText);
-	tooltipDisplay("#prev", "bottom", toolTopText);
 }
 
 
@@ -36,12 +37,11 @@ function introFunction() {
 		intro.refresh();
 		var elementId = targetElement.id;
 		$('.introjs-nextbutton').hide();
-		$('.zindex').removeClass('zindex');
+		$('#animationDiv').hasClass('introjs-showElement') ? $('.zindex').css('z-index' , '1000000') : $('.zindex').css('z-index' , '0');
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch (elementId) {
 			case 'animationDiv' :
 				nodeCount = stepCount = delNum = i = 1;
-				$('.tooltopClass').addClass('zindex');
 				$(".y").removeClass('y');
 				intro.refresh();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
@@ -49,13 +49,13 @@ function introFunction() {
 					case 'firstNodeNull': 
 						intro.refresh();
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>doubly linked is empty</y>. i.e <y>first</y> is "
-								+ " <y>NULL</y>.</li><li>For example: user want to delete <y>1</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked is empty</y>. i.e., <bwbg>first</bwbg> is "
+								+ " <y>NULL</y>.</li><li>For example: user want to delete a node at <y>1</y>st position in the <y>list</y>.</li>"
 								+ " <div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							$("#position").text(delNum);
 							zoomInEffect("#position", function() {
-								var toolTopText = "first Nodes which stores the starting address of the list";
+								var toolTopText = "first stores the beginning of the linked list";
 								tooltipDisplay("#firstDiv", "bottom", toolTopText);
 								appendNextBtn('.introjs-tooltipbuttons', 'firstEqNull');
 							});
@@ -65,8 +65,8 @@ function introFunction() {
 						intro.refresh();
 						$('#ifFirstEqNull').removeClass('y')
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>1</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at <y>1</y>st position in the <y>list</y>.</li>"
 								+ "<div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							delNum = 1;
@@ -83,8 +83,8 @@ function introFunction() {
 						$('#elseBlock').removeClass('y')
 						$('.introjs-tooltip').css('height','');
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>1</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at <y>1</y>st position in the <y>list</y>.</li>"
 								+ "<br/><div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							delNum = 1;
@@ -98,8 +98,8 @@ function introFunction() {
 						intro.refresh();
 						appendNodes();
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>4</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at <y>4</y>th position in the <y>list</y>.</li>"
 								+ "<br/><div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							delNum = 4;
@@ -112,8 +112,8 @@ function introFunction() {
 						appendNodes();
 						$('.introjs-tooltip').css('height','');
 						$('.introjs-tooltip').removeClass('hide');
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>-1</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at <y>-1</y>st position in the <y>list</y>.</li>"
 								+ "<br/><div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							delNum = -1;
@@ -124,8 +124,8 @@ function introFunction() {
 						intro.refresh();
 						appendNodes();
 						delNum = 3;
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>"+ delNum +"</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at position <y>"+ delNum +"</y> in the <y>list</y>.</li>"
 								+ "<br/><div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							appendNextBtn('.introjs-tooltipbuttons', 'multipleNodes');
@@ -135,8 +135,8 @@ function introFunction() {
 						intro.refresh();
 						appendNodes();
 						delNum = 2;
-						text = "<ul><li>Let us assume <y>double linked list</y> can contains <y>more than one node</y>."
-								+ "</li><li>For example: user want to delete <y>"+ delNum +"</y> node in the <y>list</y>.</li>"
+						text = "<ul><li>Let us assume <y>linked list</y> contain <y>more than one node</y>."
+								+ "</li><li>For example: user want to delete a node at position <y>"+ delNum +"</y> in the <y>list</y>.</li>"
 								+ "<br/><div id='appendDiv'></div></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							appendNextBtn('.introjs-tooltipbuttons', 'multipleNodes');
@@ -152,9 +152,11 @@ function introFunction() {
 					case 'Step1':
 						$('#s1').addClass('opacity00');
 						appendSteps(1);
-						var text = "<ul><li>Check whether list is <g>Empty</g> (if <bwbg>first</bwbg> is equal to <g>NULL</g>).</li>"
-									+ "<li>If it is <g>Empty</g> then, display <brown>'List is Empty, Deletion is not possible'</brown>"
-									+ " and terminate the function.<span id='btn'></span></li></ul>" 
+						var text = "Here we will learn about <bl>delete</bl> a node at a particular <bl>position</bl> in <brown>Doubly Linked List"
+								+ " (DLL)</brown>. <ul><li>Check whether list is <g>Empty</g> or not (i.e., if <bwbg>first</bwbg> is equal to"
+								+ " <g>NULL</g> or not).</li>"
+								+ "<li>If it is <g>Empty</g> then, print \"<brown>List is Empty. So deletion is not possible</brown>\""
+								+ ".<span id='btn'></span></li></ul>" 
 						$('#stepDes1').html(text);
 						zoomInEffect('#s1', function() {
 							stepCount++;
@@ -165,19 +167,19 @@ function introFunction() {
 					case 'Step2':
 						$('#s2').addClass('opacity00');
 						appendSteps(2);
-						var text = "<ul><li>If it is <g>Not Empty</g> then, define one tempary node <g>last</g>"
+						var text = "<ul><li>If it is <g>not Empty</g> then, declare a temporary node as <g>last</g>"
 									+ " and initialize with <bwbg>first</bwbg> value.</li>"
-									+ "<ul><li>Check whether the user given <g>position</g> is <g>equal</g> to <g>1</g>.</li>"
-									+ "<li> If it is <brown>TRUE</brown> then, check another condition the <g>next</g> field of <g>last</g>"
+									+ "<ul><li>Check whether the user given <g>position</g> is <g>equal</g> to <g>1</g> or not.</li>"
+									+ "<li> If it is <brown>true</brown> then, check another condition the <g>next</g> field of <g>last</g>"
 									+ " is <brown>equal</brown> to <g>NULL</g> or not.</li>"
-									+ "<li> If it is <brown>TRUE</brown> Then, assign <g>NULL</g> "
+									+ "<li> If it is <brown>true</brown> then, assign <g>NULL</g> "
 									+ " to the <bwbg>first</bwbg> then print "
-									+ "<g>data</g> field of <g>last</g> node and delete <g>last</g> and terminate the function."
+									+ "\"<bl>data</bl>\" field of <g>last</g> node and delete <g>last</g>."
 									+ "<span id='btn'></span></li></ul></ul>";
 						$('#stepDes2').html(text);
 						intro.refresh();
+						$('#algorithmStepsDiv').scrollTo('span:last', 300);
 						zoomInEffect('#s2', function() {
-							$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
 							stepCount++;
 							introNextSteps('#mainDiv', 'secondFunction');
 							appendNextBtn('#btn', 'moveStep');
@@ -186,13 +188,13 @@ function introFunction() {
 					case "Step3":
 						$('#s3').addClass('opacity00');
 						appendSteps(3);
-						var text = "<ul><ul><li>If it is <brown>FALSE</brown> then, assign the <g>next</g> field of <bwbg>first</bwbg> to "
+						var text = "<ul><ul><li>If it is <brown>false</brown> then, assign the <g>next</g> field of <bwbg>first</bwbg> to "
 									+ " <bwbg>first</bwbg> node and also assign <g>NULL</g> to the <g>prev</g> field of <bwbg>first</bwbg>"
 									+ " node.<span id='btn'></span></li></ul></ul>";
 						$('#stepDes3').html(text);
+						$('#algorithmStepsDiv').scrollTo('span:last', 300);
 						intro.refresh();
 						zoomInEffect('#s3', function() {
-							$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
 							stepCount++;
 							introNextSteps('#mainDiv', 'threeFunction');
 							appendNextBtn('#btn', 'moveStep');
@@ -201,19 +203,19 @@ function introFunction() {
 					case 'Step4' :
 						$('#s4').addClass('opacity00');
 						appendSteps(4);
-						var text = '<ul><ul><li>If it is <brown>FALSE</brown>, then define Two tempary nodes <g>last</g> and <g>prev</g> and '
-									+ 'initialized with <bwbg>first</bwbg>.</li>'
-									+ '<li>Initialize an integer variable <g>i</g> with the value <g>1</g>.</li>'
+						var text = '<ul><ul><li>If it is <brown>false</brown>, then declare two temporary nodes as <g>last</g> and <g>prev</g> and '
+									+ 'initialize with <bwbg>first</bwbg>.</li>'
+									+ '<li>Let us declare an int variable <g>i</g> and initialize with the value <g>1</g>.</li>'
 									+ '<li>Repeat the loop until the <g>i</g> is <brown>less than</brown> <g>position</g>.</li> '
-									+ '<li>if it <brown>TRUE</brown> then, check the another condition <g>last</g> is equal to <brown>'
+									+ '<li>if it <brown>true</brown> then, check the another condition <g>last</g> is equal to <brown>'
 									+ 'NULL</brown> or not.</li>'
-									+ '<ul><li>If it is <brown>TRUE</brown> then, print <g>No such position in Doubly Linked List'
-									+ ' so deletion is not possible</g></li> and return <g>first</g> node</li>'
-									+ '<li>It it is <brown>FALSE</brown> then, assign <g>last</g> value to <g>last</g> node then travel the <g>next</g> field '
-									+ ' of <g>last</g> to <g>last</g>.</li></ul><span id="btn"></span></li></ul></ul>';
+									+ '<ul><li>If it is <brown>true</brown> then, print "<g>No such position in Doubly Linked List.'
+									+ ' So deletion is not possible</g>" and return the <g>first</g> node</li>'
+									+ '<li>If it is <brown>false</brown> then, assign <g>last</g> value to <g>last</g> node then travel the '
+									+ '<g>next</g> field  of <g>last</g> to <g>last</g>.<span id="btn"></span></li></ul></li></ul></ul>';
 						intro.refresh();
 						$('#stepDes4').html(text).addClass('opacity00');
-						$('#algorithmStepsDiv').scrollTo('ul li:last', 500);
+						$('#algorithmStepsDiv').scrollTo('span:last', 300);
 						setTimeout(function() {
 							$('#stepDes4').addClass("y").removeClass('opacity00');
 							zoomInEffect('#s4', function() {
@@ -226,14 +228,14 @@ function introFunction() {
 					case 'Step5' :
 						$('#s5').addClass('opacity00');
 						appendSteps(5);
-						var text = '<ul><ul><li>If it is <brown>FALSE</brown> then check another condition if <g>last</g> is <g>equal</g> to '
-									+ '<g>NULL</g> or user entered <g>position</g> is <g>less than</g> or <brown>equal</brown> to <g>zero</g>.<li> '
-									+ '<ul><li>If it is <brown>TRUE</brown>, then print No such position in Doubly Linked List so deletion '
-									+ 'is not possible and return the <g>first</g> node.</li></ul>'
-									+ '<span id="btn"></span></li></ul></ul>';
+						var text = '<ul><li>If it is <brown>false</brown> then check another condition if <g>last</g> is <g>equal</g> to '
+									+ '<g>NULL</g> or user entered <g>position</g> is <g>less than</g> or <brown>equal</brown> to <g>zero</g>.</li> '
+									+ '<li>If it is <brown>true</brown>, then print "<brown>No such position in Doubly Linked List. So deletion '
+									+ 'is not possible</brown>" and return the <g>first</g> node.'
+									+ '<span id="btn"></span></li></ul>';
 						intro.refresh();
 						$('#stepDes5').html(text).addClass('opacity00');
-						$('#algorithmStepsDiv').scrollTo('#btn', 500);
+						$('#algorithmStepsDiv').scrollTo('span:last', 300);
 						setTimeout(function() {
 							$('#stepDes5').removeClass('opacity00');
 							zoomInEffect('#s5', function() {
@@ -246,13 +248,13 @@ function introFunction() {
 					case "Step6" :
 						$('#s6').addClass('opacity00');
 						appendSteps(6);
-						var text = '<ul><ul><li>If the above condition is <brown>FALSE</brown> then check the another condition if the <g>next</g>'
-									+ ' field of <g>last</g> is <brown>equal</brown> to <g>NULL</g> Or not</ll>'
-									+ '<li>If it is <g>NULL</g> the assign <g>NULL</g> to the <g>next</g> field of <g>prev</g>.</li>'
-								+ '<span id="btn"></span></li></ul></ul>';
+						var text = '<ul><ul><li>If the above condition is <brown>false</brown> then check the another condition if the <g>next</g>'
+									+ ' field of <g>last</g> is <brown>equal</brown> to <g>NULL</g> or not</ll>'
+									+ '<li>If it is <g>NULL</g> the assign <g>NULL</g> to the <g>next</g> field of <g>prev</g>.'
+									+ '<span id="btn"></span></li></ul></ul>';
 						intro.refresh();
 						$('#stepDes6').html(text).addClass('opacity00');
-						$('#algorithmStepsDiv').scrollTo('#btn', 500);
+						$('#algorithmStepsDiv').scrollTo('span:last', 300);
 						setTimeout(function() {
 							$('#stepDes6').removeClass('opacity00');
 							zoomInEffect('#s6', function() {
@@ -265,13 +267,13 @@ function introFunction() {
 					case "Step7":
 						$('#s7').addClass('opacity00');
 						appendSteps(7);
-						var text = '<ul><ul><li>If the above condition is <brown>FALSE</brown> then check the another condition if the <g>next</g>'
+						var text = '<ul><ul><li>If the above condition is <brown>false</brown> then check the another condition if the <g>next</g>'
 									+ ' field of <g>last</g> is <brown>equal</brown> to <g>NULL</g> Or not</ll>'
-									+ '<li>If it is <g>NULL</g> the assign <g>NULL</g> to the <g>next</g> field of <g>prev</g>.</li>'
+									+ '<li>If it is <g>NULL</g> the assign <g>NULL</g> to the <g>next</g> field of <g>prev</g>.'
 								+ '<span id="btn"></span></li></ul></ul>';
 						intro.refresh();
 						$('#stepDes7').html(text).addClass('opacity00');
-						$('#algorithmStepsDiv').scrollTo('#btn', 500);
+						$('#algorithmStepsDiv').scrollTo('#btn', 300);
 						setTimeout(function() {
 							$('#stepDes7').removeClass('opacity00');
 							zoomInEffect('#s7', function() {
@@ -302,18 +304,24 @@ function introFunction() {
 					case "secondFunction" :
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							$('#ifFirstEqNull').after('<span id="elseBlock" class="opacity00"><span id="elseCon"> else {</span>\n'
-									+ '\t\t\tnode last = first;\n'
-									+ '\t\t\tif(<brown>position == 1</brown>) {\n'
-									+ '\t\t\t\tif(<brown>last -> next == NULL</brown>) {\n'
-									+ '\t\t\t\t\tfirst = NULL;\n'
-									+ '\t\t\t\t} <span id="secondIfElseCon"></span>\n'
-									+ '\t\t\t} <span id="firstIfElseCon"></span>'
-									+ '\n\t\t\t<span id="print">printf("The deleted element from "\n\t\t\t\t\t" SLL : "\\n" << last -> data);</span>\n'
-									+ '\t\t\treturn last;\n'
-									+ '\t}\n</span>');
+									+ '\t\tnode last = first;\n'
+									+ '\t\tif (<brown>position == 1</brown>) {\n'
+									+ '\t\t\tif (<g>last -> next == NULL</g>) {\n'
+									+ '\t\t\t\tfirst = NULL;\n'
+									+ '\t\t\t} <span id="secondIfElseCon"></span>\n'
+									+ '\t\t}<span id="firstIfElseCon"></span>'
+									+ '\n\t\t<span id="print">printf("<brown>The deleted element from </brown>"\n\t\t\t\t\t\t\t'
+									+ ' "<brown> DLL : %d</brown>\\n", <brown>last -> data</brown>);'
+									+ '\n\t\treturn first;</span>\n'
+									+ '\t}</span>');
+							if (lang == 'cpp') {
+								$('#print').html('cout << "<brown>The deleted element from </brown>"\n\t\t\t\t\t'
+									+ ' "<brown> DLL : </brown>" <brown> << last -> data</brown> << "\\n";\n'
+									+ '\t\treturn;')
+							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
 								$('#elseBlock').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
-								$('#parentPre').scrollTo('#elseBlock', 500);
+								$('#parentPre').scrollTo('#elseBlock', 200);
 								$('#dynamicNodes').empty();
 								for (var i = 1; i < 4; i++ ) {
 									createDynamicNodes(i);
@@ -332,14 +340,14 @@ function introFunction() {
 					case "threeFunction":
 					$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 						var text = " else {\n"
-								+ "\t\t\t\t\tfirst = first -> next;\n"
-								+ "\t\t\t\t\tfirst -> prev = NULL;\n"
-								+ "\t\t\t\t}"
+								+ "\t\t\t\tfirst = first -> next;\n"
+								+ "\t\t\t\tfirst -> prev = NULL;\n"
+								+ "\t\t\t}"
 						$("#secondIfElseCon").addClass("opacity00").append(text);
 						transferEffect('#algorithmStepsDiv ul:last','#secondIfElseCon', function() {
 							$("#secondIfElseCon").removeClass("opacity00")
 							$('#secondIfElseCon').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
-							$('#parentPre').scrollTo('#secondIfElseCon', 500);
+							$('#parentPre').scrollTo('#secondIfElseCon', 200);
 							$('#funName').after('<span id="btn"></span>');
 							introNextSteps('#animationDiv', 'fourthExample');
 							appendNextBtn('#btn', 'moveStep');
@@ -349,22 +357,26 @@ function introFunction() {
 					case "fourFunction" :
 						$('#stepDes4').removeClass("y")
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
-							var appendText = '<span id="elseBlock1" class="opacity00">else {\n'
-								+ '\t\t\t\t\tint i;\n'
-								+ '\t\t\t\t\tfor (<brown>i = 1; i < position; i++</brown>) {\n'
-								+ '\t\t\t\t\t\tif (<brown>last == NULL</brown>) {\n'
-								+ '\t\t\t\t\t\t\tprintf("No such position in"\n'
-								+ '\t\t\t\t\t\t\t " Doubly Linked List"\n'
-								+ '\t\t\t\t\t\t\t\t" so deletion is not possible\\n");\n'
-								+ '\t\t\t\t\t\t\treturn first;\n'
-								+ '\t\t\t\t\t\t} else {\n'
-								+ '\t\t\t\t\t\t\tprev = last;\n'
-								+ '\t\t\t\t\t\t\tlast = last -> next;\n'
-								+ '\t\t\t\t\t\t}\n'
-								+ '\t\t\t\t}<span id="iflstNul"></span><span id="btnAppend"></span>\n</span>'
+							var appendText = '<span id="elseBlock1" class="opacity00"> else {\n'
+								+ '\t\t\tint i;\n'
+								+ '\t\t\tfor (<brown>i = 1; i < position; i++</brown>) {\n'
+								+ '\t\t\t\tif (<g>last == NULL</g>) {\n'
+								+ '\t\t\t\t\t<span id="print1">printf("<brown>No such position in DLL. </brown>"\n'
+								+ '\t\t\t\t\t "<brown>So deletion is not possible</brown>\\n");\n'
+								+ '\t\t\t\t\treturn first;</span>\n'
+								+ '\t\t\t\t} else {\n'
+								+ '\t\t\t\t\tprev = last;\n'
+								+ '\t\t\t\t\tlast = last -> next;\n'
+								+ '\t\t\t\t}\n'
+								+ '\t\t\t}<span id="iflstNul"></span>\n\t\t}<span id="btnAppend"></span></span>'
 							$('#firstIfElseCon').append(appendText);
+							if (lang == 'cpp') {
+								$('#print1').html('cout << "<brown>No such position in DLL. </brown>"\n'
+										+ '\t\t\t\t\t\t\t "<brown>So deletion is not possible</brown>\\n";\n'
+										+ '\t\t\t\t\treturn;');
+							}
 							transferEffect('#algorithmStepsDiv ul:eq(5)','#elseBlock1', function() {
-								$('#parentPre').scrollTo('#print', 500);
+								$('#parentPre').scrollTo('#print', 200);
 								$('#elseBlock1').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
 								$('#btnAppend').after('<span id="btn"></span>');
 								introNextSteps('#animationDiv', 'fifthExample');
@@ -375,13 +387,18 @@ function introFunction() {
 					case "fiveFunction" :
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							var appendText = '\n<span id="onlyIfBlock" class="opacity00"> '
-								+ '\t\t\t\t\tif (<brown>lastNode == NULL || position <= 0 </brown>) {\n'
-								+ '\t\t\t\t\t\tprintf("No such position in"\n\t\t\t\t\t\t\t\t" SLL So deletion is"'
-								+ '\n\t\t\t\t\t\t\t\t "not possible\\n");\n\t\t\t\t\t\treturn first;\n\t\t\t\t\t}<span id="preNextNull"></span>'
+								+ '\t\t\tif (<g>lastNode == NULL || position <= 0 </g>) {\n'
+								+ '\t\t\t\t<span id="print2">printf("<brown>No such position in DLL. </brown>"\n\t\t\t\t\t\t\t\t'
+								+ ' " <brown>So deletion is not possible</brown>\\n");'
+								+ ' \n\t\t\t\treturn first;</span>\n\t\t\t}<span id="preNextNull"></span>'
 								+ '<span id="btn"></span>'
+								if (lang == 'cpp') {
+									$('#print2').html('cout << "<brown>No such position in DLL. </brown>"\n\t\t\t\t\t\t\t\t" <brown>So deletion '
+												+ 'is not possible</brown>\\n");\n\t\t\t\t\treturn;');	
+								}
 							$('#iflstNul').append(appendText);
 							transferEffect('#algorithmStepsDiv ul:last','#onlyIfBlock', function() {
-								$('#parentPre').scrollTo('#elseBlock1', 500);
+								$('#parentPre').scrollTo('#elseBlock1', 200);
 								$('#onlyIfBlock').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
 								introNextSteps('#animationDiv', 'sixthExample');
 								appendNextBtn('#btn', 'moveStep');
@@ -391,11 +408,11 @@ function introFunction() {
 					case "sixFunction":
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							var appendText = '<span id="onlyIfBlock1" class="opacity00"> '
-								+ ' else if (<brown>last -> next == NULL</brown>) {\n'
-								+ '\t\t\t\t\t\tprev -> next = NULL;\n\t\t\t\t\t}<span id="lastIfCon"></span><span id="btn"></span>'
+								+ 'else if (<brown>last -> next == NULL</brown>) {\n'
+								+ '\t\t\t\tprev -> next = NULL;\n\t\t\t}<span id="lastIfCon"></span><span id="btn"></span>'
 							$('#preNextNull').append(appendText);
 							transferEffect('#algorithmStepsDiv ul:last','#onlyIfBlock1', function() {
-								$('#parentPre').scrollTo('#onlyIfBlock1', 500);
+								$('#parentPre').scrollTo('#onlyIfBlock1', 200);
 								$('#onlyIfBlock1').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
 								introNextSteps('#animationDiv', 'seventhExample');
 								appendNextBtn('#btn', 'moveStep');
@@ -405,15 +422,15 @@ function introFunction() {
 					case "seventhFunction" :
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							var appendText = '<span id="onlyIfBlock2" class="opacity00"> '
-								+ ' else {\n'
-								+ '\t\t\t\t\t\t\tprev -> next = last -> next;'
-								+ '\n\t\t\t\t\t\t\tprev -> next -> prev = last -> next;'
-								+ '\n\t\t\t\t\t}<span id="btn"></span>'
+								+ 'else {\n'
+								+ '\t\t\t\tprev -> next = last -> next;'
+								+ '\n\t\t\t\tprev -> next -> prev = last -> next;'
+								+ '\n\t\t\t}<span id="btn"></span>'
 							$('#lastIfCon').append(appendText);
 							transferEffect('#algorithmStepsDiv ul:last','#onlyIfBlock2', function() {
-								$('#parentPre').scrollTo('#lastIfCon', 500);
+								$('#parentPre').scrollTo('#lastIfCon', 200);
 								$('#lastIfCon').addClass('y').effect( "highlight",{color: 'yellow'}, 600);
-								introNextSteps('#restartBtn', 'restartBtn');
+								introNextSteps('#restartBtn', '', 'right');
 								appendNextBtn('#btn', 'moveStep');
 							});
 						});
@@ -421,9 +438,10 @@ function introFunction() {
 				}
 			break;
 			case "restartBtn":
-				$('.introjs-tooltip').css('min-width','');
 				$('#mainDiv').addClass('z-index1000000');
 				$("#restartBtn").removeClass('opacity00');
+				$('.introjs-tooltip').css({'height': '', 'min-width':'125px'}).removeClass('hide');
+				$('.introjs-tooltiptext').append('Click to restart.');
 				$('#onlyIfBlock').removeClass('y');
 				$('#restartBtn').click(function() {
 					location.reload();
@@ -434,25 +452,30 @@ function introFunction() {
 	});
 	intro.start();
 	$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
-	text = " Here, we will learn <y>Delete At End Node in Doubly Linked List</y>.";
+	text = " Here, we will learn <y>deleteAtPosition()</y> in <y>Doubly Linked List</y>.";
 	typing(".introjs-tooltiptext", text, function() {
 		$('.introjs-nextbutton').show();
 	});
 } 
 
 function deleteAtPosition() {
-	$('#parentPre').append('<span id="funName">node <g>deleteAtPosition()</g> { '
-				+ '\n\t<span id="ifFirstEqNull" class="opacity00"> if (<brown>first == NULL</brown>) {'
-				+'\n\t\tprintf("List is Empty,"\n\t\t\t" Deletion is not possible\\n");\n\t}</span>'
-				+'\n}</span>');
+	$('#parentPre').append('<span id="funName"><span id="funMthd">node <g>deleteAtPosition()</g> {</span> '
+				+ '\n\t<span id="ifFirstEqNull" class="opacity00">if (<g>first == NULL</g>) {'
+				+ '\n\t\t<span id="print3">printf("<brown>List is Empty. So</brown>"\n\t\t\t\t\t'
+				+ '" <brown> deletion is not possible</brown>\\n");</span>\n\t}</span>'
+				+ '\n}</span>');
+	if (lang == 'cpp') {
+		$('#funMthd').html('node Dll::<g>deleteAtPosition()</g> {');
+		$('#print3').html('cout << "<brown>List is Empty. So</brown>"\n\t\t\t " <brown> deletion is not possible</brown>\\n";');
+	}
 }
 
 function firstEqNull() {
 	$('.user-btn, #btn').remove();;
 	zoomInEffect('#firstNode', function() {
-		text = '<li>Here <y>first</y> value (i.e <y>'+ $('#firstVal').text() +'</y>) is equal to <y>NULL</y>'
-				+ ' means there in no node in the <y>list</y> so deletion is not possible here.</li><li> Print <y>List is Empty,'
-				+ ' Deletion is not possible</y> and terminate the function</li>';
+		text = '<li>Here <bwbg>first</bwbg> value (i.e., <y>'+ $('#firstVal').text() +'</y>) is equal to <y>NULL</y>'
+				+ ' means there is no nodes in the <y>list</y>. So deletion is not possible here.</li><li> Print "<y>List is Empty. So'
+				+ ' deletion is not possible</y>".</li>';
 		typing('#appendDiv', text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step1');
 			$('.introjs-nextbutton').show();
@@ -464,7 +487,7 @@ function firstNotEqNullAnimation() {
 	$('.user-btn, #btn').remove();
 	$('#firstVal').text($('.data-address:first').text());
 	$('#line1').css('opacity', '1');
-	text = '<li>Here, the <y>first</y> node contain the value (i.e <y>'+ $('#firstVal').text() +'</y>) is not a <y>NULL</y> means '
+	text = '<li>Here, the <bwbg>first</bwbg> (i.e., <y>'+ $('#firstVal').text() +'</y>) is not equal to <y>NULL</y> means '
 			+ '<y>list</y> contains some nodes.</li>'
 	typing('#appendDiv', text, function() {
 		$('#appendDiv').after('<div id="appendDiv1"></div>')
@@ -477,21 +500,20 @@ function createlast() {
 	$('#s2').removeClass('blinkingGreen');
 	
 	if (delNum == 1) {
-		text = '<li>Let us take one tempary node (<y>last</y>) and store the <y>first</y> value (i.e <y> '
-				+ $('#firstVal').text() +'</y>) to <y>last</y>.</li>';
+		text = '<li>Let us declare a temporary node as <y>last</y> and store the <bwbg>first</bwbg> value (i.e., <y> '
+				+ $('#firstVal').text() +'</y>).</li>';
 	} else if (delNum == 0) { 
 		text = '<li>Check if position (<y>'+ delNum +'</y>) is less than or equal to <y>0</y> or not.'
 				+ ' Here, position (<y>'+ delNum +' == 0</y>) condition is evaluates to <y>true</y>. so '
-				+ 'print <y>No such position in SLL so deletion is not possible.</y> </li>';
+				+ 'print "<y>No such position in DLL. So deletion is not possible.</y>" </li>';
 	} else {
-		text = '<li>Let us take two tempary node (<y>last</y> and <y>prev</y>) and store the <y>first</y> value (i.e <y> '
-			+ $('#firstVal').text() +'</y>) to <y>last</y> and <y>prev</y>.</li>';
+		text = '<li>Let us declare two temporary nodes as (<y>last</y> and <y>prev</y>) and initialize with the <bwbg>first</bwbg> value (i.e., <y> '
+			+ $('#firstVal').text() +'</y>).</li>';
 	}
 	typing('#appendDiv1', text, function() {
 		$('#appendDiv1').after('<div id="appendDiv25"></div>');
 		$('.introjs-tooltip').scrollTo('.user-btn', 500);
 		if (delNum == 0) {
-			//introNextSteps('#algorithmStepsDiv', 'Step3');
 			$('.introjs-nextbutton').show();
 		} else {
 			appendNextBtn('.introjs-tooltipbuttons', 'createlastAnimation');
@@ -530,7 +552,6 @@ function createlastAnimation() {
 
 function checkPosEqOneText() {
 	$('.user-btn').remove();
-	$('.introjs-tooltip').css('height','250');
 	if (delNum == 1) {
 		text = '<li>Check if the user given <y>position</y> (<y>'+ delNum +'</y>) is <y>equal</y> to <y>1</y> or not.</li> '
 				+ '<li>Here, the condition return <y>true</y> so follow the below steps.</li>'
@@ -540,6 +561,7 @@ function checkPosEqOneText() {
 				+ ' so follow the below steps.</li>'
 	}
 	typing('#appendDiv25', text, function() {
+		$('.introjs-tooltip').css('height','250');
 		if (delNum == 1) {
 			$('#appendDiv25').after('<div id="appendDiv22"></div>');
 			appendNextBtn('.introjs-tooltipbuttons', 'PosEqOne');
@@ -555,10 +577,10 @@ function PosEqOne() {
 	$('.user-btn').remove();
 	if ($(".nodes").length == 1) {
 		text = "<li>Now check another condition if the <y>next</y> field of <y>last</y> is <Y>equal</y> to <y>NULL</y> or not.</li>"
-			+ "<li>Here, the condition is evaluates to <y>true</y> so the control enters in if-block.</li>";
+			+ "<li>Here, the condition evaluates to <y>true</y> so the control enters in if-block.</li>";
 	} else {
 		text = "<li>Now check another condition if the <y>next</y> field of <y>last</y> is <Y>equal</y> to <y>NULL</y> or not.</li>"
-			+ "<li>Here, the condition is evaluates to <y>false</y> so the control enters in else-block.</li>"
+			+ "<li>Here, the condition evaluates to <y>false</y> so the control enters in else-block.</li>"
 	} 
 	typing('#appendDiv22', text, function() {
 		$('#appendDiv22').after('<div id="appendDiv31"></div>')
@@ -570,10 +592,10 @@ function PosEqOne() {
 function checkTempNextToNull() {
 	$('.user-btn').remove();
 	if ($(".nodes").length == 1) {
-		text = '<li>Assign <y>NULL</y> to the <y>first</y> node.</li>'
+		text = '<li>Assign <y>NULL</y> to the <bwbg>first</bwbg> node.</li>'
 	} else {
-		text = '<li>Store the <y>next</y> field of <y>first</y> (i.e <y>'+ $('#next1').text() +'</y>) to <y>first</y> node.</li> and assign '
-				+ ' <y>NULL</y> to the <y>prev</y> field of <y>last</y> node.'
+		text = '<li>Store the <y>next</y> field of <bwbg>first</bwbg> (i.e., <y>'+ $('#next1').text() +'</y>) to <bwbg>first</bwbg> node'
+				+ ' and assign  <y>NULL</y> to the <y>prev</y> field of <y>last</y> node.</li>'
 	}
 	typing('#appendDiv22', text, function() {
 		$('#appendDiv22').after('<div id="appendDiv31"></div>')
@@ -584,21 +606,22 @@ function checkTempNextToNull() {
 
 function repeatLoopStep() {
 	$('.user-btn').remove();
-	text = '<li>Let us take one integer variable <y>i</y> and initialized with <y>1</y>.</li><br/>'
+	text = '<li>Let us declare a int variable <y>i</y> and initialize with <y>1</y>.</li><br/>'
 			+ '<li>Repeat the loop until the <y>i</y> is <y>less than</y> <y>position</y> (i.e. <y>'+ delNum +'</y>).</li> '
-			+ '<li>if it <y>TRUE</y> then, check the another condition <y>last</y> is equal to <y>'
+			+ '<li>if it <y>true</y> then, check the another condition <y>last</y> is equal to <y>'
 			+ 'NULL</y> or not.</li>'
-			+ '<ul><li>If it is <y>TRUE</y> then, print <y>No such position in Doubly Linked List'
-			+ ' so deletion is not possible</y></li> and return <y>first</y> node</li>'
-			+ '<li>It it is <y>FALSE</y> then, assign <y>last</y> value to <y>last</y> node then travel the <y>next</y> field '
+			+ '<ul><li>If it is <y>true</y> then, print "<y>No such position in DLL. So '
+			+ '  deletion is not possible</y>"</li> '
+			+ '<li>If it is <y>false</y> then, assign <y>last</y> value to <y>last</y> node then travel the <y>next</y> field '
 			+ ' of <y>last</y> to <y>last</y>.</li>';
 	typing('#appendDiv3', text, function() {
+		$('.introjs-tooltip').scrollTo('li:last', 200);
 		i = 1;
 		$('#appendDiv3').after('<div id="appendDiv4"></div>');
 		zoomInEffect('#iVal1');
 		$('#iVal1').effect( "highlight",{color: 'yellow'}, 600);
 		appendNextBtn('.introjs-tooltipbuttons', 'repeatLoopStepAnimation');
-		$('.introjs-tooltip').scrollTo('.user-btn', 500);
+		$('.introjs-tooltip').scrollTo('y:last', 200);
 	});
 }
 
@@ -615,22 +638,22 @@ function repeatLoopStepAnimation() {
 								 "#svgId", "line22", "arrow", false, function() {
 							$('#line22').remove();
 							$('#lastVal').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-									fadeInBounceEffectWithTimelineMax("#next" + nodeCount, "#lastVal", "bottom", function() {
-											$('#line11').remove();
-											if ($("#lastVal").text() != "NULL") {
-												svgAnimatingLineTopToBottom("#animationDiv", "#last", "#prevDiv" + (nodeCount + 1),
-														"#svgId", "line11", "arrow", false, function() {
-															nodeCount++;
-															i++;
-															$('#val').effect( "highlight",{color: 'yellow'}, 600);
-															flipEffectWithTweenMax('#val', i, function() {
-																repeatLoopStepAnimation();
-															});
-														});
-											} else {
+								fadeInBounceEffectWithTimelineMax("#next" + nodeCount, "#lastVal", "bottom", function() {
+									$('#line11').remove();
+									if ($("#lastVal").text() != "NULL") {
+										svgAnimatingLineTopToBottom("#animationDiv", "#last", "#prevDiv" + (nodeCount + 1),
+												"#svgId", "line11", "arrow", false, function() {
+											nodeCount++;
+											i++;
+											$('#val').effect( "highlight",{color: 'yellow'}, 600);
+											flipEffectWithTweenMax('#val', i, function() {
 												repeatLoopStepAnimation();
-											}
-									});
+											});
+										});
+									} else {
+										repeatLoopStepAnimation();
+									}
+								});
 							});
 						});
 					});
@@ -638,51 +661,56 @@ function repeatLoopStepAnimation() {
 			});
 		});
 	} else {
+		$('.introjs-tooltip').scrollTo('y:last', 200);
 		if ($("#lastVal").text() == "NULL") {
 			text = '<li>Here the condition (<y>'+ i +'</y> &lt; <y>'+ delNum +'</y>) is evaluates to <y>true</y> but there is no node to check'
-					+ '.</li><br/><li>Here, <y>lastNode</y> is equal to <y>NULL</y> So, print <y>No such position'
-					+ ' in DLL So deletion is not possible</li>';
+					+ '.</li><br/><li>Here, <y>lastNode</y> is equal to <y>NULL</y> So, print "<y>No such position'
+					+ ' in DLL. So deletion is not possible</y>"</li>';
 			introNextSteps('#algorithmStepsDiv', 'Step4');
-			$('.introjs-nextbutton').show();
+			typing('#appendDiv4', text, function() {
+				$('.introjs-tooltip').scrollTo('y:last', 200);
+				$('.introjs-nextbutton').show();
+			});
 		} else {
 			text = '<li>Here the condition (<y>'+ i+'</y> &lt; <y>'+ delNum +'</y>) is evaluates to <y>false</y>,</li>'
 					+ ' then check another condition if <y>last</y> is <y>equal</y> to <y>NULL</y> or if <y>position</y> is '
 					+ ' <y>less than</y> or <y>equal</y> to <y>zero</y>.</li>'	
-			appendNextBtn('.introjs-tooltipbuttons', 'checkIfPosIsLessThanZero');
+			typing('#appendDiv4', text, function() {
+				$('.introjs-tooltip').scrollTo('y:last', 200);
+				appendNextBtn('.introjs-tooltipbuttons', 'checkIfPosIsLessThanZero');
+			});
 		}
-		typing('#appendDiv4', text, function() {
-			$('#appendDiv4').after('<div id="appendDiv31"></div>');
-			$('.introjs-tooltip').scrollTo('.user-btn', 500);
-		});
+		$('#appendDiv4').after('<div id="appendDiv31"></div>');
 	}
 }
 
 function checkIfPosIsLessThanZero() {
 	$('.user-btn').remove();
 	if (delNum <= 0) {
-		var text = "<li>Here, the condition <y>"+ randomAddress +" == NULL || "+ delNum +" <= 0</y> condiio is evaluates to <y>true</y>"
-					+ " so, print there is <y>No such position in Doubly Linked List so deletion is not possible</y> "
-					+ "and return the <y>first</y> node.</li>";
+		var text = "<li>Here, the condition <y>"+ randomAddress +" == NULL || "+ delNum +" <= 0</y> condition evaluates to <y>true</y>"
+					+ " so, print there is \"<y>No such position in DLL. So deletion is not possible</y>\". </li>"
 		$('#appendDiv31').after('<div id="appendDiv5"></div>');
 		typing('#appendDiv31', text, function() {
 			introNextSteps('#algorithmStepsDiv', 'Step5');
 			$('.introjs-nextbutton').show();
-			$('.introjs-tooltip').scrollTo('.introjs-nextbutton', 500);
+			$('.introjs-tooltip').scrollTo('a:last', 200);
 		});
 	} else {
-		var text = "<li>Here, the condition <y>"+ randomAddress +" == NULL || "+ delNum +" <= 0</y> condiio is evaluates to <y>FALSE</y>"
+		var text = "<li>Here, the condition <y>"+ randomAddress +" == NULL || "+ delNum +" <= 0</y> condition evaluates to <y>false</y>"
 					+ " again check another conditin if <y>next</y> field of <y>last</y> node is <y>equal</y> to <y>NULL</y> or not.</li>"
-					+ "<li>It is <y>TRUE</y> then assign the <y>prev</y> field of <y>prev</y> to <y>NULL</y>.</li>"
-					+ "<li>If it is <y>FALSE</y> then store the <y>next</y> field of <y>prev</y> to <y>next</y> field of <y>last</y> also "
+					+ "<li>It is <y>true</y> then assign the <y>prev</y> field of <y>prev</y> to <y>NULL</y>.</li>"
+					+ "<li>If it is <y>false</y> then store the <y>next</y> field of <y>prev</y> to <y>next</y> field of <y>last</y> also "
 					+ " store the <y>next</y> field of <y>prev</y> to the <y>last</y> node <y>next</y> of <y>prev</y>.</li>"
 					+ "<li>Here, the condition is evaluates to <y>"+ (randomAddress == "NULL" || delNum <= 0) +"</y></li>";
 		$('#appendDiv31').after('<div id="appendDiv5"></div>');
 		typing('#appendDiv31', text, function() {
+			$('.introjs-tooltip').scrollTo('li:last', 200);
 			if (i == 3) {
 				appendNextBtn('.introjs-tooltipbuttons', 'assignNullToPreNode');
 			} else {
 				appendNextBtn('.introjs-tooltipbuttons', 'assignNxtNodeToPreNode');
 			}
+			$('.introjs-tooltip').scrollTo('a:last', 200);
 		});
 	}
 }
@@ -697,8 +725,8 @@ function assignNullToPreNode() {
 				$('#next2').text("NULL").addClass("opacity00");
 				zoomInEffect("#next2", function() {
 					$("#line3, #line13").remove();
-					$('.introjs-tooltip').scrollTo('.user-btn', 500);
 					appendNextBtn('.introjs-tooltipbuttons', 'printAndDeleteNodeText');
+					$('.introjs-tooltip').scrollTo('a:last', 500);
 				});
 			});
 		});
@@ -712,18 +740,14 @@ function assignNxtNodeToPreNode() {
 				 "#svgId", "line22", "arrow", false, function() {
 			$('#line22').remove();
 			$('#next1').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-				fadeInBounceEffectWithTimelineMax("#next1", "#next2", "left", function() {
-					$("#line3").remove();
+				fadeInBounceEffectWithTimelineMax("#next2", "#next1", "right", function() {
+					$("#line2").remove();
 					$('#prevVal').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-						svgAnimatingLineTopToBottom("#animationDiv", "#prev", "#prevDiv1",
-								 "#svgId", "line22", "arrow", false, function() {
-							$('#line22').remove();
-							$('#next1').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
-								fadeInBounceEffectWithTimelineMax("#next1", "#prev3", "left", function() {
-									$("#line13").remove();
-									appendNextBtn('.introjs-tooltipbuttons', 'printAndDeleteNodeText');
-									$('.introjs-tooltip').scrollTo('.user-btn', 500);
-								});
+						$('#prev3').parent().effect( "highlight",{color: 'yellow'}, 600, function() {
+							fadeInBounceEffectWithTimelineMax("#prevVal", "#prev3", "top", function() {//////
+								$("#line13").remove();
+								appendNextBtn('.introjs-tooltipbuttons', 'printAndDeleteNodeText');
+								$('.introjs-tooltip').scrollTo('.user-btn', 500);
 							});
 						});
 					});
@@ -793,17 +817,17 @@ function assignNullToTheFst() {
 function printAndDeleteNodeText() {
 	$('.user-btn').remove();
 	if (lang != 'cpp') {
-		var text = '<li>Now print the <y>last -> data</y> (i.e <y>'+ $('#data' + nodeCount).text() +'</y>) and '
-		+ ' <y>delete</y> the <y>last</y> node i.e (<y>'+ $('#lastVal').text() +'</y>).</li>'	
+		var text = '<li>Now print the "<y>last -> data</y>" (i.e., <y>'+ $('#data' + nodeCount).text() +'</y>) and '
+		+ ' <y>delete</y> the <y>last</y> node (i.e., <y>'+ $('#lastVal').text() +'</y>).</li>'	
 	} else {
-		var text = '<li>Now print the <y>data</y> field of <y>last</y> (i.e <y>'+ $('#data' + nodeCount).text() +'</y>) and '
-		+ ' <y>delete</y> the <y>last</y> node i.e (<y>'+ $('#lastVal').text() +'</y>) and also return the <y>last</y> node.</li>'
+		var text = '<li>Now print the "<y>data</y>" field of <y>last</y> (i.e., <y>'+ $('#data' + nodeCount).text() +'</y>) and '
+		+ ' <y>delete</y> the <y>last</y> node (i.e., <y>'+ $('#lastVal').text() +'</y>).</li>'
 	}
 	typing('#appendDiv31', text, function() {
 		$('#appendDiv31').after('<div id="appendDiv4"></div>')
 		$('#dataDiv'+nodeCount +', #nextDiv'+ nodeCount + ', #prevDiv' + nodeCount).addClass('blinkingRed');
 		appendNextBtn('.introjs-tooltipbuttons', 'printAndDeleteNodeAnimation');
-		$('.introjs-tooltip').scrollTo('.user-btn', 500);
+		$('.introjs-tooltip').scrollTo('y:last', 200);
 	});
 }
 
@@ -840,7 +864,7 @@ function printAndDeleteNodeAnimation() {
 					introNextSteps('#algorithmStepsDiv', 'Step7');
 				}
 				$('.introjs-nextbutton').show();
-				$('.introjs-tooltip').scrollTo('.introjs-nextbutton', 500);
+				$('.introjs-tooltip').scrollTo('a:last', 200);
 			});
 		}
 	}});
@@ -850,7 +874,6 @@ function ifSingleNodePresent() {
 	$(".user-btn, #btn").remove();
 	$('#tempVal').text('');
 	zoomInEffect("#posVal", function() {
-		//createDynamicNodes(1);
 		$("#data1").text("20");
 		$('#firstNode, #node1, #data1').removeClass('opacity00');
 		$("#prev1, #next1").text("NULL").removeClass("opacity00");
@@ -877,7 +900,6 @@ function multipleNodes() {
 					$('#line' + i).css('opacity', '1');
 				}
 				$("#prev1").text("NULL").removeClass("opacity00");
-				//$("#next2").text("NULL").removeClass("opacity00");
 				regenerateArrows(true);
 				appendNextBtn('.introjs-tooltipbuttons', 'firstNotEqNullAnimation');
 			},500);
@@ -947,19 +969,9 @@ function introNextSteps(stepName, animatedStep, position) {
 	intro._options.steps.push({"element" : stepName});
 }
 
-function customIntroNxtStep(stepName, animatedStep, position) {
-	introNextSteps(stepName, animatedStep, position);
-	setTimeToIntroGoNextStep();
-}
-
-function setTimeToIntroGoNextStep() {
-	setTimeout(function() {
-		intro.nextStep();
-	}, 1000);
-}
-
 function appendNextBtn(id, value) {
 	$(id).append('<a class="introjs-button user-btn" onclick="' + value + '()">Next &#8594;</a>');
+	$('.introjs-tooltip').scrollTo('a:last', 200);
 }
 
 function getURLParameter(sParam) { //choose the language like c or cpp...etc 
@@ -994,19 +1006,15 @@ function createDynamicNodes(val) {
 					+ ' <div class="col-xs-12 padding00"><div class="col-xs-4 col-xs-offset-4 padding00 text-center"><span id="dataAddress' + val + '"'
 					+ ' class="data-address padding00 ct-brown-color ct-fonts">'+ randomAddress + '</span></div></div></div>';
 	$('#dynamicNodes').append(x);
-	var toolTopText = "This is an pointer type to hold the address of the previous node";
-	tooltipDisplay(".prev-div", "top", toolTopText);
-	var toolTopText = "This is an int data type to hold the user data";
-	tooltipDisplay(".data-div", "top", toolTopText);
-	var toolTopText = "This is an pointer type to hold the address of the next node";
-	tooltipDisplay(".next-div", "top", toolTopText);
-	var toolTopText = "it indicates the address of the node";
-	tooltipDisplay(".data-address", "bottom", toolTopText);
+	tooltipDisplay("#prevDiv" + val, "top", "This is a pointer type to hold the address of the previous node");
+	tooltipDisplay("#dataDiv" + val, "top", "This is an int data type to hold the user data");
+	tooltipDisplay("#nextDiv" + val, "top", "This is a pointer type to hold the address of the next node");
 }
 
 function declareNodesWhenFunctionCall(id1, id2, nodeName, nodeNameText, callBackFunction) {	//Temp node div declaration 
-	$('#declareNodes').append('<div class="col-xs-2 col-xs-offset-1 extraNode opacity00 padding00 tooltopClass zindex" id=' + id1 + '>'
-					+ '<div class="col-xs-12 box padding00 position"><span id=' + id2 + ' class="extrNodeVal ct-brown-color ct-fonts position"></span>'
+	$('#declareNodes').append('<div class="col-xs-2 col-xs-offset-1 extraNode opacity00 padding00" id=' + id1 + '>'
+					+ '<div class="col-xs-12 box padding00 position zindex"><span id=' + id2
+					+ ' class="extrNodeVal ct-brown-color ct-fonts position"></span>'
 					+ '</div><div class="text-center col-xs-12 padding00 ct-green-color" id=' + nodeName + '>' + nodeNameText + '</div></div> ');
 	if (typeof callBackFunction === "function") {
 		callBackFunction();
@@ -1048,10 +1056,7 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 
 function fromEffectWithTweenMax(id1, id2, val, callBackFunction) {
 	var l1 = $(id2).offset();
-	$(id1).html($(id2).text()).offset({
-	  "top" : l1.top,
-	  "left" : l1.left
-	});
+	$(id1).html($(id2).text()).offset({"top" : l1.top, "left" : l1.left});
 	TweenMax.to(id1, 1, {top : 0, left : 0, onComplete: function() {
 		$(id1).text("" + val + "");
 	  if (typeof callBackFunction === "function") {
@@ -1068,12 +1073,9 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, pos, callBackFu
 		var l2 = $(selector2).offset();
 		var topLength = l1.top - l2.top;
 		var leftLength = l1.left - l2.left;
-		$("body").append("<span id='dummy' class='ct-brown-color' style='position: relative;z-index: 9999999;'>" 
+		$("body").append("<span id='dummy' class='ct-brown-color ct-fonts' style='position: relative;z-index: 9999999;'>" 
 			+ $(selector2).text() + "</span>");
-		$('#dummy').offset({
-			"top": l2.top, 
-			"left": l2.left
-		});
+		$('#dummy').offset({"top": l2.top, "left": l2.left});
 		$(selector2).text($(selector1).text());
 		TweenLite.from(selector2, 2.8, { ease:  Bounce.easeOut, top:l1.top-l2.top, left :l1.left-l2.left});
 		if (pos == "left") {

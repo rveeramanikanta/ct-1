@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,25 +20,13 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="js/delete-at-position-in-dll.js"></script>
+<script src="/secure/lang/ds/js-min/dapid.min.js"></script>
 
 <style type="text/css">
-
-/* .tooltip-inner {
-  color: white;
-  background-color: #003399;
-  border: 2px solid white;
-  box-shadow: 1px 1px 1px 3px white;
-} */
 
 .introjs-tooltip {
 	min-width: 410px;
 	overflow-y: auto;
-}
-
-.introjs-duplicate-nextbutton {
-	margin: 0px !important;
-	background-color: green;
 }
 
 .user-btn {
@@ -69,13 +57,6 @@
 .margin-top-15 {
 	margin-top: 15px;
 }
-
-.buttons-div {
-	margin-top: 20px;
-	margin-bottom: 5px;
-	text-align: center;
-
-}
 .svg-css {
 	top: 0;
 	left: 0;
@@ -88,11 +69,10 @@
 	stroke: gray;
 	stroke-width: 2; 
 	position: relative;
-	z-index: 10000000 !important;
 	marker-end: url("#arrowEnd"); 
 }
 
-.ct-fonts, .ct-css {
+.ct-fonts, y, .y, bwBg {
 	font-weight: bold;
 	font-family: monospace;
 }
@@ -103,11 +83,6 @@
 
 .ct-brown-color, brown{
 	color: brown;
-}
-
-.error-text {
-	color :red;
-	font-weight: bold;
 }
 
 .padding00 {
@@ -128,6 +103,8 @@
 	height: 300px;
 	background-color: #fffae6;
 	overflow-y: auto; 
+	font-family: monospace;
+	font-size: 12px;
 }
 
 .box, .box1 {
@@ -173,13 +150,6 @@
 	display: inline-block;
 }
 
-.buttons {
-	color: black;
-	letter-spacing: 1px;
-	font-family: monospace;
-	box-shadow: 1px 2px 4px 0;
-}
-
 .user-text {
 	width: 82px;
 	height: 27px;
@@ -190,7 +160,7 @@
 .z-index1000000 {
 	position: relative;
 	background-color: white;
-	z-index: 1000000 !important;
+	z-index: 1000000;
 }
 
 .creamPreTab {
@@ -227,38 +197,24 @@
 	}
 }
 
-div, span {
-	position: relative;
-}
-
-blue {
+blue, bl {
 	color: blue;
 }
 
 y {
-	font-family: monospace;
-	font-weight: bold;
 	color: yellow;
 }
 
 .y {
-	font-family: monospace;
-	font-weight: bold;
 	background-color: yellow; 
 }
 
 
 bwBg {
 	color: white;
-	font-weight: bold;
 	border-radius: 4px;
-	font-family: monospace;
 	background-color: black;
 	padding: 2px 4px;
-}
-
-#animationDiv {
-	margin-top: 35px;
 }
 
 .ui-effects-transfer {
@@ -267,7 +223,7 @@ bwBg {
 }
 
 .zindex {
-	z-index: 1000000 !important;
+	z-index: 1000000;
 }
 
 .padding5 {
@@ -278,14 +234,17 @@ bwBg {
 	width: 21px;
 	padding: 5px 4px;
 }
-	
+
+.tooltip {
+	font-family: monospace;
+	z-index: 9999999; 
+}
 </style>
 </head>
 <body>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		//$('.opacity00').removeClass('opacity00');
 		deleteAtPositionAnimation();
 	});
 </script>
@@ -294,55 +253,40 @@ bwBg {
 		<div class='col-xs-12 padding00'>
 			<div class="ct-box-main">
 				<div class='text-center'>
-					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtPosition() in Doubly Linked List</h4>
+					<h4 class='label ct-demo-heading' id='headingDiv'>deleteAtPosition() in DLL</h4>
 				</div>
 			</div>
 			
 			<div class='col-xs-12 margin-top-5' id='totalDiv'>
-				<div class='col-xs-12 padding00'>
+				<div class='col-xs-12 padding00 margin-top-15'>
 					<div class='col-xs-5 padding00'>
-						<div class='col-xs-12 margin-top-15 padding00'>
-							<div class='col-xs-12 box-border' id='animationDiv'>
+						<div class='col-xs-12 padding00'>
+							<div class='col-xs-12 box-border' id='animationDiv' style="min-height: 270px">
 								<div class='col-xs-12 margin-top-25 margin-bottom-25 padding00'>
 									<div class="col-xs-12">
-										<div class="col-xs-3 padding00">
-											<div class="text-center position opacity00" id="posVal">position = <div class="box-border position" id="pos">
-												<span id="position" class="opacity00">1</span>
-											</div></div>
-										</div>
-										<div class="col-xs-9" id="iValDiv">
-											<div class="col-xs-3 text-center opacity00" id="iVal1">i = <span id="val" class="position">1</span></div>
-											<!-- <div class="col-xs-5 text-center opacity00" id="iVal2">i = 2</div>
-											<div class="col-xs-4 text-center opacity00" id="iVal3">i = 3</div> -->
-										</div>
-									</div>
-									<div class="col-xs-12 margin-top-25">
 										<div class="col-xs-2 padding00 opacity00 position" id="firstNode">
 											<div class="text-center col-xs-12 padding00" id="firstLabel">first</div>
-												<div class="col-xs-12 box1 padding00 tooltopClass zindex" id="firstDiv">
-													<span  id="firstVal" class="position">NULL</span>
-												</div>
-												<div class="col-xs-12 padding00">
-												<div class="col-xs-6 padding00 text-center">
-													<span id="dataAddress0" class="position  ct-brown-color ct-fonts opacity00">2318</span>
-												</div>
+											<div class="col-xs-12 box1 padding00 zindex" id="firstDiv">
+												<span  id="firstVal" class="position ct-fonts" style="color: darkslategrey;">NULL</span>
+											</div>
+										</div>
+										<div class="col-xs-3 col-xs-offset-1 padding00 margin-top-15">
+											<div class="text-center position opacity00" id="posVal">position =
+												 <div class="box-border position zindex" id="pos">
+													<span id="position" class="opacity00">1</span>
+												 </div>
 											</div>
 										</div>
 									</div>
-									<div class="col-xs-12 padding00" id="csllNodes">
+									<div class="col-xs-12 padding00 margin-top-25" id="csllNodes">
 										<div class="col-xs-12 padding00" id="dynamicNodes"></div>
 									</div>
 									<div class="col-xs-12 margin-top-20 padding00" id="declareNodes"></div>
 								</div>
 							</div>
 						</div>
-						<!-- <div class='col-xs-12'>
-							<div class='col-xs-12 padding00 margin-top-15'>
-								<pre class="creamPreTab opacity00 " id="parentPre"></pre>
-							</div>
-						</div> -->
 					</div>
-					<div class='col-xs-7 margin-top-15'>
+					<div class='col-xs-7'>
 						<div class='col-xs-12 box-border padding00' id="mainDiv">
 							<div class='col-xs-6' style='padding: 5px;'>
 								<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'></div>
@@ -351,15 +295,10 @@ bwBg {
 								<pre class="creamPreTab opacity00 box-border" id="parentPre"></pre>
 							</div>
 						</div>
-					
-						<!-- <div class='col-xs-12 margin-top-15'>
-							<div class='col-xs-12 box-border algorithm-steps-Div opacity00 padding00' id='algorithmStepsDiv'>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>
-			<div class='col-xs-12 text-center'>
+			<div class='col-xs-12 text-center margin-top-20'>
 				<div class='buttons-div'>
 					<button type="button" class="btn btn-warning opacity00" id="restartBtn">Restart</button>
 				</div>	

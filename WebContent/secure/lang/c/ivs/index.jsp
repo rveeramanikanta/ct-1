@@ -168,7 +168,7 @@ r {
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; explanation of #define
 							</div>
 						</td>
-						<td>Anil & Mahesh / bannu <r>(back)</r></td>
+						<td>Anil & Mahesh / Raj <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully completed </td>
 						<td>21-09-2016</td>
@@ -193,7 +193,7 @@ r {
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf() with %d and %f</span>
 							</div>
 						</td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>28-10-2016</td>
@@ -206,7 +206,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Decimal', 'binary-to-decimal-convertion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Decimal</span></td>
-						<td>Suresh / bannu <r>(back)</r></td>
+						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>20-08-2016</td>
@@ -220,7 +220,7 @@ r {
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Octal', 'binary-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Octal conversion</span></td>
-						<td>Shiva / bannu <r>(back)</r></td>
+						<td>Shiva / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>20-08-2016</td>
@@ -232,7 +232,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Hexadecimal', 'binary-to-hexa.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Hexadecimal conversion</span></td>
-						<td>Shiva / bannu <r>(back)</r></td>
+						<td>Shiva / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>25-08-2016</td>
@@ -282,7 +282,7 @@ r {
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octal to Binary', 'octal-to-binary-conversion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Binary</span></td>
-						<td>Suresh / bannu <r>(back)</r></td>
+						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>23-09-2016</td>
@@ -318,7 +318,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Binary', 'hexadecimal-binary.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary</span></td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
@@ -330,7 +330,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Decimal', 'hexadecimal-decimal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Decimal</span></td>
-						<td>Padmaja</td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully Completed</td>
 						<td>29-09-2016</td>
@@ -342,7 +342,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Octal', 'hexadecimal-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Octal</span></td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully Completed</td>
 						<td>01-10-2016</td>
@@ -391,7 +391,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; float Data-type</td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-08-2016</td>
@@ -404,7 +404,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; double Data-type</td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>02-09-2016</td>
@@ -417,7 +417,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span></td>
-						<td>Padmaja / bannu <r>(back)</r></td>
+						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>04-09-2016</td>
@@ -466,7 +466,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of ones complement', 'ones-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of	one's complement</span></td>
-						<td>Ramya / bannu <r>(back)</r></td>
+						<td>Ramya / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>16-08-2016</td>
@@ -479,7 +479,7 @@ r {
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of twos complement', 'twos-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of two's complement</span></td>
-						<td>Ramya / bannu <r>(back)</r></td>
+						<td>Ramya / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>18-08-2016</td>
@@ -904,7 +904,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of gets() & puts()</td>
-						<td>Mahesh</td>
+						<td>Mahesh / Swathi  <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>10-09-2016</td>
@@ -1450,7 +1450,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing One-dimensional arrays', 'accessing-one-dimension-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing One-dimensional arrays</td>
-						<td>Karthik</td>
+						<td>Karthik / Shiva <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>30-09-2016</td>
@@ -1627,7 +1627,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using scanf() and printf()', 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using scanf() and printf()</td>
-						<td>Mahesh</td>
+						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>02-09-2016</td>
@@ -1639,7 +1639,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ', 'read-string-using-getchar.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar()</td>
-						<td>Mahesh</td>
+						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>05-09-2016</td>
@@ -1652,7 +1652,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using gets() & puts()</td>
-						<td>Mahesh</td>
+						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>10-09-2016</td>
@@ -1664,7 +1664,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of character array', 'initialization-of-character-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of character array</td>
-						<td>Shiva</td>
+						<td>Shiva / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
@@ -1676,7 +1676,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to find length of string', 'length-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find length of string</td>
-						<td>Mallika</td>
+						<td>Mallika / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>30-09-2016</td>
@@ -1688,7 +1688,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to copy one string to another string', 'copy-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string</td>
-						<td>Mallika</td>
+						<td>Mallika / Satish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>01-10-2016</td>
@@ -2492,10 +2492,12 @@ r {
 					<tr>
 						<td>1</td>
 						<td>Different modes in Files</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Opening and closing a file with different modes', 'file-operations.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Opening and closing a file with different modes</td>
-						<td>Mallika</td>
+						<td>Mallika / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>20-09-2016</td>
