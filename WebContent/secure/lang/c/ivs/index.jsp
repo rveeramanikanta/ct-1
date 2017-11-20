@@ -683,7 +683,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise One's complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's complement operator</span></td>
-						<td>Ramya / Anil <r>(back)</r></td>
+						<td>Ramya</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>27-08-2016</td>
@@ -695,7 +695,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span></td>
-						<td>Pavan</td>
+						<td>Pavan / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>20-08-2016</td>
@@ -1292,7 +1292,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', 'break-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of break statement</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>29-09-2016</td>
@@ -1305,7 +1305,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', 'continue-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of continue statement</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>07-10-2016</td>
@@ -1341,6 +1341,7 @@ r {
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print alphabets in triangle', 'pyramid-triangle-alphabet.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print alphabets in triangle
@@ -1661,7 +1662,9 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Initialization of character arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of character array', 'initialization-of-character-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of character array</td>
 						<td>Shiva / Sathish <r>(back)</r></td>

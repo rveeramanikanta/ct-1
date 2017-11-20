@@ -64,7 +64,8 @@ function introGuide() {
 		},{
 			element : "#finalPrintf",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass: 'hide'
 		},{
 			element : "#consoleId",
 			intro : "",
@@ -79,70 +80,39 @@ function introGuide() {
 		introjs.refresh();
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "description":
-			
-			break;
-			
 		case "codeAnimation":
 			$("#addressDiv").addClass("opacity00");
-			
 			break;
-			
 		case "printf":
 			$("#consoleId").removeAttr("style").addClass("opacity00");
 			$("#runEditor1").addClass("opacity00");
 			break;
-			
-		case "finalPrintf":
-			//$("[data-toggle='popover']").popover("hide");
-			break;
-			
-		case "addressDiv":
-			
-			break;
-			
 		case "consoleId":
-		
-				if (introjs._currentStep == 4) {
-					
-				} else if (introjs._currentStep == 6) {
-					
-					$("#givenNum1").text("");
-					
-					$("[data-toggle='popover']").popover("hide");
-				} else if (introjs._currentStep == 8) {
-					$("#val1").css('border', '1px solid black');
-				} else if (introjs._currentStep == 10) {
-					
-					
-				} else {
-					//$("#givenNum2").text("");
+			if (introjs._currentStep == 6) {
+				$("#givenNum1").text("");
+				$("[data-toggle='popover']").popover("hide");
+			} else if (introjs._currentStep == 8) {
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(9, 1);
 				}
+			}
 			break;
-			
 		case "scanf":
-		
 			if (introjs._currentStep == 5) {
 				$("#inputVal").text("");
 			} else if (introjs._currentStep == 7) {
 				$("#space0").removeAttr("style").addClass("opacity00");
 				$("[data-toggle='popover']").popover("hide");
-				console.log(introjs._direction);
-			} else if (introjs._direction == "backward") {
-			      if (introjs._currentStep == 11) {
-				     $("#givenNum2").css('opacity', '0');
-			      }
 			} else {
-				
+				$("#givenNum2").css('opacity', '0');
+				if (introjs._direction == "backward") {
+					$("#scanNum2").popover("hide");
+				}
 			}
-			
 			break;
-			
 		case "space0":
-			console.log(introjs._direction);
-			if (introjs._direction == "backward") {
-			$("#givenNum2").text("");
-			}
+			$("#space0").css('border', '1px solid black');
+			$("#givenNum2").css('opacity', '0');
 			break;
 			
 		}	
@@ -170,6 +140,8 @@ function introGuide() {
 				// ********************** end ************back button logic
 		introjs.refresh();
 		var elementId = targetElement.id;
+		$("#popoverContent1").text($("#val0").text());
+		$("#popoverContent2").text($("#val1").text());
 		switch (elementId) {
 		case "description":
 			$(".introjs-nextbutton").hide();
@@ -207,12 +179,13 @@ function introGuide() {
 			break;
 			
 		case "finalPrintf":
-			$(".introjs-nextbutton").hide();
 			$("[data-toggle='popover']").popover("show");
 			$("#popoverContent1").text( $("#val0").text() );
 			$("#popoverContent2").text( $("#val1").text() );
+			$(".introjs-nextbutton").hide();
 			$('#val1').css('border', 'none');
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 				var text = "The <span class='ct-code-b-yellow'>printf()</span> statement will print the values stored in " 
 							+ " <span class='ct-code-b-yellow'>a</span> and <span class='ct-code-b-yellow'>b</span> respectively.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -240,157 +213,160 @@ function introGuide() {
 			
 		case "consoleId":
 			$(".introjs-nextbutton").hide();
-			$(".introjs-helperLayer").one("transitionend", function() {
-				if (introjs._currentStep == 4) {
-							setTimeout(function() {
-								if (introjs._direction=="forward") {
-									tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
-										$("#consoleId").removeClass("opacity00");
-										$("#runEditor1").removeClass("opacity00");
-										var text = "Enter two numbers: <span id='inputVal'></span>"
-											
-											typing("#runEditor1", text, function() {
-												setTimeout(function() {
-										introjs.nextStep()
-												}, 500);
-											});
-									}});
-								} else {
-									introjs.previousStep()
+			if (introjs._currentStep == 4) {
+				$(".introjs-helperLayer").one("transitionend", function() {
+					setTimeout(function() {
+						if (introjs._direction=="forward") {
+							tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
+								$("#consoleId").removeClass("opacity00");
+								$("#runEditor1").removeClass("opacity00");
+								var text = "Enter two numbers: <span id='inputVal'></span>"
+									
+									typing("#runEditor1", text, function() {
+										setTimeout(function() {
+								introjs.nextStep()
+										}, 500);
+									});
+							}});
+						} else {
+							introjs.previousStep()
+						}
+					}, 500);
+				});
+			} else if (introjs._currentStep == 6) {
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$(".introjs-tooltip").removeClass("hide");
+					var text = "<input id='num1' spellcheck='false' class='int-num'/>";
+					typing("#inputVal", text, function() {
+						var text2 = "Enter <span class='ct-code-b-yellow'>two</span> numbers. <br/><br/> While you are trying to read numbers using " 
+									+ " <span class='ct-code-b-yellow'>scanf()</span> you can seperate the numbers either by space or by hitting " 
+									+ " enter between the numbers. <br/><br/>In this case please provide a " 
+									+ " <span class='ct-code-b-yellow'>space</span> to sperate your numbers."
+						typing(".introjs-tooltiptext", text2, function() {
+							$("#num1").addClass("blinking-orange");
+							$("#num1").focus();
+							arr = [];
+							$('#num1').on("keydown", function(e) {
+								if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+									e.preventDefault();
 								}
-							}, 500);
-								
-				
-				
-				} else if (introjs._currentStep == 6) {
-					$(".introjs-helperLayer").one("transitionend", function() {
-						$(".introjs-tooltip").removeClass("hide");
-						var text = "<input id='num1' spellcheck='false' class='int-num'/>";
-						typing("#inputVal", text, function() {
-							var text2 = "Enter <span class='ct-code-b-yellow'>two</span> numbers. <br/><br/> While you are trying to read numbers using " 
-										+ " <span class='ct-code-b-yellow'>scanf()</span> you can seperate the numbers either by space or by hitting " 
-										+ " enter between the numbers. <br/><br/>In this case please provide a " 
-										+ " <span class='ct-code-b-yellow'>space</span> to sperate your numbers."
-							typing(".introjs-tooltiptext", text2, function() {
-								$("#num1").addClass("blinking-orange");
-								$("#num1").focus();
-								arr = [];
-								$('#num1').on("keydown", function(e) {
-									if (arr.length == 2) {
-										if (e.keyCode == 32) {
-											e.preventDefault();
-										}
-									}
-									if ($.inArray(e.keyCode, [46, 8, 9, 27, 32, 35, 36, 37, 39]) !== -1) {
-										return;
-									}
-									if (((e.shiftKey) || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96) || (e.keyCode > 105))) {
+								if (arr.length == 1) {
+									var flag = false;
+									flag = $('#num1').val().indexOf(' ') >= 0;
+									if (e.keyCode == 32 && flag) {
 										e.preventDefault();
+									}
+								}
+								if ($.inArray(e.keyCode, [46, 8, 9, 27, 32, 35, 36, 37, 39]) !== -1) {
+									return;
+								}
+								if (((e.shiftKey) || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96) || (e.keyCode > 105))) {
+									e.preventDefault();
+								}
+							});
+							
+							$('#num1').on("keyup", function(e) {
+								$('.length-error-text').remove();
+								if ($(this).val() == "") {
+									$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
+																		"Please enter 2 numbers and separate each with space.</span>");
+								}
+								var givenText = $(this).val();
+								var splittedText = givenText.split(" ");
+								arr = [];
+								
+								$.each(splittedText, function(idx, val) {
+									if (val != '') {
+										arr.push(val);
 									}
 								});
 								
-								$('#num1').on("keyup", function(e) {
-									$('.length-error-text').remove();
-									if ($(this).val() == "") {
+								if (arr.length < 2) {
+									$(".introjs-nextbutton,.introjs-prevbutton").hide();
+								} else if (arr.length == 2) {
+									$(".introjs-nextbutton,.introjs-prevbutton").show();
+								}
+								
+								$.each(arr, function(idx, val) {
+									if (val.length > 2) {
 										$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
-																			"Please enter 2 numbers and separate each with space.</span>");
+																				"Please limit the number length to 2.</span>");
+										$(".introjs-nextbutton").hide();
 									}
-									var givenText = $(this).val();
-									var splittedText = givenText.split(" ");
-									arr = [];
-									
-									$.each(splittedText, function(idx, val) {
-										if (val != '') {
-											arr.push(val);
-										}
-									});
-									
-									if (arr.length < 2) {
-										$(".introjs-nextbutton,.introjs-prevbutton").hide();
-									} else if (arr.length == 2) {
-										$(".introjs-nextbutton,.introjs-prevbutton").show();
-									}
-									
-									$.each(arr, function(idx, val) {
-										if (val.length > 2) {
-											$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
-																					"Please limit the number length to 2.</span>");
-											$(".introjs-nextbutton").hide();
-										}
-									});
 								});
 							});
 						});
 					});
-					
-				} else if (introjs._currentStep == 8) {
-					$("#scanNum1").popover("show");
-					$("#popoverContent2").text($("#val1").text());
-					$("#popoverContent1").text($("#val0").text());
-					$(".introjs-helperLayer").one("transitionend", function() {
-						$('#val0').css("border", "none");
+				});
+				
+			} else if (introjs._currentStep == 8) {
+				$("#scanNum1").popover("show");
+				$("#popoverContent2").text($("#val1").text());
+				$("#popoverContent1").text($("#val0").text());
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$('#val0').css("border", "none");
+					if (introjs._direction=="forward") {
 						$('#val0').effect( "transfer", { to: $("#space0"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#space0').css('border', '1px solid yellow');
-							if (introjs._introItems[introjs._currentStep]["stepFlag"] == undefined) {
-								introjs._introItems[introjs._currentStep]["stepFlag"] = true;
-								console.log("stepFlag");
-								var newStep = {
-									"element" : "#space0",
-									"intro" : "",
-									"position" : "right"
-									
-								}
-								introjs.insertOption(introjs._currentStep + 1, newStep);
+							var newStep = {
+								"element" : "#space0",
+								"intro" : "",
+								"position" : "right"
+								
 							}
+							introjs.insertOption(introjs._currentStep + 1, newStep);
 							setTimeout(function() {
-							if (introjs._direction=="forward") {
 								introjs.nextStep()
-						} else {
-							introjs.previousStep()
-						}
-					}, 500);
+							}, 500);
 						});
-					});
-					
-				} else if (introjs._currentStep == 10) {
-					$("#scanNum1").popover("show");
-					$("#popoverContent2").text($("#val1").text());
-					$("#popoverContent1").text($("#val0").text());
-					$('#space0').css('border', 'none');
-					$(".introjs-helperLayer").one("transitionend", function() {
+					} else {
+						//$("#scanNum2").popover("hide");
+						setTimeout(function() {
+							introjs.previousStep()
+						}, 500);
+					}
+				});
+				
+			} else if (introjs._currentStep == 10) {
+				$("#scanNum1").popover("show");
+				$("#popoverContent2").text($("#val1").text());
+				$("#popoverContent1").text($("#val0").text());
+				$('#space0').css('border', 'none');
+				$(".introjs-helperLayer").one("transitionend", function() {
+					if (introjs._direction=="forward") {
 						$('#space0').css("border", "none");
 						$('#space0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#val1').css('border', '1px solid yellow');
 							setTimeout(function() {
-							if (introjs._direction=="forward") {
 								introjs.nextStep()
+							}, 500);
+						})
+					} else {
+						$('#val1').css('border', '');
+						setTimeout(function() {
+							introjs.previousStep()
+						}, 500);
+					}
+				});
+			} else {
+				$("[data-toggle='popover']").popover("show");
+				$("#popoverContent2").text($("#val1").text());
+				$("#popoverContent1").text($("#val0").text());
+				$("#inputVal").removeClass("zIndex");
+				$(".introjs-helperLayer").one("transitionend", function() {
+					var text = "a = "+$("#givenNum1").text()+" b = "+$("#givenNum2").text()+"";
+					typing("#runEditor2", text, function() {
+						setTimeout(function() {
+							if (introjs._direction=="forward") {
+								$(".introjs-nextbutton").click();
 						} else {
 							introjs.previousStep()
 						}
 					}, 500);
-						})
 					});
-					
-				} else {
-					$("[data-toggle='popover']").popover("show");
-					$("#popoverContent2").text($("#val1").text());
-					$("#popoverContent1").text($("#val0").text());
-					$("#inputVal").removeClass("zIndex");
-					$(".introjs-helperLayer").one("transitionend", function() {
-						var text = "a = "+$("#givenNum1").text()+" b = "+$("#givenNum2").text()+"";
-						typing("#runEditor2", text, function() {
-							setTimeout(function() {
-								if (introjs._direction=="forward") {
-									$(".introjs-nextbutton").click();
-							} else {
-								introjs.previousStep()
-							}
-						}, 500);
-						});
-					});
-				
-				}
-			});
+				});
+			
+			}
 			break;
 			
 		case "scanf":
@@ -448,15 +424,16 @@ function introGuide() {
 				$("#scanNum1").popover("show");
 				$("#popoverContent2").text($("#val1").text());
 				$("#popoverContent1").text($("#val0").text());
+				var l2 = $("#scanNum2").offset();
+				$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+				$("#givenNum2").text( $('#val1').text() ).css('opacity', '0');
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$('#val1').effect( "transfer", { to: $("#dBlink2"), className: "ui-effects-transfer" }, 1000, function() {
 						$("#val1").addClass("blinking-orange");
-						$("#scanNum2").popover("show");
-						$("#popoverContent2").text($("#val1").text());
-						
 						$("#scanNum2").addClass("blinking-orange");
 						$("#givenNum2").addClass("zIndex");
-						
+						$("#scanNum2").popover("show");
+						$("#popoverContent2").text($("#val1").text());
 						tl.to("#givenNum2", 1, {opacity: 1, top:0, left:0, onComplete: function() {
 							$("#val1").removeClass("blinking-orange");
 							$("#givenNum2").addClass("blinking-orange");
@@ -478,8 +455,8 @@ function introGuide() {
 			
 		case "space0":
 			$(".introjs-nextbutton").hide();
-			$("#popoverContent2").text( $("#val1").text() );
 			$("#popoverContent1").text( $("#val0").text() );
+			$("#popoverContent2").text( $("#val1").text() );
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#space0').css('border', '1px solid black')
 				$('#space0').css('color', 'black');
@@ -494,12 +471,12 @@ function introGuide() {
 			
 		case "restart":
 			$(".introjs-nextbutton").hide();
-			$("#popoverContent2").text($("#val1").text());
 			$("#popoverContent1").text($("#val0").text());
+			$("#popoverContent2").text($("#val1").text());
 			$('.introjs-tooltip').css('min-width', '125px');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart." 
 				typing(".introjs-tooltiptext", text, function() {
 					$("#restart").removeClass("opacity00");
 					$("#restart").click(function() {

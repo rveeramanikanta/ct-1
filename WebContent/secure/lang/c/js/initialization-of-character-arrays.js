@@ -1,4 +1,4 @@
-var typingInterval = 10;
+var typingInterval = 1;
 
 var initializationOfCharacterArrays = function() {
 	introjs = introJs();
@@ -167,6 +167,7 @@ var initializationOfCharacterArrays = function() {
 			});
 			break;
 		case 'exampleDiv2':
+			$('.introjs-tooltip').css({'height': '', 'overflow-y':''});
 			$('.user-btn').remove();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				TweenMax.to($("#secondExample,#exampleDiv2"), 1, {opacity: 1, onComplete: function() {
@@ -191,6 +192,7 @@ var initializationOfCharacterArrays = function() {
 			break;
 		case 'exampleDiv3':
 			$('.user-btn').remove();
+			$('.introjs-tooltip').css({'height': '', 'overflow-y':''});
 			$('.introjs-helperLayer').one('transitionend', function() {
 				TweenMax.to($("#thirdExample,#exampleDiv3"),1, {opacity: 1, onComplete: function() {
 					$('.introjs-tooltip').removeClass('hide');
@@ -215,6 +217,7 @@ var initializationOfCharacterArrays = function() {
 											var text = $("#exampleDiv3SpanText1").html();
 											typing('#exampleDiv3SpanText1', text, typingInterval, 'white', function() {
 												$(".introjs-nextbutton, .introjs-prevbutton").show();
+												$('.introjs-tooltip').css({'height': '270', 'overflow-y':'auto'}).scrollTo('a:last', 100);
 											});
 										});
 									}});
@@ -227,6 +230,7 @@ var initializationOfCharacterArrays = function() {
 			break;
 		case 'exampleDiv4':
 			$('.user-btn').remove();
+			$('.introjs-tooltip').css({'height': '', 'overflow-y':''});
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#fourthExample,#exampleDiv4").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
@@ -261,6 +265,7 @@ var initializationOfCharacterArrays = function() {
 															zoomEffectWithBlinking(".char-visible-two-zero", function() {
 																$(".char-invisible").css("background-color", "buttonshadow");
 																$(".introjs-nextbutton, .introjs-prevbutton").show();
+																$('.introjs-tooltip').css({'height': '250', 'overflow-y':'auto'}).scrollTo('a:last', 100);
 															});
 														});
 													});
@@ -276,6 +281,7 @@ var initializationOfCharacterArrays = function() {
 			});
 			break;
 		case 'exampleDiv5':
+			$('.introjs-tooltip').css({'height': '', 'overflow-y':''});
 			$('.user-btn').remove();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');

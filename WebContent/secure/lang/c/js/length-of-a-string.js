@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 5;
+var typingInterval = 1;
 var count = 0;
 var iValue = 0;
 var flag = true;
@@ -608,7 +608,7 @@ function events() {
 	}); 
 	
 	$("#usrText").on("keyup", function(e) {
-		$('.error-text').remove();
+		//$('.error-text').remove();
 		if ($("#usrText").val().length < 1) {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		} else {

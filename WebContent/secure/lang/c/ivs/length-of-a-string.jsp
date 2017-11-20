@@ -124,6 +124,7 @@ table {
 .ct-red {
 	font-family: monospace;
 	color: red;
+	font-weight: bold;
 }
 
 .fa {

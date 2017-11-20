@@ -87,7 +87,7 @@
 	outline: none;
 }
 
-.ct-code-b-red {
+.ct-code-b-red, .ct-red {
 	font-family: monospace;
 	font-weight: bold;
 	color: rgb(252, 66, 66);
@@ -204,6 +204,10 @@ y {
 	font-weight: bold;
 	color: yellow;
 }
+
+.table-bordered {
+	border: 1px solid black !important;
+}
 </style>
 <body>
 <div class="col-sm-12 text-center">
@@ -234,52 +238,18 @@ y {
   			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
 				
 				<tbody>
-					<tr class="">
-				        <td class=""></td>
-				        <td class="">0</td>
-				        <td class="">1</td>
-				        <td class="">2</td>
-				        <td class="">3</td>
-				        <td class="">4</td>
-				        <td class="">5</td>
-				        <td class="">6</td>
-				        <td class="">7</td>
-				        <td class="">8</td>
-				        <td class="">9</td>
-				        <td class="">10</td>
-				        <td class="">11</td>
-				        <td class="">12</td>
-				        <td class="">13</td>
-				        <td class="">14</td>
-				        <td class="">15</td>
-				        <td class="">16</td>
-				        <td class="">17</td>
-				        <td class="">18</td>
-				        <td class="">19</td>
+					<tr>
+						<td></td>
+						<%for (int i = 0; i < 20; i++) {%>
+				        	<td><%=i %></td>
+				        <%} %>
 					</tr>
 			  
-			      <tr id="tableRowId" class="">
+			      <tr id="tableRowId">
 				     	<td style="border-top: none;"><b class="ct-code-b-blue">ch </b>=</td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td> 
+				     	<%for (int i = 0; i < 20; i++) {%>
+				        	 <td class="td-css table-bordered opacity00"></td>
+				        <%} %>
 			      	</tr>
 				</tbody>
   			</table>
