@@ -346,7 +346,7 @@ div, span, tr, td {
 			<div class="col-xs-12 text-center" id="calculationPart">
 				<div class="col-xs-12 margin-top-1 opacity00" id="calculationPartDiv1">
 					<div class="col-xs-6 opacity00" id="multiplyDiv2">
-						<span>=</span>
+						<span id='equalSpan' class="opacity00">=</span>
 						<span id="multiplySpan"></span>
 					</div>
 					<div class="col-xs-6 opacity00" id="multiplyDiv1">

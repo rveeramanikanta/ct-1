@@ -184,8 +184,8 @@ font-family:monospace;
 
 <div class=" margin-top-20 col-xs-12">
   <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
-  	<div id="desText" style="margin-top: 10px;" class="opacity00"> 
-  	<span style="padding: 7px 0px; line-height: 1.7;">The <span class="b-green">scanf()</span> function is used to read multiple data 
+  	<div id="desText" style="padding: 8px;" class="opacity00"> 
+  	<span>The <span class="b-green">scanf()</span> function is used to read multiple data 
   	values one or more values from the console. <a class='introjs-button user-btn' onclick='nextStep()'>Next &#8594;</a> </span>
   	</div>
   </div>

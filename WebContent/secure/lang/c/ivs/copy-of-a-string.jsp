@@ -83,10 +83,11 @@ table {
 }
 
 .input {
-	color: #0f0;
+	color: yellow;
 	background-color: black;
 	border: medium none;
 	font-family: monospace;
+	font-weight: bold;
 }
 
 .style-css {

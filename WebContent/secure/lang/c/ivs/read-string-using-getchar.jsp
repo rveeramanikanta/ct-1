@@ -156,7 +156,8 @@
  /* padding: 8px; */
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
+	color: yellow;
+	font-weight: bold;
 }
 
 .base-address {
@@ -276,10 +277,10 @@ y {
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
-					<span id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' /></span></br>
-				<span id="totalEnterChar" ></span>
-				<span id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></span>
+				<div id="typeChar"></div>
+				<div id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' maxlength="20"/></div>
+				<div id="totalEnterChar" ></div>
+				<div id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
 			</div>
 		</div>
 	</div>

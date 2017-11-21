@@ -122,10 +122,10 @@ function introGuide() {
 					});
 					
 				} else if (introjs._currentStep == 9) {
-					
+					$('#val0').css('border', '');
 					
 				} else if (introjs._currentStep == 11) {
-				
+					$('#val1').css('border', '');
 				} else if (introjs._currentStep == 13) {
 					
 				} else {
@@ -142,12 +142,12 @@ function introGuide() {
 					$("[data-toggle='popover']").popover("hide");	
 					$("#givenNum2").removeClass("zIndex");
 					$("#givenNum1").removeClass("zIndex");
-					$("#val1").css('border', '1px solid black');
+					$("#val0, #val1").css('border', '');
 					$("#percentId").css('border', '1px solid black');
 					//introjs.goToStep(5);
 				} else if (introjs._currentStep == 12){
 					$("#percentId").css('border', '1px solid black');
-					
+					$("#scanNum2").popover("hide");
 				}
 				else {
 					
@@ -253,27 +253,25 @@ function introGuide() {
 		case "consoleId":
 			$(".introjs-nextbutton").hide();
 				if (introjs._currentStep == 4) {
-								setTimeout(function() {
-									if (introjs._direction=="forward") {
-										$(".introjs-helperLayer").one("transitionend", function() {
-											//$(".introjs-tooltip").removeClass("hide");
-											tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
-												$("#consoleId").removeClass("opacity00");
-												$("#runEditor1").removeClass("opacity00");
-												var text = "Enter ammount and interest: <span id='inputVal'></span>"
-													typing("#runEditor1", text, function() {
-														setTimeout(function() {			
+					$(".introjs-helperLayer").one("transitionend", function() {
+						if (introjs._direction=="forward") {
+							//$(".introjs-tooltip").removeClass("hide");
+							tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
+								$("#consoleId").removeClass("opacity00");
+								$("#runEditor1").removeClass("opacity00");
+								var text = "Enter ammount and interest: <span id='inputVal'></span>"
+									typing("#runEditor1", text, function() {
+										setTimeout(function() {			
 											introjs.nextStep()
-														}, 500);
-													});
-											}});
-										});
-										
-									} else {
-										introjs.previousStep()
-									}
-								}, 500);
-						
+										}, 500);
+									});
+							}});
+						} else {
+							setTimeout(function() {	
+								introjs.previousStep()
+							}, 500);
+						}
+					});
 				} else if (introjs._currentStep == 6) {
 					$(".introjs-helperLayer").one("transitionend", function() {
 						introjs._introItems[introjs._currentStep]["isCompleted"] = false;
@@ -291,8 +289,13 @@ function introGuide() {
 								$("#num1").focus();
 								arr = [];
 								$('#num1').on("keydown", function(e) {
-									if (arr.length == 2) {
-										if (e.keyCode == 32) {
+									if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+										e.preventDefault();
+									}
+									if (arr.length == 1) {
+										var flag = false;
+										flag = $('#num1').val().indexOf(' ') >= 0;
+										if (e.keyCode == 32 && flag) {
 											e.preventDefault();
 										}
 									}
@@ -382,42 +385,43 @@ function introGuide() {
 					$(".introjs-helperLayer").one("transitionend", function() {
 						//$(".introjs-tooltip").removeClass("hide");
 						$('#rsId').css("border", "none");
-						$('#rsId').effect( "transfer", { to: $("#val0"), className: "ui-effects-transfer" }, 1000, function() {
+						if (introjs._direction=="forward") {
+							$('#rsId').effect( "transfer", { to: $("#val0"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#val0').css('border', '1px solid yellow');
+								setTimeout(function() {
+									introjs.nextStep()
+								}, 500);
+							});
+						} else {
 							setTimeout(function() {
-								if (introjs._direction=="forward") {
-										introjs.nextStep()
-								} else {
-									introjs.previousStep()
-								}
+								introjs.previousStep()
 							}, 500);
-						});
+						}
 					});
-					
 				} else if (introjs._currentStep == 11) {
 					$("#scanNum1").popover("show");
 					$("#popoverContent1").text($("#val0").text());
 					$("#popoverContent2").text($("#val1").text());
 					$(".introjs-helperLayer").one("transitionend", function() {
-						$('#val0').css('border', 'none');
-						$('#val0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
-							$('#val1').css('border', '1px solid yellow');
-							
+						if (introjs._direction=="forward") {
+							$('#val0').css('border', 'none');
+							$('#val0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
+								$('#val1').css('border', '1px solid yellow');
+								setTimeout(function() {
+									introjs.nextStep()
+								}, 500);
+							});
+						} else {
 							setTimeout(function() {
-								if (introjs._direction=="forward") {
-										introjs.nextStep()
-								} else {
-									introjs.previousStep()
-								}
+								introjs.previousStep()
 							}, 500);
-						});
+						}
 					});
 				} else if (introjs._currentStep == 13) {
 					$("[data-toggle='popover']").popover("show");
 					$("#popoverContent1").text($("#val0").text());
 					$("#popoverContent2").text($("#val1").text());
 					$(".introjs-helperLayer").one("transitionend", function() {
-						
 						$('#val1').css('border', 'none');
 						$('#val1').effect( "transfer", { to: $("#percentId"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#percentId').css('border', '1px solid yellow');
@@ -462,15 +466,14 @@ function introGuide() {
 					});
 				} else if (introjs._currentStep == 10) {
 					$(".introjs-helperLayer").one("transitionend", function() {
-						$(".introjs-tooltip").removeClass("hide");
 						var l1 = $("#scanNum1").offset();
 						var l2 = $("#scanNum2").offset();
 						
 						$("#givenNum1").offset({"top": l1.top, "left": l1.left});
 						$("#givenNum2").offset({"top": l2.top, "left": l2.left});
 						
-						$("#givenNum1").text( $('#val0').text() );
-						$("#givenNum2").text( $('#val1').text() );
+						$("#givenNum1").text( $('#val0').text() ).css('opacity', '0');
+						$("#givenNum2").text( $('#val1').text() ).css('opacity', '0');
 						
 						$('#val0').css('border', '1px solid yellow');
 						$("#inputVal").addClass("zIndex");
@@ -479,6 +482,7 @@ function introGuide() {
 							$("#dBlink1").addClass("blinking-orange");
 							$("#scanNum1").popover("show");
 							$("#popoverContent1").text($("#val0").text());
+							$(".introjs-tooltip").removeClass("hide");
 							var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 								+ "<span class='ct-code-b-yellow'>"+$("#val0").text()+"</span> into " 
 								+ "<span class='ct-code-b-yellow'>&a</span> using the first <span class='ct-code-b-yellow'>%d</span>"
@@ -491,6 +495,9 @@ function introGuide() {
 					$("#scanNum1").popover("show");
 					$("#popoverContent1").text( $("#val0").text() );
 					$("#popoverContent2").text( $("#val1").text() );
+					var l2 = $("#scanNum2").offset();
+					$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+					$("#givenNum2").text( $('#val1').text()).css('opacity', '0');
 					$(".introjs-helperLayer").one("transitionend", function() {
 						$('#val1').effect( "transfer", { to: $("#dBlink2"), className: "ui-effects-transfer" }, 1000, function() {
 							$("#val1").addClass("blinking-orange");
@@ -556,6 +563,7 @@ function introGuide() {
 			$("[data-toggle='popover']").popover("show");
 			$("#popoverContent1").text( $("#val0").text() );
 			$("#popoverContent2").text( $("#val1").text() );
+			$('.introjs-tooltip').css('min-width', '128px');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
 				typing(".introjs-tooltiptext", text, function() {

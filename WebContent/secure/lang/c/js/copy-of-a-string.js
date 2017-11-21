@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 5;
+var typingInterval = 1;
 var count = 0;
 var i = 0;
 var flag = true;
@@ -373,7 +373,10 @@ function introGuide() {
 				
 			case "forLoop":
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('.introjs-prevbutton, .introjs-nextbutton').show();
+					//timeOut();
+					typing('.introjs-tooltiptext', 'Execution of <span class="ct-code-b-yellow">for-loop</span> starts here.', function() {
+						$('.introjs-prevbutton, .introjs-nextbutton').show();
+					});
 				});
 				break;
 				
@@ -591,7 +594,7 @@ function timeOut() {
 	if (introjs._direction == 'backward') {
 		setTimeout(function() {
 			introjs.previousStep();
-		}, 1000);
+		}, 500);
 	} else{
 		setTimeout(function() {
 			introjs.nextStep();

@@ -44,7 +44,6 @@ function introGuide() {
 				}, {
 					element: '#enterString',
 					intro: '',
-					//tooltipClass: 'hide'
 				}, {
 					element: '#output',
 					intro: '',
@@ -92,112 +91,72 @@ function introGuide() {
 					position: 'right'
 				}]
 	});
-introjs.onbeforechange(function(targetElement) {
-		
+	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
-		
 		switch (elementId) {
-			case "program":
-	
-				break;
-				
-			case "charDec":
-				
-				break;
-				
 			case "memory":
 				$('.usr-btn').remove();
-				//$('.introjs-helperLayer ').one('transitionend', function() {
-				/*$(".filled").addClass("opacity00");*/
-					var memoryStep = introjs._introItems[introjs._currentStep].memoryStep;
-					switch(memoryStep) {
+				var memoryStep = introjs._introItems[introjs._currentStep].memoryStep;
+				switch(memoryStep) {
 					case "tableDefine":
 						$("#cup").addClass("opacity00");
 						$("#memory").addClass("opacity00");
 					break;
-						
 					case "spaceFind":
 						$(".filled").addClass("opacity00");
 						$("#userString td:not(:empty)").addClass("opacity00");
-						//$('.introjs-tooltip').css({'min-width' : '250px'});
-						/*$("#userString td").eq($(".filled").length + 1).text('');
-						$('.filled').text('');*/
-						break;
-					}
-				//});
-				break;
-				
+					break;
+				}
+			break;
 			case "intDec":
 				$("#cup").addClass("opacity00");
 				break;
-				
 			case "enterString":
-				
+				$('#output').addClass('opacity00');
 				break;
-				
 			case "output":
 				$('.introjs-tooltip').css({'min-width' : '200px'});
-				//$('.introjs-helperLayer ').one('transitionend', function() {
-					var outputStep = introjs._introItems[introjs._currentStep].outputStep;
-					switch(outputStep) {
-	
-					case "firstPrint":
-							
-						break;
+				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
+				switch(outputStep) {
+
+				case "firstPrint":
 						
-					case "EnterString":
-						$("#userString td").eq($(".filled").length + 1).text('');
-						$('.filled').text('');
-						break;
-							
-					case "secondPrint":
-							$(".secondLine").empty();
-						break;
+					break;
+					
+				case "EnterString":
+					$("#userString td").eq($(".filled").length + 1).text('');
+					$('.filled').text('');
+					break;
 						
-					case "lastPrint":
-						
-						break;
-					}
-				//});
-				break;
-			
-		case "scanf":
+				case "secondPrint":
+						$(".secondLine").empty();
+					break;
+					
+				case "lastPrint":
+					
+					break;
+				}
+			break;
+			case "scanf":
 				$('#textEnter').remove();
 				$('.introjs-tooltip').css({'min-width' : '300px'});
 			break;
-			
-		case "stringIs":
-			$('.usr-btn, .back-button').remove();
+			case "stringIs":
+				$('.usr-btn, .back-button').remove();
 			break;
-			
-		case "whileCond":
-			$('.introjs-tooltip').css({'min-width' : '300px'});	
-			if (flag == true) {
-				flag = !flag;
-				iValue = 0;
-				count = 0;
-				$("#iSpan").text("0");
-				$("#chVal").removeAttr('style')
-				$("#appendText").empty();
-			}
-
-			break;
-			
-		case "increment":
-			
-			break;
-			
-		case "stringLength":
-			
-			break;
-			
-		case "restart":
-			
+			case "whileCond":
+				$('.introjs-tooltip').css({'min-width' : '300px'});	
+				if (flag == true) {
+					flag = !flag;
+					iValue = 0;
+					count = 0;
+					$("#iSpan").text("0");
+					$("#chVal").removeAttr('style')
+					$("#appendText").empty();
+				}
 			break;
 		}
-			
-	})
-	
+	});
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		
@@ -419,10 +378,8 @@ introjs.onbeforechange(function(targetElement) {
 								+ " <span class='ct-code-b-yellow'>i</span> is"
 								+ " <span class='ct-code-b-yellow'>'\\0'</span> or not.<br><br><div id='appendText'></div>";
 					if (count == 0) {
-						//initWhileStep = introjs._currentStep;
 						var text = startingText + text1;
 						$('.introjs-tooltipbuttons').append('<a id="backbutton" class="introjs-button back-button hide" onClick = "backBtn()">&#8592; Back</a>');
-						//flag = !flag;
 					} else {
 						var text = text1;
 					}
@@ -511,7 +468,6 @@ introjs.onbeforechange(function(targetElement) {
 				break;
 				
 			case "stringLength":
-			//	printStep = introjs._currentStep;
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					flag = true;
@@ -608,7 +564,6 @@ function events() {
 	}); 
 	
 	$("#usrText").on("keyup", function(e) {
-		//$('.error-text').remove();
 		if ($("#usrText").val().length < 1) {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		} else {

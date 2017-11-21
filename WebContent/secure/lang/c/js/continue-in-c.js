@@ -24,10 +24,11 @@ var continueInCReady = function() {
     	$('.changeVal').text($(this).text());
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").removeClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").removeClass("opacity00");
         	iVal = parseInt($('#initializationValue').text());
         } else {
-        	$(".introjs-nextbutton").addClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").addClass("opacity00");
+        	
         	$('.errorText').text("please enter a value");
         }
     });
@@ -76,7 +77,8 @@ function TweenMaxEffect(elmt1, elmt2, duration, callback) {
 
 function flipIfCondition() {
 	$(".introjs-nextbutton, .introjs-prevbutton").hide();
-	$(".introjs-tooltiptext").append("<span class='flip-area'></span><br/><span class='typing-area'></span>");
+	$(".flip-area, .typing-area, br").remove();
+	$(".introjs-tooltiptext").append("<br><span class='flip-area'></span><br/><span class='typing-area'></span>");
 	$('.flip-area').html("<div id='numArrOfiBy2' class='display-inline-block'>i % 2</div> == " 
 						+ "<div id='zero' class='display-inline-block'>0</div>");
 	TweenMaxEffect(".flip-area", "#ifCondition", 0.5, function() {
@@ -88,17 +90,20 @@ function flipIfCondition() {
 					if (introjs._direction == "forward") {
 						introjs.insertOption(introjs._currentStep + 1, getStep("#continueStmt", "", "right", "hide"));
 					}
-					typing(".typing-area", "evaluates to <b class='ct-code-b-yellow'>true</b>.");
+					typing(".typing-area", "evaluates to <b class='ct-code-b-yellow'>true</b>.", function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 					//ifConditionBln = true;
 				} else {
-					typing(".typing-area", "evaluates to <b class='color-red'>false</b>.");
+					typing(".typing-area", "evaluates to <b class='color-red'>false</b>.", function() {
 					if (introjs._direction == "forward") { //New if
 						introjs.insertOption(introjs._currentStep + 1, getStep("#sop", "", "bottom", "hide"));
 					}
 					ifConditionBln = true;
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 					/*introjs.insertOption(introjs._currentStep + 2, getStep("#outputDiv", "", "", "hide"));*/
 				}
-				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			}});
 		}});
 	});
@@ -106,7 +111,8 @@ function flipIfCondition() {
 
 function flipForCondition() {
 	$(".introjs-nextbutton, .introjs-prevbutton").hide();
-	$(".introjs-tooltiptext").append("<span class='flip-area'></span><br/><span class='typing-area'></span>");
+	$(".flip-area, .typing-area, br").remove();
+	$(".introjs-tooltiptext").append("<br><span class='flip-area'></span><br/><span class='typing-area'></span>");
 	$('.flip-area').html("<div id='i' class='display-inline-block'>i</div> < " 
 						+ "<div id='numLength' class='display-inline-block'>10</div>");
 	TweenMaxEffect(".flip-area", "#condition", 0.5, function() {
@@ -123,7 +129,9 @@ function flipForCondition() {
 						introjs.insertOption(introjs._currentStep + 1, getStep("#ifBlk", "", "", "hide"));
 					}
 					
-					typing('.typing-area', "evaluates to <b class='ct-code-b-yellow'>true</b>.");
+					typing('.typing-area', "evaluates to <b class='ct-code-b-yellow'>true</b>.", function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 				} else {
 					
 					if (introjs._direction == "forward") { //New if
@@ -131,9 +139,10 @@ function flipForCondition() {
 						//introjs.insertOption(introjs._currentStep + 2, getStep("#restart", "Click to restart", "right", "introjs-tooltip-min-width-custom"));
 					}
 					
-					typing('.typing-area', "evaluates to <b class='color-red'>false</b>.");
+					typing('.typing-area', "evaluates to <b class='color-red'>false</b>.", function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 				}
-				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			}});
 		}});
 	});
@@ -350,7 +359,7 @@ function introJsGuide() {
 					typing(".introjs-tooltiptext", text, function() {
 						
 						$(".flip-animation-btn").removeClass("hidden");
-						$(".introjs-prevbutton").show();
+						//$(".introjs-prevbutton").show();
 						
 					});
 				} else {
@@ -377,12 +386,12 @@ function introJsGuide() {
 					
 					var text = "This is the <b class='ct-code-b-yellow'>condition</b> part.<br>If the condition evaluates " 
 								+ " to <b class='ct-code-b-yellow'>true</b>, control enters into " 
-								+ "<b class='ct-code-b-yellow'>if</b> body.</span><br/>";
+								+ "<b class='ct-code-b-yellow'>if</b> body.</span>";
 					
 					typing(".introjs-tooltiptext", text, function() {
 						
 						$(".flip-animation-btn").removeClass("hidden");
-						$('.introjs-prevbutton').show();
+						//$('.introjs-prevbutton').show();
 					});
 					
 				} else {

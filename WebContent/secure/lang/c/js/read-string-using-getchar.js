@@ -23,7 +23,6 @@ var readStringUsingGetcharReady = function() {
 					},{
 						element :'#line1',
 						intro :'',
-						tooltipClass: "hide",
 						position:"bottom"
 					},{
 						element :'#line2',
@@ -94,7 +93,7 @@ var readStringUsingGetcharReady = function() {
 					},{
 						element :'#restartBtn',
 						intro :'',
-						position:"bottom"
+						position:"right"
 					
 					}]
 	});
@@ -165,7 +164,7 @@ var readStringUsingGetcharReady = function() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+			if (introjs._currentStep != 0) {
 				$('.introjs-prevbutton').show();
 			}
 
@@ -193,7 +192,6 @@ var readStringUsingGetcharReady = function() {
 			
 		case "line1" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is the operating system call." +
 						"<ul><li><span class='ct-code-b-yellow'>main()</span> is execution starting point for any " +
 						"<span class='ct-code-b-yellow'>C</span> program.</li></ul>", 1, "",function() {
@@ -231,26 +229,25 @@ var readStringUsingGetcharReady = function() {
 					 i = 0;
 					var interval = setInterval(function() {
 						if (i == num) {
+							$("#tableRowId").removeClass("opacity00");
+							introjs.refresh();
+							$(".td-css").addClass("ct-code-b-green");
+							TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
+								insertCharacters(function() {
+									$('.introjs-tooltip').removeClass('hide');
+									typing(".introjs-tooltiptext", "The entered string is allocated in a memory of an array and " +
+												"<span class='ct-code-b-yellow'>\\0</span> is append at the end of the string.", 1, "", function() {
+										TweenMax.to("#baseAddresssId", 0.2, {opacity: 1, onComplete: function() {
+											$('.introjs-nextbutton, .introjs-prevbutton').show();
+										}});
+									});
+								});
+							}});
 							clearInterval(interval);
 						}
 						i++;
 						$("#iValue").text(i);
-					}, 500);
-					
-					$("#tableRowId").removeClass("opacity00");
-					introjs.refresh();
-					$(".td-css").addClass("ct-code-b-green");
-					TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
-						insertCharacters(function() {
-							$('.introjs-tooltip').removeClass('hide');
-							typing(".introjs-tooltiptext", "The entered string is allocated in a memory of an array and " +
-										"<span class='ct-code-b-yellow'>\\0</span> is append at the end of the string.", 1, "", function() {
-								TweenMax.to("#baseAddresssId", 0.2, {opacity: 1, onComplete: function() {
-									$('.introjs-nextbutton, .introjs-prevbutton').show();
-								}});
-							});
-						});
-					}});
+					}, 200);
 				} else if(introjs._currentStep == 11) {
 					if (introjs._direction == "backward") {
 						setTimeout(function () {
@@ -344,19 +341,24 @@ var readStringUsingGetcharReady = function() {
 			$("#consoleId").removeClass("opacity00");
 			if(introjs._currentStep == 7) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : <span id='blinkChar'><input id='in' maxlength='19' tabindex='0' value=''/></span></br></span>", 1, "",function() {
+					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : <span id='blinkChar'>"
+								+ " <input id='in' maxlength='19' tabindex='0' value=''/></span></br></span>", 1, "",function() {
 						$("#hiddenTypingChar").removeClass("hidden");
 						$("#totalBlinkText").addClass("hidden");
 						$("#inputChar").focus();
 						$('.introjs-tooltip').removeClass('hide');
-						typing(".introjs-tooltiptext", "Enter a String.<br/><span id='errText' class='ct-code-b-red'></span> ", 1, "",function() {
-							$("#inputChar").keydown(function() {
-								if ($(this).val().length > 18) {
-									$('.introjs-tooltiptext').append("<span class='ct-red error-text'><br/>Please restrict the string maximum"
-													+ " length to 19.</span>");
+						typing(".introjs-tooltiptext", "Enter a String.<span class='error-text ct-code-b-red'></span>" +
+								"<br><span id='errText' class='ct-code-b-red'></span> ", 1, "",function() {
+							$("#inputChar").on("keydown", function(e) {
+								$('.error-text').empty();
+								if ($.inArray(e.keyCode, [8, 46, 32, 37, 39, 27]) !== -1) {
+									return;
+								}
+								if ($(this).val().length > 19) {
+									$('.error-text').html("<br/>Please restrict the string maximum length to 20.");
 									e.preventDefault();
 								}
-							});
+							}); 
 							$("#inputChar").keyup(function() {
 								$("#errText").text("");
 								if ($("#inputChar").val().includes("#")) {
@@ -371,6 +373,7 @@ var readStringUsingGetcharReady = function() {
 				});
 				
 			} else if(introjs._currentStep == 13) {
+				$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
 						setTimeout(function () {
@@ -391,6 +394,7 @@ var readStringUsingGetcharReady = function() {
 			break;
 			
 		case "hiddenTotalEnterChar" :
+			$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				if (introjs._direction == "backward") {
 					$("#hiddenTotalEnterChar").val("");
@@ -403,9 +407,7 @@ var readStringUsingGetcharReady = function() {
 					$("#hiddenTotalEnterChar").val(finalResult);
 					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", "The entered string is printed on to the output screen.", 1, "",function() {
-						setTimeout(function() {
-							introjs.nextStep();
-						},1000);
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				}
 			});
@@ -420,13 +422,11 @@ var readStringUsingGetcharReady = function() {
 			break;
 			
 		case "restartBtn" :
+			$(".introjs-tooltip").css("min-width", "-moz-max-content");
+			$(".introjs-tooltip").css("min-width", "max-content");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").css("min-width", "-moz-max-content");
-				$(".introjs-tooltip").css("min-width", "max-content");
 				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
-				
-				});
+				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {});
 			});
 			break;
 		}

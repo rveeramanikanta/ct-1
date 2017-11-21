@@ -65,7 +65,7 @@
     margin-left: 10px;
 }
 .box1 {
-    width:35px;
+ /*    width:35px; */
 	height:15px;
 	position:relative;
     display:inline-block;
@@ -122,10 +122,11 @@
 
 #informationdiv {
     border-radius: 0px;
-   	min-height:140px;
+   	min-height:160px;
     margin-top: 20px;
     color: black;
-    padding: 20px;
+    padding: 8px;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -378,26 +379,26 @@ div, span {
 			<span class='col-xs-8 padding0'><span style='height: 31px; display: inline-block; position: relative;' id="power" ></span></span>
 		</div>
 		
-		<div class="visibility-hidden col-xs-12 margin10" id="thirdbox">
+		<div class="visibility-hidden col-xs-12 margin10 text-center" id="thirdbox">
 			<span class='col-xs-12' id="powecalculation"></span>
 		</div>
 		
-		<div class="col-xs-12 visibility-hidden margin10" id="fourthbox">
+		<div class="col-xs-12 visibility-hidden margin10 text-center" id="fourthbox">
 			<span class='col-xs-12'><span id="multiply"></span></span>
 		</div>
 		
-		<div class="col-xs-12 visibility-hidden " style='margin-top: 5px;' id="fifthbox">
+		<div class="col-xs-12 visibility-hidden text-center" style='margin-top: 5px;' id="fifthbox">
 			<span class='col-xs-12'><span id="multiplytwonos"></span></span>
 		</div>
 		
 		<div class="col-xs-12 visibility-hidden " style='margin-top: 5px;' id="sixthbox">
-			<span id="get" class="col-xs-4 padding0 font14 color-lightrose">Result<b>:</b></span><span  class ='col-xs-8 padding0'><span id="adding"></span></span>
+			<span id="get" class="col-xs-1 padding0 font14 color-lightrose">Result<b>:</b></span><div class ='col-xs-11 text-center padding0'><span id="adding"></span></span>
 		</div>
 	</div>
 	
 </div>
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

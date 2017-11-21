@@ -231,7 +231,8 @@ r {
 						<td>Binary-to-Hexadecimal</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Hexadecimal', 'binary-to-hexa.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Hexadecimal conversion</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Hexadecimal conversion
+									 <r>(modified)</r></span></td>
 						<td>Shiva / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -317,7 +318,8 @@ r {
 						<td>Hexadecimal-to-Binary</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Binary', 'hexadecimal-binary.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary
+									 <r>(modified)</r></span></td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -680,10 +682,13 @@ r {
 					<tr>
 						<td>12</td>
 						<td>Bitwise Operators</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Execution of Bitwise One's complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's complement operator</span></td>
-						<td>Ramya</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Execution of Bitwise One\'s complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's 
+									complement operator</span> <r>(modified)</r></td>
+						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>27-08-2016</td>
@@ -692,9 +697,12 @@ r {
 					<tr>
 						<td>13</td>
 						<td>Special Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span>
+									 <r>(modified)</r> </td>
 						<td>Pavan / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -934,6 +942,7 @@ r {
 							</div>
 
 							<div>
+								<i class="fa fa-check"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-function.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() function
@@ -943,7 +952,7 @@ r {
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-rs.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with Rs
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with Rs <r>(modified)</r>
 							</div>
 
 							<div>
@@ -1244,7 +1253,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch-case', 'switch-statement-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of switch-case</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>29-09-2016</td>
@@ -1256,7 +1265,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of while loop', 'while-loop-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of while loop</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>29-09-2016</td>
@@ -1268,7 +1277,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of do-while loop', 'do-while-loop-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of do-while loop</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>29-09-2016</td>
@@ -1291,7 +1300,7 @@ r {
 						<td>break statement</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', 'break-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of break statement</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of break statement <r>(modified)</r></td>
 						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1304,7 +1313,7 @@ r {
 						<td>Continue</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', 'continue-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of continue statement</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of continue statement <r>(modified)</r></td>
 						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1450,7 +1459,7 @@ r {
 						<td>1-D Arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing One-dimensional arrays', 'accessing-one-dimension-array.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing One-dimensional arrays</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing One-dimensional arrays <r>(modified)</r></td>
 						<td>Karthik / Shiva <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1627,7 +1636,7 @@ r {
 						<td>Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using scanf() and printf()', 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using scanf() and printf()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using scanf() and printf() <r>(modified)</r></td>
 						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1639,7 +1648,7 @@ r {
 						<td>Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ', 'read-string-using-getchar.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar() <r>(modified)</r></td>
 						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1652,7 +1661,7 @@ r {
 						<td>Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using gets() & puts()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using gets() & puts() <r>(modified)</r></td>
 						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1676,7 +1685,9 @@ r {
 					<tr>
 						<td>5</td>
 						<td>Program on Strings</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to find length of string', 'length-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find length of string</td>
 						<td>Mallika / Sathish <r>(back)</r></td>
@@ -1690,7 +1701,8 @@ r {
 						<td>Program on Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to copy one string to another string', 'copy-of-a-string.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string
+								 <r>(modified)</r></td>
 						<td>Mallika / Satish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>

@@ -164,6 +164,7 @@ introSteps();
 			case "restart":
 				$('.introjs-nextbutton').hide();
 				$('#informationDiv').css({"z-index": "0"});
+				$('.introjs-tooltip').css('min-width', '130px');
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
 						var text = "Click to restart.";

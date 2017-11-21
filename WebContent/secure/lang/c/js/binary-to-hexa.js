@@ -24,7 +24,7 @@ var binaryToHexaReady = function() {
 	});
 	
 	$("#binaryValue").keyup(function() {
-		$("#convert").attr("disabled", false);
+		$("#convert").attr("disabled", 'disabled');
 		if ($("#binaryValue").val().length == 0) {
 			 $("#convert").attr("disabled", true);
 		}
@@ -48,7 +48,7 @@ var binaryToHexaReady = function() {
 	
 	
 	$("#convert").click(function() {
-		$("#convert").addClass("disabled").attr("disabled", true);
+		$("#convert").attr("disabled", 'disabled');
 		$("#positionSpan1 > .box5").remove();
 		$('#twoPowerDiv1 > td').remove();
 		var input = $("#binaryValue").val();
@@ -80,6 +80,7 @@ var binaryToHexaReady = function() {
 				$("#numberBox1 td:nth-child(" + (i + 1) + ")").addClass('visibility-hidden zeros');
 			}
 			//$("#power2" + i).empty();
+			sum1 = sum2 = 0;
 			$("#positionSpan2").empty();
 			$('#twoPowerDiv2').empty();
 			$("#result2").empty();
@@ -370,7 +371,8 @@ function introGuide() {
 		case 'supPart':
 			$("#positionDiv").addClass("opacity00");
 			$("#positionSpan2").removeClass("col-xs-offset-3");
-			$("#numberBox1 td").removeAttr('style');
+			$('#supPart .zeros, #tableDiv1, #tableDiv2').addClass('visibility-hidden');
+			$("#numberBox1 td, #supPart").removeAttr('style');
 		break;
 		case 'positionDiv':
 			$("#square").removeClass("col-xs-offset-3");
@@ -384,14 +386,12 @@ function introGuide() {
 			/*$('#multiplyDiv1, #multiplyDiv2').addClass('opacity00');*/
 			var input = $("#binaryValue").val();
 			if (input.length <= 4) {
-				console.log('jsdkfhadsf');
 			 	$("#multiplySpan span").addClass('opacity00').removeAttr('style');
 			 	 //$('.plus1').addClass('opacity00');
 			 	 $('.plus1, .plus2').removeAttr('style');
 			 	$('.plus2').addClass('opacity00');
 			 	 $('#multiplyDiv2').addClass('opacity00');
 			} else if (input.length >= 5 && input.length <= 8 ) {
-				console.log('dfhdjkfdzs');
 				$('.plus1, .plus2').removeAttr('style');
 				$('.plus2').addClass('opacity00');
 				$('#multiplyDiv1 > span , #multiplyDiv2 > span').addClass('opacity00').removeAttr('style');
@@ -403,10 +403,9 @@ function introGuide() {
 		break;
 		case 'calculationPartDiv1':
 			/*$('#multiplyDiv1, #multiplyDiv2').addClass('opacity00');*/
-			$('#calculationPartDiv1').addClass('opacity00');
+			$('#calculationPartDiv1, #equalSpan').addClass('opacity00');
 			var input = $("#binaryValue").val();
 			if (input.length <= 4) {
-				console.log('jsdkfhadsf');
 			 	$("#multiplySpan span").addClass("opacity00").removeAttr('style');
 			 	 /*$('.plus1').addClass('opacity00');
 			 	 $('.plus2').css('opacity', 0).removeAttr('style');*/
@@ -690,7 +689,6 @@ function introGuide() {
 						"<span class='ct-code-b-yellow'>2<sup>0</sup></span> and so on.", function() {
 					if (input.length <= 4) {
 						z = 1;
-						console.log('four or less');
 						//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
 						$("#multiplyDiv1").removeClass('col-xs-6');
 						$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").addClass('display-none');
@@ -700,11 +698,11 @@ function introGuide() {
 					} else {
 						p = 1;
 						s = 1;
-						console.log('four or more');
 						$("#multiplyDiv1").removeClass("opacity00");
 					 	$("#multiplyDiv2").removeClass("opacity00");
 						collFirstHalf(3);
 					}
+					$('#equalSpan').removeClass('opacity00');
 				});
 			});
 			break;
@@ -851,7 +849,7 @@ function introGuide() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

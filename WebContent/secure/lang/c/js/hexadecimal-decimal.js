@@ -418,9 +418,8 @@ var hexadecimalDecimalReady = function() {
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
-				typing('.introjs-tooltiptext', "Click to restart.", function() {
-					});
-				$('.introjs-nextbutton, .introjs-prevbutton').show();	
+				typing('.introjs-tooltiptext', "Click to restart.", function() {});
+				//$('.introjs-nextbutton, .introjs-prevbutton').show();	
 					//$('#octalValue').val("");
 				});
 		break;
@@ -669,7 +668,7 @@ function calculate(callBackFunction) {
  	TweenMax.to("#bracket2" + w, flipingSpeed, {opacity:1, onComplete: function() {
  	$("#bracket2" + w).removeClass("opacity00");
 	$("#powerv" + w).removeClass("opacity00");
-	$("#powervalues" + w).effect('highlight',  {color: "#F08080"}, 3000);
+	$("#powervalues" + w).effect('highlight',  {color: "#F08080"}, 1500);
 	TweenMax.to("#powerv"+ w, flipingSpeed, {Color:"blue", opacity:1, top: 0, left: 0, onComplete:function() {
 	 	TweenMax.to("#ct-code-b-red" + w,flipingSpeed , {opacity:1, onComplete: function() {
 	 		$("#ct-code-b-red" + w).removeClass("opacity00");

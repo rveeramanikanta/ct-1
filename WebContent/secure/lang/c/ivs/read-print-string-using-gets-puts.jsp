@@ -160,7 +160,7 @@
  /* padding: 8px; */
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
+	color: yellow;
 }
 
 .base-address {
@@ -264,14 +264,14 @@ y {
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
-					<span id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' /></span><br/></br>
-				<span id="totalEnterChar" ></span>
-				<span id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></span>
+				<div id="typeChar"></div>
+				<div id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' maxlength='19' tabindex='0' /></div>
+				<div id="totalEnterChar" ></div>
+				<div id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
 			</div>
 		</div>
 	</div>
-<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart </button></div>
+<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart</button></div>
 <script>
 	$(document).ready(function() {
 		readPrintStringUsingGetsPutsReady();

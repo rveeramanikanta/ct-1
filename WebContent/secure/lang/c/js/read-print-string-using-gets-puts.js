@@ -21,7 +21,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line1',
 						intro :'',
-						tooltipClass: "hide",
 						position:"bottom"
 					},{
 						element :'#line2',
@@ -134,7 +133,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+			if (introjs._currentStep != 0) {
 				$('.introjs-prevbutton').show();
 			}
 
@@ -158,7 +157,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 			
 		case "line1" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is the operating system call." +
 						"<ul><li><span class='ct-code-b-yellow'>main()</span> is execution starting point for any " +
 						"<span class='ct-code-b-yellow'>C</span> program.</li></ul>", 1, "",function() {
@@ -259,6 +257,17 @@ var readPrintStringUsingGetsPutsReady = function() {
 						$("#totalBlinkText").addClass("hidden");
 						$("#inputChar").focus();
 						typing(".introjs-tooltiptext", "Enter a string. ", 1, "",function() {
+							$("#inputChar").on("keydown", function(e) {
+								$('.ct-code-b-red').remove();
+								if ($.inArray(e.keyCode, [8, 46, 32, 37, 39, 27]) !== -1) {
+									return;
+								}
+								if ($(this).val().length > 18) {
+									$('.introjs-tooltiptext').append("<span class='ct-code-b-red'><br/>Please restrict the string maximum"
+												+ " length to 19.</span>");
+									e.preventDefault();
+								}
+							}); 
 							$('#inputChar').keyup(function(e) {
 								if ($("#inputChar").val().length < 1) {
 									$('.introjs-nextbutton, .introjs-prevbutton').hide();
@@ -269,6 +278,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						});
 					});
 				} else if(introjs._currentStep == 9) {
+					$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 					if (introjs._direction == "backward") {
 						setTimeout(function () {
 							$("#totalEnterChar").removeClass("hidden");
@@ -289,6 +299,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			
 		case "hiddenTotalEnterChar" :
+			$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				if (introjs._direction == "backward") {
 					$("#hiddenTotalEnterChar").val("");
@@ -315,8 +326,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			
 		case "restartBtn" :
+			$(".introjs-tooltip").css("min-width", "max-content");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").css("min-width", "max-content");
 				$("#restartBtn").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
 

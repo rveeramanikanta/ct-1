@@ -1,6 +1,6 @@
 var introjs;
 var iVal = 1;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var ifConditionBln = false;
 var breakInCReady = function() {
 	introJsGuide();
@@ -23,10 +23,12 @@ var breakInCReady = function() {
     	$('.changeVal').text($(this).text());
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").removeClass("opacity00");
+        	//$(".introjs-nextbutton").removeClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").show();
         	iVal = parseInt($('#initializationValue').text());
         } else {
-        	$(".introjs-nextbutton").addClass("opacity00");
+        	//$(".introjs-nextbutton").addClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
         	$('.errorText').text("please enter a value");
         }
     });
@@ -73,7 +75,8 @@ function TweenMaxEffect(elmt1, elmt2, duration, callback) {
 
 function flipIfCondition() {
 	$(".introjs-nextbutton, .introjs-prevbutton").hide();
-	$(".introjs-tooltiptext").append("<span class='flip-area'></span><br/><span class='typing-area'></span>");
+	$(".flip-area, .typing-area, br").remove();
+	$(".introjs-tooltiptext").append("<br><span class='flip-area'></span><br/><span class='typing-area'></span>");
 	
 	$('.flip-area').html("<div id='numArrOfiBy5' class='display-inline-block'>i % 5</div> == " 
 						+ "<div id='zero' class='display-inline-block'>0</div>");
@@ -89,17 +92,23 @@ function flipIfCondition() {
 				    		  introjs.insertOption(introjs._currentStep + 1, getStep("#breakStmt", "", "right", "hide"));
 				    		  
 				    	  }
-							typing(".typing-area", "evaluates to <b class='ct-code-b-yellow'>true</b>.");
+							typing(".typing-area", "evaluates to <b class='ct-code-b-yellow'>true</b>.", function() {
+								ifConditionBln = true;
+							    $(".introjs-nextbutton, .introjs-prevbutton").show();
+							});
 							
 						} else {
 							  if(introjs._direction == "forward") {
 								  introjs.insertOption(introjs._currentStep + 1, getStep("#sop", "", "bottom", "hide")); // i have inserted step here..
 							  }
 							  
-							typing(".typing-area", "evaluates to <b class='color-red'>false</b>.");
+							typing(".typing-area", "evaluates to <b class='color-red'>false</b>.", function() {
+								ifConditionBln = true;
+							    $(".introjs-nextbutton, .introjs-prevbutton").show();
+							});
 						}
-				      ifConditionBln = true;
-				      $(".introjs-nextbutton, .introjs-prevbutton").show();
+				      /*ifConditionBln = true;
+				      $(".introjs-nextbutton, .introjs-prevbutton").show();*/
 				  }});
 				}});
 		});
@@ -108,7 +117,8 @@ function flipIfCondition() {
 
 
 function flipForCondition() {
-	$(".introjs-tooltiptext").append("<span class='flip-area'></span><br/><span class='typing-area'></span>");
+	$(".flip-area, .typing-area, br").remove();
+	$(".introjs-tooltiptext").append("<br><span class='flip-area'></span><br/><span class='typing-area'></span>");
 	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 	$('.flip-area').html("<div id='i' class='display-inline-block'>i</div> < " 
 						+ "<div id='numLength' class='display-inline-block'>10</div>");
@@ -123,17 +133,21 @@ function flipForCondition() {
 							introjs.insertOption(introjs._currentStep + 1, getStep("#ifBlk", "", "right", "hide"));
 						}
 						
-						typing('.typing-area', "evaluates to <b class='ct-code-b-yellow'>true</b>.");
+						typing('.typing-area', "evaluates to <b class='ct-code-b-yellow'>true</b>.", function() {
+							 $(".introjs-nextbutton, .introjs-prevbutton").show();
+						});
 						
 					} else {
 						if (introjs._direction == "forward") {
 							introjs.insertOption(introjs._currentStep + 1, getStep("#mainEnd", "", "right", "hide"));
 						}
 						
-						typing('.typing-area', "evaluates to <b class='color-red'>false</b>.");
+						typing('.typing-area', "evaluates to <b class='color-red'>false</b>.", function() {
+							 $(".introjs-nextbutton, .introjs-prevbutton").show();
+						});
 					}
 				
-				$(".introjs-nextbutton, .introjs-prevbutton").show();
+				//$(".introjs-nextbutton, .introjs-prevbutton").show();
 			}});
 		}});
 	});
@@ -191,6 +205,7 @@ function introJsGuide() {
 	introjs.setOption('keyboardNavigation', false);
 	introjs.start();
 	$('.introjs-prevbutton').hide();
+	$('.introjs-nextbutton').hide();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
 	
@@ -322,6 +337,7 @@ function introJsGuide() {
 			break;
 		case "condition":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".flip-animation-btn").addClass("hidden");
 				$('#initializationValue').attr('contenteditable', false);
 				$(".introjs-tooltip").removeClass("hide");
 				if (introjs._currentStep == 2) {
@@ -332,7 +348,7 @@ function introJsGuide() {
 			
 					typing(".introjs-tooltiptext", text, function() {
 						$(".flip-animation-btn").removeClass("hidden");
-						$(".introjs-prevbutton").show();
+						//$(".introjs-prevbutton").show();
 					});
 				} else {
 					flipForCondition();
@@ -356,10 +372,10 @@ function introJsGuide() {
 				if (introjs._currentStep == 4) {
 					var text = "This is the <b class='ct-code-b-yellow'>condition</b> part. If the condition evaluates " 
 								+ "to <b class='ct-code-b-yellow'>true</b>, the control enters into " 
-								+ "the <b class='ct-code-b-yellow'>if</b> body.</span><br/>";
+								+ "the <b class='ct-code-b-yellow'>if</b> body.</span>";
 					typing(".introjs-tooltiptext", text, function() {
 						$(".flip-animation-btn").removeClass("hidden");
-						$(".introjs-prevbutton").show();
+						//$(".introjs-prevbutton").show();
 					});
 				} else {
 					flipIfCondition();

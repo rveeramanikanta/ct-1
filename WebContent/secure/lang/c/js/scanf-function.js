@@ -224,7 +224,7 @@ function introGuide() {
 									
 									typing("#runEditor1", text, function() {
 										setTimeout(function() {
-								introjs.nextStep()
+											introjs.nextStep()
 										}, 500);
 									});
 							}});
@@ -320,7 +320,6 @@ function introGuide() {
 							}, 500);
 						});
 					} else {
-						//$("#scanNum2").popover("hide");
 						setTimeout(function() {
 							introjs.previousStep()
 						}, 500);
