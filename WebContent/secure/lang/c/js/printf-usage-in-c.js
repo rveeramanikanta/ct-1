@@ -22,15 +22,10 @@ var printfUsageInCReady = function() {
 			element : "#typingDiv",
 			intro : "",
 			tooltipClass : "hide" 
-		/*}, {
-			element : "#typingDiv",
-			intro : "",
-			position : "bottom"*/
 		}, {
 			element : "#firstLine",
 			intro : "",
 			position : "right",
-			//tooltipClass:"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -40,7 +35,6 @@ var printfUsageInCReady = function() {
 			element : "#secondLine",
 			intro : "",
 			position : "right",
-			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -50,7 +44,6 @@ var printfUsageInCReady = function() {
 			element : "#thirdLine",
 			intro : "",
 			position : "right",
-			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -60,7 +53,6 @@ var printfUsageInCReady = function() {
 			element : "#fourthLine",
 			intro : "",
 			position : "right",
-			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -77,8 +69,8 @@ var printfUsageInCReady = function() {
 			case "firstLine":
 				$('#secondLine').addClass('opacity00');
 				if (intro._currentStep == 1) {
-				$('#lineOne').addClass('opacity00');
-				$('#firstLine').removeClass('opacity00');
+					$('#lineOne').addClass('opacity00');
+					$('#firstLine').removeClass('opacity00');
 				}
 				break;
 				
@@ -86,11 +78,8 @@ var printfUsageInCReady = function() {
 				$('#thirdLine').addClass('opacity00');
 			    $('#lineTwo').text("");
 				$('#secondLine').removeClass('opacity00');
-				
 				break;
-				
 			case "thirdLine":
-				 console.log("3rdlinebefore");
 				$('#fourthLine').addClass("opacity00");
 				$("#3").text("");
 				$('#thirdLine').removeClass('opacity00');
@@ -266,7 +255,6 @@ var printfUsageInCReady = function() {
 					break;
 					case "line3":
 						$('#cursorId').remove();
-						console.log("3rdlinecount");
 						     
 						$('#lineThree > span').append('Line one.').addClass('opacity00');
 					

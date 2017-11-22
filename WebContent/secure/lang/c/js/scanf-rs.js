@@ -101,16 +101,9 @@ function introGuide() {
 			$("#runEditor1").addClass("opacity00");
 			break;
 			
-		case "addressDiv":
-			
-			break;
 			
 		case "consoleId":
-			
-				if (introjs._currentStep == 4) {
-					
-					
-				} else if (introjs._currentStep == 6) {
+				if (introjs._currentStep == 6) {
 						$("#inputVal").text("");
 						//$(".introjs-tooltip").removeClass("hide");
 					
@@ -126,10 +119,6 @@ function introGuide() {
 					
 				} else if (introjs._currentStep == 11) {
 					$('#val1').css('border', '');
-				} else if (introjs._currentStep == 13) {
-					
-				} else {
-					
 				}
 			break;
 			
@@ -144,18 +133,10 @@ function introGuide() {
 					$("#givenNum1").removeClass("zIndex");
 					$("#val0, #val1").css('border', '');
 					$("#percentId").css('border', '1px solid black');
-					//introjs.goToStep(5);
 				} else if (introjs._currentStep == 12){
 					$("#percentId").css('border', '1px solid black');
 					$("#scanNum2").popover("hide");
 				}
-				else {
-					
-				}
-			break;
-			
-		case "finalPrintf":
-			
 			break;
 			
 		case "rsId":
@@ -343,7 +324,6 @@ function introGuide() {
 					});
 					
 				} else if (introjs._currentStep == 7) {
-					console.log(introjs._direction);
 						if (introjs._direction == "forward") {
 							var numText = $("#num1").val();
 							var i = 0;
@@ -358,20 +338,16 @@ function introGuide() {
 							  	    i++;
 							});
 							$('#rsId').css("border", "1px solid yellow");
-							//if (introjs._introItems[introjs._currentStep]["stepFlag"] == undefined) {
-								//introjs._introItems[introjs._currentStep]["stepFlag"] = true;
 								var newStep = {
 									"element" : "#rsId",
 									"intro" : "",
 									"position" : "right"
 								}
 								introjs.insertOption(introjs._currentStep + 1, newStep);
-							//}
 							setTimeout(function() {
 								introjs.nextStep();
 							},1000);
 						} else {
-							//$('#inputVal').text('Rs. ' + numText + '%');
 							setTimeout(function() {
 								introjs.previousStep();
 							}, 500);

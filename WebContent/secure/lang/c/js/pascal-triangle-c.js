@@ -108,32 +108,12 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "topDiv":
-			/*$("#starDisplay").addClass("opacity00");*/
 			$("#codeDiv").addClass("opacity00");
 			$("#firstDiv, #secondDiv, #thirdDiv").addClass("opacity00")
 			$("#arrow1").attr("x2","28%").hide();
 			$("#arrow2").attr("x2","57%").hide();
 			
 		break;
-		case "leftDiv":
-		break;
-		
-		case "codeDiv":
-			
-        	break;
-        	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "totalForLoop":
-			
-        	break; 
-        	
-		case "restart":
-			
-        	break;
-        	
 		case "getPrintf":
 			$('#consoleId1').addClass('opacity00');
         	break;
@@ -144,17 +124,11 @@ function introGuide() {
         	break;
         	
 		case "outputDiv":
-		
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				var action = introjs._introItems[introjs._currentStep].action;
 				switch(action) {
 				case "printfText":
 					$('#animationDivText').addClass('opacity00');
-					/*if (introjs._direction == "forward") {
-						$('#animationDivText').removeClass('opacity00');
-					} 
-					stepNext();*/
-					
 					break;
 					
 				case "printfValue":
@@ -164,10 +138,6 @@ function introGuide() {
 					$(".outer").removeClass("background-color-green");
 					$(".inner-one").removeClass("background-color-yellow");
 					$(".inner-two").removeClass("background-color-blue");
-					break;
-					
-				case "outputPrintingStart":
-					
 					break;
 				}
 			});
@@ -199,11 +169,9 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "topDiv":
-			console.log("In the topDiv...");
 			$('.introjs-nextbutton').hide();
 			if (introjs._direction == "backward") {
 				setTimeout(function() {
-					console.log("Inthe reveal arrow..");
 					revealArrow();
 				}, 1000)
 			} else  {
@@ -348,7 +316,6 @@ function introGuide() {
 }
 
 function revealArrow() {
-	console.log("In teh reveal arrow..");
 	$(".introjs-tooltiptext ul li:last-child *").removeAttr("id");
 	introjs.refresh();
 	$(".user-btn").remove();
@@ -442,7 +409,6 @@ function mainForLoop() {
 								 setTimeout(function() {
 									arrow("#codeNextLine", ".outer", function() {
 										mainForLoop();
-										console.log("mainForLoop recursion calling");
 									});
 								}, 100); 
 							});

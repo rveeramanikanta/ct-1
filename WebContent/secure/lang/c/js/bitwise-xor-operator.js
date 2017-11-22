@@ -76,9 +76,6 @@ var bitwiseXorOperator = function() {
 		intro.onbeforechange(function(targetElement) {
 			var elementId = targetElement.id;
 			switch (elementId) {
-			case "informationDiv":
-				
-			break;	
 			case "inputDiv":
 				$('#valueSpan1, #valueSpan2').empty();
 				$('#firstBinaryValue').addClass('opacity00').removeAttr('style');
@@ -103,7 +100,6 @@ var bitwiseXorOperator = function() {
 			case "addOperationDiv":
 				$("#addOperationDiv").removeClass("opacity00").removeAttr("style");
 				
-				
 				$("#firstBinaryNumber").removeAttr("style");
 				$("#secondBinaryNumber").removeAttr("style");
 				$(".line-div").remove();
@@ -112,9 +108,6 @@ var bitwiseXorOperator = function() {
 				$("#display").empty().removeAttr('style');
 				$("#display").addClass("opacity00");
 			break;		
-			case "display":
-				
-			break;
 			}
 		});
 		

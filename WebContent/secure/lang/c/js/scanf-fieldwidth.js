@@ -77,7 +77,6 @@ function introGuide() {
 			break;
 			
 		case "printf":
-			console.log("beforeprintf");
 			$("#consoleId").removeAttr("style").addClass("opacity00");
 			$("#runEditor1").addClass("opacity00");
 		
@@ -87,9 +86,6 @@ function introGuide() {
 			$("[data-toggle='popover']").popover("hide");
 			break;
 			
-		case "addressDiv":
-				
-			break;
 			
 		case "consoleId":
 				if (introjs._currentStep == 4) {
@@ -106,9 +102,7 @@ function introGuide() {
 			break;
 			
 		case "scanf":
-			console.log(introjs._introItems[introjs._currentStep].intro);
 			$("#inputVal").text("");
-			console.log(introjs._introItems[introjs._currentStep].intro);
 			
 			break;
 		}

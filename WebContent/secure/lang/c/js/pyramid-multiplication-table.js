@@ -126,18 +126,6 @@ var pyramidMultiplicationTableReady = function() {
 			});
         	break;
         	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "restart":
-			
-        	break;
-        	
-        case "totalForLoop":
-			
-        	break; 
-        	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
 			

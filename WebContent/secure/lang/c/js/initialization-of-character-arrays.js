@@ -26,27 +26,22 @@ var initializationOfCharacterArrays = function() {
 		}, {
 			element :'#exampleDiv1',
 			intro : '',
-			//animateStep : 'firstExIntro',
 			tooltipClass : 'hide',
 		}, {
 			element :'#exampleDiv2',
 			intro : '',
-			//animateStep : 'secondExIntro',
 			tooltipClass : 'hide',
 		}, {
 			element :'#exampleDiv3',
 			intro : '',
-			//animateStep : 'thirdExIntro',
 			tooltipClass : 'hide',
 		}, {
 			element :'#exampleDiv4',
 			intro : '',
-			//animateStep : 'fourthExIntro',
 			tooltipClass : 'hide',
 		}, {
 			element :'#exampleDiv5',
 			intro : '',
-			//animateStep : 'fifthExIntro',
 			tooltipClass : 'hide',
 			position : 'top'
 		}, {
@@ -89,8 +84,6 @@ var initializationOfCharacterArrays = function() {
 			$(".char-visible-two-zero").addClass("opacity00").removeClass("animated zoomIn blinking-once");
 			$(".char-invisible").removeAttr("style");
 			$("#fifthExample,#exampleDiv5").addClass("opacity00");
-			
-		//	$("#fifthExample,#exampleDiv5").addClass("opacity00");
 			$("#tableDiv5").addClass("opacity00").removeClass("animated zoomIn");
 			$("#displayValue").addClass('opacity00'); 
 			$(".appendZero").addClass("opacity00").removeClass("animated zoomIn blinking-once");
@@ -124,7 +117,6 @@ var initializationOfCharacterArrays = function() {
 		switch(elementId) {
 		case 'infoDiv' :
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
-			//var text = $("#infoDiv").html();
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
 					$('#nextButton').removeClass("opacity00");

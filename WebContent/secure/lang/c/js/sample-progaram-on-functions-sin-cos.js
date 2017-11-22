@@ -1154,7 +1154,7 @@ function introGuide() {
 					});
 				} else if($("#mainPrintf3").hasClass("print-output")) {
 					$("#mainPrintf3").removeClass("print-output");
-					var text = "The sine value = <span id='sinReturn' style='color: lime; font-weight: bold;'>" + sum + "</span>";
+					var text = "The sine value = <span id='sinReturn' class='ct-code-b-yellow'>" + sum + "</span>";
 					typing("#runEditor3", text, function() {
 						setTimeout(function() {
 							introjs.nextStep();
@@ -1162,14 +1162,14 @@ function introGuide() {
 					});
 				} else if($("#mainPrintf4").hasClass("print-output")) {
 					$("#mainPrintf4").removeClass("print-output");
-					var text = "The cosine value = <span id='cosReturn' style='color: lime; font-weight: bold;'>" + sum + "</span>";
+					var text = "The cosine value = <span id='cosReturn' class='ct-code-b-yellow'>" + sum + "</span>";
 					typing("#runEditor4", text, function() {
 						setTimeout(function() {
 							introjs.nextStep();
 						}, 1000);
 					});
 				} else {
-					var text = "The tan value = <span style='color: lime; font-weight: bold;'>" + tanVal + "</span>";
+					var text = "The tan value = <span class='ct-code-b-yellow'>" + tanVal + "</span>";
 					typing("#runEditor5", text, function() {
 						setTimeout(function() {
 							introjs.nextStep();

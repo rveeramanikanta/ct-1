@@ -1,8 +1,3 @@
-/**
- * 
- */
-
-
 var initializationOfOneDimensionalArraysReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {

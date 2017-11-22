@@ -97,9 +97,6 @@ var octalToBinaryConversionReady = function() {
 			$('#numbersCombine').addClass('opacity00');
 			
 			$(".box2 span").removeAttr('style');
-			/*$("#combineBinaryDigits0").removeAttr('style');
-			$("#combineBinaryDigits1").removeAttr('style');
-			$("#combineBinaryDigits2").removeAttr('style');*/
 			
 			break;
 		case "combineBinaryNumbers":

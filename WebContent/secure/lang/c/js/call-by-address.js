@@ -136,12 +136,6 @@ function introJsFunction() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "preCode":
-			break;
-		case "swapDeclareLine":
-			break;
-		case "mainMethodBlock":
-			break;
 		case "aLine":
 			if (elementId == "aLine") {
 				$('#mainMethodBox').removeAttr('style');
@@ -178,12 +172,6 @@ function introJsFunction() {
 				break;
 			}
 			break;
-		case "printBeforeSwapInMain":
-			break;
-		case "outputBox":
-			break;
-		case "swapLine":
-			break;
 		case "swapMethodBlock":
 		case "swapAnimationDiv":
 			TweenMax.to($('.svg-line').eq(0).hide(), 1, {attr: {x2: '20%', y2: '57%'}});
@@ -215,14 +203,6 @@ function introJsFunction() {
 			break;
 		case "yLine":
 			$('#bValue').text("10");
-			break;
-		case "printAfterSwapInSwap":
-			break;
-		case "swapMethodCloseBrace":
-			break;
-		case "animationDiv":
-			break;
-		case "printAfterSwapInMain":
 			break;
 		}
 	});

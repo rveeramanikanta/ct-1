@@ -136,7 +136,6 @@ var hexadecimalOctalReady = function() {
 			
 		break;
 		case "octalValuesDiv":
-			/*temp = $("#multiplicationDiv").html();*/
 			$('.box').addClass('opacity00').removeAttr('style');
 			$('#binaryValuesDiv').addClass('opacity00');
 			$('.box4').addClass('opacity00').removeAttr('style');
@@ -145,12 +144,10 @@ var hexadecimalOctalReady = function() {
 			$('#binaryValuesDiv').addClass('opacity00');
 			$('.box4').addClass('opacity00').removeAttr('style');
 			$('#combineBinaryNumbers').addClass('opacity00').removeAttr('style');
-			//$('#numbersCombine').addClass('opacity00');
 			$('.combine').addClass('opacity00').removeAttr('style');
 		break;
 		case "combineBinaryNumbers" :
 			$('#combineBinaryNumbers').addClass('opacity00').removeAttr('style');
-			//$('#numbersCombine').addClass('opacity00').removeAttr('style');
 			$('.combine').addClass('opacity00').removeAttr('style');
 			$('#binaryResult').addClass('opacity00');
 			$("#binaryResultValue").removeAttr('style');
@@ -160,29 +157,28 @@ var hexadecimalOctalReady = function() {
 		case "getValues" :
 			$('#getValues').addClass('opacity00');
 			$('.binaryBox1').removeAttr('style');
-			
 			var inputBinary = $("#numbersCombine").text();
 			if (inputBinary.length % 3 == 2) {
 				$("#columnDiv0 td:nth-child(1)").removeClass("opacity00");
 			} else if(inputBinary.length % 3 == 1) {
 				$("#columnDiv0 td:nth-child(1), #columnDiv0 td:nth-child(2)").removeClass("opacity00");
 			}
-				var inputBinary = $("#numbersCombine").text();
-				if(inputBinary.length <= 4) {
-					$("#row6, #row9").show();
-					$("#rowDiv").addClass("opacity00");
-					$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
-				} 
-				else if(inputBinary.length <= 8) {
-					$("#rowDiv").addClass("opacity00");
-					$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
-					$("#row9").show();
-					$("#calculation9").show();
-					$("#square9").show();
-					$("#numberBox", "#columnDiv0").removeAttr('style');
-				} else {
-					$("#rowDiv").addClass("opacity00");
-					$("#numberBox", "#columnDiv0").removeAttr('style');
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length <= 4) {
+				$("#row6, #row9").show();
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} 
+			else if(inputBinary.length <= 8) {
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
+				$("#row9").show();
+				$("#calculation9").show();
+				$("#square9").show();
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			} else {
+				$("#rowDiv").addClass("opacity00");
+				$("#numberBox", "#columnDiv0").removeAttr('style');
 			}
 		break;
 		case 'rowDiv':
@@ -192,35 +188,35 @@ var hexadecimalOctalReady = function() {
 			} else if(inputBinary.length % 3 == 1) {
 				$("#columnDiv0 td:nth-child(1), #columnDiv0 td:nth-child(2)").removeClass("opacity00");
 			}
-				var inputBinary = $("#numbersCombine").text();
-				if(inputBinary.length <= 4) {
-					$("#row6, #row9").show();
-					$("#rowDiv").addClass("opacity00");
-					$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
-				} 
-				else if(inputBinary.length <= 8) {
-					$("#rowDiv").addClass("opacity00");
-					$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
-					$("#row9").show();
-					$("#calculation9").show();
-					$("#square9").show();
-					$("#numberBox", "#columnDiv0").removeAttr('style');
-				} else {
-					$("#rowDiv").addClass("opacity00");
-					$("#numberBox", "#columnDiv0").removeAttr('style');
-				}
-				
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length <= 4) {
+				$("#row6, #row9").show();
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} 
+			else if(inputBinary.length <= 8) {
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
+				$("#row9").show();
+				$("#calculation9").show();
+				$("#square9").show();
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			} else {
+				$("#rowDiv").addClass("opacity00");
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			}
+			
+			$("#positionDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#position0, #position3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
 				$("#positionDiv").addClass("opacity00");
-				var inputBinary = $("#numbersCombine").text();
-				if(inputBinary.length == 4) {
-					$("#position0, #position3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
-					$("#positionDiv").addClass("opacity00");
-				} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
-					$("#position0, #position3, #position6").removeClass('col-xs-offset-1');
-					$("#positionDiv").addClass("opacity00");
-				} else {
-					$("#positionDiv").addClass("opacity00");
-				}
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#position0, #position3, #position6").removeClass('col-xs-offset-1');
+				$("#positionDiv").addClass("opacity00");
+			} else {
+				$("#positionDiv").addClass("opacity00");
+			}
 		break;
 		case 'positionDiv':
 			temp = $("#multiplicationDiv").html();
@@ -265,18 +261,15 @@ var hexadecimalOctalReady = function() {
 			var inputBinary = $("#numbersCombine").text();
 			if(inputBinary.length == 4) {
 				$("#calculationDiv").addClass("opacity00");
-				//$('.plus, .close').addClass('opacity00').removeAttr('style');
 				$("#calculationDiv0 > span, #calculationDiv3 > span").addClass('opacity00').removeAttr('style');
 				$("#calculation0, #calculation3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
 			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
 				$("#calculationDiv").addClass("opacity00");
 				$("#calculation0, #calculation3, #calculation6").removeClass('col-xs-offset-1');
-				//$('.plus, .close').addClass('opacity00').removeAttr('style');
 				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span").addClass('opacity00').removeAttr('style');
 			} else {
 				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span, #calculationDiv9 > span").addClass('opacity00').removeAttr('style');
 				$("#boxDiv").css("font-family", "");
-				//$('.plus, .close').addClass('opacity00').removeAttr('style');
 				$("#calculationDiv").addClass("opacity00");
 			}
 		break;
@@ -294,7 +287,6 @@ var hexadecimalOctalReady = function() {
 			} else {
 				$("#boxDiv").css("font-family", "");
 				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span, #calculationDiv9 > span").addClass('opacity00').removeAttr('style');
-				//$('.plus, .close').addClass('opacity00').removeAttr('style');
 				$("#calculationDiv").addClass("opacity00");
 			}
 			var inputBinary = $("#numbersCombine").text();
@@ -361,28 +353,28 @@ var hexadecimalOctalReady = function() {
 			}
 		break;
 		case 'resultDiv':
-				$("#resultDiv").addClass("opacity00");
-				var inputBinary = $("#numbersCombine").text();
-				if(inputBinary.length == 4) {
-					$("#result0, #result3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
-				} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
-					$("#result0, #result3, #result6").removeClass('col-xs-offset-1');
-				} else {
+			$("#resultDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#result0, #result3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#result0, #result3, #result6").removeClass('col-xs-offset-1');
+			} else {
+			
+			}
+			
+			
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#finalResult").html("");
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#finalResult").html("");
+			} else {
 				
-				}
-				
-				
-				var inputBinary = $("#numbersCombine").text();
-				if(inputBinary.length == 4) {
-					$("#finalResult").html("");
-				} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
-					$("#finalResult").html("");
-				} else {
-					
-					$("#finalResult").html("");
-				}
-				$("#finalDiv").addClass("opacity00");
-				$('.introjs-tooltip').removeClass('hide');
+				$("#finalResult").html("");
+			}
+			$("#finalDiv").addClass("opacity00");
+			$('.introjs-tooltip').removeClass('hide');
 			break;
 		case 'finalDiv':
 				var inputBinary = $("#numbersCombine").text();

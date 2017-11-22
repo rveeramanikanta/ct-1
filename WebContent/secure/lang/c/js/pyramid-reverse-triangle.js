@@ -128,18 +128,6 @@ var pyramidReverseTriangleReady = function() {
 			});
         	break;
         	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "restart":
-			
-        	break;
-        	
-        case "totalForLoop":
-			
-        	break; 
-        	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
 			
@@ -166,9 +154,6 @@ var pyramidReverseTriangleReady = function() {
 					$(".inner-two").removeClass("background-color-blue");
 					break;
 					
-				case "outputPrintingStart":
-					
-					break;
 				}
 			});
 			

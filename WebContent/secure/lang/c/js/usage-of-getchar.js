@@ -32,20 +32,7 @@ function introGuide() {
 			element :"#preTableDiv",
 			intro : "",
 			position : 'right',
-		}/* , {
-			element :"#line2",
-			intro : "",
-			position : 'left',
 		}, {
-			element :"#line3",
-			intro : "",
-			position : 'right',
-		} *//* , {
-			element :"#animationBox",
-			intro : "",
-			position : 'right',
-			animateStep : 'memoryZooming',
-		} */, {
 			element :"#line4",
 			intro : "",
 			position : 'right',
@@ -56,17 +43,7 @@ function introGuide() {
 			position : 'right',
 			animateStep : 'checking',
 			tooltipClass :"hide"
-		}/*, {
-			element :"#consoleId",
-			intro : "",
-			position : 'right',
-			animateStep : 'animation'
-		}, {
-			element :"#animationBox",
-			intro : "",
-			position : 'right',
-			animateStep : 'animationPart',
-		} */,{
+		},{
 			element : '#line5',
 			intro : '',
 			tooltipClass : 'hide'
@@ -134,22 +111,11 @@ function introGuide() {
 				$("#printLineInConsole").addClass("opacity00");
 				$("#inputChar").val('');
 				break;
-			case 'animation':
-				
-				//$("#printLineInConsole").addClass("opacity00");
-				break;
 			case 'printLine':
 				$("#preTableDiv2").removeAttr("style")
 				break;
 			}
 			break;
-		case 'animationBox':
-			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			
-			}
-			break;
-	
 		case 'preline1':
 			$("#consoleId2").addClass("opacity00");
 			break;
@@ -174,12 +140,6 @@ function introGuide() {
 			case 'checking':
 				$("#inputChar2").val('');
 				$("#printpreLine1").addClass("opacity00");
-				break;
-			case 'printPreline1':
-				
-				break;
-			case 'printPreline2':
-				
 				break;
 			}
 			break;
@@ -490,9 +450,7 @@ function introGuide() {
 
 	
 function convertToBinary(asciiVal) {
-//	console.log(asciiVal);
 	binaryVal = Number(asciiVal).toString(2);
-//	console.log("binaryVal = " + binaryVal);
 }
 
 function typing(selector, text, callBackFunction) {

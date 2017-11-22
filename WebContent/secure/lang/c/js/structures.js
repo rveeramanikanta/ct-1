@@ -104,15 +104,6 @@ function structuresReady() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
-		case "declarationDefination" :
-		break;
-		case "exampleOfStudent" :
-			
-		break;
-		case "members" :
-		break;
-		case "studentStruct" :
-		break;
 		case "studentVariables" :
 			$("#storeS1, #storeS2, #storeS3").addClass("opacity00");
 		break;
@@ -123,33 +114,17 @@ function structuresReady() {
 		case "declarationSyntax" :
 			$("#structureDeclaration").removeClass("opacity00");
 		break;
-		case "keyWord" :
-		break;
-		case "structureName" :
-		break;
 		case "semicolon" :
 			$('#exampleStructureDeclaration').addClass('opacity00');
 		break;
 		case "exampleStructureDeclaration" :
 			$('#exampleStructureDeclaration').removeClass('opacity00');
 		break;
-		case "structutreIdentifier" :
-		break;
-		case "name" :
-		break;
-		case "id" :
-		break;
 		case "long" :
 			$('#definitionSyntax').addClass('opacity00');
 		break;
 		case "definitionSyntax" :
 			$('#definitionSyntax').removeClass('opacity00');
-		break;
-		case "keyWord1" :
-		break;
-		case "structureName1" :
-		break;
-		case "structureVariables" :
 		break;
 		}
 	});

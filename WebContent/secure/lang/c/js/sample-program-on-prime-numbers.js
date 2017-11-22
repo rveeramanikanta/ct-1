@@ -74,10 +74,6 @@ function introGuide() {
 		$('.introjs-prevbutton, .introjs-skipbutton, .introjs-nextbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-			case "description":
-				
-				break;
 				
 			case "example":
 				
@@ -100,10 +96,6 @@ function introGuide() {
 				
 				break;
 			
-			case "ifLogic":
-				
-				break;
-				
 			case "intDec":
 				$(".explanation, #cCupDiv").addClass("opacity00");
 				$("#cVal").text('');
@@ -118,11 +110,6 @@ function introGuide() {
 				
 				break;
 				
-			case "printfEnter":
-			case "falsePrint":
-			case "truePrint":
-				
-				break;
 				
 			case "console":
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -141,10 +128,6 @@ function introGuide() {
 						if (introjs._introItems.length > 10) {
 							introjs._introItems.splice(10);
 						}
-						
-						break;
-						
-					case "secondPrint":
 						
 						break;
 						
@@ -169,10 +152,6 @@ function introGuide() {
 						introjs._introItems.splice(introjs._introItems.length - 4);
 					}
 				}
-				
-				break;
-				
-			case "whileCode":
 				
 				break;
 				
@@ -208,7 +187,6 @@ function introGuide() {
 				break;
 				
 			case "breakSpan":
-				console.log(" in the breakSpan of before step...");
 				if (introjs._direction == "backward") {
 					introjs._introItems.splice(introjs._introItems.length - 4);
 				}
@@ -230,14 +208,6 @@ function introGuide() {
 				
 				break;
 				
-			case "outerIf":
-				
-				
-				break;
-	
-			case "restart":
-				
-				break;
 		}
 	});
 	

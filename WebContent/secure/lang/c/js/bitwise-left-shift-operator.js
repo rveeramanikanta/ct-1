@@ -130,9 +130,6 @@ var bitwiseLeftShiftOperatorReady = function() {
 			
 			var elementId = targetElement.id;
 			switch (elementId) {
-			case "informationDiv":
-				
-			break;	
 			case "inputDiv":
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$("#firstNum").val("");

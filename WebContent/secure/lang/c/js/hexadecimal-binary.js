@@ -62,11 +62,9 @@ var hexadecimalBinaryReady = function() {
 		switch(elementId) {
 		case "inputDiv" :
 			$("#convert").addClass("disabled").attr("disabled", "disabled");
-			//$('#inputDiv').addClass('opacity00');
 			$('#octalValue').val('');
 			$('#calculationTable').addClass('visibility-hidden');
 			$('.box').addClass('opacity00').removeAttr('style');
-			//$('#octalValuesDiv').addClass('opacity00');
 			$('.box').remove();
 			$('.box1').remove();
 			$('.box2').remove();

@@ -309,7 +309,6 @@ var structureIntializationReady = function() {
 				$('.flash').removeClass('flash');
 				if (intro._direction == "forward") {
 					setTimeout(function() {
-						console.log('printMethod');
 						intro.nextStep();
 					}, 400);
 				} else {

@@ -68,7 +68,6 @@ var whileLoopInCReady = function() {
 				$('#value').removeClass("flip");
 				$('.introjs-nextbutton').addClass('opacity00');
 				if (evaluateBtnCount > 0) {
-					console.log("evaluateBtnCount > 0");
 					typing('#conditionTyping', 'evaluates to <b class="ct-code-b-yellow">true</b>.', function() {
 						$('.introjs-nextbutton').addClass("hidden opacity00");
 						$('.continueBtn').removeClass("hidden opacity00");
@@ -95,8 +94,6 @@ var whileLoopInCReady = function() {
 				
 				typing('#conditionTyping', text, function() {
 					$('.FinishBtn').removeClass("opacity00 hidden");
-					//$('.introjs-nextbutton').addClass("hidden opacity00");
-					//$('.introjs-nextbutton').show();
 				});
 				$('.FinishBtn').text("Done");
 			});
@@ -115,7 +112,6 @@ var whileLoopInCReady = function() {
 	
 	$('.FinishBtn').click(function() {
 		$('.output-console-body').animate({scrollTop: 1500}, 500);
-		//$('.introjs-tooltipbuttons').hide();
 		for (var i = value; i <= condition; i++, value++) {
 			$("#output").append("<div>value : " + value + "</div>");
 			$("#cupValue").text(i + 1);
@@ -145,10 +141,8 @@ var whileLoopInCReady = function() {
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
         	$(".evaluateBtn").removeClass("opacity00");
-        	//$(".introjs-prevbutton").show();
         } else {
         	$(".evaluateBtn").addClass("opacity00");
-        	//$(".introjs-prevbutton").hide();
         	$('.errorText').html("Please enter a value.");
 			charAtEnd("conditionValue");
         }
@@ -162,8 +156,6 @@ var whileLoopInCReady = function() {
 	
 	
 	$(".oneStepBackBtn").click(function() {
-		//evaluateBtnCount = 0;
-		//introjs.goToStep(3);
 		$("#condition").addClass("present");
 		introjs.goToStep(7);
 	})
@@ -203,7 +195,6 @@ function charAtEnd(elementId) {
 }
 
 function travellEffect() {
-	//$(".introjs-nextbutton").addClass("opacity00");
 	var l1 = $('#travelledNum').offset();
 	var l2 = $('#cup_num').offset();
 	var topLength = l2.top-l1.top;
@@ -225,7 +216,6 @@ function travellEffect() {
 			var leftLength = l2.left-l1.left;
 			$('#updatedValue').offset({'top':l2.top, 'left':l2.left});
 			$('#updatedValue').animate({'top': 0, 'left' : 0}, 1000, function() {
-				//$(".introjs-nextbutton").removeClass("opacity00");
 				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			});
 		});
@@ -233,13 +223,13 @@ function travellEffect() {
 }
 
 function typing(id, content, callBackFunction) {
-	var typingSpeed = 20;
+	var typingSpeed = 1;
 	if (id.substring(1) === 'incrementText') {
 		if (incrementTextTypingSpeed == 0) {
-			typingSpeed = 20;
-			incrementTextTypingSpeed = 10;
+			typingSpeed = 1;
+			incrementTextTypingSpeed = 1;
 		} else {
-			typingSpeed = 20;
+			typingSpeed = 1;
 		}
 	}
 	
@@ -358,33 +348,6 @@ function introJsGuide() {
 					evaluateBtnCount--;
 				}
 			}
-			
-			/*$('.introjs-helperLayer').one('transitionend', function () {
-				$("#initializationValue").attr("contenteditable", true);
-				$('.introjs-nextbutton').addClass("opacity00");
-				$('.initializeBtn').removeClass("hidden");
-				charAtEnd("initializationValue");
-			});*/
-			break;
-			
-		case "condition":
-			
-			break;
-			
-		case "statement":
-			
-			break;
-		case "outputDiv":
-			
-			break;
-		case "update":
-			
-			break;
-		case "mainEnd" :
-			
-			break;
-		case "restart":
-			
 			break;
 		}
 	});
@@ -404,7 +367,6 @@ function introJsGuide() {
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
 			if (introjs._currentStep != 0 && targetElement.id !== "codeDiv") {
-				console.log("In the on after change...");
 				$('.introjs-prevbutton').show();
 			}
 
@@ -557,14 +519,11 @@ function introJsGuide() {
 			});
 			break;
 		case "mainEnd" :
-			//$('.introjs-tooltipbuttons').hide();
 			$('.FinishBtn').remove();
 			$('.continueBtn').remove();
 			$('.introjs-helperLayer').one('transitionend', function () {
-				console.log("In the mainEnd ...");
 				var text = "Control comes out of the <b class='ct-code-b-yellow'>while-loop</b> and the program terminates.";
 				typing(".introjs-tooltiptext", text, function() {
-					//$('.introjs-tooltipbuttons').show();
 					$('.introjs-nextbutton').show();
 				});
 			});

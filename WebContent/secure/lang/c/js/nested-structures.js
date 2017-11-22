@@ -229,7 +229,6 @@ var nestedStructuresReady = function() {
 	intro.onbeforechange(function(targetElement) { 
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "informationdiv" :
 			intro.refresh();
 		break;

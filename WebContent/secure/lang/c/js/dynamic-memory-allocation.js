@@ -117,8 +117,6 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'preCode':
-			break;
 		case 'line1':
 			$("#cBox, #cValue").addClass("opacity00");
 			break;
@@ -199,8 +197,6 @@ function introGuide() {
 			case 'svgAnimate':
 				$("#pValue").addClass("opacity00");
 				$('#svg2').remove();
-				break;
-			case 'arraySizeError':
 				break;
 			}
 			break;

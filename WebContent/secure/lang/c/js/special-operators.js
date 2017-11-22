@@ -132,45 +132,6 @@ function introJsFunction() {
 		case "line1":
 			$('.background-color-pink').removeClass('background-color-pink');
 		break;
-		case "line5":
-
-		break;
-		case "line6":
-
-		break;
-		case "outputBox":
-
-		break;
-		case "sizeOfPrintfLines":
-
-		break;
-		case "outputBox":
-
-		break;
-		case "line8":
-
-		break;
-		case "outputBox":
-
-		break;
-		case "line9":
-
-		break;
-		case "outputBox":
-
-		break;
-		case "line10":
-
-		break;
-		case "outputBox":
-
-		break;
-		case "line11":
-
-		break;
-		case "outputBox":
-
-		break;
 		}
 	});
 

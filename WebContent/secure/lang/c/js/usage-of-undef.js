@@ -6,7 +6,6 @@ var usageOfUnderfReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
 		} else {
@@ -143,55 +142,27 @@ var usageOfUnderfReady = function() {
 			
 		case "totalBackground" :
 			$("#totalBackground").addClass("ct-code-b-green");
-			//$("#totalForeground").addClass("ct-code-b-green");
 			break;
 			
 		case "line3" :
 			$("#pr").remove();
-			//$(".opacity02").removeClass("opacity02")
 			$("#printForeGroundId").text("FOREGROUND");
-			//$("#line10").empty().removeClass("opacity00");
 			break;
 			
 		case "line4" :
 			$("#pr1").remove();
 			break;
-			
 		case "line5" :
 			$("#consoleId").addClass("opacity00");
 			break;
-			
-		case "line8" :
-			
-			break;
-			
-		case "printForeGroundId" :
-			
-			
-			//$("#totalForeground").removeClass("ct-code-b-green");
-			break;
-		
 		case "printBackGroundId" :
-			//$("#totalForeground").removeClass("ct-code-b-green");
-			
-			//$("#printBackGroundId").text("BACKGROUND");
 			$("#undefBackground").removeClass("ct-code-b-red");
-			
-			break;
-			
-		case "line9" :
-			
-			break;
-			
-		case "line6" :
-			
 			break;
 			
 		case "undefBackground" :
 			$("#pr").remove();
 			$('.opacity02').removeClass('opacity02');
 			$("#undefBackground").addClass("ct-code-b-red");
-			//$(".prepended").remove();
 			break;
 			
 		case "undefForeground" :
@@ -200,15 +171,9 @@ var usageOfUnderfReady = function() {
 			$("#totalForeground").addClass("ct-code-b-green");
 			$("#totalForeground").removeClass("ct-code-b-green");
 			break;
-		case "line10":
-			
-			break;
 		case "consoleId" :
-			
 			if (intro._currentStep == 15) {
 				$("#consoleId").addClass("opacity00");
-			} else if(intro._currentStep == 17) {
-				
 			}
 			break;
 			

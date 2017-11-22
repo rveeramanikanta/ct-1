@@ -77,22 +77,13 @@ var ifElseIfInCReady = function() {
 		t1 = new TimelineLite();
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "mainFunctions" :
-			
-		break; 
-		case "charCh" :
-			
-		break;
 	 	case "enterCharSpan" :
 	 		$("#consoleId").addClass("opacity00");
 	 		$("#charInput").removeAttr("disabled");
 	 		$("#charInput").val("");
 		break; 
-		
 		case "consoleId":
-			
 			if (intro._currentStep == 4) {
-				console.log("In the before consoleId of 4th step... ");
 				$("#charInput").removeAttr("disabled");
 		 		$("#charInput").val("");
 			} else if (intro._currentStep == 7) {
@@ -101,11 +92,6 @@ var ifElseIfInCReady = function() {
 				$("#valGet").empty();
 			} 
 			break;
-		case "getCh" :
-			
-			break;
-		case "enteredCharSpan" :
-		break; 
 		case "putChar" :
 			$(".user-btn").remove();
 			break;
@@ -117,37 +103,8 @@ var ifElseIfInCReady = function() {
 				intro._introItems.splice(11);
 			}
 			break;
-		case "ifConditionForLowerCase":
-			
-			break;
-		case "printF1":
-			
-			break;
-		case "ifConditionForUpperCase":
-			
-			break;
-		case "printF1":
-			
-			break;
-		case "ifConditionForUpperCase":
-			
-			break;
-		case "printF2":
-		
-			break;
-		case "printF3":
-		
-			break;
-		case "printF4":
-		
-			break;
-		case "restartBtn":
-		
-		break;
 		}
 	});
-	
-	
 	
 	intro.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
@@ -454,8 +411,6 @@ function charcheck() {
 		
 	if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
  	{
-		console.log("(ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')");
-		console.log( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') );
 	   if ( ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ) {
 		   
 		   if (intro._introItems[intro._currentStep]["visited"] == undefined) {

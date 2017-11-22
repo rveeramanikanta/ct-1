@@ -117,28 +117,6 @@ var pyramidLowertriangleLineInSameRowReady = function() {
 			
 		break;
 		
-		case "codeDiv":
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				var action = intro._introItems[intro._currentStep].action;
-				switch(action) {
-				case "sampleCode":
-					 
-					break;
-				}
-			});
-        	break;
-        	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "restart":
-		
-        	break;
-        	
-        case "totalForLoop":
-        	break; 
-        	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
         	break;
@@ -161,8 +139,6 @@ var pyramidLowertriangleLineInSameRowReady = function() {
 					$(".inner-two").removeClass("background-color-blue");
 					break;
 					
-				case "outputPrintingStart":
-					break;
 				}
 			});
 			

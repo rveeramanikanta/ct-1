@@ -126,10 +126,6 @@ var structureWithAssiagnmentOperator = function() {
 		case "structureConcept" :
 			$('#structureConcept').removeClass('opacity00');
 			break; 
-		case "structBook" :
-			break; 
-		case "storeBmemory" : 
-			break;
 		case "bookB1" : 
 			intro.refresh();
 			break;
@@ -145,8 +141,6 @@ var structureWithAssiagnmentOperator = function() {
 			break;
 		case "b2equalsB1" : 
 			$("#b2Arayy, #table2").removeClass("opacity00");
-			break;
-		case "table2" : 
 			break;
 		}
 	});

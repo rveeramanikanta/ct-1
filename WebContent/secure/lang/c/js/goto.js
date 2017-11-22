@@ -113,7 +113,6 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "totalDiv":
-			
 			if (introjs._currentStep == 5) {
 				$("#li5").removeAttr("style");
 				$("#code").addClass("opacity00");
@@ -122,7 +121,6 @@ function introGuide() {
 		case "forwardGotoLabel":
 			$("#forwardCode").removeClass("background-color-red");
 		break;
-		
 		case "forwardLabel":
 			$("#forwardCode").removeClass("background-color-red");
 		break;
@@ -132,29 +130,10 @@ function introGuide() {
 		case "backwardGotoLabel":
 			$("#forwardCode").removeClass("background-color-red");
 		break;
-		case "code":
-		break;
-		case "char":
-			
-		break;
-		case "label":
-		break;
 		case "printf1":
 			if (introjs._currentStep == 9) {
 				$("#outputDiv").addClass("opacity00");
 			}
-		break;
-		case "outputDiv":
-			
-		break;
-		case "ifCondition":
-			
-		break;
-		case "gotoL1":
-			
-		break;
-		case "restart":
-			
 		break;
 		}
 	});
@@ -359,7 +338,6 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 							$("#body > div .input-char").last().focus();
 										
 							$("#body > div .input-char").last().keyup(function() {
-								console.log(" in the if of key");
 								if ($("#body > div .input-char").last().length == 0 || $("#body > div .input-char").last().val() == '') {
 									$(".introjs-nextbutton, .introjs-prevbutton").hide();
 								} else {
@@ -374,7 +352,6 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 						$("#body > div .input-char").last().focus();
 						
 						$("#body > div .input-char").last().keyup(function() {
-							console.log(" in the else of key");
 							if ($("#body > div .input-char").last().length == 0 || $("#body > div .input-char").last().val() == '') {
 								$(".introjs-nextbutton, .introjs-prevbutton").hide();
 							} else {

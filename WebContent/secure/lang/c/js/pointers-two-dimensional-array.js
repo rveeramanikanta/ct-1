@@ -207,11 +207,6 @@ function introJsFunction() {
 		case "variablesBox":
 			$('#pBox').addClass('opacity00');
 			break;
-		case "printf1":
-		case "printf2":
-		case "printf3":
-			
-			break;
 		case "outputBox":
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 			switch (outputStep) {
@@ -222,9 +217,6 @@ function introJsFunction() {
 				$('.arrayValue').text('');
 				$("#outputScanfLine2").text('');
 				$(".introjs-nextbutton").hide();
-				break;
-			case "forPrintf":
-				
 				break;
 			}
 			break;

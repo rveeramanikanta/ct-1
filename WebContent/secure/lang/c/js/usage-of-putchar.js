@@ -61,7 +61,6 @@ function introGuide() {
 			position : "right",
 			tooltipClass : 'hide',
 			animateStep : 'secondStep',
-			//tooltipClass :"hide"
 		}, {
 			element :'#line4',
 			intro : '',
@@ -96,7 +95,6 @@ function introGuide() {
 			intro : '',
 			position : "right",
 			animateStep : 'secondStepInConsoleId2',
-			//tooltipClass : "hide"
 		}, {
 			element : '#finalText',
 			intro : '',
@@ -112,10 +110,6 @@ function introGuide() {
 		
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'infoDiv' :
-		break;
-		case 'preTableDiv':
-		break;
 		case 'memoryBox':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
@@ -123,13 +117,7 @@ function introGuide() {
 		    	$("#consoleId").addClass("opacity00");
 		    	$("#memoryBox").addClass("visibility-hidden");
 		    	$("#inputChar").val('');
-		    	
 		    	break;
-		 
-		    
-			case 'secondStep':
-				
-				break;
 			}
 		break;
 		case 'line3':
@@ -140,51 +128,34 @@ function introGuide() {
 		break;
 		case 'preDiv':
 			$("#preDiv").removeClass("visibility-hidden");
-			//$("#consoleId").addClass("opacity00");
-			
 		break;
 		case 'line5':
 			$("#consoleId1").addClass("opacity00");
 			$("#constantChar").addClass("opacity00");
 		break;
 		case 'line6':
-			
 			$("#asciiChar").addClass("opacity00");
-		break;
-		case 'line7':
 		break;
 		case 'line8':
 		case 'consoleId':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
-			
             case 'firstStep':
             	$("#typingChar").addClass("opacity00");
-            	//$("#consoleId").removeClass("opacity00");
-    			
 			break;
 			case 'secondStep':
 				$("#preDiv").addClass("visibility-hidden");
-				
 			$("inputChar").removeClass("opacity00");
-			
-			
 			break;
 			}	
 		break;
 		case 'consoleId1':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
-			   
-			case 'firstStepInConsoleId1':
-				break;
 			case 'secondStepInConsoleId2':
 				$("#asciiChar").removeClass("opacity00");
 				break;
 			}
-		break;
-	
-		case 'finalText':
 		break;
 		
 		}
@@ -264,7 +235,6 @@ function introGuide() {
 				});
 				break;
 			case 'secondStep':
-				console.log("calling");
 				$("#inputChar").attr("disabled", "disabled");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					//$(".introjs-tooltip").removeClass("hide");
@@ -272,13 +242,11 @@ function introGuide() {
 					    if (introjs._direction=="forward") {
 							$(".panel-body").text(inputVar).css({"padding": "8px", "color": "green", "font-weight": "bold"}).addClass("animated zoomIn").one('animationend', function() {
 								$(".panel-body").removeClass('animated zoomIn');
-								console.log('animated after');
 								setTimeout(function() {
 									introjs.nextStep();
 								}, 500);
 							});
 						} else {
-							console.log("secondstep backword");
 							$(".panel-body").text("").css({"padding": "18px", "color": "green", "font-weight": "bold"}).addClass("animated zoomIn").one('animationend', function() {
 								$(".panel-body").removeClass('animated zoomIn');
 								introjs.previousStep();
@@ -375,7 +343,6 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'firstStep':
-				console.log("firsttime");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					
 					$("#consoleId").removeClass("opacity00");
@@ -392,7 +359,6 @@ function introGuide() {
 				break;
 			case 'secondStep':
 				
-				console.log("2nd time");
 				$("#inputChar").attr("disabled", "disabled");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass("hide");

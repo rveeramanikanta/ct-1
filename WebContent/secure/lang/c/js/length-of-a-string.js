@@ -118,22 +118,12 @@ function introGuide() {
 				$('.introjs-tooltip').css({'min-width' : '200px'});
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 				switch(outputStep) {
-
-				case "firstPrint":
-						
-					break;
-					
 				case "EnterString":
 					$("#userString td").eq($(".filled").length + 1).text('');
 					$('.filled').text('');
 					break;
-						
 				case "secondPrint":
 						$(".secondLine").empty();
-					break;
-					
-				case "lastPrint":
-					
 					break;
 				}
 			break;

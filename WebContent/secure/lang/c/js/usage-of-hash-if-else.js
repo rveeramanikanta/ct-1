@@ -8,7 +8,6 @@ var usageOfHashIfElseReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 		} else {
@@ -16,7 +15,6 @@ var usageOfHashIfElseReady = function() {
 		}
 	});
 	
-	console.log();
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -119,7 +117,6 @@ var usageOfHashIfElseReady = function() {
 					element :'#line9',
 					intro :'',
 					position:"bottom",
-					//tooltipClass:"hide"
 				},{
 					element :'#line10',
 					intro :'',
@@ -149,9 +146,6 @@ var usageOfHashIfElseReady = function() {
 		case "preBody" :
 			if (intro._currentStep == 2) {
 				$("#preBody").removeClass("visibility-hidden");
-				
-			} else if(intro._currentStep == 13) {
-				// $("#typeChar").addClass("hide");
 			}
 			break;	
 		case "line8" :
@@ -162,50 +156,23 @@ var usageOfHashIfElseReady = function() {
 			}
 			break;
 			
-		case "line9" :
-			
-			break;
-			
 		case "line10" :
-			 //$("#typeChar").addClass("hide");
 			if (intro._currentStep == 11) {
 				$('#printMaxValue').text('10');
 				$('#printMinValue').text('20')
 			}
 			break;
 			
-		case "totalElse" :
-		
-		break;
-			
-		case "maxValue" :
-			
-			break;
-			
 		case "printMaxValue" :
 		
 			$("#printMaxValue").text("MAX");
-			if (intro._currentStep == 8) {
-			} else if (intro._currentStep == 18) {
-			
-			}
 			break;
 		
 		case "printMinValue" :
 			
 			$("#printMinValue").text("MIN");
-			if (intro._currentStep == 9) {
-			} else if (intro._currentStep == 19) {
-			}
 			break;
 		
-		case "consoleId" :
-		
-			if (intro._currentStep == 12) {
-			} else if(intro._currentStep == 22) {
-				
-			}
-			break;
 	   }
 	});
 	intro.onafterchange(function(targetElement) {

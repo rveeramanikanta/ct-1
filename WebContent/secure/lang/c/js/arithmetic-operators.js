@@ -12,22 +12,16 @@ var second;
 var aoReady = function() {
 	$(".inputWidth").on("keydown", function(e) {
 		var max = $(this).attr("maxlength");
-		
 		if ( e.which == 8 || e.which == 37 || e.which == 39 || e.which == 46) {
 			$('.length-error-text').remove();
 			return true;
 		}
-		
 		if($(this).val().length >= max) {
 			$('.length-error-text').remove();
 			$(".introjs-tooltiptext").append("<div class='length-error-text'>Max length was restricted to "+ max +" characters only.</div>");
-			//e.preventDefault();
 			return false;
 		} 
-		
-		
 		 if ($("#selectType").val() == "int") {
-			 //$('.length-error-text').remove();
 			 if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
 				$('.length-error-text').remove();	
 			} 
@@ -37,40 +31,30 @@ var aoReady = function() {
 				$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter only the integers.</div>");
 				e.preventDefault();
 			} 
-		
 		} 
-		 
 		 if ($("#selectType").val() == "float") {
-				if (e.keyCode == 190 || e.keyCode == 110) {
-					$('.length-error-text').remove();
-					return true;
-				}
-				
-				if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
-					$('.length-error-text').remove();	
-				} 
-				
-				if((e.shiftKey) || (e.keyCode > 8 && e.keyCode < 48) || (e.keyCode > 57 && e.keyCode < 96) || (e.keyCode > 105)) {
-	
-					$('.length-error-text').remove();
-					$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter only the Float.</div>");
-					e.preventDefault();
-				}
+			if (e.keyCode == 190 || e.keyCode == 110) {
+				$('.length-error-text').remove();
+				return true;
+			}
+			if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+				$('.length-error-text').remove();	
+			} 
+			if((e.shiftKey) || (e.keyCode > 8 && e.keyCode < 48) || (e.keyCode > 57 && e.keyCode < 96) || (e.keyCode > 105)) {
+
+				$('.length-error-text').remove();
+				$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter only the Float.</div>");
+				e.preventDefault();
+			}
 		} 
-		
-		
 		 if ($("#selectType").val() == "char") {
-			 
-				if((e.shiftKey) || (e.keyCode > 8 && e.keyCode < 48) || (e.keyCode > 106)) {
-					$('.length-error-text').remove();
-					$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter only the 1 Character.</div>");
-					e.preventDefault();
-				}
-				
+			if((e.shiftKey) || (e.keyCode > 8 && e.keyCode < 48) || (e.keyCode > 106)) {
+				$('.length-error-text').remove();
+				$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter only the 1 Character.</div>");
+				e.preventDefault();
+			}
 		} 
-		 
 	})
-	
 	
 	$("#selectType").on("change", function() {
 		console.log(" select option changed..");
@@ -101,33 +85,14 @@ var aoReady = function() {
 			$(".inputWidth").attr("maxlength","3");
 		}
 	})
-	
-	/* $("#selectList").on("change", function() {$('.active').text().trim()
-	//	$("#selectList").val("0").change();
-		var value = $(this).val();
-		if ($("#selectList").val() == "0") {
-			console.log(" in the if condition of change.. ");
-			$('.length-error-text').remove();
-			$(".introjs-tooltiptext").append("<div class='length-error-text'>Select the relational operator from the menu.</div>");
-			$("#submit").attr("disabled", "disabled");
-		} else {
-			$('.length-error-text').remove();
-			//$("#selectSub").html(options[value]);
-			$("#submit").removeAttr("disabled");
-		}
-		
-	}) */
-	
 	var count1 = 0;
 	
 	$(".inputWidth").bind("keyup", function(e) {
-		//var select = $("#selectList option:selected").val();
 		var select = $(".active").text().trim();
 		
 		if ($("#firstNum").val().startsWith('.') || $("#firstNum").val().endsWith('.')) {
 			$('.length-error-text').remove();
 			$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter valid Float value.</div>");
-			//e.preventDefault();
 			return false;
 		}
 		
@@ -136,12 +101,10 @@ var aoReady = function() {
 			$(".introjs-tooltiptext").append("<div class='length-error-text'>Enter valid Float value.</div>");
 			return false;
 		}
-		
 		if (($("#firstNum").val().length != 0) && ($("#secondNum").val().length != 0)) {
 			if (intro._currentStep == 1) {
 				$(".introjs-nextbutton").show();
-			} else /* if (select !==0){ */
-				if (select !== "--select--"){
+			} else if (select !== "--select--") {
 				$("#submit").removeAttr("disabled");
 			}
 		} else {

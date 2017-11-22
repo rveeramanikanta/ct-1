@@ -55,23 +55,10 @@ var usageOfHashDefineReady = function() {
 			$(".introjs-nextbutton").hide();
 		}
 		if ($("#inputChar").val().startsWith('.') || $("#inputChar").val().endsWith('.')) {
-			//$('.ct-code-b-red').remove();
 			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot.</div>");
 			$(".introjs-nextbutton").hide();
-			//e.preventDefault();
 			return false;
-		} /* else {
-			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot</div>");
-			//$(".introjs-nextbutton").show();
-		} */
-		/* if (($("#num2").val().charAt(0) == ".") || ($("#num2").val().charAt($(".float-num").val().length - 1) == ".")) {
-			$(".introjs-nextbutton").hide();
-			if (($("#num2").val().charAt(0) == ".")) {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Enter number first</div>");
-			} else {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot</div>");
-			}
-		} */
+		} 
 	});
 	introjsGuide();
 	$("#nextBtn").click(function() {
@@ -260,22 +247,14 @@ function introjsGuide() {
 			$("#areaId").addClass("opacity00").css('opacity', '');
 			$("#circumferenceId").addClass("opacity00").css('opacity', '');
 		break;
-		/*case 'animationDiv':
-			$("#radiusId").addClass("opacity00").css('opacity', '');
-			$("#areaId").addClass("opacity00").css('opacity', '');
-			$("#circumferenceId").addClass("opacity00").css('opacity', '');
-		break;*/
 		case "inputChar" :
 			$('#inputChar').val('');
 			$("#inputChar").removeAttr("disabled");
-			//$("#inputChar").addClass("blinking-orange");	
 		break;	
 		case "line6":
 			$('#inputChar').val('');
-			//$("#inputChar").focus();
 		break;
 		case "radiusId" :
-			//$("#radiusOne").css("opacity", 0);
 			$('#tooltipAreaNextBtn').addClass("opacity00");
 		break;
 		case 'areaId':
@@ -971,15 +950,12 @@ function tooltipFlipArea() {
 	if($('#inputChar').val().includes(".")) {
 		l1 = parseFloat($('#inputChar').val() + '00000');
 		result = 3.141 * l1 * l1;
-		console.log("final result with dot = " + result);
 	} else {
 		l1 = parseFloat($('#inputChar').val() + '.000000');
 		result = 3.141 * l1 * l1;
-		console.log("final result without dot = " + result);
 	}
 	
 	var givenString = result.toString();
-	console.log("resulted givenString is = " + givenString);
 	var indexOfDot = givenString.indexOf(".");
 	var index;
 	if (indexOfDot == -1) {
@@ -998,7 +974,6 @@ function tooltipFlipArea() {
 			givenString = givenString.concat("0");
 		}
 	}
-	console.log("givenString = " + givenString);
 	
 	t1.to("#totalRadius", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 		$("#totalRadius").text(givenString);
@@ -1034,7 +1009,6 @@ function tooltipFlipCircum() {
 	
 	
 	var givenString = result.toString();
-	console.log("resulted givenString is = " + givenString);
 	var indexOfDot = givenString.indexOf(".");
 	var index;
 	if (indexOfDot == -1) {
@@ -1053,7 +1027,6 @@ function tooltipFlipCircum() {
 			givenString = givenString.concat("0");
 		}
 	}
-	console.log("givenString = " + givenString);
 	t1.to("#totalCircumference", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 		$("#totalCircumference").text(givenString);
 		$("#panelCircumferenceBody").text(givenString);

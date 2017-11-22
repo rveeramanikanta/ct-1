@@ -7,7 +7,6 @@ var usageOfDoubleHashReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
 		} else {
@@ -15,7 +14,6 @@ var usageOfDoubleHashReady = function() {
 		}
 	});
 	
-	console.log();
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -69,18 +67,6 @@ var usageOfDoubleHashReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-		case "preBody" :
-			
-			break;
-			
-		case "line1" :
-			
-			break;
-			
-		case "line2" :
-			
-			break;
 			
 		case "line3" :
 			$("#consoleId").addClass("opacity00");
@@ -98,10 +84,6 @@ var usageOfDoubleHashReady = function() {
 			
 		case "consoleId" :
 			$("#consoleId").removeClass("opacity00");
-			break;
-			
-		case "restartBtn" :
-			
 			break;
 		}
 	});

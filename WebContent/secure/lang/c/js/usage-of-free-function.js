@@ -205,8 +205,6 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'infoDiv':
-			break;
 		case 'preCode':
 			introjs.refresh();
 			break;
@@ -298,8 +296,6 @@ function introGuide() {
 		case 'codeLine5':
 			$('.console-input-line').removeAttr('contenteditable placeholder').empty();
 			break;
-		case 'codeLine6':
-			break;
 		case 'codeLine7':
 			$('#pSecondExValue').text("1038");
 			$('#svg2, #dynamicDiv1').removeAttr('style');
@@ -307,21 +303,6 @@ function introGuide() {
 		case 'codeLine8':
 			$('#qValue').text("1992");
 			$('#svg3, #dynamicDiv2').removeAttr('style');
-			break;
-		case 'consoleId':
-			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			case 'printText':
-				break;
-			case 'inputValue':
-				break;
-			case 'outputPrint':
-				break;
-			case 'sumPrint':
-				break;
-			}
-			break;
-		case 'sumCondition':
 			break;
 		}
 	});

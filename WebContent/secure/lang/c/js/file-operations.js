@@ -123,25 +123,21 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "heading":
 			$("#typingDiv").removeClass("z-index");
 			$("#typingDiv").addClass("opacity00");
 			$('#line1, #line2').removeAttr('style');
 			break;
-		
 		case "typingDiv":
 				$('#line1, #line2').removeAttr('style');
 				$("#fileOperation, #fpDiv, #readEditor").addClass("opacity00");
 			break;
-			
 		case "fileOperation":
 			$('#fpDiv').addClass('opacity00');
 			$("#typingDiv").addClass("z-index");
 			$("#fileRd").removeClass("blink");
 			$('#fileOperation').removeAttr('style');
 			break;
-			
 		case "writeOpen":
 			$(".introjs-helperLayer").one('transitionend', function() {
 				var writeFileOpenSteps = introjs._introItems[introjs._currentStep].writeFileOpenSteps;
@@ -156,16 +152,12 @@ function introGuide() {
 				}
 			});
 			break;
-				
 		case "usrFile":
 			introjs.refresh();
 			break;
-			
-			
 		case "txtFile":
 			var textFileSteps = introjs._introItems[introjs._currentStep].textFileSteps;
 			switch(textFileSteps) {
-			
 				case "fileWriteMode":
 					$('#txtFile').addClass('opacity00');
 					$(".address, .fa").addClass("hide");
@@ -173,12 +165,9 @@ function introGuide() {
 					$('#wModeText').val('');
 					$('#writeClose').removeAttr('style');
 					break;
-						
 					case "fileClose3":
 						$('#txtFile').removeAttr('style').addClass('opacity00');
 						break;
-						
-						
 					case "fileReadMode":
 						$(".fp-address").text("null");
 						$(".fa, .address").hide();
@@ -220,8 +209,6 @@ function introGuide() {
 		case "appendOpen":
 			var appendModeSteps = introjs._introItems[introjs._currentStep].appendModeSteps;
 			switch(appendModeSteps) {
-				case "appendFileOpen":
-				break;
 				case "appendModeFile":
 					$('#txtFile').addClass('opacity00');
 					$("#wModeText").show();
@@ -230,7 +217,6 @@ function introGuide() {
 				break;
 			}
 			break;
-			
 		case "appendMode":
 			$('#txtFile').addClass('opacity00');
 			$("#wModeText").show();

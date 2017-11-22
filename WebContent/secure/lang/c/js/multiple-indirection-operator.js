@@ -109,31 +109,13 @@ function introGuide() {
 				$('#xValue').text('10');
 				$('.user-btn').remove();
 			break;
-		case 'line6':
-			
-			break;
 		case 'animationDiv':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'zoomingEffect':
 				$("#xBox, #pBox, #qBox").addClass('opacity00');
 			break;
-			case 'bounceEffect':
-				break;
-			case 'firstSvgAnimate':
-				break;
-			case 'secondSvgAnimate':
-				break;
 			}
-			break;
-		case 'xBox':
-			break;
-		case 'pBox':
-			
-			break;
-		case 'qBox':
-			break;
-		case 'consoleId':
 			break;
 		}
 	});

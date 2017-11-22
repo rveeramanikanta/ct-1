@@ -102,21 +102,14 @@ var hexadecimalDecimalReady = function() {
 			$('#octalValue').val('');
 		break;
 		case "inputDiv" :
+			$('#convert').attr('disabled', 'disabled');
 			$("#binaryResultValue").empty();
 			$('#inputDiv').addClass('opacity00');
 			$('#octalValue').val('');
 			$('#octalValuesDiv').addClass('opacity00');
 			$('.box').addClass('opacity00').removeAttr('style');
-			$('.box').remove();
-			$('.box2').remove();
-			$('.box4').remove();
-			$('.box6').remove();
-			$('.box5').remove();
-			$('.box3').remove();
-			$('.powercal, .plus').remove();
-			$('#multiply').empty();
-			$('#multiplytwonos').empty();
-			$('#adding').empty();
+			$('.powercal, .plus, .box2, .box, .box5, .box3, .box6, .box4').remove();
+			$('#adding, #multiplytwonos, #multiply').empty();
 		break;	
 		case "octalValuesDiv" :
 			$('#binaryValuesDiv').addClass('opacity00');
@@ -127,7 +120,6 @@ var hexadecimalDecimalReady = function() {
 			$('.box4').addClass('opacity00').removeAttr('style');
 			$('.box4 span').addClass('opacity00').removeAttr('style');
 			$('#combineBinaryNumbers').addClass('opacity00');
-			//$('#numbersCombine').addClass('opacity00');
 			$('.box6').addClass('opacity00').removeAttr('style');
 		break;
 		case "combineBinaryNumbers" :
@@ -269,10 +261,7 @@ var hexadecimalDecimalReady = function() {
 					    $('#hexvalue'+j).effect('highlight',  {color: "#ff9900"}, 1000);
 					      $('#binvalue'+j).effect('highlight',  {color: "#ff9900"}, 1000);
 					     
-						      console.log("************" + j );
-					      	
 						     var g = $("#binvalue" + j).offset();
-					        console.log("&&&&&&&&&&&&&&&&&&&");
 						    $("#binaryDigits" + i).offset({"top": g.top,"left": g.left});
 						 	TweenMax.to("#binaryDigits" + i,  1 , {opacity:1, top: 0, left: 0, onComplete: function() {
 						 	$("#binaryDigits" + i).removeClass("opacity00");
@@ -376,7 +365,6 @@ var hexadecimalDecimalReady = function() {
 				flipingSpeed = 0.4;
 		 		count = 0;
 		 		s=0;
-		 		console.log("bannu");
 		 		poweradd(function() {
 		 			$('.introjs-tooltip').removeClass("hide");
 		 	 		typing('.introjs-tooltiptext', "Add the values.", function() {
@@ -385,7 +373,6 @@ var hexadecimalDecimalReady = function() {
 		 		});
 			 } else {
 				 $('.introjs-tooltip').removeClass("hide");
-				 console.log("raj");
 				typing('.introjs-tooltiptext', "After conversion the decimal value is", function() {
 					var l6 = $("#multiplytotal0").offset();
 				    $("#multiplytwo0").offset({"top": l6.top,"left": l6.left});
@@ -431,9 +418,9 @@ $('.introjs-skipbutton').hide();
 $('.introjs-prevbutton').hide();
 $('.introjs-nextbutton').hide();
 
-$('#informationdiv').html ("<li id='list1' class='opacity00'><span class='ct-green-color'>Hexadecimal system</span> also known as <span class='ct-green-color'>hex</span>,"
+$('#informationdiv').html ("<ul><li id='list1' class='opacity00'><span class='ct-green-color'>Hexadecimal system</span> also known as <span class='ct-green-color'>hex</span>,"
 		+" is a numbering system which uses base-<span class='ct-green-color'>16</span>.</li>"
-+ "<li id='list2' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>, " 
+		+ "<li id='list2' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>, " 
 		+"<span class='ct-Maroon-color'>1</span>, " 
 		+"<span class='ct-Maroon-color'>2</span>, <span class='ct-Maroon-color'>3</span>, <span class='ct-Maroon-color'>4</span>, " 
 		+"<span class='ct-Maroon-color'>5</span>, <span class='ct-Maroon-color'>6</span>, <span class='ct-Maroon-color'>7</span>, " 
@@ -441,10 +428,10 @@ $('#informationdiv').html ("<li id='list1' class='opacity00'><span class='ct-gre
 		+"<span class='ct-Maroon-color'>B</span>, <span class='ct-Maroon-color'>C</span>, <span class='ct-Maroon-color'>D</span>, " 
 		+"<span class='ct-Maroon-color'>E</span> and <span class='ct-Maroon-color'>F</span> are "
 		+"used to represent a value of any magnitude in <span class='ct-green-color'>hexadecimal system</span>.</li>" 
-+"<li id='list3' class='opacity00'>We are converting the hexadecimal value into binary value and then binary value to decimal.</li>" 
+		+"<li id='list3' class='opacity00'>We are converting the hexadecimal value into binary value and then binary value to decimal.</li>" 
 		+"<li id='list4' class='opacity00'>To convert a hexadecimal to a decimal value we have to perform the below two steps :"+
 		"<ol style='margin-left: 5px;'><li>First we will convert hexadecimal to its binary equivalent.</li>"+
-		"<li>Then we will convert the resultant binary into its decimal equivalent.</li></ol></li>");	
+		"<li>Then we will convert the resultant binary into its decimal equivalent.</li></ol></li></ul>");	
 		setTimeout(function () {
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
@@ -589,16 +576,6 @@ $('#informationdiv').html ("<li id='list1' class='opacity00'><span class='ct-gre
 
 			$("#octalValue").keyup(function() {
 				
-				/* if ($(this).val().length == 1 && $(this).val().indexOf("0") != 0) {
-					$(this).val("");
-				}
-				
-				if ($(this).val().indexOf("x") != 1 && $(this).val().length == 2) {
-					console.log($(this).val().length);
-					console.log($(this).val().indexOf("x"));
-					$(this).val("0");
-				} */
-				
 				var yourInput = $(this).val();
 				re = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi;
 				var isSplChar = re.test(yourInput);
@@ -612,6 +589,7 @@ $('#informationdiv').html ("<li id='list1' class='opacity00'><span class='ct-gre
 					
 					if ($("#octalValue").val().length > 2 && $("#octalValue").val().startsWith("0X")) {
 						$("#convert").removeClass("disabled").removeClass("opacity40");
+						$('#convert').removeAttr('disabled');
 						$("#octalValue").removeClass("backgroundColor");
 						$('.errorText').empty();
 					} else {
@@ -620,21 +598,11 @@ $('#informationdiv').html ("<li id='list1' class='opacity00'><span class='ct-gre
 					
 					return;
 				} else {
+					$('#convert').attr('disabled', 'disabled');
 					$("#convert").addClass("disabled").addClass("opacity40");
 					$('.errorText').html("Since base is 16, you can prefix the number specified by the value parameter with 0X.");
 					$("#octalValue").addClass("backgroundColor");
 				}
-				
-				/* if ($("#octalValue").val().length > 2 && $("#octalValue").val().startsWith("0X")) {
-					$("#convert").removeClass("disabled").removeClass("opacity40");
-					$("#octalValue").removeClass("backgroundColor");
-					$('.errorText').empty();
-				} else {
-					$("#convert").addClass("disabled").addClass("opacity40");
-					$('.errorText').html("Since to convert hexadecimal to decimal, use only 0 to F.");
-					$("#octalValue").addClass("backgroundColor");
-				} */
-				 
 			});
 			
 			$('#octalValue').keyup(function() {
@@ -663,7 +631,6 @@ function calculate(callBackFunction) {
  	var toplen = l1.top - l2.top;
  	var leftlen = l1.left- l2.left;
  	var l3 = $("#powervalues" + w).offset();
- console.log("l3 ===" + l3);
     $("#powerv" + w).offset({"top": l3.top,"left": l3.left});
  	TweenMax.to("#bracket2" + w, flipingSpeed, {opacity:1, onComplete: function() {
  	$("#bracket2" + w).removeClass("opacity00");
@@ -714,12 +681,10 @@ function power(callBackFunction) {
 		$("#d" + q).effect('highlight',  {color: "#F08080"}, 1000);
 		TweenMax.to("#d"+ q, flipingSpeed, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
 	 	$("#onemultiply" + q).removeClass("opacity00");
-	 	$("#total" + q).effect('highlight',  {color: "#F08080"}, 3000);
+	 	$("#total" + q).effect('highlight',  {color: "#F08080"}, 1500);
 		TweenMax.to("#onemultiply"+ q, flipingSpeed, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
 			TweenMax.to("#bracket3" + q, flipingSpeed, {opacity:1, onComplete: function() {
 					$("#bracket3" + q).removeClass("opacity00");
-					console.log("$$$$$$$$$$$$$$$$$$$$$");
-					console.log($("#plus2" + (q+1)));
 					TweenMax.to("#plus2" + (q+1), flipingSpeed , {opacity:1, onComplete: function() {
 						$("#plus1" + (q+1)).removeClass("opacity00");
 						q++;
@@ -734,9 +699,7 @@ function power(callBackFunction) {
 		 	}});
 	 	}});
 	} else {
-			console.log("else statemenet");
 			if(typeof callBackFunction === "function") {
-				console.log("callbackfunction");
    				callBackFunction();
    			}
 	}
@@ -749,7 +712,7 @@ function poweradd(callBackFunction) {
 		var l6 = $("#multiplytotal" + s).offset();
 	    $("#multiplytwo" + s).offset({"top": l6.top,"left": l6.left});
 	 	$("#multiplytwo" + s).removeClass("opacity00");
-	 	$("#multiplytotal" + s).effect('highlight',  {color: "#F08080"}, 1000);
+	 	$("#multiplytotal" + s).effect('highlight',  {color: "#F08080"}, 800);
 		TweenMax.to("#multiplytwo"+ s,flipingSpeed, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
 			TweenMax.to("#plus4" + (s+1),flipingSpeed , {opacity:1, onComplete: function() {
 				$(".plus4" + (s+1)).removeClass("opacity00");
@@ -764,7 +727,6 @@ function poweradd(callBackFunction) {
 		}});
 		} else {
 			if(typeof callBackFunction === "function") {
-			console.log("callbackfunction");
 			callBackFunction();
 		}
 	}
@@ -799,7 +761,6 @@ function binary(callBackFunction) {
 	  	}});
 	      } else {
 				if(typeof callBackFunction === "function") {
-					console.log("callbackfunction");
 					callBackFunction();
 				}
   	}

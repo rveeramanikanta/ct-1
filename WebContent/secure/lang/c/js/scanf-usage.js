@@ -381,8 +381,6 @@ function scanfUsageReady() {
 						
 						
 					case "firstPrintfValue":
-						console.log(intro._direction);
-						console.log("count");
 						$(".introjs-tooltip").css("min-width", "200px");
 						$("#inputChar").removeAttr('disabled');
 						$("#inputChar").val("").focus();
@@ -507,7 +505,6 @@ function scanfUsageReady() {
 			break;
 			
 			case "exampleTwoInt":
-				console.log(intro._currentStep);
 				$('.introjs-nextbutton').hide();
 				
 				$('.introjs-helperLayer ').one('transitionend', function() {

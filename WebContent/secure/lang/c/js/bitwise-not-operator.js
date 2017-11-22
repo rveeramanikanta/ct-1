@@ -71,9 +71,6 @@ introSteps();
 		intro.onbeforechange(function(targetElement) {
 			var elementId = targetElement.id;
 			switch (elementId) {
-			case "informationDiv":
-				
-			break;	
 			case "inputDiv":
 				$("#values > span").remove();
 				$("#onesComplementValue > span").remove();

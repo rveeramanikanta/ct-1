@@ -79,8 +79,6 @@ var postIncrementOperatorReady = function() {
 	introcode.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "program" :
-		break;
 		case "yVariableDeclararionLine"  :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (introcode._currentStep == 1) {
@@ -118,12 +116,6 @@ var postIncrementOperatorReady = function() {
 		case "expressionStatement":
 			$("#yVariableDeclararionLine").addClass("z-index1000000");
 			$("#xCupValue").text($("#xvalue").text());
-		break;
-		case "sopLine1":
-			
-		break;
-		case "outputDiv":
-			
 		break;
 		case "singleStatement":
 			$('.animation-div6').css({"opacity":0})

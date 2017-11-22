@@ -89,6 +89,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .color-green {
@@ -207,10 +209,6 @@
 
 .ct-code-b-blue {
 	color: blue;
-}
-
-.ct-code-b-yellow {
-	color: yellow;
 }
 
 .ct-code-b-black {
@@ -379,20 +377,19 @@ div, span {
 			<span class='col-xs-8 padding0'><span style='height: 31px; display: inline-block; position: relative;' id="power" ></span></span>
 		</div>
 		
-		<div class="visibility-hidden col-xs-12 margin10 text-center" id="thirdbox">
+		<div class="visibility-hidden col-xs-12 margin10" id="thirdbox">
 			<span class='col-xs-12' id="powecalculation"></span>
 		</div>
 		
-		<div class="col-xs-12 visibility-hidden margin10 text-center" id="fourthbox">
+		<div class="col-xs-12 visibility-hidden margin10" id="fourthbox">
 			<span class='col-xs-12'><span id="multiply"></span></span>
 		</div>
 		
-		<div class="col-xs-12 visibility-hidden text-center" style='margin-top: 5px;' id="fifthbox">
+		<div class="col-xs-12 visibility-hidden" style='margin-top: 5px;' id="fifthbox">
 			<span class='col-xs-12'><span id="multiplytwonos"></span></span>
 		</div>
-		
 		<div class="col-xs-12 visibility-hidden " style='margin-top: 5px;' id="sixthbox">
-			<span id="get" class="col-xs-1 padding0 font14 color-lightrose">Result<b>:</b></span><div class ='col-xs-11 text-center padding0'><span id="adding"></span></span>
+			<span id="get" class="col-xs-1 padding0 font14 color-lightrose">Result<b>:</b></span><div class ='col-xs-8 text-center padding0'><span id="adding"></span></span>
 		</div>
 	</div>
 	

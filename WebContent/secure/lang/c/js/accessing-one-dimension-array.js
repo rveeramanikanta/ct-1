@@ -35,7 +35,8 @@ var oneDimesionalArrayReady = function() {
 		},  {
 			element : "#codeDiv",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide" 
 		},  {
 			element : "#variableDeclaraiton",
 			intro : "",
@@ -107,12 +108,11 @@ var oneDimesionalArrayReady = function() {
 		switch (elementId) {
 		case 'part3':
 			$('#codeDiv').addClass('opacity00');
+			intro.refresh();
 			break;
 		case 'codeDiv':
 			$('#codeDiv').removeClass('opacity00');
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				intro.refresh();
-			});
+			intro.refresh();
 			break;
 		case "variableDeclaraiton":
 			$('#tableDiv').addClass('opacity00');
@@ -136,6 +136,7 @@ var oneDimesionalArrayReady = function() {
 			$('#rowValue').empty();
 			break;
 		case 'getInputValues':
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var length = $("#rowValue").text();
 			for (var i = 0; i <= length; i++) {
 				$("#value" + i).remove();
@@ -143,7 +144,9 @@ var oneDimesionalArrayReady = function() {
 			valIndex = 0;
 			break;
 		case 'animationDiv':
-			if (intro._currentStep == 13 ) {
+			if (intro._currentStep == 11) {
+				$('#rowValue').empty();
+			} else if (intro._currentStep == 13 ) {
 				console.log("Step : 13");		
 				var length = $("#rowValue").text();
 				for (var i = 0; i <= length; i++) {
@@ -196,7 +199,7 @@ var oneDimesionalArrayReady = function() {
 					}
 					setTimeout(function() {
 						intro.nextStep();
-					}, 1000);
+					}, 500);
 				};
 				break;
 			
@@ -217,7 +220,7 @@ var oneDimesionalArrayReady = function() {
 		 	case "part1":
 				intro.refresh();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "It refers to the <b class='ct-code-b-yellow'>primitive data-type</b> like int, float, etc.";
+					var text = "It refers to the <b class='ct-code-b-yellow'>primitive data-type</b> like int,float, etc.";
 						typing(".introjs-tooltiptext", text, function() {
 							$(".introjs-nextbutton").show();
 		 				});
@@ -226,7 +229,6 @@ var oneDimesionalArrayReady = function() {
 				
 			case "part2":
 				intro.refresh();
-			//	$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>identifier</b> which represents array name.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -237,7 +239,6 @@ var oneDimesionalArrayReady = function() {
 				
 			case "part3":
 				intro.refresh();
-			//	$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It is an integer constant represents <b class='ct-code-b-yellow'>size</b> of the array.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -247,7 +248,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "printForLoop":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Using<b class='ct-code-b-yellow'> for-loop </b>we can display elements of the array .";
 					typing(".introjs-tooltiptext", text, function() {
@@ -269,7 +269,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "variableDeclaraiton":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#array").effect("highlight", {color: '#008000'}, 1000, function() {
 						$(".introjs-tooltip").removeClass('hide');
@@ -283,7 +282,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "getRowColumn":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -296,7 +294,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "scanf":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "<b class='ct-code-b-yellow'>scanf()</b> function reads integer value for an "
 					+"<b class='ct-code-b-yellow'>array</b> size.";
@@ -307,7 +304,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "animationDiv":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._currentStep == 9) {
 						if (intro._direction == "forward") {
@@ -326,20 +322,20 @@ var oneDimesionalArrayReady = function() {
 						}
 						
 					} else if (intro._currentStep == 11 ) {
-						if (intro._direction == "forward") {
+						//if (intro._direction == "forward") {
+							$('#rowValue').attr('contenteditable','true');
+							valueRestriction();
 							$('.introjs-nextbutton').hide();
 							$('.matrix').removeClass('opacity00');
+							charAtEnd('rowValue');
 							$(".introjs-tooltip").removeClass('hide');
-						 	var text = "Enter how many values you want to read.";
-						 	typing(".introjs-tooltiptext", text, function() {
-						 		$('#rowValue').attr('contenteditable','true');
-						 		charAtEnd('rowValue');
-						 		valueRestriction();
+							 	var text = "Enter how many values you want to read.";
+							typing(".introjs-tooltiptext", text, function() {
 			 				});
-						} else {
+						/*} else {
 							$('#rowValue').empty();
 							setTimeToIntroPreviousStep();
-						}
+						}*/
 					} else if (intro._currentStep == 16 ) {
 						if (intro._direction == "forward") {
 							$('.introjs-helperLayer ').one('transitionend', function() {
@@ -386,9 +382,8 @@ var oneDimesionalArrayReady = function() {
 			break;
 			
 			case "getInputValues":
+				$('#rowValue').attr('contenteditable', 'false');
 				var rowValue = parseInt($('#rowValue').text());
-				$('#rowValue').attr('contenteditable', false);
-				$(".introjs-nextbutton, .introjs-prevbutton").hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass('hide');
 					var text ='<ul><li>The size of an array is <b class="ct-code-b-yellow">'+ rowValue +'</b> so user can access '
@@ -451,7 +446,6 @@ var oneDimesionalArrayReady = function() {
 				$('.zIndex').removeClass('zIndex');
 				$('.introjs-nextbutton').hide();
 				$("#restart").removeClass('opacity00');
-				$('.introjs-tooltip').css('min-width', '125px');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Click to restart.";
 	 				typing(".introjs-tooltiptext", text, function() {
@@ -545,7 +539,7 @@ function finalPrint() {
   } else {
 	  setTimeout(function() {
 		  intro.nextStep();
-		}, 800);
+	  }, 800);
   }
 }
 
@@ -576,7 +570,7 @@ function valueRestriction() {
 		}
 		
 		if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13 && intro._currentStep == 11) {
-			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+			$('#rowValue').attr('contenteditable', 'false');
 			intro.nextStep();
 		} 
 		
@@ -592,7 +586,7 @@ function valueRestriction() {
 			
 			$('.error-msg').remove();
 	       	$('.introjs-tooltiptext').append("<div class='error-msg'><br/>Empty value is not allowed.</div>");
-			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+			$(".introjs-nextbutton").hide();
 			$("#rowValue").empty();
 		} else {
 			$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -623,7 +617,7 @@ function tableCreation() {
 	var str = ["blue","red","green"];
 	var str1 = ["blue-text","red-text","green-text"];
 	var str2 = ["first","second","third"];
-	var count = 1048;
+	var count = 1024;
 	for (var i = 0; i < rows; i++) {
 		var flag = true;
 		for (var j = 0; j < cols; j++) {
@@ -651,8 +645,6 @@ function keyDownEvent(e) {
 		}
 		if (e.keyCode == 13 && $(this).text().length > 0) {	
 	    	$(this).attr("contenteditable", false);
-	console.log("totalElements : " + totalElements);
-	console.log("valIndex : " + valIndex);
 	    	if (totalElements == (valIndex + 1)) {
 				e.preventDefault();
 				$('.introjs-nextbutton, .introjs-prevbutton').show();

@@ -183,17 +183,11 @@ function introJsFunction() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "preCode":
-			break;
 		case "line1":
 			$('#pTable').addClass('opacity00');
 			break;
 		case "pArrayBox":
 			$('#pTable').addClass('opacity00');
-			break;
-		case "printf1":
-		case "printf2":
-		case "printf3":
 			break;
 		case "outputBox":
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
@@ -206,8 +200,6 @@ function introJsFunction() {
 				case "forScanf":
 					$('.arrayValue').text('');
 					$('#outputScanfLine2').removeAttr('contenteditable placeholder').empty();
-					break;
-				case "forPrintf":
 					break;
 				}
 			break;
@@ -235,8 +227,6 @@ function introJsFunction() {
 			break;
 		case "forScanf":
 			$('#outputScanfLine2').removeAttr('contenteditable placeholder').empty();
-			break;
-		case "forPrintf":
 			break;
 		}
 	});

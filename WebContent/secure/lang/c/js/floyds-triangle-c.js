@@ -111,49 +111,22 @@ var floydsTriangleCReady = function() {
 		switch (elementId) {
         	
 		case "topDiv":
-			
 			$("#starDisplay").addClass("opacity00");
 			$("#codeDiv").addClass("opacity00");
-			
 		break;
-		
 		case "codeDiv":
 			$('#codeDiv').removeClass('opacity00');
-			$(".introjs-nextbutton").hide();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				var action = intro._introItems[intro._currentStep].action;
-				switch(action) {
-				case "sampleCode":
-					 
-					break;
-				}
-			});
         	break;
-        	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "restart":
-		
-        	break;
-        	
-        case "totalForLoop":
-        	break; 
-        	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
         	break;
-        	
 		case "outputDiv":
-			
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				var action = intro._introItems[intro._currentStep].action;
 				switch(action) {
 				case "printfText":
 					$('#animationDivText').addClass('opacity00');
 					break;
-					
 				case "printfValue":
 					$('#rowValue').removeAttr('contenteditable');
 					$('.matrix').addClass('opacity00');
@@ -162,14 +135,9 @@ var floydsTriangleCReady = function() {
 					$(".inner-one").removeClass("background-color-yellow");
 					$(".inner-two").removeClass("background-color-blue");
 					break;
-					
-				case "outputPrintingStart":
-					break;
 				}
 			});
-			
         	break;
-        	
 		case "getScanf":
 			$('#rowValue').removeAttr('contenteditable');
 			$('.matrix').addClass('opacity00');

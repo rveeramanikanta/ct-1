@@ -24,22 +24,17 @@ var ifElseInCReady = function() {
 	});
 	
 	document.getElementById("initializationValue").addEventListener("input", function() {
-	
 		introjs.refresh();
-		
 		marks = $('#initializationValue').val();
 		$('.changeVal').text($(this).val());
 		
 		if ($('#initializationValue').val().length > 0) {
-			/*$(".initializeBtn").removeClass("opacity00");*/
 			$(".introjs-nextbutton, .introjs-prevbutton").show();
 			$('.errorText').empty();
 		} else {
 			$('.errorText').html("Please enter a value for marks.");
 			$('#initializationValue').focus();
-			/*$(".initializeBtn").addClass("opacity00");*/
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
-			
 		}
 		
 	});
@@ -160,56 +155,16 @@ function introJsGuide() {
 		$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-		case "ifElseBlock":
-			
-		break;	
-			
-		case "citizenAge":
-			
-			
-		break;	
-		
 		case "initialization":
-			
 			$(".animateBtn").remove();
-			
 			break;
-			
-		case "ifBlock":
-		case "elseBlock":
-			
-			break;
-		
 		case "condition":
-			
 			$("#conditionTest, #conditionTyping").empty();
 			$("#output").empty();
-			
 			if (introjs._introItems.length == 10) {
 				introjs._introItems.splice(6);
 			}
 			break;
-			
-		case "ifStmt":
-			
-		break;
-			
-		case "elseStmt":
-			
-		break;
-			
-		case "outputDiv":
-			
-		break;
-			
-		case "mainEnd":
-			
-		break;
-		
-		case "restart":
-			
-		break;
 		}
 	});
 	

@@ -118,12 +118,6 @@ var postDecrementOperatorReady = function() {
 			$("#yVariableDeclararionLine").addClass("z-index1000000");
 			$("#xCupValue").text($("#xvalue").text());
 		break;
-		case "sopLine1":
-			
-		break;
-		case "outputDiv":
-			
-		break;
 		case "singleStatement":
 			$('.animation-div6').css({"opacity":0})
 			$("#xCupValue").text(parseInt($("#xvalue").text()) - (1));

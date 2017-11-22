@@ -195,8 +195,6 @@ function introJsFunction() {
 			$('#box2').removeClass('display-none');
 			introjs.refresh();
 			break;
-		case "intLine":
-			break;
 		case "animationBox":
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch (animateStep) {
@@ -220,14 +218,6 @@ function introJsFunction() {
 		case "printf1":
 			//*** Below code removes the child class ***//
 			$('.output-console-body > .visibility-hidden').find('span').remove();
-			break;
-		case "printf2":
-		case "printf3":
-		case "printf4":
-		case "printf5":
-		case "printf6":
-			break;
-		case "outputBox":
 			break;
 		}
 	});

@@ -8,7 +8,6 @@ var usageOfHashElifReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
 		} else {
@@ -16,7 +15,6 @@ var usageOfHashElifReady = function() {
 		}
 	});
 	
-	console.log();
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -165,51 +163,13 @@ var usageOfHashElifReady = function() {
 			$("#preBody").removeClass("visibility-hidden");
 			break;
 			
-		case "line1" :
-			
-			break;
-			
-		case "line2" :
-			
-			if(intro._currentStep == 3) {
-				
-			
-			} else if(intro._currentStep == 13) {
-				
-				
-			} else if(intro._currentStep == 21) {
-				
-			}
-				break;
 			
 		case "line3" :
 			$("#foregroundId").text("FOREGROUND");
 			break;	
-		
-		case "line4" :
-			
-			break;
-			
-		case "line5" :
-			
-			break;
-			
-		case "line6" :
-			
-			break;
 			
 		case "line7" :
 			$("#foregroundId").text("FOREGROUND");
-			
-			
-			break;
-			
-		case "line8" :
-			
-			break;
-			
-		case "line9" :
-			
 			break;
 			
 		case "line10" :
@@ -217,43 +177,10 @@ var usageOfHashElifReady = function() {
 			break;
 			
 		case "foregroundId" :
-		
-			if(intro._currentStep == 7) {
-				
-				
-			} else if(intro._currentStep == 15) {
-				
-			} else if(intro._currentStep == 24) {
+			if(intro._currentStep == 24) {
 				$("#foregroundId").text("FOREGROUND");
 			}
-				break;
-			
-	    	case "defineValue" :
-			   if(intro._currentStep == 12) {
-				  // $("#consoleId").addClass("opacity00");
-				
-			} else if(intro._currentStep == 20) {
-			}
-			
-				
 			break;
-		
-		 case "consoleId" :
-
-			if(intro._currentStep == 11) {
-				
-				
-			} else if(intro._currentStep == 19) {
-				
-				
-			} else if(intro._currentStep == 28) {
-			}
-		
-			
-		case "restartBtn" :
-			
-			break;
-			
 		}
 	});
 	intro.onafterchange(function(targetElement) {

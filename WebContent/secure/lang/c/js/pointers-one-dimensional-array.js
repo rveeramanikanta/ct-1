@@ -357,7 +357,6 @@ function introJsFunction() {
 					
 					break;
 				case "forPrintf":
-					console.log('This is printing values');
 					$('.arrayValue').addClass('z-index9999999');
 					TweenMax.from($('.arrayValue'), 1, {ease: Power4.easeIn, backgroundColor: '#FFFFFF', onComplete: function() {
 						$('.arrayValue').removeClass('z-index9999999');

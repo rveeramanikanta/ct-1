@@ -84,7 +84,6 @@ var binaryToDecimalConvetionReady = function()	{
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "inputDiv":
-				//$("#binarylValue").removeAttr("disabled");
 				$("#convert").addClass("disabled").attr("disabled", true);
 				$("#inputDiv").addClass("visibility-hidden");
 				$('input').val(null);
@@ -103,16 +102,9 @@ var binaryToDecimalConvetionReady = function()	{
 				$("#secondbox").addClass("visibility-hidden");
 			break;
 			case 'power':
-				
-				/*p=0;
-				
-				$("#bracket2" + p).removeAttr('style').css('opacity', '0');
-				$("#powerv" + p).removeAttr('style').css('opacity', '0');*/
 				$("#thirdbox").addClass("visibility-hidden");
 			break;
 			case 'powercalculation':
-				/*x ;
-				$("#c" + x).removeAttr('style');*/
 				$("#thirdbox").addClass("visibility-hidden");
 				$("#fourthbox").addClass("visibility-hidden");
 			break;

@@ -24,7 +24,7 @@ var binaryToHexaReady = function() {
 	});
 	
 	$("#binaryValue").keyup(function() {
-		$("#convert").attr("disabled", 'disabled');
+		$("#convert").attr("disabled", true);
 		if ($("#binaryValue").val().length == 0) {
 			 $("#convert").attr("disabled", true);
 		}
@@ -37,9 +37,11 @@ var binaryToHexaReady = function() {
 		}
 		if ($("#binaryValue").val().length > 0) {
 			$("#convert").removeClass("disabled").removeClass("opacity40");
+			$("#convert").attr("disabled", false);
 			$("#binaryValue").removeClass("backgroundColor");
 			$('.errorText').empty();
 		} else {
+			$("#convert").attr("disabled", true);
 			$('.errorText').html("<b>Since a binary number can have 0's and 1's, use only 0's and 1's</b>.");
 			$("#binaryValue").addClass("backgroundColor");
 			$("#convert").addClass("disabled").addClass("opacity40");
@@ -48,7 +50,7 @@ var binaryToHexaReady = function() {
 	
 	
 	$("#convert").click(function() {
-		$("#convert").attr("disabled", 'disabled');
+		$("#convert").attr("disabled", true);
 		$("#positionSpan1 > .box5").remove();
 		$('#twoPowerDiv1 > td').remove();
 		var input = $("#binaryValue").val();

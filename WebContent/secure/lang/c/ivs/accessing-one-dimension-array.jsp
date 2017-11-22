@@ -72,6 +72,7 @@ pre {
 }
 
 #typingDiv {
+	min-height: 40px;
 	font-family: monospace;
 }
 
@@ -140,6 +141,10 @@ pre {
 div, span {
 	position: relative;
 }
+
+/* pre > span {
+	position: static;
+} */
 
 .table-css {
 	text-align: center;
@@ -210,7 +215,7 @@ $(document).ready(function() {
 		</div>
 
 		<div class="col-xs-12">
-			<div id="typingDiv" class='margin-top20 col-xs-offset-3 col-xs-8 col-xs-offset-2'>
+			<div id="typingDiv" class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
 					<ul><li>Array is used to store a collection similar type of data in continues memory location (Address).</li>
 					<li>General format of one dimension array is as follows 
 					<div id="textAnimate" class="text-bold" style="display:inline-block"> 
@@ -220,7 +225,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div id='mainDiv' class='col-xs-12 padding0'>
-			<div class='col-xs-6 '>
+			<div class='col-xs-6'>
 				<pre class="creampretab4 opacity00" id='codeDiv'>
 #include <span>&lt;stdio.h&gt;</span>
 void main() {

@@ -58,10 +58,6 @@ function introGuide() {
 			case "functionDef":
 				$('#varDec').text('int i = 1;');
 			break;
-			case "startMain":
-			break;
-			case "functionCall" + i:
-			break;
 			case "varDec":
 				if (introjs._currentStep == 6) {
 					$("#boxHeading, #functionBox").css({'opacity' : '0'});
@@ -71,7 +67,6 @@ function introGuide() {
 				}
 				if(count != 0) {
 					$("#varDec").text("int i = 1;");
-					console.log('RDM RDM');
 					$("#localVal").addClass("opacity00");
 				}
 			break;
@@ -425,7 +420,6 @@ function introGuide() {
 							$("#lVal").css("opacity", 0);
 							$("#localVal").removeClass("blinking-white");
 							if (introjs._direction == "forward") {
-								console.log('425 inc');
 								++i;
 							} 
 							if(i < 4 && introjs._introItems[introjs._currentStep].stepFlag == "false") {
@@ -437,10 +431,8 @@ function introGuide() {
 					});
 				} else {
 					if (introjs._direction == "forward") {
-						console.log('437 inc');
 						++i;
 					} else {
-						console.log('440 dec');
 						$('#lVal').text(i - 1);
 					}
 					var text = "<span class='ct-code-b-yellow'>display()</span> function ends here.<br><br> The static variable "
@@ -455,7 +447,6 @@ function introGuide() {
 		case "endMain":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._direction == 'forward') {
-					console.log('455 count inc');
 					++count;
 				}
 				if(count == 1 && introjs._introItems[introjs._currentStep].stepFlag == "false") {
@@ -535,7 +526,6 @@ function getStep(element, intro, tooltipClass, position, stepFlag) {
 function dynamicSteps() {
 	if (introjs._introItems[introjs._currentStep]["visited_flag"] == undefined) {
 		introjs._introItems[introjs._currentStep]["visited_flag"] = true;
-		console.log(introjs._introItems[introjs._currentStep]["element"]["id"] + ' This is visiting flag  ' + introjs._currentStep );
 		
 		var n = 0;
 		var dynamicStep = getStep("#functionCall" + i, "", "", "right");

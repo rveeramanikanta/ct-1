@@ -30,21 +30,8 @@ var relationalOperatorsReady = function() {
 		}
 	})
 	
-	/* $("#selectList").on("change", function() {
-		var value = $(this).val();
-		if ($("#selectList").val() == "0") {
-			console.log(" in the if condition of change.. ");
-			$('.length-error-text').remove();
-			$(".introjs-tooltiptext").append("<div class='length-error-text'>Select the relational operator from the menu.</div>");
-			$("#submit").attr("disabled", "disabled");
-		} else {
-			$('.length-error-text').remove();
-			$("#submit").removeAttr("disabled");
-		}
-	}) */
 	
 	$(".inputWidth").bind("keyup", function() {
-		console.log('in the bind...');
 		//var select = $("#selectList option:selected").val();
 		var select  = $('.active').text().trim();
 		if (($("#firstNum").val().length != 0) && ($("#secondNum").val().length != 0)) {
@@ -176,7 +163,6 @@ var relationalOperatorsReady = function() {
 			relationalAnimation();
 		}
 		if (next == 1) {
-			console.log(" in the next step " + next)
 			next = 2;
 			intro.nextStep();
 		}
@@ -195,7 +181,6 @@ var relationalOperatorsReady = function() {
 	   
 	   var value = $('.active').text().trim();
 		if (value === "--select--") {
-			console.log(" in the if condition of change.. ");
 			$('.length-error-text').remove();
 			$(".introjs-tooltiptext").append("<div class='length-error-text'>Select the relational operator from the menu.</div>");
 			$("#submit").attr("disabled", "disabled");
@@ -222,7 +207,6 @@ function nextClick() {
 					var first = $("#num1Val").text().trim();
 					var second=	$("#num2Val").text().trim();
 					if (operator === ">") {
-						console.log(" in the " + operator);
 						$("#result").text(Number(parseInt(first) > parseInt(second)));
 					} else if (operator === "<") {
 						$("#result").text(Number(parseInt(first) < parseInt(second)));

@@ -214,55 +214,31 @@ function introJsGuide() {
 		
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-		case "continueLoop":
-		break;
-		
 		case "initialization":
-			
-			
 			if (introjs._introItems.length > 3) {
 				introjs._introItems.splice(introjs._introItems.length - 1);
 			}
-			
-			
-			break;
-			
-		case "condition":
-					
 			break;
 		case "ifBlk":
 			if (introjs._direction == "backward") {
-					
-					if (!ifConditionBln) {
-						introjs._introItems.splice(introjs._introItems.length - 1);
-						console.log("only one step..");
-					} else {
-						ifConditionBln = false;
-						introjs._introItems.splice(introjs._introItems.length - 2);
-					}
-				
+				if (!ifConditionBln) {
+					introjs._introItems.splice(introjs._introItems.length - 1);
+					console.log("only one step..");
+				} else {
+					ifConditionBln = false;
+					introjs._introItems.splice(introjs._introItems.length - 2);
+				}
 			}
-			
 			break;
 		case "ifCondition":
-			
 				if (introjs._direction == "backward") {
 					introjs._introItems.splice(introjs._introItems.length - 1);
 				}
-			
 			break;
 		case "continueStmt":
-			
-			
 			if (introjs._direction == "backward") {
 				introjs._introItems.splice(introjs._introItems.length - 1);
 			}
-			
-			break;
-		case "sop": 
-			
-				
 			break;
 		case "outputDiv":
 			if (introjs._direction == "backward") {
@@ -272,17 +248,9 @@ function introJsGuide() {
 			
 			break;
 		case "update":
-			
 			if (introjs._direction == "backward") {
 				introjs._introItems.splice(introjs._introItems.length - 1);
 			}
-		
-			break;
-		case "mainEnd" :
-		
-			break;
-		case "restart":
-			
 			break;
 		}
 	});

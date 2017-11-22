@@ -115,8 +115,6 @@ function introGuide() {
 		switch(elementId) {
 		case "outputDiv":
 			if (introjs._currentStep == 4) {
-				/*$("#outputDiv").addClass("opacity00");
-				$("#outputBody > div:last-child").empty();*/
 				$("#outputDiv").addClass("opacity00");
 				$("#error").empty();
 				$('#include1').addClass('opacity00');
@@ -127,7 +125,6 @@ function introGuide() {
 				 introjs.refresh();
 				 $('#include21, #include22').addClass('opacity00');
 				 $("#sqrt").addClass("colorWhite");
-				 //$("#printf2").removeClass("colorMain");
 				 $("#error1").empty();
 			}
 			break;

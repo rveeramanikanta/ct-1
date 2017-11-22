@@ -116,12 +116,6 @@ function introJsFunction() {
 			if (introjs._currentStep == 0) {
 				$(".introjs-duplicate-nextbutton").remove();
 				$(".animation-div1").css({"opacity":0});
-				/*$("#condition").addClass("opacity00");
-				$("#svgLine1").hide();
-				$("#qMark, #true").addClass("opacity00");
-				$("#svgLine2").hide();
-				$("#collan, #false").addClass("opacity00");
-				$("#svgLine3").hide();*/
 			} else if (introjs._currentStep == 4) {
 				$(".introjs-duplicate-nextbutton").remove()
 			}
@@ -134,27 +128,15 @@ function introJsFunction() {
 			$('#svgId').remove();
 			$('.statement-css').removeAttr('style');
 			$('.box-css').css({'border-color' : 'transparent'});
-			
-			//$("#svgLine1, #svgLine2, #svgLine3").hide();
-			/*$("#condition, #num1-num2").removeClass("opacity00");
-			$("#svgLine1").show();*/
 		} else if (introjs._currentStep == 5) {
 			$(".introjs-duplicate-nextbutton").remove()
 		}
 	break;
 	case "num1Line":
 		$(".introjs-duplicate-nextbutton").remove()
-		
 	break;
 	case "num2Line":
 		$(".introjs-duplicate-nextbutton").remove();
-		
-	break;
-	case "printfLine":
-		
-	break;
-	case "outputBox":
-		
 	break;
 		}
 	});

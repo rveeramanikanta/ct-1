@@ -5,7 +5,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 		location.reload();
 	});
 	
-	console.log();
 	introjs = introJs();
 	introjs.setOptions({
 		showStepNumbers : false,

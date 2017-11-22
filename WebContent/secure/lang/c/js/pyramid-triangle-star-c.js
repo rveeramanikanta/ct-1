@@ -132,17 +132,6 @@ var pyramidTriangleStarCReady = function() {
 			});
         	break;
         	
-		case "variableDeclaration":
-			
-        	break;
-        	
-		case "restart":
-		
-        	break;
-        	
-        case "totalForLoop":
-        	break; 
-        	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
         	break;
@@ -154,7 +143,6 @@ var pyramidTriangleStarCReady = function() {
 				switch(action) {
 				case "printfText":
 					$('#animationDivText').addClass('opacity00');
-					console.log("In the printfText...");
 					break;
 					
 				case "printfValue":
@@ -166,8 +154,6 @@ var pyramidTriangleStarCReady = function() {
 					$(".inner-two").removeClass("background-color-blue");
 					break;
 					
-				case "outputPrintingStart":
-					break;
 				}
 			});
 			
@@ -215,9 +201,7 @@ var pyramidTriangleStarCReady = function() {
         	
 		case "topDiv":
 			$('.introjs-nextbutton').hide();
-			console.log("In the onafterchange...");
 			if (introjs._direction == "backward") {
-				console.log("In the backward way...");
 				setTimeout(function() {
 					StarPreview();
 				}, 500)
@@ -364,7 +348,6 @@ function stepNext() {
 
 
 function StarPreview() {
-	console.log("In the StarPreview();")
 	$('.user-btn').remove();
 	//$(".introjs-tooltip").removeClass("hide");
 	$('#starDisplay').removeClass('opacity00');

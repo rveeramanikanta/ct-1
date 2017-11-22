@@ -95,15 +95,9 @@ function introGuide() {
 		case "program":
 				$('#cup').addClass('opacity00');
 			break;
-			
 		case "intDec":
 			$("#cup").addClass("opacity00");
 			break;
-			
-		case "charDec":
-			
-			break;
-			
 		case "memory":
 			$("#memory").addClass("opacity00");
 			$("#tableId1").addClass("opacity00");
@@ -111,29 +105,18 @@ function introGuide() {
 			$("#tableId2").addClass("opacity00");
 			$("#copyString td:nth-child(n+2)").remove();
 			break;
-			
 		case "tableId1":
 			$(".filled").addClass("opacity00");
 			$("#userString td:not(:empty)").addClass("opacity00");
 			break;
-	
 		case "enterString":
 			$("#textEnter").remove('textEnter');
 			$(".firstLine").empty();
 			$("#output").addClass('opacity00');
-			//$("#usrText").effect("highlight", {color: 'yellow'}, 500);
-			//$("#usrText").focus();
 			break;
-			
 		case "output":
-				
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 				switch(outputStep) {
-					
-					case "printStatement": 
-						
-					break;
-						
 					case "textEnter":
 						//$("#textEnter").remove('textEnter');
 						$('#usrText').val('');
@@ -141,21 +124,12 @@ function introGuide() {
 						$(".filled").text('');
 						$(".filled").removeClass('filled');
 					break;
-						
-					case "lastStatement":
-						
-					break;
 				}
 			break;
 			
 		case "scanf":
 			$("#textEnter").remove();
 			break;
-			
-		case "iInitialization":
-			
-			break;
-			
 		case "forLoop":
 			i = 0;
 			count = 0;
@@ -164,35 +138,6 @@ function introGuide() {
 			$("#appendText").empty();
 			$("#copyString td:not(:empty)").addClass("opacity00");
 			$("#tdBorder" + i).addClass("opacity00");
-			break;
-			
-		case "condition":
-			
-			break;
-			
-		case "line1":
-			
-		break;
-				
-		case "tableId2":
-			//$("#copyString td:not(:empty)").removeClass("opacity00");
-			//$("#tdBorder" + i).removeClass("opacity00");
-			break;
-			
-		case "increment":
-			
-			break;
-			
-		case "delimeter":
-			
-			break;
-			
-		case "stringLength":
-			
-			break;
-			
-		case "restart":
-			
 			break;
 		}
 	});

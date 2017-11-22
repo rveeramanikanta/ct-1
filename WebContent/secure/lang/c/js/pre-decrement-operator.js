@@ -82,8 +82,6 @@ var preDecrementOperatorReady = function() {
 	introcode.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "program" :
-		break;
 		case "yVariableDeclararionLine"  :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (introcode._currentStep == 1) {
@@ -122,12 +120,6 @@ var preDecrementOperatorReady = function() {
 			$("#yCup").addClass("visibility-hidden");
 			$('.animation-div5').css({"opacity":0});
 			$("#xCupValue").text($("#xvalue").text());
-		break;
-		case "sopLine1":
-			
-		break;
-		case "outputDiv":
-			
 		break;
 		case "singleStatement":
 			$('.animation-div6').css({"opacity":0})

@@ -76,9 +76,6 @@ var bitwiseAndOperator = function() {
 		intro.onbeforechange(function(targetElement) {
 			var elementId = targetElement.id;
 			switch (elementId) {
-			case "informationDiv":
-				
-			break;	
 			case "inputDiv":
 				$(".value").empty();
 				$('#valueSpan1, #valueSpan2').empty();

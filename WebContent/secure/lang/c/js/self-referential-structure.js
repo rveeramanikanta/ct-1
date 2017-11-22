@@ -492,7 +492,6 @@ function selfReferentialStructure() {
 				if (intro._direction == "forward") {
 					$("#s1value").attr("contenteditable", false);
 					$("#data1").addClass("opacity00").text($("#s1value").text()).removeClass("opacity00").hide().fadeIn(1000,function() {
-						console.log('data1 insert');
 						setTimeout(function() {
 							intro.nextStep();
 						}, 1000);
