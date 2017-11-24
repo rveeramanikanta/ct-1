@@ -17,7 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/array-of-structure.js"></script>
+<script src="/secure/lang/c/js-min/aos.min.js"></script>
 
 <title>Array of structure</title>
 <style>

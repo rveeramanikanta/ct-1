@@ -323,7 +323,7 @@ function introJsFunction() {
 				} else {
 					setTimeout(function() {
 						introjs.previousStep();
-					}, 100);
+					}, 500);
 				}
 				
 			});

@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/av.min.js"></script> -->
-<script src="/secure/lang/c/js/automatic-var.js"></script>
+<script src="/secure/lang/c/js-min/av.min.js"></script>
 <title>Automatic Variables</title>
 
 <style type="text/css">

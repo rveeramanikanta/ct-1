@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js/structures.js"></script>
+	<script src="/secure/lang/c/js-min/s.min.js"></script>
 	<title>Structures</title>
 </head>
 

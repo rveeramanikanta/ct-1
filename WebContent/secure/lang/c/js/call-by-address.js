@@ -130,7 +130,7 @@ function introJsFunction() {
 			tooltipClass: "hide",
 		}, {
 			element : "#restartBtn",
-			intro : "Click to Restart.",
+			intro : "Click to restart.",
 			position : "right"
 		} ]});
 	introjs.onbeforechange(function(targetElement) {

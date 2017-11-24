@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/ev.min.js"></script> -->
-<script src="/secure/lang/c/js/extern-variable.js"></script>
+<script src="/secure/lang/c/js-min/ev.min.js"></script>
 
 <title>Extern Variables</title>
 

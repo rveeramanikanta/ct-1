@@ -210,6 +210,10 @@ function introJsFunction() {
 					break;
 				}
 			break;
+		case "a1Line":
+			$('#a1Value').empty();
+			$('#svgLine22').remove();
+			break;
 		case "a0Line":
 			$('#a0Value, #a1Value').empty();
 			$('#svgLine21, #svgLine22').remove();

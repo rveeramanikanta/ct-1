@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 2;
+var typingInterval = 1;
 var num = 2;
 var counter = 0;
 var tValue = 1;

@@ -221,7 +221,7 @@ function nextClick() {
 	}
 
 function typing(selector, text, callBackFunction) {
-		var typingSpeed = 0;
+		var typingSpeed = 1;
 		$(selector).typewriting( text , {
 			"typing_interval": typingSpeed,
 			"cursor_color": 'white',

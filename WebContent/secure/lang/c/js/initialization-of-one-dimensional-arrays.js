@@ -474,7 +474,7 @@ function sixthExampleElementRecursion(i) {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 0.1;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

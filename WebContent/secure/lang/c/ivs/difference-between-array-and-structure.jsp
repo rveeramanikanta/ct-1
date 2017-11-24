@@ -17,8 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="js/difference-between-array-and-structure.js"></script>
-<script src="/secure/lang/c/js/difference-between-array-and-structure.js"></script>
+<script src="/secure/lang/c/js-min/dbaas.min.js"></script>
 <title>Difference between array and structure</title>
 <style>
 
@@ -235,7 +234,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-xs-12" id="totalInitializationOfStructure">
 					<div class="opacity00" id="initializationOfStructure">3.
-						struct book a={“C Language”, 450, 300.00};</div>
+						struct book a={"C Language", 450, 300.00};</div>
 					<div class="opacity00" id="anotherInitializationOfStructure">
 						<div class="text-center">
 							<span class="ct-code-b-red"

@@ -1,7 +1,7 @@
 var input;
 var lenOfInput;
 var sum;
-var typingInterval = 50;
+var typingInterval = 1;
 var temp;
 var binaryToOctalReady = function() {
 	introGuide();

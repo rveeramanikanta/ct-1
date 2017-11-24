@@ -211,7 +211,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 	
 }
 function typing(typingId, typingContent, typingCallbackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(typingId).typewriting(typingContent, {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white'

@@ -17,7 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/self-referential-structure.js"></script> 
+<script src="/secure/lang/c/js-min/srs.min.js"></script> 
 <title>Self referential structure</title>
 <style>
 

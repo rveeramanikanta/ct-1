@@ -28,10 +28,10 @@
 	background-color: rgb(243, 235, 235);
 	border-radius: 2px;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	height: 80px;
 	margin-top: 20px;
 	/*   color: green; */
 	padding: 10px;
+	font-family: monospace;
 }
 
 .introjs-tooltip {

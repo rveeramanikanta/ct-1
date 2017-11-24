@@ -39,6 +39,7 @@
     min-height: 100px;
     margin-top: 30px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -64,6 +65,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 #calculationTable {
@@ -107,6 +110,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .color-green {

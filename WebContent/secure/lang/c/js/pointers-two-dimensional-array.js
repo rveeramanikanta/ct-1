@@ -280,7 +280,7 @@ function introJsFunction() {
 		
 		switch (elementId) {
 		case "preCode":
-				var typingContent = 'Let us learn <span class="ct-code-b-yellow">Pointers with Two Dimensional Array</span>.';
+				var typingContent = 'Let us learn <span class="ct-code-b-yellow">pointers with two dimensional array</span>.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});

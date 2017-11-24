@@ -63,6 +63,11 @@ var structureIntializationReady = function() {
 				$("#bLetter, #bPages, #bPrice").empty().removeAttr('style');
 				$('.flash').removeClass('flash');
 				$(".discard").removeClass("discard-red");
+			} else if (action == "fourthSyntax") {
+				$('.discard-red').removeClass('discard-red');
+				$('tbody tr:eq(1) span').empty();
+			} else {
+				$('tbody tr:eq(1) span').empty();
 			}
 			break;
 		case "memoryArea":
@@ -345,6 +350,7 @@ var structureIntializationReady = function() {
 						var text = "Let us consider another example.";
 						typing(".introjs-tooltiptext", text,function() {
 							dynamicSteps("secondSyntax", false, true);
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						})
 					});
 				} else if (action == "secondSyntax") {
@@ -367,6 +373,7 @@ var structureIntializationReady = function() {
 						var text = "Let us consider another example.";
 						typing(".introjs-tooltiptext", text,function() {
 							dynamicSteps("thirdSyntax", false, true);
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						})
 					});
 				} else if (action == "thirdSyntax") {
@@ -386,6 +393,7 @@ var structureIntializationReady = function() {
 						var text = "Let us consider another example.";
 						typing(".introjs-tooltiptext", text, function() {
 							dynamicSteps("fourthSyntax", false, true);
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
 					})
 				} else if (action == "fourthSyntax") {
@@ -476,7 +484,6 @@ $("#output span:eq(0)").fadeIn("slow", function() {
 				$("#output span:eq(2)").fadeIn("slow", function() {
 					$("#output span:eq(2)").addClass("flash");
 					$("#printMethod").removeClass("zIndex");
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
 					if (typeof callBackFunction === "function") {
 						callBackFunction();
 					}

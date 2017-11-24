@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var number;
 var index = 0;
 var col = 0;

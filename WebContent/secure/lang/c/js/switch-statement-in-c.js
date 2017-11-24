@@ -1,7 +1,7 @@
 var value;
 var caseNumber;
 var tempVal;
-var typingSpeed = 20;
+var typingSpeed = 1;
 
 var map = {1 : "One", 2 : "Two", 3 : "Three", 4 : "Four", 56 : "Five or Six"};
 

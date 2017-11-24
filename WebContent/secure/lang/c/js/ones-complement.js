@@ -1,6 +1,6 @@
 
 var intro;
-var typingInterval = 3;
+var typingInterval = 1;
 var zeros1 = '';
 var binaryNumber = "";
 var number = "";

@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/cba.min.js"></script> -->
-<script src="/secure/lang/c/js/call-by-address.js"></script>
+<script src="/secure/lang/c/js-min/cba.min.js"></script>
 <title>Call By Address</title>
 <style>
 

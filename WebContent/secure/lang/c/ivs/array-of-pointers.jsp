@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/aops.min.js"></script> -->
-<script src="/secure/lang/c/js/array-of-pointers.js"></script>
+<script src="/secure/lang/c/js-min/aops.min.js"></script>
 <title>Array of Pointers</title>
 
 <style>

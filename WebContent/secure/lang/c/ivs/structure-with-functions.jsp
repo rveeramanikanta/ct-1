@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js/structure-with-functions.js"></script>
+	<script src="/secure/lang/c/js-min/swf.min.js"></script>
 	
 	<title>structures with functions</title>
 </head>
@@ -137,7 +137,9 @@ td {
 }
 
 .color-palegreen {
-	color: #0f0;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 pre {

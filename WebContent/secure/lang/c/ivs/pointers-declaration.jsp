@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/pdl.min.js"></script> -->
-<script src="/secure/lang/c/js/pointers-declaration.js"></script>
+<script src="/secure/lang/c/js-min/pdl.min.js"></script>
 
 <title>Pointers Declaration</title>
 <style>

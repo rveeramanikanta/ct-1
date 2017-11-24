@@ -15,8 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/sv.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/static-variables.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/sv.min.js" type="text/javascript"></script>
 
 <title>Static Variables</title>
 <style type="text/css">

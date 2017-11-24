@@ -47,6 +47,8 @@ function introGuide() {
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else if (arr.length == maxNumberOfInputs && $.isNumeric(arr[1])) {
 			$(".introjs-nextbutton, .introjs-prevbutton").show();
+		} else {
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		}
 		
 		$.each(arr, function(idx, val) {

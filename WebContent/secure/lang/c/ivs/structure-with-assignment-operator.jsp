@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
- 	<script src="/secure/lang/c/js/structure-with-assignment-operator.js"></script>
+ 	<script src="/secure/lang/c/js-min/swao.min.js"></script>
 	
 	<title>Feature of structure</title>
 <style>

@@ -10,7 +10,7 @@ var l3, l4;
 var quotientValueFlag = true;
 var quotientFlag = false;
 var quotientValue;
-var typing_interval = 5;
+var typing_interval = 1;
 var l = console.log.bind(console);	
 var typingFlag = true;
 var tempRemainder = [];
@@ -409,6 +409,7 @@ function introGuide() {
 			});
 		}
 		if (elementId == "finalRemainderValues") {
+			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			var l1 = $("#quotient" + (count - 1 )).offset();
 			$("#quotient" + (count - 1)).addClass('background-effect').addClass('z-index9999999');
 			var l2 = $("#storeRemainder"+currentIndex).offset();

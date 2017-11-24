@@ -17,8 +17,7 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<!-- <script src='/secure/lang/c/js-min/uorf.min.js'></script> -->
-<script src='/secure/lang/c/js/usage-of-realloc-function.js'></script>
+<script src='/secure/lang/c/js-min/uorf.min.js'></script>
 <title>Usage of Realloc() function</title>
 
 <style type="text/css">

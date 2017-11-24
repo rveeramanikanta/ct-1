@@ -102,7 +102,7 @@ function introJsFunction() {
 					$('#aBox, #bBox').addClass('opacity00');
 					break;
 				case "aLine1":
-					$('#svgLine1').remove();
+					$('svg').remove();
 					$('#aValue').empty();
 					$('#mallocTablesDiv1').addClass('opacity00');
 					break;

@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 10;
+var typingInterval = 1;
 var chValueChanged = true;
 var charDataTypeReady = function() {
 	$('.introjs-nextbutton').keydown(function(e) {

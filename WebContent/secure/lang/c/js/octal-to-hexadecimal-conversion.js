@@ -316,6 +316,7 @@ var octalToHexadecimalConversionReady = function() {
 				});
 			break;
 		case "restartBtn":
+			$('.introjs-tooltip').css('min-width', '125px');
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");

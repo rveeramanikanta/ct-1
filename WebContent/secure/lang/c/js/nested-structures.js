@@ -256,6 +256,11 @@ var nestedStructuresReady = function() {
 		case "embeddedFormat" :
 			$('#embeddedFormat').removeClass('opacity00');
 		break;
+		case "consoleId" :
+			if (intro._currentStep == 30) {
+				$('#embeddedFormat').addClass('opacity00');
+			}
+		break;
 		}
 	});
 	

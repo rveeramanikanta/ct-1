@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js/nested-structures.js"></script>
+	<script src="/secure/lang/c/js-min/ns.min.js"></script>
 	<title>Nested Structures</title>
 
 <style>
@@ -207,16 +207,15 @@ th, td {
 		<span class='color-rose'>int</span> pin;
 	}<span class='color-rose'> a</span>;</span>
 }<span class='color-rose'> e</span>;</span>
-	<span id='printf1'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee name"</span>);</span>
-	<span id='scanf1'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles1'>"%s"</span></span>, <span id='name1'>e.name</span>);</span>
-	<span id='printf2'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee city"</span>);</span>
-	<span id='scanf2'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles2'>"%s"</span></span>, <span id='city1'>e.a.city</span>);</span>
-	<span id='printf3'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee phoneNo."</span>);</span>
-	<span  id='scanf3'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles3'>"%s"</span></span>, <span id='phone1'>e.a.phone</span>);</span>
-	<span id='printf4'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee pinNo."</span>);</span>
-	<span id='scanf4'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiled'>"%d"</span></span>, <span id='pin'>&e.a.pin</span>);</span>
-	<div id='printf5' style="display: inline-block"><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"%s %s %s %d"</span>, e.name, e.a.city, e.a.phone,
-	 		e.a.pin);</div></pre>
+<span id='printf1'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee name"</span>);</span>
+<span id='scanf1'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles1'>"%s"</span></span>, <span id='name1'>e.name</span>);</span>
+<span id='printf2'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee city"</span>);</span>
+<span id='scanf2'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles2'>"%s"</span></span>, <span id='city1'>e.a.city</span>);</span>
+<span id='printf3'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee phoneNo."</span>);</span>
+<span  id='scanf3'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles3'>"%s"</span></span>, <span id='phone1'>e.a.phone</span>);</span>
+<span id='printf4'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee pinNo."</span>);</span>
+<span id='scanf4'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiled'>"%d"</span></span>, <span id='pin'>&e.a.pin</span>);</span>
+<div id='printf5' style="display: inline-block"><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"%s %s %s %d"</span>, e.name, e.a.city, e.a.phone, e.a.pin);</div></pre>
 </div>
 	<div class='col-xs-6' >
 		<div style='margin-left: 183px; color: green' ><span id='divE' class='opacity00 color-rose' style='position: relative; z-index: 9999999;'>

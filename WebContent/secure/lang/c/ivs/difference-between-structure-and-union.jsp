@@ -18,7 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/difference-between-structure-and-union.js"></script>
+<script src="/secure/lang/c/js-min/dbsau.min.js"></script>
 
 
 <title>difference between structure and union</title>
@@ -179,7 +179,7 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-offset-2 col-xs-9 margin-top20 margin-bottom20 opacity00" id="structureAccessing">
 				<span>5. </span>
-				<span>printf(“series: %s”, b.series);</span><span class="margin-left20"> 
+				<span>printf("series: %s", b.series);</span><span class="margin-left20"> 
 						<i class="fa fa-arrow-right red-color"></i>
 					</span> 
 				<span class="margin-left20 ct-code-b-green">Accessing</span>
@@ -246,7 +246,7 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-offset-2 col-xs-9 margin-top20 margin-bottom20 opacity00" id="unionAccessing">
 			<span>5. </span>
-				<span>printf(“series: %s”, b.series);</span>
+				<span>printf("series: %s", b.series);</span>
 				<span class="margin-left20"> 
 						<i class="fa fa-arrow-right red-color"></i>
 					</span> 

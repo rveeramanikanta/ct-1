@@ -96,18 +96,9 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-/* .introjs-tooltip {
-	min-width: 270px !important;
-}
- */
  .introjs-tooltiptext br {
 	margin-bottom: 15px;
 }
-
-/* .introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
-} */
 
 .store-remainder {
 	padding: 6px;
@@ -129,6 +120,8 @@ input:focus::-moz-placeholder {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
 	margin-left: 19.5%;
+	padding: 2px;
+	font-family: monospace;
 }
 
 #inputDiv {

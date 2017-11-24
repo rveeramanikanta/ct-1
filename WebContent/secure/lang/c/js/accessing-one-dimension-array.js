@@ -1,5 +1,5 @@
 
-var typingSpeed = 5;
+var typingSpeed = 1;
 var valIndex = 0;
 var index = 1;
 var size = ["1", "2", "3"];

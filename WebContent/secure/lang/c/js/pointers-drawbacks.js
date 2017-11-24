@@ -115,6 +115,7 @@ function introJsFunction() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch (animateStep) {
 				case "xBoxAnimate":
+					$('#xBox').addClass('opacity00');
 					$('#xValue').addClass('visibility-hidden');
 					break;
 				case "xValuePrint":
@@ -128,6 +129,9 @@ function introJsFunction() {
 		case "pBox":
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch (animateStep) {
+				case "pBoxAnimate":
+					$('#pBox').addClass('opacity00');
+				break;
 				case "pBoxValueAnimate":
 					$('svg').remove();
 					$('#pValue').addClass('visibility-hidden');

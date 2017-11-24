@@ -1,5 +1,5 @@
 var introjs;
-var typing_interval = 5;
+var typing_interval = 1;
 
 var typingId;
 var typingContent;

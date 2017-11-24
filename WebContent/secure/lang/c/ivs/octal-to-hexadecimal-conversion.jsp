@@ -40,6 +40,7 @@
     min-height: 55px;
     margin-top: 30px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -165,7 +166,7 @@
 	background-color: red;
 }
 
-.introjs-tooltiptext {
+.introjs-tooltip {
 	min-width: 250px;
 }
 </style>

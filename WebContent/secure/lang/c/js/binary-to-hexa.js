@@ -5,7 +5,7 @@ var sum2 = 0;
 var value1;
 var value2;
 var x;
-var typingInterval = 50;
+var typingInterval = 1;
 var p;
 var z, s;
 var temp;

@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/command-line-arguments-in-c.js"></script>
+<script src="/secure/lang/c/js-min/claic.min.js"></script>
 <title>Command Line Arguments in Action</title>
 
 <style>

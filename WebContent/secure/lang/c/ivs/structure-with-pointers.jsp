@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js/structure-with-pointers.js"></script>
+	<script src="/secure/lang/c/js-min/swp.min.js"></script>
 	
 	<title>structures with pointers</title>
 </head>
@@ -116,7 +116,9 @@
 }
 
 .color-palegreen {
-	color: #0f0;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .color-maroon {

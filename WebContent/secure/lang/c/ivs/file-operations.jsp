@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/fiop.min.js"></script> -->
-<script src="/secure/lang/c/js/file-operations.js"></script>
+<script src="/secure/lang/c/js-min/fiop.min.js"></script>
 <style>
 .demo-heading {
 	margin-top: 25px;

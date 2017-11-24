@@ -1,5 +1,5 @@
 var intro;
-var typingInterval = 5;
+var typingInterval = 1;
 var zeros1 = '';
 var binaryNumber = "";
 var number = "";

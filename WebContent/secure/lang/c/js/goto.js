@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 
 var gotoReady = function() {
 	introGuide();

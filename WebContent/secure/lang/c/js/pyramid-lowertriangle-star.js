@@ -1,5 +1,5 @@
 
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	var intro;
 	var tl;
 	var iCount = 1;

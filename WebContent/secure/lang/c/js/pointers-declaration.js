@@ -88,6 +88,9 @@ function introJsFunction() {
 			$('#xBox').addClass('opacity00');
 			$('#xValue').addClass('visibility-hidden');
 			break;
+		case "xBox":
+			$('#xBox').addClass('opacity00');
+			break;
 		case "animationBox":
 			$('#pValue').text("");
 			break;

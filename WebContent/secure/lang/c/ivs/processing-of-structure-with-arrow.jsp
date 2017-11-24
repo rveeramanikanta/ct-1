@@ -19,7 +19,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/processing-of-structure-with-arrow.js"></script>
+<script src="/secure/lang/c/js-min/poswa.min.js"></script>
 
 <title>processing of structure with arrow operator</title>
 <style>

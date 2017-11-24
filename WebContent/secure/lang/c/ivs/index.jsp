@@ -17,8 +17,19 @@ r {
 	font-weight: bold;
 }
 
+
 .fa-check {
 	color: #8B0000;
+}
+
+.box {
+	padding: 4px;
+	border: 2px solid black;
+	border-radius: 50%;
+}
+
+.opacity00 {
+	opacity: 0;
 }
 </style>
 <script type="text/javascript">
@@ -267,7 +278,8 @@ r {
 						<td>Decimal-to-Hexadecimal</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Hexadecimal', 'decimal-to-hexadecimal.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Hexadecimal</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Hexadecimal</span>
+									 <r>(modified)</r></td>
 						<td>Live-Demo / Raj <r>(back)</r></td>
 						<td>Ramana -- success</td>
 						<td>Successfully Completed</td>
@@ -293,7 +305,8 @@ r {
 						<td>Octal-to-decimal</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octao to Decimal', 'octal-to-decimal-conversion.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Octal to Decimal</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Octal to Decimal</span>
+									 <r>(modified)</r></td>
 						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -305,7 +318,8 @@ r {
 						<td>Octal-to-Hexadecimal</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octal to Hexadecimal', 'octal-to-hexadecimal-conversion.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Hexadecimal</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Hexadecimal</span>
+									 <r>(modified)</r></td>
 						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -787,7 +801,9 @@ r {
 					<tr>
 						<td>2</td>
 						<td>Directives #define</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #define</td>
 						<td>Mahesh</td>
@@ -960,7 +976,7 @@ r {
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-space.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with space
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with space <r>(modified)</r>
 							</div>
 
 							<div>
@@ -1044,8 +1060,9 @@ r {
 						<td>Basic Structure of C</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Basic Structure of C', 'structure-of-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Basic Structure of C Program</span></td>
-						<td>Anil</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Basic Structure of C Program</span>
+								 <r>(modified)</r></td>
+						<td>Anil / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>10-09-2016</td>
@@ -1929,7 +1946,7 @@ r {
 						<td>1</td>
 						<td>Storage Classes</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Automatic Variables', 'automatic-var.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Automatic Variables</td>
@@ -1943,7 +1960,9 @@ r {
 					<tr>
 						<td>2</td>
 						<td>Storage Classes</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+						<span class="box"><i class="fa fa-check opacity00"></i></span>
+						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Extern Variables', 'extern-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Extern Variables <r>(No back)</r></td>
 						<td>Padmaja</td>
@@ -1956,7 +1975,7 @@ r {
 						<td>3</td>
 						<td>Storage Classes</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static Variables', 'static-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Static Variables</td>
@@ -1970,7 +1989,7 @@ r {
 						<td>4</td>
 						<td>Storage Classes</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Register Variables', 'register-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Register Variables</td>
@@ -1984,7 +2003,7 @@ r {
 						<td>5</td>
 						<td>Storage Classes</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Storage Classes', 'storage-classes.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; All 4 with	differences</td>
@@ -2089,7 +2108,7 @@ r {
 						<td>1</td>
 						<td>Introduction to Pointers</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers introduction', 'pointers-introduction.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers introduction</td>
@@ -2103,7 +2122,7 @@ r {
 						<td>2</td>
 						<td>Declaration of Pointers</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers declaration', 'pointers-declaration.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers declaration</td>
@@ -2117,7 +2136,7 @@ r {
 						<td>3</td>
 						<td>Drawbacks of Pointers</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers drawbacks', 'pointers-drawbacks.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers drawbacks</td>
@@ -2131,7 +2150,7 @@ r {
 						<td>4</td>
 						<td>Parameter passing methods</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Call by Value', 'call-by-value.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Call by Value</td>
@@ -2146,7 +2165,7 @@ r {
 						<td>5</td>
 						<td>Parameter passing methods</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Call by Address', 'call-by-address.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Call by Address</td>
@@ -2160,7 +2179,7 @@ r {
 						<td>6</td>
 						<td>DMA</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Why DMA', 'dynamic-memory-allocation.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; why DMA (Dynamic memory Allocation)</td>
@@ -2174,7 +2193,7 @@ r {
 						<td>7</td>
 						<td>DMA</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of malloc()', 'usage-of-malloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of malloc()</td>
@@ -2189,7 +2208,7 @@ r {
 						<td>8</td>
 						<td>DMA</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of calloc()', 'usage-of-calloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of calloc()</td>
@@ -2203,7 +2222,7 @@ r {
 						<td>9</td>
 						<td>DMA</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of realloc()', 'usage-of-realloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of realloc()</td>
@@ -2231,7 +2250,7 @@ r {
 						<td>11</td>
 						<td>Pointers with Arrays</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers with 1-D arrays', 'pointers-one-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 1-D arrays</td>
@@ -2245,7 +2264,7 @@ r {
 						<td>12</td>
 						<td>Pointers with Arrays</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers with 2-D arrays', 'pointers-two-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 2-D arrays</td>
@@ -2259,7 +2278,7 @@ r {
 						<td>13</td>
 						<td>Array of Pointers</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Arrays of Pointers', 'array-of-pointers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Arrays of Pointers</td>
@@ -2273,7 +2292,7 @@ r {
 						<td>14</td>
 						<td>Pointer to an Array</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointer to an array', 'pointer-to-an-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointer to an array</td>
@@ -2287,7 +2306,7 @@ r {
 						<td>15</td>
 						<td>Double Pointer</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Multiple indirection operator', 'multiple-indirection-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Multiple indirection operator</td>
@@ -2301,7 +2320,7 @@ r {
 						<td>16</td>
 						<td>Disadvantages of Pointers</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Disadvantages in Pointers', 'pointers-disadvantages.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Disadvantages in Pointers</td>
@@ -2345,7 +2364,7 @@ r {
 						<td>1</td>
 						<td>Structure Declarations and Definitions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure Declaration and Definition', 'structures.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure Declaration and definition (3 different types in one demo)</td>
@@ -2359,7 +2378,7 @@ r {
 						<td>2</td>
 						<td>Processing a Structure</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing of a Structure using dot operator', 'processing-of-structure-with-dot.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing of a Structure using dot operator</td>
@@ -2373,7 +2392,7 @@ r {
 						<td>3</td>
 						<td>Initialization of Structures</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of structure variable', 'structure-initialization.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of structure variable</td>
@@ -2386,7 +2405,9 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Array of Structures</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('array of Structures', 'array-of-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Array of structure <r>(No back)</r></td>
 						<td>Ramya</td>
@@ -2400,27 +2421,27 @@ r {
 						<td>Features of Structures</td>
 						<td>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with Assignment operator', 'structure-with-assignment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with Assignment operator&emsp; 
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Nested Structures', 'nested-structures.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Nested Structures &emsp; 
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with functions', 'structure-with-functions.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with functions&emsp; 
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with pointers', 'structure-with-pointers.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with pointers&emsp; 
@@ -2437,7 +2458,7 @@ r {
 						<td>6</td>
 						<td>Self referential structures</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Self referential structures', 'self-referential-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Self referential structures</td>
@@ -2451,7 +2472,7 @@ r {
 						<td>7</td>
 						<td>Structures Vs Arrays</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Difference between Structures and Arrays', 'difference-between-array-and-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Difference between Structures and Arrays with example</td>
@@ -2465,7 +2486,7 @@ r {
 						<td>8</td>
 						<td>Unions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of Unions', 'usage-of-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of Unions</td>
@@ -2479,7 +2500,7 @@ r {
 						<td>9</td>
 						<td>Structure vs Union</td> 
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure vs Union', 'difference-between-structure-and-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure vs Union	with example</td>
@@ -2494,7 +2515,7 @@ r {
 						<td>10</td>
 						<td>Processing a Structures</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing a structure using arrow operator', 'processing-of-structure-with-arrow.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing a structure using arrow operator</td>
@@ -2525,7 +2546,7 @@ r {
 						<td>1</td>
 						<td>Different modes in Files</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Opening and closing a file with different modes', 'file-operations.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Opening and closing a file with different modes</td>
@@ -2540,7 +2561,7 @@ r {
 						<td>Files</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of fgetc() and fputc()', 'usage-of-fgetc-and-fputc.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgetc() and fputc()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgetc() and fputc() <r>(No Back)</r></td>
 						<td>Poorna</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -2552,7 +2573,7 @@ r {
 						<td>Files</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of fgetw() and fputw()', 'usage-of-putw-and-getw.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgetw() and fputw()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgetw() and fputw() <r>(No Back)</r></td>
 						<td>Mallika</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -2589,7 +2610,7 @@ r {
 						<td>Files</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of fread() and fwrite()', 'usage-of-fread-and-fwrite.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fread() and fwrite()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fread() and fwrite() <r>(No Back)</r></td>
 						<td>Poorna</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -2625,7 +2646,7 @@ r {
 						<td>9</td>
 						<td>Command line arguments in C</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Command line arguments in C', 'command-line-arguments-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Command line arguments in C</td>

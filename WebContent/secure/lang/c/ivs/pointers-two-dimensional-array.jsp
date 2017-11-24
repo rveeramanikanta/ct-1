@@ -15,8 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/ptda.min.js"></script> -->
-<script src="/secure/lang/c/js/pointers-two-dimensional-array.js"></script>
+<script src="/secure/lang/c/js-min/ptda.min.js"></script>
 <title>Pointers with Two Dimensional Array</title>
 
 <style>

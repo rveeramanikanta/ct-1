@@ -52,7 +52,7 @@ var ifElseInCReady = function() {
 
 var marks = 60;
 var distinction_marks = 75;
-var typingSpeed = 5;
+var typingSpeed = 1;
 	function charAtEnd(elementId) {
 		$('#' + elementId).select();
 		var element = document.getElementById(elementId);

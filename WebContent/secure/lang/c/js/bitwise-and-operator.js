@@ -1,5 +1,5 @@
 var intro;
-var typingInterval = 5;
+var typingInterval = 1;
 var res, res1;
 var resxyz, resxyz1; //new added
 var tl = new TimelineLite();

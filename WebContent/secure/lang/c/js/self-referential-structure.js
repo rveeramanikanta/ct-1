@@ -165,6 +165,12 @@ function selfReferentialStructure() {
 						break;
 					}
 					break;
+				case "s1Scanf":
+					$("#s1value").empty();	
+				break;
+				case "s2Scanf":
+					$("#s2value").empty();	
+				break;
 				case "s1Printf":
 					$("#outputDiv").addClass("opacity00").removeAttr('style');
 					break;
