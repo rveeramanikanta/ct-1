@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,9 +12,9 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <!-- <script src="/secure/lang/c/js-min/bth.min.js"></script> -->
 <script src="/secure/lang/c/js/binary-to-hexa.js"></script>
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 <title>Binary to hexaDecimal</title>
 
 <style>
@@ -332,7 +330,7 @@ div, span, tr, td {
 				</div>
 			</div>
 			<div class="col-xs-12 visibility-hidden" id="squareDiv">
-				<div class="col-xs-6">
+				<div class="col-xs-6" id="firstPart">
 					<table class="square-Box" id="tableDiv" align="center">
 						<tr id="twoPowerDiv1"></tr>
 					</table>

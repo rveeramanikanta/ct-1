@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/floyds-triangle-c.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js/flo yds-triangle-c.js" type="text/javascript"></script>
 <style>
 
 .margin-top20 {
@@ -158,17 +158,10 @@ r {
 
 <script>
 	
-	
-	
 	$(document).ready(function() {
 		floydsTriangleCReady();
 	});
 	
-	
-	
-	
-	
-	//$('#codeNextLine').prepend("<span class='glyphicon glyphicon-arrow-right faa-passing animated' id='treearr'></span>");
 	</script>
 
 <body>
@@ -180,7 +173,7 @@ r {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -225,7 +218,7 @@ r {
 	
 	</div></div>
 	<div class='col-xs-12 margin-top20 text-center'>
-		<span id='restart' class='btn btn-warning btn-sm opacity00'>Restart &nbsp;<i class='fa fa-refresh'></i></span>
+		<span id='restart' class='btn btn-warning btn-sm opacity00'>Restart &nbsp;</span>
 	</div>
 	</div>
 	

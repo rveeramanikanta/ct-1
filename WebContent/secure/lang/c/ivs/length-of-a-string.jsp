@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/loas.min.js"></script> -->
-<script src="/secure/lang/c/js/length-of-a-string.js"></script>
+<script src="/secure/lang/c/js-min/loas.min.js"></script>
 <title>Length of a string</title>
 <style>
 

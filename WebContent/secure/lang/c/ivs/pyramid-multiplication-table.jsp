@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/pyramid-multiplication-table.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/pmt.min.js" type="text/javascript"></script>
 
 <style>
 
@@ -171,7 +171,7 @@ r {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -199,7 +199,7 @@ r {
 	<span id='getScanf'>scanf(<ink>"<in>%d</in>"</ink>, &rows);</span>
 	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>1</ink>; i &lt;= rows; i++) {</span>
 		<span id="jForLoop" class="inner-one"><go>for</go> ( j = <ink>1</ink>; j &lt;= i; j++) {</span>
-			<span id='printNumber' class="inner-one">printf(<ink>"<in>%d</in> "</ink>,(i*j));</span>
+			<span id='printNumber' class="inner-one">printf(<ink>"<in>%d</in> "</ink>, (i * j));</span>
 		<span class="inner-one">}</span>
 		<span id="codeNextLine" class='outer'>printf(<ink>"<in>\n</in>"</ink>);</span>
 	<span class='outer'>}</span></span>

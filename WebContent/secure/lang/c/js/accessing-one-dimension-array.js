@@ -122,6 +122,7 @@ var oneDimesionalArrayReady = function() {
 			var action = intro._introItems[intro._currentStep].action;
 			switch(action) {
 				case "placingValues":
+					$('.output-value-circle').removeClass('output-value-circle');
 					break;
 				case "arrayCreation":
 					$('#tableDiv').removeClass('opacity00');
@@ -147,7 +148,6 @@ var oneDimesionalArrayReady = function() {
 			if (intro._currentStep == 11) {
 				$('#rowValue').empty();
 			} else if (intro._currentStep == 13 ) {
-				console.log("Step : 13");		
 				var length = $("#rowValue").text();
 				for (var i = 0; i <= length; i++) {
 					$("#value" + i).remove();
@@ -322,20 +322,14 @@ var oneDimesionalArrayReady = function() {
 						}
 						
 					} else if (intro._currentStep == 11 ) {
-						//if (intro._direction == "forward") {
-							$('#rowValue').attr('contenteditable','true');
-							valueRestriction();
-							$('.introjs-nextbutton').hide();
-							$('.matrix').removeClass('opacity00');
-							charAtEnd('rowValue');
-							$(".introjs-tooltip").removeClass('hide');
-							 	var text = "Enter how many values you want to read.";
-							typing(".introjs-tooltiptext", text, function() {
-			 				});
-						/*} else {
-							$('#rowValue').empty();
-							setTimeToIntroPreviousStep();
-						}*/
+						$('#rowValue').attr('contenteditable','true');
+						valueRestriction();
+						$('.introjs-nextbutton').hide();
+						$('.matrix').removeClass('opacity00');
+						charAtEnd('rowValue');
+						$(".introjs-tooltip").removeClass('hide');
+						 	var text = "Enter how many values you want to read.";
+						typing(".introjs-tooltiptext", text, function() {});
 					} else if (intro._currentStep == 16 ) {
 						if (intro._direction == "forward") {
 							$('.introjs-helperLayer ').one('transitionend', function() {
@@ -446,6 +440,7 @@ var oneDimesionalArrayReady = function() {
 				$('.zIndex').removeClass('zIndex');
 				$('.introjs-nextbutton').hide();
 				$("#restart").removeClass('opacity00');
+				$('.introjs-tooltip').css('min-width', '130px');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Click to restart.";
 	 				typing(".introjs-tooltiptext", text, function() {
@@ -617,7 +612,7 @@ function tableCreation() {
 	var str = ["blue","red","green"];
 	var str1 = ["blue-text","red-text","green-text"];
 	var str2 = ["first","second","third"];
-	var count = 1024;
+	var count = 3058;
 	for (var i = 0; i < rows; i++) {
 		var flag = true;
 		for (var j = 0; j < cols; j++) {

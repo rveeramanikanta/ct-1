@@ -66,6 +66,7 @@ var binaryToHexaReady = function() {
 		}
 	/* if given input length <= 4 */	
 		if (input.length <= 4) {
+			$("#firstPart").hide();
 			var count = 0;
 			if (input.length != 4) {
 				for (var i = input.length; i < 4; i++) {
@@ -140,6 +141,7 @@ var binaryToHexaReady = function() {
 		}
 	
 		if (input.length > 4) {
+			$("#firstPart").show();
 				x = input.substring(input.length-4, input.length);
 				input = input.substring(0, input.length-4);
 			
@@ -204,7 +206,7 @@ var binaryToHexaReady = function() {
 				/*$("#multiplyDiv1").empty();
 				$("#multiplyDiv2").empty();*/
 				if(i > 0) {
-					$("#multiplyDiv2").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
+					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
 							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
@@ -214,7 +216,7 @@ var binaryToHexaReady = function() {
 					$("#multiDiv1").append("(" + input[j] + "<span class='ct-blue-color' id='multi" + j + "'>x</span>" + 
 							"<span class='twoHalf' id='twoHalf"+ i + "'>" + "2" + "<sup>" + i + "</sup></span>" + ")<span class='plus3'>+</span>");
 				} else {
-					$("#multiplyDiv2").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
+					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
 							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
@@ -340,6 +342,10 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {	
 		var elementId = targetElement.id;
 		switch (elementId) {
+		case "table":
+			$("#input").addClass("visibility-hidden");
+			$("#binarylValue").val("").removeClass("backgroundColor");
+			break;
 		case 'input':
 			$("#convert").addClass("disabled").attr("disabled", true);
 			$('#binaryValue').val('');
@@ -349,7 +355,7 @@ function introGuide() {
 			
 			$("#positionSpan1 > .box5").remove();
 			$('#twoPowerDiv1 > td').remove();
-			$("#multiplyDiv2 #multiplySpan, #multiplyDiv1").empty();
+			$("#multiplySpan").empty();
 			$("#multiplyDiv2 #multiplySpan").nextAll().empty();
 			$('#multiDiv1').empty();
 			$('#multiDiv2').empty();
@@ -357,6 +363,7 @@ function introGuide() {
 			$('#addition2').empty();
 			$("#result2").empty();
 			$('#result1').empty();
+			$("#multiplyDiv1").empty();
 			
 		break;
 		case 'boxDiv':
@@ -417,7 +424,7 @@ function introGuide() {
 			} else if (input.length >= 5 && input.length <= 8 ) {
 				$('.plus1, .plus2').removeAttr('style');
 				$('.plus2').addClass('opacity00');
-				$('#multiplyDiv1 > span , #multiplyDiv2 > span').addClass('opacity00').removeAttr('style');
+				$('#multiplyDiv1 > span , #multiplySpan > span').addClass('opacity00').removeAttr('style');
 				$("#multiplySpan").removeClass("opacity00");
 				
 			}
@@ -539,6 +546,8 @@ function introGuide() {
 		}
 		switch (elementId) {
 		case 'table':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+			$("#binarylValue").attr("disabled", true);
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#table").removeClass("visibility-hidden");
 				var text = "This chart shows the conversion table for four digit <span class='ct-code-b-yellow'>binary</span> groups to "+ 
@@ -549,6 +558,7 @@ function introGuide() {
 			});
 			break;
 		case 'input':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 			$("#input").removeClass("visibility-hidden");
@@ -562,7 +572,8 @@ function introGuide() {
 						$("#binaryValue").attr("disabled", false);
 						$("#binaryValue").effect('highlight',{color:'#2F4F4F'}, 1000);
 						$("#binaryValue").focus();
-						});
+						$('.introjs-prevbutton').show();
+					});
 			
 				$("#convert").click(function() {
 					$("#multiplyDiv2, #multiplyDiv1").removeAttr('class').addClass("col-xs-6 opacity00");
@@ -571,6 +582,7 @@ function introGuide() {
 			});
 			break;
 		case 'numberBox':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-nextbutton").show();
 				$("#boxDiv").removeClass("visibility-hidden");
@@ -578,7 +590,7 @@ function introGuide() {
 			});
 			break;
 		case 'boxDiv':
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			//$("#boxDiv").css({height: $("#boxDiv").outerHeight()});
 			var input = $("#binaryValue").val();
 			$('.introjs-helperLayer ').one('transitionend', function() {

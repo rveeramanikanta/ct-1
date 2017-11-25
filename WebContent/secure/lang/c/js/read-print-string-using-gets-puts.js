@@ -249,12 +249,12 @@ var readPrintStringUsingGetsPutsReady = function() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				if(introjs._currentStep == 5) {
 					$("#consoleId").removeClass("opacity00");
-					$('.introjs-tooltip').removeClass('hide');
 					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : "
 							+ " <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 1, "",function() {
 						$("#hiddenTypingChar").removeClass("hidden");
 						$("#totalBlinkText").addClass("hidden");
 						$("#inputChar").focus();
+						$('.introjs-tooltip').removeClass('hide');
 						typing(".introjs-tooltiptext", "Enter a string. ", 1, "",function() {
 							$("#inputChar").on("keydown", function(e) {
 								$('.ct-code-b-red').remove();

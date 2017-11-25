@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/pyramid-lowertriangle-line-in-same-row.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/pllisr.min.js" type="text/javascript"></script>
 
 <style>
 
@@ -175,7 +175,7 @@ r {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -203,7 +203,7 @@ r {
 	<span id='getScanf'>scanf(<ink>"<in>%d</in>"</ink>, &rows);</span>
 	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>1</ink>; i &lt;= rows; i++) {</span>
 		<span id="jForLoop" class="inner-one"><go>for</go> ( j = <ink>1</ink>; j &lt;= i; j++) {</span>
-			<span id='printNumber' class="inner-one">printf(<ink>"<in>%d</in> "</ink>, j);</span>
+			<span id='printNumber' class="inner-one">printf(<ink>"<in>%d</in> "</ink>, i);</span>
 		<span class="inner-one">}</span>
 		<span id="codeNextLine" class='outer'>printf(<ink>"<in>\n</in>"</ink>);</span>
 	<span class='outer'>}</span></span>

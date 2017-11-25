@@ -14,13 +14,14 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/usage-of-hash-define.js" type="text/javascript"></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
+
+<!-- <script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script> -->
+<script src="/secure/lang/c/js/usage-of-hash-define.js" type="text/javascript"></script>
 <title>Usage of #define</title>
 </head>
 <style>

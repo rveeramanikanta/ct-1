@@ -223,10 +223,10 @@ var readPrintStringUsingScanfPrintfReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#inputChar").val("");
 					$("#consoleId").removeClass("opacity00");
-					$('.introjs-tooltip').removeClass('hide');
 					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : <span id='blinkChar'>"
 							+ " <input id='inputChar' class='input-char' maxlength='19' tabindex='0' value=''/></span></br></span>", 1, "",function() {
 						$("#inputChar").focus();
+						$('.introjs-tooltip').removeClass('hide');
 						typing(".introjs-tooltiptext", "Enter a string.", 1, "",function() {
 							$("#inputChar").keydown(function(e) {
 								$('.ct-red').remove();

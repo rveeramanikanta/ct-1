@@ -38,6 +38,7 @@ var hexadecimalOctalReady = function() {
 			element : "#table",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, 
 		{
 			element :'#inputDiv',
@@ -115,12 +116,21 @@ var hexadecimalOctalReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch(elementId) {
+		case "numberconversion":
+		$("#table").addClass("opacity00");
+		break;
 		case 'table':
 			$('#inputDiv').addClass('opacity00');
 			$('#octalValue').val('');
+			$("#octalValue").attr("disabled", true);
+			$("#convert").addClass("disabled").addClass("opacity40");
+		//	$("#convert").attr("disabled", true);
+			$("#octalValue").removeClass("backgroundColor");
 		break;
 		case "inputDiv" :
 			$('#octalValue').val('');
+			$("#convert").addClass("disabled").addClass("opacity40");
+			$('#calculationTable').addClass('visibility-hidden');
 			$('#binaryValuesGet').empty();
 			$('#octalValuesDiv').addClass('opacity00');
 			$('#octalValuesGet').empty().removeAttr('style');
@@ -464,7 +474,6 @@ var hexadecimalOctalReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#calculationTable').removeClass('visibility-hidden');
 				$('#octalValuesDiv').removeClass('opacity00');
-			//	TweenMax.staggerFrom(".box", 0.95, {opacity:0, top: -20}, -0.1, function() {
 					$('.introjs-tooltip').removeClass("hide");
 					var text = "Let us consider the steps involved in converting a hexadecimal number :<br> "+
 					"<ol><li>Consider each hexadecimal digit as a separate digit.</li><span id='OLtooltipText'></span></ol>";
@@ -487,13 +496,12 @@ var hexadecimalOctalReady = function() {
 								}});	
 						  	});
 						});
-				//	}); 
 				});
 			});
 		break; 
 		case "numberconversion" :
 			$("#informationdiv").addClass('z-index1000000');
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion').removeClass('visibility-hidden');
 		  		typing('.introjs-tooltiptext',"This table provides the quick reference for converting all the 16 "+
@@ -504,13 +512,14 @@ var hexadecimalOctalReady = function() {
 				});
 		break;
 		case 'table':
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#table").removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', "This table provides the quick reference for converting all the <span class='ct-code-b-yellow'>"+
 						"binary</span> equivalent values "+
 		  				"to their <span class='ct-code-b-yellow'>octal</span> numbers.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;

@@ -107,6 +107,7 @@ var hexadecimalDecimalReady = function() {
 			$('#inputDiv').addClass('opacity00');
 			$('#octalValue').val('');
 			$('#octalValuesDiv').addClass('opacity00');
+			$('#calculationTable').addClass('visibility-hidden');
 			$('.box').addClass('opacity00').removeAttr('style');
 			$('.powercal, .plus, .box2, .box, .box5, .box3, .box6, .box4').remove();
 			$('#adding, #multiplytwonos, #multiply').empty();
@@ -395,6 +396,7 @@ var hexadecimalDecimalReady = function() {
 					 $('#multiplytwonos').effect('highlight',  {color: "#ff9900"}, 1000);
 					t= 0;
 					 addition(function() {
+						 $(".box7").removeClass("opacity00");
 						$('.introjs-nextbutton, .introjs-prevbutton').show();	
 					});
 				})

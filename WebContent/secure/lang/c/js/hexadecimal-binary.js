@@ -60,7 +60,13 @@ var hexadecimalBinaryReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch(elementId) {
+		case "numberconversion":
+		$('#inputDiv').addClass('opacity00');
+		$("#octalValue").attr("disabled", true);
+		$("#octalValue").removeClass("backgroundColor");
+		break;
 		case "inputDiv" :
+			$("#octalValue").attr("disabled", true);
 			$("#convert").addClass("disabled").attr("disabled", "disabled");
 			$('#octalValue').val('');
 			$('#calculationTable').addClass('visibility-hidden');
@@ -150,7 +156,7 @@ var hexadecimalBinaryReady = function() {
 			});
 		break;
 		case "numberconversion" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion').removeClass('visibility-hidden');
 		  		var text = "This table provides the quick reference for converting all the 16 hexadecimal numbers to their binary equivalent values."
@@ -160,6 +166,7 @@ var hexadecimalBinaryReady = function() {
 				});
 		break;
 		case "inputDiv" :
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#inputDiv').removeClass('opacity00');
 				var text = "Enter a hexadecimal value and click on the <span style='background-color: green; border-radius: 3px; padding: 0 2px;'>"+
@@ -169,10 +176,13 @@ var hexadecimalBinaryReady = function() {
 		  		$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',text ,function() { 
 					$('#octalValue').focus();  
+					$("#octalValue").attr("disabled", false);
+					$('.introjs-prevbutton').show();
 		  		});
 			});
 		break; 
 		case "octalValuesDiv" :
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#calculationTable').removeClass('visibility-hidden');
 				$('.introjs-tooltip').css({"min-width": "250px"});

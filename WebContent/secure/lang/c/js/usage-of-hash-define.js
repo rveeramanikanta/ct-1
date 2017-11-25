@@ -251,6 +251,9 @@ function introjsGuide() {
 			$('#inputChar').val('');
 			$("#inputChar").removeAttr("disabled");
 		break;	
+		case "line5":
+			$("#consoleId").addClass("opacity00");
+		break;
 		case "line6":
 			$('#inputChar').val('');
 		break;
@@ -366,7 +369,7 @@ function introjsGuide() {
 		case "line4" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext',"we are declare 3 float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
+				typing('.introjs-tooltiptext',"we are declaring 3 float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});

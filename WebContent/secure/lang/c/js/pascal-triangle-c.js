@@ -235,7 +235,7 @@ function introGuide() {
         	
 		case "restart":
 			$('.user-btn').remove();
-			$('.introjs-tooltip').css("min-width","200px");
+			$('.introjs-tooltip').css("min-width","130px");
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#restart').removeClass('opacity00');
@@ -249,9 +249,6 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					stepNext();
-					/*	setTimeout(function() {
-						introjs.nextStep();
-				}, 500);*/
 			});
         	break;
         	
@@ -277,10 +274,6 @@ function introGuide() {
 						$('#animationDivText').removeClass('opacity00');
 					} 
 						stepNext();
-					/*$('#animationDivText').removeClass('opacity00');
-						setTimeout(function() {
-							introjs.nextStep();
-					}, 1000);*/
 					break;
 					
 				case "printfValue":

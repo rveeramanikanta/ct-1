@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<!-- <script src='/secure/lang/c/js-min/ioca.min.js'></script> -->
-<script src='/secure/lang/c/js/initialization-of-character-arrays.js'></script>
+<script src='/secure/lang/c/js-min/ioca.min.js'></script>
 <title>Initialization of character arrays</title>
 <style type="text/css">
 

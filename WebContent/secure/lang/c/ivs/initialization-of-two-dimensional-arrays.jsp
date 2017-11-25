@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,8 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<!-- <script src='/secure/lang/c/js-min/iotda.min.js'></script> -->
-<script src='/secure/lang/c/js/initialization-of-two-dimensional-arrays.js'></script>
+<script src='/secure/lang/c/js-min/iotda.min.js'></script>
 
 <title>two dimensional array</title>
 </head>
@@ -27,7 +26,7 @@
 #infoDiv {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
 	font-family: monospace;
 }
@@ -43,7 +42,6 @@
 .second-box-1, .second-box-2, .second-box-3, .three-box-1, 
 .three-box-2, .three-box-3, .four-box-1, .four-box-2, .four-box-3 {
 	border: 1px solid white;
-	/* border-style: solid; */
 	padding: 4px;
 	text-align: center;
 	width: 66px;
@@ -51,23 +49,10 @@
 
 .fifth-box-1, .fifth-box-2 {
 	border: 1px solid white;
-	/* border-width: 2px;
-	border-style: solid; */
 	padding: 4px;
 	text-align: center;
 	width: 66px;
 }
-/* .smallBox1 {
-	border-color: green;
-}
-
-.smallBox2 {
-	border-color: firebrick;
-}
-
-.smallBox3 {
-	border-color: royalblue;
-} */
 
 .elementBox, .addressBox {
 	padding: 4px;
@@ -101,6 +86,7 @@
 
 .user-btn {
 	background-color: green;
+	margin: 0 !important;
 }
 
 .introjs-tooltip {
@@ -138,7 +124,9 @@ span, div {
 }
 
 .ct-color-num {
-	color: #0ad785;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 

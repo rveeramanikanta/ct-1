@@ -91,7 +91,7 @@ var binaryToDecimalConvetionReady = function()	{
 				
 			break;
 			case 'numberconversion':
-				$("#binarylValue").removeAttr("disabled");	
+				$("#binarylValue").removeAttr("disabled").attr("disabled", false);	
 				$("#inputDiv").addClass("visibility-hidden");
 			break;	
 			case 'binary':	
@@ -354,7 +354,6 @@ var binaryToDecimalConvetionReady = function()	{
 		});
 	
 	$("#convert").click(function() {
-		$("#convert").addClass("disabled").attr("disabled", true);
 		$('#positionDiv, #powercalculation').empty();
 		$("#power").empty();
 		$('#multiply').empty();
@@ -363,6 +362,7 @@ var binaryToDecimalConvetionReady = function()	{
 		if ($('#convert').hasClass('disabled')) {
 			return;
 		}
+		$("#convert").addClass("disabled").attr("disabled", true);
 		$('.introjs-nextbutton').click();
 		l = $("#binarylValue").val();
 		 x = l.length - 1;
@@ -433,13 +433,13 @@ var binaryToDecimalConvetionReady = function()	{
 			$(this).val(no_spl_char);
 		}
 		if ($("#binarylValue").val().length > 0) {
-			$("#convert").removeClass("disabled").removeClass("opacity40");
+			$("#convert").removeClass("disabled").removeClass("opacity40").attr("disabled", false);;
 			$("#binarylValue").removeClass("backgroundColor");
 			$('.errorText').empty();
 		} else {
 			$('.errorText').html("Since a binary number can have 0's and 1's, use only 0's and 1's.");
 			$("#binarylValue").addClass("backgroundColor");
-			$("#convert").addClass("disabled").addClass("opacity40");
+			$("#convert").addClass("disabled").addClass("opacity40").attr("disabled", true);;
 			
 		}
 	});

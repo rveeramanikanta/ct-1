@@ -65,18 +65,20 @@ function structCode() {
 }
 
 function insertAtBeginMethod() {
-	$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="insertAtBeginFun"></span></div>');
 	if (lang == 'c') {
-		$('#insertAtBeginFun').html('node <g>insertAtBegin(int x)</g> {\n'
-						 + '\t<span id="step1"></span>'
-						 + '\n\treturn first;\n}');
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">node <g>insertAtBegin(int x)</g> {\n'
+						 + '\t<span id="step1">node temp;\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
+						 + '\ttemp -> data = x;</span>'
+						 + '\n\treturn first;\n'
+						 + '}</span></div>');
 	} else if (lang == 'cpp') {
-		$('#insertAtBeginFun').html('void Sll::<g>insertAtBegin(int x)</g> {\n'
-						 + '\t<span id="step1"></span>\n}');
+		$('#codeDiv').append('<br><br><div class="position-css" id="insertAtBeginMethod"><span id="line5">void Sll::<g>insertAtBegin(int x)</g> {\n'
+						 + '\t<span id="step1">node temp;\n'
+						 + '\t<span id="line6">temp = <g>createNode()</g>;</span>\n'
+						 + '\ttemp -> data = x;</span>'
+						 + '\n}</span></div>');
 	}
-	$('#step1').html('node temp;\n'
-				 + '\t<span id="calCreateNodeMthd">temp = <g>createNode()</g>;</span>\n'
-				 + '\ttemp -> data = x;')
 	$('#insertAtBeginMethod span').addClass('opacity00');
 }
 
@@ -241,10 +243,10 @@ function initIntroJS() {
 						break;
 						case 'methodCreation':
 							$('#l3Span').effect('highlight', {color: 'yellow'}, 1200);
-							transWithZoomInEffect('#l3Span', '#insertAtBeginFun', function() {
+							transWithZoomInEffect('#l3Span', '#line5', function() {
 								$('#l3Div').css({'background-color' : 'yellow'});
 								transWithZoomInEffect('#l3Div', '#step1', function() {
-									$('#calCreateNodeMthd').css({'background-color' : 'yellow'});
+									$('#line6').css({'background-color' : 'yellow'});
 									createNodeMethod();
 									$('#codeDiv').scrollTo('#createNodeFun span:last', 500, function() {
 										if (lang == 'c') {
@@ -258,10 +260,10 @@ function initIntroJS() {
 											structCode();
 											$('#codeDiv').scrollTo('#structCode span:last', 300);
 											nextBtnWithoutCalling('.introjs-tooltipbuttons', function() {
-												transWithZoomInEffect('#calCreateNodeMthd', '#createNodeFun', function() {
+												transWithZoomInEffect('#line6', '#createNodeFun', function() {
 													$('#list').css({'background-color' : 'yellow'});
 													transWithZoomInEffect('#list', '#structCode', function() {
-														$('#calCreateNodeMthd, #l3Div, #list').css({'background-color' : ''});
+														$('#line6, #l3Div, #list').css({'background-color' : ''});
 														introNextSteps('#animationDiv', 'fstToTmpNxt', 'show');
 														$('.introjs-nextbutton').show();
 													});
@@ -503,7 +505,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 function transWithZoomInEffect(selector1, selector2, callBackFunction) {
 	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
 		if (selector2 == '#step1') {
-			$('#calCreateNodeMthd').removeClass('opacity00');
+			$('#line6').removeClass('opacity00');
 		}
 		$(selector2).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			$(selector2).removeClass("animated zoomIn")

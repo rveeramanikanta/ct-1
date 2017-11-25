@@ -82,6 +82,10 @@ function introGuide() {
 					tooltipClass: 'hide',
 					outputStep: 'lastStatement'
 				}, {
+					element : '#end',
+					intro : '',
+					position : "right"
+				}, {
 					element: '#restart',
 					intro: 'Click to restart.',
 					position: 'right'
@@ -118,11 +122,16 @@ function introGuide() {
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 				switch(outputStep) {
 					case "textEnter":
+						spaceFlag = true;
 						//$("#textEnter").remove('textEnter');
 						$('#usrText').val('');
 						$("#userString td").eq($(".filled").length + 1).text('');
 						$(".filled").text('');
 						$(".filled").removeClass('filled');
+					break;
+					case "lastStatement":
+						$(".thirdLine").empty();
+						$("#lengthString").remove('lengthString');
 					break;
 				}
 			break;
@@ -139,6 +148,13 @@ function introGuide() {
 			$("#copyString td:not(:empty)").addClass("opacity00");
 			$("#tdBorder" + i).addClass("opacity00");
 			break;
+		case "delimeter":
+			$("#tdBorder" + i).addClass("opacity00");
+			break;
+		case "stringLength":
+			 $("#lengthString").remove('lengthString');
+			 $(".thirdLine").empty();
+			 break;
 		}
 	});
 	introjs.onafterchange(function(targetElement) {
@@ -272,14 +288,22 @@ function introGuide() {
 							break;
 							
 						case "lastStatement":
-							$(".thirdLine").append('<span id="lengthString">The copied string = </span>');
-							$.each($("#usrText").val().split(""), function(index, value) {
-								if (value.trim() == "") {
-									return false;
-								}
-								$("#lengthString").append('<span class="ct-code-b-yellow">' + value + '</span>');
-							});
-							timeOut();
+							if (introjs._direction == 'backward') {
+								setTimeout(function() {
+									introjs.previousStep();
+								}, 500);
+							} else{
+								$(".thirdLine").append('<span id="lengthString">The copied string = </span>');
+								$.each($("#usrText").val().split(""), function(index, value) {
+									if (value.trim() == "") {
+										return false;
+									}
+									$("#lengthString").append('<span class="ct-code-b-yellow">' + value + '</span>');
+								});
+								setTimeout(function() {
+									introjs.nextStep();
+								}, 1000);
+							}
 							break;
 					}
 				});
@@ -417,13 +441,13 @@ function introGuide() {
 						if (introjs._direction == 'backward') {
 							$("#tdBorder" + i).addClass("opacity00");
 							setTimeout(function() {
-								introjs.goToStep(introjs._introItems.length - 4);
+								introjs.previousStep();
 							}, 1000);
 						} else{
-							//$("#tdBorder" + i).removeClass("opacity00");
+							$("#tdBorder" + i).removeClass("opacity00");
 							$(".back-button").remove();
 							setTimeout(function() {
-								introjs.goToStep(introjs._introItems.length - 2);
+								introjs.goToStep(introjs._introItems.length - 3);
 							}, 1000);
 						}
 						
@@ -470,8 +494,10 @@ function introGuide() {
 					flag = true;
 					flag2 = false;
 					$('.introjs-tooltip').removeClass("hide")
-					var newStep = getStep('#tableId2', '', 'hide', '');
-					introjs.insertOption(introjs._currentStep + 1, newStep);
+					if (introjs._direction == "forward") {
+						var newStep = getStep('#tableId2', '', 'hide', '');
+						introjs.insertOption(introjs._currentStep + 1, newStep);
+					}
 					var text = "<span class='ct-code-b-yellow'>b[" + count + "] = '\\0'";
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-tooltipbuttons').prepend('<a class="introjs-button back-button" onClick = "backBtn2()">&#8592; Back</a>');
@@ -489,6 +515,14 @@ function introGuide() {
 								+ " encounters the <span class='ct-code-b-yellow'>'\\0'</span> character.";
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-prevbutton, .introjs-nextbutton').show();
+					});
+				});
+				break;
+			case 'end':
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					var text = "This is the end of the main() function where the program execution ends.";
+					typing(".introjs-tooltiptext",text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
 				break;
@@ -548,8 +582,10 @@ function timeOut() {
 }
 
 function nextStep(id) {
-	var newStep = getStep(id, '', 'hide', '');
-	introjs.insertOption(introjs._currentStep + 1, newStep);
+	if (introjs._direction == "forward") {
+		var newStep = getStep(id, '', 'hide', '');
+		introjs.insertOption(introjs._currentStep + 1, newStep);
+	}
 }
 
 function tableCreation() {

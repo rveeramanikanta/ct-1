@@ -306,7 +306,7 @@ function initIntroJS() {
 						break;
 						case 'hpow1Anim':
 						case 'displayAnim':
-							if (elementId == 'hpow1Anim') {
+							if (animateStep == 'hpow1Anim') {
 								$('.usr-txt').attr('disabled', true);
 								$('#pwrBtn').click();
 							}

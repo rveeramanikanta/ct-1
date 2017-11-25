@@ -210,6 +210,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 	intro.start();
 	
 }
+
 function typing(typingId, typingContent, typingCallbackFunction) {
 	var typingSpeed = 1;
 	$(typingId).typewriting(typingContent, {
@@ -217,8 +218,8 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 		"cursor_color": 'white'
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
 		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		typingCallbackFunction();
 	})
 }
 function zoomInEffect(id, callBackFunction) {

@@ -207,6 +207,7 @@ function introJsFunction() {
 			$('#outputScanfLine1').removeAttr('contenteditable placeholder').empty();
 			break;
 		case "forPLine":
+			$('#outputScanfLine1').text($('#outputScanfLine1').text().replace(/\s+/g, " ").replace(/^\s|\s$/g, ""));
 			arr = $('#outputScanfLine1').text().split(' ');
 			m = arr[0];
 			n = arr[1];	

@@ -265,7 +265,7 @@ PolynomialArray.prototype.create = function() {
 
 PolynomialArray.prototype.power = function() {
 	this.commands = new Array();
-	
+	console.log('hello');
 	this.cmd("Step");
 	if (iVal == 1) {
 		hpow1 = this.powerAnim(this.powerValueID1, this.exponentID1, this.exponentValID1, this.exponentArrayID1, this.coeffID1, '#printf2');

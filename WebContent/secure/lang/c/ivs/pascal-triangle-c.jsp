@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js/pascal-triangle-c.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/ptc.min.js"></script>
 <style type="text/css">
 
 .margin-top-20 {
@@ -210,7 +210,7 @@ $(document).ready(function() {
 	</div>
 	<div class="col-xs-offset-1 col-xs-10 margin-top-20">
 		<div id="topDiv">
-			<div id="typingDiv1">
+			<div id="typingDiv1" style="font-family: monospace;">
 				<ul>
 					<li id="li1" class="opacity00">In mathematics, Pascal's triangle is a triangular array of
 						the binomial coefficients.</li>

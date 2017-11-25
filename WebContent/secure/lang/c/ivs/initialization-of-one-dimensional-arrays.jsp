@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,8 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<!-- <script src="/secure/lang/c/js-min/iooda.min.js"></script> -->
-<script src="/secure/lang/c/js/initialization-of-one-dimensional-arrays.js"></script>
+<script src="/secure/lang/c/js-min/iooda.min.js"></script>
 
 <title>Initialization of arrays</title>
 </head>
@@ -26,8 +25,9 @@
 #infoDiv {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 13px;
 	padding: 11px 12px;
+	font-family: monospace;
 }
 
 .margin-top-1 {
@@ -74,6 +74,7 @@ span, div {
 
 .user-btn {
 	background-color: green;
+	margin: 0 !important;
 }
 
 .introjs-tooltip {
@@ -117,7 +118,9 @@ pre {
 }
 
 .ct-color-lime {
-	color: lime;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 

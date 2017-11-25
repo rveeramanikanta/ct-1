@@ -238,6 +238,7 @@ function introGuide() {
 	introguide.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		if (elementId == "inputDiv") {
+			$("#convert").addClass("disabled").addClass("opacity40");
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (introguide._direction == "backward") {
 					quotientFlag = false;

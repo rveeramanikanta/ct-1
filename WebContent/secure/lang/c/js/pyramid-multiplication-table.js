@@ -120,7 +120,6 @@ var pyramidMultiplicationTableReady = function() {
 				var action = intro._introItems[intro._currentStep].action;
 				switch(action) {
 				case "sampleCode":
-					
 					break;
 				}
 			});
@@ -128,7 +127,6 @@ var pyramidMultiplicationTableReady = function() {
         	
         case "getPrintf":
         	$('#consoleId1').addClass('opacity00');
-			
         	break;
         	
 		case "outputDiv":
@@ -138,30 +136,23 @@ var pyramidMultiplicationTableReady = function() {
 				case "printfText":
 					$('#animationDivText').addClass('opacity00');
 					break;
-					
 				case "printfValue":
-					
 					$('#rowValue').removeAttr('contenteditable');
 					$('.matrix').addClass('opacity00');
 					$("#rowValue").text('');
 					$(".outer").removeClass("background-color-green");
 					$(".inner-one").removeClass("background-color-yellow");
 					$(".inner-two").removeClass("background-color-blue");
-					
 					break;
-					
 				case "outputPrintingStart":
 					break;
 				}
 			});
-			
         	break;
         	
 		case "getScanf":
-			
 			$('#rowValue').removeAttr('contenteditable');
 			$('.matrix').addClass('opacity00');
-			
         	break;
         	
 		}
@@ -231,7 +222,7 @@ var pyramidMultiplicationTableReady = function() {
         	
 		case "restart":
 			$('.user-btn').remove();
-			$('.introjs-tooltip').css("min-width","200px");
+			$('.introjs-tooltip').css("min-width","130px");
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#restart').removeClass('opacity00');

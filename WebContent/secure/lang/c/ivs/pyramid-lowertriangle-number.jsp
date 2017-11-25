@@ -20,8 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/pyramid-lowertriangle-number.js" type="text/javascript"></script>
-
+<script src="/secure/lang/c/js-min/pln.min.js" type="text/javascript"></script>
 <style>
 
 .margin-top20 {
@@ -170,7 +169,7 @@ r {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>

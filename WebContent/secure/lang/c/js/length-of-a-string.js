@@ -119,6 +119,7 @@ function introGuide() {
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 				switch(outputStep) {
 				case "EnterString":
+					spaceCheckflag = true;
 					$("#userString td").eq($(".filled").length + 1).text('');
 					$('.filled').text('');
 					break;

@@ -242,7 +242,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Hexadecimal', 'binary-to-hexa.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Hexadecimal conversion
-									 <r>(modified)</r></span></td>
+									 </span></td>
 						<td>Shiva / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -255,7 +255,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Binary', 'decimal-to-binary.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Binary</span></td>
-						<td>Live-Demo</td>
+						<td>Live-Demo / Raj <r>(back)</r></td>
 						<td>Ramana -- success</td>
 						<td>Successfully Completed</td>
 						<td>same as JAVA</td>
@@ -267,7 +267,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Octal', 'decimal-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Octal</span></td>
-						<td>Live-Demo</td>
+						<td>Live-Demo / Raj <r>(back)</r></td>
 						<td>Ramana -- success</td>
 						<td>Successfully Completed</td>
 						<td>same as JAVA</td>
@@ -740,8 +740,9 @@ r {
 						<td>Explicit Type Conversion</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explicit Type Conversion', 'explicit-type-conversion.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Explicit Type Conversion</span></td>
-						<td>Suresh</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Explicit Type Conversion</span>
+									 <r>(No back)</r></td>
+						<td>Suresh / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-08-2016</td>
@@ -759,11 +760,12 @@ r {
 						<td>29-08-2016</td>
 					</tr>
 					<tr>
-						<td>16</td>
+						<td>17</td>
 						<td>Precedence and Associativity</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Operator Precedence and Associativity Table', 'operator-precedence-table.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Operator Precedence and Associativity Table</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Operator Precedence and Associativity Table</span>
+								 <r>(No back)</r></td>
 						<td>Anil</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1215,13 +1217,13 @@ r {
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Largest of 3 Numbers', 'find-the-largest-number.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Largest of 3 Numbers
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Largest of 3 Numbers <r>(modified)</r>
 							</div>
 
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Number is even or odd', 'number-checking-even-or-odd.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Number is even or odd
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Number is even or odd <r>(modified)</r>
 							</div>
 
 							<div>
@@ -1235,7 +1237,7 @@ r {
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Difference between if-else and switch-case
 							</div>
 						</td>
-						<td>Siva & Padmaja</td>
+						<td>Siva & Padmaja / Karthik <r>(demo)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-10-2016</td>
@@ -1410,7 +1412,7 @@ r {
 					<tr>
 						<td>13</td>
 						<td>Program to print pyramind</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to print pyramind', 'pyramid-triangle-star-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramind</td>
@@ -1425,33 +1427,33 @@ r {
 						<td>Programs on loops</td>
 						<td>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Pascal triangle', 'pascal-triangle-c.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Pascal triangle 
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print multiplication table as pyramid', 'pyramid-multiplication-table.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print multiplication table as pyramid
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print pyramid of numbers in lower triangle', 'pyramid-lowertriangle-number.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramid of numbers in lower triangle
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>	
+								<i class="fa fa-check fa-1x box"></i>	
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print pyramid of numbers in reverse order in lower triangle', 'pyramid-lowertriangle-numbers-reverse.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print pyramid of numbers in reverse order in lower triangle
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print line number in same row as pyramid', 'pyramid-lowertriangle-line-in-same-row.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print line number in same row as pyramid
@@ -1484,7 +1486,7 @@ r {
 						<td>1</td>
 						<td>1-D Arrays</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing One-dimensional arrays', 'accessing-one-dimension-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing One-dimensional arrays</td>
@@ -1583,7 +1585,7 @@ r {
 						<td>9</td>
 						<td>Arrays</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 1-D arrays</td>
@@ -1598,7 +1600,7 @@ r {
 						<td>10</td>
 						<td>Arrays</td>
 						<td>
-						<i class="fa fa-check fa-1x"></i>	
+						<i class="fa fa-check fa-1x box"></i>	
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of 2-D arrays', 'initialization-of-two-dimensional-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of 2-D arrays</td>
@@ -1663,7 +1665,7 @@ r {
 						<td>1</td>
 						<td>Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using scanf() and printf()', 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using scanf() and printf()</td>
@@ -1678,7 +1680,7 @@ r {
 						<td>Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ', 'read-string-using-getchar.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar() <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar() </td>
 						<td>Mahesh / Sathish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1690,7 +1692,7 @@ r {
 						<td>3</td>
 						<td>Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using gets() & puts() </td>
@@ -1704,7 +1706,7 @@ r {
 						<td>4</td>
 						<td>Initialization of character arrays</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of character array', 'initialization-of-character-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of character array</td>
@@ -1718,7 +1720,7 @@ r {
 						<td>5</td>
 						<td>Program on Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to find length of string', 'length-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find length of string</td>
@@ -1732,7 +1734,7 @@ r {
 						<td>6</td>
 						<td>Program on Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<!-- <i class="fa fa-check"></i> -->
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to copy one string to another string', 'copy-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string
@@ -2236,7 +2238,7 @@ r {
 						<td>10</td>
 						<td>DMA</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of free()', 'usage-of-free-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of free()</td>
@@ -2333,7 +2335,7 @@ r {
 						<td>17</td>
 						<td>Array of Pointers with 2-D</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Array of Pointers with 2-D', 'two-dimensional-array-using-array-of-pointers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Array of Pointers with 2-D</td>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,8 +18,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<!-- <script src="/secure/lang/c/js-min/rpsugp.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/read-print-string-using-gets-puts.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/rpsugp.min.js" type="text/javascript"></script>
 
 <title>gets() and puts() and Strings</title>
 </head>
@@ -271,7 +270,7 @@ y {
 			</div>
 		</div>
 	</div>
-<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart</button></div>
+	<div class="col-xs-12 text-center" style="margin-top: 15px;"><span class="btn btn-warning opacity00" id="restartBtn">Restart</span></div>
 <script>
 	$(document).ready(function() {
 		readPrintStringUsingGetsPutsReady();

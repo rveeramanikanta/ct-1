@@ -43,6 +43,8 @@ function introGuide() {
 				arr.push(val);
 			}
 		});
+		arr = arr.map(Function.prototype.call, String.prototype.trim);
+		arr = arr.filter(Boolean);
 		if (arr.length < maxNumberOfInputs) {
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else if (arr.length == maxNumberOfInputs && $.isNumeric(arr[1])) {

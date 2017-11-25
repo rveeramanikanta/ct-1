@@ -63,10 +63,10 @@ var readStringUsingGetcharReady = function() {
 						element :'#line6',
 						intro :'',
 						position:"bottom"
-					},{
+					/*},{
 						element :'#addressBox',
 						intro :'',
-						tooltipClass: "hide"
+						tooltipClass: "hide"*/
 					},{
 						element :'#line7',
 						intro :'',
@@ -147,7 +147,7 @@ var readStringUsingGetcharReady = function() {
 				$("#consoleId").addClass("opacity00");
 				$("#totalBlinkText").addClass("hidden");
 				$("#inputChar").removeAttr("disabled");
-			} else if(introjs._currentStep == 13) {
+			} else if(introjs._currentStep == 12) {
 				
 			}
 			break;
@@ -254,6 +254,7 @@ var readStringUsingGetcharReady = function() {
 						}, 1000);
 					} else {
 						$("#addressBox, #animationBox").removeClass("opacity00");
+						 $("#tableRowId td:eq(" + $("#inputChar").val().length  + ")").addClass("blink");
 						setTimeout(function(){
 							introjs.nextStep();
 						},1000);
@@ -320,6 +321,7 @@ var readStringUsingGetcharReady = function() {
 			break;
 		case "line7" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				 $("#tableRowId td:eq(" + $("#inputChar").val().length  + ")").removeClass("blink");
 				typing(".introjs-tooltiptext", "This statement is used to print the string in the console.", 1, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();;
 				});
@@ -371,7 +373,7 @@ var readStringUsingGetcharReady = function() {
 					});
 				});
 				
-			} else if(introjs._currentStep == 13) {
+			} else if(introjs._currentStep == 12) {
 				$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
