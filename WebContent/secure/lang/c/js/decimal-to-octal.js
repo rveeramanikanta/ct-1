@@ -257,7 +257,7 @@ function introGuide() {
 					$("#productSpan" + index).empty().append(tempProduct[index]);
 					$("#remainderSpan" + index).empty().append(tempRemainder[index]);
 					$("#divider" + index).addClass("opacity00");
-					$("#quotient" + index).addClass("opacity00");
+					$("#quotient" + index).addClass("opacity00").removeAttr('style');
 					$("#product" + index).css('border-bottom','0px solid black');
 					setTimeout(function() {
 						$("#box" + index).fadeTo(500, 0);
