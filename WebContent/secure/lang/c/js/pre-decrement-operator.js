@@ -107,7 +107,7 @@ var preDecrementOperatorReady = function() {
 			$('.introjs-tooltip').removeClass('hide');
 		break;
 		case "xVariableDeclararionLine":
-			$("#xCup").addClass("visibility-hidden");
+			$('#xCup').removeClass('z-index1000000').addClass("visibility-hidden");
 			$("#xvalue").attr("contenteditable", "true");
 			caretAtEnd('xvalue');
 			$('.introjs-tooltip').removeClass('hide');
@@ -122,6 +122,7 @@ var preDecrementOperatorReady = function() {
 			$("#xCupValue").text($("#xvalue").text());
 		break;
 		case "singleStatement":
+			$('#xCup').removeClass('z-index1000000')
 			$('.animation-div6').css({"opacity":0})
 			$("#xCupValue").text(parseInt($("#xvalue").text()) - (1));
 			$(".introjs-duplicate-nextbutton").remove();
@@ -270,7 +271,7 @@ var preDecrementOperatorReady = function() {
 								text = 'Let us create variable <span class="ct-code-b-yellow">y</span>.';
 								typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 									$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton' " +
-									"onclick=predecrementOperatorAnimation()()>Next &#8594;</a>");
+									"onclick=predecrementOperatorAnimation()>Next &#8594;</a>");
 								});
 							}});
 						});

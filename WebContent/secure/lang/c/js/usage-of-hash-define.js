@@ -277,6 +277,16 @@ function introjsGuide() {
 			typing(".introjs-tooltiptext","",function() {
 			});
 		break;
+		case "aValue" :
+			if(intro._currentStep == 23) {
+					if(intro._direction == 'backward') {
+						$("#aValue").addClass("visibility-hidden");
+						setTimeout(function() {
+							intro.previousStep();
+						}, 1000);
+					}
+				}
+			break;
 		}
 	});
 	intro.onafterchange(function(targetElement) {
@@ -324,22 +334,21 @@ function introjsGuide() {
 		case "piValue1" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (intro._direction == "forward") {
-				t1.to("#piValue1", 0.4, {opacity: 1, rotationX: -90, onComplete: function() {
-					$("#piValue1").text("3.141");
-					intro.refresh();
-				}});
-				
-				t1.to("#piValue1", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
-						setTimeout(function() {
-							intro.nextStep();
-						},500);
-				}});
-					} else {
-						$("#piValue1").text("PI");
-						setTimeout(function() {
-							intro.previousStep();
-						},500);
-					}
+					t1.to("#piValue1", 0.4, {opacity: 1, rotationX: -90, onComplete: function() {
+						$("#piValue1").text("3.141");
+						intro.refresh();
+						t1.to("#piValue1", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
+								intro.nextStep();
+							},500);
+						}});
+					}});
+				} else {
+					$("#piValue1").text("PI");
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 				
 			});
 			break;
@@ -347,22 +356,21 @@ function introjsGuide() {
 		case "piValue2" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (intro._direction == "forward") {
-				t1.to("#piValue2", 0.4, {opacity:1, rotationX: -90, onComplete: function() {
-					$("#piValue2").text("3.141");
-					intro.refresh();
-				}});
-				t1.to("#piValue2", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
-						setTimeout(function() {
-							intro.nextStep();
-						},500);
-				}});
-					} else {
-						$("#piValue2").text("PI");
-						setTimeout(function() {
-							intro.previousStep();
-						},500);
-					}
-				
+					t1.to("#piValue2", 0.4, {opacity:1, rotationX: -90, onComplete: function() {
+						$("#piValue2").text("3.141");
+						intro.refresh();
+						t1.to("#piValue2", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
+								intro.nextStep();
+							},500);
+						}});
+					}});
+				} else {
+					$("#piValue2").text("PI");
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 			});
 			break;
 			
@@ -501,6 +509,7 @@ function introjsGuide() {
 			
 		case "radiusId" :
 			if(intro._direction == 'forward') {
+				$('#panelRadiusBody').addClass('visibility-hidden');
 				if($('#inputChar').val().includes(".")) {
 					$("#radiusValue").text($('#inputChar').val() + '00000');
 				} else {
@@ -654,11 +663,11 @@ function introjsGuide() {
 				if(intro._direction == 'forward') {
 					setTimeout(function() {
 						intro.nextStep();
-					},500);
+					},1200);
 				} else {
 					setTimeout(function() {
 						intro.previousStep();
-					},500);
+					},1000);
 				}
 			});
 			break;
@@ -707,24 +716,23 @@ function introjsGuide() {
 			
 		case "aValue" :
 			$('.introjs-nextbutton').hide();
+			//$('.introjs-helperLayer ').one('transitionend', function() {
 			if(intro._currentStep == 23) {
-				$('.introjs-helperLayer ').one('transitionend', function() {
 					if(intro._direction == 'forward') {
+						intro.refresh();
 						$("#aValue").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 							$("#aValue").removeClass('animated zoomIn');
 							setTimeout(function() {
 								intro.nextStep();
 							}, 1000);
 						});
-					} else {
-						$("#aValue").addClass("visibility-hidden");
-						setTimeout(function() {
-							intro.previousStep();
-						}, 1000);
-					}
-				});
+					} 
+						
+					
+				//});
 			} else if(intro._currentStep == 28) {
 				if(intro._direction == 'forward') {
+					$("#panelABody").addClass("visibility-hidden")
 					$("#aNumber").text($('#inputChar1').val());
 					$("#inputChar1").attr("disabled", true);
 					$('.introjs-helperLayer ').one('transitionend', function() {
@@ -754,12 +762,11 @@ function introjsGuide() {
 						t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 							$("#aCubeValue").html('<span id="a1" class="position-relative display-inline">a</span> * <span id="a2" class="position-relative display-inline">a</span> * <span id="a3" class="position-relative display-inline">a</span>');
 							intro.refresh();
-						}});
-		
-						t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-							setTimeout(function() {
-								intro.nextStep();
-							}, 1000);
+							t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								setTimeout(function() {
+									intro.nextStep();
+								}, 1000);
+							}});
 						}});
 					} else {
 						$('#aCubeValue').css('opacity',0);
@@ -881,6 +888,7 @@ function introjsGuide() {
 		case "restartBtn" :
 			intro.refresh();
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '130px');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {

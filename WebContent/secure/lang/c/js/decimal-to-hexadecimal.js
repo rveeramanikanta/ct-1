@@ -374,14 +374,14 @@ function introGuide() {
 		}
 		if (elementId === "infoDiv") {
 			$("#infoDiv").html('<ul><li id="list1" class="opacity00">The numbering system which uses <span class="ct-code-b-green">base-16</span> ' + ""
-					+ 'is called <span class="ct-code-b-green">Hexadecimal System</span>.</li> <li id="list2" class="opacity00"> Only combinations of <span class="ct-code-b-green">0</span>,<span class="ct-code-b-green">1</span>,' + ""
-					+ '<span class="ct-code-b-green">2</span>,<span class="ct-code-b-green">3</span>,<span class="ct-code-b-green">4</span>,<span class="ct-code-b-green">5</span>,<span class="ct-code-b-green">6</span>,<span class="ct-code-b-green">7</span>' + ""
-					+ ',<span class="ct-code-b-green">8</span>,<span class="ct-code-b-green">9</span>,<span class="ct-code-b-green">a</span>,<span class="ct-code-b-green">b</span>,<span class="ct-code-b-green">c</span>,<span class="ct-code-b-green">d</span>,<span class="ct-code-b-green">e</span> ' + ""
+					+ 'is called <span class="ct-code-b-green">Hexadecimal System</span>.</li> <li id="list2" class="opacity00"> Only combinations of <span class="ct-code-b-green">0</span>, <span class="ct-code-b-green">1</span>,' + ""
+					+ ' <span class="ct-code-b-green">2</span>, <span class="ct-code-b-green">3</span>, <span class="ct-code-b-green">4</span>, <span class="ct-code-b-green">5</span>, <span class="ct-code-b-green">6</span>, <span class="ct-code-b-green">7</span>' + ""
+					+ ', <span class="ct-code-b-green">8</span>, <span class="ct-code-b-green">9</span>, <span class="ct-code-b-green">a</span>, <span class="ct-code-b-green">b</span>, <span class="ct-code-b-green">c</span>, <span class="ct-code-b-green">d</span>, <span class="ct-code-b-green">e</span> ' + ""
 					+ ' and <span class="ct-code-b-green">f</span>' + ""
 					+ ' are used to represent a value of any magnitude in <span class="ct-code-b-green">Hexadecimal System</span>.</li>' + "" 
-					+ '<li id="list3" class="opacity00">In the <span class="ct-code-b-green">Hexadecimal system</span> the values <span class="ct-code-b-green">10</span>,<span class="ct-code-b-green">11</span>,<span class="ct-code-b-green">12</span>,<span class="ct-code-b-green">13</span>,<span class="ct-code-b-green">14</span>' + ""
-					+ ' and <span class="ct-code-b-green">15</span> are represented as <span class="ct-code-b-green">a</span>,<span class="ct-code-b-green">b</span>,<span class="ct-code-b-green">c</span>,' + ""
-					+ '<span class="ct-code-b-green">d</span>,<span class="ct-code-b-green">e</span> and <span class="ct-code-b-green">f</span>. </li>' + ""
+					+ '<li id="list3" class="opacity00">In the <span class="ct-code-b-green">Hexadecimal system</span> the values <span class="ct-code-b-green">10</span>, <span class="ct-code-b-green">11</span>, <span class="ct-code-b-green">12</span>, <span class="ct-code-b-green">13</span>, <span class="ct-code-b-green">14</span>' + ""
+					+ ' and <span class="ct-code-b-green">15</span> are represented as <span class="ct-code-b-green">a</span>, <span class="ct-code-b-green">b</span>, <span class="ct-code-b-green">c</span>,' + ""
+					+ ' <span class="ct-code-b-green">d</span>, <span class="ct-code-b-green">e</span> and <span class="ct-code-b-green">f</span>. </li>' + ""
 					+ ' <li id="list4" class="opacity00">Hence, if <b>a number greater than '
 								+ (base - 1) + '</b> is provided, we try to decrease its magnitude by <b>dividing by <span class="ct-code-b-green">'
 								+ base + '</span></b> and <b> keep collecting the remainders until the quotient is less than  <span class="ct-code-b-green">'
@@ -447,8 +447,8 @@ function introGuide() {
 function boxAnimationForFirstIndex(index) {
 	if (introguide._direction == "backward") {
 		$("#box" + index ).fadeTo(500, 0);
-		$("#openParenthesis" + index).fadeTo(500, 0).removeAttr('style');
-		$("#closeParenthesis" + index).fadeTo(500, 0).removeAttr('style');
+		$("#openParenthesis" + index).fadeTo(500, 0);
+		$("#closeParenthesis" + index).fadeTo(500, 0);
 		setTimeout(function() {
 			introguide.previousStep();
 		}, 400);

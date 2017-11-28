@@ -242,6 +242,7 @@ var explicitTypeConversion = function() {
 		break;
 	case "restartBtn":
 		$('.introjs-nextbutton').hide();
+		$('.introjs-tooltip').css('min-width', '130px');
 		$(".introjs-helperLayer").one("transitionend", function() {
 		typing('.introjs-tooltiptext', "Click to restart.", function() {
 			$("#restartBtn").removeClass("opacity00");
@@ -266,7 +267,6 @@ var explicitTypeConversion = function() {
 		setTimeout(function () {
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
-					//$('.introjs-nextbutton').show();
 					intro.nextStep();
 					$('#informationdiv').addClass("z-index");
 				});
@@ -275,7 +275,7 @@ var explicitTypeConversion = function() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

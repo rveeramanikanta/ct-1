@@ -19,8 +19,7 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
-<!-- <script src="/secure/lang/c/js-min/pio.min.js"></script> -->
-<script src="../js/post-increment-operator.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/pio.min.js"></script>
 
 <title>post-increment-operator.jsp</title> 
 
@@ -233,10 +232,10 @@
 					<pre class = 'creamPreTab4' id = "program">
 <div id = 'xVariableDeclararionLine' style="display: inline-block;">int <span id = "xVariable">x</span> = <div style="display:inline-block" id='xvalue' contenteditable='true' spellcheck='false' maxlength='2'>14</div>;</div>
 <span id = 'yVariableDeclararionLine'>int <span id = "yVariable">y</span> = x++;</span>
-<span id = 'sopLine1'>printf("x value: %d", x);</span>
-<span id = 'sopLine2'>printf("y value: %d", y);</span>
+<span id = 'sopLine1'>printf("x value : %d", x);</span>
+<span id = 'sopLine2'>printf("y value : %d", y);</span>
 <span id = 'singleStatement'>x++;</span>
-<span id = 'sopLine3'>printf("x value: %d", x);</span>
+<span id = 'sopLine3'>printf("x value : %d", x);</span>
 </pre>
 				</div>
 				<div class = "col-xs-10 col-xs-offset-1">

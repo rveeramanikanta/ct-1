@@ -209,7 +209,7 @@ var pyramidLowerTriangeReady = function() {
 		case "variableDeclaration":
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "integer variables <b class ='ct-code-b-yellow'>rows,i,j</b> are declared.";
+				var text = "Integer variables <b class ='ct-code-b-yellow'>rows,i,j</b> are declared.";
 	        	typing(".introjs-tooltiptext", text, function() {
 	        		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	        	});
@@ -218,7 +218,7 @@ var pyramidLowerTriangeReady = function() {
         	
 		case "restart":
 			$('.user-btn').remove();
-			$('.introjs-tooltip').css("min-width","200px");
+			$('.introjs-tooltip').css("min-width","130px");
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#restart').removeClass('opacity00');

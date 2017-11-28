@@ -18,8 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<!-- <script src="/secure/lang/c/js-min/asino.min.js"></script> -->
-<script type="text/javascript" src="../js/assignment-operators.js"></script>
+<script src="/secure/lang/c/js-min/asio.min.js"></script>
 
 <title>assignment-operators</title>
 <style type="text/css">

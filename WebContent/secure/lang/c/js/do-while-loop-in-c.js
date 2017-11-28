@@ -269,7 +269,7 @@ function typing(id, content, callBackFunction) {
 	if (id.substring(1) === 'incrementText') {
 		if (incrementTextTypingSpeed == 0) {
 			typingSpeed = 1;
-			incrementTextTypingSpeed = 10;
+			incrementTextTypingSpeed = 1;
 		} else {
 			typingSpeed = 1;
 		}

@@ -388,7 +388,7 @@ function introJsGuide() {
 				$(".introjs-tooltip").removeClass("hide");
 				$(".initializeBtn").addClass("hidden");
 				$(".introjs-tooltip").removeClass("hide");
-				var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>do-while</b>.";
+				var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>while-loop</b>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton').show();
 					})
@@ -540,7 +540,7 @@ function introJsGuide() {
 	});
 	
 	$(".introjs-tooltip").removeClass("hide");
-	var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>do-while</b>.";
+	var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>while-loop</b>.";
 	typing(".introjs-tooltiptext", text, function() {
 		//$("#initializeBtn").removeClass("hidden");
 		$('.introjs-nextbutton').show();

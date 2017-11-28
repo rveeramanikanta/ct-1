@@ -25,15 +25,6 @@
 	margin-top: 25px;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
-	border-radius: 10px;
-	font-size: 20px;
-	position: relative;
-	z-index: 9999999;
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
-}
 #totaldiv {
 	margin-top: 25px;
 }
@@ -66,6 +57,7 @@
     height: 120px;
     margin-top: 30px;
     color: black;
+    font-family: monospace;
 }
 
 
@@ -315,7 +307,7 @@ div, span {
 			</div>
 			
 			<div class="button  col-xs-12 text-center" id="button">
-				<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top: 30px'>Restart</button>
+				<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top: 30px'>Restart</button>
 			</div>
 		</div>
 	</div>

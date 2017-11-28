@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/armstrong-number-program.js"></script>
+<script src="/secure/lang/c/js-min/anp.min.js"></script>
 
 <title>armstrong-number.jsp</title>
 

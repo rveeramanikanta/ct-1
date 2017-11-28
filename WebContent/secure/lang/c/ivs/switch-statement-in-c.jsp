@@ -12,7 +12,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/switch-statement-in-c.js"></script>
+<script src="/secure/lang/c/js-min/ssic.min.js"></script>
 
 <style type="text/css">
 

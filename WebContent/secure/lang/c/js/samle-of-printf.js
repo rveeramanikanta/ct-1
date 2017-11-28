@@ -195,6 +195,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case "restartBtn" :
 			intro.refresh();
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '130px');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#countBox').removeClass('z-index1000000');
 				$("#restartBtn").removeClass("opacity00");

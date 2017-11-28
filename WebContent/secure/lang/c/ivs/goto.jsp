@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js/goto.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/g.min.js"></script>
 
 <style type="text/css">
 .margin-top-20 {
@@ -26,8 +26,9 @@
 #totalDiv {
 	border: 1px solid gray;
 	border-radius: 8px;
-	height: 303px;
+	min-height: 303px;
 	padding: 10px;
+	font-family: monospace;
 }
 
 .creampretab {
@@ -211,7 +212,7 @@ y {
 					</div>
 				</div>
 			</div>
-			<div id="typingDiv2" class="col-xs-12 margin-top-20">
+			<div id="typingDiv2" class="col-xs-12">
 				<ul>
 					<li id="li5" class="opacity00">
 						The mentioned two disadvantages can be solved by using if-condition with <b style='color:green'>goto</b>.

@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/pyramid-triangle-alphabet.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/pta.min.js" type="text/javascript"></script>
 
 <style>
 
@@ -174,7 +174,7 @@ r {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -203,11 +203,11 @@ r {
 	<span id='getPrintf'>printf(<ink>"Enter number of rows: "</ink>);</span>
 	<span id='getScanf'>scanf(<ink>"<in>%d</in>"</ink>, &rows);</span>
 	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>0</ink>; i &lt; rows; i++) {</span>
-		<span id='firstInnerForLoop'><span class='inner-one'><go>for</go> ( j = <ink>0</ink>; j < rows - i; j++) {</span>
+		<span id='firstInnerForLoop'><span class='inner-one'><go>for</go> (j = <ink>0</ink>; j < rows - i; j++) {</span>
 			<span class='inner-one'><span id='printfSpace'>printf(<ink>" "</ink>)</span>;</span>
 		<span class='inner-one'>}</span></span>
 		<span id='secondInnerForLoop'><span class='inner-two'><go>for</go> (k = <ink>0</ink>; k <= i; k++) {</span>
-			<span class='inner-two'><span id='codeIfCondition'><go>if</go> (k+<ink>1</ink> <= i) </span>{</span>
+			<span class='inner-two'><span id='codeIfCondition'><go>if</go> (k +<ink>1</ink> <= i) </span>{</span>
 				<span class='inner-two'><span id='codeAlphabetPrint'>printf(<ink>"*A"</ink>)</span>;</span>
 			<span class='inner-two'>} <go>else</go> {</span>
 				<span  class='inner-two' id='codeStarPrint'>printf(<ink>"*"</ink>);</span>

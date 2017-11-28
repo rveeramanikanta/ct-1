@@ -125,6 +125,7 @@ function introGuide() {
 			$("#forwardCode").removeClass("background-color-red");
 		break;
 		case "backwardLabel":
+			$("#forwardCode").removeClass("background-color-red");
 			$("#backwardCode").removeClass("background-color-red");
 		break;
 		case "backwardGotoLabel":

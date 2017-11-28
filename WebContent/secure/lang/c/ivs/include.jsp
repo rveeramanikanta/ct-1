@@ -40,6 +40,7 @@
 	border: 1px solid gray;
 	border-radius: 8px;
 	padding: 10px;
+	font-family: monospace;
 }
 
 .creampretab {

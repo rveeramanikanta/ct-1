@@ -19,15 +19,14 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<!-- <script type="text/javascript" src="/secure/lang/c/js-min/ro.min.js"></script> -->
-<script type="text/javascript" src="/secure/lang/c/js/relational-operators.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/ro.min.js"></script>
 
 <title>relational-operators</title>
 <style type="text/css">
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 165px;
+	min-height: 180px;
 }
 
 .animation-div-border {

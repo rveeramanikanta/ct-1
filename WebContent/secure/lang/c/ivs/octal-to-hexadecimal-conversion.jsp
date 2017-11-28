@@ -274,17 +274,17 @@
 	
 	<div id='divideBinaryNumbersDiv' class='col-xs-12 opacity00' style='margin-top: 18px;'>
 		<div style='font-size: 15px;' class='col-xs-6 padding0' id='divideFourEachGroup'></div>
-		<span id='divideBinaryNumbers' class='col-xs-5'></span>
+		<span id='divideBinaryNumbers' class='col-xs-5 text-center'></span>
 	</div>
 	
 	<div id='divideGroupOfFourDiv' class='col-xs-12 opacity00 padding0' style='margin-top: 18px;'>
 		<div style='font-size: 15px;' class='col-xs-6 ' id='divideGroupOfFour'><span class='color-lightrose'>Divide binary digits</span> <b>:</b></div>
-		<span id='groupOfFourDivideSpan' class='col-xs-6 opacity00 padding0'></span>
+		<span id='groupOfFourDivideSpan' class='col-xs-6 opacity00 padding0 text-center'></span>
 	</div>
 	
 	<div id='binaryResult' class='col-xs-12 opacity00' style='margin-top: 18px;'>
 		<div style='font-size: 15px;' class='col-xs-7 padding0'><span  class='color-lightrose'>The resultant hexadecimal number</span><b>:</b></div>
-		<span id='binaryResultValue' class='col-xs-5'></span>
+		<span id='binaryResultValue' class='col-xs-5 text-center'></span>
 	</div>
 </div>
 <div class="button col-xs-12 text-center " id="button">

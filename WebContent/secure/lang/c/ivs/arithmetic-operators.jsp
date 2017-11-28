@@ -20,14 +20,13 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<!-- <script src="../js-min/ao.min.js"></script> -->
-<script src="../js/arithmetic-operators.js"></script>
+<script src="../js-min/ao.min.js"></script>
 <title>arithmetic-operators</title>
 <style type="text/css">
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 335px;
+	min-height: 370px;
 }
 
 .animation-border {

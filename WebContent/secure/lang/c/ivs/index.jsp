@@ -369,7 +369,8 @@ r {
 						<td>int datatype</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('int Data-type', 'int-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">int Data-type </span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">int Data-type </span>
+									 <r>(No back)</r></td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -381,7 +382,8 @@ r {
 						<td>short int datatype</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('short int Data-type', 'short-int-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">short int Data-type</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">short int Data-type</span>
+								 <r>(No back)</r></td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -393,7 +395,8 @@ r {
 						<td>long int datatype</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('long int Data-type', 'long-int-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">long int Data-type</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">long int Data-type</span>
+								 <r>(No back)</r></td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -444,7 +447,8 @@ r {
 						<td>Different data types in C</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different Data-types in C', 'datatypes-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Different Data-types in C</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Different Data-types in C</span>
+								 <r>(No back)</r></td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -456,7 +460,8 @@ r {
 						<td>Different constants in C</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constants in C', 'constants-in-C.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C</span>
+								 <r>(No back)</r></td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -521,7 +526,9 @@ r {
 					<tr>
 						<td>1</td>
 						<td>Arithmetic Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Arithmetic Operators', 'arithmetic-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Arithmetic Operators</span>
 								 <r>(No back)</r></td>
@@ -534,7 +541,9 @@ r {
 					<tr>
 						<td>2</td>
 						<td>Relational Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Relational Operators', 'relational-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Relational Operators</span>
 								 <r>(No back)</r></td>
@@ -548,7 +557,9 @@ r {
 					<tr>
 						<td>3</td>
 						<td>Logical Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Logical Operators', 'logical-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Logical Operators</span>
 								 <r>(No back)</r></td>
@@ -561,7 +572,9 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Assignment Operator</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Assignment Operator', 'assignment-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Assignment Operator</span>
 								 <r>(No back)</r></td>
@@ -576,28 +589,28 @@ r {
 						<td>Unary Operators</td>
 						<td>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Post Increment Operator', 'post-increment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of	Post Increment Operator</span>
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Post Decrement Operator', 'post-decrement-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Post Decrement Operator</span>
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Pre Increment Operator', 'pre-increment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Pre Increment Operator</span>
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of Pre Decrement Operator', 'pre-decrement-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Pre	Decrement Operator</span>
@@ -701,7 +714,7 @@ r {
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise One\'s complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's 
-									complement operator</span> <r>(modified)</r></td>
+									complement operator</span> </td>
 						<td>Ramya / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -716,7 +729,7 @@ r {
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span>
-									 <r>(modified)</r> </td>
+									 </td>
 						<td>Pavan / Anil <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -738,11 +751,13 @@ r {
 					<tr>
 						<td>15</td>
 						<td>Explicit Type Conversion</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explicit Type Conversion', 'explicit-type-conversion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Explicit Type Conversion</span>
 									 <r>(No back)</r></td>
-						<td>Suresh / Anil <r>(back)</r></td>
+						<td>Suresh</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>26-08-2016</td>
@@ -970,15 +985,17 @@ r {
 
 
 							<div>
+								<i class="fa fa-check"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-rs.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with Rs <r>(modified)</r>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with Rs 
 							</div>
 
 							<div>
+								<i class="fa fa-check"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-space.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with space <r>(modified)</r>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with space
 							</div>
 
 							<div>
@@ -1012,7 +1029,7 @@ r {
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-field-width.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with
-								FieldWidth
+								FieldWidth <r>(modified)</r>
 							</div>
 
 							<div>
@@ -1051,7 +1068,7 @@ r {
 							</div>
 						</td>
 
-						<td>Poorna</td>
+						<td>Poorna / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>29-08-2016</td>
@@ -1098,7 +1115,7 @@ r {
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Largest of three numbers program
 							</div>
 						</td>
-						<td>Poorna & Mahesh</td>
+						<td>Poorna & Mahesh / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>01-09-2016</td>
@@ -1194,7 +1211,7 @@ r {
 					<tr>
 						<td>1</td>
 						<td>if-else</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of if-else', 'if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of if-else</td>
@@ -1210,23 +1227,27 @@ r {
 						<td>Programs on if-else (atleast 5 programs)</td>
 						<td>
 							<div>
+								<span class="box"><i class="fa fa-check fa-1x opacity00"></i></span>	
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Counting Problem', 'counting-demo-in-c.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Counting Problem <r>(No back)</r>
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Largest of 3 Numbers', 'find-the-largest-number.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Largest of 3 Numbers <r>(modified)</r>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Largest of 3 Numbers
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Number is even or odd', 'number-checking-even-or-odd.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Number is even or odd <r>(modified)</r>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Number is even or odd 
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Year is Leap year or Not', 'leap-year-program.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Year is Leap year or Not
@@ -1247,7 +1268,7 @@ r {
 					<tr>
 						<td>3</td>
 						<td>if-else-if</td>
-						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x box"></i><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of if-else-if', 'if-else-if-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of if-else-if</td>
 						<td>Suresh / karthik <r>(back)</r></td>
@@ -1259,7 +1280,7 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Nested if-else-if</td>
-						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x box"></i><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Nested if-else-if', 'nested-if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Nested if-else-if</td>
 						<td>Ajay / karthik <r>(back)</r></td>
@@ -1272,7 +1293,7 @@ r {
 						<td>5</td>
 						<td>Switch case</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch-case', 'switch-statement-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of switch-case </td>
@@ -1286,7 +1307,7 @@ r {
 						<td>6</td>
 						<td>While loop</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of while loop', 'while-loop-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of while loop</td>
@@ -1300,7 +1321,7 @@ r {
 						<td>7</td>
 						<td>do-while</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of do-while loop', 'do-while-loop-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of do-while loop</td>
@@ -1325,9 +1346,11 @@ r {
 					<tr>
 						<td>9</td>
 						<td>break statement</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', 'break-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of break statement <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of break statement</td>
 						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1338,9 +1361,11 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Continue</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', 'continue-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of continue statement <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of continue statement</td>
 						<td>Padmaja / Karthik <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1350,8 +1375,9 @@ r {
 					<tr>
 						<td>11</td>
 						<td>goto statement</td>
-						<td><i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of goto Statement', 'goto.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of goto statement</td>
 						<td>Anil / karthik <r>(back)</r></td>
@@ -1365,39 +1391,39 @@ r {
 						<td>Programs on loop</td>
 						<td>
 							<div>
-								<i class="fa fa-check"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program on Prime numbers', 'sample-program-on-prime-numbers.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Prime numbers 
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program on Armstrong numbers', 'armstrong-number-program.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Armstrong numbers
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print alphabets in triangle', 'pyramid-triangle-alphabet.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print alphabets in triangle
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Pyramid in reverse', 'pyramid-reverse-triangle.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Pyramid in reverse
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Lower triangle', 'pyramid-lowertriangle-star.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Lower triangle
 							</div>
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program to print Floyds Triangle', 'floyds-triangle-c.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print floyds triangle
@@ -2585,11 +2611,13 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Files</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of fgets() and fputs()', 'usage-of-fputs-and-fgets.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgets() and fputs()
 						</td>
-						<td>Mallika</td>
+						<td>Mallika / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>30-09-2016</td>
@@ -2635,10 +2663,12 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Program on Files</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program on Files', 'copy-data-from-one-file-to-another.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy contents ofone file to another file</td>
-						<td>Poorna</td>
+						<td>Poorna / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>03-10-2016</td>

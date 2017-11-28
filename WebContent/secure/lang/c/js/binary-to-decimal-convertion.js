@@ -309,6 +309,7 @@ var binaryToDecimalConvetionReady = function()	{
 			break;
 		case "restartBtn":
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '130px');
 			$(".introjs-helperLayer").one("transitionend",  function() {
 			$("#restartBtn").removeClass("opacity00");
 			$('.introjs-nextbutton').hide();

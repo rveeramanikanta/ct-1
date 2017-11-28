@@ -16,7 +16,7 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src='/secure/lang/c/js/find-the-largest-number.js'></script>
+<script src='/secure/lang/c/js-min/ftln.min.js'></script>
 
 <title>Insert title here</title>
 
@@ -73,7 +73,6 @@
 
 #infoDiv {
 	border: 1px solid;
-	/* height: 70px; */
 	padding : 10px;
 }
 
@@ -94,12 +93,6 @@
 	border-radius: 10px;
 }
 
-/* .code-condition {
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	padding: 12px;
-} */
-
 .outline-css {
 	outline: medium none navy;
 }
@@ -117,9 +110,6 @@
 	color: mediumblue;
 }
 
-/* .ct-code-b-turquoise {
-	background-color: turquoise;
-} */
 
 .ct-demo-green {
 	color: green;
@@ -226,9 +216,6 @@ g {
 r {
 	color: red;
 }
-
-
-
 </style>
 
 </head>

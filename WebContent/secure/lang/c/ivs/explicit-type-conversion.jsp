@@ -16,8 +16,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<!-- <script src="/secure/lang/c/js-min/etc.min.js"></script> -->
-	<script src="../js/explicit-type-conversion.js" type="text/javascript"></script>
+	<script src="/secure/lang/c/js-min/etc.min.js"></script>
 	
 	<title>explicit type conversion</title>
 </head>
@@ -43,9 +42,9 @@
 	background-color: rgb(243, 235, 212);
     border-radius: 3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    min-height: 60px;
+    min-height: 75px;
     margin-top: 20px;
-    
+    font-family: monospace;
 }
 
 #calculationtable {
@@ -246,5 +245,5 @@
 	</div>
 </div>
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:10px'>Restart</button></div>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:10px'>Restart</button></div>
 </body>

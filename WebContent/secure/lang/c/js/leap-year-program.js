@@ -1,4 +1,4 @@
-var typingInterval = 5;
+var typingInterval = 1;
 var multiplyAction;
 var coefficent;
 var subtraction;
@@ -66,78 +66,36 @@ var leapYearProgramReady = function() {
 		}]
 	});
 	
-	
-	
-	
 	introjs.onbeforechange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'infoDiv':
-			
-			break;
-		case 'preCode':
-			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			case 'removingOpacity':
-				
-				break;
-			case 'firstConditionCheck':
-				
-				break;
-			}
-			break;
-		case 'printfLine1':
-			
-			
-			if (introjs._direction == "backward") {
-
-			}
-			
-			
-			break;
 		case 'scanfLine1':
 				if (introjs._direction == "backward") {
 					$("#inputYear").val('');
 					$("#inputYear").removeAttr("contenteditable");
 					$("#inputYear").removeClass("blinking-once");
 				}
-			
 			break;
 		case 'consoleId':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'showFirstLine':
-				
 				if (introjs._direction == "backward") {
 					$("#printText1").addClass("opacity00");
 				}
-				
-				
 				break;
 			case 'enterNumber':
-				
-				
 				if (introjs._direction == "backward") {
 					$("#inputYear").val('');
 					$("#inputYear").removeAttr("contenteditable");
 					$("#inputYear").removeClass("blinking-once");
 				}
-				
-				break;
-			case 'finalResult':
-				
 				break;
 			}
 			break;
-		case 'restart':
-			
-			break;
 		}
 	});
-	
-	
-		
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		
@@ -147,7 +105,7 @@ var leapYearProgramReady = function() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0 && targetElement.id !== "codeDiv") {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
 				$('.introjs-prevbutton').show();
 			}
 
@@ -166,7 +124,6 @@ var leapYearProgramReady = function() {
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
 						$("#infoDiv").addClass('z-index9999999');
-						
 						stepNext();
 					});
 				});
@@ -228,6 +185,7 @@ var leapYearProgramReady = function() {
 									typing('#evaluationSpan6', text, typingInterval, 'white', function() {
 										$(".introjs-prevbutton").show();
 										nextButtonFucntion(function() {
+											$(".introjs-prevbutton").hide();
 											transferEffect("#ifStatement1", "#printLine4", function() {
 												$("#elseSpan3").effect( "highlight", {color:"turquoise"}, 1000, function() {
 													stepNext();
@@ -577,6 +535,7 @@ function secondIfElseConditionAnimation() {
 								typing('#evaluationSpan4', text, typingInterval, 'white', function() {
 									$(".introjs-prevbutton").show();
 									nextButtonFucntion(function() {
+										$(".introjs-prevbutton").hide();
 										transferEffect("#ifStatement3", "#printLine2", function() {
 											$("#elseSpan1").effect( "highlight", {color:"turquoise"}, 1000, function() {
 												setTimeout(function() {
@@ -601,6 +560,7 @@ function secondIfElseConditionAnimation() {
 			typing('#evaluationSpan5', text, typingInterval, 'white', function() {
 				$(".introjs-prevbutton").show();
 				nextButtonFucntion(function() {
+					$(".introjs-prevbutton").hide();
 					transferEffect("#ifStatement2", "#printLine3", function() {
 						$("#elseSpan2").effect( "highlight", {color:"turquoise"}, 1000, function() {
 							setTimeout(function() {

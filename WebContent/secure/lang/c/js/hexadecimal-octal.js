@@ -152,7 +152,7 @@ var hexadecimalOctalReady = function() {
 		break;
 		case "binaryValuesDiv" :
 			$('#binaryValuesDiv').addClass('opacity00');
-			$('.box4').addClass('opacity00').removeAttr('style');
+			$('.box4, #binaryDigits0, #binaryDigits1, #binaryDigits2').addClass('opacity00').removeAttr('style');
 			$('#combineBinaryNumbers').addClass('opacity00').removeAttr('style');
 			$('.combine').addClass('opacity00').removeAttr('style');
 		break;

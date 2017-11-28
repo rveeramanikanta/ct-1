@@ -119,6 +119,7 @@ var postDecrementOperatorReady = function() {
 			$("#xCupValue").text($("#xvalue").text());
 		break;
 		case "singleStatement":
+			$('#xCup').removeClass('z-index1000000')
 			$('.animation-div6').css({"opacity":0})
 			$("#xCupValue").text(parseInt($("#xvalue").text()) - (1));
 			$(".introjs-duplicate-nextbutton").remove();

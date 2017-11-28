@@ -20,15 +20,14 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<!-- <script type="text/javascript" src="/secure/lang/c/js-min/lo.min.js"></script> -->
-<script type="text/javascript" src="../js/logical-operators.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/lo.min.js"></script>
 
 <title>Logical-operators</title>
 <style type="text/css">
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 150px;
+	min-height: 195px;
 	padding: 6px;
 }
 

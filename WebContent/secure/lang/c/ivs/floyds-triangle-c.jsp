@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/floyds-triangle-c.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/flytri.min.js" type="text/javascript"></script>
 <style>
 
 .margin-top20 {

@@ -1,4 +1,4 @@
-var typingInterval = 10;
+var typingInterval = 1;
 
 var findTheLargestNumberReady = function() {
 	introjs = introJs();
@@ -51,211 +51,8 @@ var findTheLargestNumberReady = function() {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'inputSpan1':
-			
-			/*$('.introjs-helperLayer').one('transitionend', function() {
-				$("#inputSpan1").removeClass("opacity00");
-				var text = "Here <span  class='tooltip-text-edit-1 ct-code-b-yellow'>" + $("#input1").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num1 </span>.<br><br>You can also change the number.<br>";
-				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-					$("#input1").attr({contenteditable: 'true'});
-					$("#input1").addClass("blinking-once");
-					charAtEnd('input1');
-					$('.introjs-nextbutton').show();
-				});
-			});*/
-			
-			break;
-		case 'inputSpan2':
-			
-			/*$('.introjs-helperLayer').one('transitionend', function() {
-				$("#inputSpan2").removeClass("opacity00");
-				var text = "Here <span  class='tooltip-text-edit-2 ct-code-b-yellow'>" + $("#input2").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num2 </span>.<br><br>You can also change the number.<br>";
-				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-					$("#input2").attr({contenteditable: 'true'});
-					$("#input2").addClass("blinking-once");
-					charAtEnd('input2');
-					$('.introjs-nextbutton').show();
-				});
-			});*/
-			
-			break;
-		case 'inputSpan3':
-			
-		/*	$('.introjs-helperLayer').one('transitionend', function() {
-				$("#inputSpan3").removeClass("opacity00");
-				var text = "Here <span  class='tooltip-text-edit-3 ct-code-b-yellow'>" + $("#input3").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num3 </span>.<br><br>You can also change the number.<br>";
-				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-					$("#input3").attr({contenteditable: 'true'});
-					$("#input3").addClass("blinking-once");
-					charAtEnd('input3');
-					$('.introjs-nextbutton').show();
-				});
-			});*/
-			break;
-		case 'preCode':
-			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			case 'declaration':
-				
-				/*var text = "Let us try to understand how to write code that can find the largest number among three given numbers using "+
-				"<span class='ct-code-b-yellow'>Nested if</span> and <span class='ct-code-b-yellow'>if-else</span> statements.";	
-				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-					TweenMax.to($("#preCode, #consoleId"), 1, {opacity: 1, onComplete: function() {
-						$(".introjs-nextbutton").show();
-					}});
-				});*/
-				
-				break;
-			case 'preCodeZooming':
-			/*	$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "Condition for checking largest number.<br><span id='condition1' class='opacity00'></span>"+
-						"<span id='booleanSpan1'></span><span id='resultText1'></span>";
-					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$("#input1, #input2, #input3").attr({contenteditable: 'false'});
-						$("#condition1").append("<span class='ct-code-b-yellow'><span id='variableNum1' class='display-inline'>num1</span> > "+
-								"<span id='variableNum2' class='display-inline'>num2</span></span>");
-						$("#ifCondition1").effect( "highlight", {color:"yellow"}, 1000, function() {
-							tweenmaxValueAnimation("#ifCondition1", "#condition1", function() {
-								flipEffect("#variableNum1", $("#input1").text(), function() {
-									flipEffect("#variableNum2", $("#input2").text(), function() {
-										if(parseInt($("#input1").text()) > parseInt($("#input2").text())) {
-											$("#booleanSpan1").append("<span class='ct-code-b-turquoise'> true</span>");
-											zoomingEffect("#booleanSpan1", function() {
-												$("#resultText1").append("<br>Since the condition evaluates <span class='ct-code-b-yellow'>true</span> "+
-														"the control enters into next <span class='ct-code-b-yellow'>if</span> block."+
-														"<span id='condition2' class='opacity00'></span><span id='booleanSpan2'></span>"+
-														"<span id='resultText2'></span>");
-												var text = $("#resultText1").html();
-												typing('#resultText1', text, typingInterval, 'white', function() {
-													nextButtonFucntion(function() {
-														transferEffect("#preLine1", "#preLine2", function() {
-															$("#condition2").append("<br><span class='ct-code-b-yellow'><span id='intNum1' class='display-inline'>"+
-																	"num1</span> > <span id='variableNum3' class='display-inline'>num3</span></span>");
-															$("#ifCondition2").effect( "highlight", {color:"yellow"}, 1000, function() {
-																tweenmaxValueAnimation("#ifCondition2", "#condition2", function() {
-																	flipEffect("#intNum1", $("#input1").text(), function() {
-																		flipEffect("#variableNum3", $("#input3").text(), function() {
-																			if(parseInt($("#input1").text()) > parseInt($("#input3").text())) {
-																				$("#booleanSpan2").append("<span class='ct-code-b-turquoise'> true</span>");
-																				zoomingEffect("#booleanSpan2", function() {
-																					$("#resultText2").append("<br>Since the condition evaluates "+
-																							"<span class='ct-code-b-yellow'>true</span> "+
-																							"the control prints the statement within the "+
-																							"<span class='ct-code-b-yellow'>if</span> block.");
-																					var text = $("#resultText2").html();
-																					typing('#resultText2', text, typingInterval, 'white', function() {
-																						transferEffect("#preLine2", "#preLine3", function() {
-																							$("#preLine3").addClass("blinking");
-																							$('.introjs-nextbutton').show();
-																						});
-																					});
-																				});
-																			} else {
-																				$("#booleanSpan2").append("<span class='ct-code-b-red'> false</span>");
-																				zoomingEffect("#booleanSpan2", function() {
-																					$("#resultText2").append("<br>Since the condition evaluates "+
-																							"<span class='ct-code-b-yellow'>false</span> "+
-																							"the control prints the statement within the "+
-																							"<span class='ct-code-b-yellow'>else</span> block.");
-																					var text = $("#resultText2").html();
-																					typing('#resultText2', text, typingInterval, 'white', function() {
-																						transferEffect("#preLine2", "#preLine4", function() {
-																							$("#preLine4").addClass("blinking");
-																							$('.introjs-nextbutton').show();
-																						});
-																					});
-																				});
-																			}
-																		});
-																	});
-																});
-															});
-														});
-													});
-												});
-											});
-										} else {
-											$("#booleanSpan1").append("<span class='ct-code-b-red'> false</span>");
-											$("#resultText1").append("<br>Since the condition evaluates <span class='ct-code-b-yellow'>false</span> "+
-													"the control enters into <span class='ct-code-b-yellow'>else-if</span> block."+
-													"<br><span id='condition2' class='opacity00'></span><span id='booleanSpan2'></span>"+
-													"<span id='resultText2'></span>");
-											var text = $("#resultText1").html();
-											typing('#resultText1', text, typingInterval, 'white', function() {
-												nextButtonFucntion(function() {
-													transferEffect("#preLine1", "#preLine5", function() {
-														$("#condition2").append("<span class='ct-code-b-yellow'><span id='intNum2' class='display-inline'>"+
-														"num2</span> > <span id='intNum3' class='display-inline'>num3</span></span>");
-														$("#ifCondition3").effect( "highlight", {color:"yellow"}, 1000, function() {
-															tweenmaxValueAnimation("#ifCondition3", "#condition2", function() {
-																flipEffect("#intNum2", $("#input2").text(), function() {
-																	flipEffect("#intNum3", $("#input3").text(), function() {
-																		if(parseInt($("#input2").text()) > parseInt($("#input3").text())) {
-																			$("#booleanSpan2").append("<span class='ct-code-b-turquoise'> true</span>");
-																			zoomingEffect("#booleanSpan2", function() {
-																				$("#resultText2").append("<br>Since the condition evaluates "+
-																						"<span class='ct-code-b-yellow'>true</span> the "+
-																						"control prints the statement within the "+
-																						"<span class='ct-code-b-yellow'>if</span> block.");
-																				var text = $("#resultText2").html();
-																				typing('#resultText2', text, typingInterval, 'white', function() {
-																					transferEffect("#preLine5", "#preLine6", function() {
-																						$("#preLine6").addClass("blinking");
-																						$('.introjs-nextbutton').show();
-																					});
-																				});
-																			});
-																		} else {
-																			$("#booleanSpan2").append("<span class='ct-code-b-red'> false</span>");
-																			zoomingEffect("#booleanSpan2", function() {
-																				$("#resultText2").append("<br>Since the condition evaluates "+
-																						"<span class='ct-code-b-yellow'>false</span> the "+
-																						"control prints the statement within the "+
-																						"<span class='ct-code-b-yellow'>else</span> block.");
-																				var text = $("#resultText2").html();
-																				typing('#resultText2', text, typingInterval, 'white', function() {
-																					transferEffect("#preLine5", "#preLine7", function() {
-																						$("#preLine7").addClass("blinking");
-																						$('.introjs-nextbutton').show();
-																					});
-																				});
-																			});
-																		}
-																	});
-																});
-															});
-														});
-													});
-												});
-											});
-										}
-									});
-								});
-							});
-						});
-					});
-				});*/
-				break;
-			}
-			break;
-		case 'consoleId':
-			
-			break;
-		case 'restart':
-			
-			break;
 		}
 	});
-
-	
-	
-	
-	
-	
-	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
@@ -264,7 +61,7 @@ var findTheLargestNumberReady = function() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan1").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-1 ct-code-b-yellow'>" + $("#input1").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num1 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num1</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input1").attr({contenteditable: 'true'});
 					$("#input1").addClass("blinking-once");
@@ -277,7 +74,7 @@ var findTheLargestNumberReady = function() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan2").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-2 ct-code-b-yellow'>" + $("#input2").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num2 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num2</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input2").attr({contenteditable: 'true'});
 					$("#input2").addClass("blinking-once");
@@ -291,7 +88,7 @@ var findTheLargestNumberReady = function() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan3").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-3 ct-code-b-yellow'>" + $("#input3").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num3 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num3</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input3").attr({contenteditable: 'true'});
 					$("#input3").addClass("blinking-once");
@@ -305,7 +102,7 @@ var findTheLargestNumberReady = function() {
 			switch(animateStep) {
 			case 'declaration':
 				var text = "Let us try to understand how to write code that can find the largest number among three given numbers using "+
-				"<span class='ct-code-b-yellow'>Nested if</span> and <span class='ct-code-b-yellow'>if-else</span> statements.";	
+				"<span class='ct-code-b-yellow'>nested if</span> and <span class='ct-code-b-yellow'>if-else</span> statements.";	
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					TweenMax.to($("#preCode, #consoleId"), 1, {opacity: 1, onComplete: function() {
 						$('.introjs-nextbutton').show();

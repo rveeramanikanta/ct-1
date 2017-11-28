@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src='/secure/lang/c/js/leap-year-program.js'></script>
+<script src='/secure/lang/c/js-min/lyp.min.js'></script>
 
 <title>Insert title here</title>
 
@@ -25,7 +25,7 @@
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	padding: 11px 12px;
+	padding: 8px 6px;
 	font-family: monospace;
 }
 
@@ -229,12 +229,6 @@ g {
 r {
 	color: red;
 }
-
-
-
-
-
-
 </style>
 
 </head>
@@ -246,7 +240,7 @@ r {
 		</h3>
 	</div>
 	<div class="col-xs-12">
-		<div class="col-xs-8 col-xs-offset-2 margin-top-1 info-div" id="infoDiv">
+		<div class="col-xs-8 col-xs-offset-2 margin-top-2 info-div" id="infoDiv">
 			<ul>
 				<li id="list1" class="opacity00">Any year except <span class='ct-code-b-green'>century years</span> (years ending with 00) is 
 					said to be the <span class="ct-code-b-green">leap year</span> only when it is divisible by <span id='multiplyId'><b>4</b></span>.</li>
@@ -298,7 +292,7 @@ r {
 	</div>
 	<div class="col-xs-12">
 		<div class="text-center margin-top-2" id="restartDiv">
-			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+			<a class="btn btn-warning opacity00" id="restart">Restart</a>
 		</div>
 	</div>
 </div>

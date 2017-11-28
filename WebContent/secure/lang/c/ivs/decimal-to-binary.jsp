@@ -103,15 +103,6 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-/* .introjs-tooltip {
-	min-width: 270px !important;
-}
-
-.introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
-} */
-
 .store-remainder {
 	padding: 6px;
 	font-family: monospace;
@@ -131,7 +122,7 @@ input:focus::-moz-placeholder {
 	min-height: 88px;
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	margin-left: 20.5%;
+	font-family: monospace;
 }
 
 #inputDiv {
@@ -227,7 +218,7 @@ ol, ul {
 			</h3>
 		</div>
 		<div class="row" id="informationDiv" >
-			<div id="infoDiv" class="col-xs-7 col-xs-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
+			<div id="infoDiv" class="col-xs-8 col-xs-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
 		</div>
 		<div class="row text-center">
 			<div id="inputDiv" class="col-xs-6 col-xs-offset-2 margin-top-1 visibility-hidden">

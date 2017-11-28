@@ -44,12 +44,7 @@ var nestedIfElseInCReady = function() {
 			intro : "",
 			position : "right",
 			tooltipClass: "hide"
-		}/*,{
-			element : "#restart",
-			intro : "",
-			tooltipClass: "introjs-tooltip-min-width-custom",
-			tooltipClass : "hide"
-		}*/]
+		} ]
 	});
 	
 	
@@ -66,6 +61,7 @@ var nestedIfElseInCReady = function() {
 		case "consoleId":
 			if(introjs._currentStep == 6) {
 				consoleCount = 1;
+				$('#runEditor1').empty();
 			} else {
 				$("#runEditor2").empty();
 			}
@@ -90,15 +86,10 @@ var nestedIfElseInCReady = function() {
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
-		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
-			
-			if (introjs._currentStep != 0 && targetElement.id !== "mainMthd") {
-				
+			if (introjs._currentStep != 0) {
 				$('.introjs-prevbutton').show();
-				
 			}
-
 			$('.introjs-nextbutton').show();
 			return;
 		}
@@ -185,13 +176,12 @@ var nestedIfElseInCReady = function() {
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if(consoleCount == 1) {
-					$(".introjs-tooltip").removeClass("hide");
 					consoleCount++;
 					var text = "Enter the values of a , b , c : <input id='inputVals' spellcheck='false' class='int-num'/>";
 					
 					typing("#runEditor1", text, function() {
 						var text2 = "Enter 3 numbers. press <span class='ct-code-b-yellow'>space</span> to enter another number.";
-						
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", text2, function() {
 							$("#inputVals").addClass("blinking-orange");
 							$("#inputVals").focus();
@@ -391,7 +381,6 @@ var nestedIfElseInCReady = function() {
 		case "endMain":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				//$(".introjs-nextbutton").show();
 				setTimeout(function() {
 					introjs.nextStep();
 				}, 500);
@@ -403,7 +392,7 @@ var nestedIfElseInCReady = function() {
 			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restart").removeClass("opacity00");
-				$('.introjs-tooltiptext').append('Click to restart');
+				$('.introjs-tooltiptext').append('Click to restart.');
 				$("#restart").click(function() {
 					location.reload();
 				});
@@ -514,7 +503,7 @@ function ifSteps() {
 	
 	var dynamicStep = {
 			"element" : "#restart",
-			"intro" : "Click to restart.",
+			"intro" : "",
 			"position" : "right",
 			"tooltipClass": ""
 	}
@@ -571,7 +560,7 @@ function elseSteps() {
 	
 	var dynamicStep = {
 			"element" : "#restart",
-			"intro" : "Click to restart.",
+			"intro" : "",
 			"position" : "right",
 			"tooltipClass" : ""
 	}

@@ -1,8 +1,5 @@
 var ifElseInCReady = function() {
 	introJsGuide();
-	var text = "Above code demonstrates the working of <b class='ct-code-b-yellow' style = 'white-space: nowrap;'>if-else</b> block.";
-	typing(".introjs-tooltiptext", text, function() {
-	});
 	
 	$('#restart').click(function() {
 		location.reload();
@@ -141,16 +138,6 @@ function introJsGuide() {
 			tooltipClass: "hide"
 		}]
 	});
-	introjs.setOption('showStepNumbers', false);
-	introjs.setOption('exitOnOverlayClick', false);
-	introjs.setOption('exitOnEsc', false);
-	introjs.setOption('keyboardNavigation', false);
-	introjs.start();
-	$('.introjs-prevbutton').hide();
-	$('.introjs-skipbutton').hide();
-	$('.introjs-bullets').hide();
-	
-	
 	introjs.onbeforechange(function(targetElement) {
 		$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
@@ -192,12 +179,6 @@ function introJsGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
-		case "ifElseBlock":
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$(".introjs-nextbutton").show();
-			})
-		break;	
-			
 		case "citizenAge":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>distinction_marks</b> is declared and initialized to " 
@@ -215,8 +196,8 @@ function introJsGuide() {
 				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>marks</b> is declared and initialized to " 
 				+ "<b class='ct-code-b-yellow changeVal'>60</b>.<br/> You can also change the value " 
 				+ "<b class='ct-code-b-yellow'>60</b> to any other number.</span><br><span class='errorText'>";
-				charAtEnd("initializationValue");
 				typing(".introjs-tooltiptext", text, function() {
+					charAtEnd("initializationValue");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 				
@@ -316,6 +297,18 @@ function introJsGuide() {
 			});
 			break;
 		}
+	});
+	introjs.setOption('showStepNumbers', false);
+	introjs.setOption('exitOnOverlayClick', false);
+	introjs.setOption('exitOnEsc', false);
+	introjs.setOption('keyboardNavigation', false);
+	introjs.start();
+	$('.introjs-prevbutton').hide();
+	$('.introjs-skipbutton').hide();
+	$('.introjs-bullets').hide();
+	var text = "Above code demonstrates the working of <b class='ct-code-b-yellow' style = 'white-space: nowrap;'>if-else</b> block.";
+	typing(".introjs-tooltiptext", text, function() {
+		$(".introjs-nextbutton").show();
 	});
 }
 

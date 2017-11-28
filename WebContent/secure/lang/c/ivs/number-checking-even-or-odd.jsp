@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src='/secure/lang/c/js/number-checking-even-or-odd.js'></script>
+<script src='/secure/lang/c/js-min/nceoo.min.js'></script>
 
 <title>if else In Action</title>
 <style type="text/css">
@@ -24,8 +24,9 @@
 .infoDiv {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
+	font-family: monospace;
 }
 
 .margin-top-1 {

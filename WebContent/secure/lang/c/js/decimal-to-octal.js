@@ -371,8 +371,8 @@ function introGuide() {
 		if (elementId === "infoDiv") {
 			$("#infoDiv").html('<ul><li id="list1" class="opacity00">The numbering system which uses <span class="ct-code-b-green">base-8</span> is called' + ""
 					+ ' <span class="ct-code-b-green">Octal System</span>.</li>  <li id="list2" class="opacity00"> Only combinations of <span class="ct-code-b-green">0</span>,' + "" 
-					+ '<span class="ct-code-b-green">1</span>,<span class="ct-code-b-green">2</span>,<span class="ct-code-b-green">3</span>,' + "" 
-					+ '<span class="ct-code-b-green">4</span>,<span class="ct-code-b-green">5</span>,<span class="ct-code-b-green">6</span>' + "" 
+					+ ' <span class="ct-code-b-green">1</span>, <span class="ct-code-b-green">2</span>, <span class="ct-code-b-green">3</span>,' + "" 
+					+ ' <span class="ct-code-b-green">4</span>, <span class="ct-code-b-green">5</span>, <span class="ct-code-b-green">6</span>' + "" 
 					+ ' and <span class="ct-code-b-green">7</span> are used to represent a value of any magnitude in ' + "" 
 					+ '<span class="ct-code-b-green">Octal System</span>.</li> <li id="list3" class="opacity00">Hence, if <b>a number greater' + "" 
 					+ ' than '+ (base - 1) + '</b> is provided, we try to decrease its magnitude by <b>dividing by' + "" 

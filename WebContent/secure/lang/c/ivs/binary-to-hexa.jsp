@@ -231,19 +231,18 @@ div, span, tr, td {
 				<li id='list2' class='opacity00'>The numbering system which uses base-<span class='ct-green-color'>16</span>
 					is called <span class='ct-green-color'>hexadecimal system</span>.</li>
 				<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>,
-					<span class='ct-Maroon-color'>1</span>,
-					<span class='ct-Maroon-color'>2</span>,<span class='ct-Maroon-color'>3</span>,<span class='ct-Maroon-color'>4</span>,
-					<span class='ct-Maroon-color'>5</span>,<span class='ct-Maroon-color'>6</span>,<span class='ct-Maroon-color'>7</span>,
-					<span class='ct-Maroon-color'>8</span>,<span class='ct-Maroon-color'>9</span>,<span class='ct-Maroon-color'>A</span>,
-					<span class='ct-Maroon-color'>B</span>,<span class='ct-Maroon-color'>C</span>,<span class='ct-Maroon-color'>D</span>,
-					<span class='ct-Maroon-color'>E</span> and <span class='ct-Maroon-color'>F</span> are
+					 <span class='ct-Maroon-color'>1</span>, <span class='ct-Maroon-color'>2</span>, <span class='ct-Maroon-color'>3</span>,
+					 <span class='ct-Maroon-color'>4</span>, <span class='ct-Maroon-color'>5</span>, <span class='ct-Maroon-color'>6</span>,
+					 <span class='ct-Maroon-color'>7</span>, <span class='ct-Maroon-color'>8</span>, <span class='ct-Maroon-color'>9</span>,
+					 <span class='ct-Maroon-color'>A</span>, <span class='ct-Maroon-color'>B</span>, <span class='ct-Maroon-color'>C</span>,
+					 <span class='ct-Maroon-color'>D</span>, <span class='ct-Maroon-color'>E</span> and <span class='ct-Maroon-color'>F</span> are
 						used to represent a value of any magnitude in <span class='ct-green-color'>hexadecimal system</span>.</li>
 				<li id='list4' class='opacity00'>In the <span class='ct-green-color'>hexadecimal system</span> the values
-						<span class='ct-green-color'>10</span>,
-						<span class='ct-green-color'>11</span>,<span class='ct-green-color'>12</span>,<span class='ct-green-color'>13</span>,
-						<span class='ct-green-color'>14</span> and <span class='ct-green-color'>15</span> are represented as 
-						<span class='ct-green-color'>A</span>,<span class='ct-green-color'>B</span>,<span class='ct-green-color'>C</span>,
-						<span class='ct-green-color'>D</span>,<span class='ct-green-color'>E</span> and <span class='ct-green-color'>F</span>.
+						<span class='ct-green-color'>10</span>, <span class='ct-green-color'>11</span>, <span class='ct-green-color'>12</span>,
+						<span class='ct-green-color'>13</span>,	<span class='ct-green-color'>14</span> and <span class='ct-green-color'>15</span>
+						 are represented as	<span class='ct-green-color'>A</span>, <span class='ct-green-color'>B</span>,
+						 <span class='ct-green-color'>C</span>, <span class='ct-green-color'>D</span>, <span class='ct-green-color'>E</span>
+						  and <span class='ct-green-color'>F</span>.
 				</li>
 				<li id='list5' class='opacity00'>In binary to hexadecimal conversion we will first create groups of four binary digits each
 						and convert them to their equivalent hexadecimal digits to arrive at the final hexadecimal number.

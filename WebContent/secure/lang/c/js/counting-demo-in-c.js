@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var continueBtnCount = 0;
 var introjsNextBtnCount = 0;
 var passCount = 0;

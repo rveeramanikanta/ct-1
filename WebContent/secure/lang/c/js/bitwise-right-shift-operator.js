@@ -129,24 +129,56 @@ function introSteps() {
 		
 		var elementId = targetElement.id;
 		switch (elementId) {
+		case "informationDiv":
+			
+		break;	
 		case "inputDiv":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#firstNum").val("");
 			$("#shiftNum").val("");
-			$("#originalValue span, #appendNum, #arrow1").empty();
+			$("#originalValue span").remove();
+			$("#complementValue span").remove();
+			$("#appendNum, #arrow1").empty();
+			$("#complementValue span").remove();
+			$("#complementValue span, #twosComplementResult").empty();
 			binaryNumber = "";
 			zeros1 = "";
-			$("#aSpan").css({"opacity":0});
+			$("#aSpan, #line, #addOne").css({"opacity":0});
+			$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+			$("#addOne2 span").remove();
 		break;
 		case "binaryValueDiv":
+			$("#originalValue span").remove();
+			$("#appendNum, #arrow1").empty();
+			$("#complementValue span").remove();
+			$("#complementValue span, #twosComplementResult").empty();
+			$("#aSpan, #line, #addOne").css({"opacity":0});
+			
+			$("#complementValue span, #twosComplementResult").empty();
+			$("#aSpan, #line, #addOne").css({"opacity":0});
+			$("#originalValue span, #appendNum, #arrow1").empty();
+			$("#twosComplementResult").empty().css({"margin-top":"20px"});
 			binaryNumber = "";
 			zeros1 = "";
-			$("#originalValue span, #appendNum, #arrow1").empty();
+			//$("#originalValue span, #appendNum, #arrow1").empty();
 			$("#valueDiv").empty();
 			$("#table tr").eq(0).empty();
 			$("#table tr").eq(1).empty();
+			$("#resultAfterShift, #reComplementValue").empty();
+			$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+			
+			$("#originalResult > span").empty();
+			$("#originalResult span").remove();
 		break;
 		case "animationDiv":
+			$("#originalResult > span").empty();
+			$("#originalResult span").remove();
+			
+			$("#resultAfterShift, #reComplementValue").empty();
+			$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+			$("#originalResult span").empty();
+			
+			
 			$("#valueDiv").empty();
 			$("#table tr").eq(0).empty();
 			$("#table tr").eq(1).empty();
@@ -208,7 +240,9 @@ function introSteps() {
 				}});
 			});
 		break;
-		case "binaryValueDiv" : 
+		case "binaryValueDiv" :
+			$("#reComplement").empty();
+			$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var value = $('#firstNum').val();
 			if (value.startsWith("-")) {
@@ -277,6 +311,7 @@ function introSteps() {
 			});
 		break;
 		case "animationDiv":
+			$("#reComplement").remove();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer ").one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
@@ -360,7 +395,9 @@ function introSteps() {
 		});
 		break;
 		case "resultDiv":
+			intro.refresh();
 			$(".introjs-helperLayer").one('transitionend', function() {
+				intro.refresh();
 				if ($("#firstNum").val() >= 0) {
 					var num1 = $(".td-border > span").text();
 				} else {
@@ -369,12 +406,10 @@ function introSteps() {
 				var n = parseInt(num1, 2).toString(10);
 				intro.refresh();
 				if ($("#firstNum").val() >= 0) {
-					$('.introjs-tooltip').removeClass('hide');
 					var text="Result for " + $("#firstNum").val() + "<span class='ct-code-b-blue'><b> &gt;&gt;</b></span> " 
 						+ parseInt($("#shiftNum").val()) + " is = (" + num1 + ")<sub>2</sub> ="
 						+ " <span class='ct-code-b-green'>(" + n + ")<sub>10</sub></span> or simply <span class='ct-code-b-green'>" + n + "</span>.";
 				} else {
-					$('.introjs-tooltip').removeClass('hide');
 					var text="Result for " + $("#firstNum").val() + "<span class='ct-code-b-blue'><b> &gt;&gt;</b></span> " 
 					+ parseInt($("#shiftNum").val()) + " is = (" + num1 + ")<sub>2</sub> ="
 					+ " <span class='ct-code-b-green'>(-" + n + ")<sub>10</sub></span> or simply <span class='ct-code-b-green'>-" + n + "</span>.";
@@ -382,14 +417,13 @@ function introSteps() {
 				typing(".result-div #resultText", text, function() {
 					intro.refresh();
 					if ($("#firstNum").val() >= 0) {
-						$('.introjs-tooltip').removeClass('hide');
 						var text1 = "Finally, the decimal value we get after applying <span class='ct-code-b-yellow'>right shift</span> by <span class='ct-code-b-yellow'>" + parseInt($('#shiftNum').val()) + "</span> positions"
 							+ " on <span class='ct-code-b-yellow'>" + parseInt($("#firstNum").val()) + "</span> is : (" + num1 + ")<sub>2</sub> = <span class='ct-code-b-yellow'>" + n + "</span>.";
 					} else {
-						$('.introjs-tooltip').removeClass('hide');
 						var text1 = "Finally, the decimal value we get after applying <span class='ct-code-b-yellow'>right shift</span> by <span class='ct-code-b-yellow'>" + parseInt($('#shiftNum').val()) + "</span> positions"
 						+ " on <span class='ct-code-b-yellow'>" + parseInt($("#firstNum").val()) + "</span> is : (" + num1 + ")<sub>2</sub> = <span class='ct-code-b-yellow'>-" + n + "</span>.";
 					}
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", text1, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -447,17 +481,17 @@ function negativeValues() {
 	typing(".introjs-tooltiptext", text, function() {
 		if ($("#type").val() == "int" &&  $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 16; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(15);'>Next &#8594;</a>");
 		} else if ($("#type").val() == "short int" && $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 8; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(7);'>Next &#8594;</a>");
 		} else if ($("#type").val() == "long int" && $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 32; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(31);'>Next &#8594;</a>");
 		}
@@ -528,7 +562,7 @@ function twosComplement() {
 	intro.refresh();
 	
 	for (i = 0; i < $("#originalValue > span").length; i++) {
-		$("#twosComplementResult").append('<span class="twos-result-span opacity00" id="twosResultSpan' + i + '">0</span>&nbsp;');
+		$("#twosComplementResult").append('<span class="twos-result-span opacity00" id="twosResultSpan' + i + '">0</span><span>&nbsp;</span>');
 	}
 	intro.refresh();
 	
@@ -713,7 +747,7 @@ function addZeros() {
 	var shiftLength = parseInt($("#shiftNum").val());
 	TweenMax.fromTo($("table  tr:eq(1)  td:nth-child(-n+"+(shiftLength)+") span"),0.5,{top:'-100px'},{opacity:1,top:'0px'});
 	if ($("#firstNum").val() >= 0) {
-			$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	} else {
 		var text = "Now, let us reconvert the binary number in <span class='ct-code-b-yellow'>two's complement</span> form" 
 			+ " to get a decimal number to arrive at the final result."
@@ -729,7 +763,7 @@ function negativeNumberResult() {
 	$("#resultDiv").before("<div id='reComplement' class='col-xs-offset-3 col-xs-9 re-complement' style='text-align:center;width:-moz-fit-content;width:initial;'>"
 		+ "<div id='resultAfterShift' style='text-align=center;width=-moz-fit-content;'></div>"
 		+ "<div id='reComplementValue' class ='margin-top20'></div>"
-		+ "<div id='addOne2' style='float:right;' class='opacity00'>1&nbsp;</div>"
+		+ "<div id='addOne2' style='float:right;' class='opacity00'>1<span>&nbsp;</span></div>"
 		+ "<div id='line2' class='col-xs-12 line padding0 opacity00'></div>"
 		+ "<div id='originalResult'></div>"
 		+ "</div>");

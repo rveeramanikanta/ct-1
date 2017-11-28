@@ -13,7 +13,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/break-in-c.js"></script>
+<script src="/secure/lang/c/js-min/bic.min.js"></script>
 <style type="text/css">
 
 body {
@@ -160,7 +160,7 @@ r {
 	</div>
 </div>
 <div class="text-center col-xs-12">
-	<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<a class="btn btn-warning opacity00" id="restart">Restart</a>
 </div>
 
 <script type="text/javascript">

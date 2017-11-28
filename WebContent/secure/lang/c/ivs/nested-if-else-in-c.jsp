@@ -19,8 +19,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/nieic.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/nested-if-else-in-c.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/nieic.min.js" type="text/javascript"></script>
 
 <title>Nested if-else</title>
 <style type="text/css">
@@ -176,17 +175,17 @@ y {
 	<span id="mainScanf">scanf (<ink>"<in>%d %d %d</in> "</ink>, &a , &b , &c );</span>
 	<div id="nestedIf" class="flip"><go>if</go> (<span id="ifCondtn">a > b</span>) {
 	<div class="flip" id="nestedBlock1"><go>if</go> (<span id="ifCond1">a > c</span>) {
-	<span id="printfInIf1">printf (<ink>"<in>%d</in> is the biggest number "</ink> , a);</span>
+	<span id="printfInIf1">printf(<ink>"<in>%d</in> is the biggest number "</ink> , a);</span>
 } <go>else</go> {
-	<span id="printfInIf2">printf (<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
+	<span id="printfInIf2">printf(<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
 }</div>
 }
 <div id="elseBlock" style = "display: inline-block; position: relative;"><go>else</go> {
 	<div class="flip" id="nestedBlock2"><go>if</go> (<span id="ifInElse">b > c</span>) {
-	<span id="printfInElse1">printf (<ink>"<in>%d</in> is the biggest number "</ink> , b);</span>
+	<span id="printfInElse1">printf(<ink>"<in>%d</in> is the biggest number "</ink> , b);</span>
 }
 <go>else</go> {
-	<span id="printfInElse2">printf (<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
+	<span id="printfInElse2">printf(<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
 }</div>
 }</div></div>
 <span id="endMain">}</span></pre>

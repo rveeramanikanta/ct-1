@@ -233,6 +233,7 @@ var octalToBinaryConversionReady = function() {
 			break;
 		case "restartBtn":
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '130px');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
@@ -335,16 +336,16 @@ var octalToBinaryConversionReady = function() {
  						$("#octalValue").removeClass("backgroundColor");
  						
  						if ($("#octalValue").val().length > 1 && $("#octalValue").val().startsWith("0")) {
- 							$("#convert").removeClass("disabled").removeClass("opacity40");
+ 							$("#convert").removeClass("disabled").removeClass("opacity40").attr("disabled", false);
  							$("#octalValue").removeClass("backgroundColor");
  							$('.errorText').empty();
  						} else {
- 							$("#convert").addClass("disabled").addClass("opacity40");
+ 							$("#convert").addClass("disabled").addClass("opacity40").attr("disabled", true);
  						}
  						
  						return;
  					} else {
- 						$("#convert").addClass("disabled").addClass("opacity40");
+ 						$("#convert").addClass("disabled").addClass("opacity40").attr("disabled", true);
  						$('.errorText').html("Since base is 8, you can prefix the number specified by the value parameter with 0.");
  						$("#octalValue").addClass("backgroundColor");
  					}

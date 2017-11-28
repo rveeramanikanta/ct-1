@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js/sample-program-on-prime-numbers.js"></script>
+<script src="/secure/lang/c/js-min/spopn.min.js"></script>
 
 <title>Sample program to Find Prime numbers</title>
 <style>
