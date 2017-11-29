@@ -312,7 +312,7 @@ td {
 	<div class='buttons-div text-center margin10'>
 		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 	</div>
-		<div class = 'col-xs-offset-2 col-xs-8 main-div margin10 padding10' id = 'mainDiv'>
+		<div class = 'col-xs-offset-2 col-xs-8 main-div margin10 padding10' id = 'mainDiv' style="font-family: monospace;">
 			<span id = 'typing1' class = 'padding10'></span>
 			<div class = 'box-div col-xs-12 ' id = 'boxDiv'>
 				<div class = "border-box opacity00 padding2" id = "box0"></div>

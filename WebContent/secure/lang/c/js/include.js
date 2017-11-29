@@ -286,7 +286,7 @@ function introGuide() {
 			$("#printf1").removeClass("colorMain");
 			$("#outputDiv").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$(".introjs-tooltiptext").append("<div>You will notice that will get errors when we compile the code because the compiler was not able to "
+				$(".introjs-tooltiptext").text('').append("<div>You will notice that will get errors when we compile the code because the compiler was not able to "
 									+ " locate <b class ='ct-code-b-yellow'>printf()</b> function.<br><br>"
 									+ " In the errors you will notice that there is a suggestion to include <b class ='ct-code-b-yellow'>stdio.h</b>.</div>");
 				var text = "test.c:2:2: <b class='warning-color'>error</b>: implicit declaration of function <b>'printf'</b> [-Wimplicit-function-declaration]<br>"
@@ -312,7 +312,7 @@ function introGuide() {
 			 $("#ct").addClass("colorWhite");
 			 $(".colorMain").removeClass("colorMain");
 			 $(".introjs-helperLayer").one("transitionend", function() {
-				 $(".introjs-tooltiptext").append("<div>The program successfully executes after compiling because we have including <b class ='ct-code-b-yellow'>#include</b>.  Below is the output of the program.</div>")
+				 $(".introjs-tooltiptext").text('').append("<div>The program successfully executes after compiling because we have including <b class ='ct-code-b-yellow'>#include</b>.  Below is the output of the program.</div>")
 				 $('#error').hide();
 				 $('#code').remove();
 				 $("#outputBody").append("<div id='code'></div>");
@@ -330,7 +330,7 @@ function introGuide() {
 			 $("#sqrt").addClass("colorWhite");
 			 //$("#printf2").addClass("colorMain");
 			 $(".introjs-helperLayer").one("transitionend", function() {
-				 $(".introjs-tooltiptext").append("<div>These errors have occurred because the compiler was not able to locate <b class ='ct-code-b-yellow'>printf()</b> and "
+				 $(".introjs-tooltiptext").text('').append("<div>These errors have occurred because the compiler was not able to locate <b class ='ct-code-b-yellow'>printf()</b> and "
 						 						+ "<b class ='ct-code-b-yellow'>sqrt()</b> functions.</div>");
 				 var text = "test.c:2:2: <b class='warning-color'>error</b>: implicit declaration of function <b>'printf'</b> [-Wimplicit-function-declaration]<br>"
 			  	 	 + "printf("+"CodeTantra"+");<br>"
@@ -359,8 +359,8 @@ function introGuide() {
 			 $("#sqrt").addClass("colorWhite");
 			 $("#printf2").removeClass("colorMain");
 			 $(".introjs-helperLayer").one("transitionend", function() {
-				 $(".introjs-tooltiptext").append("<div>The compilation will be successfully after including <b class ='ct-code-b-yellow'>stdio.h</b> and"
-						 			+ " <b class ='ct-code-b-yellow'>math.h</b>, and the program generates the below output.</div>")
+				 $(".introjs-tooltiptext").text('').append("The compilation will be successfully after including <b class ='ct-code-b-yellow'>stdio.h</b> and"
+						 			+ " <b class ='ct-code-b-yellow'>math.h</b>, and the program generates the below output.")
 				$('#error1').hide();
 				 $('#squareCode').remove();
 				 $("#outputBody").append("<div id='squareCode'></div>");

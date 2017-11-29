@@ -400,26 +400,28 @@ function introGuide() {
 		}
 		if (elementId == "finalValues") {
 			$('.introjs-nextbutton,.introjs-prevbutton').hide();
-			l1 = $("#quotient" + (count - 1 )).offset();
-			$("#quotient" + (count -  1 )).addClass('background-effect').addClass('z-index9999999');
-			l2 = $("#storeRemainder" + currentIndex).offset();
-			topLength  = l1.top - l2.top;
-			leftLength = l1.left - l2.left;
-			$("#storeRemainderTd" + currentIndex).addClass("store-remainder-border");
-			typingContent = '<span id="quotientText">Collecting the quotient.</span><span id="outputText"></span>';
-			typingCallbackFunction = function () {
-				$("#storeRemainder"+currentIndex ).removeClass("opacity00").addClass("z-index9999999");
-				TweenLite.from($("#storeRemainder" + currentIndex), 1, {top: topLength, left:leftLength, onComplete: function() {
-					$("#quotient" + (count -  1 )).removeClass('background-effect').removeClass('z-index9999999');
-					$('#quotientText').empty();
-					typingContent = 'This is the octal representation of <span class="ct-code-b-yellow">' + $("#decimalValue").val() + '</span>.';
-					typingCallbackFunction = function () {
-						$('.introjs-nextbutton,.introjs-prevbutton').show();
-					}
-					typing($('.introjs-tooltiptext'), typingContent, typingCallbackFunction);
-				}});
-			}
-			typing($('#outputText'), typingContent, typingCallbackFunction);
+			$('.introjs-helperLayer').one('transitionend', function() {
+				l1 = $("#quotient" + (count - 1 )).offset();
+				$("#quotient" + (count -  1 )).addClass('background-effect').addClass('z-index9999999');
+				l2 = $("#storeRemainder" + currentIndex).offset();
+				topLength  = l1.top - l2.top;
+				leftLength = l1.left - l2.left;
+				$("#storeRemainderTd" + currentIndex).addClass("store-remainder-border");
+				typingContent = '<span id="quotientText">Collecting the quotient.</span><span id="outputText"></span>';
+				typingCallbackFunction = function () {
+					$("#storeRemainder"+currentIndex ).removeClass("opacity00").addClass("z-index9999999");
+					TweenLite.from($("#storeRemainder" + currentIndex), 1, {top: topLength, left:leftLength, onComplete: function() {
+						$("#quotient" + (count -  1 )).removeClass('background-effect').removeClass('z-index9999999');
+						$('#quotientText').empty();
+						typingContent = 'This is the octal representation of <span class="ct-code-b-yellow">' + $("#decimalValue").val() + '</span>.';
+						typingCallbackFunction = function () {
+							$('.introjs-nextbutton,.introjs-prevbutton').show();
+						}
+						typing($('.introjs-tooltiptext'), typingContent, typingCallbackFunction);
+					}});
+				}
+				typing($('#outputText'), typingContent, typingCallbackFunction);
+			});
 		}
 		if (elementId == "restartBtn") {
 			 $('#restartBtn').fadeTo(1300,1.0);

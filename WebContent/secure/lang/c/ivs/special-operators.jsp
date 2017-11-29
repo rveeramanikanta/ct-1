@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/so.min.js"></script> -->
-<script src="../js/special-operators.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/so.min.js"></script>
 
 <title>special-operators</title>
 

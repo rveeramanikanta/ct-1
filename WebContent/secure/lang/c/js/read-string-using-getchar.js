@@ -224,29 +224,31 @@ var readStringUsingGetcharReady = function() {
 						});
 					}});
 				} else if(introjs._currentStep == 9) {
-					var num = $("#inputChar").val().length - 2;
-					 i = 0;
-					var interval = setInterval(function() {
-						if (i == num) {
-							$("#tableRowId").removeClass("opacity00");
-							introjs.refresh();
-							$(".td-css").addClass("ct-code-b-green");
-							TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
-								insertCharacters(function() {
-									$('.introjs-tooltip').removeClass('hide');
-									typing(".introjs-tooltiptext", "The entered string is allocated in a memory of an array and " +
-												"<span class='ct-code-b-yellow'>\\0</span> is append at the end of the string.", 1, "", function() {
-										TweenMax.to("#baseAddresssId", 0.2, {opacity: 1, onComplete: function() {
-											$('.introjs-nextbutton, .introjs-prevbutton').show();
-										}});
-									});
-								});
+				 i = 0;
+				var interval = setInterval(function() {
+					if ($("#inputChar").val().charAt(i)  == "#") {
+						clearInterval(interval);
+						$('.introjs-tooltip').removeClass('hide');
+						typing(".introjs-tooltiptext", "The entered string is allocated in a memory of an array and " +
+									"<span class='ct-code-b-yellow'>\\0</span> is append at the end of the string.", 1, "", function() {
+							TweenMax.to("#baseAddresssId", 0.2, {opacity: 1, onComplete: function() {
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							}});
-							clearInterval(interval);
-						}
+						});
+					} else {
+						$("#tableRowId").removeClass("opacity00");
+						introjs.refresh();
+						$(".td-css").addClass("ct-code-b-green");
+						TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
+							insertCharacters(function() {
+								
+							});
+						}});
 						i++;
 						$("#iValue").text(i);
-					}, 200);
+					}
+					
+				}, 200);					
 				} else if(introjs._currentStep == 11) {
 					if (introjs._direction == "backward") {
 						setTimeout(function () {

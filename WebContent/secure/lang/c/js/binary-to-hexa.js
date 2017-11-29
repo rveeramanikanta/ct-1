@@ -476,15 +476,13 @@ function introGuide() {
 				$('#plus').removeAttr('style');
 				$('#additionDiv2').removeClass('col-xs-offset-3').addClass('col-xs-6');
 			}
-			sum2 = 0;
-			sum1 = 0;
+			
 			$('#total1, #total2, #equalSpan5').addClass('opacity00');
 		break;
 		case 'calculationPartDiv4':
 			var input = $("#binaryValue").val();
 			if (input.length <= 4) {
-				sum2 = 0;
-				sum1 = 0;
+				
 			} else if (input.length >= 5 && input.length <= 8 ) {
 				$('#total2').removeClass('col-xs-offset-3').addClass('col-xs-6');
 			}
@@ -847,8 +845,7 @@ function introGuide() {
 			break;
 		case "restart":
 			$('.introjs-tooltipbuttons').addClass("hide");
-			$(".introjs-tooltip").css("min-width", "-moz-max-content");
-			$(".introjs-tooltip").css("min-width", "max-content");
+			$(".introjs-tooltip").css("min-width", "125px");
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#restart").fadeTo(1000, 1);
 				$("#restart").removeClass("opacity00");

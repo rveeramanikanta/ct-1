@@ -425,8 +425,8 @@ var bitwiseLeftShiftOperatorReady = function() {
 						+ parseInt($("#shiftNum").val()) + " is = (" + num1 + ")<sub>2</sub> ="
 						+ " <span class='ct-code-b-green'>(-" + n + ")<sub>10</sub></span> or simply <span class='ct-code-b-green'>-" + n + "</span>.";
 					}
-					intro.refresh();
 					typing(".result-div #resultText", text, function() {
+						intro.refresh();
 						if ($("#firstNum").val() >= 0) {
 							var text1 = "Finally, the decimal value we get after applying <span class='ct-code-b-yellow'>left shift</span> by <span class='ct-code-b-yellow'>" + parseInt($('#shiftNum').val()) + "</span> positions"
 								+ " on <span class='ct-code-b-yellow'>" + parseInt($("#firstNum").val()) + "</span> is : (" + num1 + ")<sub>2</sub> = <span class='ct-code-b-yellow'>" + n + "</span>.";
@@ -444,6 +444,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 			case "restart":
 				$('.introjs-nextbutton').hide();
 				$('#informationDiv').css({"z-index": "0"});
+				$('.introjs-tooltip').css('min-width', '130px');
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
 						var text = "Click to restart.";

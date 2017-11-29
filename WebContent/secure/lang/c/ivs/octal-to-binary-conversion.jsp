@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js/octal-to-binary-conversion.js"></script>
+	<script src="/secure/lang/c/js-min/otbc.min.js"></script>
 	
     <title>octal to binary</title>
 </head>

@@ -15,8 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/dav.min.js"></script> -->
-<script src="/secure/lang/c/js/different-argument-variables.js"></script>
+<script src="/secure/lang/c/js-min/dav.min.js"></script>
 
 <title>Function Argument-variables</title>
 <style type="text/css">

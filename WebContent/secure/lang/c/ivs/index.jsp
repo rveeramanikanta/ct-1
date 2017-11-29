@@ -164,7 +164,7 @@ r {
 						<td>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of #include', 'include.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #include</span>
@@ -172,7 +172,7 @@ r {
 							</div>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; explanation of #define
@@ -191,7 +191,7 @@ r {
 						<td>
 
 							<div>
-								<i class="fa fa-check fa-1x"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Sample program in C using printf()', 'sample-of-printf.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf()</span>
@@ -212,7 +212,7 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Binary-to-Decimal</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Decimal', 'binary-to-decimal-convertion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Decimal</span></td>
@@ -226,7 +226,7 @@ r {
 						<td>9</td>
 						<td>Binary-to-Octal</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Octal', 'binary-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Octal conversion</span></td>
@@ -239,10 +239,12 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Binary-to-Hexadecimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary to Hexadecimal', 'binary-to-hexa.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary to Hexadecimal conversion
-									 </span></td>
+									 </span> </td>
 						<td>Shiva / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -252,7 +254,9 @@ r {
 					<tr>
 						<td>11</td>
 						<td>Decimal-to-Binary</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>	
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Binary', 'decimal-to-binary.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Binary</span></td>
 						<td>Live-Demo / Raj <r>(back)</r></td>
@@ -264,7 +268,9 @@ r {
 					<tr>
 						<td>12</td>
 						<td>Decimal-to-Octal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Octal', 'decimal-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Octal</span></td>
 						<td>Live-Demo / Raj <r>(back)</r></td>
@@ -276,10 +282,11 @@ r {
 					<tr>
 						<td>13</td>
 						<td>Decimal-to-Hexadecimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to Hexadecimal', 'decimal-to-hexadecimal.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Hexadecimal</span>
-									 <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Hexadecimal</span></td>
 						<td>Live-Demo / Raj <r>(back)</r></td>
 						<td>Ramana -- success</td>
 						<td>Successfully Completed</td>
@@ -290,7 +297,7 @@ r {
 						<td>14</td>
 						<td>Octal-to-Binary</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octal to Binary', 'octal-to-binary-conversion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Binary</span></td>
@@ -303,10 +310,11 @@ r {
 					<tr>
 						<td>15</td>
 						<td>Octal-to-decimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octao to Decimal', 'octal-to-decimal-conversion.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Octal to Decimal</span>
-									 <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Octal to Decimal</span></td>
 						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -316,10 +324,11 @@ r {
 					<tr>
 						<td>16</td>
 						<td>Octal-to-Hexadecimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Octal to Hexadecimal', 'octal-to-hexadecimal-conversion.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Hexadecimal</span>
-									 <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Octal to Hexadecimal</span></td>
 						<td>Suresh / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -329,10 +338,11 @@ r {
 					<tr>
 						<td>17</td>
 						<td>Hexadecimal-to-Binary</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Binary', 'hexadecimal-binary.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary
-									 <r>(modified)</r></span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Binary</span></td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -342,10 +352,11 @@ r {
 					<tr>
 						<td>18</td>
 						<td>Hexadecimal-to-decimal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Decimal', 'hexadecimal-decimal.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Decimal</span>
-								 <r>(modified)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Decimal</span></td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- suceess</td>
 						<td>Successfully Completed</td>
@@ -628,7 +639,7 @@ r {
 						<td>6</td>
 						<td>Conditional Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Conditional Operators', 'conditional-operator-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Conditional Operators</span></td>
@@ -642,7 +653,7 @@ r {
 						<td>7</td>
 						<td>Bitwise Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise AND Operator', 'bitwise-and-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise AND Operator</span></td>
@@ -656,7 +667,7 @@ r {
 						<td>8</td>
 						<td>Bitwise Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise OR Operator', 'bitwise-or-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise OR Operator</span>
@@ -671,7 +682,7 @@ r {
 						<td>9</td>
 						<td>Bitwise Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise XOR Operator', 'bitwise-xor-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise XOR</span>
@@ -685,7 +696,9 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Bitwise LeftShif</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise LeftShif', 'bitwise-left-shift-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise LeftShif</span></td>
 						<td>Ramya / Anil <r>(back)</r></td>
@@ -697,7 +710,9 @@ r {
 					<tr>
 						<td>11</td>
 						<td>Bitwise RightShift</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise RightShift', 'bitwise-right-shift-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise RightShift</span></td>
 						<td>Ramya / Anil <r>(back)</r></td>
@@ -710,7 +725,7 @@ r {
 						<td>12</td>
 						<td>Bitwise Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise One\'s complement operator', 'bitwise-not-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise One's 
@@ -725,7 +740,7 @@ r {
 						<td>13</td>
 						<td>Special Operators</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span>
@@ -1525,10 +1540,12 @@ r {
 					<tr>
 						<td>2</td>
 						<td>2-D Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing Two-dimensional arrays', 'two-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing Two-dimensional arrays</td>
-						<td>Durga Mahesh</td>
+						<td>Durga Mahesh / Shiva <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
@@ -1539,7 +1556,7 @@ r {
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Bubble sort', '/secure/lang/ds/bubble-sort.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Bubble sort</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Bubble sort <r>(No back)</r></td>
 						<td>Poorna</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1551,7 +1568,8 @@ r {
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Insertion sort', '/secure/lang/ds/insertion-sort.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Insertion sort</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Insertion sort
+								 <r>(No back)</r></td>
 						<td>Anil</td>
 						<td></td>
 						<td></td>
@@ -1563,7 +1581,8 @@ r {
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Selection sort with largest element', '/secure/lang/ds/selection-sort-largest-element.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Selection sort with largest element </td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Selection sort with largest element 
+								 <r>(No back)</r></td>
 						<td>Durga Mahesh</td>
 						<td></td>
 						<td></td>
@@ -1575,7 +1594,8 @@ r {
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Selection sort with smallest element', '/secure/lang/ds/selection-sort-smallest-element.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Selection sort with smallest element</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Selection sort with smallest element
+								 <r>(No back)</r></td>
 						<td>Durga Mahesh</td>
 						<td></td>
 						<td></td>
@@ -1587,7 +1607,8 @@ r {
 						<td>Searching Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Linear search', '/secure/lang/ds/linear-search.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Linear search</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Linear search
+								 <r>(No back)</r></td>
 						<td>Manikanta</td>
 						<td></td>
 						<td></td>
@@ -1599,7 +1620,8 @@ r {
 						<td>Searching Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary search', '/secure/lang/ds/binary-search.jsp?lang=c', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Binary search</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Binary search
+								 <r>(No back)</r></td>
 						<td>Manikanta</td>
 						<td></td>
 						<td></td>
@@ -1641,7 +1663,8 @@ r {
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program on Multiplication of two Matrices', 'matrix-multiplication.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Multiplication of two Matrices</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Multiplication of two Matrices
+								 <r>(No back)</r></td>
 						<td>Karthik</td>
 						<td></td>
 						<td></td>
@@ -1653,7 +1676,8 @@ r {
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to Interchange two rows in a matrix', 'matrix-rows-interchange.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to Interchange two rows in a matrix</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to Interchange two rows in a matrix
+								 <r>(No back)</r></td>
 						<td>Karthik</td>
 						<td></td>
 						<td></td>
@@ -1664,7 +1688,8 @@ r {
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to Interchange two columns in a matrix', 'matrix-columns-interchange.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to Interchange two columns in a matrix</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to Interchange two columns in a matrix
+								 <r>(No back)</r></td>
 						<td>Karthik</td>
 						<td></td>
 						<td></td>
@@ -1704,7 +1729,9 @@ r {
 					<tr>
 						<td>2</td>
 						<td>Strings</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ', 'read-string-using-getchar.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar() </td>
 						<td>Mahesh / Sathish <r>(back)</r></td>
@@ -1760,7 +1787,7 @@ r {
 						<td>6</td>
 						<td>Program on Strings</td>
 						<td>
-							<!-- <i class="fa fa-check"></i> -->
+							<i class="fa fa-check"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to copy one string to another string', 'copy-of-a-string.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string
@@ -1774,10 +1801,12 @@ r {
 					<tr>
 						<td>7</td>
 						<td>Program on Strings</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to concatenate two strings', 'concatination-of-strings.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to concatenate two strings</td>
-						<td>Mallika</td>
+						<td>Mallika / Satish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
@@ -1788,7 +1817,7 @@ r {
 						<td>Program on Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to sort the names', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to sort the names</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to sort the names <r>(No Demo)</r></td>
 						<td>Mahesh</td>
 						<td></td>
 						<td></td>
@@ -1800,7 +1829,8 @@ r {
 						<td>Program on Strings</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to find whether a string is palindrome or not', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find whether a string is palindrome or not</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find whether a string is palindrome or not
+									  <r>(No Demo)</r></td>
 						<td>Mahesh</td>
 						<td></td>
 						<td></td>
@@ -1810,10 +1840,12 @@ r {
 					<tr>
 						<td>10</td>
 						<td>String Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different String functions', 'string-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Different String functions	(all 4 in one demo)</td>
-						<td>Shiva</td>
+						<td>Shiva / Satish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>04-10-2016</td>
@@ -1839,7 +1871,7 @@ r {
 						<td>1</td>
 						<td>Functions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Declaration', 'function-declaration.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Declaration</td>
@@ -1853,7 +1885,7 @@ r {
 						<td>2</td>
 						<td>Functions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Definition', 'function-definition.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Definition</td>
@@ -1867,7 +1899,7 @@ r {
 						<td>3</td>
 						<td>Functions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Call', 'function-call.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Call</td>
@@ -1881,7 +1913,7 @@ r {
 						<td>4</td>
 						<td>Formal & actual parameters</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Formal & actual parameters', 'different-argument-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Formal & actual parameters</td>
@@ -1894,7 +1926,9 @@ r {
 					<tr>
 						<td>5</td>
 						<td>Program on Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program Life Cycle Demo', 'sample-progaram-on-functions-sin-cos.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to find sinx, cosx, tanx using functions <r>(No back)</r></td>
 						<td>Ajay</td>
@@ -1906,7 +1940,9 @@ r {
 					<tr>
 						<td>6</td>
 						<td>Function Categories</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Categories of functions', 'categories-of-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Categories of functions <r>(No back)</r></td>
 						<td>Ajay</td>
@@ -1918,7 +1954,9 @@ r {
 					<tr>
 						<td>7</td>
 						<td>Functions with arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<span class="box"><i class="fa fa-check opacity00"></i></span>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function with arrays', 'functions-with-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Functions with arrays <r>(No back)</r></td>
 						<td>Ajay</td>
@@ -1931,7 +1969,7 @@ r {
 						<td>8</td>
 						<td>Program on Functions</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Sample program on functions', 'sample-program-on-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Sample program on functions</td>
@@ -1944,7 +1982,7 @@ r {
 						<td>9</td>
 						<td>Local & global variables</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Local & global variables', 'local-global-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Local & global variables</td>
@@ -2612,7 +2650,7 @@ r {
 						<td>4</td>
 						<td>Files</td>
 						<td>
-							<i class="fa fa-check fa-1x box"></i>
+							<!-- <i class="fa fa-check fa-1x box"></i> -->
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of fgets() and fputs()', 'usage-of-fputs-and-fgets.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of fgets() and fputs()

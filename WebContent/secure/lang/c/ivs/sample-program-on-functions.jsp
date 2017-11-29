@@ -16,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<!-- <script type="text/javascript" src="/secure/lang/c/js-min/spof.min.js"></script> -->
-<script type="text/javascript" src="/secure/lang/c/js/sample-program-on-functions.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/spof.min.js"></script>
 
 <style type="text/css">
 .margin-top-20 {

@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/coic.min.js"></script> -->
-<script src="../js/conditional-operator-c.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/coc.min.js"></script>
 <title>conditional-operator</title>
 <style type="text/css">
 

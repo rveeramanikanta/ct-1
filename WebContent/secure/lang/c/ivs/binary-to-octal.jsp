@@ -15,7 +15,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src="/secure/lang/c/js/binary-to-octal.js"></script>  
+<script src="/secure/lang/c/js-min/bto.min.js"></script>  
 <title>Binary to Octal</title>
 </head>
 
@@ -205,9 +205,9 @@ div, span, tr, td {
 				<span class='ct-green-color'>1's</span> to represent a value of any magnitude.</li>
 			<li id='list2' class='opacity00'>The numbering system which uses base-<span class='ct-green-color'>8</span> 
 				is called <span class='ct-Maroon-color'>octal system</span>.</li>
-			<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>,<span class='ct-Maroon-color'>1</span>, 
-				<span class='ct-Maroon-color'>2</span>,<span class='ct-Maroon-color'>3</span>,<span class='ct-Maroon-color'>4</span>, 
-				<span class='ct-Maroon-color'>5</span>,<span class='ct-Maroon-color'>6</span> and <span class='ct-Maroon-color'>7</span> 
+			<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>, <span class='ct-Maroon-color'>1</span>, 
+				 <span class='ct-Maroon-color'>2</span>, <span class='ct-Maroon-color'>3</span>, <span class='ct-Maroon-color'>4</span>, 
+				 <span class='ct-Maroon-color'>5</span>, <span class='ct-Maroon-color'>6</span> and <span class='ct-Maroon-color'>7</span> 
 				are used to represent a value of any magnitude in <span class='ct-Maroon-color'>octal system</span>.</li>
 			<li id='list4' class='opacity00'>In binary to octal conversion we will first create groups of three binary digits each and convert 
 				them to their equivalent octal digits to arrive at the final octal number.</li>

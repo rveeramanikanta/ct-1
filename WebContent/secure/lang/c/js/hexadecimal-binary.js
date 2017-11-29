@@ -175,8 +175,8 @@ var hexadecimalBinaryReady = function() {
 		  		"or <span class='ct-code-b-yellow'>0x</span>.<br><span class='errorText'></span>";
 		  		$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',text ,function() { 
-					$('#octalValue').focus();  
 					$("#octalValue").attr("disabled", false);
+					$('#octalValue').focus();  
 					$('.introjs-prevbutton').show();
 		  		});
 			});

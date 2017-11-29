@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/bxo.min.js"></script> -->
-<script src="../js/bitwise-xor-operator.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/bxo.min.js"></script>
 <title>Bitwise XOR</title>
 
 <style>

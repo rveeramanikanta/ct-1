@@ -226,7 +226,7 @@ r {
 	}
 	<span id="delimeter">b[i] = <ink>'\0'</ink>;</span>
 	<span id="stringLength">printf(<ink>"The copied string = %s\n", b</ink>);</span>
-}</pre>
+<span id="end">}</span></pre>
 			</div>
 			<div class="col-xs-7">
 				<div class="col-xs-12 opacity00 memory-css" id="memory">

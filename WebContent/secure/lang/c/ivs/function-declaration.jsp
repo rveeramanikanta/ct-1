@@ -17,8 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/jquery-ui-latest.js"></script>
 	<script src="/js/typewriting.min.js"></script>
-	<!-- <script src="/secure/lang/c/js-min/fd.min.js"></script> -->
-	<script src="/secure/lang/c/js/function-declaration.js"></script>
+	<script src="/secure/lang/c/js-min/fd.min.js"></script>
 	
 <title>Function Declaration</title>
 

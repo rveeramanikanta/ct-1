@@ -334,13 +334,13 @@ function introjsGuide() {
 		case "piValue1" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (intro._direction == "forward") {
-					t1.to("#piValue1", 0.4, {opacity: 1, rotationX: -90, onComplete: function() {
+					t1.to("#piValue1", 0.5, {opacity: 1, rotationX: -90, onComplete: function() {
 						$("#piValue1").text("3.141");
 						intro.refresh();
-						t1.to("#piValue1", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+						t1.to("#piValue1", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 							setTimeout(function() {
 								intro.nextStep();
-							},500);
+							},800);
 						}});
 					}});
 				} else {
@@ -356,13 +356,13 @@ function introjsGuide() {
 		case "piValue2" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				if (intro._direction == "forward") {
-					t1.to("#piValue2", 0.4, {opacity:1, rotationX: -90, onComplete: function() {
+					t1.to("#piValue2", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#piValue2").text("3.141");
 						intro.refresh();
-						t1.to("#piValue2", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+						t1.to("#piValue2", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 							setTimeout(function() {
 								intro.nextStep();
-							},500);
+							},800);
 						}});
 					}});
 				} else {
@@ -675,7 +675,7 @@ function introjsGuide() {
 		case "line15" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext', "<y>printf</y> is used to to print the <y>number</y>.", function() {
+				typing('.introjs-tooltiptext', "<y>printf</y> is used to to print the <y>data</y>.", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});

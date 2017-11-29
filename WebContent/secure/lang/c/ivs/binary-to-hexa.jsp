@@ -13,8 +13,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<!-- <script src="/secure/lang/c/js-min/bth.min.js"></script> -->
-<script src="/secure/lang/c/js/binary-to-hexa.js"></script>
+<script src="/secure/lang/c/js-min/bth.min.js"></script>
 <title>Binary to hexaDecimal</title>
 
 <style>
@@ -207,7 +206,7 @@ div, span, tr, td {
 	padding: 0 2px;
 }
 
-.introjs-tooltiptext {
+.introjs-tooltip {
 	min-width: 225px;
 }
 

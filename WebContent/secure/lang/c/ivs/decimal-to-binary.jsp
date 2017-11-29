@@ -16,8 +16,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src='/js/intro.js'></script>
 <script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
-<script src="/secure/lang/c/js/decimal-to-binary.js"></script> 
-<!-- <script src="/secure/lang/c/js-min/dtb.min.js"></script> -->
+<script src="/secure/lang/c/js-min/dtb.min.js"></script>
 
 <style>
 .user-btn1 {

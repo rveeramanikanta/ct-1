@@ -48,8 +48,7 @@ function introJsFunction() {
 		{
 			element : "#preCode",
 			intro : "",
-			position: "right",
-			tooltipClass : "hide"
+			position: "right"
 		},
 		{
 			element : "#line1",
@@ -167,7 +166,7 @@ function introJsFunction() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#demoDiv').removeClass('visibility-hidden');
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$('.introjs-tooltip').removeClass('hide');
+				//$('.introjs-tooltip').removeClass('hide');
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'This code demonstrate the usage of <span class="ct-code-b-yellow">comma</span> and ' +
 								'<span class="ct-code-b-yellow">sizeof()</span> operators.</span>';

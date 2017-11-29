@@ -20,8 +20,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 
-<!-- <script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/usage-of-hash-define.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script>
 <title>Usage of #define</title>
 </head>
 <style>

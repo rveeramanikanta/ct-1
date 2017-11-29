@@ -572,7 +572,7 @@ div, span, tr, td {
 
 
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

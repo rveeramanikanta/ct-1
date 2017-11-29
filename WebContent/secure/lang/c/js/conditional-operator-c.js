@@ -48,9 +48,9 @@ var conditionalOperatorReady = function() {
 		introjs.refresh();
 		
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 	});
 }
@@ -74,11 +74,13 @@ function introJsFunction() {
 		},
 		{
 			element : "#num1Line",
-			intro : ""
+			intro : "",
+			tooltipClass: 'hide'
 		},
 		{
 			element : "#num2Line",
-			intro : ""
+			intro : "",
+			tooltipClass: 'hide'
 		},
 		{
 			element : "#maxLine",
@@ -266,6 +268,7 @@ function introJsFunction() {
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-duplicate-nextbutton").remove()
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$('.introjs-tooltip').removeClass('hide');
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'We can change the value of <span class="ct-code-b-yellow">num1</span>.';
 				typingInterval = typing_interval;
@@ -281,6 +284,7 @@ function introJsFunction() {
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-duplicate-nextbutton").remove();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$('.introjs-tooltip').removeClass('hide');
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'We can change the value of <span class="ct-code-b-yellow">num2</span>.';
 				typingInterval = typing_interval;

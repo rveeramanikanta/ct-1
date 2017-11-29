@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<!-- <script src="/secure/lang/c/js-min/sopf.min.js" type="text/javascript"></script> -->
-<script type="text/javascript" src="/secure/lang/c/js/samle-of-printf.js"></script>
+<script src="/secure/lang/c/js-min/sopf.min.js" type="text/javascript"></script>
 <title>sample program with printf</title>
 </head>
 <style>

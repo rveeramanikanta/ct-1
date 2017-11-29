@@ -16,8 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="../js-min/brso.min.js"></script> -->
-<script src="../js/bitwise-right-shift-operator.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/brso.min.js"></script>
 <title>Right shift</title>
 <style>
 
@@ -31,6 +30,8 @@
 .information-div {
 	min-height: 70px;
 	border-radius: 10px;
+	font-family: monospace;
+	padding: 4px;
 }
 
 .animation-div {

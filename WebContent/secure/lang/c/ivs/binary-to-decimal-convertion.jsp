@@ -14,9 +14,8 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<!-- <script src="/secure/lang/c/js-min/btdc.min.js"></script> -->
-	<script src="/secure/lang/c/js/binary-to-decimal-convertion.js"></script>
 	<link rel="/css/animate.css"/>
+	<script src="/secure/lang/c/js-min/btdc.min.js"></script>
 	<title>Binary to Decimal</title>
 </head>
 

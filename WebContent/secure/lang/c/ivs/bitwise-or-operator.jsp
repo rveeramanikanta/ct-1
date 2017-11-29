@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/boo.min.js"></script> -->
-<script src="../js/bitwise-or-operator.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/boo.min.js"></script>
 <title>Bitwise OR</title>
 
 <style>

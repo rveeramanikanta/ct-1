@@ -17,8 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/blso.min.js"></script> -->
-<script src="../js/bitwise-left-shift-operator.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/blso.min.js"></script>
 <title>Left shift</title>
 <style>
 
@@ -40,6 +39,7 @@
 .information-div {
 	min-height: 70px;
 	border-radius: 10px;
+	font-family: monospace;
 }
 
 .animation-div {
@@ -207,7 +207,7 @@ table {
 				style="margin-left: 20px;"/>
 				 <span id="shift1">&emsp; << &emsp;</span> 
 				<input type="text" id="shiftNum" class="input-text opacity00" contenteditable="true" 
-				maxlength="2" placeholder="eg: 0 to 7"><span id="shiftSpan"></span>
+				maxlength="2" placeholder="eg: 8"><span id="shiftSpan"></span>
 			</input> (position)
 		</div>
 	</div>

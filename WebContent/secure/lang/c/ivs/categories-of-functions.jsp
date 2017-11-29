@@ -15,8 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/cof.min.js"></script> -->
-<script src="/secure/lang/c/js/categories-of-functions.js"></script>
+<script src="/secure/lang/c/js-min/cof.min.js"></script>
 
 <title>Function categories</title>
 

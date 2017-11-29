@@ -15,8 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/spofsc.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/sample-progaram-on-functions-sin-cos.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/spofsc.min.js" type="text/javascript"></script>
 
 <title>Sample program on functions</title>
 <style type="text/css">
