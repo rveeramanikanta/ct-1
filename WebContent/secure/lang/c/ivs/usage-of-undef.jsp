@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 
-<script src="/secure/lang/c/js/usage-of-undef.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/uoud.min.js" type="text/javascript"></script>
 <title>Usage of undef</title>
 </head>
 <style>
@@ -124,7 +124,7 @@
 .ct-code-b-green1 {
 	font-family: monospace;
 	font-weight: bold;
-	color: #0f0;
+	color: yellow;
 }
 
 #typewritingId {

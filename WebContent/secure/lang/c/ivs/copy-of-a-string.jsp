@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/coas.min.js"></script> -->
-<script src="/secure/lang/c/js/copy-of-a-string.js"></script>
+<script src="/secure/lang/c/js-min/coas.min.js"></script>
 
 <title>Copy of a string</title>
 <style>

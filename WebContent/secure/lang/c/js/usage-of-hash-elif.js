@@ -148,7 +148,7 @@ var usageOfHashElifReady = function() {
 				},{
 					element :'#restartBtn',               
 					intro :'',
-					position:"bottom"
+					position:"right"
 				}]
 	});
 	
@@ -181,6 +181,14 @@ var usageOfHashElifReady = function() {
 				$("#foregroundId").text("FOREGROUND");
 			}
 			break;
+		case 'defineValue':
+			if (intro._currentStep == 12 && intro._direction == "forward") {
+				$('#defineValue').removeClass('opacity00');
+			} else if (intro._currentStep == 20 && intro._direction == "forward") {
+				$("#defineValue").text("#define BACKGROUND 6");
+			}
+			$("#foregroundId").text("FOREGROUND");
+		break;
 		}
 	});
 	intro.onafterchange(function(targetElement) {
@@ -331,57 +339,66 @@ var usageOfHashElifReady = function() {
 			$('.introjs-nextbutton').hide();
 			if(intro._currentStep == 7) {
 				$('.introjs-helperLayer').one('transitionend', function() {
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+					if (intro._direction=="forward") {
+						t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#foregroundId").text("6");
 						intro.refresh();
+						t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						}});
 					}});
-					
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
-						}, 500);
-					}});
-				});
-				break;
+				} else {
+					$("#foregroundId").text("FOREGROUND");
+					intro.refresh();
+					setTimeout(function() {
+						intro.previousStep()
+					}, 500);
+				}
+			});
+			break;
 				
 			} else if(intro._currentStep == 15) {
 				$('.introjs-helperLayer').one('transitionend', function() {
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#foregroundId").text("0");
+					if (intro._direction=="forward") {
+						t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#foregroundId").text("0");
+							intro.refresh();
+							t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								setTimeout(function() {
+											intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#foregroundId").text("FOREGROUND");
 						intro.refresh();
-					}});
-					
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					}});
+					}
 				});
 				break;
 			} else if(intro._currentStep == 24) {
 				$('.introjs-helperLayer').one('transitionend', function() {
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#foregroundId").text("1");
+					if (intro._direction=="forward") {
+						t1.to("#foregroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#foregroundId").text("1");
+							intro.refresh();
+							t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								setTimeout(function() {
+										intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#foregroundId").text("FOREGROUND");
 						intro.refresh();
-					}});
-					
-					t1.to("#foregroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					}});
+					}
 				});
 			}
 			break;
@@ -413,43 +430,54 @@ var usageOfHashElifReady = function() {
 			if(intro._currentStep == 11) {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#consoleId").removeClass("opacity00");
-					typing("#typeChar", "result is : <span class='ct-code-b-green'>6</span>", 1, "",function() {
+					if (intro._direction=="forward") {
+						typing("#typeChar", "result is : <span class='ct-code-b-green'>6</span>", 1, "",function() {
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						});
+					} else {
+						$("#foregroundId").text("6");
+						$("#consoleId, #defineValue").addClass("opacity00");
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					});
+					}
 				});
 				break;
 			} else if(intro._currentStep == 19) {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#consoleId").removeClass("opacity00");
-					typing("#typeChar", "result is : <span class='ct-code-b-green'>0</span>", 1, "",function() {
+					if (intro._direction=="forward") {
+						typing("#typeChar", "result is : <span class='ct-code-b-green'>0</span>", 1, "",function() {
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						});
+					} else {
+						$("#foregroundId").text("0");
+						$("#defineValue").text("#define BACKGROUND 7");
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					});
+					}
 				});
 				break;
 			} else if(intro._currentStep == 28) {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#consoleId").removeClass("opacity00");
-					typing("#typeChar", "result is : <span class='ct-code-b-green'>1</span>", 1, "",function() {
-						setTimeout(function() {
-							if (intro._direction=="forward") {
+					if (intro._direction=="forward") {
+						typing("#typeChar", "result is : <span class='ct-code-b-green'>1</span>", 1, "",function() {
+							setTimeout(function() {
 									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							}, 500);
+						});
+					} else {
+						$("#foregroundId").text("1");
+						setTimeout(function() {
+							intro.previousStep()
 						}, 500);
-					});
+					}
 				});
 				break;
 			}

@@ -3,7 +3,7 @@ var typingInterval = 1;
 var tl = new TimelineLite();
 var sopLineCount = 1;
 var count = 0;
-
+var printVal = $('#number3').text();
 var printfWithZeroReady = function() {
 	intro = introJs();
 	intro.setOptions({
@@ -54,8 +54,7 @@ var printfWithZeroReady = function() {
 				element :'#sopLine3',
 				intro :'',
 				//tooltipClass : "hide",
-				animateStep: "printAvalueWithLoss",
-				position:"left"
+				animateStep: "printAvalueWithLoss"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -229,13 +228,14 @@ var printfWithZeroReady = function() {
 						
 						case"printAvalueWithLoss" :
 						//	$('.introjs-tooltip').removeClass('hide');
+							printVal = $('#number3').text();
 							$('[contenteditable = "false"]').attr('contenteditable', 'true');
 							text = 'The <span class="ct-code-b-yellow">printf</span> statement is trying to '+
 									' print the value <span class="ct-code-b-yellow">54</span> stored in '+
 									'the variable <span class="ct-code-b-yellow">a</span>,'+
-									' using <span class = "ct-code-b-yellow">%0<span class = "keyValue">6</span>d</span>.'+
+									' using <span class = "ct-code-b-yellow">%0<span class = "keyValue">' + printVal+ '</span>d</span>.'+
 									'<br/><br/> You can also change the value of field width'+
-									' <span class="ct-code-b-yellow keyValue">6</span> to any other value.';
+									' <span class="ct-code-b-yellow keyValue">' + printVal+ '</span> to any other value.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 								$("#number" + sopLineCount).effect( "highlight",{color: 'yellow'});
 								caretAtEnd(document.getElementById('number' + sopLineCount));
@@ -552,9 +552,9 @@ function changeValue(id1, id2) {
 		}
 		intro.refresh();
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 	});
 } 

@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 
-<script src="/secure/lang/c/js/usage-of-double-hash.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/uodh.min.js" type="text/javascript"></script>
 <title>Usage of ##</title>
 </head>
 <style>

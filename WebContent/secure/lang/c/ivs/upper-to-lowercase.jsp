@@ -156,10 +156,6 @@
     z-index: 9999999;
 }
 
-.creamPreTab4 {
-	height: 180px;
-}
-
 .padding0 {
 	padding: 0px;
 }
@@ -191,7 +187,9 @@
   background-color: #000;
   color: yellow;
 }
-
+.output-console-body {
+    white-space: initial;
+    }
 </style>
 <body>
 <div class="col-xs-12 text-center">
@@ -210,9 +208,9 @@
 <span id='line1'>#include &lt;stdio.h&gt;</span>
 <span id='line2'>main()</span> {
  <span id='line3'>char ch;</span>
- <span id='line4'>printf( “ Enter an uppercase letter : “);</span>
- ch=<span id='line5'>getchar( );</span>
- <span id='line6'>printf (“ \n The lowercase letter of %c is : “, ch);</span>
+ <span id='line4'>printf("Enter an uppercase letter : ");</span>
+ ch=<span id='line5'>getchar();</span>
+ <span id='line6'>printf ("\nThe lowercase letter of %c is : ", ch);</span>
  <span id='line7'>ch = ch + 32;</span>
  <span id='line8'>putchar(ch);</span>
 <span id='line9'>}</span>
@@ -227,7 +225,7 @@
 						<div class="panel-heading">ch</div>
 						<div class="panel-body"><span id="panelBodyUpperCaseId" class="panel-uppercase" style=" position: relative; display: inline-block"></span></div>
 					</div>
-					<span id="addressId" class="visibility-hidden panel-heading">1024</span>
+					<span id="addressId" class="visibility-hidden panel-heading">2046</span>
  				</div>
      	 	</div>
      	 	<div class="col-xs-2">

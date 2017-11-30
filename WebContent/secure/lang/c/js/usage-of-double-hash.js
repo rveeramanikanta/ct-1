@@ -56,6 +56,7 @@ var usageOfDoubleHashReady = function() {
 				},{
 					element :'#consoleId',               
 					intro :'',
+					tooltipClass: 'hide',
 					position:"bottom"
 				},{
 					element :'#restartBtn',               
@@ -67,19 +68,14 @@ var usageOfDoubleHashReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-			
+		case "titleName":
+			$("#preBody").addClass("opacity00");
+		break;
 		case "line3" :
 			$("#consoleId").addClass("opacity00");
 			break;
 			
 		case "connectId" :
-			
-			if(intro._currentStep == 3) {
-				$("#connectId").text("CONNECT(5, 6)");
-				
-			} else if(intro._currentStep == 6) {
-				$("#connectId").text("5##6");
-			}
 			break;
 			
 		case "consoleId" :
@@ -160,40 +156,47 @@ var usageOfDoubleHashReady = function() {
 			$('.introjs-nextbutton').hide();
 			if(intro._currentStep == 3) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#connectId").text("5##6");
-					}});
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					if (intro._direction=="forward") {
+						t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#connectId").text("5##6");
+							t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								intro.refresh();
+								setTimeout(function() {
+									intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#connectId").text("CONNECT(5, 6)");
 						intro.refresh();
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					}});
+					}
 					
 				});
 				
 			} else if(intro._currentStep == 6) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#connectId").text("56");
-					}});
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					if (intro._direction=="forward") {
+						t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#connectId").text("56");
+							t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								intro.refresh();
+								setTimeout(function() {
+									intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#consoleId").addClass("opacity00");
+						$("#connectId").text("5##6");
+						$('#typeChar').text('');
 						intro.refresh();
 						setTimeout(function() {
-							if (intro._direction=="forward") {
-									intro.nextStep()
-							} else {
-								intro.previousStep()
-							}
+							intro.previousStep()
 						}, 500);
-					}});
+					}
 				});
 			}
 			break;
@@ -203,6 +206,7 @@ var usageOfDoubleHashReady = function() {
 			$("#consoleId").removeClass("opacity00");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing("#typeChar", "result is : <span class='ct-code-b-yellow'>56</span>", 1, "",function() {
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", "The result <span class='ct-code-b-yellow'>56</span> is printed on to the output screen.", 1, "",function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});

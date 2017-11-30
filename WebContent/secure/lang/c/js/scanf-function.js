@@ -101,7 +101,7 @@ function introGuide() {
 			if (introjs._currentStep == 5) {
 				$("#inputVal").text("");
 			} else if (introjs._currentStep == 7) {
-				$("#space0").removeAttr("style").addClass("opacity00");
+				$("#space0").removeAttr("style");
 				$("[data-toggle='popover']").popover("hide");
 			} else {
 				$("#givenNum2").css('opacity', '0');
@@ -305,6 +305,7 @@ function introGuide() {
 				$("#popoverContent1").text($("#val0").text());
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$('#val0').css("border", "none");
+					$('#space0').html('&nbsp;');
 					if (introjs._direction=="forward") {
 						$('#val0').effect( "transfer", { to: $("#space0"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#space0').css('border', '1px solid yellow');
@@ -459,7 +460,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#space0').css('border', '1px solid black')
 				$('#space0').css('color', 'black');
-				$("#space0").removeClass("opacity00");
+				//$("#space0").removeClass("opacity00");
 				var text = "This <span class='ct-code-b-yellow'>space</span> is used by <span class='ct-code-b-yellow'>scanf()</span> " 
 							+ " to understand that the first input number has terminated and what follows next is a next input number.";
 				typing(".introjs-tooltiptext", text, function() {

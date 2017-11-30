@@ -18,7 +18,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/scanf-space.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/ss.min.js" type="text/javascript"></script>
 
 <title>scanf() with space</title>
 

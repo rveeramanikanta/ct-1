@@ -19,8 +19,7 @@ var printfWithFieldWidthReady = function() {
 				tooltipClass : "hide"
 			},{
 				element :'#program',
-				intro :'',
-				tooltipClass : "hide"
+				intro :''
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
@@ -133,7 +132,7 @@ var printfWithFieldWidthReady = function() {
 				}
 				
 				if (intro._introItems[intro._currentStep]["isCompleted"]) {
-					if (intro._currentStep != 0) {
+					if (intro._currentStep != 0 && intro._currentStep != 1) {
 						$('.introjs-prevbutton').show();
 					}
 					$('.introjs-nextbutton').show();
@@ -153,9 +152,8 @@ var printfWithFieldWidthReady = function() {
 					$("#codeDiv, #animationDiv, #outputDiv").removeClass("opacity00");
 					$("#printfDefinition").addClass("z-index1000000");
 					$('[contenteditable="true"]').attr('contenteditable', 'false');
-					$('.introjs-tooltip').removeClass('hide');
-					text = 'We will learn how the <span class = "ct-code-b-yellow">printf()</span> function works with'+
-							+ ' and without <span class = "ct-code-b-yellow">field_width</span>'+
+					text = 'We will learn how the <span class = "ct-code-b-yellow">printf()</span> function works with'
+							+ ' and without <span class = "ct-code-b-yellow">field_width</span>'
 							+ ' format characters.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 						$('.introjs-nextbutton').show();

@@ -17,8 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/cos.min.js"></script> -->
-<script src="/secure/lang/c/js/concatination-of-strings.js"></script>
+<script src="/secure/lang/c/js-min/cos.min.js"></script>
 
 <title>Concatenation of strings</title>
 </head>

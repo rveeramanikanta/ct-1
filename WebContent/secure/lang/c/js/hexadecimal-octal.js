@@ -825,6 +825,7 @@ var hexadecimalOctalReady = function() {
 		
 		case "restartBtn":
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '125px');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing('.introjs-tooltiptext', "Click to restart.", function() {

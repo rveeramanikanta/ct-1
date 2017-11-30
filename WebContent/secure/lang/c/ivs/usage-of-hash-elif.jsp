@@ -14,13 +14,14 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/usage-of-hash-elif.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
+
+<script src="/secure/lang/c/js-min/uohe.min.js" type="text/javascript"></script>
 <title>Usage of elif</title>
 </head>
 <style>
@@ -118,7 +119,7 @@
 .ct-code-b-green {
 	font-family: monospace;
 	font-weight: bold;
-	color: #0f0;
+	color: yellow;
 }
 
 #typewritingId {

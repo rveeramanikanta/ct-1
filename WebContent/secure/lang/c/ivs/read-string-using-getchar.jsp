@@ -19,8 +19,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<!-- <script src="/secure/lang/c/js-min/rsug.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/read-string-using-getchar.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/rsug.min.js" type="text/javascript"></script>
 
 <title>Print Character Program</title>
 </head>

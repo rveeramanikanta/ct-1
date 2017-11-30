@@ -133,6 +133,9 @@
 .introjs-fixParent {
 	position: relative !important;
 }
+#typingDiv{
+font-family:monospace;
+}
 </style>
 </head>
 <body>
@@ -186,7 +189,7 @@
 						<div class="output-console-body" id="consoleBodyDiv1">
 							<span id="lineOne" class="opacity00">I am learning C.</span><br>
 							<span id='line-two-cursor'></span><span id='lineTwo'></span>
-							<div id='lineThree'><span id = "3"></span></div>
+							<div id='lineThree'><span id = "3"></span></span><span id = "31"></span></span></div>
 						</div>
 					</div>
 				</div>

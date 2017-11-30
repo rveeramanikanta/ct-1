@@ -14,7 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/hexadecimal-octal.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/ho.min.js" type="text/javascript"></script>
 
 <title>hexadecimal to octal</title>
 </head>
@@ -89,9 +89,10 @@
 }
 #informationdiv {
     border-radius: 0px;
-    height:85px;
+    min-height:105px;
     margin-top: 20px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {

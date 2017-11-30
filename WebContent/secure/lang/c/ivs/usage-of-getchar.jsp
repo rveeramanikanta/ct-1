@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src='/secure/lang/c/js/usage-of-getchar.js'></script>
+<script src='/secure/lang/c/js-min/uog.min.js'></script>
 
 <title>usage of getchar()</title>
 </head>
@@ -240,7 +240,7 @@ color:yellow;
 	<div class="col-xs-offset-1 col-xs-6">
 	<pre id="preTableDiv" class="creamPreTab4 opacity00">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="line2">char</span><span id="line3"> ch</span>;
 	<span id="line4">ch = getchar();</span>
 	<span id="line5">printf("The given input character is : %c", ch);</span>
@@ -263,7 +263,7 @@ void main () {
 		<div class="col-xs-offset-1 col-xs-6">
 	<pre id="preTableDiv2" class="creamPreTable2 opacity00">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="preline1">int ascii_code = getchar();</span>
 	<span id="preline2">printf("The ascii_code read from input is : %d \n", ascii_code);</span>
 	<span id="preline3">printf("The character represented by ascii_code is : %c \n", ascii_code);</span>

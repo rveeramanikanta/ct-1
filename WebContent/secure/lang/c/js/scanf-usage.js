@@ -529,7 +529,7 @@ function scanfUsageReady() {
 			
 			
 			case "restart":
-				$(".introjs-tooltip").css("min-width", "200px");
+				$(".introjs-tooltip").css("min-width", "130px");
 				$('.introjs-nextbutton').hide();
 				$('#restart').removeClass('opacity00');
 				$('.introjs-helperLayer ').one('transitionend', function() {

@@ -45,7 +45,7 @@
 	height: 143px;
 	overflow: auto;
 	padding: 10px;
-	white-space: pre-line;
+	white-space: initial;
 }
 
 .introjs-tooltiptext br {
@@ -207,10 +207,10 @@
 <span id='line1'>#include &lt;stdio.h&gt;</span>
 <span id='line2'>main()</span> {
  <span id='line3'>char ch;</span>
- <span id='line4'>printf ( “ Enter a Character : “);</span>
- ch=<span id='line5'>getchar ( );</span>
- <span id='line6'>printf (“ \n The entered character is : “);</span>
- <span id='line7'>putchar ( ch );</span>
+ <span id='line4'>printf("Enter a Character : ");</span>
+ ch=<span id='line5'>getchar( );</span>
+ <span id='line6'>printf("\nThe entered character is : ");</span>
+ <span id='line7'>putchar(ch);</span>
 <span id='line8'>}</span>
 </pre>
 </div>
@@ -223,7 +223,7 @@
 						<div class="panel-heading">ch</div>
 						<div class="panel-body visibility-hidden" id="panelBody"></div>
 					</div>
-					<span id="addressId" class="visibility-hidden">1024</span>
+					<span id="addressId" class="visibility-hidden">5206</span>
  				</div>
      	 	</div>
      	 	<div class="col-xs-2">
@@ -247,7 +247,7 @@
 			<div class="output-console-body" id="consoleBodyDiv">
 				<span id="typeChar"></span>
 					<span id="hiddenTypingChar" class="hidden">Enter a Character : <input id='inputChar' maxlength='1' class='input-char' tabindex='0' /></span>
-				<span id="totalEnterChar" ></span>
+				<br><span id="totalEnterChar" ></span>
 				<span id="enterHiddenToltal" class="hidden">The entered character is : <input id="hiddenTotalEnterChar" maxlength='1' class='input-char' tabindex='0' /></span>
 			</div>
 		</div>

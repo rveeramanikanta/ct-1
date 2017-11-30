@@ -14,8 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/ddt.min.js"></script> -->
-<script src="/secure/lang/c/js/double-data-type.js"></script>
+<script src="/secure/lang/c/js-min/ddt.min.js"></script>
 
 <title>double data-type</title>
 <style>
@@ -197,6 +196,10 @@
 	margin-bottom: 5px;
 	text-align: center;
 }
+
+.introjs-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>
@@ -214,7 +217,7 @@ $(document).ready(function() {
 	<div class = 'buttons-div'>
 		<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
 	</div> 
-		<div class = 'col-xs-offset-2 col-xs-8 main-div padding10' id = 'mainDiv'>
+		<div class = 'col-xs-offset-2 col-xs-8 main-div padding10' id = 'mainDiv' style="font-family: monospace;">
 			<span id = 'typing1' class = 'padding10'></span>
 			<div class = 'box-div col-xs-12 ' id = 'boxDiv'>
 				<div class = "border-box opacity00 padding2" id = "box0"></div>

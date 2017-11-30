@@ -88,8 +88,7 @@ function introJsFunction() {
 		},
 		{
 			element : "#restartBtn",
-			intro : "Click to Restart",
-			tooltipClass: "introjs-tooltip-min-width-custom",
+			intro : "Click to restart",
 			position : "right"
 		}
 		]});
@@ -176,6 +175,7 @@ function introJsFunction() {
 					introjsDynamicStep('#chValue', '', 'top', '');
 					chValueChanged = true;
 				}
+				$('.output-console-body').scrollTo('br:last', 200);
 				var selector = $('.output-console-body > .visibility-hidden').eq(0);
 				var typingContent = selector.removeClass('visibility-hidden').html();
 				typing(selector, typingContent, 30, 'white', function() {
@@ -186,6 +186,7 @@ function introJsFunction() {
 			});
 			break;
 		case "restartBtn":
+			$('.introjs-tooltip').css('min-width', '125px');
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});
@@ -259,7 +260,7 @@ function charFunction2() {
 }
 function skipRestart() {
 	$("#skipbutton").remove();
-	introjsDynamicStep('#restartBtn', 'Click here to restart', 'right', '');
+	introjsDynamicStep('#restartBtn', 'Click to restart', 'right', '');
 	introjs.goToStep(introjs._introItems.length);
 }
 function charFunction3() {

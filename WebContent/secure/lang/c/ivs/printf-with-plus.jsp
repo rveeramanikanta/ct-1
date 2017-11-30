@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/printf-with-plus.js"></script>
+<script src="/secure/lang/c/js-min/pwp.min.js"></script>
 
 <title>printf.jsp</title>
 
@@ -26,10 +26,6 @@
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
 }
 
 .introjs-duplicate-nextbutton {
@@ -70,6 +66,7 @@ div,span {
 
 #printfDefinition {
 	line-height: 1.5;
+	font-family: monospace;
 }
 
 [contenteditable="true"] {
@@ -203,6 +200,10 @@ div,span {
     padding: 2px;
 }
 
+.introjs-tooltip-min-width-custom {
+	min-width: 125px;
+}
+
 </style>
 </head>
 <body>
@@ -215,7 +216,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12">
-				<div id="printfDefinition" class="col-xs-6 col-xs-offset-3">
+				<div id="printfDefinition" class="col-xs-8 col-xs-offset-2">
 				<ul><li id="text1" class="opacity00">We have another formatting character called 
 					<span class="ct-code-b-green">+</span>(<span class="ct-code-b-green">plus</span>), 
 					 which can be used along with the 

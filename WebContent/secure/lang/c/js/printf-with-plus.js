@@ -4,7 +4,8 @@ var tl = new TimelineLite();
 var sopLineCount = 1;
 var count = 0;
 var plusCount = 1;
-
+var keyVal = $('#number3').text();
+var keyVal1 = $('#number4').text();
 var printfWithPlusReady = function() {
 	intro = introJs();
 	intro.setOptions({
@@ -20,7 +21,6 @@ var printfWithPlusReady = function() {
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -28,7 +28,6 @@ var printfWithPlusReady = function() {
 			},{
 				element :'#sopLine1',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "decimal"
 			},{
 				element :'#outputDiv',
@@ -39,7 +38,6 @@ var printfWithPlusReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "plusSpace"
 			},{
 				element :'#outputDiv',
@@ -50,7 +48,7 @@ var printfWithPlusReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				//tooltipClass : "hide",
+				tooltipClass: 'hide',
 				animateStep: "plusWithSpace"
 			},{
 				element :'#outputDiv',
@@ -61,7 +59,7 @@ var printfWithPlusReady = function() {
 			},{
 				element :'#sopLine4',
 				intro :'',
-				//tooltipClass : "hide",
+				tooltipClass: 'hide',
 				animateStep: "plusWithZero"
 			},{
 				element :'#outputDiv',
@@ -82,13 +80,7 @@ var printfWithPlusReady = function() {
 			switch (elementId) {
 				case "VariableDeclararion" :
 					$("#numberDiv1").addClass("opacity00");
-					
 				break;
-				
-				case "animationDiv" :
-					
-				break;
-				
 				case "sopLine" + sopLineCount :
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
@@ -150,7 +142,7 @@ var printfWithPlusReady = function() {
 					}
 					
 					if (intro._introItems[intro._currentStep]["isCompleted"]) {
-						if (intro._currentStep != 0) {
+						if (intro._currentStep != 0 && intro._currentStep != 1) {
 							$('.introjs-prevbutton').show();
 						}
 						$('.introjs-nextbutton').show();
@@ -223,15 +215,16 @@ var printfWithPlusReady = function() {
 							
 						case "plusWithSpace" :
 							$('[contenteditable = "false"]').attr('contenteditable', 'true');
-							//$('.introjs-tooltip').removeClass('hide');
+							$('.introjs-tooltip').removeClass('hide');
+							keyVal = $('#number3').text();
 							text = 'The <span class="ct-code-b-yellow">printf</span> statement is trying to '
 									+ ' print the value <span class="ct-code-b-yellow">64</span>, using  '
 									+ ' <span class="ct-code-b-yellow">+</span> symbol as well as '
 									+ ' <span class="ct-code-b-yellow">field width</span> of '
-									+ ' <span class="ct-code-b-yellow"><span class = "keyValue">6</span></span> '
-									+ ' specified in <span class = "ct-code-b-yellow">%+<span class = "keyValue">6</span>d</span>.'
+									+ ' <span class="ct-code-b-yellow"><span class = "keyValue"> ' + keyVal + '</span></span> '
+									+ ' specified in <span class = "ct-code-b-yellow">%+<span class = "keyValue">' + keyVal + '</span>d</span>.'
 									+ ' <br/><br/> You can also change the value of field width'
-									+ ' <span class = "ct-code-b-yellow keyValue">6</span> to any other value.';
+									+ ' <span class = "ct-code-b-yellow keyValue">' + keyVal + '</span> to any other value.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 								$("#number" + sopLineCount).effect( "highlight",{color: 'yellow'});
 								caretAtEnd(document.getElementById('number' + sopLineCount));
@@ -243,13 +236,14 @@ var printfWithPlusReady = function() {
 						
 						case "plusWithZero" :
 							$('[contenteditable = "false"]').attr('contenteditable', 'true');
-							//$('.introjs-tooltip').removeClass('hide');
+							keyVal1 = $('#number4').text();
+							$('.introjs-tooltip').removeClass('hide');
 							text = 'The <span class="ct-code-b-yellow">printf</span> statement is trying to '
 									+ ' print the value <span class="ct-code-b-yellow">64</span> using the '
 									+ ' format specifier <span class = "ct-code-b-yellow">%+0'
-									+ ' <span class = "keyValue">6</span>d</span>.'
+									+ ' <span class = "keyValue">' + keyVal1 + ' </span>d</span>.'
 									+ ' <br/><br/> You can also change the value of field width'
-									+ ' <span class = "ct-code-b-yellow">6</span> to any other value.';
+									+ ' <span class = "ct-code-b-yellow keyValue">' + keyVal1 + '</span> to any other value.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 								$("#number" + sopLineCount).effect( "highlight",{color: 'yellow'});
 								caretAtEnd(document.getElementById('number' + sopLineCount));
@@ -295,9 +289,10 @@ var printfWithPlusReady = function() {
 							setTimeout(function() {
 							if (intro._direction=="forward") {
 								$('.introjs-tooltip').removeClass('hide');
+								keyVal = $('#number3').text();
 								text = 'Since, the number of characters of the digits in '
 										+ ' <span class = "ct-code-b-yellow">64</span> '
-										+ ' is lesser than the field width <span class = "ct-code-b-yellow">6</span>, '
+										+ ' is lesser than the field width <span class = "ct-code-b-yellow keyValue">' + keyVal + '</span>, '
 										+ ' the remaining positions will be padded with'
 										+ ' <span class = "ct-code-b-yellow">spaces</span>.<br/><br/>'
 										+ ' We will also notice that the number will'
@@ -606,7 +601,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 //Allow only numbers,Condition to  enter text, change the array values, Display error message & Fill all the array elements
 function changeValue(id1, id2) {
 	$(id1).on("keydown", function(e) {
-		$(".keyValue").text($(id1).text());
+		//$(".keyValue").text($(id1).text());
 		$('.error-text').remove();
 		var max = $(this).attr("maxlength");
 		if ($.inArray(e.keyCode, [46, 8, 9, 27, 37, 39]) !== -1) {

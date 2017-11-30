@@ -19,11 +19,9 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#program',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -31,7 +29,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine1',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -39,7 +36,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -47,7 +43,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -63,15 +58,8 @@ var printfWithPercentageDReady = function() {
 		var elementId = targetElement.id;
 		
 			switch (elementId) {
-				case "program" :
-					
-				break;
-				
 				case "VariableDeclararion" :
 					$("#numberDiv1").addClass("opacity00");
-				break;
-				case "animationDiv" :
-					
 				break;
 				case "sopLine" + sopLineCount  :
 					if (intro._currentStep == 4) {
@@ -82,24 +70,9 @@ var printfWithPercentageDReady = function() {
 						if (intro._direction == "backward") {
 							$("#outputtext2").addClass("opacity00");
 							$("#outputAValue2").text("");	
-							}
-					} else  if (intro._currentStep == 8) {
-						
+						}
 					}
 				break;
-				case "outputDiv" :
-					if (intro._currentStep == 5) {
-						
-					} else if (intro._currentStep == 7) {
-						
-					} else if (intro._currentStep == 9) {
-						
-					}
-				break;
-				case "sopLine3":
-					
-				break;
-				
 			}
 	});
 	intro.onafterchange(function(targetElement){
@@ -111,7 +84,7 @@ var printfWithPercentageDReady = function() {
 				}
 				
 				if (intro._introItems[intro._currentStep]["isCompleted"]) {
-					if (intro._currentStep != 0) {
+					if (intro._currentStep != 0 && intro._currentStep != 1) {
 						$('.introjs-prevbutton').show();
 					}
 					$('.introjs-nextbutton').show();
@@ -129,7 +102,6 @@ var printfWithPercentageDReady = function() {
 			switch (elementId) {
 				case "program" :
 					$("#printfDefinition").addClass("z-index1000000");
-					//$('.introjs-tooltip').removeClass('hide');
 					text = 'Here, we will learn how we can use the '
 							+ '<span class = "ct-code-b-yellow">%d</span> format character in '
 							+ ' <span class = "ct-code-b-yellow">printf()</span> function to '
@@ -150,24 +122,20 @@ var printfWithPercentageDReady = function() {
 					});
 				break;
 				case "animationDiv" :
-					setTimeout(function() {
-						if (intro._direction=="forward") {
-							transferEffect('#VariableDeclararion', '#numberDiv1', function() {
-							
-							
-						intro.nextStep()
-							});
-						} else {
-						intro.previousStep()
-						}
+					if (intro._direction=="forward") {
+						transferEffect('#VariableDeclararion', '#numberDiv1', function() {
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						});
+					} else {
+						setTimeout(function() {
+							intro.previousStep()
 						}, 500);
-					
-						
-					
+					}
 				break;
 				case "sopLine" + sopLineCount  :
 					if (intro._currentStep == 4) {
-					//	$('.introjs-tooltip').removeClass('hide');
 						text = 'The <span class="ct-code-b-yellow">printf()</span> function prints '
 								+ 'the value stored in the variable <span class="ct-code-b-yellow">a</span> '
 								+ 'using the <span class="ct-code-b-yellow">%d</span> format character'
@@ -176,14 +144,12 @@ var printfWithPercentageDReady = function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
 					} else if (intro._currentStep == 6 ) {
-						//$('.introjs-tooltip').removeClass('hide');
 						text = 'In this example we will learn how we can combain '
 								+ 'text and print the number at the end of the text.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
 					} else  if (intro._currentStep == 8) {
-					//	$('.introjs-tooltip').removeClass('hide');
 						text = 'In this <span class="ct-code-b-yellow">printf</span> statement '
 								+ 'we will learn how the <span class="ct-code-b-yellow">%d</span>'
 								+ ' format character can be in the middle of a text that is printed.';
@@ -331,6 +297,7 @@ function printDecimalValue() {
 					$("#text" + sopLineCount).effect( "transfer", { to: $("#outputtext"  + (sopLineCount + 1)), className: "ui-effects-transfer" }, 1500 , function() {
 					$("#text" + sopLineCount).removeClass("z-index1000000")
 					$("#outputtext"  + (sopLineCount + 1)).removeClass("visibility-hidden");
+					$("#addressValue1").removeClass("text-center circle-css z-index1000000");
 					setTimeout(function() {
 					sopLineCount++;
 					intro.nextStep();

@@ -1,4 +1,4 @@
-var typingSpeed = 5;
+var typingSpeed = 1;
 	var intro;
 	var i = -1;
 	var j = 0;

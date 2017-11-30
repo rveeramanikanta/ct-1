@@ -32,7 +32,7 @@ var floatInActionReady = function() {
 	        },
 	        {
 				element : '#intpart',
-				position : 'bottom',
+				position : 'right',
 				tooltipClass : 'hide',
 				intro : ''
 	        },
@@ -212,7 +212,7 @@ var floatInActionReady = function() {
 					typing('#step0',typingContent,function() {
 						$('#int2Div').fadeTo(1000,1,function() {
 							setTimeout(function() {
-								$('#int2Div').append('<div id=label><b>Decimal-To-Binary</b></div>');
+								$('#int2Div').append('<div id="label" style="font-family: monospace;"><b>Decimal-To-Binary</b></div>');
 								$("#label").append("&nbsp;<span id=declaration></span>");
 								typingContent = '<span id="floatDecimal">'+ leftVal+'</span>'
 								typing('#declaration',typingContent,function() {
@@ -379,10 +379,11 @@ var floatInActionReady = function() {
 			});
 		break;
 		case "restartBtn":
+			$('.introjs-tooltip').css('min-width', '125px');
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
-				typingContent = 'To restart, click on this button.'
+				typingContent = 'Click to restart.'
 				typing('.introjs-tooltiptext',typingContent,function() {
 				});
 			});

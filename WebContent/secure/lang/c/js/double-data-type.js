@@ -26,7 +26,7 @@ var doubleDataTypeReady = function() {
 	        },
 	        {
 				element : "#restartBtn",
-				intro : "Click to Restart",
+				intro : "Click to restart",
 				tooltipClass: "introjs-tooltip-min-width-custom",
 				position : "right"
 			}

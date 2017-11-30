@@ -32,7 +32,7 @@
 }
 
 .introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
+	min-width: 125px;
 }
 
 .introjs-duplicate-nextbutton {
@@ -149,7 +149,9 @@ div,span {
   width: 100%;
   border-width: 0px 0 0 0;
   background-color: #000;
-  color: #0f0;
+  color: yellow;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 

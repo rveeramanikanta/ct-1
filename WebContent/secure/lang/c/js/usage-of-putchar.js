@@ -309,7 +309,7 @@ function introGuide() {
 				$("#line6").removeClass("visibility-hidden", function() {
 					var text = "In this <span class='ct-code-b-yellow'>putchar()</span> function since an integer value is provided instead "+
 					"of a character constant , the integer value"+
-					" is treated as <span class='ct-color-gold'>ASCII</span> code and its corresponding character is printed to the console.";
+					" is treated as <span class='ct-code-b-yellow'>ASCII</span> code and its corresponding character is printed to the console.";
 					typing('.introjs-tooltiptext', text, function() {
 						$(".introjs-nextbutton,.introjs-prevbutton").show();
 						
@@ -331,10 +331,10 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#line8").removeClass("visibility-hidden");
 				typing('.introjs-tooltiptext', "Any integer placed without quotes in <span class='ct-code-b-yellow'>putchar()</span> that will " +
-						"be treated as <span class='ct-color-gold'>ASCII</span> value. " +
+						"be treated as <span class='ct-code-b-yellow'>ASCII</span> value. " +
 						"So the <span class='ct-code-b-yellow'>putchar()</span> converted the " +
-						"<span class='ct-color-gold'>ASCII</span> value into it's own character.<br>" +
-						"Here 56 is the <span class='ct-color-gold'>ASCII</span> value of 8.", function() {
+						"<span class='ct-code-b-yellow'>ASCII</span> value into it's own character.<br>" +
+						"Here 56 is the <span class='ct-code-b-yellow'>ASCII</span> value of 8.", function() {
 					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});

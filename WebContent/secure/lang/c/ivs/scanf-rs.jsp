@@ -18,7 +18,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/scanf-rs.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/sr.min.js" type="text/javascript"></script>
 
 <title>scanf() with Rs.</title>
 

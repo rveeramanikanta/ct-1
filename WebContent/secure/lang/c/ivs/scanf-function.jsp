@@ -18,7 +18,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/scanf-function.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/sf.min.js" type="text/javascript"></script>
 
 <title>scanf</title>
 

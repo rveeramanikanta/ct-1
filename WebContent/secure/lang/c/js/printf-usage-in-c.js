@@ -22,10 +22,15 @@ var printfUsageInCReady = function() {
 			element : "#typingDiv",
 			intro : "",
 			tooltipClass : "hide" 
+		/*}, {
+			element : "#typingDiv",
+			intro : "",
+			position : "bottom"*/
 		}, {
 			element : "#firstLine",
 			intro : "",
 			position : "right",
+			//tooltipClass:"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -35,6 +40,7 @@ var printfUsageInCReady = function() {
 			element : "#secondLine",
 			intro : "",
 			position : "right",
+			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -44,6 +50,7 @@ var printfUsageInCReady = function() {
 			element : "#thirdLine",
 			intro : "",
 			position : "right",
+			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -53,6 +60,7 @@ var printfUsageInCReady = function() {
 			element : "#fourthLine",
 			intro : "",
 			position : "right",
+			//tooltipClass :"hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -69,8 +77,8 @@ var printfUsageInCReady = function() {
 			case "firstLine":
 				$('#secondLine').addClass('opacity00');
 				if (intro._currentStep == 1) {
-					$('#lineOne').addClass('opacity00');
-					$('#firstLine').removeClass('opacity00');
+				$('#lineOne').addClass('opacity00');
+				$('#firstLine').removeClass('opacity00');
 				}
 				break;
 				
@@ -78,7 +86,9 @@ var printfUsageInCReady = function() {
 				$('#thirdLine').addClass('opacity00');
 			    $('#lineTwo').text("");
 				$('#secondLine').removeClass('opacity00');
+				
 				break;
+				
 			case "thirdLine":
 				$('#fourthLine').addClass("opacity00");
 				$("#3").text("");
@@ -135,7 +145,7 @@ var printfUsageInCReady = function() {
 			case "restart":
 				$('.introjs-nextbutton').hide();
 				$('#restart').removeClass('opacity00');
-				$('.introjs-tooltip').css('min-width','200px');
+				$('.introjs-tooltip').css('min-width','125px');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Click to restart.";
 			 		typing(".introjs-tooltiptext", text, function() {
@@ -237,7 +247,7 @@ var printfUsageInCReady = function() {
 										$('#lineTwo').append('C programming language is "easy". ').addClass('opacity00');
 										$('#cursorId').remove();
 										transferEffect($('#secondLine > span').eq(0),"#lineTwo",function() {
-											//$('#line-two-cursor').removeClass('opacity00');
+											
 											$('#lineThree').append('<div id="cursorId" class="outline-none" contenteditable="true" ></div>');
 											charAtEnd('cursorId');
 											$('#cursorId').keydown(function(e) {
@@ -260,7 +270,7 @@ var printfUsageInCReady = function() {
 					
 									if (intro._direction=="forward") {
 										transferEffect('#thirdLine > span',"#lineThree > span",function() {
-											
+											$('#lineThree >#31').empty();
 											$('#lineThree > span').append('<span id="cursorId" class="outline-none" contenteditable="true" ></span>');
 											charAtEnd('cursorId');
 											$('#cursorId').keydown(function(e) {
@@ -281,16 +291,19 @@ var printfUsageInCReady = function() {
 					break;
 					case "line4":
 						$('#cursorId').remove();
-						transferEffect('#fourthLine > span',$('#lineThree > #3').eq(0),function() {
-							$('#lineThree > span').eq(0).append('Line two.');
-							setTimeout(function() {
+						setTimeout(function() {
 								if (intro._direction=="forward") {
+									$('#lineThree > #31').eq(0).append('Line two.').addClass("opacity00")
+									transferEffect('#fourthLine > span',$('#lineThree > #31').eq(0),function() {
+										setTimeout(function() {
 										intro.nextStep()
+										}, 300);
+									});
 								} else {
 									intro.previousStep()
 								}
 							}, 500);
-						});
+						
 					break;
 					}
 				});

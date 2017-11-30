@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/printf-with-percentage-d.js"></script>
+<script src="/secure/lang/c/js-min/pwpd.min.js"></script>
 
 <title>printf.jsp</title>
 
@@ -25,10 +25,6 @@
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
 }
 
 .introjs-duplicate-nextbutton {
@@ -181,7 +177,13 @@ div,span {
     border-bottom: 1px solid green;
     margin: 0.6px;
 }
+#printfDefinition {
+	font-family:monospace;
+}
 
+.introjs-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>
@@ -194,7 +196,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12 margin-top">
-				<div class="col-xs-8 col-xs-offset-2 opacity00" id="printfDefinition" style="font-family: monospace;">
+				<div class="col-xs-7 col-xs-offset-3 opacity00" id="printfDefinition">
 					The <span class="ct-code-b-green">printf()</span> function with
 					<span class="ct-code-b-green">%d</span> format specifier is used to display 
 					an <span class="ct-code-b-green">integer</span> value.

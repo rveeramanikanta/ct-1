@@ -541,7 +541,7 @@ function introGuide() {
 			$("#popoverContent2").text( $("#val1").text() );
 			$('.introjs-tooltip').css('min-width', '128px');
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart." 
 				typing(".introjs-tooltiptext", text, function() {
 					$("#restart").removeClass("opacity00");
 					$("#restart").click(function() {

@@ -86,11 +86,11 @@ function introGuide() {
 			$("[data-toggle='popover']").popover("hide");
 			break;
 			
-			
+		case "addressDiv":
 		case "consoleId":
 				if (introjs._currentStep == 4) {
 				
-				} else if (introjs._currentStep == 6) {
+				} else if (introjs._currentStep == 6 || introjs._currentStep == 7) {
 					$("#givenNum1").text("");
 					$("#givenNum2").text("");
 					$("[data-toggle='popover']").popover("hide");
@@ -201,9 +201,6 @@ function introGuide() {
 						}, 500);
 					}});
 				} else {
-					
-					
-					 
 					$('#num1').effect( "transfer", { to: $("#scanNum1"), className: "ui-effects-transfer" }, 1000, function() {
 						$("#scanNum1").popover("show");
 						$("#popoverContent1").text( ($("#num1").val().substring(0, $("#num1").val().indexOf(" "))).substring(0,2) );
@@ -229,8 +226,8 @@ function introGuide() {
 							var l1 = $("#scanNum1").offset();
 							var l2 = $("#scanNum2").offset();
 							
-							$("#givenNum1").offset({"top": l1.top, "left": l1.left});
-							$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+							$("#givenNum1").offset({"top": l1.top, "left": l1.left}).css('opacity', '0');
+							$("#givenNum2").offset({"top": l2.top, "left": l2.left}).css('opacity', '0');
 							$("#dBlink1").addClass("blinking-white");
 							$("#dBlink1").addClass("zIndex");
 							
@@ -307,8 +304,13 @@ function introGuide() {
 							$("#num1").focus();
 							arr = [];
 							$('#num1').on("keydown", function(e) {
-								if (arr.length == 2) {
-									if (e.keyCode == 32) {
+								if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+									e.preventDefault();
+								}
+								if (arr.length == 1) {
+									var flag = false;
+									flag = $('#num1').val().indexOf(' ') >= 0;
+									if (e.keyCode == 32 && flag) {
 										e.preventDefault();
 									}
 								}
@@ -384,7 +386,7 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart." 
 				typing(".introjs-tooltiptext", text, function() {
 					$("#restart").removeClass("opacity00");
 					$("#restart").click(function() {

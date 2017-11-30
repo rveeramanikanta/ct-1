@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/printf-with-field-width.js""></script>
+<script src="/secure/lang/c/js-min/pwfw.min.js""></script>
 
 <title>printf.jsp</title>
 
@@ -26,10 +26,6 @@
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
 }
 
 .introjs-duplicate-nextbutton {

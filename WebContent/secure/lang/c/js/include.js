@@ -304,7 +304,6 @@ function introGuide() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					$(".blink-in-console").removeClass("blink");
 					$("#ct").removeClass("colorWhite");
-					$('.introjs-tooltiptext').css("");
 				});
 			});
 		 } else if (introjs._currentStep == 7) {
@@ -322,7 +321,6 @@ function introGuide() {
 				 typing($("#outputBody > #code"), text, function() {
 					 $("#ct").removeClass("colorWhite");
 					 $('.introjs-nextbutton, .introjs-prevbutton').show();
-					 $('.introjs-tooltiptext').css("");
 				});
 			});
 		 } else if (introjs._currentStep == 10) {
@@ -350,7 +348,6 @@ function introGuide() {
 					 $(".blink-in-console").addClass("blink");
 					// $("#printf2").removeClass("colorMain");
 					 $('.introjs-nextbutton, .introjs-prevbutton').show();
-					 $('.introjs-tooltiptext').css("");
 				 });
 			 });
 		 } else if (introjs._currentStep == 13){

@@ -130,7 +130,7 @@ var usageOfHashIfElseReady = function() {
 				},{
 					element :'#restartBtn',               
 					intro :'',
-					position:"bottom"
+					position:"right"
 				}]
 	});
 	intro.onbeforechange(function(targetElement) {

@@ -19,7 +19,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/usage-of-hash-if-else.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/uohie.min.js" type="text/javascript"></script>
 
 <title>Usage of if-else</title>
 </head>
@@ -52,10 +52,10 @@
 	background-color: rgb(243, 235, 235);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    height: 192px;
-    margin-top: 20px;
-  /*   color: green; */
+    min-height: 220px;
+    margin-top: 10px;
     padding: 10px;
+    font-family: monospace;
 }
 
 .introjs-tooltiptext br {

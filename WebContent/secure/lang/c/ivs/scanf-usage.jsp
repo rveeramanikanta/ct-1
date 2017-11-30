@@ -19,7 +19,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/scanf-usage.js"></script>
+<script src="/secure/lang/c/js-min/su.min.js"></script>
 <style>
 .margin-top-20 {
 	margin-top: 20px;
@@ -156,7 +156,7 @@ $(document).ready(function() {
 		</div>
 
 		<div
-			class="margin-top-20 col-xs-offset-3 col-xs-7">
+			class="margin-top-20 col-xs-offset-2 col-xs-8">
 			<ol id="typingDiv">
 				<li>The <b class="ct-blue-color">scanf()</b> function is used to read values of different data types from the standard input.</li>
 				<li>The <b class="ct-blue-color">scanf()</b> function is available in  <b class="ct-blue-color">"stdio.h"</b> header file included in the standard library.</li>

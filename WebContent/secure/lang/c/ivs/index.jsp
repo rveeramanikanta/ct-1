@@ -366,7 +366,9 @@ r {
 					<tr>
 						<td>19</td>
 						<td>Hexadecimal-to-Octal</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Hexadecimal to Octal', 'hexadecimal-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hexadecimal to Octal</span></td>
 						<td>Padmaja / Raj <r>(back)</r></td>
@@ -417,9 +419,9 @@ r {
 					<tr>
 						<td>23</td>
 						<td>float datatype</td>
-						<td>	<i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
+						<td>	
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; float Data-type</td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
@@ -430,9 +432,9 @@ r {
 					<tr>
 						<td>24</td>
 						<td>double datatype</td>
-						<td>	<i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
+						<td>	
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; double Data-type</td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
@@ -443,9 +445,9 @@ r {
 					<tr>
 						<td>25</td>
 						<td>char datatype</td>
-						<td><i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span></td>
 						<td>Padmaja / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
@@ -494,9 +496,9 @@ r {
 					<tr>
 						<td>29</td>
 						<td>One's complement</td>
-						<td><i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Explanation of ones complement', 'ones-complement.jsp', 1, 1)"><i
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of ones complement', 'ones-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of	one's complement</span></td>
 						<td>Ramya / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
@@ -507,9 +509,9 @@ r {
 					<tr>
 						<td>30</td>
 						<td>Two's complement</td>
-						<td><i class="fa fa-check fa-1x"></i>
-						<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Explanation of twos complement', 'twos-complement.jsp', 1, 1)"><i
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of twos complement', 'twos-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of two's complement</span></td>
 						<td>Ramya / Raj <r>(back)</r></td>
 						<td>Sekhar -- success</td>
@@ -821,7 +823,9 @@ r {
 					<tr>
 						<td>1</td>
 						<td>Directives #include</td>
-						<td><i class="fa fa-check fa-1x"></i><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x box"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #include', 'include.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of #include</span></td>
 						<td>Anil / swathi <r>(back)</r></td>
@@ -834,7 +838,7 @@ r {
 						<td>2</td>
 						<td>Directives #define</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #define</td>
@@ -849,7 +853,8 @@ r {
 					<tr>
 						<td>3</td>
 						<td>Directives #if, #else</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td>
+						<i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #if #else', 'usage-of-hash-if-else.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #if #else</td>
@@ -862,7 +867,7 @@ r {
 					<tr>
 						<td>4</td>
 						<td>Directives #if, #elif</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #if #elif', 'usage-of-hash-elif.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of #if #elif</td>
@@ -875,7 +880,7 @@ r {
 					<tr>
 						<td>5</td>
 						<td>Directives #undef</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of #undef', 'usage-of-undef.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;Explanation of #undef</td>
@@ -888,7 +893,7 @@ r {
 					<tr>
 						<td>6</td>
 						<td>Directives ##</td>
-						<td><i class="fa fa-check fa-1x"></i>
+						<td><i class="fa fa-check fa-1x box"></i>
 						<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of ##', 'usage-of-double-hash.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of ##</td>
@@ -902,7 +907,7 @@ r {
 						<td>7</td>
 						<td>getchar()</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of getchar()', 'usage-of-getchar.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of getchar()</span></td>
@@ -916,7 +921,7 @@ r {
 						<td>8</td>
 						<td>putchar()</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of putchar()', 'usage-of-putchar.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of putchar()</span></td>
@@ -930,7 +935,7 @@ r {
 						<td>9</td>
 						<td>scanf() usage</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of scanf()', 'scanf-usage.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of scanf()</td>
@@ -944,10 +949,10 @@ r {
 						<td>10</td>
 						<td>printf() usage</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
+							
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of printf()', 'printf-usage-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of printf()</td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of printf()<r>(modification)</r></td>
 						<td>Durga Mahesh / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -958,7 +963,7 @@ r {
 						<td>11</td>
 						<td>gets() & puts() usage</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Usage of gets() & puts()</td>
@@ -985,14 +990,14 @@ r {
 							</div>
 
 							<div>
-								<i class="fa fa-check"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-fieldwidth.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with fieldwidth
 							</div>
 
 							<div>
-								<i class="fa fa-check"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-function.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() function
@@ -1000,20 +1005,21 @@ r {
 
 
 							<div>
-								<i class="fa fa-check"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-rs.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with Rs 
 							</div>
 
 							<div>
-								<i class="fa fa-check"></i>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-space.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with space
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-suppresion.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; scanf() with suppresion of value
@@ -1032,46 +1038,51 @@ r {
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-blank-space.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">printf() with blank space</span>
+									 <r>(modification)</r>
 							</div>
 
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-comma.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with Comma
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with Comma <r>(No Demo)</r>
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-field-width.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with
-								FieldWidth <r>(modified)</r>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with FieldWidth 
 							</div>
 
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-float.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with float
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with float <r>(No Demo)</r>
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-minus.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with minus
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-percentage-d.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with %d
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-plus.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with plus
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x box"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-zero.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; printf() with zero's
@@ -1079,7 +1090,7 @@ r {
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Nested printf() statements', 'nested-printf-statements.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Nested printf() statements
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Nested printf() statements <r>(modification)</r>
 							</div>
 						</td>
 
@@ -1095,7 +1106,7 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Basic Structure of C', 'structure-of-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Basic Structure of C Program</span>
-								 <r>(modified)</r></td>
+								</td>
 						<td>Anil / Swathi <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1541,7 +1552,7 @@ r {
 						<td>2</td>
 						<td>2-D Arrays</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing Two-dimensional arrays', 'two-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Accessing Two-dimensional arrays</td>
@@ -1730,7 +1741,7 @@ r {
 						<td>2</td>
 						<td>Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ', 'read-string-using-getchar.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using getChar() & putChar() </td>
@@ -1745,7 +1756,7 @@ r {
 						<td>3</td>
 						<td>Strings</td>
 						<td>
-							<i class="fa fa-check box"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Read and Write Strings using gets() & puts()', 'read-print-string-using-gets-puts.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Read and Write Strings using gets() & puts() </td>
@@ -1787,11 +1798,10 @@ r {
 						<td>6</td>
 						<td>Program on Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to copy one string to another string', 'copy-of-a-string.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string
-								 <r>(No back only for for-Loop steps)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to copy one string to another string</td>
 						<td>Mallika / Satish <r>(back)</r></td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
@@ -1802,7 +1812,7 @@ r {
 						<td>7</td>
 						<td>Program on Strings</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to concatenate two strings', 'concatination-of-strings.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to concatenate two strings</td>
@@ -1815,7 +1825,8 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Program on Strings</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to sort the names', '', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to sort the names <r>(No Demo)</r></td>
 						<td>Mahesh</td>
@@ -1841,7 +1852,7 @@ r {
 						<td>10</td>
 						<td>String Functions</td>
 						<td>
-							<i class="fa fa-check"></i>
+							<i class="fa fa-check fa-1x box"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different String functions', 'string-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Different String functions	(all 4 in one demo)</td>

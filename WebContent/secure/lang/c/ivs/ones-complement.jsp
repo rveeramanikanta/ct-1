@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/oc.min.js"></script> -->
-<script src="/secure/lang/c/js/ones-complement.js"></script>
+<script src="/secure/lang/c/js-min/oc.min.js"></script>
 <title>one's complement</title>
 <style>
 .input-text {
@@ -169,7 +168,7 @@ table {
 		<span class="label label-default ct-demo-heading">One's Complement</span>
 	</h2>
 	<div id="informationDiv" class="col-xs-offset-2 col-xs-8 information-div margin-top20">
-		<div class="col-xs-12 margin-top20" id="text" style="margin-bottom: 15px;">
+		<div class="col-xs-12 margin-top20" id="text" style="margin-bottom: 15px; font-family: monospace;">
 			<ul>
 				<li class="opacity00" id="li1"><b>One's complement</b> of a binary number is defined as a value
 					obtained by inverting all the bits of that number which is represented in a binary form, i.e. flipping all <span

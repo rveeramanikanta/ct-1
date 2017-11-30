@@ -19,7 +19,6 @@ var printfWithMinusReady = function() {
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
-				//tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -27,7 +26,6 @@ var printfWithMinusReady = function() {
 			},{
 				element :'#sopLine1',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "decimal"
 			},{
 				element :'#outputDiv',
@@ -38,7 +36,6 @@ var printfWithMinusReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "plusSpace"
 			},{
 				element :'#outputDiv',
@@ -49,7 +46,6 @@ var printfWithMinusReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "minusWithOutLoss"
 			},{
 				element :'#outputDiv',
@@ -60,7 +56,6 @@ var printfWithMinusReady = function() {
 			},{
 				element :'#sopLine4',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep: "plusWithSpace"
 			},{
 				element :'#outputDiv',
@@ -78,68 +73,29 @@ var printfWithMinusReady = function() {
 	intro.onbeforechange(function(targetElement){
 		var elementId = targetElement.id;
 			switch (elementId) {
-				case "program" :
-					
-				break;
-				
 				case "VariableDeclararion" :
 					$("#numberDiv1").addClass("opacity00")
 				break;
-				
-				case "animationDiv" :
-					
-				break;
-				
 				case "sopLine" + sopLineCount :
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "decimal" :
 							if (intro._direction =="backward") {
 								$("#outputAValue1").text("");
-								}
+							}
 						break;
-							
 						case "plusSpace" :
 							if (intro._direction =="backward") {
 								$("#outputAValue2").text("");
-								}
+							}
 						break;
-							
 						case"minusWithOutLoss" :
 							if (intro._direction =="backward") {
 								$("#outputAValue3").text("");
-								}
-							
-						break;
-						
-						case "plusWithSpace" :
-							
+							}
 						break;
 					}
 				break;
-				
-				case "outputDiv" :
-					var animateStep = intro._introItems[intro._currentStep].animateStep;
-					switch(animateStep) {
-						case "decimal" :
-							
-						break;
-						
-						case "plusSpace" :
-							
-						break;
-						
-						case "minusWithOutLoss" :
-							
-						break;
-							
-						case "plusWithSpace" :
-							
-								
-						break;
-					}
-				break;
-				
 				
 			}
 	});
@@ -182,7 +138,6 @@ var printfWithMinusReady = function() {
 				
 				case "VariableDeclararion" :
 					$("#codeDiv, #animationDiv, #outputDiv").removeClass("opacity00");
-					//$('.introjs-tooltip').removeClass('hide');
 					text = 'Here, we are declaring and initializing an integer variable '
 							+ ' <span class = "ct-code-b-yellow">a</span> to '
 							+ ' <span class = "ct-code-b-yellow">14</span>.';
@@ -320,6 +275,7 @@ var printfWithMinusReady = function() {
 				break;
 				
 				case "restartBtn":
+					$('.introjs-tooltip').css('min-width', '125px');
 					$("#printfDefinition").removeClass("z-index1000000");
 					$("#restartBtn").removeClass('visibility-hidden');
 				break;

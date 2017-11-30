@@ -7,7 +7,6 @@ var upperToLowerCaseReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
 		} else {
@@ -15,7 +14,6 @@ var upperToLowerCaseReady = function() {
 		}
 	});
 	
-	console.log();
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -95,7 +93,7 @@ var upperToLowerCaseReady = function() {
 				},{
 					element :'#hiddenTotalEnterChar',
 					intro :'',
-					position:"bottom",
+					position:"left",
 					tooltipClass:"hide"
 				},{
 					element :'#restartBtn',
@@ -107,68 +105,31 @@ var upperToLowerCaseReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-		case "line1" :
-			
-			break;
-			
-		case "line2" :
-			
-			break;
-			
 		case "line3" :
 			$("#panelBox").addClass("visibility-hidden");
 			$('#addressId').addClass("visibility-hidden");
 			break;
-			
-		case "line4" :
-			
-			break;
-			
 		case "line5" :
 			$("#inputChar").val('');
-			
 			break;
-			
-		case "line6" :
-			
-			break;
-			
-		case "line7" :
-			
-			break;
-			
 		case "line8" :
 			$("#hiddenTotalEnterChar").val('');
 			break;
-			
 		case "inputChar" :
-			console.log(intro._direction);
-			//$("#inputChar").val('');
 			if (intro._direction == "backward") {
-			//$("#panelBox").addClass("visibility-hidden");
-			$(".arrowId").addClass("visibility-hidden");
-			$(".byteId").addClass("visibility-hidden");
-			$("#panelBodyUpperCaseId").text("");
-			$("#inputChar").val('');
+				$(".arrowId").addClass("visibility-hidden");
+				$(".byteId").addClass("visibility-hidden");
+				$("#panelBodyUpperCaseId").text("");
+				$("#inputChar").val('');
 			}
 			break;
-			
 		case "addressBox" :
-			
-			if(intro._currentStep == 4) {
-				
-			} else if(intro._currentStep == 9) {
-				
+			 if(intro._currentStep == 9) {
+				$(".arrowId").addClass("visibility-hidden");
+				$(".byteId").addClass("visibility-hidden");
 			}
 			break;
-			
-		case "panelBox" :
-			
-			break;
-			
 		case "consoleId" :
-			console.log(intro._direction);
 			if(intro._currentStep == 6) {
 				if (intro._direction == "backward") {
 					$("#hiddenTypingChar").addClass("hidden");
@@ -180,11 +141,7 @@ var upperToLowerCaseReady = function() {
 				}
 			}
 			
-		case "hiddenTotalEnterChar" :
-			
-		break
-			
-		;
+		break;
 		}
 	});
 	intro.onafterchange(function(targetElement) {
@@ -214,7 +171,7 @@ var upperToLowerCaseReady = function() {
 		case "line1" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "It is a header file which contains standard <span class='ct-code-b-yellow'>input/output</span> library functions.", 10, "",function() {
+				typing(".introjs-tooltiptext", "It is a header file which contains standard <span class='ct-code-b-yellow'>input/output</span> library functions.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -223,7 +180,7 @@ var upperToLowerCaseReady = function() {
 		case "line2" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is the operating system call.<ul><li><span class='ct-code-b-yellow'>main()</span> is execution starting point for any c program.</li></ul>", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is the operating system call.<ul><li><span class='ct-code-b-yellow'>main()</span> is execution starting point for any c program.</li></ul>", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -232,7 +189,7 @@ var upperToLowerCaseReady = function() {
 		case "line3" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>ch</span> is character variable which is of type char.<ul><li>It allocates 1 byte of memory to each element.</li></ul>", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>ch</span> is character variable which is of type char.<ul><li>It allocates 1 byte of memory to each element.</li></ul>", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -241,20 +198,19 @@ var upperToLowerCaseReady = function() {
 		case "line4" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, uesd to display anything in double quotes on the output screen.", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, uesd to display anything in double quotes on the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 			break;
 			
 		case "line5" :
-			console.log(intro._direction, "times");
 			$("#hiddenTypingChar").removeClass("hidden");
 			$("#totalBlinkText").addClass("hidden");
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>getchar()</span> is library function which reads only 1 char from keyboard.", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>getchar()</span> is library function which reads only 1 char from keyboard.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -263,7 +219,7 @@ var upperToLowerCaseReady = function() {
 		case "line6" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, uesd to display anything in double quotes on the output screen.", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, uesd to display anything in double quotes on the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -271,7 +227,6 @@ var upperToLowerCaseReady = function() {
 			
 		case "line7" :
 			$('.introjs-nextbutton').hide();
-			console.log(intro._direction)
 			  if (intro._direction == "forward") {
 				  
 			$("#totalEnterChar").addClass("hidden");
@@ -280,7 +235,7 @@ var upperToLowerCaseReady = function() {
 			$("#hiddenTotalEnterChar").removeClass("hidden");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "here, ch + 32 is <span class='ct-code-b-yellow'>ASCII</span> code value, which converts into lowercase.", 10, "",function() {
+				typing(".introjs-tooltiptext", "here, ch + 32 is <span class='ct-code-b-yellow'>ASCII</span> code value, which converts into lowercase.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -293,7 +248,7 @@ var upperToLowerCaseReady = function() {
 						
 						t1.to("#panelBodyUpperCaseId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 							$(".introjs-tooltip").removeClass("hide");
-							typing(".introjs-tooltiptext", "The value of uppercase is converted to lowercase and is stored in <span class='ct-code-b-yellow'>ch</span>.", 10, "",function() {
+							typing(".introjs-tooltiptext", "The value of uppercase is converted to lowercase and is stored in <span class='ct-code-b-yellow'>ch</span>.", 1, "",function() {
 								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
 						}});
@@ -306,7 +261,7 @@ var upperToLowerCaseReady = function() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#input-char").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>putchar()</span> is library function which writes a string onto the output screen.", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>putchar()</span> is library function which writes a string onto the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -316,22 +271,21 @@ var upperToLowerCaseReady = function() {
 			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide")
-				typing(".introjs-tooltiptext", "Enter any <span class='ct-code-b-yellow'>uppercase</span> letter.</br> <span id='errorText'></span>", 10, "",function() {
+				typing(".introjs-tooltiptext", "Enter any <span class='ct-code-b-yellow'>uppercase</span> letter.</br> <span id='errorText'></span>", 1, "",function() {
 					$("#inputChar").focus();
 					
 					$('#inputChar').keyup(function(e) {
 						$(".error-text").remove();
-						console.log("keyup is pressed.......");
 						var str = $("#inputChar").val();
 						if ($("#inputChar").val().length < 1) {
-							$('.introjs-nextbutton').hide();
+							$('.introjs-nextbutton,.introjs-prevbutton').hide();
 						} else {
 							if (!/^[a-zA-Z]*$/g.test(this.value)) {
 								$(".introjs-tooltiptext").append("<span id='errorText' class='ct-code-b-red error-text'>Enter only alphabets</span>");
-								$('.introjs-nextbutton').hide();
+								$('.introjs-nextbutton,.introjs-prevbutton').hide();
 						    } else if(str === str.toLowerCase()) {
 						    	$(".introjs-tooltiptext").append("<span id='errorText' class='ct-code-b-red error-text'>Enter only Uppercase letters</span>");
-								$('.introjs-nextbutton').hide();
+								$('.introjs-nextbutton,.introjs-prevbutton').hide();
 						    } else {
 						    	$('.introjs-nextbutton,.introjs-prevbutton').show();
 						    }
@@ -355,14 +309,13 @@ var upperToLowerCaseReady = function() {
 						$('#addressId').removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 							$('#addressId').removeClass("animated zoomIn")
 							$(".introjs-tooltip").removeClass("hide");
-							typing(".introjs-tooltiptext", "The variable <span class='ct-code-b-yellow'>ch</span> is stored in certain memory location. <ul><li>The address <span class='ct-code-b-yellow'>1024</span> is allocated to it.</li></ul>", 10, "",function() {
+							typing(".introjs-tooltiptext", "The variable <span class='ct-code-b-yellow'>ch</span> is stored in certain memory location. <ul><li>The address <span class='ct-code-b-yellow'>2046</span> is allocated to it.</li></ul>", 1, "",function() {
 								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
 						});
 					});
 				});
 			} else if(intro._currentStep == 9) {
-				console.log("inputChat is = " + $('#inputChar').val());
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					
 				//	$("#panelBox").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
@@ -373,7 +326,7 @@ var upperToLowerCaseReady = function() {
 							$(".byteId").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 								$(".byteId").removeClass("animated zoomIn");
 								$(".introjs-tooltip").removeClass("hide");
-								typing(".introjs-tooltiptext", "Arrows shows that : <ul><li><span class='ct-code-b-yellow'>ch</span> is a character variable.</li><li>ch allocated by 1 byte and it stores the <span class='ct-code-b-yellow'>ASCII</span> value of character <span class='ct-code-b-yellow'>" + $('#inputChar').val() + "</span>.</li><li><span class='ct-code-b-yellow'>1024</span> is the address.</li></ul>", 10, "",function() {
+								typing(".introjs-tooltiptext", "Arrows shows that : <ul><li><span class='ct-code-b-yellow'>ch</span> is a character variable.</li><li>ch allocated by 1 byte and it stores the <span class='ct-code-b-yellow'>ASCII</span> value of character <span class='ct-code-b-yellow'>" + $('#inputChar').val() + "</span>.</li><li><span class='ct-code-b-yellow'>2046</span> is the address.</li></ul>", 1, "",function() {
 									$('.introjs-nextbutton,.introjs-prevbutton').show();
 								});
 							});
@@ -389,13 +342,12 @@ var upperToLowerCaseReady = function() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 			
 				t1.to("#panelBodyUpperCaseId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-					console.log("inside tween lite.....");
 					$("#panelBodyUpperCaseId").text($('#inputChar').val().toLowerCase());
 				}});
 				
 				t1.to("#panelBodyUpperCaseId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 					$(".introjs-tooltip").removeClass("hide");
-					typing(".introjs-tooltiptext", "The value of uppercase is converted to lowercase and is stored in <span class='ct-code-b-yellow'>ch</span>.", 10, "",function() {
+					typing(".introjs-tooltiptext", "The value of uppercase is converted to lowercase and is stored in <span class='ct-code-b-yellow'>ch</span>.", 1, "",function() {
 						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				}});
@@ -405,17 +357,17 @@ var upperToLowerCaseReady = function() {
 			break;
 			
 		case "consoleId" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			if(intro._currentStep == 6) {
 				setTimeout(function() {
 					if (intro._direction == "forward") {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#typeChar").removeClass("visibility-hidden")
-					typing("#typeChar", "<span id='totalBlinkText'>Enter an uppercase letter : <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 10, "",function() {
-						$("#in").focus();
+					typing("#typeChar", "<span id='totalBlinkText'>Enter an uppercase letter : <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 1, "",function() {
+						//$("#in").focus();
 					       setTimeout(function() {	
 							intro.nextStep()
-							}, 500);
+							}, 900);
 							});
 						});
 					} else {
@@ -429,7 +381,7 @@ var upperToLowerCaseReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#enterHiddenToltal").removeClass("opacity00");
 					//$(".introjs-tooltip").removeClass("hide");
-					typing("#totalEnterChar", "The lowercase letter of "+ $('#inputChar').val().toUpperCase() + " is : <span id='putValueId'><input id='lowerValue' maxlength='0' tabindex='0' value=''/></span> ", 10, "",function() {
+					typing("#totalEnterChar", "The lowercase letter of "+ $('#inputChar').val().toUpperCase() + " is : <span id='putValueId'><input id='lowerValue' maxlength='0' tabindex='0' value=''/></span> ", 1, "",function() {
 						$("#lowerValue").focus();
 							setTimeout(function() {
 								intro.nextStep();
@@ -446,8 +398,9 @@ var upperToLowerCaseReady = function() {
 		case "hiddenTotalEnterChar" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
+				$("#hiddenTotalEnterChar").attr("disabled", true);
 				$("#hiddenTotalEnterChar").val($('#inputChar').val().toLowerCase()).fadeIn('slow');
-				typing(".introjs-tooltiptext", "here, the given character is converted and printed on to the output screen.", 10, "",function() {
+				typing(".introjs-tooltiptext", "here, the given character is converted and printed on to the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -456,8 +409,9 @@ var upperToLowerCaseReady = function() {
 		case "restartBtn" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$(".introjs-tooltip").css({"min-width": "115px"});
 				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
+				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
 					
 				});
 			});
@@ -469,7 +423,7 @@ var upperToLowerCaseReady = function() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide();
 	
-	typing(".introjs-tooltiptext", "It is a sample program to convert upper to lowercase letters.", 10, "",function() {
+	typing(".introjs-tooltiptext", "It is a sample program to convert upper to lowercase letters.", 1, "",function() {
 		$('.introjs-nextbutton').show();
 	});
 }

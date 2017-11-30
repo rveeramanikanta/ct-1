@@ -20,8 +20,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<!-- <script src="/secure/lang/c/js-min/tc.min.js"></script> -->
-<script src="/secure/lang/c/js/twos-complement.js"></script>
+<script src="/secure/lang/c/js-min/tc.min.js"></script>
 <title>Two's complement</title>
 <style>
 .input-text {
@@ -192,8 +191,7 @@ table {
 	<h2 class="text-center">
 		<span class="label label-default ct-demo-heading">Two's Complement</span>
 	</h2>
-	<div id="informationDiv"
-		class="col-xs-offset-2 col-xs-9 information-div margin-top20">
+	<div id="informationDiv" class="col-xs-offset-2 col-xs-9 information-div margin-top20" style="font-family: monospace;">
 		<div class="col-xs-8 margin-top20" id="text">
 			<ul>
 				<li class="opacity00" id ="li1"><b>Two's complement</b> form can be performed on both <span

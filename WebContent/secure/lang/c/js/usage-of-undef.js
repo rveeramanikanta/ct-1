@@ -105,7 +105,7 @@ var usageOfUnderfReady = function() {
 				},{
 					element :'#restartBtn',               
 					intro :'',
-					position:"bottom"
+					position:"right"
 				}]
 		});
 
@@ -172,9 +172,9 @@ var usageOfUnderfReady = function() {
 			$("#totalForeground").removeClass("ct-code-b-green");
 			break;
 		case "consoleId" :
-			if (intro._currentStep == 15) {
+			/*if (intro._currentStep == 15) {
 				$("#consoleId").addClass("opacity00");
-			}
+			}*/
 			break;
 			
 		
@@ -315,40 +315,46 @@ var usageOfUnderfReady = function() {
 		case "printForeGroundId" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				t1.to("#printForeGroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-					$("#printForeGroundId").text("7");
-					intro.refresh();
-				}});
-				
-				t1.to("#printForeGroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-					setTimeout(function() {
-						if (intro._direction=="forward") {
+				if (intro._direction=="forward") {
+					t1.to("#printForeGroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+						$("#printForeGroundId").text("7");
+						intro.refresh();
+						t1.to("#printForeGroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
 								intro.nextStep()
-						} else {
-							intro.previousStep()
-						}
+							}, 500);
+						}});
+					}});
+				} else {
+					$("#printForeGroundId").text("FOREGROUND");
+					intro.refresh();
+					setTimeout(function() {
+						intro.previousStep()
 					}, 500);
-				}});
+				}
 			});
 			break;
 		
 		case "printBackGroundId" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				t1.to("#printBackGroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-					$("#printBackGroundId").text("8");
-					intro.refresh();
-				}});
-				
-				t1.to("#printBackGroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-					setTimeout(function() {
-						if (intro._direction=="forward") {
+				if (intro._direction=="forward") {
+					t1.to("#printBackGroundId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+						$("#printBackGroundId").text("8");
+						intro.refresh();
+						t1.to("#printBackGroundId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
 								intro.nextStep()
-						} else {
-							intro.previousStep()
-						}
+							}, 500);
+						}});
+					}});
+				} else {
+					$("#printBackGroundId").text("BACKGROUND");
+					intro.refresh();
+					setTimeout(function() {
+						intro.previousStep();
 					}, 500);
-				}});
+				}
 			});
 			break;
 			
@@ -409,12 +415,13 @@ var usageOfUnderfReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#consoleId").removeClass("opacity00");
 					if (intro._direction=="forward") {
-						typing("#typeChar", "foreground result is : <span class='ct-code-b-green1'>7</span>.", 1, "",function() {
+						typing("#typeChar", "foreground result is : <span class='ct-code-b-green1'>7</span>", 1, "",function() {
 							setTimeout(function() {
 								intro.nextStep()
 							}, 500);
 						});
 					} else {
+						$("#consoleId").addClass("opacity00");
 						setTimeout(function() {
 							intro.previousStep();
 						}, 300);
@@ -422,19 +429,18 @@ var usageOfUnderfReady = function() {
 				});
 			} else if(intro._currentStep == 17) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-							if (intro._direction=="forward") {
-								typing("#typeChar1", "background result is : <span class='ct-code-b-green1'>8</span>.", 1, "",function() {
-									setTimeout(function() {
-											
-									intro.nextStep()
-									}, 500);
-								});
-							} else {
-								setTimeout(function() {
-								intro.previousStep()
-								}, 300);
-							}
+					if (intro._direction=="forward") {
+						typing("#typeChar1", "background result is : <span class='ct-code-b-green1'>8</span>", 1, "",function() {
+							setTimeout(function() {
+							intro.nextStep()
+							}, 500);
 						});
+					} else {
+						setTimeout(function() {
+						intro.previousStep()
+						}, 300);
+					}
+				});
 			}
 			break;
 			

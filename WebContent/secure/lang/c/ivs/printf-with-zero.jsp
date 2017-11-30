@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/printf-with-zero.js"></script>
+<script src="/secure/lang/c/js-min/pwz.min.js"></script>
 
 <title>printf.jsp</title>
 
@@ -31,7 +31,7 @@
 }
 
 .introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
+	min-width: 125px;;
 }
 
 .introjs-duplicate-nextbutton {
@@ -72,6 +72,7 @@ div,span {
 
 #printfDefinition {
 	link-height: 1.5;
+	font-family: monospace;
 }
 
 [contenteditable="true"] {

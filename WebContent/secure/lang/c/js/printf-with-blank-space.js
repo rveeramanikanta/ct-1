@@ -13,8 +13,7 @@ var printfWithBlankSpaceReady = function() {
 				
 			},{
 				element :'#program',
-				intro :'',
-				tooltipClass : "hide"
+				intro :''
 			},{
 				element :'#variableDeclararionDiv',
 				intro :'',
@@ -167,7 +166,7 @@ var printfWithBlankSpaceReady = function() {
 				}
 				
 				if (intro._introItems[intro._currentStep]["isCompleted"]) {
-					if (intro._currentStep != 0) {
+					if (intro._currentStep != 0 && intro._currentStep != 1) {
 						$('.introjs-prevbutton').show();
 					}
 					$('.introjs-nextbutton').show();
@@ -210,7 +209,6 @@ var printfWithBlankSpaceReady = function() {
 							' and <span class = "ct-code-b-yellow">space</span> works. And  later we will see'+
 							' how to introduce a <span class = "ct-code-b-yellow">comma</span>'+
 							' and <span class = "ct-code-b-yellow">space</span> to make the output reader friendly.';
-					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 						$('.introjs-nextbutton').show();
 					});
@@ -237,23 +235,21 @@ var printfWithBlankSpaceReady = function() {
 				$('.introjs-nextbutton').hide();
 			
 				$('.introjs-helperLayer').one('transitionend', function() {
-			
-								setTimeout(function() {
-									if (intro._direction=="forward") {
-										transferEffect('#VariableDeclararion1', '#numberDiv1', function() {
-											transferEffect('#VariableDeclararion2', '#numberDiv2', function() {
-												transferEffect('#VariableDeclararion3', '#numberDiv3', function() {
-													console.log(intro._direction)
-									intro.nextStep()
-												});
-											});
-										});
-										
-									} else {
-									intro.previousStep()
-									}
+					if (intro._direction=="forward") {
+						transferEffect('#VariableDeclararion1', '#numberDiv1', function() {
+							transferEffect('#VariableDeclararion2', '#numberDiv2', function() {
+								transferEffect('#VariableDeclararion3', '#numberDiv3', function() {
+									setTimeout(function() {	
+										intro.nextStep()
 									}, 500);
-				
+								});
+							});
+						});
+					} else {
+						setTimeout(function() {
+							intro.previousStep()
+						}, 500);
+					}
 				});
 				
 			break;

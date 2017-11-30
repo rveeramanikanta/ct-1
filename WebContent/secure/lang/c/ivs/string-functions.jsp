@@ -16,8 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<!-- <script src = '/secure/lang/c/js-min/strf.min.js'></script> -->
-<script src = '/secure/lang/c/js/string-functions.js'></script>
+<script src = '/secure/lang/c/js-min/strf.min.js'></script>
 
 <title>String functions</title>
 
@@ -237,7 +236,7 @@ void main () {
 	<span id="line5">length = strlen(a);</span>
 	<span id="line6">printf("The length of the string %s is %d \n",a, length);</span>
 	<span id="line7">strcpy(b, a);</span>
-	<span id="line8">printf ("The copied string = %s \n", b);</span>
+	<span id="line8">printf("The copied string = %s \n", b);</span>
 	<span id="line9">printf("Enter the second string :");</span>
 	<span id="line10">scanf("%s", c);</span>
 	<span id="line11">strcat(a, c);</span>

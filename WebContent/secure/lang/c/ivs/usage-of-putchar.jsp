@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src='/secure/lang/c/js/usage-of-putchar.js'></script>
+<script src='/secure/lang/c/js-min/uop.min.js'></script>
 
 <title>Usage of putchar()</title>
 </head>
@@ -226,7 +226,7 @@ div, span {
 			<div class="col-xs-9 col-xs-offset-3">
 <pre id="preTableDiv" class="creamPreTab4 opacity00" style="margin-top: 4%">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="line3">char ch = getchar();</span>
 	<span id="line4">putchar(<span id="variableId">ch</span>);</span>
 }
@@ -267,7 +267,7 @@ void main () {
 				<div class="col-xs-9 col-xs-offset-3 margin-top-2">
 	<pre id="preDiv" class="creamPreTab4 visibility-hidden" style="margin-top: 8%">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="line5" class="">putchar('<span id="constantId">p</span>');</span>
 	<span id="line6" class="">putchar(65);</span>
 }
