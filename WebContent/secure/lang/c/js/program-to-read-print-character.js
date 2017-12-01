@@ -146,7 +146,8 @@ $("#typewritingId").addClass('hidden');
 			break;
 			
 		case "addressBox" :
-			
+			$("#panelBox").addClass("visibility-hidden");
+			$('#addressId').addClass("visibility-hidden");
 			break;
 			
 		case "panelBox" :
@@ -389,7 +390,6 @@ $("#typewritingId").addClass('hidden');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
-					
 				});
 			});
 			break;

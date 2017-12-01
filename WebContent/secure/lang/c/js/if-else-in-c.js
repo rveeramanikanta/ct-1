@@ -192,10 +192,11 @@ function introJsGuide() {
 		
 		case "initialization":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				marks = $('#initializationValue').val();
 				$(".introjs-tooltip").removeClass("hide");
 				var text = "An <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>marks</b> is declared and initialized to " 
-				+ "<b class='ct-code-b-yellow changeVal'>60</b>.<br/> You can also change the value " 
-				+ "<b class='ct-code-b-yellow'>60</b> to any other number.</span><br><span class='errorText'>";
+				+ "<b class='ct-code-b-yellow changeVal'>" + marks +"</b>.<br/> You can also change the value " 
+				+ "<b class='ct-code-b-yellow changeVal'>" + marks +"</b> to any other number.</span><br><span class='errorText'>";
 				typing(".introjs-tooltiptext", text, function() {
 					charAtEnd("initializationValue");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();

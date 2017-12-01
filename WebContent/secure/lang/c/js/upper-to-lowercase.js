@@ -124,7 +124,10 @@ var upperToLowerCaseReady = function() {
 			}
 			break;
 		case "addressBox" :
-			 if(intro._currentStep == 9) {
+			if (intro._currentStep == 4) {
+				$("#panelBox").addClass("visibility-hidden");
+				$('#addressId').addClass("visibility-hidden");
+			} else if(intro._currentStep == 9) {
 				$(".arrowId").addClass("visibility-hidden");
 				$(".byteId").addClass("visibility-hidden");
 			}
@@ -142,6 +145,10 @@ var upperToLowerCaseReady = function() {
 			}
 			
 		break;
+		case "panelBox":
+			$("#panelBodyUpperCaseId").text($('#inputChar').val().toUpperCase());
+		break;
+		
 		}
 	});
 	intro.onafterchange(function(targetElement) {
@@ -228,30 +235,24 @@ var upperToLowerCaseReady = function() {
 		case "line7" :
 			$('.introjs-nextbutton').hide();
 			  if (intro._direction == "forward") {
-				  
-			$("#totalEnterChar").addClass("hidden");
-			$("#upperLetter").append($('#inputChar').val().toUpperCase());
-			$("#enterHiddenToltal").removeClass("hidden");
-			$("#hiddenTotalEnterChar").removeClass("hidden");
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "here, ch + 32 is <span class='ct-code-b-yellow'>ASCII</span> code value, which converts into lowercase.", 1, "",function() {
-					$('.introjs-nextbutton,.introjs-prevbutton').show();
+				$("#totalEnterChar").addClass("hidden");
+				$("#upperLetter").append($('#inputChar').val().toUpperCase());
+				$("#enterHiddenToltal").removeClass("hidden");
+				$("#hiddenTotalEnterChar").removeClass("hidden");
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass("hide");
+					typing(".introjs-tooltiptext", "here, ch + 32 is <span class='ct-code-b-yellow'>ASCII</span> code value, which converts into lowercase.", 1, "",function() {
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
+					});
 				});
-			});
 			  } else {
 				  $('.introjs-helperLayer ').one('transitionend', function() {
 				
-						t1.to("#panelBodyUpperCaseId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 							$("#panelBodyUpperCaseId").text($('#inputChar').val().toUpperCase());
-						}});
-						
-						t1.to("#panelBodyUpperCaseId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 							$(".introjs-tooltip").removeClass("hide");
 							typing(".introjs-tooltiptext", "The value of uppercase is converted to lowercase and is stored in <span class='ct-code-b-yellow'>ch</span>.", 1, "",function() {
 								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
-						}});
 						
 					});
 			  }
@@ -382,7 +383,7 @@ var upperToLowerCaseReady = function() {
 					$("#enterHiddenToltal").removeClass("opacity00");
 					//$(".introjs-tooltip").removeClass("hide");
 					typing("#totalEnterChar", "The lowercase letter of "+ $('#inputChar').val().toUpperCase() + " is : <span id='putValueId'><input id='lowerValue' maxlength='0' tabindex='0' value=''/></span> ", 1, "",function() {
-						$("#lowerValue").focus();
+						$("#lowerValue").attr('disabled', 'disabled');
 							setTimeout(function() {
 								intro.nextStep();
 							}, 1000);

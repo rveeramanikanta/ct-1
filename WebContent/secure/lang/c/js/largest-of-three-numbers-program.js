@@ -18,15 +18,15 @@ var largestOfThreeNumbersProgramReady = function() {
 					},{
 						element :'#numberDeclaration1',
 						intro :'',
-						//tooltipClass : "hide"
+						tooltipClass : "hide"
 					},{
 						element :'#numberDeclaration2',
 						intro :'',
-						//tooltipClass : "hide"
+						tooltipClass : "hide"
 					},{
 						element :'#numberDeclaration3',
 						intro :'',
-						//tooltipClass : "hide"
+						tooltipClass : "hide"
 					},{
 						element :'#condition',
 						intro :'',
@@ -56,10 +56,10 @@ var largestOfThreeNumbersProgramReady = function() {
 		var elementId = targetElement.id;
 			switch (elementId) {
 				case "programForLargestNumber" :
-					
+					numberCount = 1;
 				break;
 				case "numberDeclaration" + numberCount :
-					
+				$(".introjs-duplicate-backbutton").remove();	
 				break;
 				
 				case "numberDiv" + numberCount :
@@ -69,7 +69,7 @@ var largestOfThreeNumbersProgramReady = function() {
 						}
 				break;
 				case "condition" :
-					
+					numberCount = 3
 				break;
 				case "conditionAimation" :
 					
@@ -120,7 +120,7 @@ var largestOfThreeNumbersProgramReady = function() {
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('[contenteditable="false"]').attr('contenteditable', 'true');
-					//$('.introjs-tooltip').removeClass('hide');
+					$('.introjs-tooltip').removeClass('hide');
 					text = 'Here we are declaring and initializing the integer variable '+
 							'<span class = "ct-code-b-yellow">'+ $('#declaration' + numberCount).text() +'</span> to '+
 							'<span class = "ct-code-b-yellow keyUp">'+ $("#number" + numberCount).text() +'</span>.'+
@@ -129,7 +129,17 @@ var largestOfThreeNumbersProgramReady = function() {
 						$("#number" + numberCount).effect( "highlight",{color: 'yellow'});
 						caretAtEnd(document.getElementById('number' + numberCount));
 						numberCount++;
-						$('.introjs-nextbutton,.introjs-prevbutton').show();
+						$(".introjs-nextbutton").show();
+						$(".introjs-duplicate-backbutton").remove();
+						$(".introjs-tooltipbuttons").prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
+						$(".introjs-duplicate-backbutton").click(function() {
+							numberCount = numberCount - 2;
+							$(".introjs-duplicate-backbutton").remove();
+							setTimeout(function () {
+								intro.previousStep()
+							}, 300);
+						});
+						
 					});
 				});
 			break;
@@ -150,6 +160,7 @@ var largestOfThreeNumbersProgramReady = function() {
 								$('#declaration' +numberCount).text() + '</span>.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 							$("#number" + numberCount).effect( "highlight",{color: 'yellow'});
+							caretAtEnd(document.getElementById('number' + numberCount));
 							numberCount++;
 							$('.introjs-nextbutton').show();
 						});
@@ -171,6 +182,7 @@ var largestOfThreeNumbersProgramReady = function() {
 		
 			break;
 			case "condition" :
+				$(".introjs-duplicate-backbutton").remove();
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
@@ -234,6 +246,7 @@ var largestOfThreeNumbersProgramReady = function() {
 			case "restartBtn":
 				$('.introjs-helperLayer').one('transitionend', function () {
 					$("#restartBtn").removeClass('visibility-hidden');
+					$(".introjs-tooltip").css({"min-width": "125px"});
 				});
 			break;
 		}
@@ -447,8 +460,21 @@ function changeValue() {
 		
 		if ($(".empty").length > 0) {
 			$(".introjs-nextbutton").hide();
+			$(".introjs-duplicate-backbutton").remove();
 		} else {
 			$(".introjs-nextbutton").show();
+			$(".introjs-duplicate-backbutton").remove();
+			$(".introjs-tooltipbuttons").prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
+			$(".introjs-duplicate-backbutton").click(function() {
+				//console.log("in key up back before" +number);
+				numberCount = numberCount - 2;
+				//console.log("in key up back after" +number);
+				//alert("2nd time click")
+				$(".introjs-duplicate-backbutton").remove();
+				setTimeout(function () {
+					intro.previousStep()
+				}, 300);
+			});
 		}
 	});
 } 

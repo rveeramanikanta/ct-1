@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/c/js/program-to-read-print-character.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/ptrpc.min.js" type="text/javascript"></script>
 
 <title>Print Character Program</title>
 </head>
@@ -208,7 +208,7 @@
 <span id='line2'>main()</span> {
  <span id='line3'>char ch;</span>
  <span id='line4'>printf("Enter a Character : ");</span>
- ch=<span id='line5'>getchar( );</span>
+ ch = <span id='line5'>getchar();</span>
  <span id='line6'>printf("\nThe entered character is : ");</span>
  <span id='line7'>putchar(ch);</span>
 <span id='line8'>}</span>

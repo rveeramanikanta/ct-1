@@ -62,7 +62,8 @@ div,span {
     padding: 10px;
     font-size: 13px;
     white-space: pre;
-	-moz-tab-size: 6;
+	-moz-tab-size: 4;
+	tab-size: 4;
     border-radius: 8px;
     background-color: #fffae6;
 }
@@ -200,7 +201,7 @@ div,span {
 				<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12">
-				<div id="printfDefinition" class="col-xs-6 col-xs-offset-3 box-border"></div>
+				<div id="printfDefinition" class="col-xs-6 col-xs-offset-3 box-border" style="font-family: monospace; padding: 6px;"></div>
 			</div>
 			<div class = "col-xs-12 margin-top">
 				<div class = "col-xs-4 col-xs-offset-1">
@@ -212,8 +213,7 @@ div,span {
 <span id = "sopLine4">printf("\n<span id = "persentage4" >%d</span><span id = "persentageD4" >%d</span>", <span id = "aValue4">aValue</span>, <span id = "bValue4">bValue</span>);</span>
 <span id = "sopLine5">printf("\n<span id = "persentage5">%d</span><span id = "comma5">,</span><span id = "persentageD5" >%d</span>", <span id = "aValue5">aValue</span>, <span id = "bValue5">bValue</span>);</span>
 <span id = "sopLine6">printf("\n<span id = "persentage6" >%d</span><span id = "blankSpace6"> </span><span id = "persentageD6" >%d</span>", <span id = "aValue6">aValue</span>, <span id = "bValue6">bValue</span>);</span>
-
-						</pre>
+</pre>
 					</div>
 				</div>
 				<div class = "col-xs-5">

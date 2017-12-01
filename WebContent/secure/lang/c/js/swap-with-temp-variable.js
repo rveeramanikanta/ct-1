@@ -1,5 +1,7 @@
 var typingSpeed = 1;
 var introjs;
+var num1Val = $('#aValue').text();
+var num2Val = $('#bValue').text();
 
 var swapWithTempVariableReady = function() {
 	$(".allowOnlyNumber").keydown(function (e) {
@@ -116,7 +118,8 @@ function introJsInit() {
 		}, {
 			element : '#line4',//step16
 			intro : "",
-			position : 'bottom'
+			position : 'bottom',
+			tooltipClass: 'hide'
 		}, {
 			element : '#valuesPanel',//step17
 			intro : "",
@@ -156,6 +159,7 @@ function introJsInit() {
 	        	break;
 	        	
 			case "bValuePanel":
+				$('#line3, #line4').addClass("opacity00");
 				if (introjs._direction == "backward") {
 				$("#num2Address").removeAttr("style").addClass("opacity00");
 				}
@@ -249,10 +253,11 @@ function introJsInit() {
 					//}
 					
 				}
+				$("#line5").addClass('opacity00');
 				break;
 				
 			case "line5":
-				
+				$("#line5").removeClass('opacity00');
 				break;
 	        
 	        case "outputDiv":
@@ -299,10 +304,11 @@ function introJsInit() {
 	        case "line1":
 	        	$('.introjs-nextbutton').hide();
 		    	$('.introjs-helperLayer').one('transitionend', function () {
+		    		num1Val = $('#aValue').text();
 		    		$(".introjs-tooltip").removeClass("hide")
 		    		var text = "Let us consider an <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>num1</b> " 
-		    						+ "with the value <b class='changeVal ct-code-b-yellow'>12</b>." 
-		    						+ "<br/>You can change the value of <b class='ct-code-b-yellow changeVal'>12</b> to any other value.";
+		    						+ "with the value <b class='changeVal ct-code-b-yellow'>" + num1Val + "</b>." 
+		    						+ "<br/>You can change the value of <b class='ct-code-b-yellow changeVal'>" + num1Val + "</b> to any other value.";
 					typing(".introjs-tooltiptext", text, function() {
 						$("#aValue").effect("highlight", {color: '#ffff00'}, 500, function() {
 							charAtEnd("aValue");
@@ -334,10 +340,11 @@ function introJsInit() {
 	    	case "line2":
 	    		$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function () {
+					num2Val = $('#bValue').text();
 					$(".introjs-tooltip").removeClass("hide")
 		    		var text = "Let us consider another <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>num2</b> " 
-		    					+ "with the value <b class='changeVal ct-code-b-yellow'>45</b>.<br/>You can change "
-		    					+ "the value of <b class='ct-code-b-yellow changeVal'>45</b> to any other value.";
+		    					+ "with the value <b class='changeVal ct-code-b-yellow'>" + num2Val + "</b>.<br/>You can change "
+		    					+ "the value of <b class='ct-code-b-yellow changeVal'>" + num2Val + "</b> to any other value.";
 					typing(".introjs-tooltiptext", text, function() {
 						$("#bValue").effect("highlight", {color: '#ffff00'}, 500, function() {
 							charAtEnd("bValue");
@@ -484,9 +491,7 @@ function introJsInit() {
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function () {
 					var text = "After swapping : num1 = " + $("#bValue").text() + ", num2 = " + $("#aValue").text();
-					$("#line5").fadeTo(500, 1, function() {
-						$('.introjs-nextbutton,.introjs-prevbutton').show();
-					});
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 				break;
 	        

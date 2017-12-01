@@ -1,3 +1,4 @@
+var marks;
 var introjs;
 var iVal = 1;
 var typingSpeed = 1;
@@ -291,10 +292,11 @@ function introJsGuide() {
 		case "initialization":
 			$(".flip-animation-btn").addClass("hidden");
 			$('.introjs-helperLayer').one('transitionend', function () {
+				marks = $('#initializationValue').text();
 				$(".introjs-tooltip").removeClass("hide");
 				var text = "The local variable <b class='ct-code-b-yellow'>i</b> is declared and initialized to " 
-					+ "<b class='changeVal ct-code-b-yellow'>1</b>.<br>We can also change value " 
-					+ "<b class='changeVal ct-code-b-yellow'>1</b> to any number.<br/><span class='errorText'>";
+					+ "<b class='changeVal ct-code-b-yellow'>" + marks + "</b>.<br>We can also change value " 
+					+ "<b class='changeVal ct-code-b-yellow'>" + marks + "</b> to any number.<br/><span class='errorText'>";
 				
 				typing(".introjs-tooltiptext", text, function() {
 					$('#initializationValue').attr('contenteditable', true);

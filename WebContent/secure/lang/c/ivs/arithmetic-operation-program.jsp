@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 
-<script src="/secure/lang/c/js/arithmetic-operation-program.js"></script>
+<script src="/secure/lang/c/js-min/aop.min.js"></script>
 
 <title>Arithmetic Operations</title>
 </head>
@@ -39,7 +39,9 @@
 	color: #ed138e;
 	outline: none;
 }
-
+.output-console-body{
+      
+}
 .ct-code-b-red {
 	font-family: monospace;
 	font-weight: bold;
@@ -85,7 +87,7 @@
 	height: 299px;
 	overflow: auto;
 	padding: 10px;
-	white-space: pre-line;
+	white-space: initial;
 }
 
 .panel-heading {
@@ -153,19 +155,19 @@
 <pre class="creamPreTab4" id="preBody">
 <span id="line1">#include &lt;stdio.h&gt;</span>
 <span id="line2">main() {</span>
-  <span id="line3">int a,b,s1,s2,s3,s4,s5;</span>
-  <span id="line4">printf (“ Enter any two integer values\n “);</span>
-  <span id="line5">scanf (“ <span id="scanPercent1">%d</span> <span id="scanPercent2">%d</span> “, <span id="scanAmpPercentAId">&a</span>, <span id="scanAmpPercentBId">&b</span>);</span>
+  <span id="line3">int a, b, s1, s2, s3, s4, s5;</span>
+  <span id="line4">printf("Enter any two integer values\n");</span>
+  <span id="line5">scanf("<span id="scanPercent1">%d</span> <span id="scanPercent2">%d</span> ", <span id="scanAmpPercentAId">&a</span>, <span id="scanAmpPercentBId">&b</span>);</span>
   <span id="line6">s1 = a + b;</span>
   <span id="line7">s2 = a – b;</span>
   <span id="line8">s3 = a * b;</span>
   <span id="line9">s4 = a / b;</span>
   <span id="line10">s5 = a % b;</span>
-  <span id="line11">printf (“ Addition of two values = %d \n “, s1);</span>
-  <span id="line12">printf (“ Subtraction of two values = %d \n “, s2);</span>
-  <span id="line13">printf (“ Multiple of two values = %d \n “, s3);</span>
-  <span id="line14">printf (“ Division of two values = %d \n “, s4);</span>
-  <span id="line15">printf (“ Modulo of two values = %d \n “, s5);</span>
+  <span id="line11">printf("Addition of two values = %d \n", s1);</span>
+  <span id="line12">printf("Subtraction of two values = %d \n", s2);</span>
+  <span id="line13">printf("Multiple of two values = %d \n", s3);</span>
+  <span id="line14">printf("Division of two values = %d \n", s4);</span>
+  <span id="line15">printf("Modulo of two values = %d \n", s5);</span>
 <span id="line16">}</span>
 </pre>
 </div>
@@ -180,7 +182,7 @@
 								<span id="panelABody" class="position-relative display-inline visibility-hidden"><span id="aValue" class="ct-code-b-green"></span></span>
 							</div>
 						</div>
-						<span id="addressId" class="ab-adress-css">1024</span>
+						<span id="addressId" class="ab-adress-css">2052</span>
  					</div>
 				</div>
 				<div class="col-xs-3">
@@ -191,7 +193,7 @@
 								<span id="panelBBody" class="position-relative display-inline visibility-hidden"><span id="bValue" class="ct-code-b-green"></span></span>
 							</div>
 						</div>
-						<span id="addressId" class="ab-adress-css">1026</span>
+						<span id="addressId" class="ab-adress-css">2054</span>
  					</div>
 				</div>
 				<div class="col-xs-5">
@@ -202,7 +204,7 @@
 								<span id="s1panelBody" class="position-relative display-inline visibility-hidden"><span id="s1AValue" class="position-relative display-inline">a</span> <span class="ct-code-b-red position-relative display-inline">+</span> <span id="s1BValue" class="position-relative display-inline">b</span></span>
 							</div>
 						</div>
-						<span id="addressId" class="address-css">1028</span>
+						<span id="addressId" class="address-css">2056</span>
  					</div>
 				</div>
 				
@@ -216,7 +218,7 @@
 								<span id="s2panelBody" class="position-relative display-inline visibility-hidden"><span id="s2AValue" class="position-relative display-inline" >a</span> <span class="ct-code-b-red position-relative display-inline">-</span> <span id="s2BValue" class="position-relative display-inline">b</span></span>
 							</div>
 						</div>
-						<span id="addressId" class="address-css">1030</span>
+						<span id="addressId" class="address-css">2058</span>
  					</div>
 				</div>
 				<div class="col-xs-5">
@@ -227,7 +229,7 @@
 								<span id="s3panelBody" class="position-relative display-inline visibility-hidden"><span id="s3AValue" class="position-relative display-inline">a</span> <span class="ct-code-b-red position-relative display-inline">*</span> <span id="s3BValue" class="position-relative display-inline">b</span></span>
 							</div>
 						</div>
-						<span id="addressId" class="address-css">1032</span>
+						<span id="addressId" class="address-css">2060</span>
  					</div>
 				</div>
 				
@@ -241,7 +243,7 @@
 								<span id="s4panelBody" class="position-relative display-inline visibility-hidden"><span id="s4AValue" class="position-relative display-inline">a</span> <span class="ct-code-b-red position-relative display-inline">/</span> <span id="s4BValue" class="position-relative display-inline">b</span></span>
 							</div>
 						</div>
-						<span id="addressId" class="address-css">1034</span>
+						<span id="addressId" class="address-css">2062</span>
  					</div>
 				</div>
 				<div class="col-xs-5">
@@ -252,7 +254,7 @@
 								<span id="s5panelBody" class="position-relative display-inline visibility-hidden"><span id="s5AValue" class="position-relative display-inline">a</span> <span class="ct-code-b-red position-relative display-inline">%</span> <span id="s5BValue" class="position-relative display-inline">b</span></span>
 							</div>
 						</div>
-						<span id="addressId" class="address-css">1036</span>
+						<span id="addressId" class="address-css">2064</span>
  					</div>
 				</div>
 			</div>
@@ -265,14 +267,14 @@
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
 				<span id="typeChar"></span>
-				<span id="hiddenTypingChar" class="hidden">Enter any two integer values : </span>
-				<span id="firstInputInteger" class="hidden">first value : <input id='inputChar1' maxlength='3' class='enter-values' tabindex='0' onkeypress="return isNumber(event)" /></span>
+				<span id="hiddenTypingChar" class="hidden">Enter any two integer values : </span><br>
+				<span id="firstInputInteger" class="hidden">first value : <input id='inputChar1' maxlength='3' class='enter-values' tabindex='0' onkeypress="return isNumber(event)" /></span> <br>
 				<span id="secondInputInteger" class="hidden">second value: <input id='inputChar2' maxlength='3' class='enter-values' tabindex='0' onkeypress="return isNumber(event)" /></span>
 				
-				<span id="totalAddValue"></span>
-				<span id="totalSubValue"></span>
-				<span id="totalMulValue"></span>
-				<span id="totalDivValue"></span>
+				<span id="totalAddValue"></span><br>
+				<span id="totalSubValue"></span><br>
+				<span id="totalMulValue"></span><br>
+				<span id="totalDivValue"></span><br>
 				<span id="totalMudValue"></span>
 			</div>
 		</div>

@@ -51,11 +51,13 @@ var aopReady = function() {
 					},{
 						element :'#inputChar1',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#inputChar2',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#line5',
 						intro :'',
@@ -289,7 +291,7 @@ var aopReady = function() {
 		case "consoleId" :
 			
 			if (intro._currentStep == 7) {
-				
+				$("#inputChar1").val('');
 				
 			} else if (intro._currentStep == 25) {
 				
@@ -308,6 +310,7 @@ var aopReady = function() {
 			break;
 		
 		case "inputChar1" :
+			$("#inputChar1").val('');
 			$("#inputChar2").val('');
 			break;
 		
@@ -316,39 +319,39 @@ var aopReady = function() {
 			break;
 			
 		case "panelBox1" :
-			if (intro._direction == "backward") {
+			//if (intro._direction == "backward") {
 				$("#s1panelBody").empty();
 				$("#s1panelBody").addClass("visibility-hidden").append("<span id='s1AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> + </span> <span id='s1BValue' class='position-relative display-inline'>b</span>");
-			}
+			//}
 			
 		break;
 			
 		case "panelBox2" :
-			if (intro._direction == "backward") {
+			//if (intro._direction == "backward") {
 			$("#s2panelBody").empty();
 			$("#s2panelBody").addClass("visibility-hidden").append("<span id='s2AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> - </span> <span id='s2BValue' class='position-relative display-inline'>b</span>");	
-			}
+			//}
 			break;
 			
 		case "panelBox3" :
-			if (intro._direction == "backward") {
+			//if (intro._direction == "backward") {
 				$("#s3panelBody").empty();
 				$("#s3panelBody").addClass("visibility-hidden").append("<span id='s3AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> * </span> <span id='s3BValue' class='position-relative display-inline'>b</span>");	
-				}
+				///}
 			break;
 			
 		case "panelBox4" :
-			if (intro._direction == "backward") {
+			//if (intro._direction == "backward") {
 				$("#s4panelBody").empty();
-				$("#s4panelBody").addClass("visibility-hidden").append("<span id='s4AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> * </span> <span id='s4BValue' class='position-relative display-inline'>b</span>");	
-				}
+				$("#s4panelBody").addClass("visibility-hidden").append("<span id='s4AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> / </span> <span id='s4BValue' class='position-relative display-inline'>b</span>");	
+				//}
 			break;
 			
 		case "panelBox5" :
-			if (intro._direction == "backward") {
+			//if (intro._direction == "backward") {
 				$("#s5panelBody").empty();
-				$("#s5panelBody").addClass("visibility-hidden").append("<span id='s5AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> * </span> <span id='s5BValue' class='position-relative display-inline'>b</span>");	
-				}
+				$("#s5panelBody").addClass("visibility-hidden").append("<span id='s5AValue' class='position-relative display-inline' > a </span> <span class='ct-code-b-red position-relative display-inline'> % </span> <span id='s5BValue' class='position-relative display-inline'>b</span>");	
+				//}
 			break;
 		}
 	});
@@ -433,7 +436,7 @@ var aopReady = function() {
 										$("#panelBox5").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 											$("#panelBox5").removeClass("animated zoomIn")
 													$(".introjs-tooltip").removeClass("hide");
-											typing(".introjs-tooltiptext", "The values of int a,b,s1,s2,s3,s4,s5 are stored and for each value address is allocated to it.", 1, "",function() {
+											typing(".introjs-tooltiptext", "The values of int a, b, s1, s2, s3, s4, s5 are stored and for each value address is allocated to it.", 1, "",function() {
 												$('.introjs-nextbutton,.introjs-prevbutton').show();
 											});
 										});
@@ -445,6 +448,10 @@ var aopReady = function() {
 					});
 				});
 			});
+			} else {
+				setTimeout(function() {
+					intro.previousStep();
+				}, 500);
 			}
 			break;
 			
@@ -584,7 +591,7 @@ var aopReady = function() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "printf() is library function, uesd to display anything in double quotes on the output screen. <br/>In this the value of <span class='ct-b-green'>s2</span> is printed on output screen.", 1, "",function() {
-					$('.introjs-nextbutton,introjs-prevbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -622,11 +629,11 @@ var aopReady = function() {
 							setTimeout(function() {
 								if (intro._direction=="forward") {
 									$('.introjs-helperLayer ').one('transitionend', function() {
-										$(".introjs-tooltip").removeClass("hide");
+										//$(".introjs-tooltip").removeClass("hide");
 										typing("#typeChar", "<span id='typingCharId'>Enter any two integer values:</span>\n" +
 												"<span id='firstIntVal'>first value  : <input class='enter-values' tabindex='0' maxlength='0' /></span>\n"+
 												"<span id='secondIntVal'>second value: <input class='enter-values' tabindex='0' maxlength='0'/></span>", 1, "",function() {
-											typing(".introjs-tooltiptext", "enter any of two integer values.", 1, "",function() {
+											//typing(".introjs-tooltiptext", "enter any of two integer values.", 1, "",function() {
 												$("#hiddenTypingChar").addClass("hidden");
 												$("#typeChar").removeClass("opacity00");
 												$("#firstIntVal").addClass("hidden");
@@ -634,11 +641,10 @@ var aopReady = function() {
 												$("#typingCharId").removeClass("hidden");
 												$("#firstInputInteger").removeClass("hidden");
 												$("#secondInputInteger").removeClass("hidden");
-												
-												
-												
-										intro.nextStep()
-											});
+											//	$('.introjs-nextbutton, .introjs-prevbutton').show();
+												setTimeout(function() {
+													intro.nextStep()
+												}, 500);
 										});
 									});
 									
@@ -650,60 +656,94 @@ var aopReady = function() {
 						//	$('.introjs-nextbutton').show();
 					
 			} else if (intro._currentStep == 25) {
-		
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#totalAddValue").removeClass("opacity00");
-					$(".introjs-tooltip").removeClass("hide");
-					typing("#totalAddValue", "<br /> Addition of two values = <span class='ct-b-green'>"+ $("#s1panelBody").text() +"</span>", 1, "",function() {
-						typing(".introjs-tooltiptext", "Addition of two values is printed to the output screen.", 1, "",function() {
-							$('.introjs-nextbutton,.introjs-prevbutton').show();
+					if (intro._direction == "forward") {
+						$("#totalAddValue").removeClass("opacity00");
+						typing("#totalAddValue", "<br /> Addition of two values = <span class='ct-b-green'>"+ $("#s1panelBody").text() +"</span>", 1, "",function() {
+							$(".introjs-tooltip").removeClass("hide");
+							typing(".introjs-tooltiptext", "Addition of two values is printed to the output screen.", 1, "",function() {
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
+							});
 						});
-					});
+					} else {
+						setTimeout(function() {
+							$("#totalAddValue").addClass("opacity00");
+							intro.previousStep();
+						}, 500);
+					}
 				
 				});
 				
 			} else if (intro._currentStep == 27) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#totalSubValue").removeClass("opacity00");
-					$(".introjs-tooltip").removeClass("hide");
-					typing("#totalSubValue", "Substraction of two values = <span class='ct-b-green'> "+ $("#s2panelBody").text() +"</span>", 1, "",function() {
-						typing(".introjs-tooltiptext", "Subtraction of two values is printed to the output screen.", 1, "",function() {
-							$('.introjs-nextbutton,.introjs-prevbutton').show();
+					if (intro._direction == "forward") {
+						$("#totalSubValue").removeClass("opacity00");
+						typing("#totalSubValue", "Substraction of two values = <span class='ct-b-green'> "+ $("#s2panelBody").text() +"</span>", 1, "",function() {
+							$(".introjs-tooltip").removeClass("hide");
+							typing(".introjs-tooltiptext", "Subtraction of two values is printed to the output screen.", 1, "",function() {
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
+							});
 						});
-					});
+					} else {
+						setTimeout(function() {
+							$("#totalSubValue").addClass("opacity00");
+							intro.previousStep();
+						}, 500);
+					}
 				});
 				
 			} else if (intro._currentStep == 29) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#totalMulValue").removeClass("opacity00");
-					$(".introjs-tooltip").removeClass("hide");
-					typing("#totalMulValue", "Multiple of two values = <span class='ct-b-green'> " + $("#s3panelBody").text() +"</span>", 1, "",function() {
-						typing(".introjs-tooltiptext", "Multiplication of two values is printed to the output screen.", 1, "",function() {
-							$('.introjs-nextbutton,.introjs-prevbutton').show();
+					if (intro._direction == "forward") {
+						$("#totalMulValue").removeClass("opacity00");
+						typing("#totalMulValue", "Multiple of two values = <span class='ct-b-green'> " + $("#s3panelBody").text() +"</span>", 1, "",function() {
+							$(".introjs-tooltip").removeClass("hide");
+							typing(".introjs-tooltiptext", "Multiplication of two values is printed to the output screen.", 1, "",function() {
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
+							});
 						});
-					});
+					} else {
+						setTimeout(function() {
+							$("#totalMulValue").addClass("opacity00");
+							intro.previousStep();
+						}, 500);
+					}
 				});
 				
 			} else if (intro._currentStep == 31) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#totalDivValue").removeClass("opacity00");
-					$(".introjs-tooltip").removeClass("hide");
-					typing("#totalDivValue", "Division of two values = <span class='ct-b-green'> "+ $("#s4panelBody").text() +"</span>", 1, "",function() {
-						typing(".introjs-tooltiptext", "Division of two values is printed to the output screen.", 1, "",function() {
-							$('.introjs-nextbutton,.introjs-prevbutton').show();
+					if (intro._direction == "forward") {
+						$("#totalDivValue").removeClass("opacity00");
+						typing("#totalDivValue", "Division of two values = <span class='ct-b-green'> "+ $("#s4panelBody").text() +"</span>", 1, "",function() {
+							$(".introjs-tooltip").removeClass("hide");
+							typing(".introjs-tooltiptext", "Division of two values is printed to the output screen.", 1, "",function() {
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
+							});
 						});
-					});
+					} else {
+						setTimeout(function() {
+							$("#totalDivValue").addClass("opacity00");
+							intro.previousStep();
+						}, 500);
+					}
 				});
 				
 			} else if (intro._currentStep == 33) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#totalMudValue").removeClass("opacity00");
-					$(".introjs-tooltip").removeClass("hide");
-					typing("#totalMudValue", "Mudulo of two values = <span class='ct-b-green'> "+ $("#s5panelBody").text() +"</span>", 1, "",function() {
-						typing(".introjs-tooltiptext", "Mudulo of two values is printed to the output screen.", 1, "",function() {
-							$('.introjs-nextbutton,.introjs-prevbutton').show();
+					if (intro._direction == "forward") {
+						$("#totalMudValue").removeClass("opacity00");
+						typing("#totalMudValue", "Mudulo of two values = <span class='ct-b-green'> "+ $("#s5panelBody").text() +"</span>", 1, "",function() {
+							$(".introjs-tooltip").removeClass("hide");
+							typing(".introjs-tooltiptext", "Mudulo of two values is printed to the output screen.", 1, "",function() {
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
+							});
 						});
-					});
+					} else {
+						setTimeout(function() {
+							$("#totalMudValue").addClass("opacity00");
+							intro.previousStep();
+						}, 500);
+					}
 				});
 			}
 			break;
@@ -711,10 +751,11 @@ var aopReady = function() {
 		case "inputChar1" :
 			console.log("inputvalue")
 			$('.introjs-nextbutton').hide();
-			$("#inputChar1" ).focus();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Enter first integer value.</br>" +
 						"<span id='errorTextBox1' class='ct-code-b-red'></span>", 1, "",function() {
+					$("#inputChar1" ).focus();
 					$("#inputChar1" ).keyup(function() {
 						if ($("#inputChar1").val().length == '') {
 							$('.introjs-nextbutton,.introjs-prevbutton').hide();
@@ -728,10 +769,11 @@ var aopReady = function() {
 		
 		case "inputChar2" :
 			$('.introjs-nextbutton').hide();
-			$("#inputChar2").focus();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Enter second integer value. </br>" + 
 						"<span id='errorTextBox2' class='ct-code-b-red'></span>", 1, "",function() {
+					$("#inputChar2").focus();
 					$("#inputChar2" ).keyup(function() {
 						if ($("#inputChar2").val().length == '') {
 							$('.introjs-nextbutton,.introjs-prevbutton').hide();
@@ -746,7 +788,6 @@ var aopReady = function() {
 		case "panelBox1" :
 			$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$(".introjs-tooltip").removeClass("hide");
 					$("#s1panelBody").addClass("ct-code-b-green");
 					$("#s1panelBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 						$("#s1panelBody").removeClass("animated zoomIn")
@@ -773,8 +814,7 @@ var aopReady = function() {
 						}});
 						console.log("afer addition")
 						t1.to("#s1panelBody", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-							
-	
+							$(".introjs-tooltip").removeClass("hide");
 							typing(".introjs-tooltiptext", "Addition Operation is performed and the result in stored in s1. Also, address is allocated to it.", 1, "",function() {
 								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
@@ -788,7 +828,6 @@ var aopReady = function() {
 		case "panelBox2" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").removeClass("hide");
 				$("#s2panelBody").addClass("ct-code-b-green");
 				$("#s2panelBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#s2panelBody").removeClass("animated zoomIn")
@@ -815,6 +854,7 @@ var aopReady = function() {
 					}});
 					
 					t1.to("#s2panelBody", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "Subtraction Operation is performed and the result in stored in s2. Also, address is allocated to it.", 1, "",function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
@@ -826,7 +866,6 @@ var aopReady = function() {
 		case "panelBox3" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$(".introjs-tooltip").removeClass("hide");
 				$("#s3panelBody").addClass("ct-code-b-green");
 				$("#s3panelBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#s3panelBody").removeClass("animated zoomIn");
@@ -853,6 +892,7 @@ var aopReady = function() {
 					}});
 					
 					t1.to("#s3panelBody", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "Multiplication Operation is performed and the result in stored in s3. Also, address is allocated to it.", 1, "",function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
@@ -865,7 +905,6 @@ var aopReady = function() {
 		case "panelBox4" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").removeClass("hide");
 				$("#s4panelBody").addClass("ct-code-b-green");
 				$("#s4panelBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#s4panelBody").removeClass("animated zoomIn")
@@ -893,6 +932,7 @@ var aopReady = function() {
 					}});
 					
 					t1.to("#s4panelBody", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "Division Operation is performed and the result in stored in s4. Also, address is allocated to it.", 1, "",function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
@@ -904,7 +944,6 @@ var aopReady = function() {
 		case "panelBox5" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").removeClass("hide");
 				$("#s5panelBody").addClass("ct-code-b-green");
 				$("#s5panelBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#s5panelBody").removeClass("animated zoomIn");
@@ -932,6 +971,7 @@ var aopReady = function() {
 					}});
 					
 					t1.to("#s5panelBody", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "Mudulo Operation is performed and the result in stored in s5. Also, address is allocated to it.", 1, "",function() {
 							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
@@ -945,6 +985,7 @@ var aopReady = function() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
+					$(".introjs-tooltip").css({"min-width": "115px"});
 					
 				});
 			});

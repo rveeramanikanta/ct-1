@@ -41,7 +41,7 @@ var nestedPrintfStatementsReady = function() {
 			},{
 				element :'#sopLine4',
 				intro :'',
-				//tooltipClass : "hide",
+				tooltipClass : "hide",
 				animateStep : "printText"
 			},{
 				element :'#innerPrintf4',
@@ -74,7 +74,7 @@ var nestedPrintfStatementsReady = function() {
 				
 				case "sopLine" + sopLineCount :
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
-					switch(animateStep) {
+						switch(animateStep) {
 						case "percentageFormatCharacter":
 							$("#outputAValue, #outputComma,#outputBValue").text("");
 						break;
@@ -97,6 +97,10 @@ var nestedPrintfStatementsReady = function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "percentageFormatCharacter":
+							$("#outputAValue").text("");
+							$("#outputComma").text("");
+							$("#outputBValue").text("");
+							$("#outputCountAandBValue").addClass("opacity00");
 							
 						break;
 						
@@ -153,19 +157,17 @@ var nestedPrintfStatementsReady = function() {
 							$("#VariableDeclararion" + sopLineCount).addClass("z-index1000000");
 							$("#addressValue1").text($("#number1").text());
 							$("#addressValue2").text($("#number2").text());
-							transferEffect('#VariableDeclararion' + sopLineCount, '#animationDiv', function() {
+								transferEffect('#VariableDeclararion' + sopLineCount, '#animationDiv', function() {
 								$("#numberDiv1").removeClass("opacity00");
 								$("#numberDiv2").removeClass("opacity00");
 								$("#addressDiv1").removeClass("opacity00");$("#addressDiv2").removeClass("opacity00");
 									sopLineCount += 2;
-									//alert(sopLineCount)
 									setTimeout(function() {
-										intro.nextStep()
-									}, 500);
+									intro.nextStep()
+									}, 300);
 							});
 						} else {
 							sopLineCount -= 2;
-							//alert(sopLineCount)
 							intro.previousStep()
 							}
 							}, 500);
@@ -226,17 +228,19 @@ var nestedPrintfStatementsReady = function() {
 						
 						case "printText" :
 							$('.introjs-tooltip').removeClass('hide');
+							$(".introjs-duplicate-backbutton2").remove();
 							text = 'This is another example of nested <span class="ct-code-b-yellow">printf()</span> function calls.';
 							typing('.introjs-tooltiptext', text, function() {
 								$('.introjs-tooltipbuttons').prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
-								$('.introjs-nextbutton').show();
-								$(".introjs-duplicate-backbutton").click(function() {
-									$(".introjs-duplicate-backbutton").remove();
-									setTimeout(function () {
-									sopLineCount--;
+									$('.introjs-nextbutton').show();
+										$(".introjs-duplicate-backbutton").click(function() {
+											$(".introjs-duplicate-backbutton").remove();
+									//alert("dupback clicked")
+											setTimeout(function () {
+												sopLineCount--;
 									//alert(sopLineCount)
-									intro.previousStep()
-									}, 300);
+												intro.previousStep()
+											}, 300);
 								});
 								
 							});
@@ -249,6 +253,8 @@ var nestedPrintfStatementsReady = function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "percentageFormatCharacter":
+							
+							//alert("entering to the inner loop")
 							$('.introjs-tooltip').removeClass('hide');
 							text = 'The <span class="ct-code-b-yellow">printf()</span> function call returns the '
 									+ 'number of characters it has printed so the inner '
@@ -332,7 +338,6 @@ function outerPrintf() {
 
 function nestedPrintfFunction() {
 		setTimeout(function() {
-				$('.introjs-tooltip').addClass('hide');
 				$(".introjs-duplicate-nextbutton").remove();
 				$("#outputDiv").addClass("z-index1000000");
 				$("#innerPrintfValue").effect( "highlight",{color: '#ffff33'}, 500);
@@ -340,8 +345,18 @@ function nestedPrintfFunction() {
 					$("#outputCountAandBValue").removeClass("opacity00");
 					$("#outputDiv").removeClass("z-index1000000");
 					sopLineCount++;
-					intro.nextStep()
+					$(".introjs-nextbutton").show();
+					$('.introjs-tooltipbuttons').prepend("<a class='introjs-button introjs-duplicate-backbutton2'>&#8592 Back</a>")
+						$(".introjs-duplicate-backbutton2").click(function() {
+							$(".introjs-duplicate-backbutton2").remove();
+								setTimeout(function () {
+									sopLineCount--;
+									intro.previousStep()
+									}, 300);
+							});
+				
 					});
+			
 			}, 500);
 		
 	
@@ -349,9 +364,7 @@ function nestedPrintfFunction() {
 
 function innerPrintfWithNumbers() {
 	setTimeout(function() {
-		if (intro._direction=="forward") {
 			$(".introjs-duplicate-nextbutton").remove();
-			//$('.introjs-tooltip').addClass('hide');
 			$("#outputDiv").addClass("z-index1000000");
 				innerPrintfUsingPercentages("#persentageD1", "#aValue", "#aValueAnimation", "#addressValue1", "#outputAValue", function() {
 					$("#separateOperator").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 500, function() {
@@ -367,7 +380,7 @@ function innerPrintfWithNumbers() {
 						});
 					});
 				});
-		}
+		
 		}, 500);
 	
 }
@@ -375,17 +388,17 @@ function innerPrintfWithNumbers() {
 function printCodeTantraText() {
 	setTimeout(function() {
 		if (intro._direction=="forward") {
-	$(".introjs-duplicate-nextbutton").remove();
-	$('.introjs-tooltip').addClass('hide');
-	$("#outputDiv").addClass("z-index1000000");
-	$("#innerPrintfText").text("Codetantra").addClass("opacity00");	
-	$("#number4").effect("highlight",{color: '#ffff33'}, 500);
-	$("#number4").effect("transfer", { to: $("#innerPrintfText"), className: "ui-effects-transfer" }, 1000 , function() {
-		$("#innerPrintfText").removeClass("opacity00");	
-		$("#totalCharacters").text($("#innerPrintfText").text().length).addClass("opacity00");
-		$("#outputDiv").removeClass("z-index1000000");
-		intro.nextStep()
-	});
+			$(".introjs-duplicate-nextbutton").remove();
+			$('.introjs-tooltip').addClass('hide');
+			$("#outputDiv").addClass("z-index1000000");
+			$("#innerPrintfText").text("Codetantra").addClass("opacity00");	
+			$("#number4").effect("highlight",{color: '#ffff33'}, 500);
+			$("#number4").effect("transfer", { to: $("#innerPrintfText"), className: "ui-effects-transfer" }, 1000 , function() {
+				$("#innerPrintfText").removeClass("opacity00");	
+				$("#totalCharacters").text($("#innerPrintfText").text().length).addClass("opacity00");
+				$("#outputDiv").removeClass("z-index1000000");
+				intro.nextStep()
+				});
 	} else {
 			intro.previousStep()
 			}

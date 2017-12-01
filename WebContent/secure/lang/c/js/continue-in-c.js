@@ -1,4 +1,4 @@
-var introjs;
+var introjs, marks;
 var iVal = 1;
 var typingSpeed = 1;
 var ifConditionBln = false;
@@ -294,10 +294,10 @@ function introJsGuide() {
 			
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-tooltip").removeClass("hide");
-				
+				marks = $("#initializationValue").text();
 				var text = "The local variable <b class='ct-code-b-yellow'>i</b> is declared and initialized to value " 
-							+ "<b class='changeVal ct-code-b-yellow'>1</b>.<br> We can also change the value " 
-							+ "<b class='changeVal ct-code-b-yellow'>1</b> to any number.<br/><span class='errorText'>";
+							+ "<b class='changeVal ct-code-b-yellow'>" + marks + "</b>.<br> We can also change the value " 
+							+ "<b class='changeVal ct-code-b-yellow'>" + marks + "</b> to any number.<br/><span class='errorText'>";
 				
 				typing(".introjs-tooltiptext", text, function() {
 					$('#initializationValue').attr('contenteditable', true);

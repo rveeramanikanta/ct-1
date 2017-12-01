@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/nested-printf-statements.js"></script>
+<script src="/secure/lang/c/js-min/nps.min.js"></script>
 
 <title>printf.jsp</title>
 
@@ -36,6 +36,9 @@
 	background-color: green;
 }
 .introjs-duplicate-backbutton {
+	background-color:#5bc0de !important
+}
+.introjs-duplicate-backbutton2 {
 	background-color:#5bc0de !important
 }
 .box-border {

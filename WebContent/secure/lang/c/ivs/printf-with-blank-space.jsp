@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/printf-with-blank-space.js"></script>
+<script src="/secure/lang/c/js-min/pwbs.min.js"></script>
 
 <title>printf.jsp</title>
 
@@ -195,12 +195,11 @@ div,span {
 	
 }
 .back-button {
-	background-color: #5bc0de !important;
-}
-#printfDefinition {
-	font-family:monospace;
-	line-height: 1.5;
-}
+    background-color: #5bc0de !important;
+         }
+   #printfDefinition {
+   font-family:monospace;
+   }
 </style>
 </head>
 <body>
@@ -232,7 +231,7 @@ div,span {
 <span id="sopLine2">printf("\n<span id="persentage2" >%d</span><span id="persentageD2" >%d</span>", <span id="aValue2">a</span>, <span id="bValue2">b</span>);</span>
 <span id="sopLine3">printf("\n<span id="persentage3" >%d</span><span id="blankSpace3"> </span><span id="persentageD3" >%d</span>\n", <span id="aValue3">a</span>, <span id="bValue3">b</span>);</span>
 <span id="sopLine4">printf("<span id="persentage4">%d</span><span id="comma4">,</span><span id="persentageD4" >%d</span>\n", <span id = "aValue4">a</span>, <span id = "bValue4">b</span>);</span>
-<span id="sopLine5">printf("<span id="persentage5">%d</span><span id="comma5">,</span><span id="persentageD5" >%d</span><span id = "blankSpace5"> </span><span id = "persentageDA5" >%d</span>", <span id = "aValue5">a</span>, <span id = "bValue5">b</span>  <span id = "cValue5">c</span>);</span>
+<span id="sopLine5">printf("<span id="persentage5">%d</span><span id="comma5">,</span><span id="persentageD5" >%d</span><span id = "blankSpace5"> </span><span id = "persentageDA5" >%d</span>", <span id = "aValue5">a</span>, <span id = "bValue5">b</span>, <span id = "cValue5">c</span>);</span>
 </div></pre>
 					</div>
 				</div>

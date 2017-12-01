@@ -19,7 +19,7 @@ r {
 
 
 .fa-check {
-	color: #8B0000;
+	color: green;
 }
 </style>
 <script type="text/javascript">
@@ -72,66 +72,133 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Assign Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
 						<td>1</td>
 						<td>C History</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('History of C Language', 'c-language-timeline.jsp', 1, 1)"><i
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('History of C Language', 'c-language-timeline.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">History of C Language</span>
-								 <r>(No back)</r></td>
+						</td>
+						<td>No need</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
 						<td>10-08-2016</td>
 					</tr>
-
-
 					<tr>
 						<td>2</td>
 						<td>C program life cycle</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('C program life cycle', 'c-program-life-cycle.jsp', 1, 1)"><i
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('C program life cycle', 'c-program-life-cycle.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C program life cycle</span>
-									 <r>(No back)</r></td>
+						</td>
+						<td>No need</td>
 						<td>Mallika</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
 						<td>25-08-2016</td>
 					</tr>
-
-
 					<tr>
 						<td>3</td>
-						<td>Identifiers</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('C Identifiers', 'c-identifiers.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C Identifiers</span>
-								 <r>(No back)</r></td>
-						<td>Mahesh</td>
+						<td>Directives</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Explanation of #include', 'include.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #include</span>	
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil & Mahesh</td>
 						<td>Sekhar -- suceess</td>
-						<td>Successfully Completed</td>
-						<td>29-08-2016</td>
+						<td>21-09-2016</td>
 					</tr>
-
 					<tr>
 						<td>4</td>
+						<td>Identifiers</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('C Identifiers', 'c-identifiers.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C Identifiers</span>
+						</td>
+						<td>No need</td>
+						<td>Mahesh</td>
+						<td>Sekhar -- suceess</td>
+						<td>29-08-2016</td>
+					</tr>
+					<tr>
+						<td>5</td>
 						<td>Coding conventions</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Coding Conventions in a C program', 'usage-of-spaces-and-tabs-in-c.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Coding Conventions in a C program</span></td>
-						<td>Pavan <r>(back)</r></td>
+								href="javascript:opendialog('Coding Conventions in a C program', 'usage-of-spaces-and-tabs-in-c.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Coding Conventions in a C program</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Pavan</td>
 						<td>Sekhar -- suceess</td>
-						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
 					</tr>
+					<tr>
+						<td>6</td>
+						<td>Sample programs</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Sample program in C using printf()', 'sample-of-printf.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf()
+									</span>
+							</div>
+
+							<div>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Sample program in C using printf() with %d and %f', 
+									'sample-printf-with-int-float.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+									<span style = "color : green">Sample program in C using printf() with %d and %f</span>
+							</div>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Padmaja</td>
+						<td>Sekhar -- success</td>
+						<td>28-10-2016</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Decimal-to-Octal</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Decimal to Octal', 'decimal-to-octal.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to Octal</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Live-Demo</td>
+						<td>Ramana -- success</td>
+						<td>same as JAVA</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Octal-to-decimal</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Octao to Decimal', 'octal-to-decimal-conversion.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Octal to Decimal</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Suresh</td>
+						<td>Sekhar -- success</td>
+						<td>28-09-2016</td>
+					</tr>
+					
+					<!-- *************************** -->
+					
+
+
+
 
 					<tr>
 						<td>5</td>
@@ -174,30 +241,6 @@ r {
 					</tr>
 
 
-					<tr>
-						<td>7</td>
-						<td>Sample programs</td>
-						<td>
-
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Sample program in C using printf()', 'sample-of-printf.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf()</span>
-							</div>
-
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Sample program in C using printf() with %d and %f', 'sample-printf-with-int-float.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C using printf() with %d and %f</span>
-							</div>
-						</td>
-						<td>Padmaja <r>(back)</r></td>
-						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
-						<td>28-10-2016</td>
-					</tr>
 					
 					<tr>
 						<td>8</td>

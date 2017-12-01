@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TimelineLite.min.js"></script>
-<script src="/secure/lang/c/js/flowcharts-symbols.js"></script>
+<script src="/secure/lang/c/js-min/fs.min.js"></script>
 
 <title>Insert title here</title>
 <style type="text/css">

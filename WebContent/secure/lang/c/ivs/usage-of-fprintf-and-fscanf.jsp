@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/uoffaff.min.js"></script> -->
-<script src="/secure/lang/c/js/usage-of-fprintf-and-fscanf.js"></script>
+<script src="/secure/lang/c/js-min/uoffaff.min.js"></script>
 
 <title>fprintf and fscanf.jsp</title>
 <style type="text/css">
@@ -248,7 +247,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12">
-				<div class="col-xs-8 col-xs-offset-2 box-border margin-top" id="fileText">
+				<div class="col-xs-8 col-xs-offset-2 box-border margin-top" id="fileText" style="font-family: monospace;">
 					<ul><li id="text1" class="opacity00">The <span class="ct-code-b-green">fprintf()</span> function is used to write data into a file.<br/>
 							Syntax:  <span class="ct-code-b-green">fprintf(FILE *fp, char *controlstring, variables);</span></li>
 							<li id="text2" class="opacity00">The <span class="ct-code-b-green">fscanf()</span> function is used to read data from a file.<br/>

@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/c/js/upper-to-lowercase.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/utl.min.js" type="text/javascript"></script>
 <title>Upper to Lowercase Convertion</title>
 </head>
 <style>
@@ -209,7 +209,7 @@
 <span id='line2'>main()</span> {
  <span id='line3'>char ch;</span>
  <span id='line4'>printf("Enter an uppercase letter : ");</span>
- ch=<span id='line5'>getchar();</span>
+ ch = <span id='line5'>getchar();</span>
  <span id='line6'>printf ("\nThe lowercase letter of %c is : ", ch);</span>
  <span id='line7'>ch = ch + 32;</span>
  <span id='line8'>putchar(ch);</span>
@@ -249,7 +249,7 @@
 			<div class="output-console-body" id="consoleBodyDiv">
 				<span id="typeChar"></span>
 				 <span id="hiddenTypingChar" class="hidden">Enter an uppercase letter : <input id='inputChar' maxlength='1' class='input-char' tabindex='0'  /></span>
-				<span id="totalEnterChar" ></span>
+				<br><span id="totalEnterChar" ></span>
 				<span id="enterHiddenToltal" class="hidden">The lowercase letter of <span id="upperLetter"></span> is : <input id="hiddenTotalEnterChar" maxlength='1' class='input-char' tabindex='0' /></span>
 			</div>
 		</div>

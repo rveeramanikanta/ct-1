@@ -19,7 +19,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js/printf-usage-in-c.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/puic.min.js" type="text/javascript"></script>
 <style>
 
 .color-green {

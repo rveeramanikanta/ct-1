@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js/largest-of-three-numbers-program.js"></script>
+<script src="/secure/lang/c/js-min/lotnp.min.js"></script>
 
 <title>find-largest-of-three-numbers.jsp</title>
 <style type="text/css">
@@ -25,7 +25,9 @@
 .introjs-tooltiptext br {
 	margin: 15px;
 }
-
+.introjs-duplicate-backbutton {
+	background-color:#5bc0de !important
+}
 .introjs.tooltiptext > span{
 	display: inline-block;
 	position: relative;

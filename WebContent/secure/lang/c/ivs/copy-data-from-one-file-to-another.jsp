@@ -16,8 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/cdfofta.min.js"></script> -->
-<script src="/secure/lang/c/js/copy-data-from-one-file-to-another.js"></script>
+<script src="/secure/lang/c/js-min/cdfofta.min.js"></script>
 <title>Copy data from one file to another</title>
 
 <style>

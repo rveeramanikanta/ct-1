@@ -13,11 +13,11 @@ var printfWithBlankSpaceReady = function() {
 				
 			},{
 				element :'#program',
-				intro :''
+				intro :'',
+				tooltipClass : "hide"
 			},{
 				element :'#variableDeclararionDiv',
 				intro :'',
-				//tooltipClass : "hide",
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -25,11 +25,9 @@ var printfWithBlankSpaceReady = function() {
 			},{
 				element :'#printfListDiv',
 				intro :'',
-				//tooltipClass : "hide",
 			},{
 				element :'#sopLine1',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep : "printText"
 			},{
 				element :'#outputDiv',
@@ -39,7 +37,6 @@ var printfWithBlankSpaceReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep : "noSpace"
 			},{
 				element :'#outputDiv',
@@ -50,7 +47,7 @@ var printfWithBlankSpaceReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				//tooltipClass : "hide",
+				tooltipClass : "hide",
 				animateStep : "withSpace"
 			},{
 				element :'#outputDiv',
@@ -61,7 +58,6 @@ var printfWithBlankSpaceReady = function() {
 			},{
 				element :'#sopLine4',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep : "withComma"
 			},{
 				element :'#outputDiv',
@@ -72,7 +68,6 @@ var printfWithBlankSpaceReady = function() {
 			},{
 				element :'#sopLine5',
 				intro :'',
-				//tooltipClass : "hide",
 				animateStep : "spaceAndComma"
 			},{
 				element :'#outputDiv',
@@ -90,39 +85,25 @@ var printfWithBlankSpaceReady = function() {
 	intro.onbeforechange(function(targetElement){
 		var elementId = targetElement.id;
 		switch (elementId) {
-			case "printfDefinition" :
-				
-			break;
-			case "program" :
-				
-			break;
 			case "variableDeclararionDiv" :
 				$("#numberDiv1").addClass("opacity00");
 				$("#numberDiv2").addClass("opacity00");
 				$("#numberDiv3").addClass("opacity00");
 			break;
-			case "animationDiv" :
-				
-			break;
-			case "printfListDiv" :
-				
-			break;
-			
 			case "sopLine" + sopLineCount :
-				//if (intro._direction == "")
-			var animateStep = intro._introItems[intro._currentStep].animateStep;
+				var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "printText" :
-							
+							$(".back-button").remove();
 							$("#outputAValue0").addClass("opacity00");
 						break;
 						case "noSpace" :
-						
+							$(".back-button").remove();
 							if (intro._direction == "backward") {
 						
 							$("#outputAValue1").text("");
 							$("#outputBValue1").text("");
-					}
+								}
 						break;
 						case "withComma" :
 							$('.back-button').remove();
@@ -134,6 +115,7 @@ var printfWithBlankSpaceReady = function() {
 						break;
 						
 						case "withSpace" :
+							$(".back-button").remove();
 							$('.back-button').remove();
 							if (intro._direction == "backward") {
 							$("#outputAValue2").text("");
@@ -143,7 +125,7 @@ var printfWithBlankSpaceReady = function() {
 						break;
 						
 						case "spaceAndComma" :
-							$('.back-button').remove();
+							$(".back-button").remove();
 							if (intro._direction == "backward") {
 							$("#outputAValue4").text("");
 							$("#commaO4").text(""); 
@@ -151,10 +133,26 @@ var printfWithBlankSpaceReady = function() {
 							$("#blankSpaceO4").text("");
 							$("#outputCValue4").text("");
 							}
-						break;
 					}
-				
+						break;
+						case "outputDiv" :
+							var animateStep = intro._introItems[intro._currentStep].animateStep;
+							switch(animateStep) {
+								case "noComma" :
+									if (intro._direction == "backward") {
+									$("#outputAValue1").text("");
+									$("#outputBValue1").text("");
+									}
+								break;
+								case "withSpace" :
+									$("#outputAValue2").text("");
+									$("#blankSpaceO2").text("");
+									$("#outputBValue2").text("");
+								break;
+						
+							}
 			break;
+			
 		}
 	});
 	intro.onafterchange(function(targetElement){
@@ -166,7 +164,7 @@ var printfWithBlankSpaceReady = function() {
 				}
 				
 				if (intro._introItems[intro._currentStep]["isCompleted"]) {
-					if (intro._currentStep != 0 && intro._currentStep != 1) {
+					if (intro._currentStep != 0) {
 						$('.introjs-prevbutton').show();
 					}
 					$('.introjs-nextbutton').show();
@@ -209,6 +207,7 @@ var printfWithBlankSpaceReady = function() {
 							' and <span class = "ct-code-b-yellow">space</span> works. And  later we will see'+
 							' how to introduce a <span class = "ct-code-b-yellow">comma</span>'+
 							' and <span class = "ct-code-b-yellow">space</span> to make the output reader friendly.';
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 						$('.introjs-nextbutton').show();
 					});
@@ -235,28 +234,25 @@ var printfWithBlankSpaceReady = function() {
 				$('.introjs-nextbutton').hide();
 			
 				$('.introjs-helperLayer').one('transitionend', function() {
-					if (intro._direction=="forward") {
-						transferEffect('#VariableDeclararion1', '#numberDiv1', function() {
-							transferEffect('#VariableDeclararion2', '#numberDiv2', function() {
-								transferEffect('#VariableDeclararion3', '#numberDiv3', function() {
-									setTimeout(function() {	
+					setTimeout(function() {
+						if (intro._direction=="forward") {
+							transferEffect('#VariableDeclararion1', '#numberDiv1', function() {
+								transferEffect('#VariableDeclararion2', '#numberDiv2', function() {
+									transferEffect('#VariableDeclararion3', '#numberDiv3', function() {
 										intro.nextStep()
-									}, 500);
+									});
 								});
 							});
-						});
-					} else {
-						setTimeout(function() {
+						} else {
 							intro.previousStep()
-						}, 500);
-					}
+						}
+					}, 500);
 				});
 				
 			break;
 			case "printfListDiv" :
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					//$('.introjs-tooltip').removeClass('hide');
 					text = 'Let us go through the various '+
 							' <span class = "ct-code-b-yellow">printf</span> statements which will show us'+
 							' the usage of <span class = "ct-code-b-yellow">comma</span> '+
@@ -268,15 +264,11 @@ var printfWithBlankSpaceReady = function() {
 			break;
 			
 			case "sopLine" + sopLineCount :
-				console.log(sopLineCount)
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "printText" :
-							
-						//	$('.introjs-tooltip').removeClass('hide');
-							
 							text = 'The <span class = "ct-code-b-yellow">printf</span> statement prints'+
 									' the text enclosed in the <span class = "ct-code-b-yellow">double-quotes</span>'+
 									' to the console.';								
@@ -285,8 +277,6 @@ var printfWithBlankSpaceReady = function() {
 							}); 
 						break;
 						case "noSpace" :
-							console.log("afterClass");
-						//	$(".introjs-tooltip").removeClass("hide");
 							text = 'Here the <span class = "ct-code-b-yellow">printf()</span> '+
 									'function contains <span class = "ct-code-b-yellow">&bsol;n%d%d</span> '+
 									'and then the values <span class = "ct-code-b-yellow">a</span> and'+
@@ -299,7 +289,6 @@ var printfWithBlankSpaceReady = function() {
 							});
 						break;
 						case "withComma" :
-						//	$('.introjs-tooltip').removeClass('hide');
 							text = 'In this example we are using a <span class="ct-code-b-yellow">comma</span>'+
 									' instead of <span class="ct-code-b-yellow">space</span> to separate '+
 									'the two <span class="ct-code-b-yellow">%d</span> format characters'+
@@ -316,7 +305,8 @@ var printfWithBlankSpaceReady = function() {
 						break;
 						
 						case "withSpace" :
-						//	$('.introjs-tooltip').removeClass('hide');
+							$('.introjs-tooltip').removeClass('hide');
+							$('.back-button').remove();
 							text = 'Let us consider a <span class="ct-code-b-yellow">printf</span> statement that provides a '+
 									'<span class="ct-code-b-yellow">space</span> between the two '+
 									'<span class="ct-code-b-yellow">%d</span> format characteres so that'+
@@ -329,7 +319,6 @@ var printfWithBlankSpaceReady = function() {
 						break;
 						
 						case "spaceAndComma" :
-						//	$('.introjs-tooltip').removeClass('hide');
 							text = 'In this <span class="ct-code-b-yellow">printf()</span> function '+
 									'we are using both <span class="ct-code-b-yellow">comma</span> and'+
 									' a <span class="ct-code-b-yellow">space</span> to '+
@@ -348,38 +337,67 @@ var printfWithBlankSpaceReady = function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "printText" :
+							setTimeout(function() {
+								if (intro._direction=="forward") {
+									$("#outputAValue0").text($('#outputText').text());
+									transferEffect('#outputText', '#outputAValue0', function() {
+										$("#appendDiv" + sopLineCount).removeClass("visibility-hidden");
+										sopLineCount++;
+										setTimeout(function() {
+											intro.nextStep()
+										}, 300);
+									});
+								} else {
+									sopLineCount--;
 									setTimeout(function() {
-											if (intro._direction=="forward") {
-												$("#outputAValue0").text($('#outputText').text());
-												transferEffect('#outputText', '#outputAValue0', function() {
-													$("#appendDiv" + sopLineCount).removeClass("visibility-hidden");
-													sopLineCount++;
-													setTimeout(function() {
-													intro.nextStep()
-													}, 300);
-												});
-											} else {
-													sopLineCount--;
-													setTimeout(function() {
-														intro.previousStep()
-														}, 100);
-													}
-											}, 500);
-						
+										intro.previousStep()
+									}, 100);
+								}
+							}, 500);
 						break;
-						console.log("2nd line out put")
 						case "noComma" :
-							console.log("2nsstep")
-							printDecimalValue("decimalValueOnly");
+							if (intro._direction == "backward") {
+								outputValueCount--;
+								sopLineCount--; 
+								setTimeout(function() {
+									intro.previousStep();
+								}, 500);
+							} else {
+								sample()
+							}
 						break;
 						case "withComma" :
-							printDecimalValue("decimalValueAndComma");
+							if (intro._direction == "backward") {
+								outputValueCount--;
+								sopLineCount--; 
+								setTimeout(function() {
+									intro.previousStep();
+								}, 500);
+							} else {
+								sample3()
+							}
 						break;
 						case "withSpace" :
-							printDecimalValue("decimalValueAndSpace");
+							if (intro._direction == "backward") {
+								outputValueCount--;
+								sopLineCount--; 
+								setTimeout(function() {
+									intro.previousStep();
+									}, 500);
+							} else {
+								sample2()
+							}
 						break;
 						case "spaceAndComma" :
-							printDecimalValue("decimalValueSpaceAndComma");
+							if (intro._direction == "backward") {
+								outputValueCount--;
+								sopLineCount--; 
+								setTimeout(function() {
+									intro.previousStep();
+								}, 500);
+							} else {
+								sample4()
+							}
 						break;
 					}
 				});
@@ -387,6 +405,7 @@ var printfWithBlankSpaceReady = function() {
 			case "restartBtn":
 				$('.introjs-nextbutton').hide();
 				$("#printfDefinition").removeClass("z-index1000000");
+				$(".introjs-tooltip").css({"min-width": "125px"});
 				$('.introjs-helperLayer').one('transitionend', function () {
 					$("#restartBtn").removeClass('visibility-hidden');
 				});
@@ -410,135 +429,36 @@ var sopLineCount = 1;
 var outputValueCount = 1;
 var count = 0;
 
-function printDecimalValue(text) {
-	$(".introjs-duplicate-nextbutton").remove();
-	highlightFunction('#persentage' + sopLineCount, 'z-index1000000', function() {
-		highlightFunction('#aValue' + sopLineCount, 'z-index1000000', function() {
-			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
-				$('#persentage' + sopLineCount).removeClass('z-index1000000');
-				$('#aValue' + sopLineCount).removeClass('z-index1000000');
-				highlightFunction('#addressValue1', 'circle-css z-index1000000', function() {
-					$("#outputAValue" + outputValueCount).text($("#addressValue1").text());
-					fromEffectWithTweenMax("#addressValue1", "#outputAValue" + outputValueCount, false, function() { 	
-						$('#addressValue1').removeClass('circle-css z-index1000000');
-			  			if (text == "decimalValueOnly") {
-				  			printDecimalValue2('decimalValueOnly');
-			  			} else if (text == "decimalValueAndComma" || text == "decimalValueSpaceAndComma") {
-			  				transferEffect("#comma" + sopLineCount, "#commaO" + outputValueCount, function() {
-			  					$("#commaO" + outputValueCount).text(",");
-			  					if (text == "decimalValueSpaceAndComma") {
-			  						printDecimalValue2("decimalValueSpaceAndComma");
-			  					} else {
-						  			printDecimalValue2('decimalValueAndComma'); 
-			  					}
-			  				});
-			  			} else {
-			  				transferEffect("#blankSpace" + sopLineCount, "#blankSpaceO" + outputValueCount, function() {
-			  					$("#blankSpaceO" + outputValueCount).html("&nbsp;");
-			  					$("#blankSpaceO" + outputValueCount).effect( "highlight",{color: '#ffff33'}, 500);
-			  					printDecimalValue2('decimalValueAndSpace');
-			  				});
-			  			}
+function cValurAnimation() {
+	setTimeout(function() {
+		if (intro._direction=="forward") {
+			highlightFunction('#persentageDA' + sopLineCount, 'z-index1000000', function() {
+				highlightFunction('#cValue' + sopLineCount, 'z-index1000000', function() {
+					fromEffectWithTweenMax("#cValue" + sopLineCount, "#cValueAnimation", true, function() {
+						$('#persentageDA' + sopLineCount).removeClass('z-index1000000');
+						$('#cValue' + sopLineCount).removeClass('z-index1000000'); 
+						highlightFunction('#addressValue3', 'circle-css z-index1000000', function() {
+							$("#outputCValue" + outputValueCount).text($("#addressValue3").text());
+							fromEffectWithTweenMax("#addressValue3", "#outputCValue" + outputValueCount, false,  function() {
+								$('#addressValue3').removeClass('circle-css z-index1000000');
+								outputValueCount++;
+								setTimeout(function() {
+									intro.nextStep()
+								}, 500)
+				  		
+							});
+						});
 					});
 				});
 			});
-		});
-	});
-}
-
-function printDecimalValue2(text) {
-	$(".introjs-duplicate-nextbutton").remove();
-	highlightFunction('#persentageD' + sopLineCount, 'z-index1000000', function() {
-		highlightFunction('#bValue' + sopLineCount, 'z-index1000000', function() {
-			fromEffectWithTweenMax("#bValue" + sopLineCount, "#bValueAnimation", true,  function() {
-				$('#persentageD' + sopLineCount).removeClass('z-index1000000');
-				$('#bValue' + sopLineCount).removeClass('z-index1000000');
-				highlightFunction('#addressValue2', 'circle-css z-index1000000', function() {
-					$("#outputBValue" + outputValueCount).text($("#addressValue2").text());
-					fromEffectWithTweenMax("#addressValue2", "#outputBValue" + outputValueCount, false, function() {
-						$('#addressValue2').removeClass('circle-css z-index1000000');
-				  		if (text == "decimalValueSpaceAndComma") {
-				  			transferEffect("#blankSpace" + sopLineCount, "#blankSpaceO" + outputValueCount, function() {
-			  					$("#blankSpaceO" + outputValueCount).html("&nbsp;");
-			  					$("#blankSpaceO" + outputValueCount).effect( "highlight",{color: '#ffff33'}, 1000);
-			  					cValurAnimation();
-			  				});
-				  		} else {
-				  			if (text == 'decimalValueSpaceAndComma') {
-				  				outputValueCount++;
-								sopLineCount++;
-								setTimeout(function() {
-									if (intro._direction=="forward") {
-										intro.nextStep()
-									} else {
-										intro.previousStep()
-									}
-								}, 500);
-				  			} else {
-				  				if (text == 'decimalValueOnly') {
-					  				typingText = 'You will notice that the two values '+
-					  							 '<span class = "ct-code-b-yellow">14</span> and '+
-					  							 '<span class = "ct-code-b-yellow">24</span> do not'+
-					  							 ' have a <span class = "ct-code-b-yellow">space</span> in-between them.';
-					  				
-					  			} else if (text == 'decimalValueAndSpace') {
-					  				typingText = 'You will notice that the two values '+
-					  							 '<span class = "ct-code-b-yellow">14</span> and '+
-					  							 ' <span class = "ct-code-b-yellow">24</span> have a'+
-					  							 ' <span class = "ct-code-b-yellow">space</span> in-between them.';
-					  				
-					  			} else if (text == 'decimalValueAndComma') {
-						  			typingText = 'You will notice that the two values '+
-					  							 '<span class = "ct-code-b-yellow">14</span> and '+
-					  							 ' <span class = "ct-code-b-yellow">24</span> have a'+
-					  							 ' <span class = "ct-code-b-yellow">comma</span> in-between them.';
-					  			}
-					  			$('.introjs-tooltip').removeClass('hide');
-					  			typing('.introjs-tooltiptext', typingText, typingInterval, 'white', function() {
-					  				outputValueCount++;
-					  				sopLineCount++;
-					  				$('.introjs-tooltipbuttons').prepend('<a class="introjs-button back-button">&#8592; Back</a>').show();
-									$(".introjs-nextbutton").show();
-									$('.back-button').click(function() {
-										$('.back-button').remove();
-										outputValueCount--;
-										sopLineCount--; 
-										intro.previousStep();
-									});
-					  				
-								});
-				  			}
-				  		}
-					 });
-				});
-			});
-		});
-	});
-}
-
-function cValurAnimation() {
-	highlightFunction('#persentageDA' + sopLineCount, 'z-index1000000', function() {
-		highlightFunction('#cValue' + sopLineCount, 'z-index1000000', function() {
-			fromEffectWithTweenMax("#cValue" + sopLineCount, "#cValueAnimation", true, function() {
-				$('#persentageDA' + sopLineCount).removeClass('z-index1000000');
-				$('#cValue' + sopLineCount).removeClass('z-index1000000'); 
-				highlightFunction('#addressValue3', 'circle-css z-index1000000', function() {
-					$("#outputCValue" + outputValueCount).text($("#addressValue3").text());
-					fromEffectWithTweenMax("#addressValue3", "#outputCValue" + outputValueCount, false,  function() {
-						$('#addressValue3').removeClass('circle-css z-index1000000');
-				  		 outputValueCount++;
-				  		setTimeout(function() {
-				  			if (intro._direction=="forward") {
-				  				intro.nextStep()
-				  			} else {
-				  				intro.previousStep()
-				  			}
-				  		}, 500);
-				  	});
-				});
-			});
-		});
-	});
+		} else {
+			outputValueCount--;
+			setTimeout(function() {
+				intro.previousStep()
+			}, 500);
+		}
+			
+	}, 500);
 }
 
 //*******Text highlight function*****
@@ -596,5 +516,219 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 		
+	});
+}
+
+function sample() {
+	setTimeout(function() {
+		if (intro._direction == "forward") {
+			$(".introjs-duplicate-nextbutton").remove();
+			highlightFunction('#persentage' + sopLineCount, 'z-index1000000', function() {
+				highlightFunction('#aValue' + sopLineCount, 'z-index1000000', function() {
+					fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+						$('#persentage' + sopLineCount).removeClass('z-index1000000');
+						$('#aValue' + sopLineCount).removeClass('z-index1000000');
+						highlightFunction('#addressValue1', 'circle-css z-index1000000', function() {
+							$("#outputAValue" + outputValueCount).text($("#addressValue1").text());
+							fromEffectWithTweenMax("#addressValue1", "#outputAValue" + outputValueCount, false, function() { 	
+								$('#addressValue1').removeClass('circle-css z-index1000000');
+								$(".introjs-duplicate-nextbutton").remove();
+								highlightFunction('#persentageD' + sopLineCount, 'z-index1000000', function() {
+									highlightFunction('#bValue' + sopLineCount, 'z-index1000000', function() {
+										fromEffectWithTweenMax("#bValue" + sopLineCount, "#bValueAnimation", true,  function() {
+											$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+											$('#bValue' + sopLineCount).removeClass('z-index1000000');
+											highlightFunction('#addressValue2', 'circle-css z-index1000000', function() {
+												$("#outputBValue" + outputValueCount).text($("#addressValue2").text());
+												fromEffectWithTweenMax("#addressValue2", "#outputBValue" + outputValueCount, false, function() {
+													$('#addressValue2').removeClass('circle-css z-index1000000');
+													$('.introjs-tooltip').removeClass('hide');
+													typingText = 'You will notice that the two values '+
+					  							 '<span class = "ct-code-b-yellow">14</span> and '+
+					  							 '<span class = "ct-code-b-yellow">24</span> do not'+
+					  							 ' have a <span class = "ct-code-b-yellow">space</span> in-between them.';
+										  			typing('.introjs-tooltiptext', typingText, typingInterval, 'white', function() {
+										  				outputValueCount++;
+										  				sopLineCount++;
+										  				$('.introjs-tooltipbuttons').prepend('<a class="introjs-button back-button">&#8592; Back</a>').show();
+														$(".introjs-nextbutton").show();
+														$('.back-button').click(function() {
+															$('.back-button').remove();
+															$(".introjs-nextbutton").hide();
+															outputValueCount--;
+															sopLineCount--; 
+															setTimeout(function() {
+															intro.previousStep();
+															}, 500);
+														});
+										  				
+										  			});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		}
+	}, 500);
+}
+function sample2() {
+	$(".introjs-duplicate-nextbutton").remove();
+	highlightFunction('#persentage' + sopLineCount, 'z-index1000000', function() {
+		highlightFunction('#aValue' + sopLineCount, 'z-index1000000', function() {
+			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+				$('#persentage' + sopLineCount).removeClass('z-index1000000');
+				$('#aValue' + sopLineCount).removeClass('z-index1000000');
+				highlightFunction('#addressValue1', 'circle-css z-index1000000', function() {
+					$("#outputAValue" + outputValueCount).text($("#addressValue1").text());
+					fromEffectWithTweenMax("#addressValue1", "#outputAValue" + outputValueCount, false, function() { 	
+						$('#addressValue1').removeClass('circle-css z-index1000000');
+						transferEffect("#blankSpace" + sopLineCount, "#blankSpaceO" + outputValueCount, function() {
+		  					$("#blankSpaceO" + outputValueCount).html("&nbsp;");
+		  					$("#blankSpaceO" + outputValueCount).effect( "highlight",{color: '#ffff33'}, 500);
+		  					$(".introjs-duplicate-nextbutton").remove();
+		  					highlightFunction('#persentageD' + sopLineCount, 'z-index1000000', function() {
+		  						highlightFunction('#bValue' + sopLineCount, 'z-index1000000', function() {
+		  							fromEffectWithTweenMax("#bValue" + sopLineCount, "#bValueAnimation", true,  function() {
+		  								$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+		  								$('#bValue' + sopLineCount).removeClass('z-index1000000');
+		  								highlightFunction('#addressValue2', 'circle-css z-index1000000', function() {
+		  									$("#outputBValue" + outputValueCount).text($("#addressValue2").text());
+		  									fromEffectWithTweenMax("#addressValue2", "#outputBValue" + outputValueCount, false, function() {
+		  										$('#addressValue2').removeClass('circle-css z-index1000000');
+		  										$('.introjs-tooltip').removeClass('hide');
+		  										typingText = 'You will notice that the two values '+
+					  							 '<span class = "ct-code-b-yellow">14</span> and '+
+					  							 ' <span class = "ct-code-b-yellow">24</span> have a'+
+					  							 ' <span class = "ct-code-b-yellow">space</span> in-between them.';
+		  										typing('.introjs-tooltiptext', typingText, typingInterval, 'white', function() {
+									  				outputValueCount++;
+									  				sopLineCount++;
+									  				$('.introjs-tooltipbuttons').prepend('<a class="introjs-button back-button">&#8592; Back</a>').show();
+													$(".introjs-nextbutton").show();
+													$('.back-button').click(function() {
+														$('.back-button').remove();
+														$(".introjs-nextbutton").hide();
+														outputValueCount--;
+														sopLineCount--; 
+														setTimeout(function() {
+														intro.previousStep();
+														}, 500);
+													});
+									  				
+									  			});
+		  									});
+		  								});
+		  							});
+		  						});
+		  					});
+						});
+					});
+				
+				});
+			});
+		});
+	});
+
+}
+
+function sample3() {
+	$(".introjs-duplicate-nextbutton").remove();
+	highlightFunction('#persentage' + sopLineCount, 'z-index1000000', function() {
+		highlightFunction('#aValue' + sopLineCount, 'z-index1000000', function() {
+			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+				$('#persentage' + sopLineCount).removeClass('z-index1000000');
+				$('#aValue' + sopLineCount).removeClass('z-index1000000');
+				highlightFunction('#addressValue1', 'circle-css z-index1000000', function() {
+					$("#outputAValue" + outputValueCount).text($("#addressValue1").text());
+					fromEffectWithTweenMax("#addressValue1", "#outputAValue" + outputValueCount, false, function() { 	
+						$('#addressValue1').removeClass('circle-css z-index1000000');
+								transferEffect("#comma" + sopLineCount, "#commaO" + outputValueCount, function() {
+			  					$("#commaO" + outputValueCount).text(",");
+			  					$(".introjs-duplicate-nextbutton").remove();
+			  					highlightFunction('#persentageD' + sopLineCount, 'z-index1000000', function() {
+			  						highlightFunction('#bValue' + sopLineCount, 'z-index1000000', function() {
+			  							fromEffectWithTweenMax("#bValue" + sopLineCount, "#bValueAnimation", true,  function() {
+			  								$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+			  								$('#bValue' + sopLineCount).removeClass('z-index1000000');
+			  								highlightFunction('#addressValue2', 'circle-css z-index1000000', function() {
+			  									$("#outputBValue" + outputValueCount).text($("#addressValue2").text());
+			  									fromEffectWithTweenMax("#addressValue2", "#outputBValue" + outputValueCount, false, function() {
+			  										$('#addressValue2').removeClass('circle-css z-index1000000');
+			  					$('.introjs-tooltip').removeClass('hide');
+			  					typingText = 'You will notice that the two values '+
+	  							 '<span class = "ct-code-b-yellow">14</span> and '+
+	  							 ' <span class = "ct-code-b-yellow">24</span> have a'+
+	  							 ' <span class = "ct-code-b-yellow">comma</span> in-between them.';
+									typing('.introjs-tooltiptext', typingText, typingInterval, 'white', function() {
+					  				outputValueCount++;
+					  				sopLineCount++;
+					  				$('.introjs-tooltipbuttons').prepend('<a class="introjs-button back-button">&#8592; Back</a>').show();
+									$(".introjs-nextbutton").show();
+									$('.back-button').click(function() {
+										$('.back-button').remove();
+										$(".introjs-nextbutton").hide();
+										outputValueCount--;
+										sopLineCount--; 
+										setTimeout(function() {
+										intro.previousStep();
+										}, 500);
+										});
+										});
+			  						});
+			  					});
+			  				});
+			  			});
+			  		});
+			  	});			
+			});
+		});
+	});
+});
+	});
+}
+function sample4() {
+	$(".introjs-duplicate-nextbutton").remove();
+	highlightFunction('#persentage' + sopLineCount, 'z-index1000000', function() {
+		highlightFunction('#aValue' + sopLineCount, 'z-index1000000', function() {
+			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+				$('#persentage' + sopLineCount).removeClass('z-index1000000');
+				$('#aValue' + sopLineCount).removeClass('z-index1000000');
+				highlightFunction('#addressValue1', 'circle-css z-index1000000', function() {
+					$("#outputAValue" + outputValueCount).text($("#addressValue1").text());
+					fromEffectWithTweenMax("#addressValue1", "#outputAValue" + outputValueCount, false, function() { 	
+						$('#addressValue1').removeClass('circle-css z-index1000000');
+						transferEffect("#comma" + sopLineCount, "#commaO" + outputValueCount, function() {
+		  					$("#commaO" + outputValueCount).text(",");
+		  					$(".introjs-duplicate-nextbutton").remove();
+		  					highlightFunction('#persentageD' + sopLineCount, 'z-index1000000', function() {
+		  						highlightFunction('#bValue' + sopLineCount, 'z-index1000000', function() {
+		  							fromEffectWithTweenMax("#bValue" + sopLineCount, "#bValueAnimation", true,  function() {
+		  								$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+		  								$('#bValue' + sopLineCount).removeClass('z-index1000000');
+		  								highlightFunction('#addressValue2', 'circle-css z-index1000000', function() {
+		  									$("#outputBValue" + outputValueCount).text($("#addressValue2").text());
+		  									fromEffectWithTweenMax("#addressValue2", "#outputBValue" + outputValueCount, false, function() {
+		  										$('#addressValue2').removeClass('circle-css z-index1000000');
+		  										transferEffect("#blankSpace" + sopLineCount, "#blankSpaceO" + outputValueCount, function() {
+		  						  					$("#blankSpaceO" + outputValueCount).html("&nbsp;");
+		  						  					$("#blankSpaceO" + outputValueCount).effect( "highlight",{color: '#ffff33'}, 1000);
+		  						  								cValurAnimation();
+						
+		  										});
+					  						});
+					  					});
+					  				});
+					  			});
+					  		});
+					  	});			
+					});
+				});
+			});
+		});
 	});
 }
