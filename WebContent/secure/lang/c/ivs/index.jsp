@@ -438,8 +438,8 @@ r {
 						<td>
 							<i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span></td>
-						<td>Padmaja <r>(back)</r></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span> <r>(No back)</r></td>
+						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
 						<td>Successfully Completed</td>
 						<td>04-09-2016</td>
