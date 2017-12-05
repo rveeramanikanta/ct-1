@@ -1929,7 +1929,7 @@
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to find whether a string is palindrome or not',
-									 '', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+									 'palindrome-or-not.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								  	<span style = "color : red">Find whether a string is palindrome or not</span>
 							</div>
 						</td>
