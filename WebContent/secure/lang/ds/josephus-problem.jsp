@@ -43,9 +43,10 @@
 	background-color: #fffae6;
 	border-radius: 8px;
 	font-size: 11.5px;
+	font-family: monospace;
 }
 
-.ct-css, .green-color, .blue-color, .brown-color {
+.ct-css, .green-color, .blue-color, .brown-color, y {
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -64,6 +65,10 @@
 
 .brown-color {
 	color: brown;
+}
+
+y {
+	color: yellow;
 }
 
 .box {
@@ -109,6 +114,8 @@
 	padding: 1px 7px;
 	font-family: monospace;
 	display: none;
+	z-index: 99999999;
+	position: relative;
 }
 
 .output-console-title-bar {
@@ -128,6 +135,48 @@
 	background-color: green;
 }
 
+.introjs-tooltip {
+	min-width: 300px;
+}
+
+.zindex-css {
+	z-index: 9999999;
+	background-color: white;
+	position: relative;
+}
+
+.background-yellow {
+	background-color: yellow;
+}
+
+.user-txt {
+	background-color: black;
+	color: yellow;
+	font-family: monospace;
+	font-weight:bold;
+	border: none; 
+}
+
+.svg-css {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.svg-line {
+	stroke: gray;
+	stroke-width: 2; 
+	position: relative;
+	marker-end: url("#arrowEnd"); 
+}
+
+polyline {
+	fill: transparent;
+	stroke: red;
+	stroke-width: 4;
+}
 </style>
 </head>
 <body>
@@ -137,6 +186,7 @@
 		josephusProblemReady();
 	});
 </script>
+
 <div class="col-xs-12 margin-top15"> 
 	<div class="col-xs-12 text-center">
 		<h1 class="label ct-demo-heading" id="headingSection">Josephus Problem</h1>
@@ -144,35 +194,33 @@
 	<div class="col-xs-12 margin-top15 padding0">
 		<div class="col-xs-4 border-css padding0 opacity00" id="codeDiv">
 		<div class="text-center" style="margin-top: 5px;"><span id="includeBtn" class="btn btn-success">Struct List</span></div>
-<div id="includePre"><pre class="pre-tab">#include &lt;stdio.h&gt;
+<div><pre class="pre-tab" id="includePre">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#define max 20
-struct list {
+<span id="structDec">struct list {
 	char name[10];
 	struct list *next;
-};
-typedef struct list *node;</pre></div>
+};</span>
+<span id="typeDefDec">typedef struct list *node;</span></pre></div>
 <pre class="pre-tab hide" id="mainPre">int main() {
-	node q, temp, first;
-	first = NULL;
-	char *end = "end";
-	char sname[10];
-	int i, n;
-	printf("Enter Name of Soldier : ");
-	scanf("%s", sname);
-	while(strcmp(sname, "end") != 0) {
-		temp = (node)malloc(sizeof(struct list));
-		strcpy(temp -> name, sname);
-		temp -> next = NULL;
-		if (first == NULL) {
-			first = temp;
-		} else {
-			q -> next = temp;
-		}
-		q = temp;
-		printf("Enter Name of Soldier : ");
-		scanf("%s", sname);
+	<div id="nodesDecInMain"><span>node q, temp, first;</span>
+<span>first = NULL;</span></div>
+	<div id="endSNmeIAndNDec"><span>char sName[10];</span>
+<span>int i, n;</span></div>
+	<div id="printf1">printf("Enter Name of the Soldier : ");
+scanf("%s", sName);</div>
+	<div id="strCmpWhileLoop">while(<span id="strCmpCond">strcmp(sName, "end") != 0</span>) {
+	<span id="allocMemory">temp = (node)malloc(sizeof(struct list));</span>
+	<div id="assignNameNextVal"><span>strcpy(temp -> name, sName);</span>
+	<span>temp -> next = NULL;</span></div>
+	if (first == NULL) {
+		first = temp;
+	} else {
+		q -> next = temp;
 	}
+	q = temp;
+	printf("Enter Name of the Soldier : ");
+	scanf("%s", sName);
+}</div>
 	q -> next = first;
 	printf("The Original Soldiers List is --> ");
 	print(first);
@@ -197,18 +245,16 @@ typedef struct list *node;</pre></div>
 			<div class="col-xs-12 padding0">
 				<div class="col-xs-12 border-css opacity00" id="animationDiv">
 					<div class="col-xs-12 margin-top15" id="variablesDiv">
-						<div class="col-xs-1 text-center padding0 opacity00" id="firstMain">
+						<div class="col-xs-1 text-center padding0 opacity00" id="firstVarDecMain">
 							<div class="col-xs-12 green-color padding0">first<sub>main</sub></div>
-							<div class="col-xs-12 box"><span id="firstValMain" class="green-color opacity00">1248</span></div>
+							<div class="col-xs-12 box"><span id="firstValMain" class="green-color opacity00 position-css">NULL</span></div>
 						</div>
 					</div>
-					<div class="col-xs-12 padding0" id="nodesDiv">
-						<div class="col-xs-12 margin-top25 padding0" id="listNodesDiv" style="font-size: 12px;">
-							<div class="col-xs-12 padding0" id="row1" style="min-height: 55px;"></div>
-							<div class="col-xs-12 padding0" id="row2"></div>
-						</div>
-						<div class="col-xs-12 margin-top25" id="variableNodesDiv" style="margin-bottom: 10px;"></div>
+					<div class="col-xs-12 padding0 margin-top25" id="nodesDiv" style="font-size: 12px;">
+						<div class="col-xs-12 padding0" id="row1" style="min-height: 55px;"></div>
+						<div class="col-xs-12 padding0" id="row2"></div>
 					</div>
+					<div class="col-xs-12 margin-top25" id="variableNodesDiv" style="margin-bottom: 10px;"></div>
 				</div>
 			</div>
 			<div class="col-xs-12 padding0">
