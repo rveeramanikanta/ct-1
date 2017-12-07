@@ -29,14 +29,15 @@ var towerOfHanoiReady = function () {
 		}
 	}
 	lang = getURLParameter("lang");
+	lang = (lang == undefined) ? "c" : lang;
 	if (lang == 'c') {
 		$('#preproceserDir').text("#include <stdio.h>\n");			
-		$('#ifPrintfStmt').html('printf("Move disk %d from %c to %c\\n", disks, <x style="color:blue">src<b>Rod</b></x>, <x style="color:green">dest<b>Rod</b></x>);');
-		$('#elsePrintfStmt').html('printf("Move disk %d from %c to %c\\n", disks, <x style="color:blue">src<b>Rod</b></x>, <x style="color:green">dest<b>Rod</b></x>);');
+		$('#ifPrintfStmt').html('printf("Move disk %d from %c to %c", disks, <x style="color:blue">src<b>Rod</b></x>, <x style="color:green">dest<b>Rod</b></x>);');
+		$('#elsePrintfStmt').html('printf("Move disk %d from %c to %c", disks, <x style="color:blue">src<b>Rod</b></x>, <x style="color:green">dest<b>Rod</b></x>);');
 	} else if (lang == "cpp") {
 		$('#preproceserDir').text("#include <iostream>\nusing namespace std;\n");
-		$('#ifPrintfStmt').text('cout << "Move disk " << disks << " from " << srcRod << " to " \n\t\t\t\t\t\t\t\t << destRod << "\\n";');
-		$('#elsePrintfStmt').text('cout << "Move disk " << disks << " from " << srcRod << " to " \n\t\t\t\t\t\t\t\t << destRod << "\\n";');
+		$('#ifPrintfStmt').text('cout << "Move disk " << disks << " from " << srcRod << " to " << destRod;');
+		$('#elsePrintfStmt').text('cout << "Move disk " << disks << " from " << srcRod << " to " << destRod;');
 	}
 		
 }
@@ -523,21 +524,21 @@ function createHanoiStack() {
 		   + "}</div>" 
 		   + "</div></div>");
 	if (lang == 'c') {
-		$('#stack' + number + 'IfBlkPrintStmt').html('printf(\"Move disk %d from %c to %c\\n\",' 
+		$('#stack' + number + 'IfBlkPrintStmt').html('printf(\"Move disk %d from %c to %c\",' 
 				+ ' <span class="number">disks</span>, <x class="aVal" style="color:blue; display:inline-block;">src<b>Rod</b></x>,'
-				+ ' <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x>');
-		$('#stack' + number + 'ElseBlkPrintStmt').html('printf(\"Move disk %d from %c to %c\\n\",' 
+				+ ' <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x>);');
+		$('#stack' + number + 'ElseBlkPrintStmt').html('printf(\"Move disk %d from %c to %c\",' 
 				+ " <span class='number'>disks</span>, <x class='aVal' style='color:blue; display:inline-block;'>src<b>Rod</b></x>,"
 				+ " <x class='cVal' style='color:green; display:inline-block;'>dest<b>Rod</b></x>);");
 	} else if (lang == 'cpp') {
 		$('#stack' + number + 'IfBlkPrintStmt').css('display, inline');
 		$('#stack' + number + 'IfBlkPrintStmt').html('cout << "Move disk " << <span class="number">disks</span> << " from " << '
-						+ '<x class="aVal" style="color:blue; display:inline-block;">src<b>Rod</b></x> << " to " <br>&emsp;&emsp;&emsp;&emsp;&emsp;'
-						+ '<< <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x> << "\\n";');
+						+ '<x class="aVal" style="color:blue; display:inline-block;">src<b>Rod</b></x> << " to " '
+						+ '<< <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x>;');
 		$('#stack' + number + 'ElseBlkPrintStmt').css('display, inline');
 		$('#stack' + number + 'ElseBlkPrintStmt').html('cout << "Move disk " << <span class="number">disks</span> << " from " << '
-						+ '<x class="aVal" style="color:blue; display:inline-block;">src<b>Rod</b></x> << " to "<br>'
-						+ ' &emsp;&emsp;&emsp;&emsp;&emsp;<< <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x> << "\\n";');
+						+ '<x class="aVal" style="color:blue; display:inline-block;">src<b>Rod</b></x> << " to "'
+						+ ' << <x class="cVal" style="color:green; display:inline-block;">dest<b>Rod</b></x>;');
 	}
 	reChangeArrowHeight();
 	introjs.insertOption(introjs._currentStep + 1, getStep("#stack" + number + "IfBlk", "", "top"));

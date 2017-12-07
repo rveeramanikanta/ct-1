@@ -10,6 +10,7 @@ var lang;
 
 var gcdUsingRecursionReady = function() {
 	lang = getURLParameter('lang');
+	lang = (lang == undefined) ? "c" : lang;
 	if (lang == 'c') {
 		$('#includes').html('#include &lt;stdio.h&gt;');
 		$('#printLine').html('printf("gcd of %d, %d is : %d", num1, num2, gcd(num1, num2));');
@@ -371,7 +372,7 @@ function initIntroJS() {
 						$("#stackBody .panel").eq(0).remove();
 					}});
 					$("#restart").removeClass("opacity00");
-					var text = "Click here to restart.";
+					var text = "Click to restart.";
 					typing(".introjs-tooltiptext", text);
 				});
 				break;
@@ -425,8 +426,8 @@ function initIntroJS() {
 			$('#mainStackPrintf').append("printf(\"gcd of %d, %d is : %d\", num1, num2, " 
 					+ "<span id='mainStackGcdFunCall' class='returned-val'><b>gcd(<span class='number flip-css'>num1</span>, <span class='number flip-css'>num2</span>)</span>)</b>;");
 		} else if (lang == 'cpp') {
-			$('#mainStackPrintf').append("cout << \"Gcd of \" << num1 << \", \" << num2 << \" is : \"<br> << " 
-				+ "<span id='mainStackGcdFunCall' class='returned-val'><b>gcd(<span class='number flip-css'>num1</span>, <span class='number flip-css'>num2</span>)</span>)</b>;");
+			$('#mainStackPrintf').append("cout << \"Gcd of \" << num1 << \", \" << num2 << \" is : \" << " 
+				+ "<span id='mainStackGcdFunCall' class='returned-val'><b>gcd(<span class='number flip-css'>num1</span>, <span class='number flip-css'>num2</span>)</span></b>;");
 		}
 		introjs.insertOption(introjs._currentStep + 1, getStep("#mainStackNumsDec", "", "top"));
 		introjs.insertOption(introjs._currentStep + 2, getStep("#mainStackPrintf", "", "top", "hide"));
@@ -491,9 +492,9 @@ function initIntroJS() {
 	}
       
 	function createInvisiableDiv() {
-		$("#invisibleDiv").append("<div class='col-xs-offset-2 col-xs-10 padding0'>" 
+		$("#invisibleDiv").append("<div class='col-xs-12 padding0'>" 
 				+ "<div class='col-xs-12 padding0'>" 
-				+ "<div class='col-xs-10 padding0 opacity00 panel panel-primary'>" 
+				+ "<div class='col-xs-11 padding0 opacity00 panel panel-primary'>" 
 				+ $("#stackBody > div:first-child").html() 
 				+  "</div></div></div>");
 	}
@@ -520,17 +521,17 @@ function initIntroJS() {
 			x1 = x1 / ($("#mySvg").width()/ 100);
 			line.setAttribute('x1', x1 + "%");
 			line.setAttribute('y1', y1);
-			line.setAttribute('x2', '90%');
+			line.setAttribute('x2', '97%');
 			line.setAttribute('y2', y1);
 			$('#mySvg').append(line);
 			
 			var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 			y1 = $(idsArr[(idsArr.length - i) - 1]).offset().top - $('#stackBody').offset().top + $(idsArr[(idsArr.length - i) - 1]).height() / 2;
-			y2 = $('#stackBody').height() - y1 - $('#stackBody .panel').height();
+			y2 = $('#stackBody').height() - y1 - $('#stackBody .panel').height() + 10;
 			line.setAttribute('class', 'svg-line');
-			line.setAttribute('x1', '90%');
+			line.setAttribute('x1', '97%');
 			line.setAttribute('y1', y2);
-			line.setAttribute('x2', '85%');
+			line.setAttribute('x2', '92%');
 			line.setAttribute('y2', y2);
 			line.style.markerEnd = 'url("#grayMarker")';
 			$('#mySvg').append(line);
@@ -538,9 +539,9 @@ function initIntroJS() {
 			var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 			y1 = $(idsArr[i]).offset().top - $('#stackBody').offset().top + $(idsArr[i]).height() / 2;
 			line.setAttribute('class', 'svg-line');
-			line.setAttribute('x1', '90%');
+			line.setAttribute('x1', '97%');
 			line.setAttribute('y1', y1);
-			line.setAttribute('x2', '90%');
+			line.setAttribute('x2', '97%');
 			line.setAttribute('y2', y2);
 			$('#mySvg').append(line);
 		}
@@ -552,13 +553,13 @@ function initIntroJS() {
 		
 		if (flag) {
 			$("#arrow1").attr("x2" , $("#arrow1").attr("x1")).css({"display" : "", "marker-end" : "url('#blueMarker')"});
-			tl.to($("#arrow1"), 1, {attr : {x2 : "90%"}, onComplete: function() {
+			tl.to($("#arrow1"), 1, {attr : {x2 : "97%"}, onComplete: function() {
 				$("#arrow1").css("marker-end", "url()");
 				$("#arrow3").attr("y2" , $("#arrow3").attr("y1")).css({"display" : "", "marker-end" : "url('#blueMarker')"});
 				tl.to($("#arrow3"), 1, {attr : {y2 : $("#arrow2").attr("y1")}, onComplete: function() {
 					$("#arrow3").css("marker-end", "url()");
-					$("#arrow2").attr("x2", "90%").css({"display" : "", "marker-end" : "url('#blueMarker')" });
-					tl.to($("#arrow2"), 1, {attr : {x2 : "85%"}, onComplete: function() {
+					$("#arrow2").attr("x2", "97%").css({"display" : "", "marker-end" : "url('#blueMarker')" });
+					tl.to($("#arrow2"), 1, {attr : {x2 : "92%"}, onComplete: function() {
 						if (typeof callBackFunction === "function") {
 							callBackFunction();
 						}
@@ -635,7 +636,7 @@ function initIntroJS() {
       
 	function reverseRevealEffect() {
 		$("#arrow2").css("marker-end" , "url('#blueMarker')")
-		tl.to($("#arrow2"), 1, {attr : {x2 : "90%"}, onComplete: function() {
+		tl.to($("#arrow2"), 1, {attr : {x2 : "97%"}, onComplete: function() {
 			$("#arrow2").css("marker-end", "url()");
 			$("#arrow3").css("marker-end", "url('#blueMarker')");
 			tl.to($("#arrow3"), 1, {attr : {y2 : $("#arrow3").attr("y1")}, onComplete: function() {

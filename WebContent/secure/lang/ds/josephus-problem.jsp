@@ -89,14 +89,13 @@ y {
 	text-align: center;
 	display: inline-block;
 	border: 2px solid gray;
-	font-size: 11px;
+	font-size: 10px;
 }
 
 .left-radius {
 	border-right: none;
 	border-color: blue;
 	border-radius: 6px 0 0 6px;
-	font-size: 10px;
 	width: 65px;
 }
 
@@ -211,17 +210,17 @@ scanf("%s", sName);</div>
 	<div id="strCmpWhileLoop">while(<span id="strCmpCond">strcmp(sName, "end") != 0</span>) {
 	<span id="allocMemory">temp = (node)malloc(sizeof(struct list));</span>
 	<div id="assignNameNextVal"><span>strcpy(temp -> name, sName);</span>
-	<span>temp -> next = NULL;</span></div>
-	if (first == NULL) {
-		first = temp;
-	} else {
-		q -> next = temp;
-	}
-	q = temp;
-	printf("Enter Name of the Soldier : ");
-	scanf("%s", sName);
+<span>temp -> next = NULL;</span></div>
+	<div id="ifFirstIsNull"><span>if (first == NULL) {</span>
+	<span>first = temp;</span>
+} else {
+	<span>q -> next = temp;</span>
 }</div>
-	q -> next = first;
+	<span id="tempToQ">q = temp;</span>
+	<div id="printf2">printf("Enter Name of the Soldier : ");
+scanf("%s", sName);</div>
+}</div>
+	<span id="firstToQNext">q -> next = first;</span>
 	printf("The Original Soldiers List is --> ");
 	print(first);
 	printf("Enter a Value : ");

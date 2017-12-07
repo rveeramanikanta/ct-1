@@ -1,4 +1,4 @@
-var intro, printfCount = 1, nodeCount = 1, lineCount = 1;
+var intro, printfCount = 1, nodeCount = 1;
 var arr = ["sName", "i", "n"], dummmyArr = ["q", "temp", "first"];
 function josephusProblemReady() {
 	$('pre div').addClass('position-css');
@@ -167,11 +167,12 @@ function initIntroJS() {
 			break;
 			case 'animationDiv':
 				$('#animationDiv').removeClass('opacity00');
+				$('.background-yellow').removeClass('background-yellow');
+				$('.arrow').remove();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				$('.introjs-helperLayer').one('transitionend', function() {
 					switch(animateStep) {
 						case 'decQTempFirst':
-							$('.background-yellow').removeClass('background-yellow');
 							$('#nodesDecInMain').addClass('zindex-css');
 							arr = ['#qVarDecMain', '#tempVarDecMain', '#firstVarDecMain', '#firstValMain'];
 							dummmyArr = ['first', 'first', 'first', 'last'];
@@ -180,7 +181,6 @@ function initIntroJS() {
 							});
 						break;
 						case 'decEndSnameIN':
-							$('.background-yellow').removeClass('background-yellow');
 							$('#endSNmeIAndNDec').addClass('zindex-css');
 							arr = ['#sNameVarDec', '#iVarDec', '#nVarDec'];
 							dummmyArr = ['first', 'eq(1)', 'eq(1)'];
@@ -190,7 +190,7 @@ function initIntroJS() {
 						break;
 						case 'storeScanfVal':
 							$('#sNameVarVal').text($('.user-txt:last').val())
-							fromEffectWithTweenMax('.user-txt', '#sNameVarVal', function() {
+							fromEffectWithTweenMax('.user-txt:last', '#sNameVarVal', function() {
 								if ($('input').length == 1) {
 									customIntroNextStep('#strCmpWhileLoop', '', 'hide');
 								} else {
@@ -203,6 +203,49 @@ function initIntroJS() {
 									+ ' <y>' + $("#dataAddress" + nodeCount).text().trim() +'</y>.';
 							typing('.introjs-tooltiptext' , text, function() {
 								appendNextButton('displayNodeNameAndNext');
+							});
+						break;
+						case 'assignNameNext':
+							$('#assignNameNextVal').addClass('zindex-css');
+							arr = ['#name' + nodeCount, '#next' + nodeCount];
+							dummmyArr = ['first', 'last'];
+							recursiveZoomIn('#assignNameNextVal', 0, function() {
+								customIntroNextStep('#ifFirstIsNull', '', 'show');
+							});
+						break;
+						case 'storeTempInFirstRQNext':
+							var selector, val;
+							if ($('#firstValMain').text() == "NULL") {
+								val = '1';
+								selector = '#firstValMain';
+							} else {
+								val = '2';
+								selector = '#next' + (nodeCount - 1);
+							}
+							$('#ifFirstIsNull span:eq(' + val + ')').addClass('zindex-css');
+							bounceEffect('#tempValMain', selector, false, '-750px', function() {
+								if (nodeCount == 1) {
+									svgAnimatingLineTopAndBottom($('#firstVarDecMain > div:eq(1)'), '#nextDiv1', 'line22', false, function() {
+										customIntroNextStep('#tempToQ', '', 'show');
+									});
+								} else {
+									svgAnimatingLineRightAndLeft('#nextDiv' + (nodeCount - 1), '#nameDiv' + nodeCount, 'line' + (nodeCount - 1),
+													true, function() {
+										customIntroNextStep('#tempToQ', '', 'show');
+									});
+								}
+							});
+						break;
+						case 'storeTempToQ':
+							(nodeCount == 1) ? $('#qValMain').text($('#tempValMain').text()) : '';
+							fromBounceAnim('#tempValMain', '#qValMain', true, '50px', function() {
+							//displayNodeFun(animateStep, function() {
+								$('#line23').remove();
+								svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + nodeCount, 'line23', true, function() {
+									printfCount = 2;
+									nodeCount++;
+									customIntroNextStep('#printf2', 'enterSoldierName', 'hide');
+								});
 							});
 						break;
 					}
@@ -239,9 +282,11 @@ function initIntroJS() {
 				});
 			break;
 			case 'strCmpCond':
+				$('.zindex-css').removeClass('zindex-css');
 				$('.user-txt:last').attr('disabled', 'disabled');
 				$('.introjs-helperLayer').one('transitionend', function() {
-					text = '<span class="ct-code-b-yellow opacity00" id="mainCond"><span id="fstVal">strcmp(<span id="secondVal">'
+					text = 'The <y>strcmp()</y> function compares two strings and returns <y>0</y> if both strings are identical.<br>'
+							+ ' <span class="ct-code-b-yellow opacity00" id="mainCond"><span id="fstVal">strcmp(<span id="secondVal">'
 							+ 'sName</span>, "end")</span> != 0</span>';
 					$('.introjs-tooltiptext').append(text);
 					$('.introjs-tooltiptext span').addClass('position-css');
@@ -250,8 +295,9 @@ function initIntroJS() {
 							flipEffect('#secondVal', "\"" + $('#sNameVarVal').text() + "\"", function() {
 								var value = $('#sNameVarVal').text().toLowerCase().localeCompare("end");
 								flipEffect('#fstVal', value, function() {
-									appendCondCheckingText((value != 0), 'while-loop', function() {
-										nextStepWithBtn('#allocMemory', '', 'show');
+									appendCondCheckingText('.introjs-tooltiptext', (value != 0), (value != 0), 'while-loop', function() {
+										var stepId = (value != 0) ? '#allocMemory' : '#firstToQNext'; 
+										nextStepWithBtn(stepId, '', 'show');
 									});
 								});
 							});
@@ -272,11 +318,73 @@ function initIntroJS() {
 						TweenMax.to('#li2', 1, {opacity: 1, onComplete: function() {
 							TweenMax.to('#li3', 1, {opacity: 1, onComplete: function() {
 								appendListNodes(nodeCount);
-								//nodeCount++;
 								nextStepWithBtn("#animationDiv", "nodeMemAllo", 'show');
 							}});
 						}});
 					}});
+				});
+			break;
+			case 'assignNameNextVal':
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$('.introjs-tooltiptext').append('<ul></ul>');
+					text = 'The <y>strcpy()</y> function copies the string to the another character array.<br>';
+					movingArrowWithLiTyping('#mainPre', '#assignNameNextVal span:first', '#assignNameNextVal span:first', text, function() {
+						text = '<span class="opacity00 ct-code-b-yellow" id="mainCond">strcpy(temp -> name, <span id="fstVal">sName</span>);</span>';
+						$('.introjs-tooltiptext li').append(text);
+						$('.introjs-tooltiptext li span').addClass('position-css');
+						fromEffectWithTweenMax('#assignNameNextVal span:first', '#mainCond', function() {
+							callingNextButton(function() {
+								flipEffect('#fstVal', $('#sNameVarVal').text(), function() {
+									flipEffect('#mainCond', $('#sNameVarVal').text(), function() {
+										text = '<y>next</y> member of the <y>temp</y> node is initialize with <y>NULL</y>.';
+										movingArrowWithLiTyping('#mainPre', '#assignNameNextVal span:first', '#assignNameNextVal span:last',
+												text, function() {
+											nextStepWithBtn('#animationDiv', 'assignNameNext', 'hide');
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			break;
+			case 'ifFirstIsNull':
+				$('.zindex-css').removeClass('zindex-css');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					arrow('#mainPre', '#ifFirstIsNull span:first', '#ifFirstIsNull span:first', function() {
+						var condVal = $('#firstValMain').text() == "NULL";
+						$('.introjs-tooltiptext').append('<ul><li></li></ul>');
+						var val, selectorText, flagText;
+						if (condVal) {
+							val = '1';
+							selectorText = 'first';
+							flagText = 'if';
+						} else {
+							val = '2';
+							selectorText = 'q -> next';
+							flagText = 'else';
+						}
+						appendCondText('.introjs-tooltiptext li:last', '#ifFirstIsNull', 'first ', '==', ' NULL', false, $('#firstValMain').text(),  
+							 	"NULL", true, condVal, flagText, function() {
+							callingNextButton(function() {
+								text = 'Now store the <y>temp</y> value (i.e., <y>' + $('#tempValMain').text().trim() + '</y>) is stored in <y>' 
+										+ selectorText + '</y>.';
+								var selector = '#ifFirstIsNull span:eq';
+								 movingArrowWithLiTyping('#mainPre', selector + '(0)', selector + '(' + val + ')', text, function() {
+									 nextStepWithBtn('#animationDiv', 'storeTempInFirstRQNext', 'hide');
+								 });
+							});
+						});
+					});
+				});
+			break;
+			case 'tempToQ':
+				$('.zindex-css').removeClass('zindex-css');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					text = 'Store the <y>temp</y> value (i.e., <y>' + $('#tempValMain').text() + '</y>) in <y>q</y>.';
+					typing('.introjs-tooltiptext', text, function() {
+						nextStepWithBtn('#animationDiv', 'storeTempToQ', 'hide');
+					});
 				});
 			break;
 		}
@@ -286,21 +394,60 @@ function initIntroJS() {
 
 function displayNodeNameAndNext() {
 	$('.user-btn').remove();
-	var address = $("#dataAddress" + nodeCount).text();
+	var address = $("#dataAddress" + nodeCount).text().trim();
 	$('#node' + nodeCount).removeClass('opacity00');
 	TweenMax.from($('#node' + nodeCount), 1, {top : -50, onComplete: function() {
 		text = 'Now, the <y>address</y> (i.e., <y>' + address +'</y>) of the memory allocated by the <y>malloc()</y> method is stored in <y>temp</y>.';
 		typing('.introjs-tooltiptext' , text, function() {
 			callingNextButton(function() {
 				$('#tempValMain').text(address);
-				fromEffectWithTweenMax('#dataAddress' + nodeCount, '#tempValMain', function() {
-					svgAnimatingLineTopAndBottom('#tempMain', '#nextDiv' + nodeCount, 'line' + lineCount, true, function() {
-						nextStepWithBtn('#assignNameNextVal', '', 'show', 'right');
+				$('#name' + nodeCount).text($('#sNameVarVal').text());
+				fromBounceAnim('#dataAddress' + nodeCount, '#tempValMain', false, '50px', function() {
+				//displayNodeFun('nodeMemAllo', function() {
+					$('#line21').remove();
+					svgAnimatingLineTopAndBottom('#tempMain', '#nextDiv' + nodeCount, 'line21', true, function() {
+						nextStepWithBtn('#assignNameNextVal', '', 'show');
 					});
 				});
 			});
 		});
 	}});
+}
+
+function displayNodeFun(animateStep, callBackFunction) {
+	if (animateStep == 'nodeMemAllo') {
+		if (nodeCount == '1') {
+			fromEffectWithTweenMax('#dataAddress' + nodeCount, '#tempValMain', function() {
+				callBackFunction();
+			});
+		} else {
+			bounceEffect('#dataAddress' + nodeCount, '#tempValMain', false, '50px', function() {
+				callBackFunction();
+			});
+		}
+	} else {
+		if (nodeCount == 1) {
+			fromEffectWithTweenMax('#tempValMain', '#qValMain', function() {
+				callBackFunction();
+			});
+		} else {
+			bounceEffect('#tempValMain', '#qValMain', true, '50px', function() {
+				callBackFunction();
+			});
+		}
+	}
+}
+
+function fromBounceAnim(selector1, selector2, pos, val, callBackFunction) {
+	if (nodeCount == 1) {
+		fromEffectWithTweenMax(selector1, selector2, function() {
+			callBackFunction();
+		});
+	} else {
+		bounceEffect(selector1, selector2, pos, val, function() {
+			callBackFunction();
+		});
+	}
 }
 
 function typing(typingId, typingContent, callBackFunction) {
@@ -390,31 +537,35 @@ function recursiveZoomIn(parentId, i, callBackFunction) {
 	}
 }
 
-function appendCondCheckingText(flag, flagText, callBackFunction) {
-	$('.introjs-tooltiptext').append('<br><div id="appendText"></div>')
+function appendCondCheckingText(selector1, flag, condFlag, flagText, callBackFunction) {
+	$(selector1).append('<br><div id="appendText"></div>')
 	if (flag) {
-		text = '<y>true</y>. Hence control enters into the <y>' + flagText + '-block</y>.'
+		text = '<y>' + condFlag + '</y>. Hence control enters into the <y>' + flagText + '-block</y>.'
 	} else {
-		text = '<y>false</y>. Hence control comes out of the <y>' + flagText + '-block</y>.'
+		text = '<y>' + condFlag + '</y>. Hence control comes out of the <y>' + flagText + '-block</y>.'
 	}
 	typing('#appendText', 'Condition evaluates to ' + text, function() {
 		callBackFunction();
 	});
 }
 
-function appendCondText(text1, cond, text2, flag, val1, val2) {
-	$(id).append('Now check the condition : <br><span id="mainCond" class="ct-code-b-yellow"><span id="fstVal"> ' + text1 +  '</span>' + cond 
-			+ '<span id="secondVal">' + text2 + '</span></span>');
-	$(id + ' span').addClass('position-css');
-	flipEffect('#firstVal', val1, function() {
-		if (flag) {
-			flipEffect('#secondVal', val2, function() {});
-		}
-		setTimeout(function() {
-			if (eval(val1 + cond + val2)) {
-			} else {
-			}
-		}, 800);
+function appendCondText(selector1, selector2, text1, cond, text2, flag, val1, val2, flag, condFlag, flagText, callBackFunction) {
+	text = 'Now check the condition : <br><span id="mainCond" class="ct-code-b-yellow opacity00"><span id="firstVal"> ' + text1 +  '</span> ' + cond 
+			+ ' <span id="secondVal">' + text2 + '</span></span>';
+	$(selector1).append(text);
+	$(selector1 + ' span').addClass('position-css');
+	fromEffectWithTweenMax(selector2, '#mainCond', function() {
+		callingNextButton(function() {
+			flipEffect('#firstVal', val1, function() {
+				if (flag) {
+					flipEffect('#secondVal', val2, function() {});
+				}
+				setTimeout(function() {
+					appendCondCheckingText(selector1, flag, condFlag, flagText, callBackFunction);
+				}, 1200);
+				//if (eval(val1 + cond + val2)) {
+			});
+		});
 	});
 }
 
@@ -441,6 +592,7 @@ function fromEffectWithTweenMax(fromId, toId, callBackFunction) {
 	var l2 = $(toId).offset();
 	var topLength = l1.top - l2.top;
 	var leftLength = l1.left - l2.left;
+	$(fromId).effect('highlight', {color: 'yellow'}, 800);
 	$(toId).removeClass('opacity00');
 	TweenMax.from($(toId), 1, {top: topLength, left: leftLength, onComplete: function() {
 		callBackFunction();
@@ -463,6 +615,40 @@ function arrow(parentId, fromId, toId, callBackFunction) {
 			callBackFunction();
 		}
 	}});
+}
+
+
+function bounceEffect(selector1, selector2, flag, val, callBackFunction) {
+	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
+		var l1 = $(selector1).offset();
+		var l2 = $(selector2).offset();
+		var topLength = l1.top - l2.top;
+		var leftLength = l1.left - l2.left;
+		$("body").append("<span id='dummy' class='brown-color' style='position: relative;z-index: 9999999; font-size: 10px;'>" 
+					+ $(selector2).text() + "</span>");
+		$('#dummy').offset({"top": l2.top, "left": l2.left});
+		$(selector2).text($(selector1).text());
+		TweenLite.from(selector2, 2.8, {ease: Bounce.easeOut, top: topLength, left: leftLength});
+		if (flag) {
+			TweenLite.to('#dummy', 1.5, {ease: Sine.easeOut, left: val, delay : 1.1, opacity:0 , onComplete: function() {
+				bounceAnim(selector1, selector2, callBackFunction);
+			}});
+		} else {
+			TweenLite.to('#dummy', 1.5, {ease: Sine.easeOut, top: val , delay : 1.1, opacity:0 , onComplete: function() {
+				bounceAnim(selector1, selector2, callBackFunction);
+			}});
+		}
+	});
+}
+
+function bounceAnim(selector1, selector2, callBackFunction) {
+	$(selector2).removeAttr("style");
+	if (typeof callBackFunction === "function") {
+		callBackFunction();
+	}
+	$(selector2).text($(selector1).text());
+	$("body").removeAttr("style");			
+	$('#dummy').remove();
 }
 
 function validation() {

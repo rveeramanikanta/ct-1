@@ -9,12 +9,13 @@ var lang;
 
 var factorialUsingRecursionReady = function() {
 	lang = getURLParameter('lang');
+	lang = (lang == undefined) ? "c" : lang;
 	if (lang == 'c') {
 		$('#includes').html('#include &lt;stdio.h&gt;');
 		$('#printLine').html('printf("%d! = %d", number, fact_value);')
 	} else if (lang == 'cpp') {
 		$('#includes').html('#include &lt;iostream&gt;\nusing namespace std;\nint factorial(int);');
-		$('#printLine').html('cout << number << "! = " << fact_value << "\\n";');
+		$('#printLine').html('cout << number << "! = " << fact_value;');
 	}
 	initIntroJS();
 	$('#restart').click(function() {

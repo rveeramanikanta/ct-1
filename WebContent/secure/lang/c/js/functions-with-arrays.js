@@ -474,8 +474,8 @@ function introGuide() {
 				typing(".introjs-tooltiptext", text, function() {
 					$("#mainHeading1").text("In main()");
 					$("#arrText").text("a[4]");
-					for (var t = 0; t <= 3; t++) {
-						$("#arrIdx" + t).text("a[" + t + "]");
+					for (var t = 1; t <= 4; t++) {
+						$("#arrIdx" + t).text("a[" + (t - 1) + "]");
 					}
 					$("#arrayBox").addClass("blinking-white");
 					setTimeout(function() {

@@ -38,13 +38,14 @@
 
 #informationDiv {
 	letter-spacing: 0.5px;
-	min-height: 250px;
+	min-height: 180px;
 	padding: 15px 0;
 	z-index: 9999999;
 }
 
 #animationDiv {
 	height: 480px;
+	font-size: 9px !important;
 }
 
 .creampretab4 {
@@ -157,6 +158,7 @@
 
 .user-btn {
 	background-color: green;
+	margin: 0 !important;
 }
 
 .bg-blinking {
@@ -211,7 +213,7 @@
      	<div class='col-xs-offset-2 col-xs-8 box-border margin-top-20 bg-info'
      		id='informationDiv'></div>
      	<div class='col-xs-12 margin-top-40'>
-     		<div class='col-xs-offset-1 col-xs-4'>
+     		<div class='col-xs-4'>
      			<pre class='creampretab4 box-border opacity00' id='cCode'><span id='includes'></span>
      				
 <span id='mainBlk'>void <span id='main'>main() {</span>
@@ -235,13 +237,13 @@
      				</div>
      			</div>
      		</div>
-     		<div class='col-xs-offset-1 col-xs-5 box-border opacity00' id='animationDiv'>
-     			<div class='col-xs-offset-1 col-xs-10'>
-     				<div id='invisibleDiv' class='col-xs-12 padding0'></div>
-     				<div id='mainStack' class='col-xs-12 padding0'>
-     					<div class='col-xs-offset-2 col-xs-10 padding0'>
+     		<div class='col-xs-offset-1 col-xs-6 box-border opacity00 padding0' id='animationDiv'>
+     			<div class='col-xs-offset-1 col-xs-10 padding0'>
+     				<div id='invisibleDiv' class='col-xs-12 '></div>
+     				<div id='mainStack' class='col-xs-12 '>
+     					<div class='col-xs-12 padding0'>
      						<div class='col-xs-12 padding0'>
-     							<div id='stackBody' class='col-xs-10 padding0'></div>
+     							<div id='stackBody' class='col-xs-11 padding0'></div>
      							<svg class="svg-css" id="mySvg">
      								<marker style="fill: gray;" orient="auto" markerHeight="5"
 									markerWidth="5" refY="2.5" refX="4" id="grayMarker">
