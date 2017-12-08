@@ -173,8 +173,6 @@ y {
 
 polyline {
 	fill: transparent;
-	stroke: red;
-	stroke-width: 4;
 }
 </style>
 </head>
@@ -221,10 +219,10 @@ scanf("%s", sName);</div>
 scanf("%s", sName);</div>
 }</div>
 	<span id="firstToQNext">q -> next = first;</span>
-	printf("The Original Soldiers List is --> ");
-	print(first);
-	printf("Enter a Value : ");
-	scanf("%d", &n);
+	<span id="printf3">printf("The Original Soldiers List is --> ");</span>
+	<span id="callingPrintMethod">print(first);</span>
+	<div id="">printf("Enter a Value : ");
+scanf("%d", &n);</div>
 	while(first != first -> next) {
 		for(i = 1; i < n; i++) {
 			q = first;
@@ -240,16 +238,16 @@ scanf("%s", sName);</div>
 					 first ->name);
 }</pre>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-8" style="padding-right: 0px">
 			<div class="col-xs-12 padding0">
-				<div class="col-xs-12 border-css opacity00" id="animationDiv">
+				<div class="col-xs-12 border-css opacity00" id="animationDiv" style='padding: 8px;'>
 					<div class="col-xs-12 margin-top15" id="variablesDiv">
 						<div class="col-xs-1 text-center padding0 opacity00" id="firstVarDecMain">
 							<div class="col-xs-12 green-color padding0">first<sub>main</sub></div>
 							<div class="col-xs-12 box"><span id="firstValMain" class="green-color opacity00 position-css">NULL</span></div>
 						</div>
 					</div>
-					<div class="col-xs-12 padding0 margin-top25" id="nodesDiv" style="font-size: 12px;">
+					<div class="col-xs-12 padding0 margin-top25" id="nodesDiv" style="font-size: 12px; padding-right: 0px;">
 						<div class="col-xs-12 padding0" id="row1" style="min-height: 55px;"></div>
 						<div class="col-xs-12 padding0" id="row2"></div>
 					</div>
@@ -257,13 +255,13 @@ scanf("%s", sName);</div>
 				</div>
 			</div>
 			<div class="col-xs-12 padding0">
-<pre class="pre-tab hide" id="printPre">void print(node first) {
-	node q = first;
-	do {
-		printf(" --> %s ", q -> name);
-		q = q -> next;
-	} while(q != first);
-	printf("NULL\n");
+<pre class="pre-tab hide" id="printPre">void print(<span id="firstDecPrint">node first</span>) {
+	<span id="qDecPrint">node q = first;</span>
+	<span id="doWhileBlock">do {
+		<span id="printf4">printf(" --> %s ", q -> name);</span>
+		<span id="qNextToQ">q = q -> next;</span>
+	<span id="qNotFirstWhile">} while(q != first);</span></span>
+	<span id="printf5">printf("NULL\n");</span>
 }</pre>
 			</div>
 			<div class="col-xs-12 console padding0 opacity00" id="outputDiv">
