@@ -1,3 +1,4 @@
+/*<i class="fa fa-user" aria-hidden="true"></i>*/
 var intro, printfCount = 1, nodeCount = 1;
 var arr = ["sName", "i", "n"], dummmyArr = ["q", "temp", "first"];
 function josephusProblemReady() {
@@ -112,9 +113,9 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var stepId;
 					if (elementId == 'strCmpWhileLoop') {
+						$('.user-txt:last').attr('disabled', 'disabled');
 						$('.zindex-css, .background-yellow').removeClass('background-yellow zindex-css');
 						stepId = '#strCmpCond';
-						$('.user-txt:last').attr('disabled', 'disabled');
 					} else {
 						$('#codeDiv').removeClass('opacity00');
 						stepId = (elementId == 'includePre') ? '#structDec' : '#nodesDecInMain';
@@ -490,6 +491,7 @@ function initIntroJS() {
 						case 'methodExpalin':
 							$('#printPre').removeClass('opacity00');
 							$('#animationDiv').addClass('zindex-css');
+							$('#firstDecPrint').addClass('background-yellow');
 							inPrintQAndFirstAnim('#firstDecPrint', '#firstVarDecPrint', '24', '#printPre', 'span:eq(1)', 'span:eq(1)' , function() {
 								$('.introjs-tooltip').removeClass('hide');
 								text = 'Let us initialize <y>q</y> with <y>first</y> value (i.e., <y>' + $('#firstValMain').text() + '</y>).';
@@ -523,12 +525,12 @@ function initIntroJS() {
 								appendCondText('.introjs-tooltiptext', '#printPre span:eq(4)', 'q', '!=', 'first', true, $('#qValPrint').text(),
 											$('#firstValPrint').text(), val, val, 'do-while', function(){
 									callingNextButton(function() {
+										$('.introjs-tooltip').addClass('hide');
 										var selector, stepId;
 										if (val) {
 											selector = '#printPre span:eq(2)';
 											stepId = 'soldierList';
 										} else {
-											$('.introjs-tooltip').addClass('hide');
 											selector = '#printPre span:last';
 											stepId = 'printNULL';
 											$('#output div:last').append(' <div class="ct-code-b-yellow opacity00 position-css">NULL</div>');
@@ -541,7 +543,9 @@ function initIntroJS() {
 							});
 						break;
 						case 'whileCondExplain':
-							arrow('#printPre', '#firstIsNotFirstNext', '#firstIsNotFirstNext', function() {
+							$('#printPre').removeClass('opacity00');
+							var t = '#printPre ';
+							arrow('#printPre', t + '#firstIsNotFirstNext', t + '#firstIsNotFirstNext', function() {
 								$('.introjs-tooltip').removeClass('hide');
 								/*for (var i = 0; i < $('.next-span').length; i++) {
 									arr.push($('.next-span').eq(i).text());
@@ -550,7 +554,7 @@ function initIntroJS() {
 									return elem == $('#firstValMain').text();
 								}*/
 								var val = $('#firstValMain').text() != $('#next' + nodeCount).text();
-								appendCondText('.introjs-tooltiptext', 'firstIsNotFirstNext', 'first', '!=', 'first -> next',
+								appendCondText('.introjs-tooltiptext', t + '#firstIsNotFirstNext', 'first', '!=', 'first -> next',
 										true, $('#firstValMain').text(), $('#next' + nodeCount).text(), val, val, 'while-loop', function() {
 									if (val) {
 										appendNextButton('soldierEliminationAnim');
@@ -562,6 +566,8 @@ function initIntroJS() {
 				});
 			break;
 			case 'whileCond':
+				$('.zindex-css').removeClass('zindex-css');
+				$('.user-txt:last').attr('disabled', 'disabled');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#printPre').html($('#whileCond').html()).addClass('opacity00').removeClass('hide');
 					nodeCount = 1;
@@ -575,16 +581,63 @@ function initIntroJS() {
 
 function soldierEliminationAnim() {
 	$('.user-btn').remove();
-	arrow('#printPre', '#firstIsNotFirstNext', '#forLoop', function() {
+	var t = '#printPre ';
+	arrow('#printPre', t + '#firstIsNotFirstNext', t + '#forLoop', function() {
 		printfCount = 1;
-		$('#iVarVal').text(printfCount);
-		fromEffect('#iInit', '#iVarVal', function() {
-			var val = printfCount < $('#nVarVal').text();
-			appendCondText('.introjs-tooltiptext', 'iLessThanN', 'i', '<', 'n',	true, printfCount, $('#nVarVal').text(),
-						val, val, 'for-loop', function() {
-				callingNextButton(function() {
-					
-				});
+		text = 'Let us initialize <y>i</y> with <y>1</y>.';
+		typing('.introjs-tooltiptext', text, function() {
+			appendNextButton('forLoopAnim');
+		});
+	});
+}
+	
+function forLoopAnim() {
+	$('.user-btn').remove();
+	var t = '#printPre ';
+	$('#iVarVal').text(printfCount);
+	var selector = (printfCount == 1) ? '#iInit' : '#iInc'; 
+	fromEffect(t + selector, '#iVarVal', function() {
+		var val = printfCount < $('#nVarVal').text();
+		$('.introjs-tooltiptext').empty();
+		appendCondText('.introjs-tooltiptext', t + '#iLessThanN', 'i', '<', 'n',	true, printfCount, $('#nVarVal').text(),
+					val, val, 'for-loop', function() {
+			callingNextButton(function() {
+				$('.introjs-tooltip').addClass('hide');
+				$('#animationDiv').addClass('zindex-css')
+				if (val) {
+					(printfCount == $('.nodes').length + 1) ? nodeCount = 1 : '';
+					arrowWithBounceAndLine('#forLoop', '#firstToQ', '#firstValMain', '#qValMain', false, '20px', '#nextDiv' + nodeCount,
+									'23', true, function() {
+						arrowWithBounceAndLine('#firstToQ', '#firstNextToFirst', '#next' + nodeCount, '#firstValMain', false, '-740px',
+									'#nextDiv' + (nodeCount + 1), '22', false, function() {
+							arrow('#printPre', t + '#firstNextToFirst', t + '#forLoop', function() {
+								$(t + '#iInc').addClass('background-yellow');
+								printfCount++;
+								nodeCount++;
+								text = 'Now <y>i</y> value incremented by <y>one</y> (i.e., <y>i</y> = <y>' + printfCount + '</y>)';
+								typing('.introjs-tooltiptext', text, function() {
+									appendNextButton('forLoopAnim');
+								});
+							});
+						});
+					});
+				} else {
+					arrow('#printPre', t + '#forLoop', t + '#firstNextToQNext', function() {
+						
+					});
+				}
+			});
+		});
+	});
+}
+
+function arrowWithBounceAndLine(selector1, selector2, bounceVal1, bounceVal2, flag, val, selector3, lineId, lineFlag, callBackFunction) {
+	var t = '#printPre ';
+	arrow('#printPre', t + selector1, t + selector2, function() {
+		bounceEffect(bounceVal1, bounceVal2, flag, val, function() {
+			$('#line' + lineId).remove();
+			svgAnimatingLineTopAndBottom($(bounceVal2).parent(), selector3, 'line' + lineId, lineFlag, function() {
+				callBackFunction();
 			});
 		});
 	});
@@ -892,13 +945,26 @@ function validation(flag) {
 		}
 	});
 	$('.user-txt').keyup(function(e) {
-		if ($(this).val().length > 0) {
-			$('.introjs-nextbutton').show();
-			if (e.keyCode == 13) {
-				introjs.nextStep();
+		if (flag) {
+			if ($(this).val().length > 0 && $(this).val() <= 12) {
+				$('.introjs-nextbutton').show();
+				if (e.keyCode == 13) {
+					introjs.nextStep();
+				}
+			} else {
+				$('.introjs-nextbutton').hide();
+				$('.error-msg').remove();
+				$('.introjs-tooltiptext').append('<div class="error-msg ct-css"><br>Please enter below 12</div>');
 			}
 		} else {
-			$('.introjs-nextbutton').hide();
+			if ($(this).val().length > 0) {
+				$('.introjs-nextbutton').show();
+				if (e.keyCode == 13) {
+					introjs.nextStep();
+				}
+			} else {
+				$('.introjs-nextbutton').hide();
+			}
 		}
 	});
 }

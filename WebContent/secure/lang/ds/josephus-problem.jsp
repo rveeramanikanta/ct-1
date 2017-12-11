@@ -71,6 +71,10 @@ y {
 	color: yellow;
 }
 
+.error-msg {
+	color: red;
+}
+
 .box {
 	text-align: center;
 	border-radius: 6px;
@@ -230,15 +234,15 @@ scanf("%s", sName);</div>
 	<div id="printf4">printf("Enter a Value : ");
 scanf("%d", &n);</div>
 	<div id="whileCond"><span id="firstIsNotFirstNext">while(first != first -> next) {</span>
-		<span id="forLoop">for(i = <span id="iInit">1</span>; <span id="iLessThanN">i < n</span>; <span id="iInc">i++</span>) {</span>
-			<span id="firstToQ">q = first;</span>
-			<span id="firstNextToFirst">first = first -> next;</span>
-		}
-		<span id="firstNextToQNext">q -> next = first -> next;</span>
-		<span id="printf5">printf("The Eliminated Soldier is --> %s\n", first -> name);</span>
-		<span id="free">free(first);</span>
-		<span id="qNextToFirst">first = q -> next;</span>
-	}</div>
+	<span id="forLoop">for(i = <span id="iInit">1</span>; <span id="iLessThanN">i < n</span>; <span id="iInc">i++</span>) {</span>
+		<span id="firstToQ">q = first;</span>
+		<span id="firstNextToFirst">first = first -> next;</span>
+	}
+	<span id="firstNextToQNext">q -> next = first -> next;</span>
+	<span id="printf5">printf("The Eliminated Soldier is --> %s\n", first -> name);</span>
+	<span id="free">free(first);</span>
+	<span id="qNextToFirst">first = q -> next;</span>
+}</div>
 	<span id="printf6">printf("The Escaped Soldier is  -->  %s\n",
 					 first ->name);</span>
 }</pre>

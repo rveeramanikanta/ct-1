@@ -1,32 +1,3 @@
-// Copyright 2011 David Galles, University of San Francisco. All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification, are
-// permitted provided that the following conditions are met:
-//
-// 1. Redistributions of source code must retain the above copyright notice, this list of
-// conditions and the following disclaimer.
-//
-// 2. Redistributions in binary form must reproduce the above copyright notice, this list
-// of conditions and the following disclaimer in the documentation and/or other materials
-// provided with the distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ``AS IS'' AND ANY EXPRESS OR IMPLIED
-// WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-// FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> OR
-// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-// ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-// NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// The views and conclusions contained in the software and documentation are those of the
-// authors and should not be interpreted as representing official policies, either expressed
-// or implied, of the University of San Francisco
-
-// This class is somewhat poorly named -- it handles links between vertices in graphs,
-//  pointers in linked lists, and so on. 
-
 var LINE_maxHeightDiff = 5;
 var LINE_minHeightDiff = 3;
 var LINE_range = LINE_maxHeightDiff - LINE_minHeightDiff + 1;
@@ -94,24 +65,94 @@ function Line(n1, n2, color, cv, d, weight, anchorIndex) {
 		context.strokeStyle = color;
 		context.fillStyle = color;
 		context.lineWidth = pensize + 0.5;
-		var fromPos = this.Node1.getTailPointerAttachPos(this.Node2.x,
+		/*var fromPos = this.Node1.getTailPointerAttachPos(this.Node2.x,
 				this.Node2.y, this.anchorPoint);
 		var toPos = this.Node2.getHeadPointerAttachPos(this.Node1.x,
-				this.Node1.y);
-
+				this.Node1.y);*/
+		
 		var fromPos = this.Node1.getTailPointerAttachPos(this.Node2.x,
-				this.Node2.y, this.anchorPoint);
-		var toPos = this.Node2.getHeadPointerAttachPos(this.Node1.x,
+				this.Node2.y);
+		var toPos = this.Node2.getTailPointerAttachPos(this.Node1.x,
 				this.Node1.y);
-
+		
+		if (this.Node1 == this.Node2) {
+			this.curve = 1.5;
+			fromPos[0] = fromPos[0] + 20;
+			fromPos[1] = fromPos[1] + 2;
+			toPos[0] = toPos[0] - 5;
+			toPos[1] = toPos[1] - 23;
+		} else if (this.curve != 0.0) {
+			if ((this.Node1.objectID == 0 && this.Node2.objectID == 3) ||
+					(this.Node1.objectID == 3 && this.Node2.objectID == 0) ||
+					(this.Node1.objectID == 4 && this.Node2.objectID == 7) || 
+					(this.Node1.objectID == 7 && this.Node2.objectID == 4)) {
+				if (this.Node1.objectID < this.Node2.objectID) {
+					fromPos[0] = fromPos[0] - 8;
+					fromPos[1] = fromPos[1] - 10;
+					toPos[0] = toPos[0] - 10;
+					toPos[1] = toPos[1] - 5;
+				} else {
+					fromPos[0] = fromPos[0] + 8;
+					fromPos[1] = fromPos[1] + 10;
+					toPos[0] = toPos[0] + 10;
+					toPos[1] = toPos[1] + 5;
+				}
+			} else if ((this.Node1.objectID == 0 && this.Node2.objectID == 4) ||
+					(this.Node1.objectID == 4 && this.Node2.objectID == 0) ||
+					(this.Node1.objectID == 3 && this.Node2.objectID == 7) || 
+					(this.Node1.objectID == 7 && this.Node2.objectID == 3)) {
+				
+				if (this.Node1.objectID < this.Node2.objectID) {
+					fromPos[0] = fromPos[0] - 10;
+					fromPos[1] = fromPos[1] + 2;
+					toPos[0] = toPos[0] - 10;
+					toPos[1] = toPos[1] + 10;
+				} else {
+					fromPos[0] = fromPos[0] + 10;
+					fromPos[1] = fromPos[1] - 2;
+					toPos[0] = toPos[0] + 12;
+					toPos[1] = toPos[1] - 8;
+				}
+			} else if (this.Node1.y == this.Node2.y) {
+				this.curve = 0.1;
+				if (this.Node1.objectID < this.Node2.objectID) {
+					toPos[1] = toPos[1] + 5;
+				} else {
+					toPos[1] = toPos[1] - 5;
+				}
+			} else if (this.Node1.x == this.Node2.x) {
+				this.curve = 0.10;
+				if (this.Node1.objectID < this.Node2.objectID) {
+					toPos[1] = toPos[1] - 2;
+					toPos[0] = toPos[0] - 5;
+				} else {
+					toPos[1] = toPos[1] + 2;
+					toPos[0] = toPos[0] + 10;
+				}
+			} else if (this.Node1.x < 500 || this.Node2.x < 500) {
+				if (this.Node1.objectID < this.Node2.objectID) {
+					toPos[0] = toPos[0] - 5;
+					toPos[1] = toPos[1] - 5;
+				} else {
+					toPos[0] = toPos[0] + 5;
+					toPos[1] = toPos[1] + 5;
+				}
+			} else {
+				if (this.Node1.objectID < this.Node2.objectID) {
+					toPos[0] = toPos[0] - 5;
+					toPos[1] = toPos[1] + 0;
+				} else {
+					toPos[0] = toPos[0] + 5;
+					toPos[1] = toPos[1] - 0;
+				}
+			}
+		}
 		var deltaX = toPos[0] - fromPos[0];
 		var deltaY = toPos[1] - fromPos[1];
 		var midX = (deltaX) / 2.0 + fromPos[0];
 		var midY = (deltaY) / 2.0 + fromPos[1];
 		var controlX = midX - deltaY * this.curve;
-
 		var controlY = midY + deltaX * this.curve;
-
 		context.beginPath();
 		context.moveTo(fromPos[0], fromPos[1]);
 		context.quadraticCurveTo(controlX, controlY, toPos[0], toPos[1]);
@@ -143,11 +184,11 @@ function Line(n1, n2, color, cv, d, weight, anchorIndex) {
 			var xVec = controlX - toPos[0];
 			var yVec = controlY - toPos[1];
 			var len = Math.sqrt(xVec * xVec + yVec * yVec);
-
+			
+			
 			if (len > 0) {
-				xVec = xVec / len
+				xVec = xVec / len;
 				yVec = yVec / len;
-
 				context.beginPath();
 				context.moveTo(toPos[0], toPos[1]);
 				context.lineTo(toPos[0] + xVec * this.arrowHeight - yVec
@@ -165,14 +206,13 @@ function Line(n1, n2, color, cv, d, weight, anchorIndex) {
 	}
 
 	this.draw = function(ctx) {
-		//console.log("draw");
 		if (!this.addedToScene) {
 			return;
 		}
 		ctx.globalAlpha = this.alpha;
 
 		if (this.highlighted)
-			this.drawArrow(this.highlightDiff, "#ffff00", ctx);
+			this.drawArrow(this.highlightDiff, "#ff1000", ctx);
 		this.drawArrow(1, this.edgeColor, ctx);
 	}
 }
@@ -190,7 +230,6 @@ function UndoConnect(from, to, createConnection, edgeColor, isDirected, cv,
 }
 
 UndoConnect.prototype.undoInitialStep = function(world) {
-	console.log("undoinitialStep");
 	if (this.connect) {
 		world.connectEdge(this.fromID, this.toID, this.color, this.curve,
 				this.directed, this.edgeLabel, this.anchorPoint);
