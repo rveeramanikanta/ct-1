@@ -454,7 +454,7 @@ function creationNDisplayAnim() {
 								+ " <b style='font-family: monospace;'> i = " + hVal + "</b>).";
 						liTying(text, function() {
 							text1 = "It is used to enter the <y>coefficient</y> values.";
-							text3 = (buttonName == 'display') ? '<y>head' + iVal + '</y>' : '<y>arr</y> (i.e., <y>poly' + funNme + '</y>).';
+							text3 = (buttonName == 'display') ? '<y>head' + iVal + '</y>' : '<y>arr</y> (i.e., <y>poly' + funNme + '</y>)';
 							text2 = "It is used to print the " + text3 + ".";
 							text = (buttonName == 'create') ? text1 : text2;
 							liTying(text, function() {
@@ -556,9 +556,9 @@ function createMain() {
 							+ '<span id="printf4">printf("Enter second polynomial : \\n");</span>\n'
 							+ '<span id="createMethodCal2">create(head2, hpow2);</span>');
 	if (lang == 'cpp') {
-		$('#printf1').html('cout << "Enter highest power of first"\n\t\t\t\t\t" polynomial : ";\ncin >> hpow1;');
+		$('#printf1').html('cout << "Enter highest power of first";\ncout << " polynomial : ";\ncin >> hpow1;');
 		$('#printf2').html('cout << "Enter first polynomial : \\n";');
-		$('#printf3').html('cout << "Enter highest power of second"\n\t\t\t\t\t" polynomial : ";\ncin >> hpow2;');
+		$('#printf3').html('cout << "Enter highest power of second";\ncout << " polynomial : ";\ncin >> hpow2;');
 		$('#printf4').html('cout << "Enter second polynomial : \\n";');
 	}
 	if (introjs._currentStep != 2) {
@@ -576,9 +576,9 @@ function createMethod(buttonName) {
 							+ '}</span>');
 	if (buttonName == 'create') {
 		if (lang == 'cpp') {
-			$('#methodText').html('cout << "Enter coeff value for " \n\t\t\t\t\t<< i << " degree term : ";\ncin >> arr[i];');
+			$('#methodText').html('cout << "Enter coeff value for ";\ncout << i << " degree term : ";\ncin >> arr[i];');
 		} else {
-			$('#methodText').html('printf("Enter coeff value for %d"\n\t\t\t\t\t" degree term : ", i);\nscanf("%d", &arr[i]);');
+			$('#methodText').html('printf("Enter coeff value for %d", i);\nprintf(" degree term : ");\nscanf("%d", &arr[i]);');
 		}
 	} else {
 		if (lang == 'cpp') {

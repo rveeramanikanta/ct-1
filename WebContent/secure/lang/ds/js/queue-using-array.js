@@ -1,6 +1,5 @@
 var insertedVal, flag;
 var queueArrayReady = function() {
-	initIntroJS();
 	$("#enqueueText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
 			return;
@@ -14,12 +13,16 @@ var queueArrayReady = function() {
 	lang = (lang == undefined) ? "c" : lang;
 	
 	if (lang == "cpp") {
+		$('#headerFiles').html('#include &lt;stdlib.h&gt;\n#include &lt;iostream&gt;\nusing namespace std;')
 		$("#enqueueIfPrintf").text("cout << \"Queue is overflow.\\n\";");
 		$("#enqueueElsePrintf").text("cout << \"Successfully inserted.\\n\";");
 		$("#dequeueIfPrintf").text("cout << \"Queue is underflow.\\n\";");
-		$("#dequeueElsePrintf").text("cout << \"Deleted value = \" << queue[front] << \"\\n\";");
+		$("#dequeueElsePrintf").text("cout << \"Deleted value = \" << queue[front];");
+		$('#displayIfPrintf').html('cout << "Queue is empty.";');
+		$('#displayElsePrintf').html('cout << "Elements are : ";');
+		$('#displayForPrintf').html('cout << queue[index] << " ";')
 	}
-	
+	initIntroJS();
 }
 
 function getURLParameter(sParam) {

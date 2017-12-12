@@ -18,7 +18,7 @@ function circularQueueArrayReady() {
 		$('#enqueIfPrintf').html('cout << "Circular Queue is overflow\\n";');
 		$('#enqueElsePrintf').html('cout << "Successfully inserted.\\n";');
 		$('#dequeIfPrintf').html('cout << "Circular Queue is underflow\\n";');
-		$('#dequeElsePrintf').html('cout << "Deleted element = "\n \t\t\t\t << queue[front] << "\\n";');
+		$('#dequeElsePrintf').html('cout << "Deleted element = " << queue[front] << "\\n";');
 		$('#displayIfPrintf').html('cout << "Circular Queue is empty.\\n";');
 		$('#displayElsePrintf').html('cout << "Elements in the queue : \\n";');
 		$('#printf1').html('cout << queue[i] << " ";');

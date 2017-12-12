@@ -197,8 +197,7 @@ int front = -1, rear = -1;</pre>
 	<span id="frontIsMinusOne">if (front == -1) {</span>
 		<span id="dequeIfPrintf">printf("Circular Queue is underflow\n");</span>
 	} else {
-		<div id="dequeElsePrintf" class="position-css">printf("Deleted element = %d\n",
-				queue[front]);</div>
+		<div id="dequeElsePrintf" class="position-css">printf("Deleted element = %d\n",	queue[front]);</div>
 		<span id="ifRearIsFront">if (rear == front) {</span>
 			<span id="rearNFrontMinusOne">rear = front = -1;</span>
 		<span id="frontIsMaxMinusOne">} else if (front == MAX - 1) {</span>

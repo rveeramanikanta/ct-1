@@ -453,21 +453,21 @@
 					
 					<tr>
 						<td>5</td>
-						<td><span style = "color : red">float datatype</span></td>
+						<td>float datatype</td>
 						<td>	
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : red"> float Data-type</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Padmaja / Raj </td>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('float Data-type', 'float-data-type.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> float Data-type</span></td>
+						<td>No need</td>
+						<td>Karthik</td>
 						<td>Sekhar -- success</td>
 						<td>26-08-2016</td>
 					</tr>
 					<tr>
 						<td>6</td>
-						<td><span style = "color : red">double datatype</span></td>
+						<td>double datatype</td>
 						<td>	
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : red"> double Data-type</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> double Data-type</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj </td>
 						<td>Sekhar -- success</td>
@@ -492,7 +492,7 @@
 						<td>Different constants in C</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-								href="javascript:opendialog('Constants in C', 'constants-in-C.jsp', 1, 1)"><i
+								href="javascript:opendialog('Constants in C', 'constants-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C</span>
 					 	</td>
 						<td>No need</td>
@@ -1035,7 +1035,6 @@
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of scanf()', 'scanf-comma-dot.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scanf() with comma and dot</span>
-								(pending)
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1096,7 +1095,7 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Features of printf()', 'printf-with-float-field-width.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> printf() with float</span> (pending)
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> printf() with float</span>
 							</div>
 						</td>
 
@@ -1123,11 +1122,6 @@
 								<a class='btn btn-xs btn-success' href="javascript:opendialog('Algorithm & flowchart to find area of circle', 
 									'flowchart-area-of-circle.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 									 <span style = "color : green">Algorithm & flowchart to find area of circle </span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success' href="javascript:opendialog('Different Symbols used in flowchart', 
-									'flowcharts-symbols.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-									<span style = "color : green">Different Symbols used in flowchart</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -2788,23 +2782,9 @@
 						<td></td>
 						<td>01-10-2016</td>
 					</tr>
-
+					
 					<tr>
 						<td>8</td>
-						<td>Program on Files</td>
-						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Program on Files', 'copy-data-from-one-file-to-another.jsp',
-							 	1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-							 	<span style = "color : red">Program to copy contents ofone file to another file</span>
-						</td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Poorna / Mahesh </td>
-						<td></td>
-						<td>03-10-2016</td>
-					</tr>
-
-					<tr>
-						<td>9</td>
 						<td>Command line arguments in C</td>
 						<td>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Command line arguments in C', 
@@ -2816,6 +2796,22 @@
 						<td>Sekhar -- success</td>
 						<td>04-10-2016</td>
 					</tr>
+
+					<tr>
+						<td>9</td>
+						<td>Program on Files</td>
+						<td>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Program on Files', 'copy-data-from-one-file-to-another.jsp',
+							 	1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+							 	<span style = "color : red">Program to copy contents of one file to another file using command line arguments</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Poorna / Mahesh </td>
+						<td></td>
+						<td>03-10-2016</td>
+					</tr>
+
+					
 				<!-- $('#questionText .btn-success').attr('href'); -->
 				</tbody>
 			</table>

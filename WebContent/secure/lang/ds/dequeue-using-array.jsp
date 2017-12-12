@@ -23,7 +23,6 @@
 
 <script type="text/javascript" src="js-min/dequa.min.js"></script>
 
-
 <!-- Javascript for the actual visualization code -->
 <script type="text/javascript" src="js-min/an-li/custom-events.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/undo-functions.min.js"></script>

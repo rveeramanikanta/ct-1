@@ -20,7 +20,7 @@
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 
-<script type="text/javascript" src="js/polynomial-array.js"></script>
+<script type="text/javascript" src="js-min/polyarr.min.js"></script>
 
 <!-- Javascript for the actual visualization code -->
 <script type="text/javascript" src="js-min/an-li/custom-events.min.js"></script>
@@ -37,7 +37,7 @@
 <script type="text/javascript" src="js-min/an-li/animation-main.min.js"></script>
 <script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
 
-<script type="text/javascript" src="js/al-li/polynomial-arr.js"></script>
+<script type="text/javascript" src="js-min/al-li/polynomial-arr.min.js"></script>
 
 <style type="text/css">
 

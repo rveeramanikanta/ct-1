@@ -235,7 +235,7 @@ void display() {
 		<span id='displayBlk2'><span id='doLoop'>do {</span>
 			<span id='displayWhilePrintf'>printf("%d ", temp -&gt; info);</span>
 			<span id='displayTempNext'>temp = temp -&gt; next;</span>
-			<span id='displayWhile'>} while(<span id='displayWhileCndtn'>temp != first</span>); </span></span>
+		<span id='displayWhile'>} while(<span id='displayWhileCndtn'>temp != first</span>); </span></span>
 	}</span>
 }
 </pre>

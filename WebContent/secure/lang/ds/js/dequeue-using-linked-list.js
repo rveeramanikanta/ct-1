@@ -4,12 +4,12 @@ var dequeueLinkedListReady = function() {
 	initIntroJS();
 	
 	if (lang == 'cpp') {
-		$('#injectElsePrintf, #pushElsePrintf').text('cout >> "Successfully inserted.";');
-		$("#popElsePrintf, #ejectElsePrintf").html('cout >> "Deleted value = "\n\t\t" %d.", temp -> next;);');
-		$('#displayElsePrintf').text('cout >> "Elements are : ";');
-		$('#displayWhilePrintf').html('cout >> temp -&gt; info)');
-		$('#displayIfPrintf').text('cout >> "Queue is empty.";');
-		$('#popIfPrintf, #injectIfPrintf, #pushIfPrintf, #ejectIfPrintf').text('cout >> "Queue is underflow.";');
+		$('#injectElsePrintf, #pushElsePrintf').text('cout << "Successfully inserted.";');
+		$("#popElsePrintf, #ejectElsePrintf").html('cout << "Deleted value = " << temp -> next;');
+		$('#displayElsePrintf').text('cout << "Elements are : ";');
+		$('#displayWhilePrintf').html('cout << temp -&gt; info << " ";');
+		$('#displayIfPrintf').text('cout << "Queue is empty.";');
+		$('#popIfPrintf, #injectIfPrintf, #pushIfPrintf, #ejectIfPrintf').text('cout << "Queue is underflow.";');
 	}
 	
 	$("#injectText").on("keydown", function(e) {

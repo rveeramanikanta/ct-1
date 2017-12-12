@@ -1,399 +1,529 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>polynomial using linked list</title>
-
-
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
-<script type="text/javascript" src="/js/jquery-latest.js"></script>
-<script type="text/javascript" src="/js/intro.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript" src="/js/jquery-ui-all.js"></script>
-<script type="text/javascript" src="/js/typewriting.min.js"></script>
-<script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/intro.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/jquery-ui-all.js"></script>
+<script src="/js/typewriting.min.js"></script>
+<script src="/js/gs/TweenMax.min.js"></script>
+<script src="/js/jquery.scrollTo.js"></script>
+<script src="js-min/polyull.min.js"></script>
 
-<!-- <script type="text/javascript" src="js/polynomial-using-linked-list.js"></script> -->
 
-<script type="text/javascript" src="js/polynomial-using-linked-list1.js"></script>
-
-<!-- Javascript for the actual visualization code -->
-
-<script type="text/javascript" src="js/an-li/custom-events.js"></script>
-<script type="text/javascript" src="js/an-li/undo-functions.js"></script>
-<script type="text/javascript" src="js/an-li/animated-object.js"></script>
-<script type="text/javascript" src="js/an-li/animated-label.js"></script>
-<script type="text/javascript" src="js/an-li/animated-circle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-rectangle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-linked-list.js"></script>
-<script type="text/javascript" src="js/an-li/highlight-circle.js"></script>
-<script type="text/javascript" src="js/an-li/line.js"></script>
-<script type="text/javascript" src="js/an-li/draw-line.js"></script>
-<script type="text/javascript" src="js/an-li/object-manager.js"></script>
-<script type="text/javascript" src="js/an-li/animation-main.js"></script>
-<script type="text/javascript" src="js/al-li/algorithm.js"></script>
- 
-<!-- <script type="text/javascript" src="js/al-li/poly-dummy.js"></script> -->
-
-<!-- <script type="text/javascript" src="js/al-li/polynomial-LL.js"></script> -->
-
-<script type="text/javascript" src="js/al-li/polynomial-LL1.js"></script>
+<title>Polynomial-Using-Linked-List</title>
 
 <style type="text/css">
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-	border-radius: 10px;
-	font-size: 18px;
-	position: relative;
-	z-index: 9999999;
-	position: relative;
+.introjs-tooltip {
+	min-width: 350px;
 }
 
-.padding0 {
-	padding: 0;
+.introjs-tooltip-min-width-custom {
+	min-width: -moz-max-content;
 }
 
-.margin-top-20 {
-	margin-top: 20px;
-}
-
-.margin-left-4 {
-	margin-left: 4%;
+.user-btn {
+	margin: 0px !important;
+	background-color: green;
 }
 
 .box-border {
+	border-radius: 12px;
 	border: 2px solid gray;
-	border-radius: 8px;
 }
 
-.creampretab4 {
-	-moz-tab-size: 2;
+.buttons-div {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.padding00 {
+	padding: 0;
+}
+
+.padding6 {
+	padding: 6px;
+}
+
+.creamPreTab {
 	tab-size: 2;
-	background-color: lavender !important;
-	font-size: 10.8px;
-	font-style: inherit;
-	padding: 3px;
-	overflow-y: auto;
-	white-space: pre;
-	word-spacing: -3px;
+	-moz-tab-size: 2;
+	margin: 2px;
+	padding: 5px;
+	border-radius: 8px;
+	font-family: monospace;
+	background-color: #fffae6;
 }
 
-.introjs-tooltiptext {
-	min-width: 250px;
+.ui-effects-transfer {
+	border: 1px solid blue;
+	z-index: 99999999 !important;
 }
 
-.introjs-tooltiptext li span {
+.z-index1000000 {
+	position: relative;
+	background-color: white;
+	z-index: 1000000 !important;
+}
+
+.position {
+	position: relative;
 	display: inline-block;
 }
 
-.ct-code-b-red {
-	color: red;
+.margin-top15 {
+	margin-top: 15px;
+}
+
+.margin-btm8 {
+	margin-bottom: 8px;
+}
+
+.output-console-title-bar {
+	border-radius: 8px 8px 0 0;
+}
+
+.output-console-body {
+	height: 150px;
+	padding: 10px;
+	font-size: 14px;
+	margin-bottom: 14px;
+	white-space: pre-line;
+	border-radius: 0 0 8px 8px;
+}
+
+.extraNode {
+    margin-right: 25px;
+}
+
+.list1, .list2 {
+	margin-top: 25px;
+}
+
+.list2 {
+	margin-bottom: 25px;
+}
+
+.box {
+	min-height: 24px;
+	text-align: center;
+	border-radius: 6px;
+	border: 1px solid green;
+}
+
+.div-border {
+	margin: 0;
+	padding: 0;
+	width: 40px;
+	min-height: 24px;
+	text-align: center;
+	display: inline-block;
+	border: 2px solid gray;
+}
+
+
+.left-radius {
+	border-right: none;
+	border-color: green;
+	border-radius: 6px 0 0 6px;
+}
+
+.no-radius {
+	border-color: blue;
+}
+
+.right-radius {
+	border-color: green;
+	border-radius: 0 6px 6px 0;
+	border-left: none;
+}
+
+.inline-css {
+	margin: 0 10px;
+	position: relative;
+	display: inline-block;
+}
+
+.buttons {
+	color: black;
+	letter-spacing: 1px;
+	font-family: monospace;
+	box-shadow: 1px 2px 4px 0;
+}
+
+.user-text {
+	width: 82px;
+	height: 27px;
+	border: none;
+	background: black;
+}
+
+.btn:hover {
+	color: white;
+	background-color: #4CAF50 !important;
+}
+
+.btn:active{
+	color: white;
+	background-color: #2E8B57 !important;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+.margin-left30 {
+	margin-left: 30px;
+}
+
+.margin-7 {
+	margin-top: 9px;
+	margin-bottom: 12px;
+}
+
+.svg-css {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.svg-line {
+	stroke: gray;
+	stroke-width: 2; 
+	position: relative;
+	z-index: 10000000 !important;
+	marker-end: url("#arrowEnd"); 
+}
+
+.ct-fonts {
 	font-weight: bold;
+	font-family: monospace;
+}
+
+.ct-code-b-red {
+	color: rgb(252, 66, 66);
+}
+
+.ct-lime-color {
+	color: lime;
+}
+
+.ct-green-color {
+	color: green;
+}
+
+.ct-brown-color {
+	color: brown;
+}
+
+.ct-code-b-black {
+	color: white;
+	padding: 1px;
+	font-size: 12px;
+	border-radius: 4px;
+	background-color: black;
+}
+
+.ct-code-b-green {
+	color: #42f44e;
+}
+
+.error-text {
+	color :red;
+}
+
+.popover-content {
+	font-size: 14px;
+}
+
+.popover {
+	width: 200px;
+	font-size: 15px !important;
+}
+
+.srt-css {
+	margin-left: 25px;
+}
+
+.introjs-duplicate-skipbutton {
+	background-color: orange;
+	margin: 0.5px !important;
+}
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
+r {
+	font-weight: bold;
+	color: red;
 }
 
 .background-color-yellow {
 	background-color: yellow;
 }
 
-.output-console-body {
-	border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
-	height: 100px;
-	padding: 10px;
-	white-space: initial;
-}
-
-.output-console-title-bar {
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
-}
-
-#outputDiv {
-	position: relative;
-	/* z-index: 9999999; */
-}
-
-.btn-sm, .btn-group-sm>.btn {
-	padding: 0 6px;
-}
-
-.input-group-addon-border {
-	border: 1px solid #ccc !important;
-	border-radius: 4px !important;
-	padding: 4px 6px;
-	display: inline-table;
-}
-
-.padding-col0 {
-	padding: 0;
-}
-
-y, r, .b {
-	font-family: monospace;
+.ct-blue-color {
 	font-weight: bold;
-}
-
-y {
-	color: yellow;
-}
-
-r {
-	color: red;
-}
-
-.b {
+	font-family: monospace;
 	color: blue;
 }
 
-.green {
-	color: green;
-}
-
-
-.user-btn {
-	background-color: green;
-}
-
-.introjs-tooltiptext>ul>li {
+.ct-brown-color {
+	color: brown;
+	font-weight: bold;
 	font-family: monospace;
 }
 
-.position {
-	display: inline-block;
-	position: relative;
+.error-text {
+	color :red;
+	font-weight: bold;
 }
 
+.true {
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+	background: green none repeat scroll 0 0;
+}
+
+.false {
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+	background: red none repeat scroll 0 0;
+}
+
+.red-color {
+	color: red;
+}
+
+.green-color {
+	color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.box-border1 {
+	border-radius: 12px;
+	border: 2px solid white;
+}
 .input {
 	font-weight: normal;
 	outline: medium none;
 	border: none;
 	background-color: black;
 }
-
-.output-scanf-line:empty::before {
-	color: lightblue !important;
-	content: attr(placeholder);
+#row2 > .nodes {
+	float: right;
 }
 
-.blinkingRed {
-	animation-name: blink;
-	animation-duration: 1s;
-	animation-iteration-count: infinite;
- }
-
-@keyframes blink {
-	50% {
-		background:  #ffad99;
-	}
-}
-.z-index1000000 {
-	background-color: white;
-	z-index : 1000000 !important;
-	position: relative;
-}
 </style>
+</head>
+<body>
 
 <script type="text/javascript">
-var arr = [];
-var ch
-//var size = ["2", "2"];
 
-	$(document).ready(function() {
-		polynomialUsingLinkedList();
-	});
-	
-	var readCoeffAndExpValuesFromConsole = function(selector) {
-		$(selector).focus();
-		$(selector).attr({placeholder: 'Enter 2 values'});
-		$(selector).addClass("blinking-orange").removeAttr('disabled').focus();;
-		$(selector).on("keydown", function(e) {
-			if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32 ) {
-				e.preventDefault();
-			}
-			if (arr.length == 1) {
-				var test = false;
-				test = $(selector).val().indexOf(' ') >= 0;
-				if (e.keyCode == 32 && test) {
-					e.preventDefault();
-				}
-			}
-		});
-		$(selector).on("keyup", function(e) {
-			$('.length-error-text,.size-error').remove();
-			if ($(this).val() == "") {
-				$(".introjs-nextbutton").hide();
-				$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
-														"Please enter 2 values each separated by a space.</span>");
-			} 
-			var givenText = $(this).val();
-			var splittedText = givenText.split(" ");
-			arr = [];
-			$.each(splittedText, function(idx, val) {
-				if (val != '') {
-					arr.push(val);
-				}
-			});
-			if (arr.length == 1 && e.keyCode == 8 && $('.backspace-error').length == 0 ) {
-				$('.introjs-tooltiptext').append("<span class='ct-code-b-red backspace-error length-error-text'>"
-						+"</br>Enter two numbers separated by space.</span>");
-			}
-			var a0 = $.isNumeric(arr[0]);		
-			var a1 = $.isNumeric(arr[1]);
-			
-			if (a0 && a1) {
-				if ((arr.length == 2) && (arr[0].length <= 3 && arr[1].length <= 3)) {
-					$(".introjs-nextbutton").show();
-					
-				} else {
-					$(".introjs-nextbutton").hide();
-					$('.introjs-tooltiptext').append("<span class='ct-code-b-red size-error length-error-text'>"
-							+"</br>size should be 1 to 3(inclusive)</span>");
-				}
-			} else {
-				$('.introjs-tooltiptext').append("<span class='ct-code-b-red size-error length-error-text'>"
-						+"</br>Please enter integers only.</span>");
-				$(".introjs-nextbutton").hide();
-			}
-		});
-	}
-	
-	function readYesOrNoFromConsole(selector) {
-		$(selector).focus();
-		$(selector).attr({placeholder: 'Enter (y/n)'});
-		$(selector).addClass("blinking-orange").removeAttr('disabled').focus();;
-		$(selector).on("keydown", function(e) {
-			$('.length-error-text').remove();
-			var max = $(this).attr("maxlength");
-			if ($.inArray(e.keyCode, [46, 8, 9, 27, 37, 39]) !== -1) {
-				return;
-			}
-			if ($(this).val().length > max-1) {
-				$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>String length to 2.</span>");
-				e.preventDefault();
-			}
-		});
-		$(selector).on("keyup", function(e) {
-			if (nodeCount < SIZE - 1) {
-				if (($(this).val() != "") && (($(this).val().toLowerCase() == "y") || ($(this).val().toLowerCase() == "n"))) {
-					ch = $(this).val().toLowerCase();
-					$(".introjs-nextbutton").show();
-				} else {
-					$('.length-error-text').remove();
-					$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>Please enter (y/n (or) Y/N).</span>");
-					$(".introjs-nextbutton").hide();
-				}
-			} else {
-				if (($(this).val() != "") && ($(this).val().toLowerCase() == "n")) {
-					ch = $(this).val().toLowerCase();
-					$(".introjs-nextbutton").show();
-				} else {
-					$('.length-error-text').remove();
-					$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>Please enter (n (or) N). because "
-								+" we are restricted to allow list size to (<y>5</y> nodes) only</span>");
-					$(".introjs-nextbutton").hide();
-				}
-			} 
-			introjs.refresh();
-		});
-	}
-	
+$(document).ready(function() {
+	//$(".opacity00").removeClass("opacity00");
+	polyAnimationFunction();
+	//documentCallFunctin();
+});
+
 </script>
-</head>
-<body onload='init()' class="VisualizationMainPage">
-	<div id="container">
-		<div class='col-xs-12 text-center' style="margin-top: 20px";>
-			<div>
-				<h1 class='label label-default ct-demo-heading' id="title">Polynomial using Linked List</h1>
-			</div>
+
+	<div class="col-xs-12 padding00">
+		<div class="ct-box-main">
+			<div class="text-center">
+				<h1 class="label ct-demo-heading text-center" id="headdingSection">Polynomial Using Linked List</h1>
+			</div> 
 		</div>
-
-		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
-		
-			<div class='col-xs-3'>
-				<div class='col-xs-12 box-border' id="structDiv">
-					<pre class='creampretab4' id='polyInit' style="margin-top: 10px;"><span id="strcutSpan">struct polynomial {
-	int coeff;
-	int exp;
-	struct polynomial * next;
-};</span>
-
-<span id="typeDefDec">typedef struct polynomial *poly;</span>
-</pre>
-	</div>
-<div class="col-xs-12 mainDiv margin-top-20 padding0" id="mainDiv">
-	<pre id ="preMain" class="creampretab4 hide"><div class="text-center b" id="inMain">In Main()</div>
-	</pre>
-</div>
-<div class="col-xs-12 tempDiv padding0 " id="tempDiv" >
-	<pre id="preTemp" class="creampretab4 hide"></pre>
-</div>
-<div class="col-xs-12 addTermDiv padding0" id="addTermDiv">
-	<pre class="creampretab4 hide" id="preAddTerm"></pre>
-</div>
-	
-		<div id="outputDiv" class='col-xs-12 padding0 margin-top-20'>
-				<div class="output-console-title-bar">
-					<span class="title">Output</span>
-				</div>
-				<div class="output-console-body">
-					<!-- <div id="output1" class = "opacity00">Enter coefficient, exponent of node : 
-						<div id="input1"><input class="output-scanf-line input opacity00" id="val1" size="15" maxlength="5"/></div>
-					</div> -->
-				</div>
+		<div class="col-xs-12 opacity00" id="explanationDiv">
+			<div class="col-xs-4 padding00">
+				<pre class="creamPreTab opacity00" id="structTypelist"></pre>
+				<pre class="creamPreTab opacity00" id="inMain"></pre>
+				<pre class="creamPreTab opacity00" id="polyOperationsPre"></pre>
+				<pre class="creamPreTab opacity00" id="polyOperationsDivPre"></pre>
 			</div>
-			</div>
-			<div class='col-xs-9'>
-				<div class='col-xs-12 padding0 box-border text-center'
-					id='animationDiv'>
-					<div class='col-xs-12 padding0 margin-top-20 text-center'>
-						<div class='col-xs-offset-2 col-xs-8 padding0 opacity00' id='btnsDiv'>
-							<div class='position'>
-								<span class="input-group-addon-border" id="createDiv">
-									<!-- <input class="form-control input-sm" id="createText" size="4" name="create" type="text" /> --> 
-									<span id="createBtn" class="btn btn-sm btn-success">Create</span>
-								</span>
+			<div class="col-xs-8"> 
+				<div class="col-xs-12 padding00">
+					<div class="col-xs-12 margin-top15">
+						<div class="col-xs-12 box-border text-center opacity00" id="buttonsDiv"></div>
+						<div class="margin-top15 col-xs-12 opacity00 padding00" id="animationParent">
+							<div class="col-xs-12 margin-7 padding00" id="animationDiv">
+								<div class="col-xs-12 animationDiv box-border padding00">
+									<div class="col-xs-12 padding00 margin-top15" id="variablesDec">
+										<div class="col-xs-2 text-center padding00 opacity00 intVariables" id="chValeDec">
+											<div class="margin-top-15" id="decChVal"><b>ch = 
+												<span class="box-border padding6"><span class="opacity00 intValues position" id="chVal">y</span></span></b>
+											</div>
+										</div>
+										<div class="col-xs-2 text-center padding00 opacity00 intVariables" id="coeffValeDec">
+											<div class="margin-top-15" id="decCoeffVal"><b>coeff = 
+												<span class="box-border padding6"><span class="opacity00 intValues position" id="coeffVal">12</span></span></b>
+											</div>
+										</div>
+										<div class="col-xs-2 text-center padding00 opacity00 intVariables" id="expValeDec">
+											<div class="margin-top-15" id="decChVal"><b>exp = 
+												<span class="box-border padding6"><span class="opacity00 intValues position" id="expVal">5</span></span></b>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-xs-12 padding00 margin-top15 box-border1" id="NoOfListsInPoly"></div> -->
+									<div class="col-xs-12 padding00 list1" id="firstListParentDiv">
+										<div class="col-xs-2">
+											<div id="head1" class="col-xs-8 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">head1</div>
+												<div class="col-xs-12 box padding00" id="head1Div">
+													<span id="head1Val" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="head1InList1">head1</div>
+											</div>
+										</div>
+										<div class="col-xs-10 padding00" id="firstList"></div>
+									</div>
+									<div class="col-xs-12 padding00" id="commaonNodeForList1AndList2">
+										<div class="col-xs-12">
+											<div id="head" class="col-xs-1 col-xs-offset-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">head</div>
+												<div class="col-xs-12 box padding00" id="headDiv">
+													<span id="headVal" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="headNode">head</div>
+											</div>
+											<div id="temp" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">temp</div>
+												<div class="col-xs-12 box padding00" id="tempDiv">
+													<span id="tempVal" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="tempNode">temp</div>
+											</div>
+											<div class="col-xs-3" id="temparyPolyNode"></div>
+											<div id="p1" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">p1</div>
+												<div class="col-xs-12 box padding00" id="p1Div">
+													<span id="p1Val" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="p1Node">p1</div>
+											</div>
+											<div id="p2" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">p2</div>
+												<div class="col-xs-12 box padding00" id="p2Div">
+													<span id="p2Val" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="p2Node">p2</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 padding00" id="secondListParentDiv">
+										<div class="col-xs-2">
+											<div id="head2" class="col-xs-8 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">head2</div>
+												<div class="col-xs-12 box padding00" id="head2Div">
+													<span id="head2Val" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="head2InList2">head2</div>
+											</div>
+										</div>
+										<div class="col-xs-10 padding00" id="secondList"></div>
+									</div>
+									<div class="col-xs-12 padding00" id="nodeAddress2">
+										<div class="col-xs-12">
+											<div id="t3" class="col-xs-1 col-xs-offset-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">t3</div>
+												<div class="col-xs-12 box padding00" id="t3Div">
+													<span id="t3Val" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="t3Node">t3</div>
+											</div>
+											<div class="col-xs-3" id="temparyPolyNodeForPloy"></div>
+											<div id="headOp" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">head</div>
+												<div class="col-xs-12 box padding00" id="headInOP">
+													<span id="headOpVal" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="headOpNode">head</div>
+											</div>
+											<div id="sum" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">sum</div>
+												<div class="col-xs-12 box padding00" id="sumDiv">
+													<span id="sumVal" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="sumNode">sum</div>
+											</div>
+											<div id="headD1" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">head</div>
+												<div class="col-xs-12 box padding00" id="headDiv1">
+													<span id="headVal1" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="headNode1">head</div>
+											</div>
+											<div id="temp1" class="col-xs-1 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">temp</div>
+												<div class="col-xs-12 box padding00" id="tempDiv1">
+													<span id="tempVal1" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="tempNode1">temp</div>
+											</div>	
+										</div>
+									</div>
+									<div class="col-xs-12 padding00 list3 margin-btm8" id="thirdListParentDiv">
+										<div class="col-xs-2">
+											<div id="result" class="col-xs-8 extraNode padding00 opacity00">
+												<div class="text-center col-xs-12 padding00 opacity00">result</div>
+												<div class="col-xs-12 box padding00" id="resultDiv">
+													<span id="resultVal" class="extrNodeVal position ct-brown-color ct-fonts inline-style"></span>
+												</div>
+												<div class="text-center col-xs-12 padding00" id="resultName">result</div>
+											</div>
+										</div>
+										<div class="col-xs-10 padding00" id="thirdList">
+											<!-- <div id="row1" class="col-xs-12 padding00"></div>
+											<div id="row2" class="col-xs-12 padding00"></div> -->
+										</div>
+									</div>
+									<div class="col-xs-12 padding00" id="nodeAddress3"></div>
+								</div>
 							</div>
-							<div class='position  margin-left-4'>
-								<span class="input-group-addon-border" id="displayDiv">
-										<span id="displayBtn" class="btn btn-sm btn-success">Display</span>
-								</span>
-							</div>
-							<div class='position  margin-left-4'>
-								<span class="input-group-addon-border" id="addDiv">
-										<span id="addBtn" class="btn btn-sm btn-success">Addition</span>
-								</span>
-							</div>
-							<div class='position  margin-left-4'>
-								<span class="input-group-addon-border" id="subDiv">
-										<span id="subBtn" class="btn btn-sm btn-success">Subtraction</span>
-								</span>
-							</div>
-							<div class='position  margin-left-4'>
-								<span class="input-group-addon-border" id="mulDiv">
-										<span id="mulBtn" class="btn btn-sm btn-success">Multiplication</span>
-								</span>
-							</div>
-							<span id="testBtn" class="btn btn-sm btn-success hide"></span>
-							<span id="nodeCreateBtn" class="btn btn-sm btn-success hide"></span>
-							<span id="yesOrNoBtn" class="btn btn-sm btn-success hide"></span>
 						</div>
 					</div>
-					<canvas class="opacity00" id="canvas" width="900" height="500"></canvas>
+					<!-- <div class="col-xs-12 padding00">
+						<div class="col-xs-12" id="polyOperationsDiv">
+							<div class="col-xs-12">
+								<pre class="creamPreTab opacity00" id="polyOperationsDivPre"></pre>
+							</div>
+						</div>
+					</div> -->
+					<div class="col-xs-12 padding00 margin-top15">
+						<div class="col-xs-12 padding00">
+							<div class="col-xs-12 margin-top" id="outputDiv">
+								<div id="consoleId" class="center opacity00">
+									<div class="output-console-title-bar">
+										<span class="title"><b>Console</b></span>
+									</div>
+									<div class="output-console-body" id="consoleBodyDiv"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div id="generalAnimationControlSection">
-				<table id="GeneralAnimationControls" class='hide'></table>
 			</div>
 		</div>
 	</div>
 </body>
-</html>
+</html>	
