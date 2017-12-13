@@ -143,7 +143,7 @@ function introJsFunction() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0) {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
 				$('.introjs-prevbutton').show();
 			}
 

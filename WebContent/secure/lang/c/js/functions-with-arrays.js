@@ -191,10 +191,10 @@ function introGuide() {
 								+ "<span class='ct-code-b-yellow'> int[]</span> array and the other of type <span class='ct-code-b-yellow'>int</span>."
 								+ " <br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton, .introjs-prevbutton").show();
+						$(".introjs-nextbutton").show();
 					});
 				} else {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					$(".introjs-nextbutton").show();
 				}
 			});
 			break;
@@ -206,10 +206,10 @@ function introGuide() {
 						+ " type <span class='ct-code-b-yellow'>int[] array</span> and the other of type <span class='ct-code-b-yellow'>int</span>."
 						+ "<br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton, .introjs-prevbutton").show();
+						$(".introjs-nextbutton").show();
 					});
 				} else {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					$(".introjs-nextbutton").show();
 				}
 			});
 			break;
@@ -243,10 +243,10 @@ function introGuide() {
 				if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
 					var text = "This is the definition of the function <span class='ct-code-b-yellow'>display(int[], int)</span>.";
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton, .introjs-prevbutton").show();
+						$(".introjs-nextbutton").show();
 					});
 				} else {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					$(".introjs-nextbutton").show();
 				}
 			});
 			break;

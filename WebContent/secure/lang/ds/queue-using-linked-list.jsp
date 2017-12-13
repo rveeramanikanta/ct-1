@@ -152,7 +152,7 @@ $(document).ready(function() {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3'>
 				<div class='col-xs-12 box-border'>
-					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;">#include &lt;stdio.h&gt;
+					<pre class='creampretab4' id='queueInit' style="margin-top: 10px;"><span id="headerFiles">#include &lt;stdio.h&gt;</span>
 
 struct queue {
 	int info;
@@ -202,7 +202,7 @@ void dequeue() {
 		} else {
 			<span id='dequeueFrontInit'>front = front -> next;</span>
 		}</span>
-		<span id='dequeueElsePrintfBlk'><span id='dequeueElsePrintf'>printf("Deleted value = %d.", temp -> next);</span>
+		<span id='dequeueElsePrintfBlk'><span id='dequeueElsePrintf'>printf("Deleted value = %d.", temp -> info);</span>
 		<span id='dequeueRemoveTemp'>free(temp);</span></span>
 	}
 }

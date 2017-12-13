@@ -1806,9 +1806,9 @@
 						<td>1</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using gets() & puts()',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write strings using gets() & puts()',
 								 'read-print-string-using-gets-puts.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-								 <span style = "color : green">Read and Write Strings using gets() & puts() </span>
+								 <span style = "color : green">Read and Write strings using gets() & puts() </span>
 						 </td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh  / Sathish</td>
@@ -1820,9 +1820,9 @@
 						<td>2</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using scanf() and printf()',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write strings using scanf() and printf()',
 								 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-								 <span style = "color : green">Read and Write Strings using scanf() and printf()</span>
+								 <span style = "color : green">Read and Write strings using scanf() and printf()</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Mahesh / Sathish </td>
@@ -1834,9 +1834,9 @@
 						<td>3</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read a string using getchar()',
 								 'read-string-using-getchar.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
-								  <span style = "color : green">Read and Write Strings using getChar() & putChar()</span>
+								  <span style = "color : green">Read a string using getchar()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh / Sathish  </td>

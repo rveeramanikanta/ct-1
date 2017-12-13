@@ -170,6 +170,7 @@ var usageOfUnderfReady = function() {
 			$('#line7').removeClass('opacity02');
 			$("#totalForeground").addClass("ct-code-b-green");
 			$("#totalForeground").removeClass("ct-code-b-green");
+			$("#undefForeground").addClass("ct-code-b-red");
 			break;
 		case "consoleId" :
 			/*if (intro._currentStep == 15) {
@@ -381,6 +382,7 @@ var usageOfUnderfReady = function() {
 						if (intro._direction=="forward") {
 								intro.nextStep()
 						} else {
+							$("#undefForeground").removeClass("ct-code-b-red");
 							intro.previousStep()
 						}
 					}, 500);

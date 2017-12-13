@@ -1,4 +1,23 @@
 ﻿var queueLinkedListReady = function() {
+	
+	lang = getURLParameter("lang");
+	lang = (lang == undefined) ? "c" : lang;
+	
+	if (lang == "cpp") {
+		$('#headerFiles').html('#include &lt;stdlib.h&gt;\n#include &lt;iostream&gt;\nusing namespace std;');
+		$('#enqueueIfPrintf').html('cout << "Queue is overflow.";');
+		$('#enqueueElsePrintf').html('cout << "Successfully inserted.";');
+		$('#dequeueIfPrintf').html('cout << "Queue is underflow.";');
+		$('#dequeueElsePrintfBlk').html('<span id="dequeueElsePrintf">cout << "Deleted value = " << temp -> info << " ";</span>\n'
+									+ '\t\t<span id="dequeueRemoveTemp">delete temp;</span>');
+		$('#displayIfPrintf').html('cout << "Queue is empty.";');
+		$('#displayElsePrintf').html('cout << "Elements are : ";');
+		$('#displayWhilePrintf').html('cout << temp -> info << " ";');
+		$('#enqueueTempDef').html('Q temp;');
+		$('#initTemp').html('temp = new queue;');
+		
+	}
+	
 	initIntroJS();
 	$("#enqueueText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -10,6 +29,18 @@
 	});
 }
 var insertedVal; 
+
+
+function getURLParameter(sParam) {
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++) {
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam) {
+			return sParameterName[1];
+		}
+	}
+}
 
 function initIntroJS() {
 	introjs = introJs();

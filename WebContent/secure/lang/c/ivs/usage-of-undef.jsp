@@ -217,9 +217,9 @@
   <span id="line5">printf("foreground result is : %d ", <span id="printForeGroundId" class="position-relative display-inline">FOREGROUND</span>);</span>
   <span id="line6" class="blur">#undef <span id="foregroundId">FOREGROUND</span></span></span>
   <span id="line7" class="blur">printf("%d", <span id="undefForeground">FOREGROUND</span>);</span>
-  <span id="line8">printf("%d", <span id="printBackGroundId" class="position-relative display-inline">BACKGROUND</span>);</span>
+  <span id="line8">printf("background result is : %d", <span id="printBackGroundId" class="position-relative display-inline">BACKGROUND</span>);</span>
   <span id="line9" class="blur">#undef <span id="backgroundId">BACKGROUND</span></span></span>
-  <span id="line10" class="blur">printf("background result is : %d", <span id="undefBackground">BACKGROUND</span>);</span>
+  <span id="line10" class="blur">printf("%d", <span id="undefBackground">BACKGROUND</span>);</span>
 <span>}</span>
 </pre>
 </div>

@@ -1,6 +1,5 @@
 var pushedVal;
 var stackArrayReady = function() {
-	initIntroJS();
 	$("#pushText").on("keydown", function(e) {
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
 			return;
@@ -14,11 +13,16 @@ var stackArrayReady = function() {
 	lang = (lang == undefined) ? "c" : lang;
 	
 	if (lang == "cpp") {
+		$('#headerFiles').html('#include &lt;stdlib.h&gt;\n#include &lt;iostream&gt;\nusing namespace std;');
 		$("#pushIfPrintf").text("cout << \"Stack is overflow.\\n\";");
 		$("#pushElsePrintf").text("cout << \"Successfully pushed.\\n\";");
 		$("#popIfPrintf").text("cout << \"Stack is underflow.\\n\";");
 		$("#popElsePrintf").text("cout << \"Popped value = \" << x << \"\\n\";");
+		$('#displayIfPrintf').html('cout << "Stack is empty.";');
+		$('#displayElsePrintf').html('cout << "Elements are : ";');
+		$('#displayForPrintf').html('cout << arr[index] << " ";');
 	}
+	initIntroJS();
 }
 
 function getURLParameter(sParam) {

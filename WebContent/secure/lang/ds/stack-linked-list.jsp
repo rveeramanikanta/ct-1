@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +16,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 <script type="text/javascript" src="js-min/stllt.min.js"></script>
-<!-- <script type="text/javascript" src="js/stack-linked-list.js"></script> -->
 
-<!-- <script type="text/javascript" src="js-min/an-li/custom-events.min.js"></script>
+<script type="text/javascript" src="js-min/an-li/custom-events.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/undo-functions.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/animated-object.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/animated-circle.min.js"></script>
@@ -31,24 +29,8 @@
 <script type="text/javascript" src="js-min/an-li/object-manager.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/animated-label.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/animation-main.min.js"></script>
-<script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script> -->
-
-<script type="text/javascript" src="js/an-li/custom-events.js"></script>
-<script type="text/javascript" src="js/an-li/undo-functions.js"></script>
-<script type="text/javascript" src="js/an-li/animated-object.js"></script>
-<script type="text/javascript" src="js/an-li/animated-circle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-rectangle.js"></script>
-<script type="text/javascript" src="js/an-li/animated-linked-list.js"></script>
-<script type="text/javascript" src="js/an-li/highlight-circle.js"></script>
-<script type="text/javascript" src="js/an-li/line.js"></script>
-<script type="text/javascript" src="js/an-li/draw-line.js"></script>
-<script type="text/javascript" src="js/an-li/object-manager.js"></script>
-<script type="text/javascript" src="js/an-li/animated-label.js"></script>
-<script type="text/javascript" src="js/an-li/animation-main.js"></script>
-<script type="text/javascript" src="js/al-li/algorithm.js"></script>
+<script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
 <script type="text/javascript" src="js-min/al-li/stackll.min.js"> </script>
-<!-- <script type="text/javascript" src="js/al-li/stackll.js"> </script> -->
-
 
 <style type="text/css">
 .ct-demo-heading {
@@ -156,7 +138,7 @@ $(document).ready(function() {
 
 </script>
 </head>
-<body onload="init();">
+<body onload="init();" class="VisualizationMainPage">
 	<div id="container">
 		<div class='col-xs-12 text-center' style="margin-top: 20px;">
 			<h1 class='label label-default ct-demo-heading'>Stack using LinkedList</h1>
@@ -165,7 +147,7 @@ $(document).ready(function() {
 		<div id="mainContent" class='col-xs-12 margin-top-20 padding0'>
 			<div class='col-xs-3'>
 				<div class='col-xs-12 box-border'>
-					<pre class='creampretab4' id='stackInit' style="margin-top: 10px;">#include &lt;stdio.h&gt;
+					<pre class='creampretab4' id='stackInit' style="margin-top: 10px;"><span id="headerFiles">#include &lt;stdio.h&gt;</span>
 					
 struct stack {
 	int data;
@@ -201,7 +183,7 @@ stk pop() {
 	} else {
 		<span id='popTempInit'>temp = top;</span>
 		<span id='popTopDec'>top = top -> next;</span>
-		<span id='popElsePrintf'>printf("Popped value = %d.", temp);</span>
+		<span id='popElsePrintf'>printf("Popped value = %d.", temp -> data);</span>
 		<span id='freeTemp'>free(temp);</span>
 	}
 }

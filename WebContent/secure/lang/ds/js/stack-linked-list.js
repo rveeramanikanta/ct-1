@@ -4,10 +4,16 @@ var stackLinkedListReady = function() {
 	lang = (lang == undefined) ? "c" : lang;
 	
 	if (lang == "cpp") {
+		$('#headerFiles').html('#include &lt;stdlib.h&gt;\n#include &lt;iostream&gt;\nusing namespace std;');
 		$("#pushIfPrintf").text("cout << \"Stack is overflow.\\n\";");
 		$("#pushElsePrintf").text("cout << \"Successfully pushed.\\n\";");
 		$("#popIfPrintf").text("cout << \"Stack is underflow.\\n\";");
-		$("#popElsePrintf").text("cout << \"Popped value = \" << temp << \"\\n\";");
+		$("#popElsePrintf").text("cout << \"Popped value = \" << temp -> data << \"\\n\";");
+		$('#displayIfPrintf').html('cout << "Stack is empty.";');
+		$('#displayElsePrintf').html('cout << "Elements are : ";');
+		$('#displayWhilePrintf').html('cout << temp -> data << " ";');
+		$('#initTemp').html('temp = new stack;');
+		$('#freeTemp').html('delete temp;');
 	}
 	
 	$("#pushText").on("keydown", function(e) {
@@ -238,7 +244,7 @@ var stackLinkedListReady = function() {
 	introjs.setOption('exitOnOverlayClick', false);
 	introjs.setOption('exitOnEsc', false);
 	introjs.setOption('keyboardNavigation', false);
-	//introjs.start();
+	introjs.start();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
@@ -375,7 +381,8 @@ function popElseBlk() {
 						arrow("#popElsePrintf", "#freeTemp", function() {
 							$("#freeTemp").addClass("background-color-yellow");
 							$(".introjs-tooltiptext ul").append("<li></li>");
-							var text = "Delete the temporary node using the <y>free()</y> function.";
+							var mthd = (lang == 'c') ? 'free' : 'delete';
+							var text = "Delete the temporary node using the <y>" + mthd + "()</y> function.";
 							typing($(".introjs-tooltiptext ul li:last-child"), text, function() {
 								$("#popElsePrintf").addClass("background-color-yellow");
 								$("#output").append("<div class='opacity00'>Popped value = " + stackArr.pop() + ".</div>");
@@ -441,3 +448,4 @@ function displayElsePart() {
 		$(".introjs-nextbutton").removeClass("introjs-disabled").show();
 	});
 }
+
