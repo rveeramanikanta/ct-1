@@ -162,7 +162,7 @@
 .base-address {
 	font-size: 12px;
     height: 37px;
-    margin-left: 50px;
+    margin-left: 8%;
     margin-top: -15px;
     padding: 2px;
     width: 40px;
@@ -203,6 +203,11 @@ y {
 
 .table-bordered {
 	border: 1px solid black !important;
+	text-align: center;
+}
+
+pre {
+	tab-size: 4;
 }
 
 </style>
@@ -220,17 +225,17 @@ y {
 <div class="col-xs-4">
 <!-- <pre id="typewritingId"></pre> -->
 <pre class="creamPreTab4 opacity00" id="preBody">
-#include&lt;stdio.h&gt;
+#include &lt;stdio.h&gt;
 <span id='line1'>main()</span> {
- <span id='line2'>char ch[20]</span>;
- <span id='line3'>int i = 0;</span>
- <span id='line4'>printf("Enter a string : ");</span>
- <span id='line5'>while((ch[i] = getchar()) != '#') {
-  i++;
- }</span>
- <span id='line6'>ch[i] = '\0';</span>
- <span id='line7'>printf("The entered string is : ");</span>
- <span id='line8'>puts(ch);</span>
+	<span id='line2'>char ch[20]</span>;
+	<span id='line3'>int i = 0;</span>
+	<span id='line4'>printf("Enter a string : ");</span>
+	<span id='line5'><span id="totalCompare">while((<span id="whileCompare">ch[i] = getchar()</span>) != '#') {</span>
+ 		i++;
+	}</span>
+	<span id='line6'>ch[i] = '\0';</span>
+	<span id='line7'>printf("The given string is : ");</span>
+	<span id='line8'>puts(ch);</span>
 <span id='line9'>}</span>
 	
 </pre>
@@ -276,10 +281,10 @@ y {
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<div id="typeChar"></div>
-				<div id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' maxlength="20"/></div>
-				<div id="totalEnterChar" ></div>
-				<div id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
+				<!-- <div id="typeChar"></div> -->
+				<div id="hiddenTypingChar" class="opacity00">Enter a String : <input id='inputChar' class='input-char' tabindex='0' maxlength="20"/></div>
+				<!-- <div id="totalEnterChar" ></div> -->
+				<div id="enterHiddenTotal" class="opacity00">The given string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
 			</div>
 		</div>
 	</div>

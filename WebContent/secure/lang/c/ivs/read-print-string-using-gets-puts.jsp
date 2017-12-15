@@ -51,7 +51,7 @@
 	margin: 15px;
 }
 
-.introjs.tooltiptext > span{
+.introjs.tooltiptext > span {
 	display: inline-block;
 }
 
@@ -98,11 +98,6 @@
 	color: blue;
 }
 
-.ct-code-b-yellow {
-	font-family: monospace;
-	font-weight: bold;
-	color: yellow;
-}
 
 .ct-code-b-brown {
 	font-family: monospace;
@@ -126,6 +121,20 @@
 
 @keyframes blinker {
 	100% { opacity: 0.0; }
+}
+
+.blinking {
+	animation-name: blink;
+	animation-duration: 0.6s;
+	animation-iteration-count: 3;
+	z-index: 9999999 !important;
+	background: white;
+}
+
+@keyframes blink {
+	50% {
+		background: #0ee1be;
+	}
 }
 
 .address-box {
@@ -197,23 +206,40 @@ pi {
 	color: fuchsia;
 }
 
-y {
+ y {
 	font-family: monospace;
 	font-weight: bold;
 	color: yellow;
-}
+} 
+ 
 
 .table-bordered {
 	border: 1px solid black !important;
 }
 
+#preBody {
+	tab-size : 4;
+}
+
+.z-index-td {
+	position: relative;
+	background: white;
+	z-index: 9999999999;
+}
+
+.ui-effects-transfer {
+	border: 1px solid #0bf30b;
+	 z-index: 9999999 !important;
+}
+
+
 </style>
 <body>
 <div class="col-sm-12 text-center">
-	<div class="margin-padding-css text-center" >
+	<div class="margin-padding-css text-center">
 		<div class="col-sm-1"></div>
 		<div class="col-sm-offset-3 col-sm-3">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">gets() and puts() on Strings</span></h3>
+			<h3><span class="ct-demo-heading label label-default" id="titleName">Usage of gets() puts() on Strings</span></h3>
 		</div>
 	</div>
 </div>
@@ -223,12 +249,12 @@ y {
 <!-- <pre id="typewritingId"></pre> -->
 <pre class="creamPreTab4" id="preBody">
 <in>#include</in> <ink>&lt;stdio.h&gt;</ink>
-<span id='line1'><b>main()</b></span> {
- <span id='line2'><b>char</b> ch[<ink>20</ink>];</span>
- <span id='line3'><b>printf</b>(<ink>"Enter a string : "</ink>);</span>
- <span id='line4'><b>gets(ch)</b>;</span>
- <span id='line5'><b>printf</b>(<ink>"The entered string is : "</ink>);</span>
- <span id='line6'><b>puts(ch)</b>;</span>
+<span id='line1'>main()</span> {
+	<span id='line2'>char ch[<ink>20</ink>];</span>
+	<span id='line3'>printf(<ink>"Enter a string : "</ink>);</span>
+	<span id='line4'>gets(ch);</span>
+	<span id='line5'>printf(<ink id="codePrinf">"The given string is : "</ink>);</span>
+	<span id='line6'>puts(ch);</span>
 <span id='line7'>}</span>
 </pre>
 </div>
@@ -264,9 +290,9 @@ y {
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
 				<div id="typeChar"></div>
-				<div id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' maxlength='19' tabindex='0' /></div>
+				<div id="hiddenTypingChar" class="opacity00">Enter a String : <input id='inputChar' class='input-char' maxlength='19' tabindex='0' /></div>
 				<div id="totalEnterChar" ></div>
-				<div id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
+				<div id="enterHiddenTotal" class="opacity00">The given string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
 			</div>
 		</div>
 	</div>

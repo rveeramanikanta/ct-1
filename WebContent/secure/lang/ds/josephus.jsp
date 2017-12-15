@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,6 +54,44 @@
 	marker-end: url("#arrowEnd"); 
 }
 
+.user-btn {
+	background-color: green;
+}
+
+y {
+	color: yellow;
+}
+
+.grn {
+	color: green;
+} 
+
+.red {
+	color: red;
+}
+
+.ct-css, y, .kill-val {
+	font-weight: bold;
+	font-family: monospace;
+}
+
+.kill-val {
+	background-color: black;
+	color: while;
+	border: none;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.blink {
+	animation-name: blinking;
+	animation-duration: 1s;
+	animation-iteration-count: 2;
+ }
+
+@keyframes blinking {
+	100% {color:  red;}
+}
 </style>
 </head>
 <body>
@@ -64,25 +102,35 @@ $(document).ready(function() {
 </script>
 <div class="col-xs-12 padding0 margin-top-25">
 	<div class="col-xs-12 text-center padding0">
-		<h1 class="label ct-demo-heading text-center">Josephus Problem</h1>
+		<h1 class="label ct-demo-heading text-center" id="headingSection">Josephus Problem</h1>
 	</div>
 	<div class="col-xs-12 margin-top-25">
-		<div class="col-xs-6 border-css margin-top-25 padding0">
+		<div class="col-xs-6 border-css margin-top-25 padding0 opacity00" id="kingSoldierAnimDiv">
 			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-top: 15px; margin-bottom: 15px;">
 				<div class="col-xs-12 padding0">
 					<div class="col-xs-4 col-xs-offset-4 padding0">
 						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-20"><i class="fa fa-check"></i><i class="fa fa-user" id="user10"></i></div>
-							<div class="col-xs-2 col-xs-offset-3 text-center"><i class="fa fa-check"></i><i class="fa fa-user" id="user1"></i></div>
-							<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20"><i class="fa fa-check"></i><i class="fa fa-user" id="user2"></i></div>
+							<div class="col-xs-2 text-center margin-top-20">
+								<i class="fa fa-check" id="sym10"></i><i class="val" id="val10">10</i><i class="fa fa-user" id="user10"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-3 text-center">
+								<i class="fa fa-check" id="sym01"></i><i class="val" id="val01">1</i><i class="fa fa-user" id="user01"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20">
+								<i class="fa fa-check" id="sym02"></i><i class="val" id="val02">2</i><i class="fa fa-user" id="user02"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-12 padding0">
 					<div class="col-xs-6 col-xs-offset-3 padding0">
 						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-20 padding0"><i class="fa fa-check"></i><i class="fa fa-user" id="user9"></i></div>
-							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-20 padding0"><i class="fa fa-user" id="user3"></i><i class="fa fa-check"></i></div>
+							<div class="col-xs-2 text-center margin-top-20 padding0">
+								<i class="fa fa-check" id="sym09"></i>&nbsp;<i class="val" id="val09">9</i>&nbsp;<i class="fa fa-user" id="user09"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-20 padding0">
+								<i class="fa fa-user" id="user03"></i>&nbsp;<i class="val" id="val03">3</i>&nbsp;<i class="fa fa-check" id="sym03"></i>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -90,17 +138,27 @@ $(document).ready(function() {
 				<div class="col-xs-12 padding0">
 					<div class="col-xs-6 col-xs-offset-3 padding0">
 						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-20 padding0"><i class="fa fa-check"></i><i class="fa fa-user" id="user8"></i></div>
-							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-20 padding0"><i class="fa fa-user" id="user4"></i><i class="fa fa-check"></i></div>
+							<div class="col-xs-2 text-center margin-top-20 padding0">
+								<i class="fa fa-check" id="sym08"></i>&nbsp;<i class="val" id="val08">8</i>&nbsp;<i class="fa fa-user" id="user08"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-20 padding0">
+								<i class="fa fa-user" id="user04"></i>&nbsp;<i class="val" id="val04">4</i>&nbsp;<i class="fa fa-check" id="sym04"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-12 padding0 margin-top-20">
 					<div class="col-xs-4 col-xs-offset-4 padding0">
 						<div class="col-xs-12">
-							<div class="col-xs-2 text-center"><i class="fa fa-user" id="user7"></i><i class="fa fa-check"></i></div>
-							<div class="col-xs-2 col-xs-offset-3 text-center margin-top-20"><i class="fa fa-user" id="user6"></i><i class="fa fa-check"></i></div>
-							<div class="col-xs-2 col-xs-offset-2 text-center"><i class="fa fa-user" id="user5"></i><i class="fa fa-check"></i></div>
+							<div class="col-xs-2 text-center">
+								<i class="fa fa-user" id="user07"></i><i class="val" id="val07">7</i><i class="fa fa-check" id="sym07"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-3 text-center margin-top-20">
+								<i class="fa fa-user" id="user06"></i><i class="val" id="val06">6</i><i class="fa fa-check" id="sym06"></i>
+							</div>
+							<div class="col-xs-2 col-xs-offset-2 text-center">
+								<i class="fa fa-user" id="user05"></i><i class="val" id="val05">5</i><i class="fa fa-check" id="sym05"></i>
+							</div>
 						</div>
 					</div>
 				</div>
