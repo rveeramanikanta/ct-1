@@ -144,6 +144,8 @@
 
 .creamPreTab4 {
 	height: 205px;
+	tab-size: 4;
+	-moz-tab-size: 4;
 }
 
 .padding0 {
@@ -177,7 +179,7 @@ in {
 }
 
 ink {
-	color: 	rgb(255, 0, 191)
+	color: 	maroon;
 }
 
 go {
@@ -208,13 +210,41 @@ y {
 .table-bordered {
 	border: 1px solid black !important;
 }
+
+.ct-color-green {
+	color: green;
+}
+
+.ui-effects-transfer {
+	border: 1px solid #0bf30b;
+	 z-index: 9999999 !important;
+}
+.z-index {
+	z-index: 9999999 !important;
+	background: white;
+	position: relative;
+}
+
+.blinking {
+	animation-name: blink;
+	animation-duration: 0.6s;
+	animation-iteration-count: 3;
+	z-index: 9999999 !important;
+	background: white;
+}
+
+@keyframes blink {
+	50% {
+		background: #0ee1be;
+	}
+}
 </style>
 <body>
 <div class="col-sm-12 text-center">
 	<div class="margin-padding-css text-center" >
 		<div class="col-sm-1"></div>
 		<div class="col-sm-offset-3 col-sm-3">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">scanf() and printf() on Strings</span></h3>
+			<h3><span class="ct-demo-heading label label-default" id="titleName">Usage of scanf() and printf() on Strings</span></h3>
 		</div>
 	</div>
 </div>
@@ -224,11 +254,11 @@ y {
 <!-- <pre id="typewritingId"></pre> -->
 <pre class="creamPreTab4" id="preBody">
 <in>#include</in> <ink>&lt;stdio.h&gt;</ink>
-  <span id='line1'><b>main()</b></span> {
-  <span id='line2'><b>char</b> ch[<ink>20</ink>];</span>
-  <span id='line3'><b>printf</b> (<ink>"Enter a string : "</ink>);</span>
-  <span id='line4'><b>scanf</b>(<ink>"%s", ch</ink>);</span>
-  <span id='line5'><b>printf</b>(<ink>"The entered string is : %s \n“, ch</ink>);</span>
+<span id='line1'>main()</span> {
+	<span id='line2'><span class="ct-color-green">char</span> ch[<ink>20</ink>];</span>
+	<span id='line3'>printf (<ink>"Enter a string : "</ink>);</span>
+	<span id='line4'>scanf(<ink>"<in>%s</in>"</ink>, ch);</span>
+	<span id='line5'>printf(<span id='printfText'><ink>"The given string is : </ink></span><in><span id="controlString">%s</span>\n</in><ink>"</ink>, <span id="controlStringChar">ch</span>);</span>
 <span id='line6'>}</span>
 </pre>
 </div>
@@ -265,8 +295,8 @@ y {
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
 				<span id="typeChar"></span>
-				<span id="totalEnterChar" ></span>
-				<span id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></span>
+				<span id="totalEnterChar" ></span><br>
+				<span id="enterHiddenTotal" class="opacity00"><span id='enterHiddenTotalSpan'>The given string is : </span><input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></span>
 			</div>
 		</div>
 	</div>

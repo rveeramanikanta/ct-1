@@ -185,6 +185,10 @@ table {
 	background-color: green;
 }
 
+.position {
+	position: relative;
+}
+
 .skip-button {
 	background: orange;
 	margin-right: 15px !important;
@@ -238,12 +242,38 @@ y {
 	margin-bottom: 2px;
 	display:inline-block;
 }
+
+.ui-effects-transfer {
+	border: 1px solid #0bf30b;
+	 z-index: 9999999 !important;
+}
+
+.z-index-effect {
+	z-index: 9999999 !important;
+	background: white;
+	position: relative;
+}
+
+.blinking {
+	animation-name: blink;
+	animation-duration: 0.6s;
+	animation-iteration-count: 2;
+	z-index: 9999999 !important;
+	background: white;
+	position: relative;
+}
+
+@keyframes blink {
+	50% {
+		background: #0ee1be;
+	}
+}
 </style>
 </head>
 
 <body>
 	<div class="demo-heading text-center margin-top-25">
-		<h4 class="label ct-demo-heading" id="heading">Sample Program on Strings</h4>
+		<h4 class="label ct-demo-heading" id="heading">Sample Program to Find Length of a String</h4>
 	</div>
 	<div class="col-xs-12 margin-top-40">
 		<div class="col-xs-12">
@@ -254,11 +284,11 @@ y {
 	<span id="intDec"><g>int</g> i = <ink><span class="zero">0</span></ink>;</span>
 	<span id="enterString">printf(<ink>"Enter a string : "</ink>);</span>
 	<span id="scanf">scanf("%s", ch);</span>
-	<span id="stringIs">printf(<ink>"The entered string is : " %s\n", ch</ink>);</span>
+	<span id="stringIs">printf(<ink>"<span id='printfText'>The given string is : </span><span id='controlString'>%s</span>\n", <span id='controlStringChar'>ch</span></ink>);</span>
 	<span id="whileCond"><go><b>while</b></go> (<span id="chIsNotZero">ch[i] <b class="ct-green">!=</b> <ink><b class="ct-blue-color">'\0'</b></ink></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">printf(<ink>"The length of the string</ink> %s <ink>is : </ink>%d<g>\n</g>", ch, i);</span>
+	<span id="stringLength">printf(<ink>"<span id="printfText1">The length of the string </span></ink><span id="printfText2">%s</span><ink><span id="printfText3"> is : </span></ink><span id="printfText4">%d</span><g>\n</g>", <span id="printfText5">ch</span>, <span id="printfText6">i</span>);</span>
 }
 </pre>
 			</div>

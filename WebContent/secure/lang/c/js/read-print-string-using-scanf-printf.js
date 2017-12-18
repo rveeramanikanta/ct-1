@@ -47,6 +47,12 @@ var readPrintStringUsingScanfPrintfReady = function() {
 						intro :'',
 						position:"bottom"
 					},{
+						element :'#consoleId',
+						intro :'',
+						tooltipClass: "hide",
+						position:"bottom"
+							
+					},{
 						element :'#addressBox',
 						intro :'',
 						position:"left",
@@ -86,29 +92,32 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			if(introjs._currentStep == 3) {
 				$("#addressBox").addClass("opacity00");
 				$("#tableId").removeAttr('style'); 
-			} else if(introjs._currentStep == 7) {
-				TweenMax.to(".td-css, #baseAddresssId", 0 , {opacity: 0});
+			} else if(introjs._currentStep == 8) {
+			//	TweenMax.to(".td-css, #baseAddresssId", 0 , {opacity: 0});
 			}
 			break;
 		case "line3" :
-			$("#inputChar").val("");
+		//	$("#inputChar").val("");
 			$("#consoleId").addClass("opacity00");
-			$("#totalBlinkText").remove();
+		//	$("#totalBlinkText").remove();
 		break;
 		case "line4" :
-			$('.filled').text('');
-			$('.filled').removeClass('filled');
-			$('#baseAddresssId').css("opacity", "0");
+			$("#inputChar").val("");
+			$("#blinkChar").remove();
+			
 		break;
 		case "line5" :
 			$("#totalEnterChar").addClass("hidden");
-			$("#enterHiddenTotal").addClass("hidden");
+			$("#enterHiddenTotal").addClass("opacity00");
 		break;
 		case "consoleId" :
-			if(introjs._currentStep == 5) {
+			if(introjs._currentStep == 7) {
 				$("#inputChar").val("");
-				$("#consoleId").addClass("opacity00");
-				$("#totalBlinkText").remove();
+			//	$("#consoleId").addClass("opacity00");
+				$("#blinkChar").remove();
+				$('.filled').text('');
+				$('.filled').removeClass('filled');
+				$('#baseAddresssId').css("opacity", "0");
 			}
 			break;
 		}
@@ -132,8 +141,8 @@ var readPrintStringUsingScanfPrintfReady = function() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody":
-			typing(".introjs-tooltiptext", "Let us learn execution of sample program for reading " +
-					"(or) printing a string using <span class='ct-code-b-yellow'>scanf()</span> and " +
+			typing(".introjs-tooltiptext", "Let us see a sample program on strings how to read and print a string using " +
+					"<span class='ct-code-b-yellow'>scanf()</span> and " +
 					"<span class='ct-code-b-yellow'>printf()</span>.", 1, "",function() {
 				$('.introjs-nextbutton').show();
 				$(".introjs-prevbutton").hide();
@@ -141,9 +150,8 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			break;
 		case "line1" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is the operating " +
-						"system call.<ul><li><span class='ct-code-b-yellow'>main()</span> is execution starting " +
-						"point for any <span class='ct-code-b-yellow'>C</span> program.</li></ul>", 1, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is on operating system call and which is the "+
+						"execution starting point for any <span class='ct-code-b-yellow'>C</span> program.", 1, "", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -151,12 +159,10 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			
 		case "line2" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>ch</span> is a " +
-						"<span class='ct-code-b-yellow'>character array variable</span> with 20 elements." +
-						"<ul><li>It allocates <span class='ct-code-b-yellow'>1</span> byte of memory to " +
-						"each element of the character array variable.</li>" +
-						"<li>It stores <span class='ct-code-b-yellow'>1</span> character in each element " +
-						"of the character array variable.</li></ul> ", 1, "",function() {
+				typing(".introjs-tooltiptext", "<ul><li><span class='ct-code-b-yellow'>ch</span> is declared as a character array variable "+
+						"of size <span class='ct-code-b-yellow'>20</span>.</li>"+
+						"<li>Each element of a character array variable occupies <span class='ct-code-b-yellow'>1 byte</span> of memory "+
+						"and which is used to store one character.</li></ul>", 1, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -174,37 +180,43 @@ var readPrintStringUsingScanfPrintfReady = function() {
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					}});
-				} else if(introjs._currentStep == 7) {
-					$("#tableRowId").removeClass("opacity00");
-					introjs.refresh();
-					$(".td-css").addClass("ct-code-b-green");
-					TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
-						insertCharacters(function() {
-							$('.introjs-tooltip').removeClass('hide');
-							typing(".introjs-tooltiptext", "The entered string is allocated in a memory of an array and " +
-										"<span class='ct-code-b-green'>\0</span> is append at the end of the string.", 1, "", function() {
+				} else if(introjs._currentStep == 8) {
+					if (introjs._direction == "forward") {
+						$("#tableRowId").removeClass("opacity00");
+						introjs.refresh();
+						$(".td-css").addClass("ct-code-b-green");
+						TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
+							insertCharacters(function() {
 								TweenMax.to("#baseAddresssId", 0.2, {opacity: 1, onComplete: function() {
-									$('.introjs-nextbutton, .introjs-prevbutton').show();
+									setTimeout(function() {
+										introjs.nextStep();
+									},800);
 								}});
 							});
-						});
-					}});
+						}});
+					} else {
+						setTimeout(function() {
+							introjs.previousStep();
+						},1000);
+					}
 				}
 			});
 			break;
 		case "line3" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, " +
-						"used to display anything in double quotes on the output screen.", 1, "",function() {
+				typing(".introjs-tooltiptext", "This statement is used to print the string in the console.", 1, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line4" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>scanf()</span> is a library function, " +
-						"<span class='ct-code-b-yellow'>%s</span> scan a Character String and terminates at whitespace. " +
-						"The <span class='ct-code-b-yellow'>null</span> character stored at the end of the string. ", 1, "",function() {
+				typing(".introjs-tooltiptext", "The <span class='ct-code-b-yellow'>scanf()</span> function with the format specifier" 
+								+ " <span class='ct-code-b-yellow'>%s</span> reads multiple characters specified"
+								+ " on the console until it encounters a white space.<br><br>"
+								+ " The content that is stored into the <span class='ct-code-b-yellow'>ch</span> character array"
+								+ " will always have a <span class='ct-code-b-yellow'>'\\0'</span>"
+								+ " character at the end specifying the end of the string.", 1, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -212,8 +224,8 @@ var readPrintStringUsingScanfPrintfReady = function() {
 		case "line5" :
 			$("#inputChar").attr("disabled", true);
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, used " +
-						"to display anything in double quotes on the output screen.", 1, "",function() {
+//				"<span class='ct-code-b-yellow'>printf()</span> is library function, used to display anything in double quotes on the output screen.
+				typing(".introjs-tooltiptext", "This statement is used to print the string in the console.", 1, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -221,49 +233,79 @@ var readPrintStringUsingScanfPrintfReady = function() {
 		case "consoleId" :
 			if(introjs._currentStep == 5) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#inputChar").val("");
-					$("#consoleId").removeClass("opacity00");
-					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : <span id='blinkChar'>"
-							+ " <input id='inputChar' class='input-char' maxlength='19' tabindex='0' value=''/></span></br></span>", 1, "",function() {
-						$("#inputChar").focus();
-						$('.introjs-tooltip').removeClass('hide');
-						typing(".introjs-tooltiptext", "Enter a string.", 1, "",function() {
-							$("#inputChar").keydown(function(e) {
-								$('.ct-red').remove();
-								if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
-									return;
-								}
-								if (e.keyCode == 32) {
-									e.preventDefault();
-								}
-								if ($(this).val().length > 18) {
-									$('.introjs-tooltiptext').append("<span class='ct-red'><br/>Please restrict the string maximum"
-													+ " length to 19.</span>");
-									e.preventDefault();
-								}
-							});
-							$('#inputChar').keyup(function(e) {
-								if ($("#inputChar").val().length < 1) {
-									$('.introjs-nextbutton, .introjs-prevbutton').hide();
-								} else {
-									$('.introjs-nextbutton, .introjs-prevbutton').show();
-								}
-							});
+					if (introjs._direction == "forward") {
+						$("#inputChar").val("");
+						$("#consoleId").removeClass("opacity00");
+						typing("#typeChar", "<span id='totalBlinkText'>Enter a String : ", 1, "", function() {
+							setTimeout(function() {
+								introjs.nextStep();
+							},800);
+						});
+					}
+					 else {
+							setTimeout(function() {
+								introjs.previousStep();
+							},1000);
+						}
+				});
+			} else if(introjs._currentStep == 7) {
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#totalBlinkText").after("<span id='blinkChar'>"
+					+ " <input id='inputChar' class='input-char' maxlength='19' tabindex='0' value=''/></span>");
+					$("#inputChar").focus();
+					$('.introjs-tooltip').removeClass('hide');
+					typing(".introjs-tooltiptext", "Enter a string.", 1, "",function() {
+						$("#inputChar").keydown(function(e) {
+							$('.ct-red').remove();
+							if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
+								return;
+							}
+							if (e.keyCode == 32) {
+								e.preventDefault();
+							}
+							if ($(this).val().length > 18) {
+								$('.introjs-tooltiptext').append("<span class='ct-red'><br/>Please restrict the string maximum"
+												+ " length to 19.</span>");
+								e.preventDefault();
+							}
+						});
+						$('#inputChar').keyup(function(e) {
+							if ($("#inputChar").val().length < 1) {
+								$('.introjs-nextbutton, .introjs-prevbutton').hide();
+							} else {
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
+							}
 						});
 					});
 				});
-			} else if(introjs._currentStep == 9) {
+			} else if(introjs._currentStep == 10) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "forward") {
-						typing("#totalEnterChar", "The entered string is : <span id='putValueId'></span>", 1, "",function() {
-							$("#totalEnterChar").addClass("hidden");
-							$("#enterHiddenTotal").removeClass("hidden");
+						$("#printfText").addClass("z-index").effect('highlight',{color:'#da5805'}, 1500);
+						transferEffectFunction("#printfText", "#enterHiddenTotalSpan", function() {
+							$("#enterHiddenTotal").removeClass("opacity00");
+							$("#printfText").removeClass("z-index");
 							setTimeout(function() {
-								introjs.nextStep();
-							},500);
-						});
+								$("#controlString").addClass("z-index");
+								setTimeout(function() {
+									$("#controlString").removeClass("z-index");
+									$("#controlStringChar").addClass("z-index");
+									$("#totalEnterChar").addClass("hidden");
+									setTimeout(function() {
+										$("#controlStringChar").removeClass("z-index");
+										$("#addressBox").addClass("z-index");
+										$(".filled:not(:last)").addClass("blinking").one('animationend', function() {
+											$(".filled:not(:last)").removeClass("blinking").off();
+											$("#addressBox").removeClass("z-index");
+											introjs.nextStep();
+										});
+									},800);
+								},1000);
+							},1000);
+							
+						})
 					} else {
-						$("#hiddenTotalEnterChar").val("");
+					//	$("#hiddenTotalEnterChar").val("");
 						setTimeout(function() {
 							introjs.previousStep();
 						},1000);
@@ -276,6 +318,7 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			$("#hiddenTotalEnterChar").attr("disabled", 'disabled');
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				if (introjs._direction == "backward") {
+					$("#hiddenTotalEnterChar").val("");
 					setTimeout(function () {
 						introjs.previousStep();
 					}, 1000);
@@ -291,7 +334,7 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			break;
 		case 'line6':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span> function where the program execution ends.";
 				typing(".introjs-tooltiptext", text, 1, "", function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -351,4 +394,26 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		typingCallbackFunction();
 		introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
+}
+
+function transferEffectFunction(selector1, selector2, callBackFunction) {
+	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
+		$(selector2).removeClass("opacity00");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
+function tweenMaxAnimation(selector1, selector2, callBackFunction) {
+	var l3 = $(selector1).offset();
+	var l4 = $(selector2).offset();
+	var topLength = l3.top - l4.top;
+	var leftLength = l3.left - l4.left;
+	$(selector2).removeClass("opacity00");
+	TweenMax.from(selector2, 0.8, {top: topLength, left: leftLength, onComplete: function() {	//	1
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
 }

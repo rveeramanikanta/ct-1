@@ -230,7 +230,8 @@ function introGuide() {
 							}
 							$(".introjs-tooltip").removeClass('hide');
 							var text = text + "<br><br>Also note the <span class='ct-code-b-yellow'>delimiter('\\0')</span> character that"
-										+ " is automatically appended as the last character that indicates the end of the string in the array.";
+										+ " is <span class='ct-code-b-yellow'>automatically</span> appended as the last character that "+
+										"indicates the end of the string in the array.";
 							typing('.introjs-tooltiptext', text, function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
@@ -303,28 +304,95 @@ function introGuide() {
 								$('#givenString').remove();
 								timeOut();
 							} else {
-								$(".secondLine").append('<span id="givenString">The entered string is&nbsp;:&nbsp;</span>');
-								$.each($("#usrText").val().split(""), function(index, value) {
-									if (value.trim() == "") {
-										return false;
-									}
-									$("#givenString").append('<span class="input">' + value + '</span>');
+								$("#printfText").addClass("z-index-effect").effect('highlight',{color:'#da5805'}, 1000);
+								$(".secondLine").append('<span id="givenString" class="opacity00">The given string is&nbsp;:&nbsp;</span>');
+								transferEffectFunction("#printfText", "#givenString", function() {
+									$("#givenString").removeClass("opacity00");
+									$("#printfText").removeClass("z-index-effect");
+									setTimeout(function() {
+										$("#controlString").addClass("z-index-effect");
+										setTimeout(function() {
+											$("#controlString").removeClass("z-index-effect");
+											$("#controlStringChar").addClass("z-index-effect");
+										//	$("#totalEnterChar").addClass("hidden");
+											setTimeout(function() {
+												$("#controlStringChar").removeClass("z-index-effect");
+												$("#memory").addClass("z-index-effect");
+												$(".filled").addClass("blinking").one('animationend', function() {
+													$(".filled").removeClass("blinking").off();
+													$("#memory").removeClass("z-index-effect");
+													$.each($("#usrText").val().split(""), function(index, value) {
+														if (value.trim() == "") {
+															return false;
+														}
+														$("#givenString").append('<span class="input">' + value + '</span>');
+													});
+													timeOut();
+												});
+											},800);
+										},1000);
+									},1000);
 								});
-								timeOut();
+								
+								
 							}
 							break;
 							
 						case "lastPrint":
-							$(".thirdLine").append('<span id="lengthString">The length of the string </span>');
-							$.each($("#usrText").val().split(""), function(index, value) {
-								if (value.trim() == "") {
-									return false;
-								}
-								$("#lengthString").append('<span class="ct-code-b-yellow">' + value + '</span>');
-							});
-							$("#lengthString").append('<span id="length"> is : <span class="ct-code-b-yellow">' + count +'</span></span>');
-							timeOut();
-							break;
+							$("#printfText1").addClass("z-index-effect").effect('highlight',{color:'#da5805'}, 1000);
+							$(".thirdLine").append('<span id="lengthString" class="opacity00">The length of the string </span>');
+							transferEffectFunction("#printfText1", "#lengthString", function() {
+								$("#printfText1").removeClass("z-index-effect");
+								setTimeout(function() {
+									$("#printfText2").addClass("blinking");
+									setTimeout(function() {	
+										$("#printfText2").removeClass("blinking");
+										$("#printfText5").addClass("blinking");
+										setTimeout(function() {	
+											$("#printfText5").removeClass("blinking");
+											$("#memory").addClass("z-index-effect");
+											$(".filled").addClass("blinking");
+											setTimeout(function() {
+												$(".filled").removeClass("blinking");
+												$("#memory").removeClass("z-index-effect");
+												$.each($("#usrText").val().split(""), function(index, value) {
+													if (value.trim() == "") {
+														return false;
+													}
+													$("#lengthString").append('<span class="ct-code-b-yellow">' + value + '</span>');
+												});
+												setTimeout(function() {
+													$("#printfText3").addClass("blinking");
+													setTimeout(function() {
+														$("#printfText3").removeClass("blinking");
+														$("#lengthString").append('<span id="length"><span id="consoleText1" class=""> is : </span><span class="ct-code-b-yellow opacity00 position" id="consoleValue">' + count +'</span></span>');
+														setTimeout(function() {
+															$("#printfText4").addClass("blinking");
+															setTimeout(function() {
+																$("#printfText4").removeClass("blinking");
+																$("#printfText6").addClass("blinking");
+																setTimeout(function() {
+																	$("#printfText6").removeClass("blinking");
+																	$("#iSpan").addClass("blinking");
+																	setTimeout(function() {
+																		$("#iSpan").removeClass("blinking");
+																		setTimeout(function() {
+																			tweenMaxAnimation("#iSpan", "#consoleValue", function() {
+																				timeOut();
+																			});
+																		}, 1000);
+																	}, 1000);
+																}, 1000);
+															}, 1000);
+														}, 1000);
+													}, 1000);
+												}, 1000);
+										}, 1000);
+									}, 1000);
+								}, 1000);
+							}, 1000);
+						});
+						break;
 					}
 				});
 				break;
@@ -487,6 +555,28 @@ function introGuide() {
 		}
 	});
 	introjs.start();
+}
+
+function transferEffectFunction(selector1, selector2, callBackFunction) {
+	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
+		$(selector2).removeClass("opacity00");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
+function tweenMaxAnimation(selector1, selector2, callBackFunction) {
+	var l3 = $(selector1).offset();
+	var l4 = $(selector2).offset();
+	var topLength = l3.top - l4.top;
+	var leftLength = l3.left - l4.left;
+	$(selector2).removeClass("opacity00");
+	TweenMax.from(selector2, 0.8, {top: topLength, left: leftLength, onComplete: function() {	//	1
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
 }
 
 function typing(typingId, typingContent,callBackFunction) {
