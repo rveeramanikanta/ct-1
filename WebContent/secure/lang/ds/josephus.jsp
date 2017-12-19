@@ -198,6 +198,12 @@ y {
 polyline {
 	fill: transparent;
 }
+
+.ui-effects-transfer {
+	z-index: 9999999;
+	border: 1px solid #003399;
+	border-radius: 5px;
+}
 </style>
 </head>
 <body>
@@ -300,17 +306,17 @@ scanf("%s", sName);</div>
 	<div id="firstToQNext">q -> next = first;
 printf("The Original Soldiers List is --> ");</div>
 	<span id="callingPrintMethod">print(first);</span>
-	<div id="printf4">printf("Enter a Value : ");
+	<div id="printf2">printf("Enter a Value : ");
 scanf("%d", &n);</div>
-	<div id="whileCond"><span id="firstIsNotFirstNext">while(first != first -> next) {</span>
-	<span id="forLoop">for(i = <span id="iInit">1</span>; <span id="iLessThanN">i < n</span>; <span id="iInc">i++</span>) {</span>
-		<span id="firstToQ">q = first;</span>
-		<span id="firstNextToFirst">first = first -> next;</span>
+	<div id="whileCond">while(first != first -> next) {
+	for(i = 1; i < n; i++) {
+		q = first;
+		first = first -> next;
 	}
-	<span id="firstNextToQNext">q -> next = first -> next;</span>
-	<span id="printf5">printf("The Eliminated Soldier is --> %s\n", first -> name);</span>
-	<span id="free">free(first);</span>
-	<span id="qNextToFirst">first = q -> next;</span>
+	q -> next = first -> next;
+	printf("The Eliminated Soldier is --> %s\n", first -> name);
+	free(first);
+	first = q -> next;
 }</div>
 	<span id="printf6">printf("The Escaped Soldier is  -->  %s\n",
 					 first -> name);</span>
@@ -331,6 +337,16 @@ scanf("%d", &n);</div>
 					</div>
 					<div class="col-xs-12 margin-top-25" id="variableNodesDiv"></div>
 				</div>
+				<div class="col-xs-12 padding0">
+<pre class="pre-tab hide margin-top-10" id="printPre">	void print(<span id="firstDecPrint">node first</span>) {
+		<span id="qDecPrint">node q = first;</span>
+		<div id="doWhileBlock">do {
+	<span>printf("%s --> ", q -> name);</span>
+	<span>q = q -> next;</span>
+<span>} while(q != first);</span></div>
+		<span>printf("NULL\n");</span>
+	}</pre>
+			</div>
 				<div class="col-xs-12 margin-top-10">
 					<div class="col-xs-10 col-xs-offset-1 console padding0 opacity00" id="outputDiv">
 						<div class="output-console-title-bar">Output</div>
