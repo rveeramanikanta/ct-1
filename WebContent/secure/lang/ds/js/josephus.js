@@ -216,6 +216,7 @@ function initIntroJS() {
 						break;
 						case 'EliminateVal':
 						case 'SoldierName':
+							$('.err-msg').remove();
 							$('.user-txt:last').attr('disabled', 'disabled');
 							var stepId, value;
 							if (animateStep == 'SoldierName') {
@@ -283,7 +284,7 @@ function initIntroJS() {
 						case 'firstToQNext':
 							bounceEffect('#firstValMain', '.next-span:last', false, '10px', function() {
 								//svgCurve($('.name-div:first'), $('.next-div:last'), '1');
-								svgCurve($('#' + ($('.name-div:first').attr('id'))), '.nodes:last', 1);
+								svgCurve($('#' + ($('.next-div:last').attr('id'))), $('#' + ($('.name-div:first').attr('id'))), 1);
 								index++;
 								setTimeout(function() {
 									$('#output').append('<div class="opacity00">The Original Soldiers List is --> </div>');
@@ -298,7 +299,8 @@ function initIntroJS() {
 									svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + index,	'line29', false, function() {
 										bounceEffect('#next'+index, '#firstValMain', false, '-950', function() {
 											$('#line22, #line29').remove();
-											svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + (index + 1), 'line22', false, function() {
+											var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+											svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + val, 'line22', false, function() {
 												customIntroNextStep('#printPre', 'iIncrement', 'show', 'left');
 											});
 										});
@@ -337,6 +339,10 @@ function initIntroJS() {
 									+ ' <input class="user-txt" maxlength="' + val + '" size="' + val +'"/></div>');
 							customIntroNextStep('#outputDiv', animateStep, 'show', 'left');
 						break;
+						case 'escapedSoldier':
+							$('#output').append('<div class="opacity00">The Escaped Soldier is  --> <y>' + $('.name-span').text() + '</y></div>');
+							customIntroNextStep('#outputDiv', 'escapedSoldier', 'hide');
+						break;
 					}
 				});
 			break;
@@ -358,10 +364,18 @@ function initIntroJS() {
 								(stepId == 'SoldierName') ? nameValidation() : eventValidation('.user-txt');
 							});
 						break;
+						case 'escapedSoldier':
+						case 'eleminatedSoldier':
 						case 'soldierNameIs':
 							TweenMax.to($('#output div:last'), 0.5, {opacity : 1, onComplete: function() {
 								$('#outputDiv div:last').removeClass('opacity00');
-								customIntroNextStep('#callingPrintMethod', '', 'show');
+								if (animateStep == 'soldierNameIs') {
+									customIntroNextStep('#callingPrintMethod', '', 'show');
+								} else if (animateStep == 'escapedSoldier') {
+									customIntroNextStep('#restartBtn', '', 'show', 'left');
+								} else {
+									customIntroNextStep('#printPre', 'DeletingSoldier', 'show', 'left');
+								}
 							}});
 						break;
 						case 'printingValues':
@@ -513,11 +527,19 @@ function initIntroJS() {
 							});
 						break;
 						case 'DeletingSoldier':
-							transferEffect('#whileCond', '#deleteLogic', function() {
-								arrow('#printPre', '#firstIsNotFirstNext', '#firstIsNotFirstNext', function() {
+							$('#printValues').parent().remove();
+							if ($('#printPre').hasClass('visited')) {
+								arrow('#printPre', '#qNextToFirst', '#firstIsNotFirstNext', function() {
 									deletingSoldierWhileCondition();
-								}); 
-							});
+								});
+							} else {
+								transferEffect('#whileCond', '#deleteLogic', function() {
+									arrow('#printPre', '#firstIsNotFirstNext', '#firstIsNotFirstNext', function() {
+										$('#printPre').addClass('visited')
+										deletingSoldierWhileCondition();
+									}); 
+								});
+							}
 						break;
 						case 'iIncrement':
 							arrow('#printPre', '#forIn', '#forLoop', function() {
@@ -554,20 +576,20 @@ function initIntroJS() {
 					customIntroNextStep('#printPre', 'DeletingSoldier', 'show', 'left');
 				});
 			break;
+			case 'restartBtn':
+				$('.introjs-tooltip').css('min-width', '125px');
+				$('#restartBtn').removeClass('opacity00');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$('.introjs-tooltiptext').append('Click to restart.');
+					$('#restartBtn').click(function() {
+						location.reload();
+					});
+				});
+			break;
 		}
 	});
 	introjs.start();
 }
-
-/*function basedOnRowLineReveal(val) {	//change this function to eq() method.
-	if (val < 6) {
-		svgAnimatingLineRightAndLeft('#nextDiv' + (val - 1), '#nameDiv' + val, 'line' + val, true);
-	} else if (val == 6) {
-		svgAnimatingLineTopAndBottom('#nextDiv' + (val - 1), '#nextDiv' + val, 'line' + val, false);
-	} else {
-		svgAnimatingLineRightAndLeft('#nameDiv' + (val - 1), '#nextDiv' + val, 'line' + val, false);
-	}
-}*/
 
 function basedOnRowLineReveal(val) {
 	if (val < 6) {
@@ -583,13 +605,14 @@ function basedOnRowLineReveal(val) {
 function deletingNode(val, count, nodeId, callBackFunction) {
 	$('line, polyline').remove();
 	if (count <= val) {
-		var l1Val = (count <= 5) ? '-120px' : (count > 6) ? '120px' : '' ;
-		if (count == 6) {
-			TweenMax.to($('#nodesDiv .nodes').not(nodeId).eq(count - 1), 1, {top: '-68px', onComplete: function() {
+		console.log('count ' + count + ' val ' + val);
+		var l1Val = (count <= 5) ? '-120px' : (count > 5) ? '120px' : '' ;
+		if (count == 5) {
+			TweenMax.to($('#nodesDiv .nodes').not(nodeId).eq(count - 1), 1, {top: '-60px', onComplete: function() {
 				$.each($("#nodesDiv .nodes").not(nodeId), function() {
 					$(this).css("top", "0");
 				});
-				$(nodeId).hide();
+				$(nodeId).remove();
 				if ($('#row1 .nodes').length < 5 && $('#row2 .nodes').length != 0) {
 					var t = $('#row2 .nodes:first').detach();
 					t.appendTo('#row1');
@@ -602,7 +625,7 @@ function deletingNode(val, count, nodeId, callBackFunction) {
 				$.each($("#nodesDiv .nodes").not(nodeId), function() {
 					$(this).css("left", "0");
 				});
-				$(nodeId).hide();
+				$(nodeId).remove();
 			}});
 		}
 		count++;
@@ -617,24 +640,29 @@ function deletingNode(val, count, nodeId, callBackFunction) {
 
 function deletingSoldierWhileCondition() {
 	position = index = 1;
-	$('#printValues').parent().remove();
 	$('.introjs-tooltiptext').empty();
 	introjs.refresh();
 	var cond = $('#firstValMain').text().trim() != $('#next' + index).text().trim(); 
 	 appendCondText('.introjs-tooltiptext', '#firstIsNotFirstNext', 'first', '!=', 'first -> next', true,  
 			 $('#firstValMain').text().trim(), $('#next' + index).text().trim(), cond, cond, 'while-loop', function() {
 		 callingNextButton(function() {
-			 arrow('#printPre', '#firstIsNotFirstNext', '#forLoop', function() {
-				 text = 'Let us initialize <y>i</y> with <y>1</y>.';
-				 typing('.introjs-tooltiptext', text, function() {
-					 $('#animationDiv').addClass('zindex-css');
-					 $('#iVarDec').removeClass('opacity00');
-					 $('#iVarVal').text(position);
-					 fromEffect('#iInit', '#iVarVal', function() {
-						 appendNextButton('forLoopChecking');
+			 if (cond) {
+				 arrow('#printPre', '#firstIsNotFirstNext', '#forLoop', function() {
+					 text = 'Let us initialize <y>i</y> with <y>1</y>.';
+					 typing('.introjs-tooltiptext', text, function() {
+						 $('#animationDiv').addClass('zindex-css');
+						 $('#iVarDec').removeClass('opacity00');
+						 $('#iVarVal').text(position);
+						 fromEffect('#iInit', '#iVarVal', function() {
+							 appendNextButton('forLoopChecking');
+						 });
 					 });
 				 });
-			 });
+			 } else {
+				position = 4;
+				introNextSteps('#printf4', 'eliminatedSoldier', 'hide');
+				introjs.nextStep();
+			 }
 		 });
 	 });
 }
@@ -673,20 +701,28 @@ function forloopOutsideAnim() {
 		text = 'Store the <y>first -> next</y> (i.e., <y>' + $('#next' + index).text().trim() + '</y>) in <y>q -> next</y>.';
 		typing('.introjs-tooltiptext', text, function() {
 			btnWithFirstNodeLine(function() {
-				bounceEffect('#next' + index, '#next' + (index - 1), true, 10, function() {
-					position = $('#node' + index).index('.nodes'); //index of the node
+				var val1 = +$('.data-address:contains("' + $('#qValMain').text().trim() + '")').attr('id').substr(-1);
+				var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+				bounceEffect('#next' + val, '#next' + val1, true, 10, function() {
+					position = $('#node' + val).index('.nodes'); //index of the node
 					$('#line' + (position + 1)).remove();
+					if ($('.data-address:first').text().trim() == $('.next-span:eq(' + ($('.nodes').length - 2) + ')').text()) {
+						svgCurve($('#' + ($('.next-div:eq(' + (position - 1) + ')')).attr('id')), $('#' + ($('.name-div:first').attr('id'))), 2);
+					} else if ($('.data-address:eq(1)').text().trim() == $('.next-span:last').text().trim()) {
+						svgCurve($('#' + ($('.next-div:last')).attr('id')), $('#' + ($('.name-div:eq(1)').attr('id'))), 1);
+					}
 					callingNextButton(function() {
 						arrow('#printPre', '#firstNextToQNext', '#printf3', function() {
 							introjs.refresh();
 							setTimeout(function() {
 								svgAnimatingLineTopAndBottom($('#firstVarDecMain > div:eq(1)'), '#nextDiv' + index, 'line29', false, function() {
 									$('#line29').remove();
+									val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
 									$('#svgId').before('<div class="col-xs-12 margin-top-10 blue-color" style="min-height: 20px; font-size: 12px;">'
 											+ ' The Eliminated  Soldier is --> <span id="printValues" class="opacity00 position-css"> ' 
-											 + $('#name' + index).text() + ' </span></div>');
+											 + $('#name' + val).text() + ' </span></div>');//write here
 									introjs.refresh();
-									fromEffect('#name' + index, '#printValues', function() {
+									fromEffect('#name' + val, '#printValues', function() {
 										arrow('#printPre', '#printf3', '#free', function() {
 											text = 'Now <y>delete</y> the node at address <y>' + $('#firstValMain').text().trim() + '</y>.';
 											typing('.introjs-tooltiptext', text, function() {
@@ -706,33 +742,36 @@ function forloopOutsideAnim() {
 
 function freeMethod() {
 	btnWithFirstNodeLine(function() {
-		$('#node' + index).effect('highlight', {color: 'red'}, 800, function() {
-			TweenMax.to("#node" + index, 0.5, { top : -80, opacity: 0, onComplete: function() {
-				console.log($('.nodes').length + " length@@ ", index + " index");
-				deletingNode($('.nodes').length, index, '#node' + index, function() {
+		var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+		$('#node' + val).effect('highlight', {color: 'red'}, 800, function() {
+			($('.data-address:first').text().trim() == $('.next-span:eq(' + ($('.nodes').length - 2) + ')').text()) ? $('#polyLine1').remove() : '';
+			TweenMax.to("#node" + val, 0.5, { top : -80, opacity: 0, onComplete: function() {
+				$('#polyline2').attr('id', 'polyline1');
+				console.log($('.nodes').length + " length@@ ", val + " index");
+				deletingNode($('.nodes').length, (+$('#node' + index).index('.nodes') + 1), '#node' + val, function() {
 					setTimeout(function() {
-						$('#node' + index).remove();
+						introjs.refresh();
 						for (var i = 2; i <= $('.nodes').length; i++){
 						 	basedOnRowLineReveal(i)  
 						}
-						svgCurve($('#' + ($('.name-div:first').attr('id'))), '.nodes:last', 1);
-						svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + (index - 1), 'line23', true);
+						svgCurve($('#' + ($('.next-div:last').attr('id'))), $('#' + ($('.name-div:first').attr('id'))), 1);
+						val = +$('.data-address:contains("' + $('#qValMain').text().trim() + '")').attr('id').substr(-1);
+						svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + val, 'line23', true);
 						arrow('#printPre', '#free', '#qNextToFirst', function() {
 							text = 'Now store the <y>q -> next</y> value (i.e., <y>' + $('#next' + (index - 1)).text().trim() + '</y>) in <y>first</y>.';
 							typing('.introjs-tooltiptext', text, function() {
 								callingNextButton(function() {
-									svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + (index - 1), 'line29', true, function() {
+									svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + val, 'line29', true, function() {
 										$('#line29').remove();
-										bounceEffect('#next' + (index - 1), '#firstValMain', false, -720, function() {
-											svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + (index + 1), 'line22', false, function() {
-												console.log(position + " ##position##index " + index);
+										bounceEffect('#next' + val, '#firstValMain', false, -720, function() {
+											var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+											svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + val, 'line22', false, function() {
+												console.log(position + " ##position ##index " + index);
 												position++;
 												changeIds(1, false);	//write code for moving nodes
-												callingNextButton(function() {
-													arrow('#printPre', '#qNextToFirst', '#firstIsNotFirstNext', function() {
-														deletingSoldierWhileCondition();
-													});
-												});
+												$('#output').append('<div class="opacity00">The Eliminated Soldier is --> <y>' +
+																+ $('#printValues').text() + '</y></div>');
+												nextStepWithBtn('#outputDiv', 'eleminatedSoldier', 'hide', 'left');
 											});
 										});
 									});
@@ -786,7 +825,8 @@ function changeIds(t, flag) {
 
 function btnWithFirstNodeLine(callBackFunction) {
 	callingNextButton(function() {
-		svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + index, 'line29', false, function() {
+		var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+		svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + val, 'line29', false, function() {
 			$('#line29').remove();
 			callBackFunction();
 		});
@@ -965,7 +1005,6 @@ function appendCondText(selector1, selector2, text1, cond, text2, flag, val1, va
 				setTimeout(function() {
 					appendCondCheckingText(selector1, textFlag, condFlag, flagText, callBackFunction);
 				}, 1200);
-				//if (eval(val1 + cond + val2)) {
 			});
 		});
 	});
@@ -1013,7 +1052,6 @@ function soldiersAnimation() {
 				$('#' + t).addClass('finished').removeClass('soldiers temp').removeAttr('id');
 				changeIds(1, true);
 					setTimeout(function() {
-					//position = (position == 10) ? 0 : position;
 					soldiersAnimation();
 				}, 800);
 			}, 500);
@@ -1276,13 +1314,28 @@ function nameValidation() {
 		}
 	});
 	$('.user-txt').keyup(function(e) {
-		if ($(this).val().length > 0) {
-			$('.introjs-nextbutton').show();
-			if (e.keyCode == 13) {
-				introjs.nextStep();
+		if ($('.user-txt').length != 11) {
+			if ($(this).val().length > 0) {
+				$('.err-msg').remove();
+				$('.introjs-nextbutton').show();
+				if (e.keyCode == 13) {
+					introjs.nextStep();
+				}
+			} else {
+				$('.introjs-nextbutton').hide();
 			}
 		} else {
-			$('.introjs-nextbutton').hide();
+			if ($(this).val().toLowerCase() == "end") {
+				$('.introjs-nextbutton').show();
+				$('.err-msg').remove();
+				if (e.keyCode == 13) {
+					introjs.nextStep();
+				}
+			} else {
+				$('.err-msg').remove();
+				$('.introjs-nextbutton').hide();
+				$('.introjs-tooltiptext').append('<div class="err-msg"><br>Here we are restricted to enter "end / End" only.</div>');
+			}
 		}
 	});
 }
@@ -1374,30 +1427,32 @@ function lineAnimation(svgId, svgLineId, x1, y1, x2, y2, callBackFunction) {
 }
 
 function svgCurve(selector1, selector2, val) {
-	$("#polyline" + val).remove();
-	var x = ($(selector2).offset().left - $("#animationDiv").offset().left) + $(selector2).width() + 10;
-	var y = ($(selector2).offset().top - $("#animationDiv").offset().top) + $(selector2).outerHeight() / 2 - 0.5;
-	var x1 = x + ($(selector2).width() / 5);
+	$("#polyLine" + val).remove();
+	var x = (($(selector1).offset().left - $("#svgId").offset().left) + $(selector1).width()) + 2;
+	var y = (($(selector1).offset().top  + $(selector1).height()) - $('#svgId').offset().top - 7);
+	var x1 = x + (($(selector1).outerWidth() / 3) + 4);
 	var y1 = y;
 	var x2 = x1;
-	var y2 = y + 20 - ($(selector2).outerHeight());
-	var x3 = ($(selector1).offset().left - $("#animationDiv").offset().left) - ($(selector1).outerWidth() / 3) + 2;
+	var y2 = y - ($(selector1).outerHeight() * 1.4) - 4;
+	var x3 = ($(selector2).offset().left - $("#svgId").offset().left ) - $(selector1).outerWidth() / 3 - 7;
 	var y3 = y2;
 	var x4 = x3;
-	var y4 = ($(selector1).offset().top - $("#animationDiv").offset().top) + $(selector1).outerHeight() / 2 - 0.5;
-	var x5 = ($(selector1).offset().left - $("#animationDiv").offset().left);
-	var y5 = y4; 		
+	var y4 = (($(selector2).offset().top  + $(selector2).height()) - $('#svgId').offset().top - 7);
+	var x5 = x3 + $(selector2).outerWidth() / 3;
+	var y5 = y4;
 	var line = document.createElementNS("http://www.w3.org/2000/svg", 'polyline');
 	line.setAttribute("class", "svg-line curve");
-	line.setAttribute("id", "polyline" + val);
-	var points = x + " " + y + ", " + x1 + " " + y1 + ", " + x2 + " " + y2 + ", " + x3 + " " + y3 + ", " + x4 + " " + y4 + ", " + x5 + " " + y5;  
+	line.setAttribute('id', 'polyLine' + val);
+	var points = x + " " + y + ", " + x1 + " " + y1 + ", " + x2 + " " + y2 + ", " + x3 
+				+ " " + y3 + ", " + x4 + " " + y4 + ", " + x5 + " " + y5;  
 	line.style.markerEnd = 'url("#arrow")';
 	$("#svgId").append(line);
 	setTimeout(function() {
-		TweenMax.to("polyline", 1, {attr: {points : points}});
+		TweenMax.to("#polyLine" + val, 1, {attr: {points : points}});
 	},500);
+	if (typeof callBackFunction === "function") {
+		callBackFunction();
+	}
 }
-
-
 
 

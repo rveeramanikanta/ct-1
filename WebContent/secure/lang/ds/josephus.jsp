@@ -318,7 +318,7 @@ scanf("%d", &n);</div>
 	free(first);
 	first = q -> next;
 }</div>
-	<span id="printf6">printf("The Escaped Soldier is  -->  %s\n",
+	<span id="printf4">printf("The Escaped Soldier is  -->  %s\n",
 					 first -> name);</span>
 }</pre>
 		</div>
@@ -353,6 +353,7 @@ scanf("%d", &n);</div>
 						<div class="output-console-body" id="output"></div>
 					</div>
 				</div>
+				<div class="col-xs-12 margin-top-20 text-center"><span class="btn btn-warning opacity00" id="restartBtn">Restart</span></div>
 			</div>
 		</div>
 	</div>
