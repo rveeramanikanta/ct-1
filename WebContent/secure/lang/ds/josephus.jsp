@@ -212,69 +212,83 @@ $(document).ready(function() {
 	josephusProgramReady();
 });
 </script>
-<div class="col-xs-12 padding0 margin-top-25">
+<div class="col-xs-12 padding0 margin-top-20">
 	<div class="col-xs-12 text-center padding0">
 		<h1 class="label ct-demo-heading text-center" id="headingSection">Josephus Problem</h1>
 	</div>
-	<div class="col-xs-12 margin-top-25">
+	<div class="col-xs-12 margin-top-20">
 		<div class="col-xs-6 border-css margin-top-25 padding0 opacity00" id="kingSoldierAnimDiv">
 			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-top: 15px; margin-bottom: 15px;">
-				<div class="col-xs-12 padding0">
-					<div class="col-xs-4 col-xs-offset-4 padding0">
-						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
-								<i class="fa fa-check" id="sym10"></i><i class="val" id="val10">10</i><i class="fa fa-user" id="user10"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-3 text-center soldiers" id="soldier1">
-								<i class="fa fa-check" id="sym01"></i><i class="val" id="val01">1</i><i class="fa fa-user" id="user01"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier2">
-								<i class="fa fa-check" id="sym02"></i><i class="val" id="val02">2</i><i class="fa fa-user" id="user02"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 padding0">
-					<div class="col-xs-6 col-xs-offset-3 padding0">
-						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-20 padding0 soldiers" id="soldier9">
-								<i class="fa fa-check" id="sym09"></i>&nbsp;<i class="val" id="val09">9</i>&nbsp;<i class="fa fa-user" id="user09"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-20 padding0 soldiers" id="soldier3">
-								<i class="fa fa-user" id="user03"></i>&nbsp;<i class="val" id="val03">3</i>&nbsp;<i class="fa fa-check" id="sym03"></i>
+    			<div class="col-xs-10 col-xs-offset-1">
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-6 col-xs-offset-3 padding0">
+							<div class="col-xs-12">
+								<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
+									<i class="fa fa-check opacity00" id="sym10"></i><i class="val opacity00" id="val10">10</i>
+									<i class="fa fa-user" id="user10"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier1">
+									<i class="fa fa-check opacity00" id="sym01"></i><i class="val opacity00" id="val01">1</i>
+									<i class="fa fa-user" id="user01"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier2">
+									<i class="fa fa-check opacity00" id="sym02"></i><i class="val opacity00" id="val02">2</i>
+									<i class="fa fa-user" id="user02"></i>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-12 padding0 text-center"><i class="fa fa-male fa-2x" style="color: blue;" id="king"></i></div>
-				<div class="col-xs-12 padding0">
-					<div class="col-xs-6 col-xs-offset-3 padding0">
-						<div class="col-xs-12">
-							<div class="col-xs-2 text-center margin-top-10 padding0 soldiers" id="soldier8">
-								<i class="fa fa-check" id="sym08"></i>&nbsp;<i class="val" id="val08">8</i>&nbsp;<i class="fa fa-user" id="user08"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-8 text-center margin-top-10 padding0 soldiers" id="soldier4">
-								<i class="fa fa-user" id="user04"></i>&nbsp;<i class="val" id="val04">4</i>&nbsp;<i class="fa fa-check" id="sym04"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 padding0 margin-top-20">
-					<div class="col-xs-4 col-xs-offset-4 padding0">
-						<div class="col-xs-12">
-							<div class="col-xs-2 text-center soldiers" id="soldier7">
-								<i class="fa fa-user" id="user07"></i><i class="val" id="val07">7</i><i class="fa fa-check" id="sym07"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-3 text-center margin-top-20 soldiers" id="soldier6">
-								<i class="fa fa-user" id="user06"></i><i class="val" id="val06">6</i><i class="fa fa-check" id="sym06"></i>
-							</div>
-							<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier5">
-								<i class="fa fa-user" id="user05"></i><i class="val" id="val05">5</i><i class="fa fa-check" id="sym05"></i>
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-8 col-xs-offset-2 padding0">
+							<div class="col-xs-12 padding0">
+								<div class="col-xs-2 text-center margin-top-20 padding0 soldiers" id="soldier9">
+									<i class="fa fa-check opacity00" id="sym09"></i>&nbsp;<i class="val opacity00" id="val09">9</i>&nbsp;
+									<i class="fa fa-user" id="user09"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-7 text-center margin-top-20 padding0 soldiers" id="soldier3">
+									<i class="fa fa-user" id="user03"></i>&nbsp;<i class="val opacity00" id="val03">3</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym03"></i>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+					<div class="col-xs-12 padding0 text-center">
+						<i class="fa fa-male fa-2x col-xs-1 col-xs-offset-5" style="color: blue;" id="king"></i>
+					</div>
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-8 col-xs-offset-2 padding0">
+							<div class="col-xs-12 padding0" style="margin-top: 3px;">
+								<div class="col-xs-2 text-center padding0 soldiers" id="soldier8">
+									<i class="fa fa-check opacity00" id="sym08"></i>&nbsp;<i class="val opacity00" id="val08">8</i>&nbsp;
+									<i class="fa fa-user" id="user08"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-7 text-center padding0 soldiers" id="soldier4">
+									<i class="fa fa-user" id="user04"></i>&nbsp;<i class="val opacity00" id="val04">4</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym04"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 padding0 margin-top-20">
+						<div class="col-xs-6 col-xs-offset-3 padding0">
+							<div class="col-xs-12" style="margin-top: 3px;">
+								<div class="col-xs-2 text-center soldiers" id="soldier7">
+									<i class="fa fa-user" id="user07"></i><i class="val opacity00" id="val07">7</i>
+									<i class="fa fa-check opacity00" id="sym07"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier6">
+									<i class="fa fa-user" id="user06"></i><i class="val opacity00" id="val06">6</i>
+									<i class="fa fa-check opacity00" id="sym06"></i>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier5">
+									<i class="fa fa-user" id="user05"></i><i class="val opacity00" id="val05">5</i>
+									<i class="fa fa-check opacity00" id="sym05"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+    			</div>
+    		</div>
 		</div>
 		<div class="col-xs-4 border-css padding0 hide" id="codeDiv">
 <div class="text-center" style="margin-bottom: 5px;"><span id="includeBtn" class="btn btn-success">Struct List</span></div>
