@@ -204,6 +204,10 @@ polyline {
 	border: 1px solid #003399;
 	border-radius: 5px;
 }
+
+p {
+	margin: 0;
+}
 </style>
 </head>
 <body>
@@ -218,22 +222,26 @@ $(document).ready(function() {
 	</div>
 	<div class="col-xs-12 margin-top-20">
 		<div class="col-xs-6 border-css margin-top-25 padding0 opacity00" id="kingSoldierAnimDiv">
-			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-top: 15px; margin-bottom: 15px;">
+			<div class="col-xs-12">
+		    	<div><i class="fa fa-male ct-blue-color"></i> - King </div>
+		    	<div><i class="fa fa-user"></i> - Soldier </div>
+			</div>
+			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-bottom: 15px;">
     			<div class="col-xs-10 col-xs-offset-1">
 					<div class="col-xs-12 padding0">
 						<div class="col-xs-6 col-xs-offset-3 padding0">
 							<div class="col-xs-12">
 								<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
-									<i class="fa fa-check opacity00" id="sym10"></i><i class="val opacity00" id="val10">10</i>
-									<i class="fa fa-user" id="user10"></i>
+									<p class="fa fa-check opacity00" id="sym10"></p> <p class="val opacity00" id="val10">10</p> 
+									<p class="fa fa-user" id="user10"></p>
 								</div>
 								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier1">
-									<i class="fa fa-check opacity00" id="sym01"></i><i class="val opacity00" id="val01">1</i>
-									<i class="fa fa-user" id="user01"></i>
+									<p class="fa fa-check opacity00" id="sym01"></p> <p class="val opacity00" id="val01">1</p> 
+									<p class="fa fa-user" id="user01"></p>
 								</div>
 								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier2">
-									<i class="fa fa-check opacity00" id="sym02"></i><i class="val opacity00" id="val02">2</i>
-									<i class="fa fa-user" id="user02"></i>
+									<p class="fa fa-check opacity00" id="sym02"></p> <p class="val opacity00" id="val02">2</p> 
+									<p class="fa fa-user" id="user02"></p>
 								</div>
 							</div>
 						</div>
@@ -242,11 +250,11 @@ $(document).ready(function() {
 						<div class="col-xs-8 col-xs-offset-2 padding0">
 							<div class="col-xs-12 padding0">
 								<div class="col-xs-2 text-center margin-top-20 padding0 soldiers" id="soldier9">
-									<i class="fa fa-check opacity00" id="sym09"></i>&nbsp;<i class="val opacity00" id="val09">9</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym09"></i>&nbsp; <i class="val opacity00" id="val09">9</i>&nbsp;
 									<i class="fa fa-user" id="user09"></i>
 								</div>
 								<div class="col-xs-2 col-xs-offset-7 text-center margin-top-20 padding0 soldiers" id="soldier3">
-									<i class="fa fa-user" id="user03"></i>&nbsp;<i class="val opacity00" id="val03">3</i>&nbsp;
+									<i class="fa fa-user" id="user03"></i>&nbsp; <i class="val opacity00" id="val03">3</i>&nbsp;
 									<i class="fa fa-check opacity00" id="sym03"></i>
 								</div>
 							</div>
@@ -259,11 +267,11 @@ $(document).ready(function() {
 						<div class="col-xs-8 col-xs-offset-2 padding0">
 							<div class="col-xs-12 padding0" style="margin-top: 3px;">
 								<div class="col-xs-2 text-center padding0 soldiers" id="soldier8">
-									<i class="fa fa-check opacity00" id="sym08"></i>&nbsp;<i class="val opacity00" id="val08">8</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym08"></i>&nbsp; <i class="val opacity00" id="val08">8</i>&nbsp;
 									<i class="fa fa-user" id="user08"></i>
 								</div>
 								<div class="col-xs-2 col-xs-offset-7 text-center padding0 soldiers" id="soldier4">
-									<i class="fa fa-user" id="user04"></i>&nbsp;<i class="val opacity00" id="val04">4</i>&nbsp;
+									<i class="fa fa-user" id="user04"></i>&nbsp; <i class="val opacity00" id="val04">4</i>&nbsp;
 									<i class="fa fa-check opacity00" id="sym04"></i>
 								</div>
 							</div>
@@ -273,16 +281,16 @@ $(document).ready(function() {
 						<div class="col-xs-6 col-xs-offset-3 padding0">
 							<div class="col-xs-12" style="margin-top: 3px;">
 								<div class="col-xs-2 text-center soldiers" id="soldier7">
-									<i class="fa fa-user" id="user07"></i><i class="val opacity00" id="val07">7</i>
-									<i class="fa fa-check opacity00" id="sym07"></i>
+									<p class="fa fa-user" id="user07"></p> <p class="val opacity00" id="val07">7</p> 
+									<p class="fa fa-check opacity00" id="sym07"></p>
 								</div>
 								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier6">
-									<i class="fa fa-user" id="user06"></i><i class="val opacity00" id="val06">6</i>
-									<i class="fa fa-check opacity00" id="sym06"></i>
+									<p class="fa fa-user" id="user06"></p> <p class="val opacity00" id="val06">6</p> 
+									<p class="fa fa-check opacity00" id="sym06"></p>
 								</div>
 								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier5">
-									<i class="fa fa-user" id="user05"></i><i class="val opacity00" id="val05">5</i>
-									<i class="fa fa-check opacity00" id="sym05"></i>
+									<p class="fa fa-user" id="user05"></p> <p class="val opacity00" id="val05">5</p> 
+									<p class="fa fa-check opacity00" id="sym05"></p>
 								</div>
 							</div>
 						</div>
@@ -297,7 +305,7 @@ $(document).ready(function() {
 	struct list *next;
 };</span>
 <span id="typeDefDec">typedef struct list *node;</span></pre></div>
-<pre class="pre-tab hide" id="mainPre">int main() {
+<pre class="pre-tab" id="mainPre">int main() {
 	<div id="nodesDecInMain"><span>node q, temp, first;</span>
 <span>first = NULL;</span></div>
 	<div id="endSNmeIAndNDec"><span>char sName[10];</span>
@@ -319,7 +327,7 @@ scanf("%s", sName);</div>
 }</div>
 	<div id="firstToQNext">q -> next = first;
 printf("The Original Soldiers List is --> ");</div>
-	<span id="callingPrintMethod">print(first);</span>
+	<span id="callingPrintMethod">display(first);</span>
 	<div id="printf2">printf("Enter a Value : ");
 scanf("%d", &n);</div>
 	<div id="whileCond">while(first != first -> next) {
@@ -332,8 +340,7 @@ scanf("%d", &n);</div>
 	free(first);
 	first = q -> next;
 }</div>
-	<span id="printf4">printf("The Escaped Soldier is  -->  %s\n",
-					 first -> name);</span>
+	<span id="printf4">printf("The Escaped Soldier is --> %s\n", first -> name);</span>
 }</pre>
 		</div>
 		<div class="col-xs-7 col-xs-offset-1" style="padding-right: 0px">
@@ -352,7 +359,7 @@ scanf("%d", &n);</div>
 					<div class="col-xs-12 margin-top-25" id="variableNodesDiv"></div>
 				</div>
 				<div class="col-xs-12 padding0">
-<pre class="pre-tab hide margin-top-10" id="printPre">	void print(<span id="firstDecPrint">node first</span>) {
+<pre class="pre-tab hide margin-top-10" id="printPre">	void display(<span id="firstDecPrint">node first</span>) {
 		<span id="qDecPrint">node q = first;</span>
 		<div id="doWhileBlock">do {
 	<span>printf("%s --> ", q -> name);</span>
