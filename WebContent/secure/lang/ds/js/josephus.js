@@ -91,10 +91,6 @@ function initIntroJS() {
 				element: '#kingSoldierAnimDiv',
 				intro: '',
 				position: 'right'
-			/*}, {
-				element: '#includePre',
-				intro: '',
-				tooltipClass: 'hide'*/
 		} ]
 	});
 	introjs.onafterchange(function(targetElement) {
@@ -102,26 +98,27 @@ function initIntroJS() {
 		$('.introjs-nextbutton, .introjs-skipbutton, .introjs-prevbutton').hide();
 		switch(elementId) {
 			case "headingSection":
-				text = 'Let us learn about <y>Josephus problem</y>.';
+				text = 'Let us learn about <y>josephus problem</y>.';
 				typing('.introjs-tooltiptext', text, function() {
+					introNextSteps('#includePre', '', 'hide');
+					$('#codeDiv, .animation-div').removeClass('hide').css('padding', '6px');
+					$('#kingSoldierAnimDiv').addClass('hide');
+					soldiers = [];
 					$('.introjs-nextbutton').show();
-					/*$('#codeDiv').removeClass('hide').css('padding', '6px');
-					$('#kingSoldierAnimDiv').addClass('hide');*/
 				});
 			break;
 			case 'kingSoldierAnimDiv':
 				$('.introjs-tooltip').css('min-width', '520px');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#kingSoldierAnimDiv').removeClass('opacity00');
-					text = '<ul><li>There are <y>10</y> people standing in a <y>circle</y> waiting to be executed. The <y>counting</y> out begins'
-							+ ' at some point in the circle and proceeds around the circle in a fixed direction.</li>'
-							+ '<li>In each step, a <y>certain number of people</y> are <y>skipped</y> and the <y>next person</y> is <y>executed</y>.</li>'
+					text = '<ul><li>There are <y>10</y> soldiers standing in a <y>circle</y> waiting to be executed. The <y>counting</y> out begins'
+							+ ' at some point in the circle and proceeds around the circle in a fixed direction.</li><li>In each step, '
+							+ ' a <y>certain number of soldiers</y> are <y>skipped</y> and the <y>next soldier</y> is <y>executed</y>.</li>'
 							+ ' <li>The <y>elimination</y> proceeds around the <y>circle</y> (which is becoming smaller and smaller as the'
-							+ ' <y>executed people are removed</y>), until only the <y>last person remains</y>, who is given <y>freedom</y>.</li>'	
+							+ ' <y>executed soldiers are removed</y>), until only the <y>last soldier remains</y>, who is given <y>freedom</y>.</li>'	
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-tooltiptext').append('<br><div id="appendText"></div>');
-						text = 'Enter a value to kill the soldier <input id="killedVal" class="kill-val" maxlength="2" size="3">'
-								+ '<span id="killingStatus"></span>';
+						text = 'Enter a value <input id="killedVal" class="kill-val" maxlength="2" size="3"><span id="killingStatus"></span>';
 						typing('#appendText', text, function() {
 							eventValidation('.kill-val');
 						});
@@ -134,6 +131,7 @@ function initIntroJS() {
 				$('.introjs-tooltip').css('min-width', '350px');
 				$('#includePre, #codeDiv').removeClass('opacity00');
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$('#kingSoldierAnimDiv').remove();
 					$('.zindex-css, .background-yellow').removeClass('background-yellow zindex-css');
 					var stepId = (elementId == 'includePre') ? '#structDec' : (elementId == 'strCmpWhileLoop') ? '#strCmpCond' : '#nodesDecInMain'; 
 					customIntroNextStep(stepId, '', 'show', 'right');
@@ -261,7 +259,7 @@ function initIntroJS() {
 								svgAnimatingLineTopAndBottom('#qMain', '#nextDiv' + index, 'line23', true, function() {
 									position = 2;
 									index++;
-									$('#output').append('<div class="opacity00">' + 'Enter Name of the Soldier : ' 
+									$('#output').append('<div class="opacity00">' + 'Enter name of the soldier : ' 
 											+ ' <input class="user-txt" maxlength="10" size="10"/></div>');
 									customIntroNextStep('#outputDiv', 'enterSoldierName', 'hide');
 								});
@@ -273,7 +271,7 @@ function initIntroJS() {
 									svgCurve($('#' + ($('.next-div:last').attr('id'))), $('#' + ($('.name-div:first').attr('id'))), 1);
 									index++;
 									setTimeout(function() {
-										$('#output').append('<div class="opacity00">The Original Soldiers List is --> </div>');
+										$('#output').append('<div class="opacity00">The original soldiers list is --> </div>');
 										customIntroNextStep('#outputDiv', 'soldierNameIs', 'hide');
 									}, 500);
 								});
@@ -310,12 +308,12 @@ function initIntroJS() {
 							$('#printf' + position).addClass('zindex-css');
 							var text, val;
 							if (animateStep == 'enterSoldierName') {
-								text = 'Enter Name of the Soldier : ';
+								text = 'Enter name of the soldier : ';
 								val = '10';
 							} else {
 								$('#printPre').addClass('hide');
 								$('#firstVarDecPrint, #qVarDecPrint, #line25, #line24').remove();
-								text = 'Enter a val : ';
+								text = 'Enter a value to eliminate the soldier : ';
 								val = '2';
 							}
 							$('#output').append('<div class="opacity00">' + text 
@@ -323,7 +321,7 @@ function initIntroJS() {
 							customIntroNextStep('#outputDiv', animateStep, 'show', 'left');
 						break;
 						case 'eliminatedSoldier':
-							$('#output').append('<div class="opacity00">The Escaped Soldier is  --> <y>' + $('.name-span').text() + '</y></div>');
+							$('#output').append('<div class="opacity00">The escaped soldier is  --> <y>' + $('.name-span').text() + '</y></div>');
 							customIntroNextStep('#outputDiv', 'escapedSoldier', 'hide');
 						break;
 					}
@@ -384,7 +382,7 @@ function initIntroJS() {
 				$('.zindex-css').removeClass('zindex-css');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'The <y>strcmp()</y> function compares two strings and returns <y>0</y> if both strings are identical.<br>'
+					text = 'The <y>strcmp()</y> function compares two strings and returns <y>0</y> if both the strings are identical.<br>'
 							+ ' <span class="ct-code-b-yellow opacity00" id="mainCond"><span id="fstVal">strcmp(<span id="secondVal">'
 							+ 'sName</span>, "end")</span> != 0</span>';
 					$('.introjs-tooltiptext').append(text);
@@ -453,16 +451,14 @@ function initIntroJS() {
 			break;
 			case 'callingPrintMethod':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					text = 'Here we are calling <y>display()</y> method and passing <y>first</y> (i.e., <y>' + $('#firstValMain').text().trim()
-							+ '</y>) as argument.';
+					text = 'Here we are calling <y>display()</y> method and passing <y>first</y> value (i.e., <y>' + $('#firstValMain').text().trim()
+							+ '</y>) as an argument.';
 					typing('.introjs-tooltiptext', text, function() {
 						$('#variableNodesDiv #firstVarDecMain, #line21, #tempVarDecMain').remove();
 						appendVariableNodes("first", "print");
 						appendVariableNodes("q", "print");
 						$('#printPre').removeClass('hide').addClass('opacity00');
 						nextStepWithBtn('#printPre', 'methodExpalin', 'hide', 'left');
-						/*position = 2;
-						nextStepWithBtn('#printf2', 'enterEliminateVal', 'hide');*///to escape from print method
 					});
 				});
 			break;
@@ -476,10 +472,10 @@ function initIntroJS() {
 							$('#firstDecPrint').addClass('background-yellow');
 							inPrintQAndFirstAnim('#firstDecPrint', '#firstVarDecPrint', '24', '#printPre', 'span:eq(1)', 'span:eq(1)' , function() {
 								$('.introjs-tooltip').removeClass('hide');
-								text = 'Let us initialize <y>q</y> with <y>first</y> value (i.e., <y>' + $('#firstValMain').text() + '</y>).';
+								text = 'Let us initialize <y>q</y> with the <y>first</y> value (i.e., <y>' + $('#firstValMain').text() + '</y>).';
 								typingWithUserBtn('.introjs-tooltiptext', text, function() {
 									inPrintQAndFirstAnim('#printPre span:eq(1)', '#qVarDecPrint', '25', '#printPre', 'span:eq(1)', 'div', function() {
-										text = 'Now control enters into the <y>do-while-loop</y> block.';
+										text = 'Now the control enters into the <y>do-while-loop</y> block.';
 										typingWithUserBtn('.introjs-tooltiptext', text, function() {
 											index = 0;
 											$('#svgId').before('<div class="col-xs-12 margin-top-10" style="min-height: 20px; font-size: 12px;">'
@@ -510,8 +506,8 @@ function initIntroJS() {
 						break;
 						case 'iIncrement':
 							arrow('#forIn', '#forLoop', function() {
-								text = 'Now increment the <y>i</y> (i.e., <y>' + position + '</y>) value by <y>one</y> (i.e., <y>' + ++position
-										+ '</y>).';
+								text = 'Now the <y>i</y> value (i.e., <y>' + position + '</y>) is incremented by <y>one</y> (i.e., <y>' 
+										+ ++position + '</y>).';
 								typing('.introjs-tooltiptext', text, function() {
 									++index;
 									index = (position > $('.nodes').length) ? 0 : index;
@@ -570,20 +566,20 @@ function curves(val1) {
 	var len = +$('.nodes').length - 2;
 	if (+$('.nodes').length < 3) {
 		var l = +$('.data-address:first').text().trim() == +$('.next-span:first').text().trim()  ? 2 : 1;
-		svgCurve('#nextDiv' + val1, '#nameDiv' + val1, l); //check once
+		svgCurve('#nextDiv' + val1, '#nameDiv' + val1, l);
 	} else if (+$('.data-address:first').text().trim() == +$('.next-span:eq(' + len + ')').text()) {
 		svgCurve($('#' + ($('.next-div:eq(' + len + ')')).attr('id')), $('#' + ($('.name-div:first').attr('id'))), 2);
 	} else if (+$('.data-address:eq(1)').text().trim() == +$('.next-span:last').text().trim()) {
 		svgCurve($('#' + ($('.next-div:last')).attr('id')), $('#' + ($('.name-div:eq(1)').attr('id'))), 1);
 	}
-} //curve show after deletion
+} //curve after deletion
 
 function validation() {
 	$('.user-btn, .err-msg').remove();
 	$('.kill-val').attr('disabled', 'disabled');
 	var val = +$('#killedVal').val();
-	text = '<br><br>&emsp;&emsp;Now count the <y>' + val + '</y> soldiers from starting soldier and kill the <y>' + val 
-			+ '</y> person and repeat the loop';
+	text = '<br><br>&emsp;&emsp;Now count the soldiers from starting position and eliminate the soldier at ' 
+			+ 'position <y>'  + val + '</y> and then repeat the loop until the last person remains.';
 	typing('#killingStatus', text, function() {
 		appendNextButton('soldiersAnimation');
 	});
@@ -619,7 +615,7 @@ function soldiersAnimation() {
 		$('.soldiers .fa-user').css('color', 'green');
 		introNextSteps('#includePre', '', 'hide');
 		callingNextButton(function() {
-			$('#codeDiv').removeClass('hide').css('padding', '6px');
+			$('#codeDiv, .animation-div').removeClass('hide').css('padding', '6px');
 			$('#kingSoldierAnimDiv').addClass('hide');
 			soldiers = [];
 			introjs.nextStep();
@@ -654,13 +650,12 @@ function checkingSoldier(t, callBackFunction) {
 }//Cheking the condition and delete soldier
 
 function showingSoldiers(t, val, selector1, selector2, callBackFunction) {
-	$('#val' + t).effect('highlight', {color: val}, 800);
-	zoomInEffect('#val' + t, function() {
-		$('#sym' + t).addClass(selector1).removeClass(selector2);
-		zoomInEffect('#sym' + t, function() {
-			callBackFunction();
-		});
-	});
+	$('#val' + t).effect('highlight', {color: val}, 400);
+	$('#sym' + t).addClass(selector1).removeClass(selector2);
+	$('#val' + t + ', #sym' + t).removeClass('opacity00');
+	setTimeout(function() {
+		callBackFunction();
+	}, 200);
 }
 
 function displayNodeNameAndNext() {
@@ -668,7 +663,7 @@ function displayNodeNameAndNext() {
 	var address = $("#dataAddress" + index).text().trim();
 	$('#node' + index).removeClass('opacity00');
 	TweenMax.from($('#node' + index), 0.6, {top : -50, onComplete: function() {
-		text = 'Now, the <y>address</y> (i.e., <y>' + address +'</y>) of the memory allocated by the <y>malloc()</y> method is stored in <y>temp</y>.';
+		text = 'Now, <y>address</y> (i.e., <y>' + address +'</y>) of the memory allocated by the <y>malloc()</y> method is stored in <y>temp</y>.';
 		typingWithUserBtn('.introjs-tooltiptext', text, function() {
 			$('#name' + index).text($('#sNameVarVal').text());
 			(index == 0) ? $('#tempValMain').text(address) : '';
@@ -702,10 +697,10 @@ function printingAnim() {
 					TopBottomLineWithBounce('#qPrint', '#nextDiv' + index, true, '#next' + index, '#qValPrint', false, '1px', function() {
 						$('#line25').remove();
 						index++;
-						var count = ($('#next' + (index - 1)).text() != $('#firstValPrint').text()) ? index : 0;
-						svgAnimatingLineTopAndBottom('#qPrint', '#nextDiv' + count, 'line25', true, function() {
+						var val = ($('#next' + (index - 1)).text() != $('#firstValPrint').text()) ? index : 0;
+						svgAnimatingLineTopAndBottom('#qPrint', '#nextDiv' + val, 'line25', true, function() {
 							arrow('#printPre span:eq(3)', '#printPre span:eq(4)', function() {
-								var val = $('#qValPrint').text() != $('#firstValPrint').text();
+								val = $('#qValPrint').text() != $('#firstValPrint').text();
 								$('.introjs-tooltiptext').empty();
 								appendCondText('.introjs-tooltiptext', '#printPre span:eq(4)', 'q', '!=', 'first',
 										true, $('#qValPrint').text(),  $('#firstValPrint').text(), val, val, 'do-while', function() {
@@ -792,16 +787,16 @@ function forloopInsideAnim() {
 function forloopOutsideAnim() {
 	$('.user-btn').remove();
 	arrow('#forLoop', '#firstNextToQNext', function() {
-		text = 'Store the <y>first -> next</y> (i.e., <y>' + $('#next' + index).text().trim() + '</y>) in <y>q -> next</y>.';
+		var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
+		text = 'Store the <y>first -> next</y> (i.e., <y>' + $('#next' + val).text().trim() + '</y>) in <y>q -> next</y>.';
 		typing('.introjs-tooltiptext', text, function() {
 			btnWithFirstNodeLine(function() {
 				var val1 = +$('.data-address:contains("' + $('#qValMain').text().trim() + '")').attr('id').substr(-1);
-				var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
 				position = $('#node' + index).index('.nodes'); //index of the node
 				var l = (val < val1) ? '900px' : '1px';
 				bounceEffect('#next' + val, '#next' + val1, true, l, function() {
-					var delLine = +$('#next' + val).index('.next-span');
-					$('#line' + delLine).remove();
+					l = +$('#next' + val).index('.next-span');
+					$('#line' + l).remove();
 					curves(val1);
 					callingNextButton(function() {
 						arrow('#firstNextToQNext', '#printf3', function() {
@@ -811,8 +806,8 @@ function forloopOutsideAnim() {
 								svgAnimatingLineTopAndBottom($('#firstVarDecMain > div:eq(1)'), '#nextDiv' + val, 'line29', false, function() {
 									$('#line29').remove();
 									$('#svgId').before('<div class="col-xs-12 margin-top-10 blue-color" style="min-height: 20px; font-size: 12px;">'
-											+ ' The Eliminated  Soldier is --> <span id="printValues" class="opacity00 position-css"> ' 
-											+ $('#name' + val).text() + ' </span></div>');//write here
+											+ ' The eliminated  soldier is --> <span id="printValues" class="opacity00 position-css"> ' 
+											+ $('#name' + val).text() + ' </span></div>');
 									introjs.refresh();
 									fromEffect('#name' + val, '#printValues', function() {
 										arrow('#printf3', '#free', function() {
@@ -860,7 +855,7 @@ function freeMethod() {
 										svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv' + val, 'line22', false, function() {
 											position++;
 											changeIds(0, false);
-											$('#output').append('<div class="opacity00">The Eliminated Soldier is --> <y>' + $('#printValues').text() 
+											$('#output').append('<div class="opacity00">The eliminated soldier is --> <y>' + $('#printValues').text() 
 													+ '</y></div>');
 											nextStepWithBtn('#outputDiv', 'eleminatedSoldier', 'hide', 'left');
 										});
@@ -1064,7 +1059,7 @@ function appendCondCheckingText(selector1, flag, condFlag, flagText, callBackFun
 	$(selector1).append('<br><div id="appendText"></div>')
 	text = flag ? '<y>' + condFlag + '</y>. Hence control enters into the <y>' + flagText + '-block</y>.' : '<y>' + condFlag + '</y>.'
 				+ ' Hence control comes out of the <y>' + flagText + '-block</y>.';
-	typing('#appendText', 'Condition evaluates to ' + text, function() {
+	typing('#appendText', 'condition evaluates to ' + text, function() {
 		callingNextButton(function() {
 			callBackFunction();
 		});

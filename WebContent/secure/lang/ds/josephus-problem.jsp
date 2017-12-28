@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Josephus Problem</title>
+<title>Josephus problem</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet" >
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/jquery-ui.css" rel="stylesheet" >
@@ -20,42 +20,60 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
 <script src="/secure/lang/ds/js/josephus-problem.js"></script>
-
 <style type="text/css">
-.margin-top25 {
-	margin-top : 25px;
-}
-
-.margin-top15 {
-	margin-top : 15px;
+.padding0 {
+	padding: 0px;	
 }
 
 .border-css {
-	border: 2px solid gray;
+	border: 1px solid gray;
+	padding: 8px;
+	min-height: 150px;
 	border-radius: 8px;
-	padding: 4px;
 }
 
-.pre-tab {
-	-moz-tab-size: 4;
-	tab-size: 4;
-	margin: 6px;
-	background-color: #fffae6;
-	border-radius: 8px;
-	font-size: 11.5px;
-	font-family: monospace;
+.margin-top-25 {
+	margin-top: 25px;
 }
 
-.ct-css, .green-color, .blue-color, .brown-color, y {
-	font-family: monospace;
-	font-weight: bold;
+.margin-top-20 {
+	margin-top: 20px;
 }
 
-.padding0 {
-	padding: 0;
+.margin-top-10 {
+	margin-top: 10px;
 }
 
-.green-color {
+.svg-css {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.svg-line {
+	stroke: gray;
+	stroke-width: 2; 
+	position: relative;
+	marker-end: url("#arrowEnd"); 
+}
+
+.user-btn {
+	background-color: green;
+	margin: 0 !important;
+}
+
+y {
+	color: yellow;
+}
+
+.err-msg, .red {
+	color: red;
+}
+
+
+.green-color, .grn {
 	color: green;
 }
 
@@ -67,13 +85,29 @@
 	color: brown;
 }
 
-y {
-	color: yellow;
+.ct-css, y, .kill-val, .err-msg, .green-color, .blue-color, .brown-color {
+	font-weight: bold;
+	font-family: monospace;
 }
 
-.error-msg {
-	color: red;
+.kill-val {
+	background-color: black;
+	color: while;
+	border: none;
+	border-radius: 8px;
+	text-align: center;
 }
+
+.blink {
+	animation-name: blinking;
+	animation-duration: 1s;
+	animation-iteration-count: 2;
+ }
+
+@keyframes blinking {
+	100% {color:  red;}
+}
+
 
 .box {
 	text-align: center;
@@ -88,7 +122,7 @@ y {
 .div-border {
 	margin: 0;
 	padding: 0;
-	width: 35px;
+	width: 38px;
 	min-height: 24px;
 	text-align: center;
 	display: inline-block;
@@ -113,43 +147,40 @@ y {
 	position: relative;
 }
 
-.btn-success {
-	padding: 1px 7px;
-	font-family: monospace;
-	display: none;
-	z-index: 99999999;
-	position: relative;
-}
-
 .output-console-title-bar {
 	border-radius: 8px 8px 0px 0px;
 	font-weight: bold; 
 }
 
 .output-console-body {
-	height: 200px;
+	height: 150px;
 	border-radius: 0px 0px 8px 8px;
 	padding: 10px;
 	white-space: initial;
 	font-size: 11.5px;
 }
 
-.user-btn {
-	background-color: green;
-}
-
-.introjs-tooltip {
-	min-width: 300px;
-}
-
-.zindex-css {
-	z-index: 9999999;
-	background-color: white;
-	position: relative;
+.pre-tab {
+	-moz-tab-size: 4;
+	tab-size: 4;
+	margin-bottom: 6px;
+	background-color: #fffae6;
+	border-radius: 8px;
+	font-size: 11.5px;
+	font-family: monospace;
 }
 
 .background-yellow {
 	background-color: yellow;
+}
+
+.btn-success {
+	padding: 1px 7px;
+	font-family: monospace;
+	display: none;
+	z-index: 99999999;
+	position: relative;
+	margin-bottom: 5px;
 }
 
 .user-txt {
@@ -160,19 +191,10 @@ y {
 	border: none; 
 }
 
-.svg-css {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
-
-.svg-line {
-	stroke: gray;
-	stroke-width: 2; 
+.zindex-css {
+	z-index: 9999999;
+	background-color: white;
 	position: relative;
-	marker-end: url("#arrowEnd"); 
 }
 
 polyline {
@@ -184,98 +206,205 @@ polyline {
 	border: 1px solid #003399;
 	border-radius: 5px;
 }
+
+p {
+	margin: 0;
+}
+
+.explain-div {
+	font-family: monospace;
+	font-size: 12px;
+	border: 1px solid gray;
+	padding: 8px;
+	border-radius: 8px;
+	letter-spacing: 0.2px;
+	z-index: 9999999;
+}
 </style>
 </head>
 <body>
-
 <script type="text/javascript">
-	$(document).ready(function() {
-		josephusProblemReady();
-	});
+$(document).ready(function() {
+	josephusProgramReady();
+});
 </script>
-
-<div class="col-xs-12 margin-top15"> 
-	<div class="col-xs-12 text-center">
-		<h1 class="label ct-demo-heading" id="headingSection">Josephus Problem</h1>
+<div class="col-xs-12 padding0 margin-top-20">
+	<div class="col-xs-12 text-center padding0">
+		<h1 class="label ct-demo-heading text-center" id="headingSection">Josephus Problem</h1>
 	</div>
-	<div class="col-xs-12 margin-top15 padding0">
-		<div class="col-xs-4 border-css padding0 opacity00" id="codeDiv">
-		<div class="text-center" style="margin-top: 5px;"><span id="includeBtn" class="btn btn-success">Struct List</span></div>
-<div><pre class="pre-tab" id="includePre">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-<span id="structDec">struct list {
+	<div class="col-xs-12 margin-top-10"><div class="col-xs-8 col-xs-offset-2 explain-div bg-info" id="explanationDiv">
+		<ul><li>According to <span class="grn">Josephus</span> account of the <span class="grn">siege of Yodfat</span>, he and his
+				 40 soldiers were trapped in a <span class="grn">cave</span> by <span class="grn">Roman</span> soldiers.</li>
+		 <li>They choose suicide over capture, and settled on a serial method of committing suicide by drawing lots.</li>
+		 <li><span class="grn">Josephus</span> states that by luck or possibly by the hand of God,
+				 he and another man remained until the end and surrendered to the Romans rather than killing themselves.</li></ul>
+	</div></div>
+	<div class="col-xs-12 margin-top-10">
+		<div class="col-xs-6 border-css padding0 opacity00" id="kingSoldierAnimDiv">
+			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-bottom: 15px;">
+    			<div class="col-xs-2 margin-top-25">
+			    	<div><i class="fa fa-male ct-blue-color"></i> - King </div>
+			    	<div><i class="fa fa-user"></i> - Soldier </div>
+				</div>
+    			<div class="col-xs-10">
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-6 col-xs-offset-3 padding0">
+							<div class="col-xs-12">
+								<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
+									<p class="fa fa-check opacity00" id="sym10"></p> <p><i class="val opacity00" id="val10">10</i></p> 
+									<p class="fa fa-user" id="user10"></p> <p class="pos">10</p>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier1">
+									<p class="fa fa-check opacity00" id="sym01"></p> <p><i class="val opacity00" id="val01">1</i></p> 
+									<p class="fa fa-user" id="user01"></p><p class="pos">1</p>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier2">
+									<p class="fa fa-check opacity00" id="sym02"></p> <p><i class="val opacity00" id="val02">2</i></p> 
+									<p class="fa fa-user" id="user02"></p><p class="pos">2</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-8 col-xs-offset-2 padding0">
+							<div class="col-xs-12 padding0">
+								<div class="col-xs-3 text-center margin-top-20 padding0 soldiers" id="soldier9">
+									<i class="fa fa-check opacity00" id="sym09"></i>&nbsp; <i class="val opacity00" id="val09">9</i>&nbsp;
+									<i class="fa fa-user" id="user09"></i> <i class="pos">9</i>
+								</div>
+								<div class="col-xs-3 col-xs-offset-5 text-center margin-top-20 padding0 soldiers" id="soldier3">
+									<i class="pos">3</i> <i class="fa fa-user" id="user03"></i>&nbsp; <i class="val opacity00" id="val03">3</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym03"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 padding0 text-center">
+						<i class="fa fa-male fa-2x col-xs-1 col-xs-offset-5" style="color: blue;" id="king"></i>
+					</div>
+					<div class="col-xs-12 padding0">
+						<div class="col-xs-8 col-xs-offset-2 padding0">
+							<div class="col-xs-12 padding0" style="margin-top: 3px;">
+								<div class="col-xs-3 text-center padding0 soldiers" id="soldier8">
+									<i class="fa fa-check opacity00" id="sym08"></i>&nbsp; <i class="val opacity00" id="val08">8</i>&nbsp;
+									<i class="fa fa-user" id="user08"></i> <i class="pos">8</i>
+								</div>
+								<div class="col-xs-3 col-xs-offset-5 text-center padding0 soldiers" id="soldier4">
+									<i class="pos">4</i> <i class="fa fa-user" id="user04"></i>&nbsp; <i class="val opacity00" id="val04">4</i>&nbsp;
+									<i class="fa fa-check opacity00" id="sym04"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 padding0 margin-top-20">
+						<div class="col-xs-6 col-xs-offset-3 padding0">
+							<div class="col-xs-12" style="margin-top: 3px;">
+								<div class="col-xs-2 text-center soldiers" id="soldier7">
+									<p class="pos">7</p> <p class="fa fa-user" id="user07"></p> <p><i class="val opacity00" id="val07">7</i></p> 
+									<p class="fa fa-check opacity00" id="sym07"></p>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier6">
+									<p class="pos">6</p> <p class="fa fa-user" id="user06"></p> <p><i class="val opacity00" id="val06">6</i></p> 
+									<p class="fa fa-check opacity00" id="sym06"></p>
+								</div>
+								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier5">
+									<p class="pos">5</p> <p class="fa fa-user" id="user05"></p> <p><i class="val opacity00" id="val05">5</i></p> 
+									<p class="fa fa-check opacity00" id="sym05"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+    			</div>
+    		</div>
+		</div>
+		<div class="col-xs-4 border-css padding0 hide" id="codeDiv">
+<div class="text-center" style="margin-bottom: 5px;"><span id="includeBtn" class="btn btn-success">Struct List</span></div>
+<div><pre class="pre-tab opacity00" id="includePre"><span id="structDec">struct list {
 	char name[10];
 	struct list *next;
 };</span>
-<span id="typeDefDec">typedef struct list *node;</span></pre></div>
-<pre class="pre-tab hide" id="mainPre">int main() {
+<span id="typeDefDec">typedef struct list *node;</span>
+<span id="globalfirstDec">node first = NULL;</span></pre></div>
+<pre class="pre-tab" id="mainPre">int main() {
+	<div class="position-css" id="decSNamelast"><span id="globallastDec">node last = NULL;</span>
+<span>char sName[10];</span></div>
+	<div id="printf1">printf("Enter Name of Soldier : ");
+scanf("%s", sName);</div>
+	<span id="strCmpCond">while(strcmp(sName, "end") != 0) {</span>
+		<span id="addNodeMethod">last = addNode(last, sName);</span>
+		printf("Enter Name of Soldier : ");
+		scanf("%s", sName);
+	}
+	<span id="displayMethod">display();</span>
+	<span id="deleteMethod">delete(last);</span>
+}</pre>
+<!-- <pre class="pre-tab" id="mainPre">int main() {
 	<div id="nodesDecInMain"><span>node q, temp, first;</span>
 <span>first = NULL;</span></div>
 	<div id="endSNmeIAndNDec"><span>char sName[10];</span>
 <span>int i, n;</span></div>
-	<div id="printf1">printf("Enter Name of the Soldier : ");
+	<div id="printf1">printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 	<div id="strCmpWhileLoop">while(<span id="strCmpCond">strcmp(sName, "end") != 0</span>) {
-	<span id="allocMemory">temp = (node)malloc(sizeof(struct list));</span>
-	<div id="assignNameNextVal"><span>strcpy(temp -> name, sName);</span>
+	<div id="allocMemory"><span>temp = (node)malloc(sizeof(struct list));</span>
+<span>strcpy(temp -> name, sName);</span>
 <span>temp -> next = NULL;</span></div>
 	<div id="ifFirstIsNull"><span>if (first == NULL) {</span>
 	<span>first = temp;</span>
 } else {
 	<span>q -> next = temp;</span>
 }</div>
-	<span id="tempToQ">q = temp;</span>
-	<div id="printf2">printf("Enter Name of the Soldier : ");
+	<div id="tempToQ">q = temp;
+printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 }</div>
-	<span id="firstToQNext">q -> next = first;</span>
-	<span id="printf3">printf("The Original Soldiers List is --> ");</span>
-	<span id="callingPrintMethod">print(first);</span>
-	<div id="printf4">printf("Enter a Value : ");
+	<div id="firstToQNext">q -> next = first;
+printf("The original soldiers list is -- ");</div>
+	<span id="callingPrintMethod">display(first);</span>
+	<div id="printf2">printf("Enter a value to eliminate the soldier : ");
 scanf("%d", &n);</div>
-	<div id="whileCond"><span id="firstIsNotFirstNext">while(first != first -> next) {</span>
-	<span id="forLoop">for(i = <span id="iInit">1</span>; <span id="iLessThanN">i < n</span>; <span id="iInc">i++</span>) {</span>
-		<span id="firstToQ">q = first;</span>
-		<span id="firstNextToFirst">first = first -> next;</span>
+	<div id="whileCond">while(first != first -> next) {
+	for(i = 1; i < n; i++) {
+		q = first;
+		first = first -> next;
 	}
-	<span id="firstNextToQNext">q -> next = first -> next;</span>
-	<span id="printf5">printf("The Eliminated Soldier is --> %s\n", first -> name);</span>
-	<span id="free">free(first);</span>
-	<span id="qNextToFirst">first = q -> next;</span>
+	q -> next = first -> next;
+	printf("The eliminated soldier is -- %s\n", first -> name);
+	free(first);
+	first = q -> next;
 }</div>
-	<span id="printf6">printf("The Escaped Soldier is  -->  %s\n",
-					 first ->name);</span>
-}</pre>
+	<span id="printf4">printf("The escaped soldier is -- %s\n", first -> name);</span>
+}</pre> -->
 		</div>
-		<div class="col-xs-8" style="padding-right: 0px">
+		<div class="col-xs-7 col-xs-offset-1 hide animation-div" style="padding-right: 0px">
 			<div class="col-xs-12 padding0">
 				<div class="col-xs-12 border-css opacity00" id="animationDiv" style='padding: 8px;'>
-					<div class="col-xs-12 margin-top15" id="variablesDiv">
+					<div class="col-xs-12" id="variablesDiv">
 						<div class="col-xs-1 text-center padding0 opacity00" id="firstVarDecMain">
 							<div class="col-xs-12 green-color padding0">first<sub>main</sub></div>
 							<div class="col-xs-12 box"><span id="firstValMain" class="green-color opacity00 position-css">NULL</span></div>
 						</div>
+						<div class="col-xs-1 col-xs-offset-1 text-center padding0 opacity00" id="lastVarDecMain">
+							<div class="col-xs-12 green-color padding0">last<sub>main</sub></div>
+							<div class="col-xs-12 box"><span id="lastValMain" class="green-color opacity00 position-css">NULL</span></div>
+						</div>
 					</div>
-					<div class="col-xs-12 padding0 margin-top25" id="nodesDiv" style="font-size: 12px; padding-right: 0px;">
+					<div class="col-xs-12 margin-top-20" id="nodesDiv" style="font-size: 12px; padding-right: 0px;">
 						<div class="col-xs-12 padding0" id="row1" style="min-height: 55px;"></div>
 						<div class="col-xs-12 padding0" id="row2"></div>
 					</div>
-					<div class="col-xs-12 margin-top25" id="variableNodesDiv" style="margin-bottom: 10px;"></div>
+					<div class="col-xs-12 margin-top-25" id="variableNodesDiv"></div>
 				</div>
+				<div class="col-xs-12 padding0">
+<pre class="pre-tab hide margin-top-10" id="printPre"></pre>
 			</div>
-			<div class="col-xs-12 padding0">
-<pre class="pre-tab hide" id="printPre">	void print(<span id="firstDecPrint">node first</span>) {
-		<span id="qDecPrint">node q = first;</span>
-		<div id="doWhileBlock">do {
-	<span>printf("%s --> ", q -> name);</span>
-	<span>q = q -> next;</span>
-<span>} while(q != first);</span></div>
-		<span>printf("NULL\n");</span>
-	}</pre>
-			</div>
-			<div class="col-xs-12 console padding0 opacity00" id="outputDiv">
-				<div class="output-console-title-bar">Output</div>
-				<div class="output-console-body" id="output"></div>
+				<div class="col-xs-12 margin-top-10">
+					<div class="col-xs-10 col-xs-offset-1 console padding0 opacity00" id="outputDiv">
+						<div class="output-console-title-bar">Output</div>
+						<div class="output-console-body" id="output"></div>
+					</div>
+				</div>
+				<div class="col-xs-12 margin-top-20 text-center"><span class="btn btn-warning opacity00" id="restartBtn">Restart</span></div>
 			</div>
 		</div>
 	</div>

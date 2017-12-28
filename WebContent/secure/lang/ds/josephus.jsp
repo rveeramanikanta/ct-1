@@ -310,7 +310,7 @@ $(document).ready(function() {
 <span>first = NULL;</span></div>
 	<div id="endSNmeIAndNDec"><span>char sName[10];</span>
 <span>int i, n;</span></div>
-	<div id="printf1">printf("Enter Name of the Soldier : ");
+	<div id="printf1">printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 	<div id="strCmpWhileLoop">while(<span id="strCmpCond">strcmp(sName, "end") != 0</span>) {
 	<div id="allocMemory"><span>temp = (node)malloc(sizeof(struct list));</span>
@@ -322,13 +322,13 @@ scanf("%s", sName);</div>
 	<span>q -> next = temp;</span>
 }</div>
 	<div id="tempToQ">q = temp;
-printf("Enter Name of the Soldier : ");
+printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 }</div>
 	<div id="firstToQNext">q -> next = first;
-printf("The Original Soldiers List is --> ");</div>
+printf("The original soldiers list is --> ");</div>
 	<span id="callingPrintMethod">display(first);</span>
-	<div id="printf2">printf("Enter a Value : ");
+	<div id="printf2">printf("Enter a value to eliminate the soldier : ");
 scanf("%d", &n);</div>
 	<div id="whileCond">while(first != first -> next) {
 	for(i = 1; i < n; i++) {
@@ -336,14 +336,14 @@ scanf("%d", &n);</div>
 		first = first -> next;
 	}
 	q -> next = first -> next;
-	printf("The Eliminated Soldier is --> %s\n", first -> name);
+	printf("The eliminated soldier is --> %s\n", first -> name);
 	free(first);
 	first = q -> next;
 }</div>
-	<span id="printf4">printf("The Escaped Soldier is --> %s\n", first -> name);</span>
+	<span id="printf4">printf("The escaped soldier is --> %s\n", first -> name);</span>
 }</pre>
 		</div>
-		<div class="col-xs-7 col-xs-offset-1" style="padding-right: 0px">
+		<div class="col-xs-7 col-xs-offset-1 hide animation-div" style="padding-right: 0px">
 			<div class="col-xs-12 padding0">
 				<div class="col-xs-12 border-css opacity00" id="animationDiv" style='padding: 8px;'>
 					<div class="col-xs-12" id="variablesDiv">
