@@ -26,9 +26,6 @@ function appendVariableNodes(nodeNme, subNme) {
 							+ '<span id="' + nodeNme + 'Val' + sub + '" class="brown-color">1248</span></div>'
 							+ '<div class="col-xs-12 green-color padding0">' + nodeNme + '<sub>' + subNme + '</sub></div></div>');
 	$('#' + nodeNme + 'Val' + sub).addClass('opacity00 position-css');
-	if (subNme == 'print') {
-		$('#' + nodeNme + 'VarDec' + sub + ' sub').text('display');
-	}
 }
 
 function getRandomInt(min, max) {
@@ -45,7 +42,7 @@ function appendListNodes(count) {
 			+ ' <div id="nodedata' + count + '" class="data-nodes"><div id="nameDiv' + count + '" class="div-border left-radius col-xs-6 name-div">'
 			+ ' <span id="name' + count +'" class="name-span position-css blue-color opacity00" style="top: 3px;"></span></div>'
 			+ ' <div id="nextDiv' + count +'" class="div-border right-radius col-xs-6 next-div">'
-			+ ' <span id="next' + count +'" class="next-span position-css green-color opacity00" style="top: 3px;">NULL</span></div>'
+			+ ' <span id="next' + count +'" class="next-span position-css green-color" style="top: 3px;">NULL</span></div>'
 			+ ' </div><div class="col-xs-12 padding0"><div class="col-xs-8 padding0 text-center">'
 			+ ' <span id="dataAddress' + count + '" class="position-css data-address padding0 brown-color">' + randomAddress 
 			+ ' </span></div></div></div>';
@@ -75,19 +72,38 @@ function preBtnEvent() {
 }
 
 function addNodesMethod() {
-	$('#printPre').html('').addClass('opacity00').append('\t<div class="position-css">node addNode(<span id="lastDec">node last</span>,'
-					+ ' <span id="sNameDec">char sname[]</span>) {\n'
-					+ '\tnode temp;\n'
-					+ '\ttemp = createNode();\n'
-					+ '\tstrcpy(temp -> name, sname);\n'
-					+ '\tif (first == NULL) {\n'
-					+ '\t\tfirst = temp;\n'
+	$('#printPre').addClass('opacity00').append('\t<div class="position-css"><span id="addMethod">node addNode(<span id="lastDec">node'
+					+ ' last</span>, <span id="sNameDec">char sname[]</span>) {</span>\n'
+					+ '\t<span id="tempDec">node temp;</span>\n'
+					+ '\t<span id="createNodeMethod">temp = createNode();</span>\n'
+					+ '\t<span id="strCpyMethod">strcpy(temp -> name, sname);</span>\n'
+					+ '\t<span id="ifFstIsNull">if (first == NULL) {</span>\n'
+					+ '\t\t<span id="tempToFst">first = temp;</span>\n'
 					+ '\t} else {\n'
-					+ '\t\tlast -> next = temp;\n'
+					+ '\t\t<span id="tempToLastNext">last -> next = temp;</span>\n'
 					+ '\t}\n'
-					+ '\ttemp -> next = first;\n'
-					+ '\treturn temp;\n'
+					+ '\t<span id="firstToTempNext">temp -> next = first;</span>\n'
+					+ '\t<span id="retnTemp">return temp;</span>\n'
 					+ '}</div>');
+	$('#createNodePre').removeClass('hide').addClass('opacity00');
+	introjs.refresh();
+}
+
+function displayMethod() {
+	$('#printPre').addClass('opacity00').empty().append('\t<div class="position-css">void print() {\n'
+						+ '\t<span id="print1">printf("The Original Soldiers List is -->");</span>\n'
+						+ '\t<span id="qInit">node q = first;</span>\n'
+						+ '\tdo {\n'
+						+ '\t\t<span id="print2">printf(" %s --> ", q -> name);</span>\n'
+						+ '\t\t<span id="qNextToQ">q = q -> next;</span>\n'
+						+ '\t<span id="qNotEqualToFst">} while (q != first);</span>\n'
+						+ '\t<span id="print3">printf("NULL\\n");</span>\n'
+						+ '}</div>');
+}
+
+function deleteMethod() {	//write for delete method 29 - dec
+	$('#printPre').addClass('opacity00').append('\t<div class="position-css"></div>');
+			
 }
 
 function initIntroJS() {
@@ -234,11 +250,11 @@ function initIntroJS() {
 						case 'enterSoldierName':
 							$('.zindex-css').removeClass('zindex-css');
 							var stepId = animateStep.substring(5, animateStep.length);
-							$('#outputDiv div:last').removeClass('opacity00').removeAttr('style');
+							$('#outputDiv div:last').removeClass('opacity00').removeAttr('style class');
 							if (stepId == 'SoldierName') {
 								text1 = '<br>If you want to exit from the loop enter "<y>end</y> / <y>ENd</y>".';
 								text2 = 'Enter name of the soldier.';
-								text = ($('.user').text().length > 1) ? (text2 + text1) : text2; 
+								text = ($('.user-txt').length > 1) ? (text2 + text1) : text2; 
 							} else {
 								text = 'Enter a value to eliminate the soldier.';
 							}
@@ -246,6 +262,16 @@ function initIntroJS() {
 							typing('.introjs-tooltiptext', text, function() {
 								introNextSteps('#animationDiv', stepId, 'hide');
 								(stepId == 'SoldierName') ? nameValidation() : eventValidation('.user-txt');
+							});
+						break;
+						case 'printMethod':
+							$('#animationDiv').addClass('zindex-css');
+							highlightWithTopAndBottomLine('#qDisplay', '#nextDiv' + position, true, function() {
+								$('#output div:last').append(' <span class="opacity00 position-css ct-code-b-yellow">' + 
+										+$("#name" + position).text() + ' --> </span>');
+								fromEffect('#name' + position, '#output span:last', false, function() {
+									customIntroNextStep('#printPre', 'displayWhileCond', 'hide', 'left');
+								});
 							});
 						break;
 					}
@@ -265,8 +291,37 @@ function initIntroJS() {
 								sub = 'Main'
 							}
 							$(value + sub + 'Val').text($('.user-txt:last').val());
-							fromEffect('.user-txt:last', value + sub + 'Val', function() {
+							fromEffect('.user-txt:last', value + sub + 'Val', false, function() {
 								customIntroNextStep(stepId, '', 'hide', 'right');
+							});
+						break;
+						case 'nodeMemoryAlloc':
+							transferEffect('#mallocMethod', '#node' + index, function() {
+								fromEffect('#dataAddress' + index, '#tempValAddNode', true, function() {
+									svgAnimatingLineTopAndBottom('#tempVarDecAddNode', '#nextDiv' + index, 'line15', true, function() {
+										$('#printPre').addClass('zindex-css');
+										arrow('#createNodeMethod', '#strCpyMethod', function() {
+											fromEffect('#sNameAddNodeVal', '#name' + index, true, function() {
+												customIntroNextStep('#printPre', 'addMehodIfCond', 'hide', 'left');
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'tempretnval':
+							bounceEffect('#tempValAddNode', '#lastValMain', false, '-750px', function() {
+								//$('#line14').remove();
+								//svgAnimatingLineTopAndBottom('#lastVarDecMain .box', '#nextDiv' + index, 'line14', false, function() {
+									index++;
+									position = 2;
+									introNextSteps('#printf2', 'enterSoldierName', 'hide');
+									setTimeout(function() {
+										$('#line15, #line17, .arrow, #sNameAddNode, #tempVarDecAddNode, #lastVarDecAddNode').remove();
+										$('#printPre, #createNodePre').addClass('hide');
+										introjs.nextStep();
+									}, 800);
+								//});
 							});
 						break;
 					}
@@ -281,14 +336,14 @@ function initIntroJS() {
 							+ 'sName</span>, "end")</span> != 0</span>';
 					$('.introjs-tooltiptext').append(text);
 					$('.introjs-tooltiptext span').addClass('position-css');
-					fromEffect('#strCmpCond', '#mainCond', function() {
+					fromEffect('#strCmpCond', '#mainCond', false, function() {
 						flipEffect('#secondVal', "\"" + $('#sNameMainVal').text() + "\"", function() {
 							var value = $('#sNameMainVal').text().toLowerCase().localeCompare("end");
 							var flipVal = (value == 0) ? 0 : ($('#sNameMainVal').text().length > 3) ? 1 : -1;
 							flipEffect('#fstVal', flipVal, function() {
 								var stepId = (value != 0) ? '#addNodeMethod' : '#displayMethod'; 
 								appendCondCheckingText('.introjs-tooltiptext', (value != 0), (value != 0), 'while-loop', function() {
-									introNextSteps(stepId, 'callingMethod', 'hide', 'right');
+									introNextSteps(stepId, '', 'hide', 'right');
 									introjs.nextStep();
 								});
 							});
@@ -297,21 +352,37 @@ function initIntroJS() {
 				});
 			break;
 			case 'addNodeMethod':
-				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				$('.introjs-helperLayer').one('transitionend', function() {
-					switch(animateStep) {
-						case 'callingMethod':
-							$('.introjs-tooltip').removeClass('hide');
-							text = 'Here we are calling <y>addNode()</y> method and passing <y>last</y> (i.e., <y>' + $('#lastValMain').text().trim() 
-									+ '</y>) and <y>sName</y> (i.e., <y>' + $('#sNameMainVal').text().trim() + '</y>) as arguments and the return'
-									+ ' value is stored in <y>last</y>.';
-							typing('.introjs-tooltiptext', text, function() {
-								$('#printPre').removeClass('hide');
-								introNextSteps('#printPre', 'addCallingMethod', 'hide', 'left');
-								$('.introjs-nextbutton').show();
-							})
-						break;
-					}
+					$('.introjs-tooltip').removeClass('hide');
+					text = 'Here we are calling <y>addNode()</y> method and passing <y>last</y> (i.e., <y>' + $('#lastValMain').text().trim() 
+							+ '</y>) and <y>sName</y> (i.e., <y>' + $('#sNameMainVal').text().trim() + '</y>) as arguments and the return'
+							+ ' value is stored in <y>last</y>.';
+					typing('.introjs-tooltiptext', text, function() {
+						$('#printPre').removeClass('hide').empty();
+						appendVariableNodes('last', 'addNode');
+						nextStepWithBtn('#printPre', 'addCallingMethod', 'hide', 'left');
+					})
+				});
+			break;
+			case 'displayMethod':
+				$('.introjs-helperLayer').one('transitionend', function() {
+					displayMethod();
+					appendVariableNodes('q', 'display');
+					$('#printPre').removeClass('hide');
+					customIntroNextStep('#printPre', 'displayMethod', 'hide', 'left');
+				});
+			break;
+			case 'deleteMethod':
+				$('#outputDiv').removeClass('zindex-css');
+				$('#qVarDecDisplay, #line17, .arrow').remove();
+				$('#printPre').empty().addClass('hide');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					text = 'Here we are calling <y>delete()</y> method and passing <y>last</y> (i.e., <y>' + $('#lastValMain').text() 
+							+ '</y>) as an argument.';
+					typing('.introjs-tooltiptext', text, function() {
+						$('#printPre').removeClass('hide').empty();
+						nextStepWithBtn('#printPre', 'deleteCallingMethod', 'hide', 'left');
+					});
 				});
 			break;
 			case 'printPre':
@@ -319,73 +390,220 @@ function initIntroJS() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					switch(animateStep) {
 						case 'addCallingMethod':
+							addNodesMethod();
+							$('#lastVarDecAddNode').removeClass('margin-left');
 							appendVariables('sName', 'AddNode');
 							$('#sNameAddNode b:first').html('sName<sub>(addNode)</sub>');
-							appendVariableNodes('last', 'addNode');
-							addNodesMethod();
-							introjs.refresh();
 							$('#printPre').removeClass('opacity00');
 							callingAddNodeMethod();
 						break;
+						case 'addMehodIfCond':
+							$('#animationDiv').removeClass('zindex-css');
+							arrow('#strCpyMethod', '#ifFstIsNull', function() {
+								var condVal = $('#firstValMain').text().trim() == "NULL";
+								$('.introjs-tooltip').removeClass('hide');
+								appendCondText('.introjs-tooltiptext', '#ifFstIsNull', 'first ', '==', ' NULL', false,  
+										$('#firstValMain').text(), "NULL", true, condVal, condVal ? 'if' : 'else', function() {
+									var selector = condVal ? '#tempToFst' : '#tempToLastNext';  
+									arrow('#ifFstIsNull', selector, function() {
+										var flagText = condVal ? 'first' : 'last -> next';	
+										text = '<ul><li>Now store the <y>temp</y> value (i.e., <y>' + +$('#tempValAddNode').text() + '</y>) in <y>' 
+												+ flagText + '</y>.</li></ul>';
+										typing('.introjs-tooltiptext', text, function() {
+											callingNextButton(function() {
+												addMethodIfCond(condVal, selector);
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'displayMethod':
+							$('#printPre').removeClass('opacity00');
+							position = 0;
+							arrow('#print1', '#print1', function() {
+								$('#outputDiv').addClass('zindex-css');
+								$('#output').append('<div class="opacity00">The Original Soldiers List is --></div>');
+								$('#output').scrollTo('#output div:last', 100);
+								transferEffect('#print1', '#output div:last', function() {
+									arrow('#print1', '#qInit', function() {
+										$('#outputDiv').removeClass('zindex-css');
+										$('#animationDiv').addClass('zindex-css');
+										variableAnimation('#qInit', '#qVarDecDisplay', '#firstValMain', function() {
+											svgAnimatingLineTopAndBottom('#qDisplay', '#nextDiv' + position, 'line17', true, function() {
+												arrow('#qInit', '#print2', function() {
+													customIntroNextStep('#outputDiv', 'printMethod', 'hide');
+												});
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'displayWhileCond':
+							$('#animationDiv').removeClass('zindex-css');
+							arrow('#print2', '#qNextToQ', function() {
+								$('.introjs-tooltip').removeClass('hide');
+								text = 'Store the <y>q -> next</y> value (i.e., <y>' + $('#next' + index).text() + '</y>) in <y>q</y>.';
+								typing('.introjs-tooltiptext', text, function() {
+									callingNextButton(function() {
+										$('#animationDiv').addClass('zindex-css');
+										TopBottomLineWithBounce('#qDisplay', '#nextDiv' + position, true, '#next' + position, '#qValDisplay',
+												false, '8px', function() {
+											$('#line17').remove();
+											position++;
+											var val = position == index ? 0 : position;
+											svgAnimatingLineTopAndBottom('#qDisplay', '#nextDiv' + val, 'line17', true, function() {
+												displayAnim();
+											});
+										});
+									});
+								});
+							});
+						break;
+						case 'deleteCallingMethod':
+							
+						break;
 					}
 				});	
+			break;
+			case 'createNodePre':
+				$('#createNodePre').removeClass('opacity00');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					introNextSteps('#animationDiv', 'nodeMemoryAlloc', 'hide');
+					if ($('.nodes').length == 5) {
+						$('#line17, .arrow').remove();
+						appendListNodes(index);	
+						arrow('#createNodeMethod', '#createNodeMethod');
+						svgAnimatingLineTopAndBottom('#lastAddNode', '#nextDiv' + (index - 1), 'line17', true);
+					} else {
+						appendListNodes(index);
+					}
+					if (index > 1) {
+						setTimeToIntroNextStep();
+					} else {
+						$('.introjs-tooltip').removeClass('hide');
+						text = '<y>malloc()</y> allocates a memory to its members <y>name</y> and <y>next</y>.';
+						typing('.introjs-tooltiptext', text, function() {
+							(index == 0) ? svgAppend("svgId", "#animationDiv") : '';
+							$('.introjs-nextbutton').show();
+						});
+					}
+				});
 			break;
 		}
 	});
 	introjs.start();
 }
 
+function displayAnim() {
+	$('#animationDiv').removeClass('zindex-css');
+	arrow('#qNextToQ', '#qNotEqualToFst', function() {
+		$('#animationDiv').removeClass('zindex-css');
+		var condVal = +$('#qValDisplay').text() != +$('#firstValMain').text();
+		$('.introjs-tooltiptext').empty();
+		appendCondText('.introjs-tooltiptext', '#qNotEqualToFst', 'q ', '!=', 'first', true, +$('#qValDisplay').text(),
+				+$('#firstValMain').text(), condVal, condVal, 'while-loop', function() {
+			$('.introjs-tooltip').addClass('hide');
+			if (condVal) {
+				arrow('#qNotEqualToFst', '#print2', function() {
+					customIntroNextStep('#outputDiv', 'printMethod', 'hide');
+				});
+			} else {
+				arrow('#qNotEqualToFst', '#print3', function() {
+					$('#output div:last').append('<span class="opacity00 ct-code-b-yellow"> NULL</span>');
+					$('#outputDiv').addClass('zindex-css');
+					transferEffect('#print3', '#output span:last', function() {
+						customIntroNextStep('#deleteMethod', '', 'show');
+					});
+				});
+			}
+		});
+	});
+}
+
+function addMethodIfCond(condVal, selector) {
+	$('#animationDiv').addClass('zindex-css');
+	if (condVal) {
+		bounceEffect('#tempValAddNode', '#firstValMain', false, '-750px', function() {
+			svgAnimatingLineTopAndBottom('#firstVarDecMain .box', '#nextDiv0', 'line13', false, function() {
+				addIfCondContinue(selector);
+			});
+		});
+	} else {
+		TopBottomLineWithBounce('#lastAddNode', '#nextDiv' + (index - 1), true, '#tempValAddNode', '#next' + (index - 1), false, '-750px', function() {
+			$('#polyLine1').remove();
+			basedOnRowLineReveal(index);
+			addIfCondContinue(selector);
+		});
+	}
+}
+
+function addIfCondContinue(selector) {
+	arrow(selector, '#firstToTempNext', function() {
+		$('.introjs-tooltiptext ul').append('<li></li>');
+		text = 'Now store the <y>first</y> value (i.e., <y>' + +$('#firstValMain').text() + '</y>) in <y>temp -> next</y>.';
+		typing('.introjs-tooltiptext li:last', text, function() {
+			callingNextButton(function() {
+				TopBottomLineWithBounce('#tempAddNode', '#nextDiv' + index, true, '#firstValMain', '#next' + index, false, '10px', function() {
+					svgCurve('.next-div:last', '.name-div:first', 1);
+					arrow('#firstToTempNext', '#retnTemp', function() {
+						nextStepWithBtn('#animationDiv', 'tempretnval', 'hide');
+					});
+				});
+			});
+		});
+	});
+}
+
 function callingAddNodeMethod() {
 	$('#animationDiv').addClass('zindex-css');
-	variableAnimation('#lastDec', '#lastVarDecAddNode', '#lastValMain', function() {
-		variableAnimation('#sNameDec', '#sNameAddNode', '#sNameMainVal', function() {
-			
+	arrow('#addMethod', '#addMethod', function() {
+		variableAnimation('#lastDec', '#lastVarDecAddNode', '#lastValMain', function() {
+			index != 0 ? svgAnimatingLineTopAndBottom('#lastAddNode', '#nextDiv' + (index - 1), 'line17', true) : '';
+			variableAnimation('#sNameDec', '#sNameAddNode', '#sNameMainVal', function() {
+				arrow('#addMethod', '#tempDec', function() {
+					appendVariableNodes('temp', 'addNode');
+					transferEffect('#tempDec', '#tempVarDecAddNode', function() {
+						arrow('#tempDec', '#createNodeMethod', function() {
+							$('.introjs-tooltip').removeClass('hide');
+							text = 'Here we are calling <y>createNode()</y> method and the <y>return</y> value is stored in <y>temp</y>.';
+							typing('.introjs-tooltiptext', text, function() {
+								nextStepWithBtn('#createNodePre', '', 'hide');
+								//$('#createNodePre').removeClass('hide').addClass('opacity00');
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function TopBottomLineWithBounce(selector1, selector2, lineFlag, selector3, selector4, flag, val, callBackFunction) {
+	highlightWithTopAndBottomLine(selector1, selector2, lineFlag, function() {
+		bounceEffect(selector3, selector4, flag, val, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function highlightWithTopAndBottomLine(selector1, selector2, lineFlag, callBackFunction) {
+	$(selector1).effect('highlight', {color: 'blue'}, 600, function() {
+		svgAnimatingLineTopAndBottom(selector1, selector2, 'line35', lineFlag, function() {
+			$('#line35').remove();
+			callBackFunction();
 		});
 	});
 }
 
 function variableAnimation(selector1, selector2, selector3, callBackFunction) {
 	transferEffect(selector1, selector2, function() {
-		$(selector2 + ' .position-css').text($(selector3).text());
-		fromEffect(selector3, selector2 + ' .position-css', function() {
+		fromEffect(selector3, selector2 + ' .position-css', true, function() {
 			callBackFunction();
 		});
 	});
 }
-
-function basedOnRowLineReveal(val) {
-	if (val < 5) {
-		svgAnimatingLineRightAndLeft($('.next-div:eq(' + (val - 1) + ')'), $('.name-div:eq(' + val +')'), 'line' + val, true);
-	} else if (val == 5) {
-		svgAnimatingLineTopAndBottom($('.next-div:eq(' + (val - 1) + ')'), $('.next-div:eq(' + val + ')'), 'line' + val, false);
-	} else {
-		svgAnimatingLineRightAndLeft($('.name-div:eq(' + (val - 1) +')'), $('.next-div:eq(' + val + ')'), 'line' + val, false);
-	}
-	$('#line' + val).attr('class', 'svg-line lines')
-}
-
-function curves(val1) {
-	var len = +$('.nodes').length - 2;
-	if (+$('.nodes').length < 3) {
-		var l = +$('.data-address:first').text().trim() == +$('.next-span:first').text().trim()  ? 2 : 1;
-		svgCurve('#nextDiv' + val1, '#nameDiv' + val1, l);
-	} else if (+$('.data-address:first').text().trim() == +$('.next-span:eq(' + len + ')').text()) {
-		svgCurve($('#' + ($('.next-div:eq(' + len + ')')).attr('id')), $('#' + ($('.name-div:first').attr('id'))), 2);
-	} else if (+$('.data-address:eq(1)').text().trim() == +$('.next-span:last').text().trim()) {
-		svgCurve($('#' + ($('.next-div:last')).attr('id')), $('#' + ($('.name-div:eq(1)').attr('id'))), 1);
-	}
-} //curve after deletion
-
-function validation() {
-	$('.user-btn, .err-msg').remove();
-	$('.kill-val').attr('disabled', 'disabled');
-	var val = +$('#killedVal').val();
-	text = '<br><br>&emsp;&emsp;Now count the soldiers from starting position and eliminate the soldier at ' 
-			+ 'position <y>'  + val + '</y> and then repeat the loop until the last person remains.';
-	typing('#killingStatus', text, function() {
-		appendNextButton('soldiersAnimation');
-	});
-} 
 
 function soldiersAnimation() {
 	$('.user-btn').remove();
@@ -467,77 +685,6 @@ function showingSoldiers(t, val, selector1, selector2, callBackFunction) {
 	}, 200);
 }
 
-function displayNodeNameAndNext() {
-	$('.user-btn').remove();
-	var address = $("#dataAddress" + index).text().trim();
-	$('#node' + index).removeClass('opacity00');
-	TweenMax.from($('#node' + index), 0.6, {top : -50, onComplete: function() {
-		text = 'Now, <y>address</y> (i.e., <y>' + address +'</y>) of the memory allocated by the <y>malloc()</y> method is stored in <y>temp</y>.';
-		typingWithUserBtn('.introjs-tooltiptext', text, function() {
-			$('#name' + index).text($('#sNameVarVal').text());
-			(index == 0) ? $('#tempValMain').text(address) : '';
-			fromEffectAndBounceAnim('#dataAddress' + index, '#tempValMain', false, '1px', function() {
-				$('#line21').remove();
-				svgAnimatingLineTopAndBottom('#tempMain', '#nextDiv' + index, 'line21', true, function() {
-					backGroundAppend('#allocMemory span:eq(1)');
-					$('#nameDiv' + index).effect('highlight', {color: 'yellow'}, 1000);
-					zoomInEffect('#name' + index, function() {
-						backGroundAppend('#allocMemory span:last');
-						$('#nextDiv' + index).effect('highlight', {color: 'yellow'}, 1000);
-						zoomInEffect('#next' + index, function() {
-							$('#allocMemory span:last').removeClass('background-yellow');
-							nextStepWithBtn('#ifFirstIsNull', '', 'show');
-						});
-					})
-				});
-			});
-		});
-	}});
-}
-
-function TopBottomLineWithBounce(selector1, selector2, lineFlag, selector3, selector4, flag, val, callBackFunction) {
-	svgAnimatingLineTopAndBottom(selector1, selector2, 'line35', lineFlag, function() {
-		$('#line35').remove();
-		bounceEffect(selector3, selector4, flag, val, function() {
-			callBackFunction();
-		});
-	});
-}
-
-function deletingNode(val, count, nodeId, callBackFunction) {
-	$('line, polyline').remove();
-	if (count <= val) {
-		var l1Val = (count <= 5) ? '-134px' : (count > 5) ? '134px' : '' ;
-		if (count == 5) {
-			TweenMax.to($('#nodesDiv .nodes').not(nodeId).eq(count - 1), 0.8, {top: '-60px', left: '-15px', onComplete: function() {
-				nodeDeletion(nodeId);
-				if ($('#row1 .nodes').length < 5 && $('#row2 .nodes').length != 0) {
-					var t = $('#row2 .nodes:first').detach();
-					t.appendTo('#row1');
-					$('#row1 .nodes:last').css({'float' : 'left'});
-					$('#nodesDiv #row2 .nodes').css({'float' : 'right'});
-				}
-			}});
-		} else {
-			TweenMax.to($("#nodesDiv .nodes").not(nodeId).eq(count - 1), 0.8, {left : l1Val, onComplete: function() {
-				nodeDeletion(nodeId);
-			}});
-		}
-		count++;
-		deletingNode(val, count, nodeId, callBackFunction);
-	} else {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	}
-}
-
-function nodeDeletion(nodeId) {
-	$.each($("#nodesDiv .nodes").not(nodeId), function() {
-		$(this).css({"top": '0', 'left': "0"});
-	});
-	$(nodeId).remove();
-}
 
 function linkedListIdsChange(i, t) { 
 	var m = ':eq(' + i + ')';
@@ -576,6 +723,97 @@ function arrSort() {
 	});
 }//sorting ids
 
+function basedOnRowLineReveal(val) {
+	if (val < 5) {
+		svgAnimatingLineRightAndLeft($('.next-div:eq(' + (val - 1) + ')'), $('.name-div:eq(' + val +')'), 'line' + val, true);
+	} else if (val == 5) {
+		svgAnimatingLineTopAndBottom($('.next-div:eq(' + (val - 1) + ')'), $('.next-div:eq(' + val + ')'), 'line' + val, false);
+	} else {
+		svgAnimatingLineRightAndLeft($('.name-div:eq(' + (val - 1) +')'), $('.next-div:eq(' + val + ')'), 'line' + val, false);
+	}
+	$('#line' + val).attr('class', 'svg-line lines')
+}
+
+
+function deletingNode(val, count, nodeId, callBackFunction) {
+	$('line, polyline').remove();
+	if (count <= val) {
+		var l1Val = (count <= 5) ? '-134px' : (count > 5) ? '134px' : '' ;
+		if (count == 5) {
+			TweenMax.to($('#nodesDiv .nodes').not(nodeId).eq(count - 1), 0.8, {top: '-60px', left: '-15px', onComplete: function() {
+				nodeDeletion(nodeId);
+				if ($('#row1 .nodes').length < 5 && $('#row2 .nodes').length != 0) {
+					var t = $('#row2 .nodes:first').detach();
+					t.appendTo('#row1');
+					$('#row1 .nodes:last').css({'float' : 'left'});
+					$('#nodesDiv #row2 .nodes').css({'float' : 'right'});
+				}
+			}});
+		} else {
+			TweenMax.to($("#nodesDiv .nodes").not(nodeId).eq(count - 1), 0.8, {left : l1Val, onComplete: function() {
+				nodeDeletion(nodeId);
+			}});
+		}
+		count++;
+		deletingNode(val, count, nodeId, callBackFunction);
+	} else {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}
+}
+
+function nodeDeletion(nodeId) {
+	$.each($("#nodesDiv .nodes").not(nodeId), function() {
+		$(this).css({"top": '0', 'left': "0"});
+	});
+	$(nodeId).remove();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				/*********************Once check and delete*************************************/
+
+function curves(val1) {
+	var len = +$('.nodes').length - 2;
+	if (+$('.nodes').length < 3) {
+		var l = +$('.data-address:first').text().trim() == +$('.next-span:first').text().trim()  ? 2 : 1;
+		svgCurve('#nextDiv' + val1, '#nameDiv' + val1, l);
+	} else if (+$('.data-address:first').text().trim() == +$('.next-span:eq(' + len + ')').text()) {
+		svgCurve($('#' + ($('.next-div:eq(' + len + ')')).attr('id')), $('#' + ($('.name-div:first').attr('id'))), 2);
+	} else if (+$('.data-address:eq(1)').text().trim() == +$('.next-span:last').text().trim()) {
+		svgCurve($('#' + ($('.next-div:last')).attr('id')), $('#' + ($('.name-div:eq(1)').attr('id'))), 1);
+	}
+} //curve after deletion
+
+function validation() {
+	$('.user-btn, .err-msg').remove();
+	$('.kill-val').attr('disabled', 'disabled');
+	var val = +$('#killedVal').val();
+	text = '<br><br>&emsp;&emsp;Now count the soldiers from starting position and eliminate the soldier at ' 
+			+ 'position <y>'  + val + '</y> and then repeat the loop until the last person remains.';
+	typing('#killingStatus', text, function() {
+		appendNextButton('soldiersAnimation');
+	});
+} 
+
 function btnWithFirstNodeLine(callBackFunction) {
 	callingNextButton(function() {
 		var val = +$('.data-address:contains("' + $('#firstValMain').text().trim() + '")').attr('id').substr(-1);
@@ -603,30 +841,16 @@ function typingWithUserBtn(selector, text, callBackFunction) {
 	});
 }
 
-function inPrintQAndFirstAnim(selector1, selector2, val, selector3, id1, id2, callBackFunction) {
-	transferEffect(selector1, selector2, function() {
-		$(selector2 + ' .position-css').text($('#firstValMain').text());
-		fromEffect('#firstValMain', selector2 + ' .position-css', function() {
-			svgAnimatingLineTopAndBottom(selector2, '#nextDiv0', 'line' + val, true, function() {
-				arrow(selector3 + ' ' + id1, selector3 + ' ' + id2, function() {
-					callBackFunction();
-				});
-			});
+function fromEffectAndBounceAnim(selector1, selector2, pos, val, callBackFunction) {
+	if (index == 0) {
+		fromEffect(selector1, selector2, function() {
+			callBackFunction();
 		});
-	});
-}
-
-function soldiersListAnim(count, callBackFunction) {
-	$('#qPrint').effect('highlight', {color: 'blue'}, 500, function() {
-		svgAnimatingLineTopAndBottom('#qPrint', '#nextDiv' + count, 'line0', true, function() {
-	    	$('#nameDiv' + count).effect('highlight', {color: 'yellow'}, 500, function() {
-	    		$('#line0').remove();
-				fromEffect('#name' + count, '#printValues span:last', function() {
-					callBackFunction();
-				});
-			});
+	} else {
+		bounceEffect(selector1, selector2, pos, val, function() {
+			callBackFunction();
 		});
-	});
+	}
 }
 
 function backGroundAppend(selector) {
@@ -663,19 +887,21 @@ function recursiveZoomIn(parentId, i, callBackFunction) {
 	}
 }
 
+							/*********************End*************************************/
+
+
+
 function appendCondText(selector1, selector2, text1, cond, text2, flag, val1, val2, textFlag, condFlag, flagText, callBackFunction) {
 	text = 'Now check the condition : <br><span id="mainCond" class="ct-code-b-yellow opacity00"><span id="firstVal"> ' + text1 +  '</span> ' + cond 
 			+ ' <span id="secondVal">' + text2 + '</span></span>';
 	$(selector1).append(text);
 	$(selector1 + ' span').addClass('position-css');
-	fromEffect(selector2, '#mainCond', function() {
-		callingNextButton(function() {
-			flipEffect('#firstVal', val1, function() {
-				(flag) ? flipEffect('#secondVal', val2, function() {}) : '';
-				setTimeout(function() {
-					appendCondCheckingText(selector1, textFlag, condFlag, flagText, callBackFunction);
-				}, 1200);
-			});
+	fromEffect(selector2, '#mainCond', false, function() {
+		flipEffect('#firstVal', val1, function() {
+			(flag) ? flipEffect('#secondVal', val2, function() {}) : '';
+			setTimeout(function() {
+				appendCondCheckingText(selector1, textFlag, condFlag, flagText, callBackFunction);
+			}, 1200);
 		});
 	});
 }
@@ -739,11 +965,15 @@ function introNextSteps(stepName, animatedStep, tooltip, position) {
 	introjs.insertOption(introjs._currentStep + 1, newStep);
 }
 
-function customIntroNextStep(stepName, animatedStep, tooltip, position) {
-	introNextSteps(stepName, animatedStep, tooltip, position);
+function setTimeToIntroNextStep() {
 	setTimeout(function() {
 		introjs.nextStep();
 	}, 800);
+}
+
+function customIntroNextStep(stepName, animatedStep, tooltip, position) {
+	introNextSteps(stepName, animatedStep, tooltip, position);
+	setTimeToIntroNextStep();
 }
 
 function callingNextButton(callBackFunction) {
@@ -777,7 +1007,7 @@ function flipEffect(selector, val, callBackFunction) {
 function arrow(fromId, toId, callBackFunction) {
 	$('.arrow').remove();
 	backGroundAppend(toId);
-	$('#printPre').append("<i class='fa fa-arrow-right arrow animated' style='position: absolute; z-index: 10000000;'></i>");
+	$('body').append("<i class='fa fa-arrow-right arrow animated' style='position: absolute; z-index: 10000000;'></i>");
 	var l = $(fromId).offset();
 	$('.arrow').offset({'top': l.top, 'left': l.left - ($('.arrow').outerWidth())});
 	var l1 = $(fromId).offset();
@@ -791,23 +1021,14 @@ function arrow(fromId, toId, callBackFunction) {
 	}});
 }
 
-function fromEffectAndBounceAnim(selector1, selector2, pos, val, callBackFunction) {
-	if (index == 0) {
-		fromEffect(selector1, selector2, function() {
-			callBackFunction();
-		});
-	} else {
-		bounceEffect(selector1, selector2, pos, val, function() {
-			callBackFunction();
-		});
-	}
-}
-
-function fromEffect(fromId, toId, callBackFunction) {
+function fromEffect(fromId, toId, flag, callBackFunction) {
 	var l1 = $(fromId).offset();
 	var l2 = $(toId).offset();
 	var topLength = l1.top - l2.top;
 	var leftLength = l1.left - l2.left;
+	if (flag) {
+		$(toId).text($(fromId).text());
+	}
 	$(fromId).effect('highlight', {color: 'yellow'}, 800);
 	$(toId).removeClass('opacity00');
 	TweenMax.from($(toId), 1, {top: topLength, left: leftLength, onComplete: function() {

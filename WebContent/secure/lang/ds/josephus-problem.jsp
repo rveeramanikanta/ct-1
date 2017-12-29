@@ -326,18 +326,24 @@ $(document).ready(function() {
 <span id="typeDefDec">typedef struct list *node;</span>
 <span id="globalfirstDec">node first = NULL;</span></pre></div>
 <pre class="pre-tab" id="mainPre">int main() {
-	<div class="position-css" id="decSNamelast"><span id="globallastDec">node last = NULL;</span>
+	<div class="position-css" id="decSNamelast"><span id="globallastDec">node last = first;</span>
 <span>char sName[10];</span></div>
 	<div id="printf1">printf("Enter Name of Soldier : ");
 scanf("%s", sName);</div>
 	<span id="strCmpCond">while(strcmp(sName, "end") != 0) {</span>
 		<span id="addNodeMethod">last = addNode(last, sName);</span>
-		printf("Enter Name of Soldier : ");
-		scanf("%s", sName);
+		<div id="printf2">printf("Enter Name of Soldier : ");
+scanf("%s", sName);</div>
 	}
 	<span id="displayMethod">display();</span>
 	<span id="deleteMethod">delete(last);</span>
 }</pre>
+<div><pre class="pre-tab hide" id="createNodePre">node createNode() {
+    node temp;
+    <span id="mallocMethod">temp = (node) malloc(sizeof(struct list));</span>
+    temp -> next = NULL;
+    return temp;
+}</pre></div>
 <!-- <pre class="pre-tab" id="mainPre">int main() {
 	<div id="nodesDecInMain"><span>node q, temp, first;</span>
 <span>first = NULL;</span></div>
