@@ -201,6 +201,7 @@ AnimatedObject.prototype.getTailPointerAttachPos = function(fromX, fromY,
 }
 
 AnimatedObject.prototype.getHeadPointerAttachPos = function(fromX, fromY) {
+	console.log(this);
 	return [ this.x, this.y ];
 }
 

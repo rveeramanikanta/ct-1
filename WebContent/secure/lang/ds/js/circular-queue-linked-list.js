@@ -1,17 +1,18 @@
 var lang;
 var queueLinkedListReady = function() {
 	lang = getURLParameter("lang");
-	$('input').attr("disabled", true);
 	initIntroJS();
 	
 	if (lang == 'cpp') {
 		$('#enqueueElsePrintf').text('cout << "Successfully inserted.";');
-		$("#dequeueElsePrintf").html('cout << "Deleted value = " << temp -> next;');
+		$("#dequeueElsePrintf").html('cout << "Deleted value = %d." << temp -> next;');
 		$('#displayElsePrintf').text('cout << "Elements are : ";');
-		$('#displayWhilePrintf').html('cout << temp -&gt; info << " ";');
+		$('#displayWhilePrintf').html('cout << temp -&gt; info)');
 		$('#displayIfPrintf').text('cout << "Queue is empty.";');
 		$('#dequeueIfPrintf').text('cout << "Queue is underflow.";');
 		$('#enqueueIfPrintf').text('cout << "Queue is overflow.";');
+		$('#initTemp').html('temp = new queue;');
+		$('#dequeueRemoveTemp').html('delete temp;');
 		
 	}
 	
@@ -305,7 +306,7 @@ function initIntroJS() {
 				arrow("#dequeueElsePrintf", "#dequeueRemoveTemp");
 				$(".background-color-yellow").removeClass("background-color-yellow");
 				$("#dequeueElsePrintf, #dequeueRemoveTemp").addClass("background-color-yellow");
-				var text = "Finally print deleted element <y>"+ queue[0] +"</y> and <y>remove</y> the <y>temp</y>.";
+				var text = "Finally print the deleted element <y>"+ queue[0] +"</y> and <y>remove</y> the <y>temp</y>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#output").append("<div class='opacity00'>Deleted value = " + queue.splice(0, 1) + ".</div>");
 						rearVal--;

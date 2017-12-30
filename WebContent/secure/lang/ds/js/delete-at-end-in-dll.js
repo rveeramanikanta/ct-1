@@ -162,8 +162,8 @@ function introFunction() {
 									+ '\n\t\t\treturn first;</span>'
 									+ '\n\t}</span>');
 							if (lang == 'cpp') {
-								$('#print').html('cout << "<brown>The deleted element from </brown>"\n\t\t\t\t\t'
-									+ ' "<brown> DLL : </brown>" <brown> << last -> data</brown> << "\\n");'
+								$('#print').html('cout << "<brown>The deleted element from </brown>";\n\t\t\t'
+									+ 'cout << "<brown> DLL : </brown>" <brown> << last -> data</brown> << "\\n";'
 									+ '\n\t\t\tdelete last;');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
@@ -222,7 +222,7 @@ function deleteAtEnd() {
 				+'\n}</span>');
 	if (lang == 'cpp') {
 		$('#funMthd').html('node Dll::<g>deleteAtEnd()</g> {');
-		$('#print1').html('cout << "<brown>List is Empty. So</brown>"\n\t\t\t\t\t"<brown> deletion is not possible</brown>\\n";');
+		$('#print1').html('cout << "<brown>List is Empty. So</brown>";\n\t\tcout << "<brown> deletion is not possible</brown>\\n";');
 	}
 }
 

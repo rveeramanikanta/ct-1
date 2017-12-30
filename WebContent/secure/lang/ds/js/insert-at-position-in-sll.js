@@ -277,7 +277,7 @@ function initIntroJS() {
 												+ '\t<span id="line0">printf("<brn>No such position in SLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
 												+ 'not possible</brn>\\n");\n\t\treturn first;</span>\n\t}</span>');
 								if (lang == 'cpp') {
-									$('#line0').html('cout << "<brn>No such position in SLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
+									$('#line0').html('cout << "<brn>No such position in SLL. So</brn> ";\n\t\tcout << "<brn>insertion is '
 													+ 'not possible</brn>\\n";\n\t\treturn;');
 								}
 								codeDivAnim('#l3', '#line2', function() {
@@ -392,7 +392,7 @@ function initIntroJS() {
 							$('#lstNlCond').append('\t\t\t<span id="line7" class="opacity00">printf("<brn>No such position in SLL. So</brn>"\n\t\t\t\t'
 											+ '\t" <brn>insertion is not possible</brn>\\n");\n\t\t\treturn first;</span>\n');
 							if (lang == 'cpp') {
-								$('#line7').html('cout << "<brn>No such position in SLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
+								$('#line7').html('cout << "<brn>No such position in SLL. So</brn> ";\n\t\t\tcout << "<brn>insertion is '
 											+ 'not possible</brn>\\n";\n\t\t\treturn;');
 							}
 							positonNodeAnimInCode('#l16', '#line7', '#decI', function() {

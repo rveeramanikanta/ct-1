@@ -222,7 +222,7 @@ function initIntroJS() {
 														+ '<brn>No such position in DLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
 														+ 'not possible</brn>\\n");\n\t\treturn first;</span>\n\t}</span>');
 								if (lang == 'cpp') {
-									$('#printf0').html('cout << "<brn>No such position in DLL. So</brn> "\n\t\t\t\t"<brn>insertion is '
+									$('#printf0').html('cout << "<brn>No such position in DLL. So</brn> ";\n\t\tcout << "<brn>insertion is '
 													+ 'not possible</brn>\\n";\n\t\treturn;');
 								}
 								codeDivAnim('#l3', '#ifPosIsZero', '#createCall', '#codeDiv', function() {
@@ -318,8 +318,8 @@ function initIntroJS() {
 													+ '\n\t"<brn>So insertion is not possible</brn>\\n");\n'
 													+ 'return first;</span>');
 							if (lang == 'cpp') {
-								$('#printfStatement').html('<span id="printf1" class="opacity00">cout << "<brn>No such position in DLL. </brn>"'
-														+ ' \n\t"<brn>So insertion is not possible</brn>\\n";\n'
+								$('#printfStatement').html('<span id="printf1" class="opacity00">cout << "<brn>No such position in DLL. </brn>";'
+														+ ' \ncout << "<brn>So insertion is not possible</brn>\\n";\n'
 														+ 'return;</span>');
 							}
 							transWithZoomInEffect('#l20', '#printf1', function() {

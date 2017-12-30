@@ -487,7 +487,11 @@ function AnimationManager(objectManager) {
 				&& !foundBreak) {
 			var nextCommand = this.AnimationSteps[this.currentAnimation]
 					.split("<;>");
-			if (nextCommand[0].toUpperCase() == "HIDE") {
+			if (nextCommand[0].toUpperCase() == "NEXTFUN") {
+				console.log(nextCommand[1]);
+				console.log(nextCommand[2]);
+				testing(this);
+			} else if (nextCommand[0].toUpperCase() == "HIDE") {
 				$(nextCommand[1]).hide();
 				$(nextCommand[1]).addClass("hide");
 			} else if (nextCommand[0].toUpperCase() == "SHOW") {
@@ -511,6 +515,24 @@ function AnimationManager(objectManager) {
 				typing($(".callout-content div:last-child"), nextCommand[2], function() {
 					doPlayPause();
 				});
+			} else if (nextCommand[0].toUpperCase() == "BFSSTEP" || nextCommand[0].toUpperCase() == "DFSSTEP") {
+				//$(".canvas-tooltip-text").append("<code class='steps'>Step : " + ($("code").length + 1)+ "</code>");
+				$(".canvas-tooltip-text").append("<ul></ul>");
+			} else if (nextCommand[0].toUpperCase() == "BFSTEXT" || nextCommand[0].toUpperCase() == "DFSTEXT") {
+				doPlayPause();
+				$(".canvas-tooltip-text ul:last").append("<li></li>");
+				typing($(".canvas-tooltip-text ul li:last"), nextCommand[1], function() {
+					doPlayPause();
+				});
+			} else if (nextCommand[0].toUpperCase() == "BFSTOOLTIPPOS" || nextCommand[0].toUpperCase() == "DFSTOOLTIPPOS") {
+				$(".canvas-tooltip-text").empty();
+				$(".canvas-tooltip").css({"opacity" : "", "left" : nextCommand[1] + "px", "top" : nextCommand[2] + "px"});
+			} else if (nextCommand[0].toUpperCase() == "BFSBUTTON" || nextCommand[0].toUpperCase() == "DFSBUTTON") {
+				doPlayPause();
+				$(".canvas-tooltip-buttons").append("<a class='introjs-button user-btn' onclick='" + nextCommand[1] + "()'>Next &#8594;</a>");
+			} else if (nextCommand[0].toUpperCase() == "RESTARTBUTTON") {
+				doPlayPause();
+				$(".canvas-tooltip-buttons").append("<a class='introjs-button restart-btn' onclick='" + nextCommand[1] + "()'>restart &#8594;</a>");
 			} else if (nextCommand[0].toUpperCase() == "PAUSE") {
 				doPlayPause();
 			} else if(nextCommand[0].toUpperCase() == "SETNEXTINTROSTEP") {
@@ -529,19 +551,32 @@ function AnimationManager(objectManager) {
 				undoBlock.push(new UndoCreate(parseInt(nextCommand[1])));
 
 			} else if (nextCommand[0].toUpperCase() == "DRAWLINE") {
-				this.animatedObjects.drawLine(parseInt(nextCommand[1]),
-						parseInt(nextCommand[2]), parseInt(nextCommand[3]),
-						parseInt(nextCommand[4]), parseInt(nextCommand[5]));
+				console.log(nextCommand.length);
+				if (nextCommand.length > 7) {
+					this.animatedObjects.drawLine(parseInt(nextCommand[1]),
+							parseInt(nextCommand[2]), parseInt(nextCommand[3]),
+							parseInt(nextCommand[4]), parseInt(nextCommand[5]), 
+							this.parseBool(nextCommand[6]), parseFloat(nextCommand[7]));
+				} else if (nextCommand.length > 6) {
+					this.animatedObjects.drawLine(parseInt(nextCommand[1]),
+							parseInt(nextCommand[2]), parseInt(nextCommand[3]),
+							parseInt(nextCommand[4]), parseInt(nextCommand[5]), 
+							this.parseBool(nextCommand[6]), 0.0);
+				} else {
+					this.animatedObjects.drawLine(parseInt(nextCommand[1]),
+							parseInt(nextCommand[2]), parseInt(nextCommand[3]),
+							parseInt(nextCommand[4]), parseInt(nextCommand[5]), false, 0.0);
+				}
+				
 				undoBlock.push(new UndoCreate(parseInt(nextCommand[1])));
 				
 			} else if (nextCommand[0].toUpperCase() == "CONNECT") {
-
+				console.log(nextCommand.length);
 				if (nextCommand.length > 7) {
 					this.animatedObjects.connectEdge(parseInt(nextCommand[1]),
 							parseInt(nextCommand[2]), this
 									.parseColor(nextCommand[3]),
-							parseFloat(nextCommand[4]), this
-									.parseBool(nextCommand[5]), nextCommand[6],
+							parseFloat(nextCommand[4]), (nextCommand[5] == "true") ? true: false, nextCommand[6],
 							parseInt(nextCommand[7]), nextCommand[8]);
 				} else if (nextCommand.length > 6) {
 					this.animatedObjects.connectEdge(parseInt(nextCommand[1]),
@@ -599,6 +634,7 @@ function AnimationManager(objectManager) {
 
 				}
 				if (nextCommand.length > 6) {
+					//console.log(nextCommand);
 					this.animatedObjects.setNodePosition(
 							parseInt(nextCommand[1]), parseInt(nextCommand[5]),
 							parseInt(nextCommand[6]));
@@ -684,6 +720,7 @@ function AnimationManager(objectManager) {
 					undoBlock = undoBlock.concat(removedEdges);
 				}
 				var obj = this.animatedObjects.getObject(objectID);
+			//	console.log(obj);
 				if (obj != null) {
 					undoBlock.push(obj.createUndoDelete());
 					this.animatedObjects.removeObject(objectID);
@@ -1210,7 +1247,7 @@ getIntrojsStep = function(element, intro, position, tooltipClass) {
 
 typing = function(selector, text, callBackFunction) {
 	$(selector).typewriting(text, {
-		"typing_interval" : 1,
+		"typing_interval" : 5,
 		"cursor_color" : 'white',
 	}, function() {
 		$(selector).removeClass("typingCursor");

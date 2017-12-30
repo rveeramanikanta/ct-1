@@ -5,11 +5,16 @@ var dequeueLinkedListReady = function() {
 	
 	if (lang == 'cpp') {
 		$('#injectElsePrintf, #pushElsePrintf').text('cout << "Successfully inserted.";');
-		$("#popElsePrintf, #ejectElsePrintf").html('cout << "Deleted value = " << temp -> next;');
+		$('#popElsePrintf').html('cout << "Deleted value at front = ";\n\t\tcout << temp -> info;');
+		$('#ejectElsePrintf').html('cout << "Deleted value at rear = ";\n\t\tcout << temp -> info;');
 		$('#displayElsePrintf').text('cout << "Elements are : ";');
 		$('#displayWhilePrintf').html('cout << temp -&gt; info << " ";');
 		$('#displayIfPrintf').text('cout << "Queue is empty.";');
 		$('#popIfPrintf, #injectIfPrintf, #pushIfPrintf, #ejectIfPrintf').text('cout << "Queue is underflow.";');
+		$('#injectinitTemp').html('temp = new queue;');
+		$('#pushinitTemp').html('temp = new queue;');
+		$('#ejectRemoveTemp').html('delete temp;');
+		$('#popRemoveTemp').html('delete temp;')
 	}
 	
 	$("#injectText").on("keydown", function(e) {

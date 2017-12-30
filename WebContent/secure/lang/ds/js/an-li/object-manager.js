@@ -511,6 +511,7 @@ function ObjectManager() {
 		var oldColor = "#000000";
 		if (this.Edges[fromID] != null && this.Edges[fromID] != undefined) {
 			var len = this.Edges[fromID].length;
+			console.log("setEdgeColor len : " + len);
 			for (var i = len - 1; i >= 0; i--) {
 				if (this.Edges[fromID][i] != null
 						&& this.Edges[fromID][i] != undefined
@@ -651,8 +652,8 @@ function ObjectManager() {
 		 */
 	}
 	
-	this.drawLine = function(objectID, x, y, newX, newY) {
-		var newNode = new DrawLine(objectID, x, y, newX, newY);
+	this.drawLine = function(objectID, x, y, newX, newY, directed, curve) {
+		var newNode = new DrawLine(objectID, x, y, newX, newY, directed, curve);
 		this.Nodes[objectID] = newNode;
 	}
 }

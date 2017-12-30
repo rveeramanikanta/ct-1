@@ -148,8 +148,8 @@ function introFunction() {
 									+ '\n\t\t\treturn temp;'
 									+ '\n\t}</span>');
 							if (lang == 'cpp') {
-								$('#print').html('cout << "<brown>The deleted element from </brown>"\n\t\t\t\t'
-										+ ' "<brown> DLL : </brown>" <brown> << temp -> data</brown> << ".\\n";')
+								$('#print').html('cout << "<brown>The deleted element from </brown>";\n\t\t\t'
+										+ 'cout << "<brown> DLL : </brown>" <brown> << temp -> data</brown> << ".\\n";')
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
 								$('#elseBlock').effect( "highlight",{color: 'yellow'}, 600);
@@ -199,13 +199,16 @@ function introFunction() {
 
 
 function deleteAtBegin() {
-	$('#parentPre').append('<span id="funName"><span id="funMthd">node <g>deleteAtBegin()</g> {</span> '
+	$('#parentPre').append('<span id="funName" class="opacity00"><span id="funMthd">node <g>deleteAtBegin()</g> {</span> '
 			+ '\n\t<span id="ifFirstEqNull" class="opacity00"> if (<span id="firstNullCon"><g>first == NULL</g></span>) {'
-			+'\n\t\tprintf("<brown>List is Empty. So</brown>"\n\t\t\t" <brown>deletion is not possible.</brown>\\n");\n\t}</span>'
+			+'\n\t\t<span id="print1">printf("<brown>List is Empty. So</brown>"\n\t\t\t'
+			+ '" <brown>deletion is not possible.</brown>\\n");</span>\n\t}</span>'
 			+'\n}</span>');
 	if (lang == 'cpp') {
 		$('#funMthd').html('node Dll::<g>deleteAtBegin()</g> {');
+		$('#print1').html('cout << "<brown>List is Empty. So</brown>";\n\t\tcout << " <brown>deletion is not possible.</brown>\\n";');
 	}
+	$('#funName').removeClass('opacity00');
 }
 
 

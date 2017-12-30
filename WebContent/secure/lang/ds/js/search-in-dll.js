@@ -142,8 +142,8 @@ function introFunction() {
 							$('#parentPre').removeClass('opacity00');
 							if (lang == 'cpp') {
 								$('#functionName').html('void Dll::<g>searchPosOfElement(int element)</g>');
-								$('#p1').html('cout << "<brown>The given element </brown>" <brown><< key << </brown>\n\t\t\t\t\t'	
-											+ ' "<brown> is not found in DLL.</brown>\\n";');
+								$('#p1').html('cout << "<brown>The given element </brown>" <brown><< key</brown>;\n\t\t'	
+											+ 'cout << "<brown> is not found in DLL.</brown>\\n";');
 							}
 							$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
 								transferEffect('#algorithmStepsDiv ul:first','#ifTempEqNull', function() {
@@ -169,8 +169,8 @@ function introFunction() {
 											+ '\n\t\t\t}\n\t\t}<span id="returnCount"></span>\n\t}');
 							$('#whileBody').addClass('opacity00');
 							if (lang == 'cpp') {
-								$('#p2').html('cout << "<brown>The given element </brown>" <brown> << key << </brown> \n\t\t\t\t\t'
-											+ ' "<brown> is not found in DLL.</brown>\\n";');
+								$('#p2').html('cout << "<brown>The given element </brown>" <brown> << key</brown>; \n\t\t\t\t'
+											+ 'cout << "<brown> is not found in DLL.</brown>\\n";');
 							}
 							$('#parentPre').scrollTo('span:last', 500);
 							$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
@@ -188,8 +188,8 @@ function introFunction() {
 							$('#returnCount').append('\t\t<span id="p3">printf("<brown>The given element is %d found</brown>"\n\t\t\t\t'
 												+ ' "<brown> at position %d.</brown>\\n", <brown>key, count</brown>);</span>');
 							if (lang == 'cpp') {
-								$('#p3').html('\n\t\tcout << "<brown>The given element is </brown>" <brown><< key << </brown>\n\t\t\t '
-											+ ' "<brown> found at position </brown>", <brown><< count << </brown>".\\n";');
+								$('#p3').html('\n\t\tcout << "<brown>The given element is </brown>" <brown><< key</brown>;\n\t\t'
+											+ 'cout << "<brown> found at position </brown>" <brown><< count << </brown>".\\n";');
 							}
 							$('#returnCount').addClass('opacity00');
 							$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {

@@ -101,8 +101,23 @@ function displayMethod() {
 						+ '}</div>');
 }
 
-function deleteMethod() {	//write for delete method 29 - dec
-	$('#printPre').addClass('opacity00').append('\t<div class="position-css"></div>');
+function deleteMethod() {	
+	$('#printPre').addClass('opacity00').append('\t<div class="position-css"><span id="delMthd">void delete(<span id="lastDec">node last</span>) {'
+					+ '</span id="decN">\n\tint n;</span>\n'
+					+ '\tprintf("Enter a Value : ");\n'
+					+ '\tscanf("%d", &n);\n'
+					+ '\twhile(first != first -> next) {\n'
+					+ '\t\tfor(int i = 1; i < n; i++) {\n'
+					+ '\t\t\tlast = first;\n'
+					+ '\t\t\tfirst = first -> next;\n'
+					+ '\t\t}\n'
+					+ '\t\tlast -> next = first -> next;\n'
+					+ '\t\tprintf("The eliminated soldier is --> %s\\n", first -> name);\n'
+					+ '\t\tfree(first);\n'
+					+ '\t\tfirst = last -> next;\n'
+					+ '\t}\n'
+					+ '\tprintf("The escaped soldier is --> %s\\n", first -> name);\n'
+					+ '}</div>');
 			
 }
 
@@ -268,7 +283,7 @@ function initIntroJS() {
 							$('#animationDiv').addClass('zindex-css');
 							highlightWithTopAndBottomLine('#qDisplay', '#nextDiv' + position, true, function() {
 								$('#output div:last').append(' <span class="opacity00 position-css ct-code-b-yellow">' + 
-										+$("#name" + position).text() + ' --> </span>');
+										$("#name" + position).text() + ' --> </span>');
 								fromEffect('#name' + position, '#output span:last', false, function() {
 									customIntroNextStep('#printPre', 'displayWhileCond', 'hide', 'left');
 								});
@@ -381,6 +396,7 @@ function initIntroJS() {
 							+ '</y>) as an argument.';
 					typing('.introjs-tooltiptext', text, function() {
 						$('#printPre').removeClass('hide').empty();
+						appendVariableNodes('last', 'delete');
 						nextStepWithBtn('#printPre', 'deleteCallingMethod', 'hide', 'left');
 					});
 				});
@@ -462,7 +478,11 @@ function initIntroJS() {
 							});
 						break;
 						case 'deleteCallingMethod':
-							
+							deleteMethod();
+							introjs.refresh();
+							appendVariables('n', 'Delete');
+							$('#printPre').removeClass('opacity00');
+							callingDeleteMethod();
 						break;
 					}
 				});	
@@ -494,6 +514,16 @@ function initIntroJS() {
 		}
 	});
 	introjs.start();
+}
+
+function callingDeleteMethod() { //write here delete logic
+	arrow('#delMthd', '#delMthd', function() {
+		variableAnimation('#lastDec', '#lastVarDecDelete', '#lastValMain', function() {
+			svgAnimatingLineTopAndBottom('#lastDelete', '#nextDiv' + (index - 1), 'line17', true, function() {
+				
+			});
+		});
+	});
 }
 
 function displayAnim() {

@@ -154,7 +154,7 @@ function introFunction() {
 						$('#parentPre').removeClass('opacity00');
 						if (lang == 'cpp') {
 							$('#functionName').html('void Sll::<g>search(int element)</g>');
-							$('#p1').html('cout << "The given element "\n\t\t\t\t\t << key << " is not found in the"\n\t\t\t\t\t" given SLL.";');
+							$('#p1').html('cout << "The given element " << key;\n\t\tcout << " is not found in the given SLL.";');
 						}
 						$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:first','#ifTempEqNull', function() {
@@ -180,7 +180,7 @@ function introFunction() {
 								+ '\n\t\t\t}\n\t\t}<span id="returnCount"></span>');
 						$('#whileBody').addClass('opacity00');
 						if (lang == 'cpp') {
-							$('#p2').html('cout << "The given element " \n\t\t\t\t\t<< key << " is not found in the\n\t\t\t\t\t given SLL.";');
+							$('#p2').html('cout << "The given element " << key;\n\t\t\t\tcout << " is not found in the given SLL.";');
 						}
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							transferEffect('#algorithmStepsDiv ul:last','#whileBody', function() {
@@ -197,8 +197,8 @@ function introFunction() {
 						$('#returnCount').append('\n\t\t<span id="p3">printf("The given element is  %d"\n\t\t\t "found at position %d"'
 								+ 'key, count);</span>');
 						if (lang == 'cpp') {
-							$('#p3').html('\n\t\tcout << "The given element is " \n\t\t\t << key << "found at position " \n\t\t\t << '
-									+ 'count << ".";');
+							$('#p3').html('\n\t\tcout << "The given element is " << key;\n\t\tcout << "found at position " << '
+									+ 'count;');
 						}
 						$('#returnCount').addClass('opacity00');
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {

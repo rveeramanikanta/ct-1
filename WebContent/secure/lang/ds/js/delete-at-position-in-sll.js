@@ -248,7 +248,7 @@ function introFunction() {
 									+ '\n\t\t\treturn first;</span>'
 									+ '\n\t}</span>');
 							if (lang == 'cpp') {
-								$('#print').html('cout << "The deleted element " \n\t\t\t\t\t << last -> data << " from SLL : \\n";\n'
+								$('#print').html('cout << "The deleted element ";\n\t\t\tcout << last -> data << " from SLL\\n";\n'
 									+ '\t\t\tdelete last;');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
@@ -268,8 +268,7 @@ function introFunction() {
 									+ '\n\t\t\t\t\t\t\t "not possible\\n");\n\t\t\t\t\treturn first;</span>\n\t\t\t\t} '
 									+ ' <span id="ifposNotZero"><span id="btn"></span>');
 							if (lang == 'cpp') {
-								$('#print1').html('cout << "No such position in"\n\t\t\t\t\t\t" SLL So deletion is"'
-										+ '\n\t\t\t\t\t\t\t "not possible\\n";');
+								$('#print1').html('cout << "No such position in SLL "; \n\t\t\t\t\tcout << "So deletion is not possible\\n";');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock11', function() {
 								$('#parentPre').scrollTo('#elseBlock11', 500);
@@ -302,11 +301,11 @@ function introFunction() {
 						$('#algorithmStepsDiv ul:last').effect( "highlight",{color: 'yellow'}, 600, function() {
 							$('#iflstNul').append('\n<span id="onlyIfBlock" class="opacity00"> '
 									+ '\t\t\t\t\t\tif (<brown>lastNode == NULL</brown>) {\n'
-									+ '\t\t\t\t\t\t\t<span id="print1">printf("No such position in"\n\t\t\t\t\t\t\t\t" SLL So deletion is"'
+									+ '\t\t\t\t\t\t\t<span id="print2">printf("No such position in"\n\t\t\t\t\t\t\t\t" SLL So deletion is"'
 									+ 'not possible\\n");\n\t\t\t\t\t\t\treturn first;</span>\n\t\t\t\t\t\t}<span id="btn"></span>');
 							if (lang == 'cpp') {
-								$('#print2').html('cout << "No such position in"\n\t\t\t\t\t\t" SLL So deletion is"'
-										+ '\n\t\t\t\t\t\t\t "not possible\\n";');
+								$('#print2').html('cout << "No such position in SLL "; \n\t\t\t\t\t\t\tcout << "So deletion is'
+										+ ' not possible\\n";');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#onlyIfBlock', function() {
 								$('#parentPre').scrollTo('#elseBlock1', 500);
@@ -345,7 +344,7 @@ function deleteAtPosition() {
 				+'\n}</span>');
 	if (lang == 'cpp'){
 		$('#functionName').html('void Sll::<g>deleteAtPosition()</g>');
-		$('#printf1').html('cout << "List is Empty,"\n\t\t\t" Deletion is not possible\\n";');
+		$('#printf1').html('cout << "List is Empty, So ";\n\t\tcout << "deletion is not possible\\n";');
 	}
 }
 

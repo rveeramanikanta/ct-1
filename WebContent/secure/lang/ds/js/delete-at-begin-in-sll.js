@@ -129,7 +129,7 @@ function introFunction() {
 									+ '\n\t\t\treturn first;</span>'
 									+ '\n\t}</span>');
 							if (lang == 'cpp') {
-								$('#print').html('cout << "The deleted element from "\n\t\t\t\t" SLL : \\n" << temp -> data;'
+								$('#print').html('cout << "The deleted element from ";\n\t\t\tcout << " SLL : \\n" << temp -> data;'
 												+ '\n\t\t\tdelete temp;');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
@@ -164,14 +164,15 @@ function introFunction() {
 
 
 function deleteAtBegin() {
-	$('#parentPre').append('<span id="funName"><span id="functionName">node <g>deleteAtBegin()</g></span> { '
+	$('#parentPre').append('<span id="funName" class="opacity00"><span id="functionName">node <g>deleteAtBegin()</g></span> { '
 			+ '\n\t<span id="ifFirstEqNull" class="opacity00"> if (<brown>first == NULL</brown>) {'
 			+'\n\t\t<span id="printf1">printf("List is Empty,"\n\t\t\t" Deletion is not possible\\n");</span>\n\t}</span>'
 			+'\n}</span>');
 	if (lang == 'cpp') {
 		$('#functionName').html('void Sll::<g>deleteAtBegin()</g>');
-		$('#printf1').html('cout << "List is Empty,"\n\t\t\t" Deletion is not possible\\n";');
+		$('#printf1').html('cout << "List is Empty. So, ";\n\t\tcout << " deletion is not possible\\n";');
 	}
+	$('#funName').removeClass('opacity00');
 }
 
 

@@ -41,11 +41,8 @@
 <script type="text/javascript" src="js/an-li/animation-main.js"></script>
 <script type="text/javascript" src="js/al-li/algorithm.js"></script>
 
-<script type="text/javascript" src="js/al-li/kruskals-alg.js"></script>
-<script type="text/javascript" src="js/kruskal.js"></script>
-
-<!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+<script type="text/javascript" src="js-min/krskl.min.js"></script>
+<script type="text/javascript" src="js-min/al-li/kruskal.min.js"></script>
 
 
 <style type="text/css">

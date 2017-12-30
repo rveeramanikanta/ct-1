@@ -164,7 +164,7 @@ function introFunction() {
 									+ '\n\t\t\treturn first;</span>'
 									+ '\n\t}</span>');
 							if (lang == 'cpp') {
-								$('#print').html('cout << "The deleted element from "\n\t\t\t\t" SLL : \\n" << last -> data;'
+								$('#print').html('cout << "The deleted element from ";\n\t\t\tcout << " SLL : \\n" << last -> data;'
 									+ '\n\t\t\tdelete last;');
 							}
 							transferEffect('#algorithmStepsDiv ul:last','#elseBlock', function() {
@@ -221,7 +221,7 @@ function deleteAtEnd() {
 				+'\n}</span>');
 	if (lang == 'cpp') {
 		$('#functionName').html('void Sll::<g>deleteAtEnd()</g>');
-		$('#printf1').html('cout << "List is Empty,"\n\t\t\t" Deletion is not possible\\n";');
+		$('#printf1').html('cout << "List is Empty. So ";\n\t\tcout << " deletion is not possible\\n";');
 	}
 }
 

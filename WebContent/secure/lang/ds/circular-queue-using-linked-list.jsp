@@ -36,7 +36,6 @@
 <script type="text/javascript" src="js-min/an-li/object-manager.min.js"></script>
 <script type="text/javascript" src="js-min/an-li/animation-main.min.js"></script>
 <script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
-
 <!-- <script type="text/javascript" src="js/al-li/CQLL-Dummy.js"></script> -->
 
 <script type="text/javascript" src="js-min/al-li/circular-queueLL.min.js"></script>

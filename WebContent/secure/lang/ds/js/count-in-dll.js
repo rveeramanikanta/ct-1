@@ -110,7 +110,7 @@ function introFunction() {
 											+ ' \n\t\t\t\t\t</brown>"%d</brown>\\n", <brown>sum</brown>);</span></span>\n}</span>');
 						if (lang == 'cpp') {
 							$('#functionName').html('int Dll::<g>count()</g>');
-							$('#printf').html('cout << "<brown>The number of nodes in a DLL are : </brown>" \n\t\t\t\t\t<brown><< sum << </brown>".\\n";')
+							$('#printf').html('cout << "<brown>The number of nodes in a DLL are : </brown>";\n\tcout << <brown>sum</brown> << ".\\n";')
 						}
 						$('#parentPre').removeClass('opacity00');
 						$('#algorithmStepsDiv ul:first').effect( "highlight",{color: 'yellow'}, 600, function() {
