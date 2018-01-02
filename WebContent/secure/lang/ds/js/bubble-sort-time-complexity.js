@@ -117,6 +117,7 @@ function introGuide() {
 							$('#number0').focus();
 							changeValue();
 							buttonAppendFunction(".introjs-tooltiptext", function() {
+								$('.arr-ele').attr('contenteditable','false');
 								zoomingEffect("#arrElements", function() {
 									zoomingEffect("#eleAtInnerText");
 										zoomingEffect(".eleAtInnerIdx", function() {
@@ -243,7 +244,7 @@ function introGuide() {
 function setTimeoutFunction() {
 	setTimeout(function() {
 		introjs.nextStep();
-	}, 1500);
+	}, 800);
 }
 
 function zoomingEffect(id, callBackFunction) {

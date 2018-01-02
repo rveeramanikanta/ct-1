@@ -232,7 +232,7 @@ $(document).ready(function() {
 	<div class="col-xs-12 text-center padding0">
 		<h1 class="label ct-demo-heading text-center" id="headingSection">Josephus Problem</h1>
 	</div>
-	<div class="col-xs-12 margin-top-10"><div class="col-xs-8 col-xs-offset-2 explain-div bg-info" id="explanationDiv">
+	<div class="col-xs-12 margin-top-20"><div class="col-xs-8 col-xs-offset-2 explain-div bg-info" id="explanationDiv">
 		<ul><li>According to <span class="grn">Josephus</span> account of the <span class="grn">siege of Yodfat</span>, he and his
 				 40 soldiers were trapped in a <span class="grn">cave</span> by <span class="grn">Roman</span> soldiers.</li>
 		 <li>They choose suicide over capture, and settled on a serial method of committing suicide by drawing lots.</li>
@@ -328,11 +328,11 @@ $(document).ready(function() {
 <pre class="pre-tab" id="mainPre">int main() {
 	<div class="position-css" id="decSNamelast"><span id="globallastDec">node last = first;</span>
 <span>char sName[10];</span></div>
-	<div id="printf1">printf("Enter Name of Soldier : ");
+	<div id="printf1">printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 	<span id="strCmpCond">while(strcmp(sName, "end") != 0) {</span>
 		<span id="addNodeMethod">last = addNode(last, sName);</span>
-		<div id="printf2">printf("Enter Name of Soldier : ");
+		<div id="printf2">printf("Enter name of the soldier : ");
 scanf("%s", sName);</div>
 	}
 	<span id="displayMethod">display();</span>
@@ -344,43 +344,6 @@ scanf("%s", sName);</div>
     temp -> next = NULL;
     return temp;
 }</pre></div>
-<!-- <pre class="pre-tab" id="mainPre">int main() {
-	<div id="nodesDecInMain"><span>node q, temp, first;</span>
-<span>first = NULL;</span></div>
-	<div id="endSNmeIAndNDec"><span>char sName[10];</span>
-<span>int i, n;</span></div>
-	<div id="printf1">printf("Enter name of the soldier : ");
-scanf("%s", sName);</div>
-	<div id="strCmpWhileLoop">while(<span id="strCmpCond">strcmp(sName, "end") != 0</span>) {
-	<div id="allocMemory"><span>temp = (node)malloc(sizeof(struct list));</span>
-<span>strcpy(temp -> name, sName);</span>
-<span>temp -> next = NULL;</span></div>
-	<div id="ifFirstIsNull"><span>if (first == NULL) {</span>
-	<span>first = temp;</span>
-} else {
-	<span>q -> next = temp;</span>
-}</div>
-	<div id="tempToQ">q = temp;
-printf("Enter name of the soldier : ");
-scanf("%s", sName);</div>
-}</div>
-	<div id="firstToQNext">q -> next = first;
-printf("The original soldiers list is -- ");</div>
-	<span id="callingPrintMethod">display(first);</span>
-	<div id="printf2">printf("Enter a value to eliminate the soldier : ");
-scanf("%d", &n);</div>
-	<div id="whileCond">while(first != first -> next) {
-	for(i = 1; i < n; i++) {
-		q = first;
-		first = first -> next;
-	}
-	q -> next = first -> next;
-	printf("The eliminated soldier is -- %s\n", first -> name);
-	free(first);
-	first = q -> next;
-}</div>
-	<span id="printf4">printf("The escaped soldier is -- %s\n", first -> name);</span>
-}</pre> -->
 		</div>
 		<div class="col-xs-7 col-xs-offset-1 hide animation-div" style="padding-right: 0px">
 			<div class="col-xs-12 padding0">

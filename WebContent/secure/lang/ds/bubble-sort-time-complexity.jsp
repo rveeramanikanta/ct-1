@@ -229,6 +229,10 @@ a {
 	margin-top: 12px;
 }
 
+.popover-btn-css {
+	padding: 0;
+}
+
 </style>
 </head>
 <body>

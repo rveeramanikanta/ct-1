@@ -4,20 +4,12 @@ import java.util.Scanner;
 
 public class Example { 
 	
-     public static void main(String[] args) {
-    	
-    	int k, i = 0, j = 1;
-    	Scanner s = new Scanner(System.in);
-    	int n = s.nextInt();
-    	
-    	System.out.print( i + " " + j);
-    	for (int t = 2; t <= n; t++) {
-    		k = i + j;
-    		 System.out.print(" " + k);
-    		 i = j;
-    		 j = k;
-    	 }
-    }
+	public static void main(String[] args) {
+		String text = "abc";		
+		System.out.println("text.substring(4) = " + text.substring(3));
+		System.out.println("text.substring(1, 3) = " + text.substring(0, 3));
+	}
+	
 }
 
 
