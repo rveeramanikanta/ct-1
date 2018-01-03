@@ -143,10 +143,10 @@ td {
 					 the members of a structure, based on whether it is a <span class="ct-code-b-green">member</span> or a 
 					 <span class="ct-code-b-green">pointer member</span>.</li>
 				<ol>
-					<li id="li3" class="opacity00"><b class="ct-blue-color">Dot(.) operator</b>: This is used to access a member of a
+					<li id="li3" class="opacity00"><b class="ct-blue-color">Dot(.) operator</b> is used to access a member of a
 						 <span class="ct-code-b-green">structure</span>.<br>
 						 &emsp; <b>Syntax</b> : <span class="ct-code-b-green">struct_variable . member</span></li>
-					<li id="li4" class="opacity00"><b class="ct-blue-color">Arrow(->) operator</b>: This is used to access a member of a
+					<li id="li4" class="opacity00"><b class="ct-blue-color">Arrow(->) operator</b> is used to access a member of a
 						 <span class="ct-code-b-green">structure pointer</span> (To be discussed later).</li>
 				</ol>
 			</ul>

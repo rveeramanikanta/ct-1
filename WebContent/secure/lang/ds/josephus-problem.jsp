@@ -228,17 +228,19 @@ $(document).ready(function() {
 	josephusProgramReady();
 });
 </script>
-<div class="col-xs-12 padding0 margin-top-20">
+<div class="col-xs-12 padding0 margin-top-10">
 	<div class="col-xs-12 text-center padding0">
 		<h1 class="label ct-demo-heading text-center" id="headingSection">Josephus Problem</h1>
 	</div>
-	<div class="col-xs-12 margin-top-20"><div class="col-xs-8 col-xs-offset-2 explain-div bg-info" id="explanationDiv">
-		<ul><li>According to <span class="grn">Josephus</span> account of the <span class="grn">siege of Yodfat</span>, he and his
-				 40 soldiers were trapped in a <span class="grn">cave</span> by <span class="grn">Roman</span> soldiers.</li>
-		 <li>They choose suicide over capture, and settled on a serial method of committing suicide by drawing lots.</li>
-		 <li><span class="grn">Josephus</span> states that by luck or possibly by the hand of God,
+	<div class="col-xs-12 margin-top-10">
+		<div class="col-xs-8 col-xs-offset-2 explain-div bg-info" id="explanationDiv">
+			<ul><li>According to <span class="grn">Josephus</span> account of the <span class="grn">siege of Yodfat</span>, he and his
+					 40 soldiers were trapped in a <span class="grn">cave</span> by <span class="grn">Roman</span> soldiers.</li>
+		 	<li>They choose suicide over capture, and settled on a serial method of committing suicide by drawing lots.</li>
+		 	<li><span class="grn">Josephus</span> states that by luck or possibly by the hand of God,
 				 he and another man remained until the end and surrendered to the Romans rather than killing themselves.</li></ul>
-	</div></div>
+		</div>
+	</div>
 	<div class="col-xs-12 margin-top-10">
 		<div class="col-xs-6 border-css padding0 opacity00" id="kingSoldierAnimDiv">
 			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-bottom: 15px;">
@@ -317,7 +319,8 @@ $(document).ready(function() {
     			</div>
     		</div>
 		</div>
-		<div class="col-xs-4 border-css padding0 hide" id="codeDiv">
+		<div class="col-xs-4">
+			<div class="col-xs-12 border-css padding0 hide" id="codeDiv">
 <div class="text-center" style="margin-bottom: 5px;"><span id="includeBtn" class="btn btn-success">Struct List</span></div>
 <div><pre class="pre-tab opacity00" id="includePre"><span id="structDec">struct list {
 	char name[10];
@@ -340,12 +343,14 @@ scanf("%s", sName);</div>
 }</pre>
 <div><pre class="pre-tab hide" id="createNodePre">node createNode() {
     node temp;
-    <span id="mallocMethod">temp = (node) malloc(sizeof(struct list));</span>
+    temp = <span id="mallocMethod">(node) malloc(sizeof(struct list));</span>
     temp -> next = NULL;
     return temp;
 }</pre></div>
+			</div>
+			<div class="col-xs-12 margin-top-20 text-center"><span class="btn btn-warning opacity00" id="restartBtn">Restart</span></div>
 		</div>
-		<div class="col-xs-7 col-xs-offset-1 hide animation-div" style="padding-right: 0px">
+		<div class="col-xs-7 col-xs-offset-1 hide animation-div" style="padding: 0px">
 			<div class="col-xs-12 padding0">
 				<div class="col-xs-12 border-css opacity00" id="animationDiv" style='padding: 8px;'>
 					<div class="col-xs-12" id="variablesDiv">
@@ -367,13 +372,12 @@ scanf("%s", sName);</div>
 				<div class="col-xs-12 padding0">
 <pre class="pre-tab hide margin-top-10" id="printPre"></pre>
 			</div>
-				<div class="col-xs-12 margin-top-10">
+				<div class="col-xs-12" style="margin-top: 8px;">
 					<div class="col-xs-10 col-xs-offset-1 console padding0 opacity00" id="outputDiv">
 						<div class="output-console-title-bar">Output</div>
 						<div class="output-console-body" id="output"></div>
 					</div>
 				</div>
-				<div class="col-xs-12 margin-top-20 text-center"><span class="btn btn-warning opacity00" id="restartBtn">Restart</span></div>
 			</div>
 		</div>
 	</div>

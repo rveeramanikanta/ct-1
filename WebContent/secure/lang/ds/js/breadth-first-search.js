@@ -14,7 +14,7 @@ function introGuide() {
 			intro : "",
 			position : "bottom"
 		}, {
-			element : "#dfsBtnDiv",
+			element : "#bfsBtnDiv",
 			intro : "",
 			position : "left"
 		}, {
@@ -44,11 +44,11 @@ function introGuide() {
 				});
 			});
 			break;
-		case "dfsBtnDiv":
+		case "bfsBtnDiv":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "After building the <y>graph</y>, we can find a <y>shortest path</y> between the" 
-					+ " <y>vertices</y> using the <y>Depth First Search</y> algorithm.";
+					+ " <y>vertices</y> using the <y>Breadth First Search</y> algorithm.";
 				typing(".introjs-tooltiptext", text, function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -62,7 +62,7 @@ function introGuide() {
 				let text = "<li>Create the <y>Vertices</y> in to the <y>graph</y>.</li>" 
 						+ "<li>Build an <y>edge</y> between any two <y>Vertices</y>.</li>"
 						+ "<li>After completion of creating <y>vertices</y> and <y>edges</y>, " 
-						+ "click on <y>start</y> button to find the <y>shortest path</y> by uisng <y>DFS</y>.</li>";				
+						+ "click on <y>start</y> button to find the <y>shortest path</y> by uisng <y>BFS</y>.</li>";				
 				typing($(".introjs-tooltiptext ol"), text, function() {
 					$(".disabled").removeClass("disabled");
 					//$('.introjs-nextbutton').show();
@@ -80,7 +80,6 @@ function introGuide() {
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
 }
-
 
 function restart() {
 	location.reload();

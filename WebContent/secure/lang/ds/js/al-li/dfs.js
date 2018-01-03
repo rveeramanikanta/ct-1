@@ -400,7 +400,7 @@ Graph.prototype.traversing = function(currentVertex) {
 		this.cmd("DFSButton", "play");
 		this.cmd("Step");
 		
-		for(let i = 0; i < dfs[currentVertex].length; i++) {			
+		for(let i = 0; i < dfs[currentVertex].length; i++) {	
 			this.cmd("SetEdgeHighlight", currentVertex, dfs[currentVertex][i], 0);						
 		}
 		
@@ -427,7 +427,7 @@ Graph.prototype.traversing = function(currentVertex) {
 			
 		} else {
 			visitedVerticesMap[dfs[currentVertex].slice(-1)] = true;
-			console.log("is not already visited");
+			console.log("is not visited");
 			console.log(dfs[currentVertex])
 			var text = "Now traveling to the vertex <y>" + dfs[currentVertex].slice(-1) + "</y>.";
 			this.cmd("DFSText", text);
@@ -475,7 +475,7 @@ Graph.prototype.traversing = function(currentVertex) {
 		}
 		
 		
-	} else if (parentsMap[currentVertex] != undefined) {
+	} else if (dfs[currentVertex] != undefined && parentsMap[currentVertex] != undefined) {
 		//parentVertex = parentsMap[currentVertex].slice(-1);
 		console.log("backtrack....");
 		console.log(currentVertex);
@@ -494,6 +494,10 @@ Graph.prototype.traversing = function(currentVertex) {
 		this.cmd("CreateLabel", this.nextIndex++, " - " + currentVertex, DFS_R_X, DFS_R_Y);
 		this.cmd("Delete", stackTopIDArr.slice(-1));*/
 		stackTopIDArr.pop();
+		this.cmd("RESTARTBUTTON", "restart");
+		this.cmd("Step");
+		this.cmd("hide", ".canvas-tooltip");
+		this.cmd("Step");
 	}
 	
 }
@@ -573,7 +577,11 @@ Graph.prototype.backTracking1 = function(currentVertex, parentVertex) {
 			DFS_R_X = DFS_R_X + 15;
 			this.cmd("CreateLabel", this.nextIndex++, " - " + currentVertex, DFS_R_X, DFS_R_Y);
 			this.cmd("Delete", stackTopIDArr.slice(-1));
-			stackTopIDArr.pop();			
+			stackTopIDArr.pop();
+			this.cmd("RESTARTBUTTON", "restart");
+			this.cmd("Step");
+			this.cmd("hide", ".canvas-tooltip");
+			this.cmd("Step");
 		}
 		//this.backTracking1(currentVertex, parentVertex);
 	}

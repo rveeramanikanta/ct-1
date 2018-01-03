@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Depth First Search</title>
+<title>Breadth First Search</title>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -35,8 +35,9 @@
 <script type="text/javascript" src="js-min/an-li/animation-main.min.js"></script>
 <script type="text/javascript" src="js-min/al-li/algorithm.min.js"></script>
 
-<script type="text/javascript" src="js-min/al-li/dfs.min.js"></script>
-<script type="text/javascript" src="js-min/defs.min.js"></script>
+<script type="text/javascript" src="js-min/al-li/bfs.min.js"></script>
+<script type="text/javascript" src="js-min/brfs.min.js"></script>
+
 <style type="text/css">
 .ct-demo-heading {
 	background: highlight none repeat scroll 0 0;
@@ -53,6 +54,10 @@
 
 .margin-top-20 {
 	margin-top: 20px;
+}
+
+.restart-btn {
+	background-color: orange;
 }
 
 .box-border {
@@ -235,17 +240,13 @@ canvas {
 	position: relative;
 	z-index: 1;
 }
-
-.restart-btn {
-	background-color: orange;
-}
 </style>
 
 </head>
 <body onload="init()">
 	<div id="container">
 		<div class='col-xs-12 text-center' style="margin-top: 20px;">
-			<h1 class='label label-default ct-demo-heading'>Depth First
+			<h1 class='label label-default ct-demo-heading'>Breadth First
 				Search</h1>
 		</div>
 
@@ -254,42 +255,54 @@ canvas {
 				<div class='col-xs-12 box-border' style="padding: 5px;">
 
 					<div id='bfsDiv'>
-						<span class='btn btn-primary' data-toggle='collapse' data-target='#code' style='margin-bottom: 10px;'>DFS</span>
-						<div id='code' class='collapse'>
-							<pre class='creampretab4'>void depthFirstSearch() {
+						<span class='btn btn-primary' data-toggle='collapse' data-target='#codeDiv' style="margin-bottom: 5px;">BFS</span>
+						<div id='codeDiv' class='collapse'>
+							<pre class='creampretab4'>void breadthFirstSearch() {
 	for (i = 0; i < n; i++) {
 		visited[i] = -1;
 	}
 	visit = visited;
 	currentVertex = startingVertex;
-	fp = (struct stack *)malloc(
-			sizeof(struct stack *));
-	top = fp;
+	fp = (struct queue *)malloc(
+				sizeof(struct queue));
+	np = fp;
 	fp -> data = currentVertex;
 	fp -> next = NULL;
-	while (top != NULL) {
-		currentVertex = top -> data;
-		top = top -> next;
+	pp = fp;
+	while (fp != NULL) {
+		currentVertex = fp -> data;
 		if (seqSearch(visit, n, currentVertex) == 0) {
 			insert(visit, n, currentVertex);
 			for (i = 0; i < n; i++) {
 				if (adj[currentVertex][i] == 1) {
-					np = (struct stack *)malloc(
-							sizeof(struct stack));
+					pp -> next = (struct queue *)malloc(
+							sizeof(struct queue));
+					np = pp -> next;
 					np -> data = i;
-					np -> next = top;
-					top = np;
-					fp = np;
+					np -> next = NULL;
+					pp = np;
 				}
 			}
 		}
+		fp = fp -> next;
 	}
 }</pre>
 
 
 						</div>
 					</div>
+
+
 				</div>
+				<!-- <div id="outputDiv" class='opacity00 col-xs-12 padding0 margin-top-20'>
+					<div class="output-console-title-bar">
+						<span class="title">Output</span>
+					</div>
+					<div class="output-console-body">
+						<span id="output"></span>
+					</div>
+				</div> -->
+
 			</div>
 			<div class='col-xs-9'>
 				<div class='col-xs-12 padding0 box-border'
@@ -355,12 +368,23 @@ canvas {
 							
 							
 							<div class='col-xs-4'>
-								<div id='dfsBtnDiv' class='vertical-center box-border padding10'>
+								<div id='bfsBtnDiv' class='vertical-center box-border padding10'>
+									<!-- <div class='col-xs-12'>
+										<b style="font-family: monospace;">Starting Vertex : </b>
+										<div class="dropdown dropdown-select" id='bfsVal'>
+											<button class="btn dropdown-toggle btn-info btn-xs"
+												type="button" data-toggle="dropdown">
+												vertex &nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu"></ul>
+										</div>
+									</div> -->
+									
 									<table>
 										<tr>
 											<td><b style="font-family: monospace;">Starting Vertex : </b></td>
 											<td>
-												<div class="dropdown dropdown-select" id='dfsVal'>
+												<div class="dropdown dropdown-select" id='bfsVal'>
 													<button class="btn dropdown-toggle btn-info btn-xs disabled"
 														type="button" data-toggle="dropdown">
 														vertex &nbsp;<span class="caret"></span>
@@ -371,14 +395,29 @@ canvas {
 											<td>
 												<div class="input-group">
 													<span class="input-group-addon input-group-addon-border">
-														<span id="dfsBtn" class="btn btn-sm btn-success disabled">Start</span>
+														<span id="bfsBtn" class="btn btn-sm btn-success disabled">Start</span>
 													</span>
 												</div>
 											</td>
 										</tr>
 									</table>
+									<!-- <div class='col-sm-12' style="">
+										<div class="input-group" id='bfsBtnDiv'>
+											<input class="form-control input-sm" id="bfsVal" name="bfs"
+												type="text" /> <span class="input-group-addon"> <span
+												id="bfsBtn" class="btn btn-sm btn-success">BFS</span>
+											</span>
+										</div>
+									</div> -->
 								</div>
 							</div>
+
+
+							<!-- <div class="btn-css">
+								<div class='col-sm-12'>
+									<input id='code' checked data-toggle="toggle" data-on="With Code" data-off="Without Code" data-onstyle="success" data-offstyle="danger" type="checkbox">
+								</div>
+							</div> -->
 						</div>
 					</div>
 					<div class='col-xs-12' style="padding: 0;">
@@ -401,9 +440,9 @@ canvas {
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/* $("#bfsDiv").on("click", function() {
+			$("#bfsDiv").on("click", function() {
 				$(this).find(".code").addClass("active");
-			}); */
+			});
 
 			$("canvas").on("mousedown", function(evt) {
 				console.log(evt.clientX - $("canvas").offset().left);
