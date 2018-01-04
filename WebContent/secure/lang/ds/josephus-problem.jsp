@@ -115,10 +115,6 @@ y {
 	border: 1px solid green;
 }
 
-.margin-left {
-	margin-left: 9%;
-}
-
 .div-border {
 	margin: 0;
 	padding: 0;
@@ -153,11 +149,11 @@ y {
 }
 
 .output-console-body {
-	height: 150px;
+	height: 130px;
 	border-radius: 0px 0px 8px 8px;
-	padding: 10px;
+	padding: 5px 0 0 10px;
 	white-space: initial;
-	font-size: 11.5px;
+	font-size: 10.5px;
 }
 
 .pre-tab {
@@ -242,51 +238,48 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-10">
-		<div class="col-xs-6 border-css padding0 opacity00" id="kingSoldierAnimDiv">
-			<div class="col-xs-12 padding0" id="kingWithSoldiers" style="margin-bottom: 15px;">
-    			<div class="col-xs-2 margin-top-25">
-			    	<div><i class="fa fa-male ct-blue-color"></i> - King </div>
-			    	<div><i class="fa fa-user"></i> - Soldier </div>
-				</div>
-    			<div class="col-xs-10">
-					<div class="col-xs-12 padding0">
-						<div class="col-xs-6 col-xs-offset-3 padding0">
-							<div class="col-xs-12">
-								<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
-									<p class="fa fa-check opacity00" id="sym10"></p> <p><i class="val opacity00" id="val10">10</i></p> 
-									<p class="fa fa-user" id="user10"></p> <p class="pos">10</p>
-								</div>
-								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier1">
-									<p class="fa fa-check opacity00" id="sym01"></p> <p><i class="val opacity00" id="val01">1</i></p> 
-									<p class="fa fa-user" id="user01"></p><p class="pos">1</p>
-								</div>
-								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier2">
-									<p class="fa fa-check opacity00" id="sym02"></p> <p><i class="val opacity00" id="val02">2</i></p> 
-									<p class="fa fa-user" id="user02"></p><p class="pos">2</p>
+		<div class="col-xs-6" id="kingSoldiersDiv">
+			<div class="col-xs-12">
+				<div class="col-xs-10 border-css padding0 opacity00" id="kingSoldierAnimDiv">
+	    			<div class="col-xs-2 col-xs-offset-1 margin-top-25 padding0">
+				    	<div><i class="fa fa-male ct-blue-color"></i> - King </div>
+				    	<div><i class="fa fa-user"></i> - Soldier </div>
+					</div>
+	    			<div class="col-xs-9">
+						<div class="col-xs-12 padding0">
+							<div class="col-xs-8 col-xs-offset-2 padding0">
+								<div class="col-xs-12">
+									<div class="col-xs-2 text-center margin-top-20 soldiers" id="soldier10">
+										<p class="fa fa-check opacity00" id="sym10"></p> <p><i class="val opacity00" id="val10">10</i></p> 
+										<p class="fa fa-user" id="user10"></p> <p class="pos">10</p>
+									</div>
+									<%for (int i = 1; i < 3; i++) {%>
+										<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier<%=i%>">
+											<p class="fa fa-check opacity00" id="sym0<%=i%>"></p> 
+											<p><i class="val opacity00" id="val0<%=i%>"><%=i%></i></p> 
+											<p class="fa fa-user" id="user0<%=i%>"></p><p class="pos"><%=i%></p>
+										</div>
+									<%}%>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-xs-12 padding0">
-						<div class="col-xs-8 col-xs-offset-2 padding0">
-							<div class="col-xs-12 padding0">
-								<div class="col-xs-3 text-center margin-top-20 padding0 soldiers" id="soldier9">
+						<div class="col-xs-12 padding0">
+							<div class="col-xs-12 padding0" style="margin-top: 16px;">
+								<div class="col-xs-3 text-center padding0 soldiers" id="soldier9">
 									<i class="fa fa-check opacity00" id="sym09"></i>&nbsp; <i class="val opacity00" id="val09">9</i>&nbsp;
 									<i class="fa fa-user" id="user09"></i> <i class="pos">9</i>
 								</div>
-								<div class="col-xs-3 col-xs-offset-5 text-center margin-top-20 padding0 soldiers" id="soldier3">
+								<div class="col-xs-3 col-xs-offset-5 text-center padding0 soldiers" id="soldier3">
 									<i class="pos">3</i> <i class="fa fa-user" id="user03"></i>&nbsp; <i class="val opacity00" id="val03">3</i>&nbsp;
 									<i class="fa fa-check opacity00" id="sym03"></i>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-xs-12 padding0 text-center">
-						<i class="fa fa-male fa-2x col-xs-1 col-xs-offset-5" style="color: blue;" id="king"></i>
-					</div>
-					<div class="col-xs-12 padding0">
-						<div class="col-xs-8 col-xs-offset-2 padding0">
-							<div class="col-xs-12 padding0" style="margin-top: 3px;">
+						<div class="col-xs-12 padding0">
+							<div class="col-xs-9 col-xs-offset-1 text-center"><i class="fa fa-male fa-2x" id="king" style="color: blue;"></i></div>
+						</div>
+						<div class="col-xs-12 padding0">
+							<div class="col-xs-12 padding0" style="margin-top: 5px;">
 								<div class="col-xs-3 text-center padding0 soldiers" id="soldier8">
 									<i class="fa fa-check opacity00" id="sym08"></i>&nbsp; <i class="val opacity00" id="val08">8</i>&nbsp;
 									<i class="fa fa-user" id="user08"></i> <i class="pos">8</i>
@@ -297,25 +290,20 @@ $(document).ready(function() {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-xs-12 padding0 margin-top-20">
-						<div class="col-xs-6 col-xs-offset-3 padding0">
-							<div class="col-xs-12" style="margin-top: 3px;">
-								<div class="col-xs-2 text-center soldiers" id="soldier7">
-									<p class="pos">7</p> <p class="fa fa-user" id="user07"></p> <p><i class="val opacity00" id="val07">7</i></p> 
-									<p class="fa fa-check opacity00" id="sym07"></p>
-								</div>
-								<div class="col-xs-2 col-xs-offset-2 text-center margin-top-20 soldiers" id="soldier6">
-									<p class="pos">6</p> <p class="fa fa-user" id="user06"></p> <p><i class="val opacity00" id="val06">6</i></p> 
-									<p class="fa fa-check opacity00" id="sym06"></p>
-								</div>
-								<div class="col-xs-2 col-xs-offset-2 text-center soldiers" id="soldier5">
-									<p class="pos">5</p> <p class="fa fa-user" id="user05"></p> <p><i class="val opacity00" id="val05">5</i></p> 
-									<p class="fa fa-check opacity00" id="sym05"></p>
+						<div class="col-xs-12 padding0" style="margin-top: 16px;">
+							<div class="col-xs-8 col-xs-offset-2 padding0">
+								<div class="col-xs-12" style="margin-top: 3px;">
+									<%for (int i = 7; i > 4; i--) {%>
+										<div class="col-xs-2 text-center soldiers" id="soldier<%=i%>">
+											<p class="pos"><%=i%></p> <p class="fa fa-user" id="user0<%=i%>"></p> 
+											<p><i class="val opacity00" id="val0<%=i%>"><%=i%></i></p> 
+											<p class="fa fa-check opacity00" id="sym0<%=i%>"></p>
+										</div>
+									<%}%>
 								</div>
 							</div>
 						</div>
-					</div>
+	    			</div>
     			</div>
     		</div>
 		</div>
@@ -356,7 +344,7 @@ scanf("%s", sName);</div>
 					<div class="col-xs-12" id="variablesDiv">
 						<div class="col-xs-1 text-center padding0 opacity00" id="firstVarDecMain">
 							<div class="col-xs-12 green-color padding0">first<sub>main</sub></div>
-							<div class="col-xs-12 box"><span id="firstValMain" class="green-color opacity00 position-css">NULL</span></div>
+							<div class="col-xs-12 box" id="firstMain"><span id="firstValMain" class="green-color opacity00 position-css">NULL</span></div>
 						</div>
 						<div class="col-xs-1 col-xs-offset-1 text-center padding0 opacity00" id="lastVarDecMain">
 							<div class="col-xs-12 green-color padding0">last<sub>main</sub></div>
@@ -367,7 +355,7 @@ scanf("%s", sName);</div>
 						<div class="col-xs-12 padding0" id="row1" style="min-height: 55px;"></div>
 						<div class="col-xs-12 padding0" id="row2"></div>
 					</div>
-					<div class="col-xs-12 margin-top-25" id="variableNodesDiv"></div>
+					<div class="col-xs-12 margin-top-20" id="variableNodesDiv"></div>
 				</div>
 				<div class="col-xs-12 padding0">
 <pre class="pre-tab hide margin-top-10" id="printPre"></pre>
