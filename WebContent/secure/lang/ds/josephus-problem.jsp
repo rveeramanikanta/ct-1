@@ -72,7 +72,6 @@ y {
 	color: red;
 }
 
-
 .green-color, .grn {
 	color: green;
 }
@@ -105,9 +104,8 @@ y {
  }
 
 @keyframes blinking {
-	100% {color:  red;}
+	100% { color:  red; }
 }
-
 
 .box {
 	text-align: center;
@@ -357,7 +355,7 @@ scanf("%s", sName);</div>
 					</div>
 					<div class="col-xs-12 margin-top-20" id="variableNodesDiv"></div>
 				</div>
-				<div class="col-xs-12 padding0">
+				<div class="col-xs-12 padding0" id="printPreDiv">
 <pre class="pre-tab hide margin-top-10" id="printPre"></pre>
 			</div>
 				<div class="col-xs-12" style="margin-top: 8px;">
