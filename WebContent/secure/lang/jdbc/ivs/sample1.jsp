@@ -372,103 +372,6 @@
 	</div>
 		<div class="col-xs-10">
 			<div class="main-box-border" id="mainBox">
-			<svg class ="svg-css">
-				 <marker id="flow4Marker" refX="3" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: gray;">
-               			<path d="M0,0 L5,2.5 L0,5 Z"/>
-           		</marker>
-           	
-				<line class="svg-line" id = "line1" x1="38%" y1="49%" x2="38%" y2="50%" style="marker-end: url(#flow4Marker);"/>
-					<text y="314" x="300" font-size="15" id="query1" class="green-color ani">getConnection</text>
-					<line class="svg-line" id = "line2" x1="37%" y1="68%" x2="37%" y2="67.9%" style="marker-end: url(#flow4Marker);"/>
-					<text y="415" x="297" font-size="15" id="query2" class="green-color ani">connect to db</text>
-					<line class="svg-line" id = "line3" x1="38%" y1="81%" x2="38%" y2="82%" style="marker-end: url(#flow4Marker);"/>
-					<text y="429" x="396" font-size="15" id="query3" class="green-color ani">get the connection</text>
-					<!-- <line class="svg-line " id = "line4" x1="25%" y1="68%" x2="25%" y2="67.9%"/> -->
-					<line class="svg-line " id = "line5" x1="46%" y1="62%" x2="47%" y2="62%" style="marker-end: url(#flow4Marker);"/>
-					 <text y="377" x="481" font-size="15" id="query4" class="green-color ani">data base(url)</text>
-					 <line class="svg-line" id = "line6" x1="57%" y1="59%" x2="57%" y2="58.5%"/>
-					 <line class="svg-line " id = "line7" x1="57%" y1="47%" x2="57%" y2="47%" style="marker-end: url(#flow4Marker);"/>
-					 <!-- <line class="svg-line " id = "line8" x1="29%" y1="43%" x2="29%" y2="43%"/>
-					  <line class="svg-line " id = "line9" x1="48%" y1="43%" x2="48%" y2="44%" style="marker-end: url(#flow4Marker);"/> -->
-					  <!-- // up to 9 lines for animation 1 -->
-					  <line class="svg-line1" id = "line10" x1="10%" y1="12%" x2="10%" y2="15%" style="marker-end: url(#flow4Marker);"/>
-					  <text y="79" x="31" font-size="10"class="green-color1 ani2">getConnection</text>
-					  <line class="svg-line1" id = "line11" x1="9%" y1="25%" x2="9%" y2="29%" style="marker-end: url(#flow4Marker);"/>
-					  <text y="156" x="25" font-size="10" class="green-color1 ani2">connect to db</text>
-					  <line class="svg-line1" id = "line12" x1="11%" y1="30%" x2="11%" y2="26%" style="marker-end: url(#flow4Marker);"/>
-					  <text y="160" x="124" font-size="10"class="green-color1 ani2">get the connection</text>
-					 <!--  <line class="svg-line1" id = "line13" x1="16%" y1="27%" x2="16%" y2="25%"/> -->
-					  <line class="svg-line1" id = "line14" x1="14%" y1="20%" x2="18%" y2="20%" style="marker-end: url(#flow4Marker);"/>
-					  <text y="134" x="151" font-size="10" class="green-color1 ani2">data base(url)</text>
-					<!--  <line class="svg-line1" id = "line15" x1="10%" y1="9%" x2="31%" y2="9%"/>
-					  <line class="svg-line1" id = "line16" x1="31%" y1="9%" x2="31%" y2="15%" style="marker-end: url(#flow4Marker);"/> -->
-					   <line class="svg-line1" id = "line17" x1="23%" y1="5%" x2="23%" y2="15.5%"/>
-					  <line class="svg-line1" id = "line18" x1="23%" y1="5%" x2="15%" y2="5%" style="marker-end: url(#flow4Marker);"/>
-					<!--   // svg line s for invisible div 2 -->
-					  <line class="svg-line2" id = "line19" x1="59%" y1="7%" x2="66%" y2="7%"/>
-					  <line class="svg-line2" id = "line20" x1="66%" y1="7%" x2="66%" y2="11%" style="marker-end: url(#flow4Marker);"/>
-					  <!-- <line class="svg-line2" id = "line21" x1="80%" y1="19%" x2="75%" y2="19%" style="marker-end: url(#flow4Marker);"/> -->
-					<!--   <line class="svg-line2" id = "line22" x1="55%" y1="19%" x2="76%" y2="19%"/>
-					  <line class="svg-line2" id = "line23" x1="55%" y1="19%" x2="55%" y2="13%" style="marker-end: url(#flow4Marker);"/> -->
-					  <!-- <line class="svg-line2" id = "line24" x1="57%" y1="17%" x2="57%" y2="11%"/>
-					  <line class="svg-line2" id = "line25" x1="57%" y1="17%" x2="62%" y2="17%" style="marker-end: url(#flow4Marker);"/> -->
-					  <line class="svg-line2" id = "line26" x1="70%" y1="16%" x2="73%" y2="16%" style="marker-end: url(#flow4Marker);"/>
-			     	<line class="svg-line2" id = "line27" x1="81%" y1="16%" x2="83%" y2="16%" style="marker-end: url(#flow4Marker);"/>
-			        <line class="svg-line2" id = "line32" x1="67%" y1="21%" x2="67%" y2="25%"/> 
-			        <line class="svg-line2" id = "line33" x1="67%" y1="25%" x2="60%" y2="25%" style="marker-end: url(#flow4Marker);"/>
-			        <line class="svg-line2" id = "line34" x1="67%" y1="25%" x2="60%" y2="25%"/>
-			        <line class="svg-line2" id = "l35" x1="67%" y1="25%" x2="67%" y2="21%" style="marker-end: url(#flow4Marker);"/> 
-					<line class="svg-line2" id = "line28" x1="88%" y1="12%" x2="88%" y2="5%"/>
-					<line class="svg-line2" id = "line29" x1="88%" y1="5%" x2="60%" y2="5%"style="marker-end: url(#flow4Marker);"/> 
-					<line class="svg-line2" id = "line30" x1="53%" y1="27%" x2="53%" y2="30.3%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line2" id = "line31" x1="53%" y1="31%" x2="53%" y2="26.8%" style="marker-end: url(#flow4Marker);"/> 
-						<!-- 	//animation2 lines are start here -->
-					<!-- <line class="svg-line3" id = "line33" x1="67%" y1="43%" x2="67%" y2="43%"/> 
-					<line class="svg-line3" id = "line34" x1="86%" y1="43%" x2="86%" y2="44%" style="marker-end: url(#flow4Marker);"/>
-					<text y="233" x="729" font-size="15" id="con" class="green-color ani">connection.getStatment()</text>
-					<line class="svg-line3" id = "line35" x1="86%" y1="56%" x2="86%" y2="56%"/> 
-					<line class="svg-line3" id = "line36" x1="86%" y1="61%" x2="85%" y2="61%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line37" x1="68%" y1="60%" x2="68%" y2="60%"/> 
-					<line class="svg-line3" id = "line38" x1="60%" y1="60%" x2="60%" y2="59%" style="marker-end: url(#flow4Marker);"/>	
-					<line class="svg-line3" id = "line39" x1="58%" y1="48%" x2="58%" y2="48%"/> 
-					<line class="svg-line3" id = "line40" x1="58%" y1="63%" x2="57%" y2="63%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line41" x1="76%" y1="63%" x2="76%" y2="63%"/> 
-					<line class="svg-line3" id = "line42" x1="87%" y1="63%" x2="87%" y2="62%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line43" x1="88%" y1="56%" x2="88%" y2="57%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line44" x1="88%" y1="75.5%" x2="88%" y2="77%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line45" x1="90%" y1="94%" x2="90%" y2="85%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line46" x1="90%" y1="68.5%" x2="90%" y2="67%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line47" x1="72%" y1="65%" x2="72%" y2="64%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line48" x1="72%" y1="73%" x2="71%" y2="73%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line49" x1="56%" y1="69.5%" x2="56%" y2="69%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line50" x1="86%" y1="61%" x2="85%" y2="61%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line51" x1="68%" y1="60%" x2="68%" y2="60%"/>  -->
-					<line class="svg-line3" id = "line35" x1="44%" y1="10%" x2="44%" y2="11%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line36" x1="43%" y1="53%" x2="43%" y2="54%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line37" x1="44%" y1="65%" x2="44%" y2="64%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line38" x1="49.2%" y1="49%" x2="49.5%" y2="49%"/>
-					<line class="svg-line3" id = "line39" x1="58.5%" y1="49%" x2="58.5%" y2="48%" style="marker-end: url(#flow4Marker);"/>	
-					<line class="svg-line3" id = "line40" x1="59%" y1="11%" x2="59%" y2="16%"/>
-					<line class="svg-line3" id = "line41" x1="59%" y1="6%" x2="58%" y2="6%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line42" x1="50%" y1="4%" x2="50%" y2="4%"/>
-					<line class="svg-line3" id = "line43" x1="60%" y1="4%" x2="60%" y2="5%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line44" x1="62%" y1="24.5%" x2="64%" y2="24.5%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line45" x1="70%" y1="16%" x2="70%" y2="16%"/>
-					<line class="svg-line3" id = "line46" x1="70%" y1="6%" x2="70%" y2="6%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line47" x1="50%" y1="4%" x2="50%" y2="4%"/>
-					<line class="svg-line3" id = "line48" x1="72%" y1="4%" x2="72%" y2="5%" style="marker-end: url(#flow4Marker);"/>
-					<line stroke-dasharray= "5"  class="svg-line3" id = "line49" x1="66%" y1="24.5%" x2="69%" y2="24.5%" style="marker-end: url(#flow4Marker);"/>
-					<line stroke-dasharray= "5" class="svg-line3" id = "line50" x1="58%" y1="32%" x2="58%" y2="27%"/>
-					<line stroke-dasharray= "5" class="svg-line3" id = "line51" x1="58%" y1="50%" x2="57%" y2="50%" style="marker-end: url(#flow4Marker);"/>
-					<line stroke-dasharray= "5" class="svg-line3" id = "line52" x1="45%" y1="53%" x2="45%" y2="54%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line53" x1="75%" y1="24.5%" x2="75%" y2="24.5%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line3" id = "line54" x1="84%" y1="16%" x2="84%" y2="16%"/>
-					<line class="svg-line3" id = "line55" x1="84%" y1="6%" x2="84%" y2="6%" style="marker-end: url(#flow4Marker);"/>
-					<!-- <rect stroke-dasharray= "5" class = "blinking-border-background-green"  x= 682 y = 276 width="353" height="100" id = "rec" style="fill:blue;stroke: #83cef9  ;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9"
-					<a data-toggle="popover" data-container="body" data-content="this is the connection object trough this connection object porocess flows" data-placement="bottom">
-    						<circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow"/> </a>
-					/>  -->
-																								
 			<div class="col-xs-12 margin-top10 padding0">
 				<div class="col-xs-4">
 					<!-- <div class ="col-xs-12"> -->
@@ -668,14 +571,174 @@
 		</div>
 		
 	</div>
-	</svg>
 	</div>
 	</div>
 <script>
 		$(document).ready(function() {
-			getconnectiondriver();
-			$('[data-toggle="popover"]').popover(); 
+			svgAppend('svgId1', '#invisableDiv1', 'arrow');
+			svgMarkerAppend('svgId1', 'arrow1');
+			//getconnectiondriver();
+			//$('[data-toggle="popover"]').popover(); 
 		})
+		
+		
+function svgAppend(svgId, parentId, markerId) {
+	var code = '<svg class="svg-css" id=' + svgId +'></svg>';
+	$(parentId).append(code);
+	svgMarkerAppend(svgId, markerId);
+}
+
+function svgMarkerAppend(svgId, markerId) {
+	var marker = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
+	marker.setAttribute('id', markerId);
+	marker.setAttribute('refX', '5');
+	marker.setAttribute('refY', '2.5');
+	marker.setAttribute('markerWidth', '5');
+	marker.setAttribute('markerHeight', '5');
+	marker.setAttribute('orient', 'auto');
+	marker.style.fill = 'gray';
+	$('#' + svgId).append(marker);
+	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
+	$('#' + markerId).append(path);
+}
+
+function svgLineAppend(svgId, svgLineId, markerId, x1, y1, x2, y2) {
+	var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+	line.setAttribute("id", svgLineId);
+	line.setAttribute("class", "svg-line");
+	line.setAttribute("x1", x1);
+	line.setAttribute("y1", y1);
+	line.setAttribute("x2", x2);
+	line.setAttribute("y2", y2);
+	line.style.markerEnd = 'url("#' + markerId + '")';
+	$(svgId).append(line);
+}
+
+// Top or bottom to right or left 2 lines
+function svgAnimatingDoubleLineTopOrBottomToRightOrLeft(parentId, selector1, selector2, svgId, lineId1, lineId2, markerId, fromId, toId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var x1, y1, x2, y2, x3, y3;
+	if (toId.toLowerCase() == 'top') {
+		y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+	} else {
+		y1 = $(selector1).offset().top - parentOffset.top;
+	}
+	x2 = x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	y3 = y2 = $(selector2).offset().top - parentOffset.top  + $(selector2).outerHeight() / 2;
+	if (fromId.toLowerCase() == 'right') {
+		x3 = $(selector2).offset().left - parentOffset.left;
+	} else {
+		x3 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
+	}
+	$('#arrow1').css('opacity', '1');
+	lineAnimation(svgId, lineId1, 'arrow1', x1, y1, x2, y2, function() {
+		$('#arrow1').css('opacity', '0');
+		lineAnimation(svgId, lineId2, markerId, x2, y2, x3, y3);
+	});
+}
+
+// Right or left to bottom or top 2 lines
+function svgAnimatingDoubleLineRightOrLeftToBottomOrTop(parentId, selector1, selector2, svgId, lineId1, lineId2, markerId, fromId, toId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var x1, y1, x2, y2, x3, y3;
+	if (fromId.toLowerCase() == 'right') {
+		x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+	} else {
+		x1 = $(selector1).offset().left - parentOffset.left;
+	}
+	x3 = x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	y2 = y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	if (toId.toLowerCase() == 'bottom') {
+		y3 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	} else {
+		y3 = $(selector2).offset().top - parentOffset.top;
+	}
+	$('#arrow1').css('opacity', '1');
+	lineAnimation(svgId, lineId1, 'arrow1', x1, y1, x2, y2, function() {
+		$('#arrow1').css('opacity', '0');
+		lineAnimation(svgId, lineId2, markerId, x2, y2, x3, y3);
+	});
+}
+
+// Right to left, Left to right
+function svgAnimatingLineRightAndLeft(parentId, selector1, selector2, svgId, svgLineId, markerId, fromId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	var x1, x2;
+	if (fromId.toLowerCase() == 'right') {	// right to left
+		x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+		x2 = $(selector2).offset().left - parentOffset.left;
+	} else {	// left to right
+		x1 = $(selector1).offset().left - parentOffset.left;
+		x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
+	}
+	lineAnimation(svgId, svgLineId, markerId, x1, y1, x2, y2, callBackFunction);
+}
+
+// Top to bottom, Bottom to top
+function svgAnimatingLineTopAndBottom(parentId, selector1, selector2, svgId, svgLineId, markerId, fromId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	var y1, y2;
+	if (fromId.toLowerCase() == "top") {	// top to bottom
+		y1 = $(selector1).offset().top - parentOffset.top;
+		y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	} else { // bottom to top
+		y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+		y2 = $(selector2).offset().top - parentOffset.top;
+	}
+	lineAnimation(svgId, svgLineId, markerId, x1, y1, x2, y2, callBackFunction);
+}
+
+// Right or left to bottom or top
+function svgAnimatingLineRightOrLeftToBottomOrTop(parentId, selector1, selector2, svgId, svgLineId, markerId, fromId, toId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var x1, y2;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	if (fromId.toLowerCase() == 'right') {	// from right
+		x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+	} else {	// from left
+		x1 = $(selector1).offset().left - parentOffset.left;
+	}
+	if (toId.toLowerCase() == 'top') { // to top
+		y2 = $(selector2).offset().top - parentOffset.top;
+	} else { // to bottom
+		y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	}
+	lineAnimation(svgId, svgLineId, markerId, x1, y1, x2, y2, callBackFunction);
+}
+
+// top or bottom to right or left
+function svgAnimatingLineTopOrBottomToLeftOrRight(parentId, selector1, selector2, svgId, svgLineId, markerId, fromId, toId, callBackFunction) {
+	var parentOffset = $(parentId).offset();
+	var y1, x2;
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	if (fromId.toLowerCase() == 'top') {	// from top
+		y1 = $(selector1).offset().top - parentOffset.top;
+	} else {	// from bottom
+		y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+	}
+	if (toId.toLowerCase() == 'right') { // to right
+		x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
+	} else { // to left
+		x2 = $(selector2).offset().left - parentOffset.left;
+	}
+	lineAnimation(svgId, svgLineId, markerId, x1, y1, x2, y2, callBackFunction);
+}
+
+function lineAnimation(svgId, svgLineId, markerId, x1, y1, x2, y2, callBackFunction) {
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 0.8, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
 </script> 
 	</body>
 </html>

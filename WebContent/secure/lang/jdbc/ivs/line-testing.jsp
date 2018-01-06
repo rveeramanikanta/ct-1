@@ -16,7 +16,7 @@
 <title>Svg Lines</title>
 <style type="text/css">
 .box-css {
-	min-height: 80px;
+	min-height: 40px;
 	border: 1px solid black;
 }
 
@@ -38,6 +38,15 @@
 	position: relative;
 	marker-end: url("#arrowEnd"); 
 }
+
+.text-css {
+	border: 1px solid black;
+	padding: 6px;
+}
+
+.padding0 {
+	padding: 0;
+}
 </style>
 </head>
 <body>
@@ -47,10 +56,13 @@
 	});
 </script>
 	<div class="col-xs-12 margin-top-50">
-		<div class="col-xs-6 col-xs-offset-3">
-			<div class="col-xs-12 margin-top-50">
+		<div class="col-xs-6 col-xs-offset-3" id="animationDiv">
+			<div class="col-xs-12 margin-top-50 padding0">
 				<div class="col-xs-2 col-xs-offset-1 box-css" id="box1"></div>
 				<div class="col-xs-2 col-xs-offset-4 box-css" id="box2"></div>
+			</div>
+			<div class="col-xs-12 margin-top-50 padding0">
+				<div class="col-xs-3 col-xs-offset-4 text-css text-center" id="text1">hello</div>
 			</div>
 			<div class="col-xs-12 margin-top-50">
 				<div class="col-xs-2 col-xs-offset-1 box-css margin-top-50" id="box3"></div>
