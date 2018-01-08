@@ -24,6 +24,15 @@
 	margin-top: 50px;
 }
 
+.text-css {
+	border: 1px solid black;
+	padding: 6px;
+}
+
+.padding0 {
+	padding: 0;
+}
+
 .svg-css {
 	top: 0;
 	left: 0;
@@ -38,15 +47,6 @@
 	position: relative;
 	marker-end: url("#arrowEnd"); 
 }
-
-.text-css {
-	border: 1px solid black;
-	padding: 6px;
-}
-
-.padding0 {
-	padding: 0;
-}
 </style>
 </head>
 <body>
@@ -57,7 +57,7 @@
 </script>
 	<div class="col-xs-12 margin-top-50">
 		<div class="col-xs-6 col-xs-offset-3" id="animationDiv">
-			<div class="col-xs-12 margin-top-50 padding0">
+			<div class="col-xs-12 margin-top-50">
 				<div class="col-xs-2 col-xs-offset-1 box-css" id="box1"></div>
 				<div class="col-xs-2 col-xs-offset-4 box-css" id="box2"></div>
 			</div>

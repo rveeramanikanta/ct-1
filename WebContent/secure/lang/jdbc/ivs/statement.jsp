@@ -52,7 +52,6 @@
 	height: 85px;
 	border-top:none;
 	display: table;
-	margin-bottom: 30px;
 	padding:0;
 }
 
@@ -224,6 +223,10 @@
 	stroke-dasharray: 3;
 	stroke-width: 2;
 }
+
+.position-css {
+	display: inline-block;
+}
 </style>
 
 <script type="text/javascript">
@@ -244,64 +247,8 @@ $(document).ready(function() {
 		<span id="restartBtn" class="opacity00 btn btn-warning">Restart</span>
 	</div>
 	<div class="col-xs-offset-1 col-xs-10 main-div text margin-top20" id="mainDiv">
-		<div class="col-xs-offset-0 col-xs-10 animation-div border  padding00" id="animationDiv" style="height: 625px; ">
-			<svg class="svg-css">
-					<marker id="flow4Marker" refX="3" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: #f53f3f;">
-               			<path d="M0,0 L5,2.5 L0,5 Z"/>
-           			</marker>
-					
-					<line y2="20.5%" x2="50%" y1="15%" x1="50%" class="svg-line" style="marker-end: url(#flow4Marker);"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="29%" x2="50%" y2="35%"/>
-					
-					
-					<!-- Driver 1 -->
-					<line y2="35%" x2="14%" y1="35%" x1="50%" class="svg-line" style="marker-end: url(#flow4Marker);"/> 
-					<line y2="42%" x2="14%" y1="35%" x1="14%" class="svg-line" style="marker-end: url(#flow4Marker);"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="14%" y1="53%" x2="14%" y2="59%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="14%" y1="67%" x2="14%" y2="76%"/>
-					<!-- Driver 1 -->
-					
-					
-					<!-- Driver 2 -->
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="29%" x2="50%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="35%" x2="38%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="38%" y1="35%" x2="38%" y2="42%"/>
-					<line class="svg-line" style="marker-end: url(#flow4Marker);" y2="56%" x2="38%" y1="50%" x1="38%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="38%" y1="63%" x2="38%" y2="76%"/>
-					<!-- Driver 2 -->
-
-					
-					<!-- Driver 3 -->
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="29%" x2="50%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="35%" x2="62%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="62%" y1="35%" x2="62%" y2="44.5%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="62%" y1="63%" x2="62%" y2="76%"/>
-					<!-- Driver 3 -->
-					
-					<!-- Driver 4 -->
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="29%" x2="50%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="50%" y1="35%" x2="86%" y2="35%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="86%" y1="35%" x2="86%" y2="50%"/>
-					<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="86%" y1="58%" x2="86%" y2="76%"/>
-					
-					<!-- Driver 4 -->
-					
-					
-					<!-- Horizantal Line -->
-					
-					<line y2="77%" x2="2%" y1="77%" x1="98%" class="svg-hor" style="marker-end: url(#flowMarker);"/>
-					<line y2="2%" x2="2%" y1="2%" x1="98%" class="svg-hor first" style="marker-end: url(#flowMarker);"/>
-					<line x1="98%" y1="30%" x2="2%" y2="30%" class="svg-hor second" style="marker-end: url(#flowMarker);"/>
-					<text x="690" y="28" fill="gray" class='first'>Application Layer</text>
-					<text fill="gray" y="200" x="710" class='second'>Service Layer</text>
-					<text x="693" y="491" fill="gray" class='third'>Database Layer</text>
-					
-					
-					 
-				</svg>
+		<div class="col-xs-offset-1 col-xs-10 animation-div border  padding00" id="animationDiv" style="height: 625px; ">
 			<div class="col-xs-12 padding00">
-				
-				
 				<div class="col-xs-12 marginBtm padding00" style="margin-top: 35px;">
 					<div class="col-xs-offset-4 col-xs-4">
 						<div id="jApp" class="border text-center jvaApp rectangle opacity00" style="padding:5px;">
@@ -311,14 +258,14 @@ $(document).ready(function() {
 					</div>
 				</div>
 				
-				<div class="col-xs-12 padding00" style="margin: 0 0 90px">
+				<div class="col-xs-12 padding00" style="margin: 0 0 45px">
 					<div class="col-xs-offset-2 col-xs-8">
 						<div id="jdbcApi" class="border text-center padding10 driver opacity00">
 							<b>JDBC API</b>
 						</div>
 					</div>
 				</div>
-				
+				<div class="col-xs-12 padding00 text-center" style="margin-bottom: 45px;"><div class="position-css" id="emptySpan"></div></div>
 				
 				<div class="col-xs-12">
 					<div class="col-xs-12 padding00">
@@ -339,14 +286,6 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</div>
-							<!-- <div class="col-xs-12 pading00" style="margin: 110px 0px 0px;">
-								<div id="driver1" class="col-xs-offset-1 col-xs-10  database-box opacity00">
-									<div class="oval dataBase" style="background-color: thistle;"></div>
-									<span class="text-font database-text-middle dataBase"
-										style="background-color: thistle; border-radius: 8px"> <b>Database</b>
-									</span>
-								</div>
-							</div> -->
 						</div>
 						<div class="col-xs-3 padding00">
 							<div class="col-xs-12 pading00 marginBtm">
@@ -363,56 +302,38 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</div>
-							
-							<!-- <div class="col-xs-12 pading00" style="margin: 125px 0px 0px;">
-								<div id="driver2" class="col-xs-offset-1 col-xs-10  database-box opacity00">
-									<div class="oval dataBase" style="background-color: thistle;"></div>
-									<span class="text-font database-text-middle dataBase"
-										style="background-color: thistle; border-radius: 8px"> <b>Database</b>
-									</span>
-								</div>
-							</div> -->
-							
 						</div>
-						
 						<div class="col-xs-3 padding00">
-						
 							<div class="col-xs-12" style="margin-top: 15px;">
 								<div class="col-xs-9 col-xs-offset-2 padding00">
 									<div id="middleLayer" class="border text-center dbLibrary opacity00">
 										<div class="padding35">
-											<!-- <b><div>Middle Layer</div>
-											<div>JDBC Driver</div></b> -->
 											<b>Middle Server</b>
 										</div>
 									</div>
 								</div>
 							</div>
-							
-							 <!-- <div class="col-xs-12" style="margin: 120px 0px 0px;">
-								<div id="driver3" class="col-xs-offset-1 col-xs-10  database-box opacity00">
-									<div class="oval dataBase" style="background-color: thistle;"></div>
-									<span class="text-font database-text-middle dataBase"
-										style="background-color: thistle; border-radius: 8px"> <b>Database</b>
-									</span>
-								</div>
-							</div>  -->
 						</div>
 						
 						<div class="col-xs-3 padding00">
 							<div class="col-xs-12" style="margin: 50px 0px 0px;">
 								<div id="thinDriver" class="border text-center dbLibrary opacity00">
-									<div class="padding10">
-										<b><div>Thin Driver</div></b>
-									</div>
+									<div class="padding10"><b><div>Thin Driver</div></b></div>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12" style="margin: 110px 0px 0px;">
+			<div class="col-xs-12" style="margin-top: 45px;">
+				<div class="col-xs-3 text-center"><div class="position-css" id="span1"></div></div>
+				<div class="col-xs-3 text-center"><div class="position-css" id="span2"></div></div>
+				<div class="col-xs-3 text-center"><div class="col-xs-12" style="padding-right: 0px;"><div class="col-xs-1 col-xs-offset-5">
+					<div class="position-css" id="span3"></div></div></div>
+				</div>
+				<div class="col-xs-3 text-center"><div class="position-css" id="span4"></div></div>
+			</div>
+			<div class="col-xs-12" style="margin-top: 30px;">
 				<div id="driver1" class="col-xs-offset-4 col-xs-3  database-box opacity00 padding00">
 					<div class="oval dataBase" style="background-color: thistle;"></div>
 					<span class="text-font database-text-middle dataBase" style="background-color: thistle; border-radius: 8px"> <b>Database</b>
