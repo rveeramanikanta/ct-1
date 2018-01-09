@@ -42,10 +42,19 @@
 }
 
 .svg-line {
-	stroke: gray;
 	stroke-width: 2; 
 	position: relative;
 	marker-end: url("#arrowEnd"); 
+}
+
+.svg-dotted {
+	stroke-dasharray: 5;
+}
+
+.oval-shape {
+	height: 80px;
+	border-radius: 50%;
+	border: 2px solid black;
 }
 </style>
 </head>
@@ -56,17 +65,41 @@
 	});
 </script>
 	<div class="col-xs-12 margin-top-50">
-		<div class="col-xs-6 col-xs-offset-3" id="animationDiv">
+		<div class="col-xs-6" id="animationDiv">
 			<div class="col-xs-12 margin-top-50">
 				<div class="col-xs-2 col-xs-offset-1 box-css" id="box1"></div>
 				<div class="col-xs-2 col-xs-offset-4 box-css" id="box2"></div>
 			</div>
 			<div class="col-xs-12 margin-top-50 padding0">
-				<div class="col-xs-3 col-xs-offset-4 text-css text-center" id="text1">hello</div>
+				<div class=" margin-top-50 col-xs-2 col-xs-offset-4 text-css text-center" id="text1">Mallika</div>
 			</div>
 			<div class="col-xs-12 margin-top-50">
 				<div class="col-xs-2 col-xs-offset-1 box-css margin-top-50" id="box3"></div>
 				<div class="col-xs-2 col-xs-offset-4 box-css margin-top-50" id="box4"></div>
+			</div>
+			<div class="col-xs-12 margin-top-50">
+				<div class="col-xs-4 col-xs-offset-3">
+					<div class="oval-shape" id="ovalId"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-6" id="animationDiv1">
+			<div class="col-xs-12 margin-top-50">
+				<div class="col-xs-2 col-xs-offset-1 box-css" id="box11"></div>
+				<div class="col-xs-2 col-xs-offset-4 box-css" id="box12"></div>
+			</div>
+			<div class="col-xs-12 margin-top-50 padding0">
+				<div class=" margin-top-50 col-xs-2 col-xs-offset-4 text-css text-center" id="text11">Mallika</div>
+			</div>
+			<div class="col-xs-12 margin-top-50">
+				<div class="col-xs-2 col-xs-offset-1 box-css margin-top-50" id="box13"></div>
+				<div class="col-xs-2 col-xs-offset-4 box-css margin-top-50" id="box14"></div>
+			</div>
+			<div class="col-xs-12 margin-top-50">
+				<div class="col-xs-4 col-xs-offset-3">
+					<div class="oval-shape" id="ovalId1"></div>
+				</div>
 			</div>
 		</div>
 	</div>
