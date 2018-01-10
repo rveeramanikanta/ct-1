@@ -169,7 +169,7 @@
 					<!-- <b id="example" class="color-red opacity00">Example:</b><br/> -->
 					<ol>
 						 <li id="olLi1" class="opacity00">
-						 	#include&lt;<b>stdio.h</b>&gt;<br/>
+						 	#include &lt;<b>stdio.h</b>&gt;<br/>
 						 </li>
 						 <li id="olLi2" class="opacity00">
 						 	#include "<b>c\XYZ\Ritchie\abc.c</b>"
@@ -183,15 +183,15 @@
 	<div class="col-xs-12">
 		<div class="col-xs-offset-1 col-xs-5 margin-top-56">
 			<div id="code1" class="opacity00">
-			<pre class="creampretab"><span id="totalPro"><span class="opacity00" id="include1">#include&lt;stdio.h&gt;</span>
+			<pre class="creampretab"><span id="totalPro"><span class="opacity00" id="include1">#include &lt;stdio.h&gt;</span>
 <span id="main"><span class="colorPink">void</span> main () {
   <span id="printf1">printf("<span id="ct" class="colorGreen">CodeTantra</span>");</span>
 }</span></span>
 </pre>
 			</div>
 			<div id="code2" class="margin-top-40 opacity00">
-			<pre class="creampretab"><span id="totalPro2"><span id="include2"><span id="include21" class="opacity00">#include&lt;stdio.h&gt;</span>
-<span id="include22" class="opacity00">#include&lt;math.h&gt;</span></span>
+			<pre class="creampretab"><span id="totalPro2"><span id="include2"><span id="include21" class="opacity00">#include &lt;stdio.h&gt;</span>
+<span id="include22" class="opacity00">#include &lt;math.h&gt;</span></span>
 <span class="colorPink">void</span> main() {
   <span id="printf2">printf("<span id="sqrt" class="colorGreen">Square root of %f is %f\n</span>", 4.0, sqrt(4.0));</span>
 }</span>

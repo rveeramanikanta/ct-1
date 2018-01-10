@@ -17,7 +17,6 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/secure/lang/c/js-min/soc.min.js"></script>
-
 <style type="text/css">
 .margin-top-20 {
 	margin-top: 20px;
@@ -121,22 +120,21 @@ Function1() {
   	<pre class="creampretab2 opacity00" id='rightCode'><span id="comment" class="opacity00">/* C language was 
 Develop by Dennis Ritchie. */
 //This is a sample C program developed by user.</span>
-<span id="links" class="opacity00">#include&lt;stdio.h&gt;
-#include&lt;conio.h&gt;</span>
-<span id="define" class="opacity00">#define VALUE 10;</span>
+<span id="links" class="opacity00">#include &lt;stdio.h&gt;</span>
+<span id="define" class="opacity00">#define VALUE 10</span>
 <span id="globalVariable" class="opacity00">int total;</span>
 <span id="userDefineFun" class="opacity00">int sum(int, int);</span>
 <span id="totalMain" class="opacity00">int main() <span id="mainFun">{
-	<span id="declPart">int a, b;</span>
-	<span id="exeParts"><span id="exePart1">a = VALUE + 5;</span>
-	<span id="exePart2">b = VALUE - 3;</span></span>
-	printf("This is main function /n");
-	total = sum(a, b);
-	printf("Total = %d /n", total);
-	return 0;
+  <span id="declPart">int a, b;</span>
+  <span id="exeParts"><span id="exePart1">a = VALUE + 5;</span>
+  <span id="exePart2">b = VALUE - 3;</span></span>
+  printf("This is main function /n");
+  total = sum(a, b);
+  printf("Total = %d /n", total);
+  return 0;
 }</span></span>
 <span id="sumFun" class="opacity00">int sum(int a, int b) {
-	return a + b;
+  return a + b;
 }</span></pre>
   	</div>
   </div>

@@ -47,7 +47,7 @@
 	marker-end: url("#arrowEnd"); 
 }
 
-.svg-dotted {
+.svg-dotted-line {
 	stroke-dasharray: 5;
 }
 

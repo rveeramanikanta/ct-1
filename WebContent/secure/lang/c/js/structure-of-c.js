@@ -259,8 +259,7 @@ function introGuide() {
 					$(".introjs-tooltip").removeClass("hide");
 					var text = "<b class ='ct-code-b-yellow'>Link section:</b> This section provides instructions to the compiler, to link pre-defined functions"
 							+ " which are available in the header files from the system library to the program.<br>"
-							+ " <b class ='color-red'>Example:</b> <br><b class ='ct-code-b-yellow'>#include&lt;stdio.h&gt;</b>"
-							+ " <b class ='ct-code-b-yellow'>#include&lt;conio.h&gt;</b>";
+							+ " <b class ='color-red'>Example:</b> <br><b class ='ct-code-b-yellow'>#include &lt;stdio.h&gt;</b>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#linkSection").css({"background-color": "white"}).addClass("zIndex");
 						$(".introjs-nextbutton,.introjs-prevbutton").show();
@@ -277,8 +276,8 @@ function introGuide() {
 				$("#links").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 					$("#links").removeClass("animated zoomIn");
 					$(".introjs-tooltip").removeClass("hide");
-					var text = "#include link the two header files<br> <b class ='ct-code-b-yellow'>stdio.h</b><br>"
-						+ "<b class ='ct-code-b-yellow'>conio.h</b><br> to the program.";
+					var text = "<b>#include</b> link the header file<br> <b class ='ct-code-b-yellow'>stdio.h</b><br>"
+						+ " to the program.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
@@ -315,7 +314,7 @@ function introGuide() {
 				$("#define").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 					$("#define").removeClass("animated zoomIn")
 					$(".introjs-tooltip").removeClass("hide");
-					var text = "<b class ='ct-code-b-yellow'>#define VALUE 10;</b><br>"
+					var text = "<b class ='ct-code-b-yellow'>#define VALUE 10</b><br>"
 						+ " The symbolic constatnt VALUE is defined with constatnt value 10."
 						+ " So <b class ='ct-code-b-yellow'>VALUE</b> is replaced with <b class ='ct-code-b-yellow'>10</b> before compilation process.";
 					typing($(".introjs-tooltiptext"), text, function() {
