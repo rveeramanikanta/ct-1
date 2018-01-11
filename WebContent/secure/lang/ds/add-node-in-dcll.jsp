@@ -21,7 +21,7 @@
 <script src="/js/jquery.scrollTo.js"></script>
 <script src="/secure/lang/ds/js/add-node-in-dcll.js"></script>
 
-<script src="/secure/lang/jdbc/js/line-testing.js"></script>
+<script src="/secure/lang/jdbc/js/ct-svg-lines.js"></script>
 
 <style type="text/css">
 .margin-top25 {
@@ -173,6 +173,10 @@ bgb {
 	min-height: 262px;
 }
 
+.bakcground-yellow {
+	background-color: yellow;
+}
+
 .svg-css {
 	top: 0;
 	left: 0;
@@ -209,7 +213,7 @@ bgb {
 					<div class="col-xs-2 padding0 opacity00" id="firstNode">
 						<div class="text-center col-xs-12 ct-fonts padding0">first</div>
 						<div class="col-xs-12 box padding0" id="firstDiv" style="border: 1px solid black;">
-							<span id="firstVal" class="ct-fonts position-css" style="color: darkslategrey;">NULL</span>
+							<span id="firstVal" class="ct-fonts position-css" style="color: black;">NULL</span>
 						</div>
 					</div>
 				</div>

@@ -12,7 +12,7 @@
 <script src="/js/jquery-ui-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js/line-testing.js"></script>
+<script src="../js/ct-svg-lines.js"></script>
 <title>Svg Lines</title>
 <style type="text/css">
 .box-css {

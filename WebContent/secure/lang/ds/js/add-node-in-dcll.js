@@ -1,13 +1,13 @@
 var introjs;
 function addNodesInDCLLReady() {
 	dynamicTempNodes(1);
-	dynamicTempNodes(2);
 	createDynamicNodes('#fstExplain', 0);
 	$('#node0').addClass('col-xs-offset-1');
 	createDynamicNodes('#dynamicNodes', 1);
+	
+	svgAppend('#animationDiv');
 	initIntroJs();
 	/*animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
-	svgAppend('#animationDiv');
 	svgLineTopAndBottom('#animationDiv', '#tempDiv1', '#prevDiv1', 'line1', 'top', '', '', true);
 	svgDoubleLineRightOrLeftToBottomOrTop('#animationDiv', '#nextDiv1', '#tempDiv2', 'line2', 'line3', 'right', 'top', '', '', true);*/
 }
@@ -51,37 +51,133 @@ function initIntroJs() {
 					text = 'Let us learn about adding a <bl>node</bl> to a <bl>Doubly Circular Linked List(DCLL)</bl>. &emsp;';
 					typing('#algorithmDiv', text, function() {
 						nextBtnCalling('#algorithmDiv', function() {
-							$('#algorithmDiv').append('<ul style="list-style-type: circle" id="ul1"></ul>');
-							$('#node0 > div:last').remove();
 							introjs.nextStep();
 						});
 					});
 				});
 			break;
 			case 'animationDiv':
-				$('#animationDiv').removeClass('opacity00');
+				$('#animationDiv, .bakcground-yellow').removeClass('opacity00 bakcground-yellow');
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 					switch(animateStep) {
-					case 'fstDeclaration':
-						zoomInEffect('#firstNode', function() {
-							animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
-							$('.introjs-tooltip').removeClass('hide');
-							text = '<span id="l2">Let us store the <yy class="ct-fonts brn">beginning of the linked list</yy> in a pointer variable'
-									+ ' of type <yy class="ct-fonts b">node</yy> (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts brn">Linked '
-									+ 'list</yy> is <yy class="ct-fonts brn">not yet created</yy> we should initialize it with'
-									+ ' <yy class="ct-fonts g">NULL</yy>.';
-							typing('.introjs-tooltiptext', text, function() {
-								//algorithmSteps(text, '.introjs-tooltiptext span', '#algorithmDiv #l2', 1, 'fstCreation');
+						case 'fstDeclaration':
+							zoomInEffect('#firstNode', function() {
+								animatedTooltip('#firstDiv', "bottom", "first stores the beginning of the linked list");
+								$('.introjs-tooltip').removeClass('hide');
+								text = '<span id="l1">Let us store the <yy class="ct-fonts brn">beginning of the linked list</yy> in a pointer variable'
+										+ ' of type <yy class="ct-fonts b">node</yy> (<bgb>first</bgb>).<br> Since the <yy class="ct-fonts brn">Linked '
+										+ 'list</yy> is <yy class="ct-fonts brn">not yet created</yy> we should initialize it with'
+										+ ' <yy class="ct-fonts g">NULL</yy>.</span>';
+								typing('.introjs-tooltiptext', text, function() {
+									$('#algorithmDiv').append('<ul style="list-style-type: circle" id="ul1"></ul>');
+									nextBtnCalling('.introjs-tooltipbuttons', function() {
+										var selector = '#algorithmDiv';
+										tranferAnim(selector, selector + ' ul', text, '.introjs-tooltiptext span', selector + ' #l1', function() {
+											introNextSteps('#codeAndAlgorithmDiv', 'fstCreation', 'hide');
+											$('.introjs-nextbutton').show();
+										});
+									});
+								});
 							});
-						});
-					break;
+						break;
+						case 'fstListCreation':
+							text = '<span id="l2Span">Let us consider the <yy class="ct-fonts brn"><b>steps</b></yy> involved in'
+									+ ' <yy class="ct-fonts">adding</yy> a new '
+									+ '<yy class="ct-fonts b">node</yy> for a given value.</span><br><br>Enter a value : '
+									+ '<input type="text" class="usr-txt position-css zIndex" size="3" maxlength="3" id="nodeVal" />';
+							typing('.introjs-tooltiptext', text, function() {
+								validation('#nodeVal', 1);
+							});
+						break;
+					}
+				});
+			break;
+			case 'codeAndAlgorithmDiv':
+				$('#algorithmDiv, #codeDiv, .bakcground-yellow').removeClass('z-index10000 opacity00 bakcground-yellow');
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+					switch(animateStep) {
+						case 'fstCreation':
+							$('#codeDiv').append('<span id="fstCreation" class="opacity00">node first = <g>NULL</g>; '
+									+ ' <span><i class="fa fa-question-circle fa-1x" id="helpText"	></i></span></span>&emsp;');
+							$('#algorithmDiv ul li').effect('highlight', {color: 'yellow'}, 1400);
+							transWithZoomInEffect('#l1', '#fstCreation', function() {
+								animatedTooltip('#helpText', "bottom", "first stores the beginning of the linked list");
+								nextBtnCalling('#fstCreation', function() {
+									introNextSteps('#animationDiv', 'fstListCreation', 'show');
+									introjs.nextStep();
+								});
+							});
+						break;
 					}
 				});
 			break;
 		}
 	});
 	introjs.start();
+}
+
+function validationAnim() {
+	$('.introjs-tooltiptext').append('<br><br><div id="l2Div"><div>')
+	text = 'Allocate <yy class="ct-fonts brn">memory</yy> for the new node (<yy class="ct-fonts g">address</yy> of the new node is stored in'
+			+ ' <yy class="ct-fonts g">temp</yy>) and store the given value in <yy class="ct-fonts">data</yy>.';
+	typing('#l2Div', text, function() {
+		nodeAnim(1, function() {
+			nextBtnCalling('.introjs-tooltipbuttons', function() {
+			var selector = '#algorithmDiv';
+			tranferAnim(selector, selector + ' #l2Span', text, '.introjs-tooltiptext span', selector + ' #l2Span', function() {
+				$('#algorithmDiv #l2Span').after('<ul style="list-style-type: circle" id="ul2"><li><span id="l3Div" class="opacity00">'
+												+ $('.introjs-tooltiptext #l3Div').html() + '</span></li></ul>');
+					algorithmDivColors();
+					transferEffect('.introjs-tooltiptext #l3Div', '#algorithmDiv #l3Div', function() {
+						$('#algorithmDiv ul:last').css({'list-style-type': 'circle'});
+						introNextSteps('#codeAndAlgorithmDiv', 'methodCreation', 'hide');
+						$('.introjs-nextbutton').show();
+						addNodeMethod();
+					});
+				});
+			});
+		});
+	});
+}
+
+function nodeAnim(val, callBackFunction) {
+	nextBtnCalling('.introjs-tooltipbuttons', function() {
+		$('#node' + val).removeClass('opacity00');
+		TweenMax.from("#node"+ val, 1, {top : -30, onComplete:function() {
+			zoomInEffect('#tempNodeParent' + val, function() {
+				fromEffect('#dataAddress' + val, '#tempNode' + val, true, function() {
+					svgLineTopAndBottom('#animationDiv', '#tempNodeParent' + val, '#nextDiv' + val, 'line11', '', 'top', 'bottom', '', '', '', function() {
+						fromEffect('#nodeVal', '#data' + val, false, function() {
+							$('#nodeVal').css({'color': 'white'});
+							callBackFunction();
+						});
+					});
+				});
+			});
+		}});
+	});
+}
+
+function transWithZoomInEffect(selector1, selector2, callBackFunction) {
+	transferEffect(selector1, selector2, function() {
+		$(selector2).addClass('bakcground-yellow');
+		zoomInEffect(selector2, function() {
+			callBackFunction();
+		});
+	});
+}
+
+function tranferAnim(selector, parentId, text, selector1, selector2, callBackFunction) {
+	$(parentId).append('<li class="opacity00">' + text + '</li>');
+	algorithmDivColors();
+	$(selector).addClass('z-index10000');
+	transferEffect(selector1, selector2, function() {
+		$(selector2).addClass('bakcground-yellow');
+		$(selector2).parent().removeClass('opacity00');
+		callBackFunction();
+	});
 }
 
 function typing(typingId, typingContent, callBackFunction) {
@@ -96,8 +192,21 @@ function typing(typingId, typingContent, callBackFunction) {
 	});
 }
 
+function introNextSteps(stepName, animatedStep, tooltip, position) {
+	$('.introjs-disabled').removeClass('introjs-disabled');
+	var options = {
+			element :stepName,
+			intro :'',
+			position : position,
+			tooltipClass : tooltip,
+			animateStep: animatedStep
+	}
+	introjs.insertOption(introjs._currentStep + 1, options);
+	introjs._options.steps.push({"element" : stepName});
+}
+
 function nextBtnCalling(id, callBackFunction) {
-	$(id).append('<a class="introjs-button user-btn">Next &#8594;</a>');
+	$(id).append(' <a class="introjs-button user-btn">Next &#8594;</a>');
 	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons a:last', 300);
 	$('.user-btn').click(function() {
 		$('.user-btn').remove();
@@ -105,12 +214,23 @@ function nextBtnCalling(id, callBackFunction) {
 	});
 }
 
+function algorithmDivColors() {
+	$('#algorithmDiv .brn').addClass('ct-brown-color').removeClass('ct-fonts');
+	$('#algorithmDiv .b').addClass('ct-blue-color').removeClass('ct-fonts');
+	$('#algorithmDiv .g').addClass('ct-green-color').removeClass('ct-fonts');
+}
+
 function zoomInEffect(selector1, callBackFunction) {
 	$(selector1).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 		$(selector1).removeClass("animated zoomIn")
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
+		callBackFunction();
+	});
+}
+
+function transferEffect(selector1, selector2, callBackFunction) {
+	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
+		$(selector2).removeClass('opacity00')
+		callBackFunction();
 	});
 }
 
@@ -152,4 +272,68 @@ function createDynamicNodes(id, nodeNum) {	//node
 
 function animatedTooltip(id, position, tooltipText) {
 	$(id).addClass('zIndex').attr({"data-placement" : position, "data-original-title" : tooltipText}).tooltip();
+}
+
+
+function validation(selector, val) {
+	$(selector).effect('highlight', {color: 'yellow'}, 500).focus();
+	$(selector).on('keydown', function(e) {
+		var max = $(this).attr('maxlength');
+		$('.error-text').remove();
+		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
+			return;
+		}
+		if (((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) || (e.keyCode == 13 || e.keyCode == 9)){
+			e.preventDefault();
+		}
+		if ($(this).val().length > max - 1) {
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts">Here we restrict the maximum length to 3 digits only.</div>')
+			e.preventDefault();
+		}
+	});
+	$(selector).on('keyup', function(e) {
+		if ($(selector).val().length != 0) {
+			$('.user-btn, .errMsg').remove();
+			$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="eventValidation(' + val + ')">Next &#8594;</a>');
+			if (e.keyCode == 13) {
+				eventValidation(val);
+			}
+		} else {
+			$('.user-btn, .error-text').remove();
+			$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Please enter number.</div>');
+		}
+	});
+}
+
+function eventValidation(val) {
+	$('.user-btn, .error-text').remove();
+	$('#nodeVal').off();
+	$('input').attr('disabled', true);
+	if (val == 1) {
+		validationAnim();
+	} else {
+		secondNdeAnim(val);
+	}
+}
+
+function fromEffect(selector1, selector2, flag, callBackFunction) {
+	var value = flag ? $(selector1).text() : $(selector1).val();
+	$(selector2).text(value).addClass('opacity00');
+	var l1 = $(selector1).offset();
+	var l2 = $(selector2).css({"color" : "brown", "font-width" : "bold", "z-index" : "99999999"}).offset();
+	var topLength = l1.top - l2.top;
+	var leftLength = l1.left - l2.left;
+	$("body").append("<span id='dummy' style='position: relative; z-index: 9999999; color: brown;'>" + $(selector2).text() + "</span>");
+	$("#dummy").offset({"top" : l2.top, "left" : l2.left});
+	$(selector1).addClass('z-index1000000').effect( "highlight",{color: '#ffff33'}, 500);
+	$("#dummy").remove();
+	$(selector2).removeClass('opacity00');
+	TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
+		$(selector2).removeAttr("style").css("color", "brown");
+		$(selector1).removeClass('z-index1000000');
+		if (typeof callBackFunction === "function") {
+			introjs.refresh();
+			callBackFunction();
+		}
+	}});
 }
