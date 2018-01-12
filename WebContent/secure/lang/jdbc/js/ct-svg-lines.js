@@ -27,7 +27,6 @@ function svgAppend(parentId, svgId, markerId, markerColor) {
 	} else {
 		var dateObj = new Date();
 		var time = dateObj.getTime();
-		console.log(time);
 		if (typeof svgId === "undefined" || svgId.trim() == '') {
 			svgId = 'svgId' + time;
 		}
